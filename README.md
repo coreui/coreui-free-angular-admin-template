@@ -39,6 +39,8 @@ CoreUI-Angular/
 
 ## Other Versions
 
+CoreUI includes 6 Version for Angular 4, AngularJS, React.js, Vue.js, Static HTML5 and AJAX HTML5.
+
 * [Angular Version (Angular 2+)](https://github.com/mrholek/CoreUI-Angular).
 * [AngularJS Version](https://github.com/mrholek/CoreUI-AngularJS).
 * [HTML5 AJAX Version](https://github.com/mrholek/CoreUI-Free-Bootstrap-Admin-Template).
