@@ -4,7 +4,9 @@
 
 [Check out Bootstrap Admin Templates Bundle](https://genesisui.com/bundle.html?support=1&utm_source=github&utm_medium=referer&utm_campaign=angular_version)
 
-# CoreUI - Free Bootstrap Admin Template
+# CoreUI Angular Version - Free Angular Admin Template
+
+This is Angular 2+ version of our Bootstrap 4 admin template [CoreUI](https://github.com/mrholek/CoreUI-Free-Bootstrap-Admin-Template).
 
 Please help us on [Product Hunt](https://www.producthunt.com/posts/coreui-open-source-bootstrap-4-admin-template-with-angular-2-react-js-vue-js-support) & [Designer News](https://www.designernews.co/stories/81127). Thanks in advance!
 
@@ -37,12 +39,12 @@ CoreUI-Angular/
 
 ## Other Versions
 
-[Angular Version (Angular 2+)](https://github.com/mrholek/CoreUI-Angular).
-[AngularJS Version](https://github.com/mrholek/CoreUI-AngularJS).
-[HTML5 AJAX Version](https://github.com/mrholek/CoreUI-Angular/issues/new).
-[HTML5 Static Version](https://github.com/mrholek/CoreUI-Angular/issues/new).
-[HTML5 React.js Version](https://github.com/mrholek/CoreUI-Angular/issues/new).
-[HTML5 Vue.js Version](https://github.com/mrholek/CoreUI-Angular/issues/new).
+* [Angular Version (Angular 2+)](https://github.com/mrholek/CoreUI-Angular).
+* [AngularJS Version](https://github.com/mrholek/CoreUI-AngularJS).
+* [HTML5 AJAX Version](https://github.com/mrholek/CoreUI-Free-Bootstrap-Admin-Template).
+* [HTML5 Static Version](https://github.com/mrholek/CoreUI-Free-Bootstrap-Admin-Template).
+* [HTML5 React.js Version](https://github.com/mrholek/CoreUI-React).
+* [HTML5 Vue.js Version](https://github.com/mrholek/CoreUI-Vue).
 
 ## Bugs and feature requests
 
