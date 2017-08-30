@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-// Layouts
-import { FullLayoutComponent } from './layouts/full-layout.component';
-import { SimpleLayoutComponent } from './layouts/simple-layout.component';
+// Import Containers
+import {
+  FullLayout,
+  SimpleLayout
+} from './containers';
 
 export const routes: Routes = [
   {
@@ -13,43 +15,43 @@ export const routes: Routes = [
   },
   {
     path: '',
-    component: FullLayoutComponent,
+    component: FullLayout,
     data: {
       title: 'Home'
     },
     children: [
       {
         path: 'dashboard',
-        loadChildren: './dashboard/dashboard.module#DashboardModule'
+        loadChildren: './views/dashboard/dashboard.module#DashboardModule'
       },
       {
         path: 'components',
-        loadChildren: './components/components.module#ComponentsModule'
+        loadChildren: './views/components/components.module#ComponentsModule'
       },
       {
         path: 'icons',
-        loadChildren: './icons/icons.module#IconsModule'
+        loadChildren: './views/icons/icons.module#IconsModule'
       },
       {
         path: 'widgets',
-        loadChildren: './widgets/widgets.module#WidgetsModule'
+        loadChildren: './views/widgets/widgets.module#WidgetsModule'
       },
       {
         path: 'charts',
-        loadChildren: './chartjs/chartjs.module#ChartJSModule'
+        loadChildren: './views/chartjs/chartjs.module#ChartJSModule'
       }
     ]
   },
   {
     path: 'pages',
-    component: SimpleLayoutComponent,
+    component: SimpleLayout,
     data: {
       title: 'Pages'
     },
     children: [
       {
         path: '',
-        loadChildren: './pages/pages.module#PagesModule',
+        loadChildren: './views/pages/pages.module#PagesModule',
       }
     ]
   }

@@ -13,6 +13,14 @@ export class WidgetsComponent {
   public brandWarning = '#f8cb00';
   public brandDanger = '#f86c6b';
 
+  // dropdown buttons
+  public status: { isopen } = { isopen: false };
+  public toggleDropdown($event: MouseEvent): void {
+    $event.preventDefault();
+    $event.stopPropagation();
+    this.status.isopen = !this.status.isopen;
+  }
+
   // convert Hex to RGBA
   // public convertHex(hex: string, opacity: number){
   //   hex = hex.replace('#','');

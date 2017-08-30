@@ -14,7 +14,7 @@ import 'rxjs/add/operator/filter';
     </li>
   </ng-template>`
 })
-export class BreadcrumbsComponent {
+export class AppBreadcrumbs {
   breadcrumbs: Array<Object>;
   constructor(
     private router: Router,
