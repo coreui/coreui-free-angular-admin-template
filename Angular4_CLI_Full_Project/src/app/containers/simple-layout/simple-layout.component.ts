@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-dashboard',
   template: '<router-outlet></router-outlet>',
 })
-export class SimpleLayoutComponent implements OnInit {
+export class SimpleLayout implements OnInit {
 
   constructor() { }
 
