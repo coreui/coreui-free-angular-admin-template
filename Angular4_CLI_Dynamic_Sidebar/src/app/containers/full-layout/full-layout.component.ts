@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'app-full',
   templateUrl: './full-layout.component.html'
 })
 export class FullLayout implements OnInit {

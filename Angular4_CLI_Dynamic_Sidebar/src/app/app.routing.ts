@@ -4,7 +4,9 @@ import { Routes, RouterModule } from '@angular/router';
 // Import Containers
 import {
   FullLayout,
-  SimpleLayout
+  SimpleLayout,
+  DashboardLayout,
+  UsersLayout
 } from './containers';
 
 export const routes: Routes = [
@@ -15,7 +17,7 @@ export const routes: Routes = [
   },
   {
     path: '',
-    component: FullLayout,
+    component: DashboardLayout,
     data: {
       title: 'Home'
     },
@@ -52,6 +54,19 @@ export const routes: Routes = [
       {
         path: '',
         loadChildren: './views/pages/pages.module#PagesModule',
+      }
+    ]
+  },
+  {
+    path: 'users',
+    component: UsersLayout,
+    data: {
+      title: 'Users'
+    },
+    children: [
+      {
+        path: '',
+        loadChildren: './views/users/users.module#UsersModule',
       }
     ]
   }

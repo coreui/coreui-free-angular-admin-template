@@ -7,12 +7,16 @@ import { AppComponent } from './app.component';
 // Import containers
 import {
   FullLayout,
-  SimpleLayout
+  SimpleLayout,
+  DashboardLayout,
+  UsersLayout
 } from './containers';
 
 const APP_CONTAINERS = [
   FullLayout,
-  SimpleLayout
+  SimpleLayout,
+  DashboardLayout,
+  UsersLayout
 ]
 
 // Import components
@@ -21,7 +25,9 @@ import {
   AppBreadcrumbs,
   AppFooter,
   AppHeader,
-  AppSidebar
+  AppSidebar,
+  DashboardSidebar,
+  UsersSidebar
 } from './components';
 
 const APP_COMPONENTS = [
@@ -29,7 +35,9 @@ const APP_COMPONENTS = [
   AppBreadcrumbs,
   AppFooter,
   AppHeader,
-  AppSidebar
+  AppSidebar,
+  DashboardSidebar,
+  UsersSidebar
 ]
 
 // Import directives
@@ -65,7 +73,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     AppComponent,
     ...APP_CONTAINERS,
     ...APP_COMPONENTS,
-    ...APP_DIRECTIVES
+    ...APP_DIRECTIVES,
   ],
   providers: [{
     provide: LocationStrategy,
