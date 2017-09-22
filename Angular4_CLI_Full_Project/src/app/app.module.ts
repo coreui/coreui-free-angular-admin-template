@@ -21,7 +21,10 @@ import {
   AppBreadcrumbs,
   AppFooter,
   AppHeader,
-  AppSidebar
+  AppSidebar,
+  AppSidebarFooter,
+  AppSidebarForm,
+  AppSidebarHeader
 } from './components';
 
 const APP_COMPONENTS = [
@@ -29,7 +32,10 @@ const APP_COMPONENTS = [
   AppBreadcrumbs,
   AppFooter,
   AppHeader,
-  AppSidebar
+  AppSidebar,
+  AppSidebarFooter,
+  AppSidebarForm,
+  AppSidebarHeader
 ]
 
 // Import directives

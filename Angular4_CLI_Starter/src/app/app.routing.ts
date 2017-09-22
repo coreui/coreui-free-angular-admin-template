@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-// Layouts
-import { FullLayoutComponent } from './layouts/full-layout.component';
+// Import Containers
+import {
+  FullLayout,
+  SimpleLayout
+} from './containers';
 
 export const routes: Routes = [
   {
@@ -12,15 +15,15 @@ export const routes: Routes = [
   },
   {
     path: '',
-    component: FullLayoutComponent,
+    component: FullLayout,
     data: {
       title: 'Home'
     },
     children: [
       {
         path: 'dashboard',
-        loadChildren: './dashboard/dashboard.module#DashboardModule'
-      },
+        loadChildren: './views/dashboard/dashboard.module#DashboardModule'
+      }
     ]
   }
 ];

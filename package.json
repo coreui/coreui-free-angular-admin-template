@@ -1,9 +1,9 @@
 {
   "name": "coreui.io-angular",
-  "version": "1.0.0-alpha.6",
+  "version": "1.0.0",
   "description": "Open Source Angular Admin Template",
   "main": "",
-  "homepage": "http://coreui.io",
+  "homepage": "http://coreui.io/angular/",
   "github": "https://github.com/mrholek/CoreUI-Angular#readme",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
