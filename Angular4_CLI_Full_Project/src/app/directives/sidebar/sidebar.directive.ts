@@ -30,6 +30,19 @@ export class SidebarMinimizeDirective {
 }
 
 @Directive({
+  selector: '[appBrandMinimizer]'
+})
+export class BrandMinimizeDirective {
+  constructor() { }
+
+  @HostListener('click', ['$event'])
+  toggleOpen($event: any) {
+    $event.preventDefault();
+    document.querySelector('body').classList.toggle('brand-minimized');
+  }
+}
+
+@Directive({
   selector: '[appMobileSidebarToggler]'
 })
 export class MobileSidebarToggleDirective {
@@ -87,6 +100,7 @@ export class SidebarOffCanvasCloseDirective {
 export const SIDEBAR_TOGGLE_DIRECTIVES = [
     SidebarToggleDirective,
     SidebarMinimizeDirective,
+    BrandMinimizeDirective,
     SidebarOffCanvasCloseDirective,
     MobileSidebarToggleDirective
 ];
