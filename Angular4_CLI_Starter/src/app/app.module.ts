@@ -6,50 +6,54 @@ import { AppComponent } from './app.component';
 
 // Import containers
 import {
-  FullLayout,
-  SimpleLayout
+  FullLayoutComponent,
+  SimpleLayoutComponent
 } from './containers';
 
 const APP_CONTAINERS = [
-  FullLayout,
-  SimpleLayout
+  FullLayoutComponent,
+  SimpleLayoutComponent
 ]
 
-/// Import components
+// Import components
 import {
-  AppAside,
-  AppBreadcrumbs,
-  AppFooter,
-  AppHeader,
-  AppSidebar,
-  AppSidebarFooter,
-  AppSidebarForm,
-  AppSidebarHeader,
-  AppSidebarMinimizer
+  AppAsideComponent,
+  AppBreadcrumbsComponent,
+  AppFooterComponent,
+  AppHeaderComponent,
+  AppSidebarComponent,
+  AppSidebarFooterComponent,
+  AppSidebarFormComponent,
+  AppSidebarHeaderComponent,
+  AppSidebarMinimizerComponent,
+  APP_SIDEBAR_NAV
 } from './components';
 
 const APP_COMPONENTS = [
-  AppAside,
-  AppBreadcrumbs,
-  AppFooter,
-  AppHeader,
-  AppSidebar,
-  AppSidebarFooter,
-  AppSidebarForm,
-  AppSidebarHeader,
-  AppSidebarMinimizer
+  AppAsideComponent,
+  AppBreadcrumbsComponent,
+  AppFooterComponent,
+  AppHeaderComponent,
+  AppSidebarComponent,
+  AppSidebarFooterComponent,
+  AppSidebarFormComponent,
+  AppSidebarHeaderComponent,
+  AppSidebarMinimizerComponent,
+  APP_SIDEBAR_NAV
 ]
 
 // Import directives
 import {
   AsideToggleDirective,
   NAV_DROPDOWN_DIRECTIVES,
+  ReplaceDirective,
   SIDEBAR_TOGGLE_DIRECTIVES
 } from './directives';
 
 const APP_DIRECTIVES = [
   AsideToggleDirective,
   NAV_DROPDOWN_DIRECTIVES,
+  ReplaceDirective,
   SIDEBAR_TOGGLE_DIRECTIVES
 ]
 

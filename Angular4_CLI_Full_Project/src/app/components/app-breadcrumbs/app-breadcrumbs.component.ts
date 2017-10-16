@@ -14,7 +14,7 @@ import 'rxjs/add/operator/filter';
     </li>
   </ng-template>`
 })
-export class AppBreadcrumbs {
+export class AppBreadcrumbsComponent {
   breadcrumbs: Array<Object>;
   constructor(
     private router: Router,
@@ -27,6 +27,7 @@ export class AppBreadcrumbs {
       do {
         const childrenRoutes = currentRoute.children;
         currentRoute = null;
+        // tslint:disable-next-line:no-shadowed-variable
         childrenRoutes.forEach(route => {
           if (route.outlet === 'primary') {
             const routeSnapshot = route.snapshot;

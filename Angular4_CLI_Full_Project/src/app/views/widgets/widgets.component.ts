@@ -5,41 +5,11 @@ import { Component } from '@angular/core';
 })
 export class WidgetsComponent {
 
-  constructor() { }
-
   public brandPrimary = '#20a8d8';
   public brandSuccess = '#4dbd74';
   public brandInfo = '#63c2de';
   public brandWarning = '#f8cb00';
   public brandDanger = '#f86c6b';
-
-  // dropdown buttons
-  public status: { isopen } = { isopen: false };
-  public toggleDropdown($event: MouseEvent): void {
-    $event.preventDefault();
-    $event.stopPropagation();
-    this.status.isopen = !this.status.isopen;
-  }
-
-  // convert Hex to RGBA
-  // public convertHex(hex: string, opacity: number){
-  //   hex = hex.replace('#','');
-  //   let r = parseInt(hex.substring(0,2), 16);
-  //   let g = parseInt(hex.substring(2,4), 16);
-  //   let b = parseInt(hex.substring(4,6), 16);
-  //
-  //   let rgba = 'rgba('+r+','+g+','+b+','+opacity/100+')';
-  //   return rgba;
-  // }
-
-  // events
-  public chartClicked(e: any): void {
-    console.log(e);
-  }
-
-  public chartHovered(e: any): void {
-    console.log(e);
-  }
 
   // lineChart1
   public lineChart1Data: Array<any> = [
@@ -391,4 +361,12 @@ export class WidgetsComponent {
   public lineChart5Legend = false;
   public lineChart5Type = 'line';
 
+  // events
+  public chartClicked(e: any): void {
+    console.log(e);
+  }
+
+  public chartHovered(e: any): void {
+    console.log(e);
+  }
 }

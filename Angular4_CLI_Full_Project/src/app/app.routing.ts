@@ -3,8 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 // Import Containers
 import {
-  FullLayout,
-  SimpleLayout
+  FullLayoutComponent,
+  SimpleLayoutComponent
 } from './containers';
 
 export const routes: Routes = [
@@ -15,7 +15,7 @@ export const routes: Routes = [
   },
   {
     path: '',
-    component: FullLayout,
+    component: FullLayoutComponent,
     data: {
       title: 'Home'
     },
@@ -44,7 +44,7 @@ export const routes: Routes = [
   },
   {
     path: 'pages',
-    component: SimpleLayout,
+    component: SimpleLayoutComponent,
     data: {
       title: 'Pages'
     },
