@@ -76,8 +76,6 @@ export class AppSidebarNavItemComponent {
 
 }
 
-import isExternal from 'is-url-external'
-
 @Component({
   selector: 'app-sidebar-nav-link',
   template: `
@@ -110,7 +108,7 @@ export class AppSidebarNavLinkComponent {
   }
 
   public isExternalLink() {
-    return isExternal(this.link.url)
+    return this.link.url.substring(0, 4) === 'http' ? true : false
   }
 
   public isIcon() {

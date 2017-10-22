@@ -1,6 +1,6 @@
 {
   "name": "@coreui/angular",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "author": "",
   "url": "http://coreui.io",
@@ -28,7 +28,6 @@
     "chart.js": "2.7.0",
     "core-js": "2.5.1",
     "font-awesome": "^4.7.0",
-    "is-url-external": "^1.0.3",
     "moment": "2.19.1",
     "ng2-charts": "1.6.0",
     "ngx-bootstrap": "1.9.3",
