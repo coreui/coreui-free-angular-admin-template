@@ -1,10 +1,10 @@
+# CoreUI Angular - Free Bootstrap Admin Template [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=CoreUI%20-%20Free%20Angular%20Admin%20Template%20&url=http://coreui.io/angular/&hashtags=bootstrap,admin,template,dashboard,panel,free,angular,react,vue)
+
 ### Check out our Angular Admin Templates and support CoreUI Development
 
 [![Bootstrap Admin Templates Bundle](https://genesisui.com/img/bundle2.png)](https://genesisui.com/bundle.html?support=1)
 
 [Check out Angular Bootstrap Admin Templates Bundle](https://genesisui.com/bundle.html?support=1)
-
-# CoreUI Angular - Free Bootstrap Admin Template
 
 This is Angular 2+ version of our Bootstrap 4 admin template [CoreUI](https://github.com/mrholek/CoreUI-Free-Bootstrap-Admin-Template).
 
