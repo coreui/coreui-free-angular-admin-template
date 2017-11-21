@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "version": "1.0.5",
+    "version": "1.0.6",
     "name": "@coreui/angular"
   },
   "apps": [
