@@ -1,0 +1,17 @@
+import { NgModule } from '@angular/core';
+
+import { FlagsComponent } from './flags.component';
+import { FontAwesomeComponent } from './font-awesome.component';
+import { SimpleLineIconsComponent } from './simple-line-icons.component';
+
+import { IconsRoutingModule } from './icons-routing.module';
+
+@NgModule({
+  imports: [ IconsRoutingModule ],
+  declarations: [
+    FlagsComponent,
+    FontAwesomeComponent,
+    SimpleLineIconsComponent
+  ]
+})
+export class IconsModule { }
