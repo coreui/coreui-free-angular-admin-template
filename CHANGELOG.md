@@ -1,5 +1,9 @@
 ## [angular](./README.md) version `changelog`
 
+###### `v1.0.9`
+- update: bootstrap to `v4.0.0`
+- update: dependencies 
+
 ###### `v1.0.8`
 - update: bootstrap to `4.0.0-beta.3`
 - update: ngx-bootstrap to `2.0.0-rc.0`
