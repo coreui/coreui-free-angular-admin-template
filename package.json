@@ -1,16 +1,16 @@
 {
-  "name": "@coreui/angular",
-  "version": "1.0.10",
+  "name": "@coreui/angular-admin-template",
+  "version": "2.0.0",
   "description": "Open Source Angular Admin Template",
   "main": "",
-  "homepage": "http://coreui.io/angular/",
-  "github": "https://github.com/mrholek/CoreUI-Angular#readme",
+  "homepage": "https://coreui.io/angular/",
+  "github": "https://github.com/coreui/angular-admin-template#readme",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mrholek/CoreUI-Angular.git"
+    "url": "git+https://github.com/coreui/CoreUI-Angular.git"
   },
   "keywords": [
     "Bootstrap",
@@ -20,6 +20,7 @@
     "Angular",
     "Angular 2",
     "Angular 4",
+    "Angular 5",
     "CSS",
     "HTML",
     "RWD",
@@ -28,6 +29,6 @@
   "author": "Łukasz Holeczek",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mrholek/CoreUI-Angular/issues"
+    "url": "https://github.com/coreui/angular-admin-template/issues"
   }
 }
