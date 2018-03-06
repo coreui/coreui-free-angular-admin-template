@@ -110,6 +110,10 @@ angular-cli will add reference to `components`, `directives` and `pipes` automat
 
 This should add the new `component`, `directive` or `pipe` reference to the `new-module` you've created.
 
+### Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+
 ```bash
 # build for production with minification
 $ ng build
