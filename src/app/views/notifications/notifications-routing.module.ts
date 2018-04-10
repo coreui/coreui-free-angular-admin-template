@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AlertsComponent } from './alerts.component';
+import { BadgesComponent } from './badges.component';
 import { ModalsComponent } from './modals.component';
 
 const routes: Routes = [
@@ -16,6 +17,13 @@ const routes: Routes = [
         component: AlertsComponent,
         data: {
           title: 'Alerts'
+        }
+      },
+      {
+        path: 'badges',
+        component: BadgesComponent,
+        data: {
+          title: 'Badges'
         }
       },
       {

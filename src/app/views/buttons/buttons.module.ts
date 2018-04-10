@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import { ButtonsComponent } from './buttons.component';
-import { SocialButtonsComponent } from './social-buttons.component';
+import { BrandButtonsComponent } from './brand-buttons.component';
 
 // Dropdowns Component
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -24,7 +24,7 @@ import { ButtonsRoutingModule } from './buttons-routing.module';
   declarations: [
     ButtonsComponent,
     DropdownsComponent,
-    SocialButtonsComponent
+    BrandButtonsComponent
   ]
 })
 export class ButtonsModule { }

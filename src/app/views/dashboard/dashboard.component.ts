@@ -1,24 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { getStyle, hexToRgba } from '@coreui/coreui/js/src/utilities/';
 
 @Component({
   templateUrl: 'dashboard.component.html'
 })
 export class DashboardComponent implements OnInit {
-
-  public brandPrimary = '#20a8d8';
-  public brandSuccess = '#4dbd74';
-  public brandInfo = '#63c2de';
-  public brandWarning = '#f8cb00';
-  public brandDanger = '#f86c6b';
-
-  // dropdown buttons
-  // public status: { isopen } = { isopen: false };
-  // public toggleDropdown($event: MouseEvent): void {
-  //   $event.preventDefault();
-  //   $event.stopPropagation();
-  //   this.status.isopen = !this.status.isopen;
-  // }
 
   // lineChart1
   public lineChart1Data: Array<any> = [
@@ -66,8 +53,8 @@ export class DashboardComponent implements OnInit {
     }
   };
   public lineChart1Colours: Array<any> = [
-    { // grey
-      backgroundColor: this.brandPrimary,
+    {
+      backgroundColor: getStyle('--primary'),
       borderColor: 'rgba(255,255,255,.55)'
     }
   ];
@@ -122,7 +109,7 @@ export class DashboardComponent implements OnInit {
   };
   public lineChart2Colours: Array<any> = [
     { // grey
-      backgroundColor: this.brandInfo,
+      backgroundColor: getStyle('--info'),
       borderColor: 'rgba(255,255,255,.55)'
     }
   ];
@@ -268,18 +255,18 @@ export class DashboardComponent implements OnInit {
   };
   public mainChartColours: Array<any> = [
     { // brandInfo
-      backgroundColor: this.convertHex(this.brandInfo, 10),
-      borderColor: this.brandInfo,
+      backgroundColor: hexToRgba(getStyle('--info'), 10),
+      borderColor: getStyle('--info'),
       pointHoverBackgroundColor: '#fff'
     },
     { // brandSuccess
       backgroundColor: 'transparent',
-      borderColor: this.brandSuccess,
+      borderColor: getStyle('--success'),
       pointHoverBackgroundColor: '#fff'
     },
     { // brandDanger
       backgroundColor: 'transparent',
-      borderColor: this.brandDanger,
+      borderColor: getStyle('--danger'),
       pointHoverBackgroundColor: '#fff',
       borderWidth: 1,
       borderDash: [8, 5]
@@ -403,31 +390,31 @@ export class DashboardComponent implements OnInit {
   public sparklineChartPrimary: Array<any> = [
     {
       backgroundColor: 'transparent',
-      borderColor: this.brandPrimary,
+      borderColor: getStyle('--primary'),
     }
   ];
   public sparklineChartInfo: Array<any> = [
     {
       backgroundColor: 'transparent',
-      borderColor: this.brandInfo,
+      borderColor: getStyle('--info'),
     }
   ];
   public sparklineChartDanger: Array<any> = [
     {
       backgroundColor: 'transparent',
-      borderColor: this.brandDanger,
+      borderColor: getStyle('--danger'),
     }
   ];
   public sparklineChartWarning: Array<any> = [
     {
       backgroundColor: 'transparent',
-      borderColor: this.brandWarning,
+      borderColor: getStyle('--warning'),
     }
   ];
   public sparklineChartSuccess: Array<any> = [
     {
       backgroundColor: 'transparent',
-      borderColor: this.brandSuccess,
+      borderColor: getStyle('--success'),
     }
   ];
 
@@ -444,16 +431,6 @@ export class DashboardComponent implements OnInit {
     console.log(e);
   }
 
-  // convert Hex to RGBA
-  public convertHex(hex: string, opacity: number) {
-    hex = hex.replace('#', '');
-    const r = parseInt(hex.substring(0, 2), 16);
-    const g = parseInt(hex.substring(2, 4), 16);
-    const b = parseInt(hex.substring(4, 6), 16);
-
-    const rgba = 'rgba(' + r + ', ' + g + ', ' + b + ', ' + opacity / 100 + ')';
-    return rgba;
-  }
 
   public random(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1) + min);

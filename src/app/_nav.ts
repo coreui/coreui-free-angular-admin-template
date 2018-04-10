@@ -104,8 +104,8 @@ export const navItems = [
         icon: 'icon-cursor'
       },
       {
-        name: 'Social Buttons',
-        url: '/buttons/social-buttons',
+        name: 'Brand Buttons',
+        url: '/buttons/brand-buttons',
         icon: 'icon-cursor'
       }
     ]
@@ -153,6 +153,11 @@ export const navItems = [
       {
         name: 'Alerts',
         url: '/notifications/alerts',
+        icon: 'icon-bell'
+      },
+      {
+        name: 'Badges',
+        url: '/notifications/badges',
         icon: 'icon-bell'
       },
       {
