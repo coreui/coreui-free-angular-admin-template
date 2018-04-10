@@ -1,33 +1,66 @@
 {
-  "name": "@coreui/angular",
-  "version": "1.0.10",
-  "description": "Open Source Angular Admin Template",
-  "main": "",
-  "homepage": "http://coreui.io/angular/",
-  "github": "https://github.com/mrholek/CoreUI-Angular#readme",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mrholek/CoreUI-Angular.git"
-  },
-  "keywords": [
-    "Bootstrap",
-    "Admin",
-    "Template",
-    "Open Source",
-    "Angular",
-    "Angular 2",
-    "Angular 4",
-    "CSS",
-    "HTML",
-    "RWD",
-    "Dashboard"
-  ],
+  "name": "@coreui/coreui-free-angular-admin-template",
+  "version": "2.0.0-beta.0",
+  "description": "CoreUI Free Angular 2+ Admin Template",
   "author": "Łukasz Holeczek",
+  "homepage": "https://coreui.io/angular",
+  "copyright": "Copyright 2018 creativeLabs Łukasz Holeczek",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mrholek/CoreUI-Angular/issues"
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build --prod",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "5.2.9",
+    "@angular/common": "5.2.9",
+    "@angular/compiler": "5.2.9",
+    "@angular/core": "5.2.9",
+    "@angular/forms": "5.2.9",
+    "@angular/http": "5.2.9",
+    "@angular/platform-browser": "5.2.9",
+    "@angular/platform-browser-dynamic": "5.2.9",
+    "@angular/router": "5.2.9",
+    "@coreui/angular": "^2.0.0-beta.0",
+    "chart.js": "2.7.2",
+    "core-js": "2.5.4",
+    "flag-icon-css": "3.0.0",
+    "font-awesome": "^4.7.0",
+    "moment": "2.22.0",
+    "ng2-charts": "1.6.0",
+    "ngx-bootstrap": "2.0.3",
+    "ngx-perfect-scrollbar": "5.3.5",
+    "rxjs": "5.5.8",
+    "simple-line-icons": "^2.4.1",
+    "ts-helpers": "1.1.2",
+    "zone.js": "0.8.25"
+  },
+  "devDependencies": {
+    "@angular/cli": "1.7.4",
+    "@angular/compiler-cli": "5.2.9",
+    "@angular/language-service": "5.2.9",
+    "@types/jasmine": "2.8.6",
+    "@types/jasminewd2": "2.0.3",
+    "@types/node": "9.6.2",
+    "codelyzer": "4.2.1",
+    "jasmine-core": "2.9.1",
+    "jasmine-spec-reporter": "4.2.1",
+    "karma": "2.0.0",
+    "karma-chrome-launcher": "2.2.0",
+    "karma-coverage-istanbul-reporter": "1.4.2",
+    "karma-jasmine": "1.1.1",
+    "karma-jasmine-html-reporter": "0.2.2",
+    "protractor": "5.3.1",
+    "ts-node": "4.1.0",
+    "tslint": "5.9.1",
+    "typescript": "2.7.2"
+  },
+  "engines": {
+    "node": ">= 8.9.4",
+    "npm": ">= 5.6.0"
   }
 }
