@@ -1,4 +1,4 @@
-# CoreUI Free Angular 2+ Admin Template [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/intent/tweet?text=CoreUI%20-%20Free%20Angular%20Admin%20Template%20&url=https://coreui.io/angular/&hashtags=bootstrap,admin,template,dashboard,panel,free,angular,react,vue)
+# CoreUI Free Angular 2+ Admin Template [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/intent/tweet?text=CoreUI%20-%20Free%20Bootstrap%204%20Admin%20Template%20&url=https://coreui.io&hashtags=bootstrap,admin,template,dashboard,panel,free,angular,react,vue)
 
 Please help us on [Product Hunt](https://www.producthunt.com/posts/coreui-open-source-bootstrap-4-admin-template-with-angular-2-react-js-vue-js-support) and [Designer News](https://www.designernews.co/stories/81127). Thanks in advance!
 
@@ -14,6 +14,7 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
 
 * [Versions](#versions)
 * [CoreUI Pro](#coreui-pro)
+* [Admin Templates built on top of CoreUI Pro](#admin-templates-built-on-top-of-coreui-pro)
 * [Installation](#installation)
 * [Usage](#usage)
 * [What's included](#whats-included)
@@ -28,11 +29,13 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
 
 ## Versions
 
-* [CoreUI Free Bootstrap Admin Template (Ajax)](https://github.com/coreui/free-bootstrap-admin-template-ajax)
-* [CoreUI Free Angular 2+ Admin Template](https://github.com/coreui/free-angular-admin-template)
-* [CoreUI Free .NET Core 2 Admin Template](https://github.com/coreui/free-dotnet-admin-template)
-* [CoreUI Free React.js Admin Template](https://github.com/coreui/free-react-admin-template)
-* [CoreUI Free Vue.js Admin Template](https://github.com/coreui/free-vue-admin-template)
+CoreUI is built on top of Bootstrap 4 and supports popular frameworks.
+
+* [CoreUI Free Bootstrap Admin Template](https://github.com/coreui/coreui-free-bootstrap-admin-template)
+* [CoreUI Free Bootstrap Admin Template (Ajax)](https://github.com/coreui/coreui-free-bootstrap-admin-template-ajax)
+* 🚧 CoreUI Free .NET Core 2 Admin Template (Available Soon)
+* 🚧 CoreUI Free React.js Admin Template (Available Soon)
+* 🚧 CoreUI Free Vue.js Admin Template (Available Soon)
 
 ## CoreUI Pro
 
@@ -42,11 +45,19 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
 * 💪  [CoreUI Pro React Admin Template](https://coreui.io/pro/react)
 * 💪  [CoreUI Pro Vue Admin Template](https://coreui.io/pro/vue)
 
+## Admin Templates built on top of CoreUI Pro
+
+| CoreUI Pro | Prime | Root | Alba | Leaf |
+| --- | --- | --- | --- | --- |
+| [![CoreUI Pro Admin Template](https://coreui.io/assets/img/example-coureui.jpg)](https://coreui.io/pro/angular/) | [![Prime Admin Template](https://genesisui.com/assets/img/templates/prime1280.jpg)](https://genesisui.com/admin-templates/angular/prime/?support=1) | [![Root Admin Template](https://genesisui.com/assets/img/templates/root1280.jpg)](https://genesisui.com/admin-templates/angular/root/?support=1) | [![Alba Admin Template](https://genesisui.com/assets/img/templates/alba1280.jpg)](https://genesisui.com/admin-templates/angular/alba/?support=1) | [![Leaf Admin Template](https://genesisui.com/assets/img/templates/leaf1280.jpg)](https://genesisui.com/admin-templates/angular/leaf/?support=1)
+
 ## Installation
+
+### Clone repo
 
 ``` bash
 # clone the repo
-$ git clone https://github.com/coreui/free-angular-admin-template.git my-project
+$ git clone https://github.com/coreui/coreui-free-bootstrap-admin-template.git my-project
 
 # go into app's directory
 $ cd my-project
@@ -58,63 +69,9 @@ $ npm install
 ## Usage
 
 ``` bash
-# serve with hot reload at localhost:4200
+# serve with hot reload at localhost:4200.
 $ ng serve
-```
 
-Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-You can configure the default HTTP host and port used by the development server with two command-line options :
-
-```bash
-ng serve --host 0.0.0.0 --port 4201
-```
-
-### Generating Components, Directives, Pipes and Services
-
-You can use the `ng generate` (or just `ng g`) command to generate Angular components:
-
-```bash
-ng generate component my-new-component
-ng g component my-new-component # using the alias
-
-# components support relative path generation
-# if in the directory src/app/feature/ and you run
-ng g component new-cmp
-# your component will be generated in src/app/feature/new-cmp
-# but if you were to run
-ng g component ./newer-cmp
-# your component will be generated in src/app/newer-cmp
-# if in the directory src/app you can also run
-ng g component feature/new-cmp
-# and your component will be generated in src/app/feature/new-cmp
-```
-You can find all possible blueprints in the table below:
-
-Scaffold  | Usage
----       | ---
-[Component](https://github.com/angular/angular-cli/wiki/generate-component) | `ng g component my-new-component`
-[Directive](https://github.com/angular/angular-cli/wiki/generate-directive) | `ng g directive my-new-directive`
-[Pipe](https://github.com/angular/angular-cli/wiki/generate-pipe)           | `ng g pipe my-new-pipe`
-[Service](https://github.com/angular/angular-cli/wiki/generate-service)     | `ng g service my-new-service`
-[Class](https://github.com/angular/angular-cli/wiki/generate-class)         | `ng g class my-new-class`
-[Guard](https://github.com/angular/angular-cli/wiki/generate-guard)         | `ng g guard my-new-guard`
-[Interface](https://github.com/angular/angular-cli/wiki/generate-interface) | `ng g interface my-new-interface`
-[Enum](https://github.com/angular/angular-cli/wiki/generate-enum)           | `ng g enum my-new-enum`
-[Module](https://github.com/angular/angular-cli/wiki/generate-module)       | `ng g module my-module`
-
-angular-cli will add reference to `components`, `directives` and `pipes` automatically in the `app.module.ts`. If you need to add this references to another custom module, follow this steps:
-
- 1. `ng g module new-module` to create a new module
- 2.  call `ng g component new-module/new-component`
-
-This should add the new `component`, `directive` or `pipe` reference to the `new-module` you've created.
-
-### Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-```bash
 # build for production with minification
 $ ng build
 ```
@@ -124,38 +81,36 @@ $ ng build
 Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations. You'll see something like this:
 
 ```
-free-bootstrap-admin-template/
+free-angular-admin-template/
 ├── e2e/
 ├── src/
 │   ├── app/
 │   ├── assets/
+│   ├── environments/
 │   ├── scss/
-│   ├── vendors/
-│   ├── ...
 │   ├── index.html
 │   └── ...
 ├── .angular-cli.json
-├── package.json
 ├── ...
-├── tsconfig.json
+├── package.json
 └── ...
 ```
 
 ## Documentation
 
-The documentation for the CoreUI  Admin Template is hosted at our website [CoreUI for Angular](https://coreui.io/angular/)
+The documentation for the CoreUI Free Angularp Admin Template is hosted at our website [CoreUI](https://coreui.io/angular/)
 
 ## Contributing
 
-Please read through our [contributing guidelines](https://github.com/coreui/free-angular-admin-template/blob/master/CONTRIBUTING.md). Included are directions for opening issues, coding standards, and notes on development.
+Please read through our [contributing guidelines](https://github.com/coreui/coreui-free-angular-admin-template/blob/master/CONTRIBUTING.md). Included are directions for opening issues, coding standards, and notes on development.
 
-Editor preferences are available in the [editor config](https://github.com/coreui/free-angular-admin-template/blob/master/.editorconfig) for easy use in common text editors. Read more and download plugins at <http://editorconfig.org>.
+Editor preferences are available in the [editor config](https://github.com/coreui/coreui-free-angular-admin-template/blob/master/.editorconfig) for easy use in common text editors. Read more and download plugins at <http://editorconfig.org>.
 
 ## Versioning
 
 For transparency into our release cycle and in striving to maintain backward compatibility,CoreUI Free Admin Template is maintained under [the Semantic Versioning guidelines](http://semver.org/).
 
-See [the Releases section of our project](https://github.com/coreui/free-angular-admin-template/releases) for changelogs for each release version.
+See [the Releases section of our project](https://github.com/coreui/coreui-free-angular-admin-template/releases) for changelogs for each release version.
 
 ## Creators
 
@@ -172,7 +127,7 @@ See [the Releases section of our project](https://github.com/coreui/free-angular
 
 Get updates on CoreUI's development and chat with the project maintainers and community members.
 
-- Follow [@coreuikit on Twitter](https://twitter.com/coreuikit).
+- Follow [@core_ui on Twitter](https://twitter.com/core_ui).
 - Read and subscribe to [CoreUI Blog](https://coreui.ui/blog/).
 
 ### Community Projects
@@ -184,7 +139,7 @@ Some of projects created by community but not maintained by CoreUI team.
 
 ## Copyright and license
 
-copyright 2018 creativeLabs Łukasz Holeczek. Code released under [the MIT license](https://github.com/coreui/free-angular-admin-template/blob/master/LICENSE).
+copyright 2018 creativeLabs Łukasz Holeczek. Code released under [the MIT license](https://github.com/coreui/coreui-free-angular-admin-template/blob/master/LICENSE).
 There is only one limitation you can't can’t re-distribute the CoreUI as stock. You can’t do this if you modify the CoreUI. In past we faced some problems with persons who tried to sell CoreUI based templates.
 
 ## Support CoreUI Development
