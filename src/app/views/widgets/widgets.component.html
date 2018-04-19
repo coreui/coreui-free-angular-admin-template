@@ -17,15 +17,13 @@
           <p>Members online</p>
         </div>
         <div class="chart-wrapper px-3" style="height:70px;">
-          <canvas baseChart class="chart"
+          <canvas id="chart1" baseChart class="chart"
           [datasets]="lineChart1Data"
           [labels]="lineChart1Labels"
           [options]="lineChart1Options"
           [colors]="lineChart1Colours"
           [legend]="lineChart1Legend"
-          [chartType]="lineChart1Type"
-          (chartHover)="chartHovered($event)"
-          (chartClick)="chartClicked($event)"></canvas>
+          [chartType]="lineChart1Type"></canvas>
         </div>
       </div>
     </div><!--/.col-->
@@ -39,15 +37,13 @@
           <p>Members online</p>
         </div>
         <div class="chart-wrapper px-3" style="height:70px;">
-          <canvas baseChart class="chart"
+          <canvas id="chart2" baseChart class="chart"
           [datasets]="lineChart2Data"
           [labels]="lineChart2Labels"
           [options]="lineChart2Options"
           [colors]="lineChart2Colours"
           [legend]="lineChart2Legend"
-          [chartType]="lineChart2Type"
-          (chartHover)="chartHovered($event)"
-          (chartClick)="chartClicked($event)"></canvas>
+          [chartType]="lineChart2Type"></canvas>
         </div>
       </div>
     </div><!--/.col-->
@@ -68,15 +64,13 @@
           <p>Members online</p>
         </div>
         <div class="chart-wrapper" style="height:70px;">
-          <canvas baseChart class="chart"
+          <canvas id="chart3" baseChart class="chart"
           [datasets]="lineChart3Data"
           [labels]="lineChart3Labels"
           [options]="lineChart3Options"
           [colors]="lineChart3Colours"
           [legend]="lineChart3Legend"
-          [chartType]="lineChart3Type"
-          (chartHover)="chartHovered($event)"
-          (chartClick)="chartClicked($event)"></canvas>
+          [chartType]="lineChart3Type"></canvas>
         </div>
       </div>
     </div><!--/.col-->
@@ -97,15 +91,13 @@
           <p>Members online</p>
         </div>
         <div class="chart-wrapper px-3" style="height:70px;">
-          <canvas baseChart class="chart"
+          <canvas id="chart4" baseChart class="chart"
           [datasets]="barChart1Data"
           [labels]="barChart1Labels"
           [options]="barChart1Options"
           [colors]="barChart1Colours"
           [legend]="barChart1Legend"
-          [chartType]="barChart1Type"
-          (chartHover)="chartHovered($event)"
-          (chartClick)="chartClicked($event)"></canvas>
+          [chartType]="barChart1Type"></canvas>
         </div>
       </div>
     </div><!--/.col-->
@@ -127,26 +119,22 @@
             </span>
           </div>
           <div class="chart-wrapper" style="height:38px;">
-            <canvas baseChart class="chart"
+            <canvas id="chart5" baseChart class="chart"
             [datasets]="lineChart4Data"
             [labels]="lineChart4Labels"
             [options]="lineChart4Options"
             [colors]="lineChart4Colours"
             [legend]="lineChart4Legend"
-            [chartType]="lineChart4Type"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
+            [chartType]="lineChart4Type"></canvas>
           </div>
           <div class="chart-wrapper" style="height:38px;">
-            <canvas baseChart class="chart"
+            <canvas id="chart6" baseChart class="chart"
             [datasets]="barChart2Data"
             [labels]="barChart2Labels"
             [options]="barChart2Options"
             [colors]="barChart2Colours"
             [legend]="barChart2Legend"
-            [chartType]="barChart2Type"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
+            [chartType]="barChart2Type"></canvas>
           </div>
         </div>
       </div>
@@ -167,26 +155,22 @@
             </span>
           </div>
           <div class="chart-wrapper" style="height:38px;">
-            <canvas baseChart class="chart"
+            <canvas id="chart7" baseChart class="chart"
             [datasets]="lineChart4Data"
             [labels]="lineChart4Labels"
             [options]="lineChart4Options"
             [colors]="lineChart4Colours"
             [legend]="lineChart4Legend"
-            [chartType]="lineChart4Type"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
+            [chartType]="lineChart4Type"></canvas>
           </div>
           <div class="chart-wrapper" style="height:38px;">
-            <canvas baseChart class="chart"
+            <canvas id="chart8" baseChart class="chart"
             [datasets]="barChart2Data"
             [labels]="barChart2Labels"
             [options]="barChart2Options"
             [colors]="barChart2Colours"
             [legend]="barChart2Legend"
-            [chartType]="barChart2Type"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
+            [chartType]="barChart2Type"></canvas>
           </div>
         </div>
       </div>
@@ -207,26 +191,22 @@
             </span>
           </div>
           <div class="chart-wrapper" style="height:38px;">
-            <canvas baseChart class="chart"
+            <canvas id="chart9" baseChart class="chart"
             [datasets]="lineChart4Data"
             [labels]="lineChart4Labels"
             [options]="lineChart4Options"
             [colors]="lineChart4Colours"
             [legend]="lineChart4Legend"
-            [chartType]="lineChart4Type"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
+            [chartType]="lineChart4Type"></canvas>
           </div>
           <div class="chart-wrapper" style="height:38px;">
-            <canvas baseChart class="chart"
+            <canvas id="chart10" baseChart class="chart"
             [datasets]="barChart2Data"
             [labels]="barChart2Labels"
             [options]="barChart2Options"
             [colors]="barChart2Colours"
             [legend]="barChart2Legend"
-            [chartType]="barChart2Type"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
+            [chartType]="barChart2Type"></canvas>
           </div>
         </div>
       </div>
@@ -247,26 +227,22 @@
             </span>
           </div>
           <div class="chart-wrapper" style="height:38px;">
-            <canvas baseChart class="chart"
+            <canvas id="chart11" baseChart class="chart"
             [datasets]="lineChart4Data"
             [labels]="lineChart4Labels"
             [options]="lineChart4Options"
             [colors]="lineChart4Colours"
             [legend]="lineChart4Legend"
-            [chartType]="lineChart4Type"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
+            [chartType]="lineChart4Type"></canvas>
           </div>
           <div class="chart-wrapper" style="height:38px;">
-            <canvas baseChart class="chart"
+            <canvas id="chart12" baseChart class="chart"
             [datasets]="barChart2Data"
             [labels]="barChart2Labels"
             [options]="barChart2Options"
             [colors]="barChart2Colours"
             [legend]="barChart2Legend"
-            [chartType]="barChart2Type"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
+            [chartType]="barChart2Type"></canvas>
           </div>
         </div>
       </div>
@@ -381,16 +357,14 @@
         <div class="card-body text-center">
           <div class="text-muted small text-uppercase font-weight-bold">Title</div>
           <div class="h2 py-3">1,123</div>
-          <div class="chart-wrapper " style="height:40px;width:80px;">
-            <canvas baseChart class="chart"
+          <div class="chart-wrapper mx-auto" style="height:40px;width:80px;">
+            <canvas id="chart13" baseChart class="chart"
             [datasets]="barChart3Data"
             [labels]="barChart3Labels"
             [options]="barChart3Options"
             [colors]="barChart3Primary"
             [legend]="barChart3Legend"
-            [chartType]="barChart3Type"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
+            [chartType]="barChart3Type"></canvas>
           </div>
         </div>
       </div>
@@ -400,16 +374,14 @@
         <div class="card-body text-center">
           <div class="text-muted small text-uppercase font-weight-bold">Title</div>
           <div class="h2 py-3">1,123</div>
-          <div class="chart-wrapper " style="height:40px;width:80px;">
-            <canvas baseChart class="chart"
+          <div class="chart-wrapper mx-auto" style="height:40px;width:80px;">
+            <canvas id="chart14" baseChart class="chart"
             [datasets]="barChart3Data"
             [labels]="barChart3Labels"
             [options]="barChart3Options"
             [colors]="barChart3Danger"
             [legend]="barChart3Legend"
-            [chartType]="barChart3Type"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
+            [chartType]="barChart3Type"></canvas>
           </div>
         </div>
       </div>
@@ -419,16 +391,14 @@
         <div class="card-body text-center">
           <div class="text-muted small text-uppercase font-weight-bold">Title</div>
           <div class="h2 py-3">1,123</div>
-          <div class="chart-wrapper " style="height:40px;width:80px;">
-            <canvas baseChart class="chart"
+          <div class="chart-wrapper mx-auto" style="height:40px;width:80px;">
+            <canvas id="chart15" baseChart class="chart"
             [datasets]="barChart3Data"
             [labels]="barChart3Labels"
             [options]="barChart3Options"
             [colors]="barChart3Success"
             [legend]="barChart3Legend"
-            [chartType]="barChart3Type"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
+            [chartType]="barChart3Type"></canvas>
           </div>
         </div>
       </div>
@@ -438,16 +408,14 @@
         <div class="card-body text-center">
           <div class="text-muted small text-uppercase font-weight-bold">Title</div>
           <div class="h2 py-3">1,123</div>
-          <div class="chart-wrapper " style="height:40px;width:80px;">
-            <canvas baseChart class="chart"
+          <div class="chart-wrapper mx-auto" style="height:40px;width:80px;">
+            <canvas id="chart16" baseChart class="chart"
             [datasets]="lineChart5Data"
             [labels]="lineChart5Labels"
             [options]="lineChart5Options"
             [colors]="lineChart5Info"
             [legend]="lineChart5Legend"
-            [chartType]="lineChart5Type"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
+            [chartType]="lineChart5Type"></canvas>
           </div>
         </div>
       </div>
@@ -457,16 +425,14 @@
         <div class="card-body text-center">
           <div class="text-muted small text-uppercase font-weight-bold">Title</div>
           <div class="h2 py-3">1,123</div>
-          <div class="chart-wrapper " style="height:40px;width:80px;">
-            <canvas baseChart class="chart"
+          <div class="chart-wrapper mx-auto" style="height:40px;width:80px;">
+            <canvas id="chart17" baseChart class="chart"
             [datasets]="lineChart5Data"
             [labels]="lineChart5Labels"
             [options]="lineChart5Options"
             [colors]="lineChart5Success"
             [legend]="lineChart5Legend"
-            [chartType]="lineChart5Type"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
+            [chartType]="lineChart5Type"></canvas>
           </div>
         </div>
       </div>
@@ -476,16 +442,14 @@
         <div class="card-body text-center">
           <div class="text-muted small text-uppercase font-weight-bold">Title</div>
           <div class="h2 py-3">1,123</div>
-          <div class="chart-wrapper " style="height:40px;width:80px;">
-            <canvas baseChart class="chart"
+          <div class="chart-wrapper mx-auto" style="height:40px;width:80px;">
+            <canvas id="chart18" baseChart class="chart"
             [datasets]="lineChart5Data"
             [labels]="lineChart5Labels"
             [options]="lineChart5Options"
             [colors]="lineChart5Warning"
             [legend]="lineChart5Legend"
-            [chartType]="lineChart5Type"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
+            [chartType]="lineChart5Type"></canvas>
           </div>
         </div>
       </div>

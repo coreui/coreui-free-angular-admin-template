@@ -18,15 +18,13 @@
           <p>Members online</p>
         </div>
         <div class="chart-wrapper px-3" style="height:70px;">
-          <canvas baseChart class="chart"
+          <canvas id="cardChart1" baseChart class="chart"
           [datasets]="lineChart1Data"
           [labels]="lineChart1Labels"
           [options]="lineChart1Options"
           [colors]="lineChart1Colours"
           [legend]="lineChart1Legend"
-          [chartType]="lineChart1Type"
-          (chartHover)="chartHovered($event)"
-          (chartClick)="chartClicked($event)"></canvas>
+          [chartType]="lineChart1Type"></canvas>
         </div>
       </div>
     </div><!--/.col-->
@@ -40,15 +38,13 @@
           <p>Members online</p>
         </div>
         <div class="chart-wrapper px-3" style="height:70px;">
-          <canvas baseChart class="chart"
+          <canvas id="cardChart2" baseChart class="chart"
           [datasets]="lineChart2Data"
           [labels]="lineChart2Labels"
           [options]="lineChart2Options"
           [colors]="lineChart2Colours"
           [legend]="lineChart2Legend"
-          [chartType]="lineChart2Type"
-          (chartHover)="chartHovered($event)"
-          (chartClick)="chartClicked($event)"></canvas>
+          [chartType]="lineChart2Type"></canvas>
         </div>
       </div>
     </div><!--/.col-->
@@ -69,15 +65,13 @@
           <p>Members online</p>
         </div>
         <div class="chart-wrapper" style="height:70px;">
-          <canvas baseChart class="chart"
+          <canvas id="cardChart3" baseChart class="chart"
           [datasets]="lineChart3Data"
           [labels]="lineChart3Labels"
           [options]="lineChart3Options"
           [colors]="lineChart3Colours"
           [legend]="lineChart3Legend"
-          [chartType]="lineChart3Type"
-          (chartHover)="chartHovered($event)"
-          (chartClick)="chartClicked($event)"></canvas>
+          [chartType]="lineChart3Type"></canvas>
         </div>
       </div>
     </div><!--/.col-->
@@ -98,15 +92,13 @@
           <p>Members online</p>
         </div>
         <div class="chart-wrapper px-3" style="height:70px;">
-          <canvas baseChart class="chart"
+          <canvas id="cardChart4" baseChart class="chart"
           [datasets]="barChart1Data"
           [labels]="barChart1Labels"
           [options]="barChart1Options"
           [colors]="barChart1Colours"
           [legend]="barChart1Legend"
-          [chartType]="barChart1Type"
-          (chartHover)="chartHovered($event)"
-          (chartClick)="chartClicked($event)"></canvas>
+          [chartType]="barChart1Type"></canvas>
         </div>
       </div>
     </div><!--/.col-->
@@ -128,15 +120,13 @@
         </div><!--/.col-->
       </div><!--/.row-->
       <div class="chart-wrapper" style="height:300px;margin-top:40px;">
-        <canvas baseChart class="chart"
+        <canvas id="mainChart" baseChart class="chart"
         [datasets]="mainChartData"
         [labels]="mainChartLabels"
         [options]="mainChartOptions"
         [colors]="mainChartColours"
         [legend]="mainChartLegend"
-        [chartType]="mainChartType"
-        (chartHover)="chartHovered($event)"
-        (chartClick)="chartClicked($event)"></canvas>
+        [chartType]="mainChartType"></canvas>
       </div>
     </div>
     <div class="card-footer">
@@ -186,15 +176,13 @@
         <div class="brand-card-header bg-facebook">
           <i class="fa fa-facebook"></i>
           <div class="chart-wrapper">
-            <canvas baseChart class="chart"
-            [datasets]="socialChartData1"
-            [labels]="socialChartLabels"
-            [options]="socialChartOptions"
-            [colors]="socialChartColours"
-            [legend]="socialChartLegend"
-            [chartType]="socialChartType"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
+            <canvas id="brandBox1" baseChart class="chart"
+            [datasets]="brandBoxChartData1"
+            [labels]="brandBoxChartLabels"
+            [options]="brandBoxChartOptions"
+            [colors]="brandBoxChartColours"
+            [legend]="brandBoxChartLegend"
+            [chartType]="brandBoxChartType"></canvas>
           </div>
         </div>
         <div class="brand-card-body">
@@ -214,15 +202,13 @@
         <div class="brand-card-header bg-twitter">
           <i class="fa fa-twitter"></i>
           <div class="chart-wrapper">
-            <canvas baseChart class="chart"
-            [datasets]="socialChartData2"
-            [labels]="socialChartLabels"
-            [options]="socialChartOptions"
-            [colors]="socialChartColours"
-            [legend]="socialChartLegend"
-            [chartType]="socialChartType"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
+            <canvas id="brandBox2" baseChart class="chart"
+            [datasets]="brandBoxChartData2"
+            [labels]="brandBoxChartLabels"
+            [options]="brandBoxChartOptions"
+            [colors]="brandBoxChartColours"
+            [legend]="brandBoxChartLegend"
+            [chartType]="brandBoxChartType"></canvas>
           </div>
         </div>
         <div class="brand-card-body">
@@ -242,15 +228,13 @@
         <div class="brand-card-header bg-linkedin">
           <i class="fa fa-linkedin"></i>
           <div class="chart-wrapper">
-            <canvas baseChart class="chart"
-            [datasets]="socialChartData3"
-            [labels]="socialChartLabels"
-            [options]="socialChartOptions"
-            [colors]="socialChartColours"
-            [legend]="socialChartLegend"
-            [chartType]="socialChartType"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
+            <canvas id="brandBox3" baseChart class="chart"
+            [datasets]="brandBoxChartData3"
+            [labels]="brandBoxChartLabels"
+            [options]="brandBoxChartOptions"
+            [colors]="brandBoxChartColours"
+            [legend]="brandBoxChartLegend"
+            [chartType]="brandBoxChartType"></canvas>
           </div>
         </div>
         <div class="brand-card-body">
@@ -270,15 +254,13 @@
         <div class="brand-card-header bg-google-plus">
           <i class="fa fa-google-plus"></i>
           <div class="chart-wrapper">
-            <canvas baseChart class="chart"
-            [datasets]="socialChartData4"
-            [labels]="socialChartLabels"
-            [options]="socialChartOptions"
-            [colors]="socialChartColours"
-            [legend]="socialChartLegend"
-            [chartType]="socialChartType"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
+            <canvas id="brandBox4" baseChart class="chart"
+            [datasets]="brandBoxChartData4"
+            [labels]="brandBoxChartLabels"
+            [options]="brandBoxChartOptions"
+            [colors]="brandBoxChartColours"
+            [legend]="brandBoxChartLegend"
+            [chartType]="brandBoxChartType"></canvas>
           </div>
         </div>
         <div class="brand-card-body">
@@ -309,17 +291,6 @@
                     <small class="text-muted">New Clients</small>
                     <br>
                     <strong class="h4">9,123</strong>
-                    <div class="chart-wrapper" style="height:30px;">
-                      <canvas baseChart class="chart"
-                      [datasets]="sparklineChartData1"
-                      [labels]="sparklineChartLabels"
-                      [options]="sparklineChartOptions"
-                      [colors]="sparklineChartInfo"
-                      [legend]="sparklineChartLegend"
-                      [chartType]="sparklineChartType"
-                      (chartHover)="chartHovered($event)"
-                      (chartClick)="chartClicked($event)"></canvas>
-                    </div>
                   </div>
                 </div><!--/.col-->
                 <div class="col-sm-6">
@@ -327,17 +298,6 @@
                     <small class="text-muted">Recuring Clients</small>
                     <br>
                     <strong class="h4">22,643</strong>
-                    <div class="chart-wrapper" style="height:30px;">
-                      <canvas baseChart class="chart"
-                      [datasets]="sparklineChartData2"
-                      [labels]="sparklineChartLabels"
-                      [options]="sparklineChartOptions"
-                      [colors]="sparklineChartDanger"
-                      [legend]="sparklineChartLegend"
-                      [chartType]="sparklineChartType"
-                      (chartHover)="chartHovered($event)"
-                      (chartClick)="chartClicked($event)"></canvas>
-                    </div>
                   </div>
                 </div><!--/.col-->
               </div><!--/.row-->
@@ -455,17 +415,6 @@
                     <small class="text-muted">Pageviews</small>
                     <br>
                     <strong class="h4">78,623</strong>
-                    <div class="chart-wrapper" style="height:30px;">
-                      <canvas baseChart class="chart"
-                      [datasets]="sparklineChartData1"
-                      [labels]="sparklineChartLabels"
-                      [options]="sparklineChartOptions"
-                      [colors]="sparklineChartWarning"
-                      [legend]="sparklineChartLegend"
-                      [chartType]="sparklineChartType"
-                      (chartHover)="chartHovered($event)"
-                      (chartClick)="chartClicked($event)"></canvas>
-                    </div>
                   </div>
                 </div><!--/.col-->
                 <div class="col-sm-6">
@@ -473,17 +422,6 @@
                     <small class="text-muted">Organic</small>
                     <br>
                     <strong class="h4">49,123</strong>
-                    <div class="chart-wrapper" style="height:30px;">
-                      <canvas baseChart class="chart"
-                      [datasets]="sparklineChartData2"
-                      [labels]="sparklineChartLabels"
-                      [options]="sparklineChartOptions"
-                      [colors]="sparklineChartSuccess"
-                      [legend]="sparklineChartLegend"
-                      [chartType]="sparklineChartType"
-                      (chartHover)="chartHovered($event)"
-                      (chartClick)="chartClicked($event)"></canvas>
-                    </div>
                   </div>
                 </div><!--/.col-->
               </div><!--/.row-->
