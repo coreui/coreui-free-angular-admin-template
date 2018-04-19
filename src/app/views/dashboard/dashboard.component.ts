@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { getStyle, hexToRgba } from '@coreui/coreui/js/src/utilities/';
+import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips/js/';
 
 @Component({
   templateUrl: 'dashboard.component.html'
@@ -16,6 +17,10 @@ export class DashboardComponent implements OnInit {
   ];
   public lineChart1Labels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   public lineChart1Options: any = {
+    tooltips: {
+      enabled: false,
+      custom: CustomTooltips
+    },
     maintainAspectRatio: false,
     scales: {
       xAxes: [{
@@ -70,6 +75,10 @@ export class DashboardComponent implements OnInit {
   ];
   public lineChart2Labels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   public lineChart2Options: any = {
+    tooltips: {
+      enabled: false,
+      custom: CustomTooltips
+    },
     maintainAspectRatio: false,
     scales: {
       xAxes: [{
@@ -126,6 +135,10 @@ export class DashboardComponent implements OnInit {
   ];
   public lineChart3Labels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   public lineChart3Options: any = {
+    tooltips: {
+      enabled: false,
+      custom: CustomTooltips
+    },
     maintainAspectRatio: false,
     scales: {
       xAxes: [{
@@ -168,6 +181,10 @@ export class DashboardComponent implements OnInit {
   ];
   public barChart1Labels: Array<any> = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'];
   public barChart1Options: any = {
+    tooltips: {
+      enabled: false,
+      custom: CustomTooltips
+    },
     maintainAspectRatio: false,
     scales: {
       xAxes: [{
@@ -216,6 +233,10 @@ export class DashboardComponent implements OnInit {
   public mainChartLabels: Array<any> = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday', 'Thursday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   /* tslint:enable:max-line-length */
   public mainChartOptions: any = {
+    tooltips: {
+      enabled: false,
+      custom: CustomTooltips
+    },
     responsive: true,
     maintainAspectRatio: false,
     scales: {
@@ -277,33 +298,37 @@ export class DashboardComponent implements OnInit {
 
   // social box charts
 
-  public socialChartData1: Array<any> = [
+  public brandBoxChartData1: Array<any> = [
     {
       data: [65, 59, 84, 84, 51, 55, 40],
       label: 'Facebook'
     }
   ];
-  public socialChartData2: Array<any> = [
+  public brandBoxChartData2: Array<any> = [
     {
       data: [1, 13, 9, 17, 34, 41, 38],
       label: 'Twitter'
     }
   ];
-  public socialChartData3: Array<any> = [
+  public brandBoxChartData3: Array<any> = [
     {
       data: [78, 81, 80, 45, 34, 12, 40],
       label: 'LinkedIn'
     }
   ];
-  public socialChartData4: Array<any> = [
+  public brandBoxChartData4: Array<any> = [
     {
       data: [35, 23, 56, 22, 97, 23, 64],
       label: 'Google+'
     }
   ];
 
-  public socialChartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-  public socialChartOptions: any = {
+  public brandBoxChartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  public brandBoxChartOptions: any = {
+    tooltips: {
+      enabled: false,
+      custom: CustomTooltips
+    },
     responsive: true,
     maintainAspectRatio: false,
     scales: {
@@ -329,108 +354,15 @@ export class DashboardComponent implements OnInit {
       display: false
     }
   };
-  public socialChartColours: Array<any> = [
+  public brandBoxChartColours: Array<any> = [
     {
       backgroundColor: 'rgba(255,255,255,.1)',
       borderColor: 'rgba(255,255,255,.55)',
       pointHoverBackgroundColor: '#fff'
     }
   ];
-  public socialChartLegend = false;
-  public socialChartType = 'line';
-
-  // sparkline charts
-
-  public sparklineChartData1: Array<any> = [
-    {
-      data: [35, 23, 56, 22, 97, 23, 64],
-      label: 'Clients'
-    }
-  ];
-  public sparklineChartData2: Array<any> = [
-    {
-      data: [65, 59, 84, 84, 51, 55, 40],
-      label: 'Clients'
-    }
-  ];
-
-  public sparklineChartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-  public sparklineChartOptions: any = {
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: {
-      xAxes: [{
-        display: false,
-      }],
-      yAxes: [{
-        display: false,
-      }]
-    },
-    elements: {
-      line: {
-        borderWidth: 2
-      },
-      point: {
-        radius: 0,
-        hitRadius: 10,
-        hoverRadius: 4,
-        hoverBorderWidth: 3,
-      }
-    },
-    legend: {
-      display: false
-    }
-  };
-  public sparklineChartDefault: Array<any> = [
-    {
-      backgroundColor: 'transparent',
-      borderColor: '#d1d4d7',
-    }
-  ];
-  public sparklineChartPrimary: Array<any> = [
-    {
-      backgroundColor: 'transparent',
-      borderColor: getStyle('--primary'),
-    }
-  ];
-  public sparklineChartInfo: Array<any> = [
-    {
-      backgroundColor: 'transparent',
-      borderColor: getStyle('--info'),
-    }
-  ];
-  public sparklineChartDanger: Array<any> = [
-    {
-      backgroundColor: 'transparent',
-      borderColor: getStyle('--danger'),
-    }
-  ];
-  public sparklineChartWarning: Array<any> = [
-    {
-      backgroundColor: 'transparent',
-      borderColor: getStyle('--warning'),
-    }
-  ];
-  public sparklineChartSuccess: Array<any> = [
-    {
-      backgroundColor: 'transparent',
-      borderColor: getStyle('--success'),
-    }
-  ];
-
-
-  public sparklineChartLegend = false;
-  public sparklineChartType = 'line';
-
-  // events
-  public chartClicked(e: any): void {
-    console.log(e);
-  }
-
-  public chartHovered(e: any): void {
-    console.log(e);
-  }
-
+  public brandBoxChartLegend = false;
+  public brandBoxChartType = 'line';
 
   public random(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1) + min);

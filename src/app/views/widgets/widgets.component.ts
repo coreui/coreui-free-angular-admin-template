@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { getStyle } from '@coreui/coreui/js/src/utilities/'
+import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips/js/';
 
 @Component({
   templateUrl: 'widgets.component.html'
@@ -15,6 +16,10 @@ export class WidgetsComponent {
   ];
   public lineChart1Labels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   public lineChart1Options: any = {
+    tooltips: {
+      enabled: false,
+      custom: CustomTooltips
+    },
     maintainAspectRatio: false,
     scales: {
       xAxes: [{
@@ -69,6 +74,10 @@ export class WidgetsComponent {
   ];
   public lineChart2Labels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   public lineChart2Options: any = {
+    tooltips: {
+      enabled: false,
+      custom: CustomTooltips
+    },
     maintainAspectRatio: false,
     scales: {
       xAxes: [{
@@ -125,6 +134,10 @@ export class WidgetsComponent {
   ];
   public lineChart3Labels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   public lineChart3Options: any = {
+    tooltips: {
+      enabled: false,
+      custom: CustomTooltips
+    },
     maintainAspectRatio: false,
     scales: {
       xAxes: [{
@@ -167,6 +180,10 @@ export class WidgetsComponent {
   ];
   public barChart1Labels: Array<any> = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'];
   public barChart1Options: any = {
+    tooltips: {
+      enabled: false,
+      custom: CustomTooltips
+    },
     maintainAspectRatio: false,
     scales: {
       xAxes: [{
@@ -199,6 +216,10 @@ export class WidgetsComponent {
   ];
   public lineChart4Labels: Array<any> = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   public lineChart4Options: any = {
+    tooltips: {
+      enabled: false,
+      custom: CustomTooltips
+    },
     maintainAspectRatio: false,
     scales: {
       xAxes: [{
@@ -234,6 +255,10 @@ export class WidgetsComponent {
   ];
   public barChart2Labels: Array<any> = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   public barChart2Options: any = {
+    tooltips: {
+      enabled: false,
+      custom: CustomTooltips
+    },
     maintainAspectRatio: false,
     scales: {
       xAxes: [{
@@ -270,6 +295,10 @@ export class WidgetsComponent {
   ];
   public barChart3Labels: Array<any> = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   public barChart3Options: any = {
+    tooltips: {
+      enabled: false,
+      custom: CustomTooltips
+    },
     maintainAspectRatio: false,
     scales: {
       xAxes: [{
@@ -317,6 +346,10 @@ export class WidgetsComponent {
   ];
   public lineChart5Labels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   public lineChart5Options: any = {
+    tooltips: {
+      enabled: false,
+      custom: CustomTooltips
+    },
     maintainAspectRatio: false,
     scales: {
       xAxes: [{
@@ -355,13 +388,4 @@ export class WidgetsComponent {
   ];
   public lineChart5Legend = false;
   public lineChart5Type = 'line';
-
-  // events
-  public chartClicked(e: any): void {
-    console.log(e);
-  }
-
-  public chartHovered(e: any): void {
-    console.log(e);
-  }
 }
