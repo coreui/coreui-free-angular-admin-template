@@ -26,7 +26,7 @@
     "@angular/platform-browser-dynamic": "5.2.10",
     "@angular/router": "5.2.10",
     "@coreui/angular": "^2.0.0-beta.2",
-    "@coreui/coreui-plugin-chartjs-custom-tooltips": "^1.0.0",
+    "@coreui/coreui-plugin-chartjs-custom-tooltips": "^1.1.0",
     "chart.js": "2.7.2",
     "core-js": "2.5.5",
     "flag-icon-css": "3.0.0",
