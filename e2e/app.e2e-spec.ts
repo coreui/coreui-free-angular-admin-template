@@ -1,6 +1,6 @@
 import { CoreUIPage } from './app.po';
 
-describe('core-ui App', function() {
+describe('angular-app-from-cli App', () => {
   let page: CoreUIPage;
 
   beforeEach(() => {
