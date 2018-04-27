@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { getStyle } from '@coreui/coreui/js/src/utilities/'
-import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips/js/';
+import { getStyle } from '@coreui/coreui/dist/js/utilities'
+import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 
 @Component({
   templateUrl: 'widgets.component.html'
