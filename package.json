@@ -32,6 +32,7 @@
     "flag-icon-css": "3.0.0",
     "font-awesome": "^4.7.0",
     "moment": "2.22.1",
+    "mutationobserver-shim": "^0.3.2",
     "ng2-charts": "1.6.0",
     "ngx-bootstrap": "2.0.4",
     "ngx-perfect-scrollbar": "5.3.5",
