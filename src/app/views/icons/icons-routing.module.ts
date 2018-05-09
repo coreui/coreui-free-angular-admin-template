@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { CoreUIIconsComponent } from './coreui-icons.component';
 import { FlagsComponent } from './flags.component';
 import { FontAwesomeComponent } from './font-awesome.component';
 import { SimpleLineIconsComponent } from './simple-line-icons.component';
@@ -13,10 +14,10 @@ const routes: Routes = [
     },
     children: [
       {
-        path: 'font-awesome',
-        component: FontAwesomeComponent,
+        path: 'coreui-icons',
+        component: CoreUIIconsComponent,
         data: {
-          title: 'Font Awesome'
+          title: 'CoreUI Icons'
         }
       },
       {
@@ -24,6 +25,13 @@ const routes: Routes = [
         component: FlagsComponent,
         data: {
           title: 'Flags'
+        }
+      },
+      {
+        path: 'font-awesome',
+        component: FontAwesomeComponent,
+        data: {
+          title: 'Font Awesome'
         }
       },
       {
