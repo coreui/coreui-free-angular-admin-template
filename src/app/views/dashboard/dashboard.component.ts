@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { getStyle, hexToRgba } from '@coreui/coreui/js/src/utilities/';
-import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips/js/';
+import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
+import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 
 @Component({
   templateUrl: 'dashboard.component.html'
@@ -235,7 +235,15 @@ export class DashboardComponent implements OnInit {
   public mainChartOptions: any = {
     tooltips: {
       enabled: false,
-      custom: CustomTooltips
+      custom: CustomTooltips,
+      intersect: true,
+      mode: 'index',
+      position: 'nearest',
+      callbacks: {
+        labelColor: function(tooltipItem, chart) {
+          return { backgroundColor: chart.data.datasets[tooltipItem.datasetIndex].borderColor }
+        }
+      }
     },
     responsive: true,
     maintainAspectRatio: false,
