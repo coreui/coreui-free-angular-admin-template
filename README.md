@@ -58,7 +58,7 @@ CoreUI is built on top of Bootstrap 4 and supports popular frameworks.
 
 ``` bash
 # clone the repo
-$ git clone https://github.com/coreui/coreui-free-bootstrap-admin-template.git my-project
+$ git clone https://github.com/coreui/coreui-free-angular-admin-template.git my-project
 
 # go into app's directory
 $ cd my-project
