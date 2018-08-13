@@ -13,6 +13,13 @@ export class PaginationsComponent {
   currentPage: number   = 4;
   smallnumPages: number = 0;
 
+  maxSize: number = 5;
+  bigTotalItems: number = 675;
+  bigCurrentPage: number = 1;
+  numPages: number = 0;
+
+  currentPager: number   = 4;
+
   setPage(pageNo: number): void {
     this.currentPage = pageNo;
   }
@@ -21,11 +28,4 @@ export class PaginationsComponent {
     console.log('Page changed to: ' + event.page);
     console.log('Number items per page: ' + event.itemsPerPage);
   }
-
-  maxSize: number = 5;
-  bigTotalItems: number = 675;
-  bigCurrentPage: number = 1;
-  numPages: number = 0;
-
-  currentPager: number   = 4;
 }
