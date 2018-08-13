@@ -7,8 +7,8 @@ describe('core-ui App', function() {
     page = new CoreUIPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display footer containing creativeLabs', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getParagraphText()).toContain('creativeLabs');
   });
 });
