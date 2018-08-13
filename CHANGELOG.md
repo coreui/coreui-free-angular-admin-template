@@ -1,5 +1,23 @@
 ## [angular](./README.md) version `changelog`
 
+###### `v2.0.0-rc.3`
+- fix(carousels): move to `loremflickr` image placeholders
+- refactor: code cleanup
+- tests: fix minimal testing
+- update: `@angular/*` to `6.1.2`
+- update: `@angular/cli` to `6.1.3`
+- update: `@angular-devkit/build-angular` to `0.7.3`
+- update: `ngx-perfect-scrollbar` to `6.3.0`
+- update: `rxjs` to `6.2.2`
+- update: `rxjs-compat` to `6.2.2`
+- update: `@types/node` to `10.5.8`
+- update: `codelyzer` to `4.4.3`
+- update: `jasmine-core` to `3.2.0`
+- update: `karma` to `3.0.0`
+- update: `protractor": "5.4.0`
+- update: `ts-node` to `7.0.1`
+- update: `tslint` to `5.11.0`
+
 ###### `v2.0.0-rc.2`
 - update: @angular/animations to 6.0.9
 - update: @angular/common to 6.0.9

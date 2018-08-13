@@ -21,7 +21,7 @@ export class CarouselsComponent {
 
   addSlide(): void {
     this.slides.push({
-      image: `https://lorempixel.com/900/500/sports/${this.slides.length % 8 + 1}/`
+      image: `https://loremflickr.com/900/500/sailing?random=${this.slides.length % 8 + 1}/`
     });
   }
 

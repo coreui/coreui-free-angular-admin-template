@@ -46,10 +46,6 @@ export class AlertsComponent {
     }
   ];
 
-  reset(): void {
-    this.alerts = this.alerts.map((alert: any) => Object.assign({}, alert));
-  }
-
   alertsHtml: any = [
     {
       type: 'success',
@@ -72,13 +68,17 @@ export class AlertsComponent {
     'Well done! Click reset button and you\'ll see the first message'
   ];
 
+  alertsDismiss: any = [];
+
+  reset(): void {
+    this.alerts = this.alerts.map((alert: any) => Object.assign({}, alert));
+  }
+
   changeText() {
     if (this.messages.length - 1 !== this.index) {
       this.index++;
     }
   }
-
-  alertsDismiss: any = [];
 
   add(): void {
     this.alertsDismiss.push({

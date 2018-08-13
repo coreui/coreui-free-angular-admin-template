@@ -5,6 +5,11 @@ import { Component } from '@angular/core';
 })
 export class DropdownsComponent {
 
+  status: { isOpen: boolean } = { isOpen: false };
+  disabled: boolean = false;
+  isDropup: boolean = true;
+  autoClose: boolean = false;
+
   constructor() { }
 
   items: string[] = [
@@ -23,8 +28,6 @@ export class DropdownsComponent {
     console.log('Dropdown state is changed');
   }
 
-  status: { isOpen: boolean } = { isOpen: false };
-
   toggleDropdown($event: MouseEvent): void {
     $event.preventDefault();
     $event.stopPropagation();
@@ -34,10 +37,4 @@ export class DropdownsComponent {
   change(value: boolean): void {
     this.status.isOpen = value;
   }
-
-  disabled: boolean = false;
-
-  isDropup: boolean = true;
-
-  autoClose: boolean = false;
 }

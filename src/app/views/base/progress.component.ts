@@ -10,20 +10,25 @@ export class ProgressComponent implements OnDestroy {
   dynamic: number;
   type: string;
 
+  stacked: any[] = [];
+
+  timer: any = null;
+  buttonCaption: string = 'Start';
+
   constructor() {
     this.random();
-    this.randomStacked()
+    this.randomStacked();
   }
 
   ngOnDestroy() {
     if (this.timer) {
-      clearInterval(this.timer)
+      clearInterval(this.timer);
     }
     // console.log(`onDestroy`, this.timer);
   }
 
   random(): void {
-    let value = Math.floor(Math.random() * 100 + 1);
+    const value = Math.floor(Math.random() * 100 + 1);
     let type: string;
 
     if (value < 25) {
@@ -42,16 +47,14 @@ export class ProgressComponent implements OnDestroy {
 
   }
 
-  stacked: any[] = [];
-
   randomStacked(): void {
-    let types = ['success', 'info', 'warning', 'danger'];
+    const types = ['success', 'info', 'warning', 'danger'];
 
     this.stacked = [];
-    let n = Math.floor(Math.random() * 4 + 1);
+    const n = Math.floor(Math.random() * 4 + 1);
     for (let i = 0; i < n; i++) {
-      let index = Math.floor(Math.random() * 4);
-      let value = Math.floor(Math.random() * 27 + 3);
+      const index = Math.floor(Math.random() * 4);
+      const value = Math.floor(Math.random() * 27 + 3);
       this.stacked.push({
         value,
         type: types[index],
@@ -59,9 +62,6 @@ export class ProgressComponent implements OnDestroy {
       });
     }
   }
-
-  timer: any = null;
-  buttonCaption: string = 'Start';
 
   randomize(): void {
     if (this.timer) {

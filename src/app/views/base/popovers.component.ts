@@ -8,7 +8,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 export class PopoversComponent {
 
   constructor(sanitizer: DomSanitizer) {
-    this.html = sanitizer.sanitize(SecurityContext.HTML, this.html)
+    this.html = sanitizer.sanitize(SecurityContext.HTML, this.html);
   }
 
   title: string = 'Welcome word';

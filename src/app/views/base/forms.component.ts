@@ -8,7 +8,7 @@ export class FormsComponent {
   constructor() { }
 
   isCollapsed: boolean = false;
-  iconCollapse: string = "icon-arrow-up";
+  iconCollapse: string = 'icon-arrow-up';
 
   collapsed(event: any): void {
     // console.log(event);
@@ -20,7 +20,7 @@ export class FormsComponent {
 
   toggleCollapse(): void {
     this.isCollapsed = !this.isCollapsed;
-    this.iconCollapse = this.isCollapsed ? "icon-arrow-down" : "icon-arrow-up";
+    this.iconCollapse = this.isCollapsed ? 'icon-arrow-down' : 'icon-arrow-up';
   }
 
 }
