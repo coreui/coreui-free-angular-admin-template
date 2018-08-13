@@ -1,5 +1,11 @@
 ## [angular](./README.md) version `changelog`
 
+###### `v2.0.0-rc.2`
+- chore: dependencies update
+- fix(carousels): move to `loremflickr` image placeholders
+- refactor: code cleanup
+- tests: fix minimal testing
+
 ###### `v2.0.0-rc.1`
 - chore: dependencies update
 
