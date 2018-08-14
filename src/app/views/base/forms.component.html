@@ -489,40 +489,51 @@
         <div class="card-header">
           <strong>Validation states</strong> Form
         </div>
-        <div class="card-body">
-          <div class="form-group has-success">
-            <label class="form-col-form-label" for="inputSuccess1">Input with success</label>
-            <input type="text" class="form-control" id="inputSuccess1">
+        <form>
+          <div class="card-body">
+            <div class="form-group">
+              <label class="form-col-form-label" for="inputSuccess1">Input with success</label>
+              <input type="text" class="form-control is-valid" id="inputSuccess1">
+              <div class="valid-feedback">
+                Input is valid.
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-col-form-label" for="inputError1">Input with error</label>
+              <input type="text" class="form-control is-invalid" id="inputError1">
+              <div class="invalid-feedback">
+                Please provide a valid information.
+              </div>
+            </div>
           </div>
-          <div class="form-group has-warning">
-            <label class="form-col-form-label" for="inputWarning1">Input with warning</label>
-            <input type="text" class="form-control" id="inputWarning1">
-          </div>
-          <div class="form-group has-danger">
-            <label class="form-col-form-label" for="inputError1">Input with error</label>
-            <input type="text" class="form-control" id="inputError1">
-          </div>
-        </div>
+        </form>
       </div>
     </div><!--/.col-->
     <div class="col-sm-6">
       <div class="card">
         <div class="card-header">
-          <strong>Validation states</strong> with optional icons
+          <strong>Validation </strong> <code>was-validated</code>
         </div>
         <div class="card-body">
-          <div class="form-group has-success">
-            <label class="form-col-form-label" for="inputSuccess2">Input with success</label>
-            <input type="text" class="form-control form-control-success" id="inputSuccess2">
-          </div>
-          <div class="form-group has-warning">
-            <label class="form-col-form-label" for="inputWarning2">Input with warning</label>
-            <input type="text" class="form-control form-control-warning" id="inputWarning2">
-          </div>
-          <div class="form-group has-danger has-feedback">
-            <label class="form-col-form-label" for="inputError2">Input with error</label>
-            <input type="text" class="form-control form-control-danger" id="inputError2">
-          </div>
+          <form class="was-validated">
+            <div class="form-group">
+              <label class="form-col-form-label" for="inputSuccess2">Input is valid</label>
+              <input type="text" class="form-control is-valid" id="inputSuccess2">
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-col-form-label" for="inputError2">Input required</label>
+              <input type="text" class="form-control" id="inputError2" required>
+              <div class="valid-feedback">
+                Input is valid.
+              </div>
+              <div class="invalid-feedback">
+                Please provide a valid information.
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div><!--/.col-->
@@ -970,11 +981,9 @@
         <div class="card-header">
           <i class="fa fa-edit"></i>Form Elements
           <div class="card-header-actions">
-            <a href="#" class="btn-setting"><i class="icon-settings"></i></a>
-            <button type="button" class="btn btn-minimize"
-                    (click)="toggleCollapse()"><i class={{iconCollapse}}></i>
-            </button>
-            <a href="#" class="btn-close"><i class="icon-close"></i></a>
+            <button type="button" class="card-header-action btn btn-link btn-setting"><i class="icon-settings"></i></button>
+            <button type="button" class="card-header-action btn btn-link btn-minimize"(click)="toggleCollapse()"><i class={{iconCollapse}}></i></button>
+            <button type="button" class="card-header-action btn btn-link btn-close"><i class="icon-close"></i></button>
           </div>
         </div>
         <div (collapsed)="collapsed($event)"
