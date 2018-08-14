@@ -1,5 +1,16 @@
 ## [angular](./README.md) version `changelog`
 
+###### `v2.0.0-rc.4`
+- fix(forms): validation classes example closes #95  
+- fix(forms): card-header-actions example
+- fix(forms): autocomplete
+- fix(login): form, autocomplete
+- fix(register): form, autocomplete
+- update: `@types/node` to `10.7.0`",`
+- update: `codelyzer` to `4.4.4`
+- update: `karma-jasmine-html-reporter` to `1.3.0`
+- update: `typescript` to `2.9.2`
+
 ###### `v2.0.0-rc.3`
 - fix(carousels): move to `loremflickr` image placeholders
 - refactor: code cleanup
