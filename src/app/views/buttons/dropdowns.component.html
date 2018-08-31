@@ -162,10 +162,10 @@
         </div>
         <div class="card-body">
           <div class="btn-group" dropdown [dropup]="isDropup">
-            <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
+            <button id="button-dropup" dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
               Dropup <span class="caret"></span>
             </button>
-            <ul *dropdownMenu class="dropdown-menu" role="menu">
+            <ul id="dropdown-dropup" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-dropup">
               <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
               <li role="menuitem"><a class="dropdown-item" href="#">Another action</a>
               </li>

@@ -1,5 +1,19 @@
 ## [angular](./README.md) version `changelog`
 
+###### `v2.0.0`
+- fix(dropdowns): dropup misplaced temp fix
+- chore: update `@coreui/icons` to `0.3.0`
+- refactor(coreui-icons): move to `@coreui/icons v0.3.0`
+- update: `@angular/*` to `6.1.6`
+- update: `angular-devkit/build-angular` to `0.7.5`
+- update: `@angular/cli` to `6.1.5`
+- update: `rxjs` to `6.3.0`
+- update: `rxjs-compat` to `6.3.0`
+- update: `@types/node` to `10.9.4`
+- update: `jasmine-core` to `3.2.1`
+- update: `karma-coverage-istanbul-reporter` to `2.0.2`
+- update: `karma-jasmine-html-reporter` to `1.3.1`
+
 ###### `v2.0.0-rc.4`
 - fix(forms): validation classes example closes #95  
 - fix(forms): card-header-actions example
