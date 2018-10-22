@@ -1,5 +1,24 @@
 ## [angular](./README.md) version `changelog`
 
+###### `v2.0.1`
+- refactor(modals): buttons spacing
+- refactor(brand-buttons): buttons spacing
+- update: `@coreui/coreui` to `2.0.20`
+- update: `@angular/*` to `6.1.10`
+- update: `@angular/cli` to `6.2.6`
+- update: `chart.js` to `2.7.3`
+- update: `flag-icon-css` to `3.2.1`
+- update: `ngx-perfect-scrollbar` to `6.3.1`
+- update: `rxjs` to `6.3.3`
+- update: `rxjs-compat` to `6.3.3`
+- update: `tsickle` to `0.33.0`
+- update: `@types/jasmine` to `2.8.9`
+- update: `@types/jasminewd2` to `2.0.5`
+- update: `@types/node` to `10.12.0`
+- update: `codelyzer` to `4.5.0`
+- update: `karma-coverage-istanbul-reporter` to `2.0.4`
+- update: `protractor` to `5.4.1`
+
 ###### `v2.0.0`
 - fix(dropdowns): dropup misplaced temp fix
 - chore: update `@coreui/icons` to `0.3.0`
