@@ -21,6 +21,10 @@ const routes: Routes = [
     },
     children: [
       {
+        path: '',
+        redirectTo: 'cards'
+      },
+      {
         path: 'cards',
         component: CardsComponent,
         data: {

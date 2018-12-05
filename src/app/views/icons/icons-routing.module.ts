@@ -14,6 +14,10 @@ const routes: Routes = [
     },
     children: [
       {
+        path: '',
+        redirectTo: 'coreui-icons'
+      },
+      {
         path: 'coreui-icons',
         component: CoreUIIconsComponent,
         data: {

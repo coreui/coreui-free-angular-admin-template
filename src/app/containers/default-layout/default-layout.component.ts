@@ -1,11 +1,11 @@
-import { Component, Input } from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import { navItems } from './../../_nav';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './default-layout.component.html'
 })
-export class DefaultLayoutComponent {
+export class DefaultLayoutComponent implements OnDestroy {
   public navItems = navItems;
   public sidebarMinimized = true;
   private changes: MutationObserver;
@@ -17,7 +17,12 @@ export class DefaultLayoutComponent {
     });
 
     this.changes.observe(<Element>this.element, {
-      attributes: true
+      attributes: true,
+      attributeFilter: [ 'class' ]
     });
+  }
+
+  ngOnDestroy(): void {
+    this.changes.disconnect();
   }
 }
