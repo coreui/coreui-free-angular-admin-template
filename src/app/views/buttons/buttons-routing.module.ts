@@ -13,6 +13,10 @@ const routes: Routes = [
     },
     children: [
       {
+        path: '',
+        redirectTo: 'buttons'
+      },
+      {
         path: 'buttons',
         component: ButtonsComponent,
         data: {
