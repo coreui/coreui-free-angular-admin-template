@@ -1,5 +1,14 @@
 ## [angular](./README.md) version `changelog`
 
+###### `v2.2.1`
+- fix(colors): class order for `bg-blue`
+- update: `@coreui/angular` to `2.2.1`
+- update: `core-js` to `2.6.0`
+- update: `@types/node` to `10.12.12`
+- update: `@angular/cli` to `7.1.1`
+- update: `@angular-devkit/build-angular` to `0.11.1`
+- update: `@types/jasmine` to `3.3.1`
+
 ###### `v2.2.0`
 - chore: update Angular to `^7.1.0` see: https://update.angular.io/
 - update: `@angular/animations` to `^7.1.1`
