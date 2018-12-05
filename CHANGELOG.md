@@ -1,7 +1,9 @@
 ## [angular](./README.md) version `changelog`
 
 ###### `v2.2.1`
+- fix(routes): add default routes
 - fix(colors): class order for `bg-blue`
+- refactor(dafault-layout): observer add `attributeFilter` prop & `disconnect()` 
 - update: `@coreui/angular` to `2.2.1`
 - update: `core-js` to `2.6.0`
 - update: `@types/node` to `10.12.12`

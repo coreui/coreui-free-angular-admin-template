@@ -12,6 +12,10 @@ const routes: Routes = [
     },
     children: [
       {
+        path: '',
+        redirectTo: 'colors'
+      },
+      {
         path: 'colors',
         component: ColorsComponent,
         data: {

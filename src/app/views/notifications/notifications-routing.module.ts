@@ -13,6 +13,10 @@ const routes: Routes = [
     },
     children: [
       {
+        path: '',
+        redirectTo: 'alerts'
+      },
+      {
         path: 'alerts',
         component: AlertsComponent,
         data: {
