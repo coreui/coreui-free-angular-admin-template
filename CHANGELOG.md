@@ -1,5 +1,34 @@
 ## [angular](./README.md) version `changelog`
 
+###### `v2.2.3`
+- refactor(_nav.ts): add NavData interface
+- update: `bootstrap` to `^4.2.1`
+- update: `@coreui/angular` to `^2.2.3`
+- update: `@coreui/coreui` to `^2.1.6`
+- update: `@angular/animations` to `^7.2.0`
+- update: `@angular/common` to `^7.2.0`
+- update: `@angular/compiler` to `^7.2.0`
+- update: `@angular/core` to `^7.2.0`
+- update: `@angular/forms` to `^7.2.0`
+- update: `@angular/http` to `^7.2.0`
+- update: `@angular/platform-browser` to `^7.2.0`
+- update: `@angular/platform-browser-dynamic` to `^7.2.0`
+- update: `@angular/router` to `^7.2.0`
+- update: `core-js` to `^2.6.2`
+- update: `moment` to `^2.23.0`
+- update: `ngx-bootstrap` to `^3.1.4`
+- update: `ngx-perfect-scrollbar` to `^7.2.0`
+- update: `zone.js` to `^0.8.27`
+- update: `@angular-devkit/build-angular` to `^0.12.1`
+- update: `@angular/cli` to `^7.2.1`
+- update: `@angular/compiler-cli` to `^7.2.0`
+- update: `@angular/language-service` to `^7.2.0`
+- update: `@types/jasmine` to `^3.3.5`
+- update: `@types/node` to `^10.12.18`
+- update: `karma` to `^3.1.4`
+- update: `protractor` to `^5.4.2`
+- update: `tslint` to `^5.12.1`
+
 ###### `v2.2.1`
 - fix(routes): add default routes
 - fix(colors): class order for `bg-blue`
