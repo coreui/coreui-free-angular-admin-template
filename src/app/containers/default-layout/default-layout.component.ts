@@ -1,4 +1,4 @@
-import {Component, OnDestroy, Inject} from '@angular/core';
+import { Component, OnDestroy, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { navItems } from './../../_nav';
 
@@ -11,7 +11,7 @@ export class DefaultLayoutComponent implements OnDestroy {
   public navItems = navItems;
   public sidebarMinimized = true;
   private changes: MutationObserver;
-  public element: HTMLElement ;
+  public element: HTMLElement;
   constructor(@Inject(DOCUMENT) _document?: any) {
 
     this.changes = new MutationObserver((mutations) => {
@@ -20,7 +20,7 @@ export class DefaultLayoutComponent implements OnDestroy {
 
     this.changes.observe(<Element>this.element, {
       attributes: true,
-      attributeFilter: [ 'class' ]
+      attributeFilter: ['class']
     });
 
     this.element = _document.body;
