@@ -17,13 +17,13 @@ export class DefaultLayoutComponent implements OnDestroy {
     this.changes = new MutationObserver((mutations) => {
       this.sidebarMinimized = _document.body.classList.contains('sidebar-minimized');
     });
-
+    this.element = _document.body;
     this.changes.observe(<Element>this.element, {
       attributes: true,
       attributeFilter: ['class']
     });
 
-    this.element = _document.body;
+   
   }
 
   ngOnDestroy(): void {
