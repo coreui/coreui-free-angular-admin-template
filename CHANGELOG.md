@@ -1,6 +1,10 @@
 ## [angular](./README.md) version `changelog`
 
 ###### `v2.2.4`
+- refactor(colors): use 'DOCUMENT' of '@angular/common'
+- refactor(default-layout): use 'DOCUMENT' of '@angular/common' #133 - thanks @damingerdai 
+- refactor(main): add compiler option `preserveWhitespaces` #128 - thanks @ctaleck 
+- refactor(routing): added URL 404 default #125 - thanks @slam24
 - refactor(dropdowns): remove temp css fix
 - refactor(_nav.ts): NavData interface add semicolons
 - update: `@angular/animations` to `^7.2.1`
