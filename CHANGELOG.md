@@ -1,6 +1,7 @@
 ## [angular](./README.md) version `changelog`
 
 ###### `v2.2.4`
+- refactor(dropdowns): remove temp css fix
 - refactor(_nav.ts): NavData interface add semicolons
 - update: `@angular/animations` to `^7.2.1`
 - update: `@angular/common` to `^7.2.1`
