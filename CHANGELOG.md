@@ -1,5 +1,31 @@
 ## [angular](./README.md) version `changelog`
 
+###### `v2.2.4`
+- refactor(colors): use 'DOCUMENT' of '@angular/common'
+- refactor(default-layout): use 'DOCUMENT' of '@angular/common' #133 - thanks @damingerdai 
+- refactor(main): add compiler option `preserveWhitespaces` #128 - thanks @ctaleck 
+- refactor(routing): added URL 404 default #125 - thanks @slam24
+- refactor(dropdowns): remove temp css fix
+- refactor(_nav.ts): NavData interface add semicolons
+- update: `@angular/animations` to `^7.2.1`
+- update: `@angular/common` to `^7.2.1`
+- update: `@angular/compiler` to `^7.2.1`
+- update: `@angular/core` to `^7.2.1`
+- update: `@angular/forms` to `^7.2.1`
+- update: `@angular/http` to `^7.2.1`
+- update: `@angular/platform-browser` to `^7.2.1`
+- update: `@angular/platform-browser-dynamic` to `^7.2.1`
+- update: `@angular/router` to `^7.2.1`
+- update: `@coreui/angular` to `^2.2.4`
+- update: `mutationobserver-shim` to `^0.3.3`
+- update: `zone.js` to `^0.8.28`
+- update: `@angular-devkit/build-angular` to `^0.12.2`
+- update: `@angular/cli` to `^7.2.2`
+- update: `@angular/compiler-cli` to `^7.2.1`
+- update: `@angular/language-service` to `^7.2.1`
+- update: `@types/jasmine` to `^3.3.7`
+- update: `typescript` to `~3.2.4`
+
 ###### `v2.2.3`
 - refactor(_nav.ts): add NavData interface
 - update: `bootstrap` to `^4.2.1`
