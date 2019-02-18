@@ -1,6 +1,6 @@
 {
   "name": "@coreui/coreui-free-angular-admin-template",
-  "version": "2.2.4",
+  "version": "2.4.0",
   "description": "CoreUI Free Angular 2+ Admin Template",
   "author": {
     "name": "Łukasz Holeczek",
@@ -36,7 +36,7 @@
     "@angular/platform-browser": "^7.2.5",
     "@angular/platform-browser-dynamic": "^7.2.5",
     "@angular/router": "^7.2.5",
-    "@coreui/angular": "^2.4.0",
+    "@coreui/angular": "^2.4.1",
     "@coreui/coreui": "^2.1.6",
     "@coreui/coreui-plugin-chartjs-custom-tooltips": "^1.2.0",
     "@coreui/icons": "0.3.0",
