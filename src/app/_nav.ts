@@ -9,6 +9,8 @@ export interface NavData {
   attributes?: object;
   divider?: boolean;
   class?: string;
+  label?: any;
+  wrapper?: any;
 }
 
 export const navItems: NavData[] = [
