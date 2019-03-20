@@ -1,3 +1,18 @@
+[![@coreui angular](https://img.shields.io/badge/@coreui%20-angular-lightgrey.svg?style=flat-square)](https://github.com/coreui/angular)
+[![npm package][npm-coreui-angular-badge]][npm-coreui-angular] 
+[![NPM downloads][npm-coreui-angular-download]][npm-coreui-angular]  
+[![@coreui coreui](https://img.shields.io/badge/@coreui%20-coreui-lightgrey.svg?style=flat-square)](https://github.com/coreui/coreui)
+[![npm package][npm-coreui-badge]][npm-coreui]
+[![NPM downloads][npm-coreui-download]][npm-coreui]    
+![angular](https://img.shields.io/badge/angular-^7.2.10-lightgrey.svg?style=flat-square)  
+
+[npm-coreui-angular]: https://www.npmjs.com/package/@coreui/angular  
+[npm-coreui-angular-badge]: https://img.shields.io/npm/v/@coreui/angular.png?style=flat-square  
+[npm-coreui-angular-download]: https://img.shields.io/npm/dm/@coreui/angular.svg?style=flat-square  
+[npm-coreui]: https://www.npmjs.com/package/@coreui/coreui
+[npm-coreui-badge]: https://img.shields.io/npm/v/@coreui/coreui.png?style=flat-square
+[npm-coreui-download]: https://img.shields.io/npm/dm/@coreui/coreui.svg?style=flat-square
+
 # CoreUI Free Angular 2+ Admin Template [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/intent/tweet?text=CoreUI%20-%20Free%20Bootstrap%204%20Admin%20Template%20&url=https://coreui.io&hashtags=bootstrap,admin,template,dashboard,panel,free,angular,react,vue)
 
 Please help us on [Product Hunt](https://www.producthunt.com/posts/coreui-open-source-bootstrap-4-admin-template-with-angular-2-react-js-vue-js-support) and [Designer News](https://www.designernews.co/stories/81127). Thanks in advance!
@@ -51,6 +66,22 @@ CoreUI is built on top of Bootstrap 4 and supports popular frameworks.
 | CoreUI Pro | Prime | Root | Alba | Leaf |
 | --- | --- | --- | --- | --- |
 | [![CoreUI Pro Admin Template](https://coreui.io/assets/img/example-coureui.jpg)](https://coreui.io/pro/angular/)| [![Prime Admin Template](https://coreui.io/assets/img/responsive-prime.png)](https://coreui.io/admin-templates/angular/prime/?support=1)| [![Root Admin Template](https://coreui.io/assets/img/responsive-root.png)](https://coreui.io/admin-templates/angular/root/?support=1)| [![Alba Admin Template](https://coreui.io/assets/img/responsive-alba.png)](https://coreui.io/admin-templates/angular/alba/?support=1)| [![Leaf Admin Template](https://coreui.io/assets/img/responsive-leaf.png)](https://coreui.io/admin-templates/angular/leaf/?support=1)
+
+#### Prerequisites
+Before you begin, make sure your development environment includes `Node.js®` and an `npm` package manager.
+
+###### Node.js
+Angular requires `Node.js` version 8.x or 10.x.
+
+- To check your version, run `node -v` in a terminal/console window.
+- To get `Node.js`, go to [nodejs.org](https://nodejs.org/).
+
+###### Angular CLI
+Install the Angular CLI globally using a terminal/console window.
+```bash
+npm install -g @angular/cli
+```
+
 ## Installation
 
 ### Clone repo
@@ -108,7 +139,7 @@ Editor preferences are available in the [editor config](https://github.com/coreu
 
 ## Versioning
 
-For transparency into our release cycle and in striving to maintain backward compatibility,CoreUI Free Admin Template is maintained under [the Semantic Versioning guidelines](http://semver.org/).
+For transparency into our release cycle and in striving to maintain backward compatibility, CoreUI Free Admin Template is maintained under [the Semantic Versioning guidelines](http://semver.org/).
 
 See [the Releases section of our project](https://github.com/coreui/coreui-free-angular-admin-template/releases) for changelogs for each release version.
 
