@@ -1,5 +1,30 @@
 ## [angular](./README.md) version `changelog`
 
+###### `v2.4.5`
+- refactor(modals): add `@ViewChild` 
+- update: `@coreui/angular` to `^2.4.5`
+- update: `@coreui/coreui` to `^2.1.8`
+- update: `@angular/animations` to `^7.2.10`
+- update: `@angular/common` to `^7.2.10`
+- update: `@angular/compiler` to `^7.2.10`
+- update: `@angular/core` to `^7.2.10`
+- update: `@angular/forms` to `^7.2.10`
+- update: `@angular/http` to `^7.2.10`
+- update: `@angular/platform-browser` to `^7.2.10`
+- update: `@angular/platform-browser-dynamic` to `^7.2.10`
+- update: `@angular/router` to `^7.2.10`
+- update: `chart.js` to `^2.8.0`
+- update: `flag-icon-css` to `^3.3.0`
+- update: `@angular-devkit/build-angular` to `^0.13.6`
+- update: `@angular/cli` to `^7.3.6`
+- update: `@angular/compiler-cli` to `^7.2.10`
+- update: `@angular/language-service` to `^7.2.10`
+- update: `@types/jasmine` to `^3.3.12`
+- update: `@types/node` to `^11.11.4`
+- update: `karma` to `^4.0.1`
+- update: `ts-node` to `^8.0.3`
+- update: `tslint` to `^5.14.0`
+
 ###### `v2.4.3`
 - update: `@coreui/angular` to `^2.4.3`
 - update: `@coreui/coreui` to `^2.1.7`
