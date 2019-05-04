@@ -1,5 +1,34 @@
 ## [angular](./README.md) version `changelog`
 
+###### `v2.Next`
+- update: Angular to `v8.0.0-rc-2`
+- update: `@angular/animations` to `^8.0.0-rc.2`
+- update: `@angular/common` to `^8.0.0-rc.2`
+- update: `@angular/compiler` to `^8.0.0-rc.2`
+- update: `@angular/core` to `^8.0.0-rc.2`
+- update: `@angular/forms` to `^8.0.0-rc.2`
+- update: `@angular/http` to `^8.0.0-beta.10`
+- update: `@angular/platform-browser` to `^8.0.0-rc.2`
+- update: `@angular/platform-browser-dynamic` to `^8.0.0-rc.2`
+- update: `@angular/router` to `^8.0.0-rc.2`
+- update: `@coreui/coreui` to `^2.1.9`
+- update: `rxjs` to `^6.5.1`
+- update: `tsickle` to `^0.35.0`
+- update: `tslib` to `^1.9.3`
+- update: `zone.js` to `^0.9.1`
+- update: `@angular-devkit/build-angular` to `^0.800.0-rc.2`
+- update: `@angular/cli` to `^8.0.0-rc.2`
+- update: `@angular/compiler-cli` to `^8.0.0-rc.2`
+- update: `@angular/language-service` to `^8.0.0-rc.2`
+- update: `@types/node` to `^12.0.0`
+- update: `codelyzer` to `^5.0.1`
+- update: `jasmine-core` to `^3.4.0`
+- update: `karma` to `^4.1.0`
+- update: `karma-jasmine-html-reporter` to `^1.4.2`
+- update: `ts-node` to `^8.1.0`
+- update: `tslint` to `^5.16.0`
+- update: `typescript` to `^3.4.5`
+
 ###### `v2.4.5`
 - refactor(modals): add `@ViewChild` 
 - update: `@coreui/angular` to `^2.4.5`
