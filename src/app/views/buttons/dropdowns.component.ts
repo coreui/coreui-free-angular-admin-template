@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 
 @Component({
   templateUrl: 'dropdowns.component.html',
   styleUrls: ['dropdowns.component.css']
 })
-export class DropdownsComponent {
+export class DropdownsComponent implements OnDestroy {
 
   status: { isOpen: boolean } = { isOpen: false };
   disabled: boolean = false;
@@ -12,6 +12,10 @@ export class DropdownsComponent {
   autoClose: boolean = false;
 
   constructor() { }
+
+  ngOnDestroy () {
+    this.status.isOpen = false;
+  }
 
   items: string[] = [
     'The first choice!',

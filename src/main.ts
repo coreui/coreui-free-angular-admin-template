@@ -9,6 +9,7 @@ if (environment.production) {
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule, {
-    preserveWhitespaces: true
+  useJit: true,
+  preserveWhitespaces: true
 })
   .catch(err => console.log(err));
