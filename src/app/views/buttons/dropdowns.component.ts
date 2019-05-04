@@ -11,17 +11,17 @@ export class DropdownsComponent implements OnDestroy {
   isDropup: boolean = true;
   autoClose: boolean = false;
 
-  constructor() { }
-
-  ngOnDestroy () {
-    this.status.isOpen = false;
-  }
-
   items: string[] = [
     'The first choice!',
     'And another choice for you.',
     'but wait! A third!'
   ];
+
+  constructor() { }
+
+  ngOnDestroy () {
+    this.status.isOpen = false;
+  }
 
   onHidden(): void {
     console.log('Dropdown is hidden');

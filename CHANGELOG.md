@@ -1,6 +1,8 @@
 ## [angular](./README.md) version `changelog`
 
 ###### `v2.Next`
+- refactor(app.routing): lazy loading via dynamic import()
+- refactor(tsconfig): "module: "esnext", "target": "es6" 
 - update: Angular to `v8.0.0-rc-2`
 - update: `@angular/animations` to `^8.0.0-rc.2`
 - update: `@angular/common` to `^8.0.0-rc.2`
