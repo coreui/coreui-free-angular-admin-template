@@ -4,7 +4,7 @@
 [![@coreui coreui](https://img.shields.io/badge/@coreui%20-coreui-lightgrey.svg?style=flat-square)](https://github.com/coreui/coreui)
 [![npm package][npm-coreui-badge]][npm-coreui]
 [![NPM downloads][npm-coreui-download]][npm-coreui]    
-![angular](https://img.shields.io/badge/angular-^7.2.10-lightgrey.svg?style=flat-square)  
+![angular](https://img.shields.io/badge/angular-^8.0.0-lightgrey.svg?style=flat-square)  
 
 [npm-coreui-angular]: https://www.npmjs.com/package/@coreui/angular  
 [npm-coreui-angular-badge]: https://img.shields.io/npm/v/@coreui/angular.png?style=flat-square  
@@ -21,7 +21,13 @@ Curious why I decided to create CoreUI? Please read this article: [Jack of all t
 
 CoreUI is an Open Source Bootstrap Admin Template. But CoreUI is not just another Admin Template. It goes way beyond hitherto admin templates thanks to transparent code and file structure. And if that's not enough, let’s just add that CoreUI consists bunch of unique features and over 1000 high quality icons.
 
-CoreUI is based on Bootstrap 4 and offers 6 versions: [HTML5 AJAX](https://github.com/coreui/free-bootstrap-admin-template-ajax), [HTML5](https://github.com/coreui/free-angular-admin-template), [Angular 2+](https://github.com/coreui/free-angular-admin-template), [React.js](https://github.com/coreui/free-react-admin-template) & [Vue.js](https://github.com/coreui/free-vue-admin-template), [.NET Core 2](https://github.com/coreui/free-dotnet-admin-template).
+CoreUI is based on Bootstrap 4 and offers 6 versions: 
+[HTML5 AJAX](https://github.com/coreui/coreui-free-bootstrap-admin-template-ajax), 
+[HTML5](https://github.com/coreui/coreui-free-angular-admin-template), 
+[Angular 2+](https://github.com/coreui/coreui-free-angular-admin-template), 
+[React.js](https://github.com/coreui/coreui-free-react-admin-template), 
+[Vue.js](https://github.com/coreui/coreui-free-vue-admin-template)
+ & [.NET Core 2](https://github.com/mrholek/CoreUI-NET).
 
 CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of redundant components, so the app is light enough to offer ultimate user experience. This means mobile devices also, where the navigation is just as easy and intuitive as on a desktop or laptop. The CoreUI Layout API lets you customize your project for almost any device – be it Mobile, Web or WebApp – CoreUI covers them all!
 
@@ -71,7 +77,7 @@ CoreUI is built on top of Bootstrap 4 and supports popular frameworks.
 Before you begin, make sure your development environment includes `Node.js®` and an `npm` package manager.
 
 ###### Node.js
-Angular requires `Node.js` version 8.x or 10.x.
+Angular requires `Node.js` version 8.x or 10.x
 
 - To check your version, run `node -v` in a terminal/console window.
 - To get `Node.js`, go to [nodejs.org](https://nodejs.org/).
@@ -81,6 +87,10 @@ Install the Angular CLI globally using a terminal/console window.
 ```bash
 npm install -g @angular/cli
 ```
+
+##### Update to Angular 8
+Angular 8 requires `Node.js` version 12.x   
+Update guide - see: [https://update.angular.io](https://update.angular.io)
 
 ## Installation
 
