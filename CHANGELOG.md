@@ -5,7 +5,11 @@
 - refactor(modals): `ViewChild` second parameter 
 - refactor(tsconfig): "module: "esnext", "target": "es6" 
 - chore: update `ng2-charts@2.3.0` imports
-- chore(tslint): remove undefined rules
+- chore: update `ngx-bootstrap@4.2.0` 
+- fix(collapse): `No provider for AnimationBuilder` add import `BrowserAnimationsModule` to app.module
+- fix(polyfill): import `web-animations-js`
+- chore(tslint): remove depracated/undefined rules  
+- chore(tsconfig): set "target" to "es5" / IE11 compatible
 - update: Angular to `v8.0.0`
 - update: `@angular/animations` to `^8.0.0`
 - update: `@angular/common` to `^8.0.0`
@@ -16,9 +20,12 @@
 - update: `@angular/platform-browser` to `^8.0.0`
 - update: `@angular/platform-browser-dynamic` to `^8.0.0`
 - update: `@angular/router` to `^8.0.0`
+- update: `@coreui/angular` to `^2.5.0`
 - update: `@coreui/coreui` to `^2.1.11`
+- update: `@coreui/coreui-plugin-chartjs-custom-tooltips` to `^1.3.1`
 - update: `core-js` to `^2.6.9`
 - update: `ng2-charts` to `^2.3.0`
+- update: `ngx-boottsrap` to `^4.2.0`
 - update: `rxjs` to `^6.5.2`
 - update: `tsickle` to `^0.35.0`
 - update: `tslib` to `^1.9.3`
