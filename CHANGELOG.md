@@ -4,6 +4,7 @@
 - refactor(app.routing): lazy loading via dynamic import()
 - refactor(modals): `ViewChild` second parameter 
 - refactor(tsconfig): "module: "esnext", "target": "es6" 
+- chore: update `ng2-charts@2.3.0` imports
 - chore(tslint): remove undefined rules
 - update: Angular to `v8.0.0`
 - update: `@angular/animations` to `^8.0.0`
@@ -17,6 +18,7 @@
 - update: `@angular/router` to `^8.0.0`
 - update: `@coreui/coreui` to `^2.1.11`
 - update: `core-js` to `^2.6.9`
+- update: `ng2-charts` to `^2.3.0`
 - update: `rxjs` to `^6.5.2`
 - update: `tsickle` to `^0.35.0`
 - update: `tslib` to `^1.9.3`

@@ -47,7 +47,7 @@
     "font-awesome": "^4.7.0",
     "moment": "^2.24.0",
     "mutationobserver-shim": "^0.3.3",
-    "ng2-charts": "^1.6.0",
+    "ng2-charts": "^2.3.0",
     "ngx-bootstrap": "^3.3.0",
     "ngx-perfect-scrollbar": "^7.2.1",
     "rxjs": "^6.5.2",
