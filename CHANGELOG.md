@@ -10,6 +10,14 @@
 - fix(polyfill): import `web-animations-js`
 - chore(tslint): remove depracated/undefined rules  
 - chore(tsconfig): set "target" to "es5" / IE11 compatible
+
+###### breaking changes
+- `Angular v8.0.0` (see https://update.angular.io/)
+- `@ViewChild` second parameter required 
+- `BrowserAnimationsModule` required
+- routing: lazy loading via dynamic import()
+
+###### dependencies update
 - update: Angular to `v8.0.0`
 - update: `@angular/animations` to `^8.0.0`
 - update: `@angular/common` to `^8.0.0`
