@@ -1,4 +1,14 @@
-## [angular](./README.md) version `changelog`
+## [CoreUI for Angular](./README.md) version `changelog`
+
+###### `v2.5.1`
+###### dependencies update
+- update `@coreui/angular` to `^2.5.1`
+- update `ngx-bootstrap` to `^5.0.0` 
+- update `ngx-perfect-scrollbar` to `^8.0.0`
+- update `tslib` to `^1.10.0`
+- update `@angular-devkit/build-angular` to `^0.800.2`
+- update `@angular/cli` to `^8.0.2`
+- update `@types/node` to `^12.0.7`
 
 ###### `v2.5.0`
 - refactor(app.routing): lazy loading via dynamic import()
