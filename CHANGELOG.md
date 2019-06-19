@@ -1,5 +1,27 @@
 ## [CoreUI for Angular](./README.md) version `changelog`
 
+###### `v2.5.2`
+- fix(cards): card with header actions
+- fix(carousels): images and intervals cleanup
+
+###### dependencies update
+- update `@angular/animations` to `^8.0.2`
+- update `@angular/common` to `^8.0.2`
+- update `@angular/compiler` to `^8.0.2`
+- update `@angular/core` to `^8.0.2`
+- update `@angular/forms` to `^8.0.2`
+- update `@angular/platform-browser` to `^8.0.2`
+- update `@angular/platform-browser-dynamic` to `^8.0.2`
+- update `@angular/router` to `^8.0.2`
+- update `@coreui/angular` to `^2.5.2`
+- update `@coreui/coreui` to `^2.1.12`
+- update `@angular-devkit/build-angular` to `^0.800.3`
+- update `@angular/cli` to `^8.0.3`
+- update `@angular/compiler-cli` to `^8.0.2`
+- update `@angular/language-service` to `^8.0.2`
+- update `@types/node` to `^12.0.8`
+- update `ts-node` to `^8.3.0`
+    
 ###### `v2.5.1`
 ###### dependencies update
 - update `@coreui/angular` to `^2.5.1`
