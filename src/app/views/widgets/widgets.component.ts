@@ -175,7 +175,8 @@ export class WidgetsComponent {
   public barChart1Data: Array<any> = [
     {
       data: [78, 81, 80, 45, 34, 12, 40, 78, 81, 80, 45, 34, 12, 40, 12, 40],
-      label: 'Series A'
+      label: 'Series A',
+      barPercentage: 0.6
     }
   ];
   public barChart1Labels: Array<any> = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'];
@@ -188,7 +189,6 @@ export class WidgetsComponent {
     scales: {
       xAxes: [{
         display: false,
-        barPercentage: 0.6,
       }],
       yAxes: [{
         display: false
@@ -250,7 +250,8 @@ export class WidgetsComponent {
   public barChart2Data: Array<any> = [
     {
       data: [4, 18, 9, 17, 34, 22, 11, 3, 15, 12, 18, 9],
-      label: 'Series A'
+      label: 'Series A',
+      barPercentage: 0.6
     }
   ];
   public barChart2Labels: Array<any> = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -263,7 +264,6 @@ export class WidgetsComponent {
     scales: {
       xAxes: [{
         display: false,
-        barPercentage: 0.6,
       }],
       yAxes: [{
         display: false,
