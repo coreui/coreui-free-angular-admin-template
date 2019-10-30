@@ -1,10 +1,10 @@
 [![@coreui angular](https://img.shields.io/badge/@coreui%20-angular-lightgrey.svg?style=flat-square)](https://github.com/coreui/angular)
-[![npm package][npm-coreui-angular-badge]][npm-coreui-angular] 
+[![npm package][npm-coreui-angular-badge]][npm-coreui-angular]
 [![NPM downloads][npm-coreui-angular-download]][npm-coreui-angular]  
 [![@coreui coreui](https://img.shields.io/badge/@coreui%20-coreui-lightgrey.svg?style=flat-square)](https://github.com/coreui/coreui)
 [![npm package][npm-coreui-badge]][npm-coreui]
-[![NPM downloads][npm-coreui-download]][npm-coreui]    
-![angular](https://img.shields.io/badge/angular-^8.0.0-lightgrey.svg?style=flat-square)  
+[![NPM downloads][npm-coreui-download]][npm-coreui]  
+![angular](https://img.shields.io/badge/angular-^8.2.12-lightgrey.svg?style=flat-square)  
 
 [npm-coreui-angular]: https://www.npmjs.com/package/@coreui/angular  
 [npm-coreui-angular-badge]: https://img.shields.io/npm/v/@coreui/angular.png?style=flat-square  
@@ -33,20 +33,27 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
 
 ## Table of Contents
 
-* [Versions](#versions)
-* [CoreUI Pro](#coreui-pro)
-* [Admin Templates built on top of CoreUI Pro](#admin-templates-built-on-top-of-coreui-pro)
-* [Installation](#installation)
-* [Usage](#usage)
-* [What's included](#whats-included)
-* [Documentation](#documentation)
-* [Contributing](#contributing)
-* [Versioning](#versioning)
-* [Creators](#creators)
-* [Community](#community)
-* [Community Projects](#community-projects)
-* [License](#license)
-* [Support CoreUI Development](#support-coreui-development)
+- [CoreUI Free Angular 2+ Admin Template ![Tweet](https://twitter.com/intent/tweet?text=CoreUI%20-%20Free%20Bootstrap%204%20Admin%20Template%20&url=https://coreui.io&hashtags=bootstrap,admin,template,dashboard,panel,free,angular,react,vue)](#coreui-free-angular-2-admin-template-tweethttpstwittercomintenttweettextcoreui20-20free20bootstrap20420admin20template20urlhttpscoreuiiohashtagsbootstrapadmintemplatedashboardpanelfreeangularreactvue)
+  - [Table of Contents](#table-of-contents)
+  - [Versions](#versions)
+  - [CoreUI Pro](#coreui-pro)
+  - [Admin Templates built on top of CoreUI Pro](#admin-templates-built-on-top-of-coreui-pro)
+      - [Prerequisites](#prerequisites)
+          - [Node.js](#nodejs)
+          - [Angular CLI](#angular-cli)
+        - [Update to Angular 8](#update-to-angular-8)
+  - [Installation](#installation)
+    - [Clone repo](#clone-repo)
+  - [Usage](#usage)
+  - [What's included](#whats-included)
+  - [Documentation](#documentation)
+  - [Contributing](#contributing)
+  - [Versioning](#versioning)
+  - [Creators](#creators)
+  - [Community](#community)
+    - [Community Projects](#community-projects)
+  - [Copyright and license](#copyright-and-license)
+  - [Support CoreUI Development](#support-coreui-development)
 
 ## Versions
 

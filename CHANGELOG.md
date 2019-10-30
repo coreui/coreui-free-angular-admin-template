@@ -1,5 +1,46 @@
 ## [CoreUI for Angular](./README.md) version `changelog`
 
+###### `v2.5.3`
+- fix(polyfills): add optional settings for IE10 issues
+- refactor(_nav.ts): INavData moved from _nav.ts to import from @coreui/angular
+- refactor(default-layout): drop MutationObserver, add minimizedChange event
+- fix(dashboard): `scales.[x/y]Axes.barPercentage` is deprecated. Please use `dataset.barPercentage` instead
+- fix(widgets): `scales.[x/y]Axes.barPercentage` is deprecated. Please use `dataset.barPercentage` instead
+- test: add e2e test bed with some tests 
+
+###### dependencies update
+- update `@angular/animations` to `^8.2.10`
+- update `@angular/common` to `^8.2.12`
+- update `@angular/compiler` to `^8.2.12`
+- update `@angular/core` to `^8.2.12`
+- update `@angular/forms` to `^8.2.12`
+- update `@angular/platform-browser` to `^8.2.12`
+- update `@angular/platform-browser-dynamic` to `^8.2.12`
+- update `@angular/router` to `^8.2.12`
+- update `@coreui/angular` to `^2.6.3`
+- update `@coreui/coreui` to `^2.1.16`
+- update `chart.js` to `^2.9.1`
+- update `core-js` to `^2.6.10`
+- update `flag-icon-css` to `^3.4.5`
+- update `ngx-bootstrap` to `^5.2.0`
+- update `rxjs` to `^6.5.3`
+- update `web-animations-js` to `^2.3.2`
+- update `zone.js` to `^0.10.2`
+- update `@angular-devkit/build-angular` to `^0.803.15`
+- update `@angular/cli` to `^8.3.15`
+- update `@angular/compiler-cli` to `^8.2.12`
+- update `@angular/language-service` to `^8.2.12`
+- update `@types/jasmine` to `^3.4.4`
+- update `@types/jasminewd2` to `^2.0.8`
+- update `@types/node` to `^12.7.12`
+- update `codelyzer` to `^5.2.0`
+- update `jasmine-core` to `^3.5.0`
+- update `karma` to `^4.4.1`
+- update `karma-chrome-launcher` to `^3.1.0`
+- update `karma-coverage-istanbul-reporter` to `^2.1.0`    
+- update `ts-node` to `^8.4.1`
+- update `tslint` to `^5.20.0`
+
 ###### `v2.5.2`
 - fix(cards): card with header actions
 - fix(carousels): images and intervals cleanup
@@ -35,7 +76,7 @@
 ###### `v2.5.0`
 - refactor(app.routing): lazy loading via dynamic import()
 - refactor(modals): `ViewChild` second parameter 
-- refactor(tsconfig): "module: "esnext", "target": "es6" 
+- refactor(tsconfig): "module: "esnext` "target` to `es6" 
 - chore: update `ng2-charts@2.3.0` imports
 - chore: update `ngx-bootstrap@4.2.0` 
 - fix(collapse): `No provider for AnimationBuilder` add import `BrowserAnimationsModule` to app.module
