@@ -11,6 +11,5 @@ export class DefaultLayoutComponent {
 
   toggleMinimize(e) {
     this.sidebarMinimized = e;
-    console.log('toggleMinimize', e, this.sidebarMinimized);
   }
 }
