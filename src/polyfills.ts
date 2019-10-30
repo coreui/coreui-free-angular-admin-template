@@ -76,3 +76,21 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+
+/***************************************************************************************************
+ * IE10 issues
+ */
+
+/**
+ * IE10 - some CSS3 properties and HTML5 elements are not fully supported or require prefixed properties for full functionality
+ * to let Autoprefixer use old flexbox prefixes - add a browserslist property to the package.json file:
+ * "browserslist": [
+ * "last 2 versions",
+ * "not ie < 10",
+ * ]
+ */
+
+/**
+ * IE10 - TypeError: Object doesn't support property or method 'getRootNode'
+ */
+// import 'get-root-node-polyfill/implement'; // Run `npm i get-root-node-polyfill`.
