@@ -5,12 +5,12 @@ import {ModalDirective} from 'ngx-bootstrap/modal';
   templateUrl: 'modals.component.html'
 })
 export class ModalsComponent {
-  @ViewChild('myModal', {static: false}) public myModal: ModalDirective;
-  @ViewChild('largeModal', {static: false}) public largeModal: ModalDirective;
-  @ViewChild('smallModal', {static: false}) public smallModal: ModalDirective;
-  @ViewChild('primaryModal', {static: false}) public primaryModal: ModalDirective;
-  @ViewChild('successModal', {static: false}) public successModal: ModalDirective;
-  @ViewChild('warningModal', {static: false}) public warningModal: ModalDirective;
-  @ViewChild('dangerModal', {static: false}) public dangerModal: ModalDirective;
-  @ViewChild('infoModal', {static: false}) public infoModal: ModalDirective;
+  @ViewChild('myModal') public myModal: ModalDirective;
+  @ViewChild('largeModal') public largeModal: ModalDirective;
+  @ViewChild('smallModal') public smallModal: ModalDirective;
+  @ViewChild('primaryModal') public primaryModal: ModalDirective;
+  @ViewChild('successModal') public successModal: ModalDirective;
+  @ViewChild('warningModal') public warningModal: ModalDirective;
+  @ViewChild('dangerModal') public dangerModal: ModalDirective;
+  @ViewChild('infoModal') public infoModal: ModalDirective;
 }
