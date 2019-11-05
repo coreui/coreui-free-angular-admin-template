@@ -1,5 +1,31 @@
 ## [CoreUI for Angular](./README.md) version `changelog`
 
+###### `v2.7.0` for Angular 9
+- chore: upgrade to Angular 9 - see also: 
+    - `https://next.angular.io/guide/updating-to-version-9`
+    - `https://update.angular.io/#8.0:9.0`
+
+###### dependencies update
+- update `@coreui/angular` to `^2.7.0`
+- update `@angular/animations` to `^9.0.0-rc.0`
+- update `@angular/common` to `^9.0.0-rc.0`
+- update `@angular/compiler` to `^9.0.0-rc.0`
+- update `@angular/core` to `^9.0.0-rc.0`
+- update `@angular/forms` to `^9.0.0-rc.0`
+- update `@angular/platform-browser` to `^9.0.0-rc.0`
+- update `@angular/platform-browser-dynamic` to `^9.0.0-rc.0`
+- update `@angular/router` to `^9.0.0-rc.0`
+- update `zone.js` to `~0.10.2`
+- update `@angular-devkit/build-angular` to `~0.900.0-rc.0`
+- update `@angular/cli` to `^9.0.0-rc.0`
+- update `@angular/compiler-cli` to `^9.0.0-rc.0`
+- update `@angular/language-service` to `^9.0.0-rc.0`
+- update `@types/jasmine` to `^3.4.5`
+- update `@types/node` to `^12.11.1`
+- update `codelyzer` to `^5.1.2`
+- update `typescript` to `~3.6.4`
+- update `chart.js` to `^2.9.2`
+
 ###### `v2.5.3`
 - fix(polyfills): add optional settings for IE10 issues
 - refactor(_nav.ts): INavData moved from _nav.ts to import from @coreui/angular
@@ -76,7 +102,7 @@
 ###### `v2.5.0`
 - refactor(app.routing): lazy loading via dynamic import()
 - refactor(modals): `ViewChild` second parameter 
-- refactor(tsconfig): "module: "esnext` "target` to `es6" 
+- refactor(tsconfig): `module: esnext` and `target: es5` 
 - chore: update `ng2-charts@2.3.0` imports
 - chore: update `ngx-bootstrap@4.2.0` 
 - fix(collapse): `No provider for AnimationBuilder` add import `BrowserAnimationsModule` to app.module
