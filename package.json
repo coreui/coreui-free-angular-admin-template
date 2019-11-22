@@ -19,8 +19,8 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
+    "start": "ng serve --port=8082 --disable-host-check",
     "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
-    "start": "ng serve",
     "build": "ng build --prod --aot --buildOptimizer --commonChunk --vendorChunk --optimization --progress",
     "test": "ng test",
     "lint": "ng lint",
@@ -45,6 +45,7 @@
     "core-js": "^2.6.10",
     "flag-icon-css": "^3.4.5",
     "font-awesome": "^4.7.0",
+    "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "mutationobserver-shim": "^0.3.3",
     "ng2-charts": "^2.3.0",

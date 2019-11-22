@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { FormsModule } from '@angular/forms'
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
@@ -20,6 +20,8 @@ import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
+
+import { AlertModule } from 'ngx-bootstrap';
 
 const APP_CONTAINERS = [
   DefaultLayoutComponent
@@ -40,7 +42,7 @@ import { AppRoutingModule } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
-
+import { ModalModule, BsModalRef } from 'ngx-bootstrap/modal';
 @NgModule({
   imports: [
     BrowserModule,
@@ -48,6 +50,9 @@ import { ChartsModule } from 'ng2-charts';
     AppRoutingModule,
     AppAsideModule,
     AppBreadcrumbModule.forRoot(),
+    FormsModule,
+    AlertModule.forRoot(),
+    ModalModule.forRoot(),
     AppFooterModule,
     AppHeaderModule,
     AppSidebarModule,
@@ -67,7 +72,7 @@ import { ChartsModule } from 'ng2-charts';
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
-  }],
-  bootstrap: [ AppComponent ]
+  }, BsModalRef],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

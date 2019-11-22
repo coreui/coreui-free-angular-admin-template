@@ -1,13 +1,73 @@
-<app-header
-  [navbarBrandRouterLink]="['/dashboard']"
-  [fixed]="true"
+<button type="button" class="btn btn-primary" (click)="openModal(template)">Open modal</button>
+<br>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Event list</h4>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+            <i class="fa fa-align-justify"></i> Add events (This will not fire logEvent)
+          </div>
+          <div>
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td><input class="form-control" [(ngModel)]="name" placeholder="event name" /></td>
+                  <td><input class="form-control" [(ngModel)]="vendor" placeholder="vendor" /></td>
+                  <td colspan="2"><textarea rows="1" class="form-control"
+                      [(ngModel)]="properties">Enter JSON </textarea>
+                  </td>
+                  <td><button class="btn btn-primary" (click)="submit()">add</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="eventArray.length">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+            <i class="fa fa-align-justify"></i>List of events
+          </div>
+          <div class="">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Event Name</th>
+                  <th>vendor</th>
+                  <th colspan="2">properties</th>
+                  <th>fireEvent</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let event of eventArray; let i=index;">
+                  <td> {{ event.name }}</td>
+                  <td> {{ event.vendor }}</td>
+                  <td colspan="2"><textarea rows="1" class="form-control" [(ngModel)]="event.properties"></textarea>
+                  </td>
+                  <td><button class="btn btn-primary" (click)="fireEvent(event, i)">Fire</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<app-header [navbarBrandRouterLink]="['/dashboard']" [fixed]="true"
   [navbarBrandFull]="{src: 'assets/img/brand/logo.svg', width: 89, height: 25, alt: 'CoreUI Logo'}"
   [navbarBrandMinimized]="{src: 'assets/img/brand/sygnet.svg', width: 30, height: 30, alt: 'CoreUI Logo'}"
-  [sidebarToggler]="'lg'"
-  [asideMenuToggler]="'lg'">
+  [sidebarToggler]="'lg'" [asideMenuToggler]="'lg'">
   <ul class="nav navbar-nav d-md-down-none">
     <li class="nav-item px-3">
-      <a class="nav-link" href="#">Dashboard</a>
+      <button class="btn btn-primary" (click)="openModal(template)">Events</button>
     </li>
     <li class="nav-item px-3">
       <a class="nav-link" href="#">Users</a>
@@ -27,20 +87,26 @@
       <a class="nav-link" href="#"><i class="icon-location-pin"></i></a>
     </li>
     <li class="nav-item dropdown" dropdown placement="bottom right">
-      <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle (click)="false">
-        <img src="assets/img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com"/>
+      <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
+        dropdownToggle (click)="false">
+        <img src="assets/img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com" />
       </a>
       <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
         <div class="dropdown-header text-center"><strong>Account</strong></div>
-        <a class="dropdown-item" href="#"><i class="fa fa-bell-o"></i> Updates<span class="badge badge-info">42</span></a>
-        <a class="dropdown-item" href="#"><i class="fa fa-envelope-o"></i> Messages<span class="badge badge-success">42</span></a>
-        <a class="dropdown-item" href="#"><i class="fa fa-tasks"></i> Tasks<span class="badge badge-danger">42</span></a>
-        <a class="dropdown-item" href="#"><i class="fa fa-comments"></i> Comment<span class="badge badge-warning">42</span></a>
+        <a class="dropdown-item" href="#"><i class="fa fa-bell-o"></i> Updates<span
+            class="badge badge-info">42</span></a>
+        <a class="dropdown-item" href="#"><i class="fa fa-envelope-o"></i> Messages<span
+            class="badge badge-success">42</span></a>
+        <a class="dropdown-item" href="#"><i class="fa fa-tasks"></i> Tasks<span
+            class="badge badge-danger">42</span></a>
+        <a class="dropdown-item" href="#"><i class="fa fa-comments"></i> Comment<span
+            class="badge badge-warning">42</span></a>
         <div class="dropdown-header text-center"><strong>Settings</strong></div>
         <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a>
         <a class="dropdown-item" href="#"><i class="fa fa-wrench"></i> Setting</a>
         <a class="dropdown-item" href="#"><i class="fa fa-usd"></i> Payments<span class="badge badge-dark">42</span></a>
-        <a class="dropdown-item" href="#"><i class="fa fa-file"></i> Projects<span class="badge badge-primary">42</span></a>
+        <a class="dropdown-item" href="#"><i class="fa fa-file"></i> Projects<span
+            class="badge badge-primary">42</span></a>
         <div class="divider"></div>
         <a class="dropdown-item" href="#"><i class="fa fa-shield"></i> Lock account</a>
         <a class="dropdown-item" href="#"><i class="fa fa-lock"></i> Logout</a>
@@ -49,7 +115,8 @@
   </ul>
 </app-header>
 <div class="app-body">
-  <app-sidebar #appSidebar [fixed]="true" [display]="'lg'" [minimized]="sidebarMinimized" (minimizedChange)="toggleMinimize($event)">
+  <app-sidebar #appSidebar [fixed]="true" [display]="'lg'" [minimized]="sidebarMinimized"
+    (minimizedChange)="toggleMinimize($event)">
     <app-sidebar-nav [navItems]="navItems" [perfectScrollbar] [disabled]="appSidebar.minimized"></app-sidebar-nav>
     <app-sidebar-minimizer></app-sidebar-minimizer>
   </app-sidebar>
@@ -69,15 +136,15 @@
     </cui-breadcrumb>
     <!-- deprecation warning for 'app-breadcrumb' -->
     <!--<ol class="breadcrumb">-->
-      <!--<app-breadcrumb></app-breadcrumb>-->
-      <!--&lt;!&ndash; Breadcrumb Menu&ndash;&gt;-->
-      <!--<li class="breadcrumb-menu d-md-down-none">-->
-        <!--<div class="btn-group" role="group" aria-label="Button group with nested dropdown">-->
-          <!--<a class="btn" href="#"><i class="icon-speech"></i></a>-->
-          <!--<a class="btn" [routerLink]="['/dashboard']"><i class="icon-graph"></i> &nbsp;Dashboard</a>-->
-          <!--<a class="btn" href="#"><i class="icon-settings"></i> &nbsp;Settings</a>-->
-        <!--</div>-->
-      <!--</li>-->
+    <!--<app-breadcrumb></app-breadcrumb>-->
+    <!--&lt;!&ndash; Breadcrumb Menu&ndash;&gt;-->
+    <!--<li class="breadcrumb-menu d-md-down-none">-->
+    <!--<div class="btn-group" role="group" aria-label="Button group with nested dropdown">-->
+    <!--<a class="btn" href="#"><i class="icon-speech"></i></a>-->
+    <!--<a class="btn" [routerLink]="['/dashboard']"><i class="icon-graph"></i> &nbsp;Dashboard</a>-->
+    <!--<a class="btn" href="#"><i class="icon-settings"></i> &nbsp;Settings</a>-->
+    <!--</div>-->
+    <!--</li>-->
     <!--</ol>-->
     <div class="container-fluid">
       <router-outlet></router-outlet>
@@ -88,7 +155,9 @@
       <tab>
         <ng-template tabHeading><i class="icon-list"></i></ng-template>
         <div class="list-group list-group-accent">
-          <div class="list-group-item list-group-item-accent-secondary bg-light text-center font-weight-bold text-muted text-uppercase small">Today</div>
+          <div
+            class="list-group-item list-group-item-accent-secondary bg-light text-center font-weight-bold text-muted text-uppercase small">
+            Today</div>
           <div class="list-group-item list-group-item-accent-warning list-group-item-divider">
             <div class="avatar float-right">
               <img class="img-avatar" src="assets/img/avatars/7.jpg" alt="admin@bootstrapmaster.com">
@@ -113,7 +182,9 @@
             <small class="text-muted">
               <i class="icon-social-skype"></i>  On-line</small>
           </div>
-          <div class="list-group-item list-group-item-accent-secondary bg-light text-center font-weight-bold text-muted text-uppercase small">Tomorrow</div>
+          <div
+            class="list-group-item list-group-item-accent-secondary bg-light text-center font-weight-bold text-muted text-uppercase small">
+            Tomorrow</div>
           <div class="list-group-item list-group-item-accent-danger list-group-item-divider">
             <div>New UI Project -
               <strong>deadline</strong>
@@ -197,7 +268,8 @@
               <small class="text-muted float-right mt-1">1:52 PM</small>
             </div>
             <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
-            <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
+            <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+              incididunt...</small>
           </div>
           <hr>
           <div class="message">
@@ -212,7 +284,8 @@
               <small class="text-muted float-right mt-1">1:52 PM</small>
             </div>
             <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
-            <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
+            <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+              incididunt...</small>
           </div>
           <hr>
           <div class="message">
@@ -227,7 +300,8 @@
               <small class="text-muted float-right mt-1">1:52 PM</small>
             </div>
             <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
-            <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
+            <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+              incididunt...</small>
           </div>
           <hr>
           <div class="message">
@@ -242,7 +316,8 @@
               <small class="text-muted float-right mt-1">1:52 PM</small>
             </div>
             <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
-            <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
+            <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+              incididunt...</small>
           </div>
           <hr>
           <div class="message">
@@ -257,7 +332,8 @@
               <small class="text-muted float-right mt-1">1:52 PM</small>
             </div>
             <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
-            <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
+            <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+              incididunt...</small>
           </div>
         </div>
       </tab>
@@ -274,7 +350,8 @@
               </label>
             </div>
             <div>
-              <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small>
+              <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua.</small>
             </div>
           </div>
           <div class="aside-options">
@@ -286,7 +363,8 @@
               </label>
             </div>
             <div>
-              <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small>
+              <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua.</small>
             </div>
           </div>
           <div class="aside-options">
@@ -312,22 +390,26 @@
           <h6>System Utilization</h6>
           <div class="text-uppercase mb-1 mt-4"><small><b>CPU Usage</b></small></div>
           <div class="progress progress-xs">
-            <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0"
+              aria-valuemax="100"></div>
           </div>
           <small class="text-muted">348 Processes. 1/4 Cores.</small>
           <div class="text-uppercase mb-1 mt-2"><small><b>Memory Usage</b></small></div>
           <div class="progress progress-xs">
-            <div class="progress-bar bg-warning" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar bg-warning" role="progressbar" style="width: 70%" aria-valuenow="70"
+              aria-valuemin="0" aria-valuemax="100"></div>
           </div>
           <small class="text-muted">11444GB/16384MB</small>
           <div class="text-uppercase mb-1 mt-2"><small><b>SSD 1 Usage</b></small></div>
           <div class="progress progress-xs">
-            <div class="progress-bar bg-danger" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar bg-danger" role="progressbar" style="width: 95%" aria-valuenow="95"
+              aria-valuemin="0" aria-valuemax="100"></div>
           </div>
           <small class="text-muted">243GB/256GB</small>
           <div class="text-uppercase mb-1 mt-2"><small><b>SSD 2 Usage</b></small></div>
           <div class="progress progress-xs">
-            <div class="progress-bar bg-success" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar bg-success" role="progressbar" style="width: 10%" aria-valuenow="10"
+              aria-valuemin="0" aria-valuemax="100"></div>
           </div>
           <small class="text-muted">25GB/256GB</small>
         </div>
