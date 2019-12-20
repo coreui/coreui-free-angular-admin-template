@@ -54,6 +54,12 @@ export const navItems: INavData[] = [
         icon: 'icon-puzzle'
       },
       {
+        name: 'Navbars',
+        url: '/base/navbars',
+        icon: 'icon-puzzle'
+
+      },
+      {
         name: 'Pagination',
         url: '/base/paginations',
         icon: 'icon-puzzle'
