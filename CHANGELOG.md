@@ -1,5 +1,25 @@
 ## [CoreUI for Angular](./README.md) version `changelog`
 
+###### `v2.7.2` 
+- feat: add missing Navbars example - thanks @EliasDerHai
+
+###### dependencies update
+- update `@angular/animations` to `^9.0.0-rc.7`
+- update `@angular/common` to `^9.0.0-rc.7`
+- update `@angular/compiler` to `^9.0.0-rc.7`
+- update `@angular/core` to `^9.0.0-rc.7`
+- update `@angular/forms` to `^9.0.0-rc.7`
+- update `@angular/platform-browser` to `^9.0.0-rc.7`
+- update `@angular/platform-browser-dynamic` to `^9.0.0-rc.7`
+- update `@angular/router` to `^9.0.0-rc.7`
+- update `@coreui/angular` to `^2.7.2`
+- update `core-js` to `^2.6.11`
+- update `@angular-devkit/build-angular` to `^0.900.0-rc.7`
+- update `@angular/cli` to `^9.0.0-rc.7`
+- update `@angular/compiler-cli` to `^9.0.0-rc.7`
+- update `@angular/language-service` to `^9.0.0-rc.7`
+- update `codelyzer` to `^5.2.1`
+
 ###### `v2.7.0` for Angular 9
 - chore: upgrade to Angular 9 - see also: 
     - `https://next.angular.io/guide/updating-to-version-9`
