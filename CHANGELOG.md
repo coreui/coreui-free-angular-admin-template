@@ -1,5 +1,23 @@
 ## [CoreUI for Angular](./README.md) version `changelog`
 
+###### `v2.7.5`
+- fix(carousels): move to picsum.photos
+
+###### dependencies update
+- update `@coreui/angular` to `^2.7.5`
+- update `@angular/animations` to `^9.0.0-rc.12`
+- update `@angular/common` to `^9.0.0-rc.12`
+- update `@angular/compiler` to `^9.0.0-rc.12`
+- update `@angular/core` to `^9.0.0-rc.12`
+- update `@angular/forms` to `^9.0.0-rc.12`
+- update `@angular/platform-browser` to `^9.0.0-rc.12`
+- update `@angular/platform-browser-dynamic` to `^9.0.0-rc.12`
+- update `@angular/router` to `^9.0.0-rc.12`
+- update `@angular-devkit/build-angular` to `^0.900.0-rc.12`
+- update `@angular/cli` to `^9.0.0-rc.12`
+- update `@angular/compiler-cli` to `^9.0.0-rc.12`
+- update `@angular/language-service` to `^9.0.0-rc.12` 
+
 ###### `v2.7.2` 
 - feat: add missing Navbars example - thanks @EliasDerHai
 

@@ -1,6 +1,6 @@
 {
   "name": "@coreui/coreui-free-angular-admin-template",
-  "version": "2.7.2",
+  "version": "2.7.5",
   "description": "CoreUI Free Angular 2+ Admin Template",
   "author": {
     "name": "Łukasz Holeczek",
@@ -15,7 +15,7 @@
     }
   ],
   "homepage": "https://coreui.io/angular",
-  "copyright": "Copyright 2019 creativeLabs Łukasz Holeczek",
+  "copyright": "Copyright 2020 creativeLabs Łukasz Holeczek",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -79,7 +79,7 @@
     "typescript": "~3.6.4"
   },
   "engines": {
-    "node": ">= 12",
+    "node": ">= 10",
     "npm": ">= 6"
   }
 }
