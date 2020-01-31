@@ -27,9 +27,12 @@ export class CarouselsComponent implements OnDestroy {
   }
 
   addSlide(): void {
-    this.slides.push({
-      image: `https://lorempixel.com/900/500/abstract/${this.slides.length % 8 + 1}/`
-    });
+    setTimeout( () => {
+      const seed = Math.random().toString(36).slice(-6);
+      this.slides.push({
+        image: `https://picsum.photos/seed/${seed}/900/500`
+      });
+    }, 500);
   }
 
   removeSlide(index?: number): void {
