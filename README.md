@@ -4,7 +4,7 @@
 [![@coreui coreui](https://img.shields.io/badge/@coreui%20-coreui-lightgrey.svg?style=flat-square)](https://github.com/coreui/coreui)
 [![npm package][npm-coreui-badge]][npm-coreui]
 [![NPM downloads][npm-coreui-download]][npm-coreui]  
-![angular](https://img.shields.io/badge/angular-^9.0.0--rc.7-lightgrey.svg?style=flat-square&logo=angular)  
+![angular](https://img.shields.io/badge/angular-^9.0.0--rc.12-lightgrey.svg?style=flat-square&logo=angular)  
 
 [npm-coreui-angular]: https://www.npmjs.com/package/@coreui/angular  
 [npm-coreui-angular-badge]: https://img.shields.io/npm/v/@coreui/angular.png?style=flat-square  
@@ -95,8 +95,8 @@ Install the Angular CLI globally using a terminal/console window.
 npm install -g @angular/cli
 ```
 
-##### Update to Angular 8
-Angular 8 requires `Node.js` version 12.x   
+##### Update to Angular 9
+Angular 9 requires `Node.js` version 10.x or newer    
 Update guide - see: [https://update.angular.io](https://update.angular.io)
 
 ## Installation
