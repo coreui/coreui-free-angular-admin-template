@@ -4,7 +4,7 @@
 [![@coreui coreui](https://img.shields.io/badge/@coreui%20-coreui-lightgrey.svg?style=flat-square)](https://github.com/coreui/coreui)
 [![npm package][npm-coreui-badge]][npm-coreui]
 [![NPM downloads][npm-coreui-download]][npm-coreui]  
-![angular](https://img.shields.io/badge/angular-^9.0.0--rc.12-lightgrey.svg?style=flat-square&logo=angular)  
+![angular](https://img.shields.io/badge/angular-^9.0.0-lightgrey.svg?style=flat-square&logo=angular)  
 
 [npm-coreui-angular]: https://www.npmjs.com/package/@coreui/angular  
 [npm-coreui-angular-badge]: https://img.shields.io/npm/v/@coreui/angular.png?style=flat-square  
@@ -41,7 +41,7 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
       - [Prerequisites](#prerequisites)
           - [Node.js](#nodejs)
           - [Angular CLI](#angular-cli)
-        - [Update to Angular 8](#update-to-angular-8)
+        - [Update to Angular 9](#update-to-angular-9)
   - [Installation](#installation)
     - [Clone repo](#clone-repo)
   - [Usage](#usage)
@@ -84,7 +84,7 @@ CoreUI is built on top of Bootstrap 4 and supports popular frameworks.
 Before you begin, make sure your development environment includes `Node.js®` and an `npm` package manager.
 
 ###### Node.js
-Angular requires `Node.js` version 8.x or 10.x
+Angular 9 requires `Node.js` version 10.13 or later.
 
 - To check your version, run `node -v` in a terminal/console window.
 - To get `Node.js`, go to [nodejs.org](https://nodejs.org/).
@@ -187,7 +187,7 @@ Some of projects created by community but not maintained by CoreUI team.
 
 ## Copyright and license
 
-copyright 2018 creativeLabs Łukasz Holeczek. Code released under [the MIT license](https://github.com/coreui/coreui-free-angular-admin-template/blob/master/LICENSE).
+copyright 2017-2020 creativeLabs Łukasz Holeczek. Code released under [the MIT license](https://github.com/coreui/coreui-free-angular-admin-template/blob/master/LICENSE).
 There is only one limitation you can't re-distribute the CoreUI as stock. You can’t do this if you modify the CoreUI. In past we faced some problems with persons who tried to sell CoreUI based templates.
 
 ## Support CoreUI Development
