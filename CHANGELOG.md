@@ -20,7 +20,7 @@
 - update `ngx-perfect-scrollbar` to `^9.0.0`
 - update `rxjs` to `^6.5.5`
 - update `tslib` to `^1.11.1`
-- update `zone.js` to `~0.10.3"
+- update `zone.js` to `~0.10.3`
 - update `@angular-devkit/build-angular` to `~0.901.1`
 - update `@angular/cli` to `^9.1.1`
 - update `@angular/compiler-cli` to `^9.1.1`
