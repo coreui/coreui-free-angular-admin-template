@@ -68,3 +68,4 @@ creativeLabs Łukasz Holeczek reserves the right to change the license of future
 CoreUI is an MIT licensed open source project and completely free to use. However, the amount of effort needed to maintain and develop new features for the project is not sustainable without proper financial backing. You can support development by donating on [PayPal](https://www.paypal.me/holeczek) or buying one of our [premium bootstrap 4 admin templates](https://genesisui.com/?support=1).
 
 As of now I am exploring the possibility of working on CoreUI fulltime - if you are a business that is building core products using CoreUI, I am also open to conversations regarding custom sponsorship / consulting arrangements. Get in touch on [Twitter](https://twitter.com/lukaszholeczek).
+I like this 
