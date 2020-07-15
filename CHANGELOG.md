@@ -1,5 +1,38 @@
 ## [CoreUI for Angular](./README.md) version `changelog`
 
+###### `v2.9.4`
+- refactor(polyfills): update core-js polyfills imports
+
+###### dependencies update
+- update `@angular/animations` to `^9.1.12`
+- update `@angular/common` to `^9.1.12`
+- update `@angular/compiler` to `^9.1.12`
+- update `@angular/core` to `^9.1.12`
+- update `@angular/forms` to `^9.1.12`
+- update `@angular/platform-browser` to `^9.1.12`
+- update `@angular/platform-browser-dynamic` to `^9.1.12`
+- update `@angular/router` to `^9.1.12`
+- update `@coreui/angular` to `~2.9.4`
+- update `bootstrap` to `^4.5.0`
+- update `core-js` to `^3.6.5`
+- update `flag-icon-css` to `^3.5.0`
+- update `moment` to `^2.27.0`
+- update `mutationobserver-shim` to `^0.3.7`
+- update `ng2-charts` to `^2.3.2`
+- update `rxjs` to `^6.6.0`
+- update `tslib` to `^1.13.0`
+- update `@angular-devkit/build-angular` to `^0.901.11`
+- update `@angular/cli` to `^9.1.11`
+- update `@angular/compiler-cli` to `^9.1.12`
+- update `@angular/language-service` to `^9.1.12`
+- update `@types/jasmine` to `^3.5.11`
+- update `@types/node` to `^13.13.14`
+- update `karma` to `^5.1.0`
+- update `karma-jasmine` to `^3.3.1`
+- update `karma-jasmine-html-reporter` to `^1.5.4`
+- update `protractor` to `^7.0.0`
+- update `ts-node` to `^8.10.2`
+
 ###### `v2.9.2`
 - fix(navbars): cannot find module `ngx-bootstrap`
 
