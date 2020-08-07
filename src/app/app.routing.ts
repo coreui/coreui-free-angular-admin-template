@@ -9,11 +9,16 @@ import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 
+// Import all the components for which navigation service has to be activated 
+import { SignInComponent } from './components/sign-in/sign-in.component';
+
+import { AuthGuard } from "./shared/guard/auth.guard";
+
+
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full',
+    redirectTo: 'sign-in',    pathMatch: 'full',
   },
   {
     path: '404',
@@ -29,20 +34,8 @@ export const routes: Routes = [
       title: 'Page 500'
     }
   },
-  {
-    path: 'login',
-    component: LoginComponent,
-    data: {
-      title: 'Login Page'
-    }
-  },
-  {
-    path: 'register',
-    component: RegisterComponent,
-    data: {
-      title: 'Register Page'
-    }
-  },
+  { path: 'sign-in', component: SignInComponent },
+
   {
     path: '',
     component: DefaultLayoutComponent,
@@ -64,6 +57,7 @@ export const routes: Routes = [
       },
       {
         path: 'dashboard',
+        canActivate: [AuthGuard],
         loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {
