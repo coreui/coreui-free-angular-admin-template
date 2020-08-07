@@ -1,5 +1,19 @@
 ## [CoreUI for Angular](./README.md) version `changelog`
 
+###### `v2.9.5`
+- fix(simple-line-icons): Can't resolve simple-line-icons.css - fixes #196
+
+###### dependencies update
+- update `simple-line-icons`  to `^2.5.2`
+- update `@angular-devkit/build-angular`  to `^0.901.12`
+- update `@angular/cli`  to `^9.1.12`
+- update `@types/jasmine`  to `^3.5.12`
+- update `jasmine-core`  to `^3.6.0`
+- update `jasmine-spec-reporter`  to `^5.0.2`
+- update `karma`  to `^5.1.1`
+- update `karma-coverage-istanbul-reporter`  to `^3.0.3`
+- update `tslint`  to `^6.1.3`
+
 ###### `v2.9.4`
 - refactor(polyfills): update core-js polyfills imports
 
