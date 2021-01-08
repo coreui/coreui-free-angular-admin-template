@@ -1,5 +1,37 @@
 ## [CoreUI for Angular](./README.md) version `changelog`
 
+###### `v2.9.6`
+- feat(icons): update to @coreui/icons v2 and @coreui/icons-angular
+
+###### dependencies update
+- update `@angular/animations` to `^9.1.13`
+- update `@angular/cdk` to `^9.2.4`
+- update `@angular/common` to `^9.1.13`
+- update `@angular/compiler` to `^9.1.13`
+- update `@angular/core` to `^9.1.13`
+- update `@angular/forms` to `^9.1.13`
+- update `@angular/platform-browser` to `^9.1.13`
+- update `@angular/platform-browser-dynamic` to `^9.1.13`
+- update `@angular/router` to `^9.1.13`
+- update `@coreui/angular`: `~2.9.6`
+- update `@coreui/icons` to `^2.0.0-rc.0`
+- update `@coreui/icons-angular` to `1.0.0-alpha.3`
+- update `bootstrap` to `^4.5.3`
+- update `chart.js` to `^2.9.4`
+- update `core-js` to `^3.8.2`
+- update `ng2-charts` to `~2.3.3`
+- update `ngx-bootstrap` to `^5.6.2`
+- update `rxjs` to `^6.6.3`
+- update `simple-line-icons` to `^2.5.5`
+- update `tslib` to `^1.14.1`
+- update `@angular-devkit/build-angular` to `^0.901.13`
+- update `@angular/cli` to `^9.1.13`
+- update `@angular/compiler-cli` to `^9.1.13`
+- update `@angular/language-service` to `^9.1.13`
+- update `@types/jasmine` to `^3.6.2`
+- update `@types/node` to `^14.14.20`
+- update `karma` to `^5.2.3`
+
 ###### `v2.9.5`
 - fix(simple-line-icons): Can't resolve simple-line-icons.css - fixes #196
 
