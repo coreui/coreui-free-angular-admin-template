@@ -8,8 +8,8 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "module": "esnext",
-    "target": "es5",
+    "module": "es2020",
+    "target": "es2015",
     "typeRoots": [
       "node_modules/@types"
     ],

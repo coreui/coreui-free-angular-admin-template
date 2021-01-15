@@ -31,8 +31,10 @@
                 "./node_modules"
               ]
             },
-            "scripts": [
-              "node_modules/chart.js/dist/Chart.min.js"
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "chart.js",
+              "classnames"
             ]
           },
           "configurations": {
@@ -85,10 +87,9 @@
             "karmaConfig": "./karma.conf.js",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
-            "scripts": [
-              "node_modules/chart.js/dist/Chart.min.js"
-            ],
+            "scripts": [],
             "styles": [
+              "node_modules/@coreui/icons/css/free.css",
               "node_modules/flag-icon-css/css/flag-icon.css",
               "node_modules/font-awesome/css/font-awesome.css",
               "node_modules/simple-line-icons/dist/styles/simple-line-icons.css",
@@ -149,7 +150,7 @@
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
-      "styleext": "scss"
+      "style": "scss"
     },
     "@schematics/angular:directive": {
       "prefix": "app"
