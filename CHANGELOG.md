@@ -1,5 +1,34 @@
 ## [CoreUI for Angular](./README.md) version `changelog`
 
+###### `v2.11.0`
+
+- chore: update to `Angular 11` and `TypeScript 4`
+  - [https://update.angular.io/](https://update.angular.io/?v=10.2-11.0)
+  - [https://v11.angular.io/guide/updating-to-version-11](https://v11.angular.io/guide/updating-to-version-11)
+  - [TypeScript: Documentation - TypeScript 4](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-0.html)
+  - remove deprecated support for IE 9, 10, and IE mobile
+
+###### dependencies update
+- update `@angular/animations` to `^11.0.9`
+- update `@angular/cdk` to `^11.0.4`
+- update `@angular/common` to `^11.0.9`
+- update `@angular/compiler` to `^11.0.9`
+- update `@angular/core` to `^11.0.9`
+- update `@angular/forms` to `^11.0.9`
+- update `@angular/localize` to `^11.0.9`
+- update `@angular/platform-browser` to `^11.0.9`
+- update `@angular/platform-browser-dynamic` to `^11.0.9`
+- update `@angular/router` to `^11.0.9`
+- update `@coreui/angular` to `~2.11.0`
+- update `@angular-devkit/build-angular` to `^0.1100.7`
+- update `@angular/cli` to `^11.0.7`
+- update `@angular/compiler-cli` to `^11.0.9`
+- update `@angular/language-service` to `^11.0.9`
+- update `@types/jasmine` to `~3.6.0`
+- update `codelyzer` to `^6.0.0`
+- update `karma-coverage` to `~2.0.3`
+- update `typescript` to `~4.0.5`
+
 ###### `v2.10.0`
 
 - chore: update to `Angular 10` and `TypeScript 3.9`
