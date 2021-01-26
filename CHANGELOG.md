@@ -1,5 +1,30 @@
 ## [CoreUI for Angular](./README.md) version `changelog`
 
+###### `v2.11.1`
+
+- chore: update to `Angular 11.1`
+
+###### dependencies update
+    "@angular/animations": "^11.1.0",
+    "@angular/cdk": "^11.1.0",
+    "@angular/common": "^11.1.0",
+    "@angular/compiler": "^11.1.0",
+    "@angular/core": "^11.1.0",
+    "@angular/forms": "^11.1.0",
+    "@angular/localize": "^11.1.0",
+    "@angular/platform-browser": "^11.1.0",
+    "@angular/platform-browser-dynamic": "^11.1.0",
+    "@angular/router": "^11.1.0",
+    "@coreui/angular": "~2.11.1",
+    "bootstrap": "^4.6.0",
+    "core-js": "^3.8.3",
+    "@angular-devkit/build-angular": "^0.1101.1",
+    "@angular/cli": "^11.1.1",
+    "@angular/compiler-cli": "^11.1.0",
+    "@angular/language-service": "^11.1.0",
+    "@types/jasmine": "^3.6.3",
+    "@types/node": "^14.14.22",
+
 ###### `v2.11.0`
 
 - chore: update to `Angular 11` and `TypeScript 4`

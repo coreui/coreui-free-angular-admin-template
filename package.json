@@ -1,6 +1,6 @@
 {
   "name": "@coreui/coreui-free-angular-admin-template",
-  "version": "2.11.0",
+  "version": "2.11.1",
   "description": "CoreUI Free Angular 11 Admin Template",
   "author": {
     "name": "Łukasz Holeczek",
@@ -21,7 +21,7 @@
     "ng": "ng",
     "postinstall": "ngcc --properties es2015 browser module main --first-only",
     "start": "ng serve",
-    "build": "ng build --prod --aot --buildOptimizer --commonChunk --vendorChunk --optimization --progress",
+    "build": "ng build --prod --aot --build-optimizer --common-chunk --vendor-chunk --optimization --progress",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
