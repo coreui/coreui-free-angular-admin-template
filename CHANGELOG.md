@@ -5,25 +5,26 @@
 - chore: update to `Angular 11.2`
 
 ###### dependencies update
-- update `@angular/animations` to `^11.2.2`
-- update `@angular/cdk` to `^11.2.1`
-- update `@angular/common` to `^11.2.2`
-- update `@angular/compiler` to `^11.2.2`
-- update `@angular/core` to `^11.2.2`
-- update `@angular/forms` to `^11.2.2`
-- update `@angular/localize` to `^11.2.2`
-- update `@angular/platform-browser` to `^11.2.2`
-- update `@angular/platform-browser-dynamic` to `^11.2.2`
-- update `@angular/router` to `^11.2.2`
+- update `@angular/animations` to `^11.2.5`
+- update `@angular/cdk` to `^11.2.4
+- update `@angular/common` to `^11.2.5`
+- update `@angular/compiler` to `^11.2.5`
+- update `@angular/core` to `^11.2.5`
+- update `@angular/forms` to `^11.2.5`
+- update `@angular/localize` to `^11.2.5`
+- update `@angular/platform-browser` to `^11.2.5`
+- update `@angular/platform-browser-dynamic` to `^11.2.5`
+- update `@angular/router` to `^11.2.5`
 - update `@coreui/angular` to `^2.11.2`
-- update `core-js` to `^3.9.0`
-- update `@angular-devkit/build-angular` to `^0.1102.1`
-- update `@angular/cli` to `^11.2.1`
-- update `@angular/compiler-cli` to `^11.2.2`
-- update `@angular/language-service` to `^11.2.2`
-- update `@types/jasmine` to `^3.6.4`
-- update `@types/node` to `^14.14.31`
-- update `typescript` to `^4.0.7`
+- update `core-js` to `^3.9.1`
+- update `rxjs` to `^6.6.6`
+- update `@angular-devkit/build-angular` to `^0.1102.4`
+- update `@angular/cli` to `^11.2.4`
+- update `@angular/compiler-cli` to `^11.2.5`
+- update `@angular/language-service` to `^11.2.5`
+- update `@types/jasmine` to `^3.6.6`
+- update `@types/node` to `^14.14.33`
+- update `typescript` to `^4.1.5`
 
 ###### `v2.11.1`
 
