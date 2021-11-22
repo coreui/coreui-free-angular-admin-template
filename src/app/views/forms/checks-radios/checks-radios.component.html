@@ -1,0 +1,340 @@
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <app-docs-callout href="forms/checks-radios" name="Checks and Radios"></app-docs-callout>
+  </c-col>
+  <form [formGroup]="formGroup" cForm>
+    <c-col xs="12">
+      <c-card class="mb-4">
+        <c-card-header>
+          <strong>Angular Checkbox</strong>
+        </c-card-header>
+        <c-card-body>
+          <app-docs-example href="forms/checks-radios">
+            <div formGroupName="flexCheckGroup">
+              <c-form-check>
+                <input cFormCheckInput formControlName="checkOne" id="checkOne" type="checkbox" />
+                <label cFormCheckLabel for="checkOne">Default checkbox</label>
+              </c-form-check>
+              <c-form-check>
+                <input [checked]="true" cFormCheckInput formControlName="checkTwo" id="checkTwo" type="checkbox" />
+                <label cFormCheckLabel for="checkTwo">Checked checkbox</label>
+              </c-form-check>
+            </div>
+          </app-docs-example>
+        </c-card-body>
+      </c-card>
+    </c-col>
+    <c-col xs="12">
+      <c-card class="mb-4">
+        <c-card-header>
+          <strong>Angular Checkbox</strong> <small>Disabled</small>
+        </c-card-header>
+        <c-card-body>
+          <p class="text-medium-emphasis small">
+            Add the <code>disabled</code> attribute and the associated <code>&lt;label&gt;</code>s
+            are automatically styled to match with a lighter color to help indicate the
+            input&#39;s state.
+          </p>
+          <app-docs-example href="forms/checks-radios#disabled">
+            <div formGroupName="flexCheckGroupDisabled">
+              <c-form-check>
+                <input cFormCheckInput formControlName="checkThree" id="checkThree" type="checkbox" />
+                <label cFormCheckLabel for="checkThree">Disabled checkbox</label>
+              </c-form-check>
+              <c-form-check>
+                <input cFormCheckInput formControlName="checkFour" id="checkFour" type="checkbox" />
+                <label cFormCheckLabel for="checkFour">Disabled checked checkbox</label>
+              </c-form-check>
+            </div>
+          </app-docs-example>
+        </c-card-body>
+      </c-card>
+    </c-col>
+    <c-col xs="12">
+      <c-card class="mb-4">
+        <c-card-header>
+          <strong>Angular Radio</strong>
+        </c-card-header>
+        <c-card-body>
+          <app-docs-example href="forms/checks-radios#radios">
+            <div formGroupName="flexRadioGroup">
+              <c-form-check>
+                <input cFormCheckInput formControlName="flexRadioDefault" type="radio" value="one" />
+                <label cFormCheckLabel>Default radio</label>
+              </c-form-check>
+              <c-form-check>
+                <input cFormCheckInput formControlName="flexRadioDefault" type="radio" value="two" />
+                <label cFormCheckLabel>Checked radio</label>
+              </c-form-check>
+            </div>
+          </app-docs-example>
+        </c-card-body>
+      </c-card>
+    </c-col>
+    <c-col xs="12">
+      <c-card class="mb-4">
+        <c-card-header>
+          <strong>Angular Radio</strong> <small>Disabled</small>
+        </c-card-header>
+        <c-card-body>
+          <p class="text-medium-emphasis small">
+            Add the <code>disabled</code> attribute and the associated <code>&lt;label&gt;</code>s
+            are automatically styled to match with a lighter color to help indicate the
+            input&#39;s state.
+          </p>
+          <app-docs-example href="forms/checks-radios#disabled-1">
+            <div formGroupName="flexRadioGroupDisabled">
+              <c-form-check>
+                <input cFormCheckInput formControlName="flexRadioDefault" type="radio" value="one" />
+                <label cFormCheckLabel>Default radio</label>
+              </c-form-check>
+              <c-form-check>
+                <input cFormCheckInput formControlName="flexRadioDefault" type="radio" value="two" />
+                <label cFormCheckLabel>Checked radio</label>
+              </c-form-check>
+            </div>
+          </app-docs-example>
+        </c-card-body>
+      </c-card>
+    </c-col>
+    <c-col xs="12">
+      <c-card class="mb-4">
+        <c-card-header>
+          <strong>Angular Switches</strong>
+        </c-card-header>
+        <c-card-body>
+          <p class="text-medium-emphasis small">
+            A switch has the markup of a custom checkbox but uses the <code>switch</code> boolean
+            properly to render a toggle switch. Switches also support the <code>disabled</code>
+            attribute.
+          </p>
+          <app-docs-example href="forms/checks-radios#switches">
+            <c-form-check [switch]="true">
+              <input cFormCheckInput type="checkbox" />
+              <label cFormCheckLabel>Default switch checkbox input</label>
+            </c-form-check>
+            <c-form-check [switch]="true">
+              <input cFormCheckInput checked type="checkbox" />
+              <label cFormCheckLabel>Checked switch checkbox input</label>
+            </c-form-check>
+            <c-form-check [switch]="true">
+              <input cFormCheckInput disabled type="checkbox" />
+              <label cFormCheckLabel>Default switch checkbox input</label>
+            </c-form-check>
+            <c-form-check [switch]="true">
+              <input cFormCheckInput checked disabled type="checkbox" />
+              <label cFormCheckLabel>Checked switch checkbox input</label>
+            </c-form-check>
+          </app-docs-example>
+        </c-card-body>
+      </c-card>
+    </c-col>
+    <c-col xs="12">
+      <c-card class="mb-4">
+        <c-card-header>
+          <strong>Angular Switches</strong> <small>Sizes</small>
+        </c-card-header>
+        <c-card-body>
+          <app-docs-example href="forms/checks-radios#sizes">
+            <c-form-check [switch]="true">
+              <input cFormCheckInput type="checkbox" />
+              <label cFormCheckLabel>Default switch checkbox input</label>
+            </c-form-check>
+            <c-form-check sizing="lg" switch>
+              <input cFormCheckInput type="checkbox" />
+              <label cFormCheckLabel>Large switch checkbox input</label>
+            </c-form-check>
+            <c-form-check sizing="xl" switch>
+              <input cFormCheckInput checked type="checkbox" />
+              <label cFormCheckLabel>Extra large switch checkbox input</label>
+            </c-form-check>
+          </app-docs-example>
+        </c-card-body>
+      </c-card>
+    </c-col>
+    <c-col xs="12">
+      <c-card class="mb-4">
+        <c-card-header>
+          <strong>Angular Checks and Radios</strong> <small>Default layout (stacked)</small>
+        </c-card-header>
+        <c-card-body>
+          <p class="text-medium-emphasis small">
+            By default, any number of checkboxes and radios that are immediate sibling will be
+            vertically stacked and appropriately spaced.
+          </p>
+          <app-docs-example href="forms/checks-radios#default-stacked">
+            <c-form-check>
+              <input cFormCheckInput id="stackOne" type="checkbox" />
+              <label cFormCheckLabel for="stackOne">Default checkbox</label>
+            </c-form-check>
+            <c-form-check>
+              <input cFormCheckInput disabled id="stackTwo" type="checkbox" />
+              <label cFormCheckLabel for="stackTwo">Disabled checkbox</label>
+            </c-form-check>
+          </app-docs-example>
+          <app-docs-example href="forms/checks-radios#default-stacked">
+            <c-form-check>
+              <input cFormCheckInput checked id="radioStack1" name="radioStack" type="radio" />
+              <label cFormCheckLabel for="radioStack1">Default radio</label>
+            </c-form-check>
+            <c-form-check>
+              <input cFormCheckInput id="radioStack2" name="radioStack" type="radio" />
+              <label cFormCheckLabel for="radioStack2">Second radio</label>
+            </c-form-check>
+            <c-form-check>
+              <input cFormCheckInput disabled id="radioStack3" name="radioStack" type="radio" />
+              <label cFormCheckLabel for="radioStack3">Disabled radio</label>
+            </c-form-check>
+          </app-docs-example>
+        </c-card-body>
+      </c-card>
+    </c-col>
+    <c-col xs="12">
+      <c-card class="mb-4">
+        <c-card-header>
+          <strong>Angular Checks and Radios</strong> <small>Inline</small>
+        </c-card-header>
+        <c-card-body>
+          <p class="text-medium-emphasis small">
+            Group checkboxes or radios on the same horizontal row by adding <code>inline</code>
+            boolean property to any <code>&lt;c-form-check&gt;</code>.
+          </p>
+          <app-docs-example href="forms/checks-radios#inline">
+            <c-form-check [inline]="true">
+              <input cFormCheckInput id="inline1" type="checkbox" />
+              <label cFormCheckLabel for="inline1">1</label>
+            </c-form-check>
+            <c-form-check inline>
+              <input cFormCheckInput id="inline2" type="checkbox" />
+              <label cFormCheckLabel for="inline2">2</label>
+            </c-form-check>
+            <c-form-check inline>
+              <input cFormCheckInput disabled id="inline3" type="checkbox" />
+              <label cFormCheckLabel for="inline3">3 (disabled)</label>
+            </c-form-check>
+
+          </app-docs-example>
+          <app-docs-example href="forms/checks-radios#inline">
+            <c-form-check inline>
+              <input cFormCheckInput checked id="radioinline1" name="radioinline" type="radio" />
+              <label cFormCheckLabel for="radioinline1">1</label>
+            </c-form-check>
+            <c-form-check inline>
+              <input cFormCheckInput id="radioinline2" name="radioinline" type="radio" />
+              <label cFormCheckLabel for="radioinline2">2</label>
+            </c-form-check>
+            <c-form-check inline>
+              <input cFormCheckInput disabled id="radioinline3" name="radioinline" type="radio" />
+              <label cFormCheckLabel for="radioinline3">3 (disabled)</label>
+            </c-form-check>
+          </app-docs-example>
+        </c-card-body>
+      </c-card>
+    </c-col>
+    <c-col xs="12">
+      <c-card class="mb-4">
+        <c-card-header>
+          <strong>Angular Checks and Radios</strong> <small>Without labels</small>
+        </c-card-header>
+        <c-card-body>
+          <p class="text-medium-emphasis small">
+            Remember to still provide some form of accessible name for assistive technologies (for
+            instance, using <code>aria-label</code>).
+          </p>
+          <app-docs-example href="forms/checks-radios#without-labels">
+            <div>
+              <input cFormCheckInput id="nolabelCheck" name="nolabelCheck" type="checkbox" />
+            </div>
+            <div>
+              <input cFormCheckInput id="nolabelRadio" name="nolabelRadio" type="radio" />
+            </div>
+          </app-docs-example>
+        </c-card-body>
+      </c-card>
+    </c-col>
+    <c-col xs="12">
+      <c-card class="mb-4">
+        <c-card-header>
+          <strong>Toggle buttons</strong>
+        </c-card-header>
+        <c-card-body>
+          <p class="text-medium-emphasis small">
+            Create button-like checkboxes and radio buttons by using <code>button</code> boolean
+            property on the <code>&lt;CFormCheck&gt;</code> component. These toggle buttons can
+            further be grouped in a button group if needed.
+          </p>
+          <app-docs-example href="forms/checks-radios#toggle-buttons">
+            <div formGroupName="btnCheckGroup">
+              <c-button-group aria-label="Basic checkbox toggle button group" role="group">
+                <input class="btn-check" formControlName="checkbox1" type="checkbox" />
+                <label (click)="setCheckBoxValue('checkbox1')" cButton cFormCheckLabel
+                >Checkbox 1</label>
+
+                <input class="btn-check" formControlName="checkbox2" type="checkbox" />
+                <label (click)="setCheckBoxValue('checkbox2')" cButton cFormCheckLabel
+                >Checkbox 2</label>
+
+                <input class="btn-check" formControlName="checkbox3" type="checkbox" />
+                <label (click)="setCheckBoxValue('checkbox3')" cButton cFormCheckLabel>Disabled 3</label>
+              </c-button-group>
+            </div>
+          </app-docs-example>
+          <app-docs-example>
+            <div formGroupName="btnRadioGroup">
+              <c-button-group aria-label="Basic radio toggle button group" role="group">
+                <input class="btn-check" formControlName="radio1" id="radio1" type="radio" value="Radio1" />
+                <label (click)="setRadioValue('Radio1')" cButton cFormCheckLabel for="radio1"
+                       variant="ghost">Radio 1</label>
+
+                <input class="btn-check" formControlName="radio1" id="radio2" type="radio" value="Radio2" />
+                <label (click)="setRadioValue('Radio2')" cButton cFormCheckLabel for="radio2"
+                       variant="ghost">Radio 2</label>
+                <fieldset disabled>
+                  <input class="btn-check" formControlName="radio1" id="radio3" type="radio" value="Radio3" />
+                  <label (click)="setRadioValue('Radio3')" cButton cFormCheckLabel for="radio3" variant="ghost">Radio3</label>
+                </fieldset>
+              </c-button-group>
+            </div>
+          </app-docs-example>
+          <h5>Outlined styles</h5>
+          <p class="text-medium-emphasis small">
+            Different variants of button, such at the various outlined styles, are supported.
+          </p>
+          <app-docs-example href="forms/checks-radios#toggle-buttons">
+            <div formGroupName="btnCheckGroup">
+              <c-button-group aria-label="Basic checkbox toggle button group" role="group">
+                <input class="btn-check" formControlName="checkbox1" type="checkbox" />
+                <label (click)="setCheckBoxValue('checkbox1')" cButton cFormCheckLabel
+                       variant="outline">Checkbox 1</label>
+
+                <input class="btn-check" formControlName="checkbox2" type="checkbox" />
+                <label (click)="setCheckBoxValue('checkbox2')" cButton cFormCheckLabel
+                       variant="outline">Checkbox 2</label>
+
+                <input class="btn-check" formControlName="checkbox3" type="checkbox" />
+                <label (click)="setCheckBoxValue('checkbox3')" cButton cFormCheckLabel variant="outline">Disabled
+                  3</label>
+              </c-button-group>
+            </div>
+          </app-docs-example>
+          <app-docs-example>
+            <div formGroupName="btnRadioGroup">
+              <c-button-group aria-label="Basic radio toggle button group" role="group">
+                <input class="btn-check" formControlName="radio1" id="radio1o" type="radio" value="Radio1" />
+                <label (click)="setRadioValue('Radio1')" cButton cFormCheckLabel color="danger" for="radio1o"
+                       variant="outline">Radio 1</label>
+
+                <input class="btn-check" formControlName="radio1" id="radio2o" type="radio" value="Radio2" />
+                <label (click)="setRadioValue('Radio2')" cButton cFormCheckLabel color="success" for="radio2o"
+                       variant="outline">Radio 2</label>
+
+                <input class="btn-check" [attr.disabled]="true" formControlName="radio1" id="radio3o" type="radio" value="Radio3" />
+                <label (click)="setRadioValue('Radio3')" cButton color="secondary" for="radio3o" variant="outline">Radio3</label>
+              </c-button-group>
+            </div>
+          </app-docs-example>
+        </c-card-body>
+      </c-card>
+    </c-col>
+  </form>
+</c-row>

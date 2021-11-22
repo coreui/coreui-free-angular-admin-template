@@ -1,0 +1,168 @@
+<c-row>
+  <c-col xl="3" sm="6">
+    <c-widget-stat-a
+      [title]="'Users'"
+      class="mb-4"
+      color="primary"
+    >
+      <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
+        26K
+        <span class="fs-6 fw-normal">
+          (-12.4% <svg cIcon name="cilArrowBottom"></svg>)
+        </span>
+      </ng-template>
+      <ng-template cTemplateId="widgetActionTemplate">
+        <c-dropdown variant="btn-group" alignment="end">
+          <button [caret]="false" cButton cDropdownToggle class="p-0" color="transparent">
+            <svg cIcon class="text-high-emphasis-inverse" name="cilOptions"></svg>
+          </button>
+          <ul cDropdownMenu>
+            <li><a [routerLink] cDropdownItem>Action</a></li>
+            <li><a [routerLink] cDropdownItem>Another action</a></li>
+            <li><a [routerLink] cDropdownItem>Something else here</a></li>
+            <li>
+              <hr cDropdownDivider>
+            </li>
+            <li>
+              <button cDropdownItem>Separated link</button>
+            </li>
+          </ul>
+        </c-dropdown>
+      </ng-template>
+      <ng-template cTemplateId="widgetChartTemplate">
+        <div [ngStyle]="{ 'height.px': 70 }" class="chart-wrapper mt-3 mx-3">
+          <canvas
+            [datasets]="datasets[0]"
+            [labels]="['January', 'February', 'March', 'April', 'May', 'June', 'July']"
+            [legend]="false"
+            [options]="chartOptions(0)"
+            cNoZoneBaseChart
+            chartType="line"
+          >
+          </canvas>
+        </div>
+      </ng-template>
+    </c-widget-stat-a>
+  </c-col>
+  <c-col xl="3" sm="6">
+    <c-widget-stat-a
+      [title]="'Income'"
+      class="mb-4"
+      color="info"
+    >
+      <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
+        <span>$6.200</span>
+        <span class="fs-6 fw-normal">
+          (40.9% <svg cIcon name="cilArrowTop"></svg>)
+        </span>
+      </ng-template>
+      <ng-template cTemplateId="widgetActionTemplate">
+        <c-dropdown variant="btn-group" alignment="end">
+          <button [caret]="false" cButton cDropdownToggle class="p-0" color="transparent">
+            <svg cIcon class="text-high-emphasis-inverse" name="cilOptions"></svg>
+          </button>
+          <ul cDropdownMenu>
+            <li><a [routerLink] cDropdownItem>Action</a></li>
+            <li><a [routerLink] cDropdownItem>Another action</a></li>
+            <li><a [routerLink] cDropdownItem>Something else here</a></li>
+            <li><a [disabled]="true" [routerLink] cDropdownItem>Disabled</a></li>
+          </ul>
+        </c-dropdown>
+      </ng-template>
+      <ng-template cTemplateId="widgetChartTemplate">
+        <div [ngStyle]="{ 'height.px': 70 }" class="chart-wrapper mt-3 mx-3">
+          <canvas
+            [datasets]="datasets[1]"
+            [labels]="['January', 'February', 'March', 'April', 'May', 'June', 'July']"
+            [legend]="false"
+            [options]="chartOptions(1)"
+            cNoZoneBaseChart
+            chartType="line"
+          >
+          </canvas>
+        </div>
+      </ng-template>
+    </c-widget-stat-a>
+  </c-col>
+  <c-col xl="3" sm="6">
+    <c-widget-stat-a
+      [title]="'Conversion Rate'"
+      class="mb-4"
+      color="warning"
+    >
+      <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
+        <span>2.49</span>
+        <span class="fs-6 fw-normal">
+          (84.7% <svg cIcon name="cilArrowTop"></svg>)
+        </span>
+      </ng-template>
+      <ng-template cTemplateId="widgetActionTemplate">
+        <c-dropdown variant="btn-group" alignment="end">
+          <button [caret]="false" cButton cDropdownToggle class="p-0" color="transparent">
+            <svg cIcon class="text-high-emphasis-inverse" name="cilOptions"></svg>
+          </button>
+          <ul cDropdownMenu>
+            <li><a [routerLink] cDropdownItem>Action</a></li>
+            <li><a [routerLink] cDropdownItem>Another action</a></li>
+            <li><a [routerLink] cDropdownItem>Something else here</a></li>
+            <li><a [disabled]="true" [routerLink] cDropdownItem>Disabled</a></li>
+          </ul>
+        </c-dropdown>
+      </ng-template>
+      <ng-template cTemplateId="widgetChartTemplate">
+        <div [ngStyle]="{ 'height.px': 70 }" class="chart-wrapper mt-3">
+          <canvas
+            [datasets]="datasets[2]"
+            [labels]="['January', 'February', 'March', 'April', 'May', 'June', 'July']"
+            [legend]="false"
+            [options]="chartOptions(2)"
+            cNoZoneBaseChart
+            chartType="line"
+          >
+          </canvas>
+        </div>
+      </ng-template>
+    </c-widget-stat-a>
+  </c-col>
+  <c-col xl="3" sm="6">
+    <c-widget-stat-a
+      [title]="'Sessions'"
+      class="mb-4"
+      color="danger"
+    >
+      <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
+        <span>44K</span>
+        <span class="fs-6 fw-normal">
+          (-23.6% <svg cIcon name="cilArrowBottom"></svg>)
+        </span>
+      </ng-template>
+      <ng-template cTemplateId="widgetActionTemplate">
+        <c-dropdown variant="btn-group" alignment="end">
+          <button [caret]="false" cButton cDropdownToggle class="p-0" color="transparent">
+            <svg cIcon class="text-high-emphasis-inverse" name="cilOptions"></svg>
+          </button>
+          <ul cDropdownMenu>
+            <li><a [routerLink] cDropdownItem>Action</a></li>
+            <li><a [routerLink] cDropdownItem>Another action</a></li>
+            <li><a [routerLink] cDropdownItem>Something else here</a></li>
+            <li><a [disabled]="true" [routerLink] cDropdownItem>Disabled</a></li>
+          </ul>
+        </c-dropdown>
+      </ng-template>
+      <ng-template cTemplateId="widgetChartTemplate">
+        <div [ngStyle]="{ 'height.px': 70 }" class="chart-wrapper mt-3 mx-3">
+          <canvas
+            [datasets]="datasets[3]"
+            [labels]="labels"
+            [legend]="false"
+            [options]="chartOptions(3)"
+            cNoZoneBaseChart
+            chartType="bar"
+          >
+          </canvas>
+        </div>
+      </ng-template>
+    </c-widget-stat-a>
+  </c-col>
+</c-row>
+

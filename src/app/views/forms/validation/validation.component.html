@@ -1,0 +1,433 @@
+<c-row>
+  <c-col xs="12">
+    <app-docs-callout href="forms/validation" name="Validation"></app-docs-callout>
+  </c-col>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header ngPreserveWhitespaces>
+        <strong>Validation</strong> <small>Custom styles</small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-medium-emphasis small">
+          For custom CoreUI form validation messages, you&#39;ll need to add the
+          <code>noValidate</code> boolean property to your <code>&lt;CForm&gt;</code>. This
+          disables the browser default feedback tooltips, but still provides access to the form
+          validation APIs in JavaScript. Try to submit the form below; our JavaScript will
+          intercept the submit button and relay feedback to you. When attempting to submit,
+          you&#39;ll see the <code>:invalid</code> and <code>:valid</code> styles applied to
+          your form controls.
+        </p>
+        <p class="text-medium-emphasis small">
+          Custom feedback styles apply custom colors, borders, focus styles, and background
+          icons to better communicate feedback.
+        </p>
+        <app-docs-example href="forms/validation">
+
+          <form #customStylesForm="ngForm"
+                (ngSubmit)="onSubmit1()"
+                [validated]="customStylesValidated"
+                cForm
+                class="row g-3 needs-validation"
+          >
+            <c-col md="4">
+              <label cLabel for="validationCustom01">First name</label>
+              <input cFormControl id="validationCustom01" required type="text" value="Mark" />
+              <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+            </c-col>
+            <c-col md="4">
+              <label cLabel for="validationCustom02">Last name</label>
+              <input cFormControl id="validationCustom02" required type="text" value="Otto" />
+              <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+            </c-col>
+            <c-col md="4">
+              <label cLabel for="validationCustomUsername">Username</label>
+              <c-input-group class="has-validation">
+                <span cInputGroupText id="inputGroupPrepend">@</span>
+                <input aria-describedby="inputGroupPrepend"
+                       cFormControl
+                       id="validationCustomUsername"
+                       required
+                       type="text"
+                />
+                <c-form-feedback [valid]="false">Please choose a username.</c-form-feedback>
+              </c-input-group>
+            </c-col>
+            <c-col md="6">
+              <label cLabel for="validationCustom03">City</label>
+              <input cFormControl id="validationCustom03" required type="text" />
+              <c-form-feedback [valid]="false">Please provide a valid city.</c-form-feedback>
+            </c-col>
+            <c-col md="3">
+              <label cLabel for="validationCustom04">State</label>
+              <select cSelect id="validationCustom04" required>
+                <option value="">Choose...</option>
+                <option>...</option>
+              </select>
+              <c-form-feedback [valid]="false">Please provide a valid State.</c-form-feedback>
+            </c-col>
+            <c-col md="3">
+              <label cLabel for="validationCustom05">Zip code</label>
+              <input cFormControl id="validationCustom05" required type="text" />
+              <c-form-feedback [valid]="false">Please provide a valid zip.</c-form-feedback>
+            </c-col>
+            <c-col xs="12">
+              <c-form-check>
+                <input cFormCheckInput id="invalidCheck" name="invalidCheck" required type="checkbox" />
+                <label cFormCheckLabel for="invalidCheck">Agree to terms and conditions</label>
+              </c-form-check>
+              <c-form-feedback [valid]="false">You must agree before submitting.</c-form-feedback>
+            </c-col>
+            <c-col xs="12">
+              <button cButton class="me-1" color="primary" type="submit">
+                Submit form
+              </button>
+              <button (click)="onReset1()" cButton color="secondary" type="reset">
+                Reset
+              </button>
+            </c-col>
+          </form>
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+  </c-col>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header ngPreserveWhitespaces>
+        <strong>Validation</strong> <small>Browser defaults</small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-medium-emphasis small">
+          Not interested in custom validation feedback messages or writing JavaScript to change
+          form behaviors? All good, you can use the browser defaults. Try submitting the form
+          below. Depending on your browser and OS, you&#39;ll see a slightly different style of
+          feedback.
+        </p>
+        <p class="text-medium-emphasis small">
+          While these feedback styles cannot be styled with CSS, you can still customize the
+          feedback text through JavaScript.
+        </p>
+        <app-docs-example href="forms/validation#browser-defaults">
+
+          <form #browserDefaultsForm="ngForm"
+                (ngSubmit)="onSubmit2()"
+                [validated]="browserDefaultsValidated"
+                cForm
+                class="row g-3"
+                ngNativeValidate
+          >
+            <c-col md="4">
+              <label cLabel for="validationDefault01">Email</label>
+              <input cFormControl id="validationDefault01" required type="text" value="Mark" />
+              <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+            </c-col>
+            <c-col md="4">
+              <label cLabel for="validationDefault02">Email</label>
+              <input cFormControl id="validationDefault02" required type="text" value="Otto" />
+              <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+            </c-col>
+            <c-col md="4">
+              <label cLabel for="validationDefaultUsername">Username</label>
+              <c-input-group class="has-validation">
+                <span cInputGroupText id="inputGroupPrepend1">@</span>
+                <input aria-describedby="inputGroupPrepend1"
+                       cFormControl
+                       id="validationDefaultUsername"
+                       required
+                       type="text"
+                />
+                <c-form-feedback [valid]="false">Please choose a username.</c-form-feedback>
+              </c-input-group>
+            </c-col>
+            <c-col md="6">
+              <label cLabel for="validationDefault03">City</label>
+              <input cFormControl id="validationDefault03" required type="text" />
+              <c-form-feedback [valid]="false">Please provide a valid city.</c-form-feedback>
+            </c-col>
+            <c-col md="3">
+              <label cLabel for="validationDefault04">State</label>
+              <select cSelect id="validationDefault04" required>
+                <option value="">Choose...</option>
+                <option>...</option>
+              </select>
+              <c-form-feedback [valid]="false">Please provide a valid State.</c-form-feedback>
+            </c-col>
+            <c-col md="3">
+              <label cLabel for="validationDefault05">Zip code</label>
+              <input cFormControl id="validationDefault05" required type="text" />
+              <c-form-feedback [valid]="false">Please provide a valid zip.</c-form-feedback>
+            </c-col>
+            <c-col xs="12">
+              <c-form-check>
+                <input cFormCheckInput id="invalidCheck1" name="invalidCheck" required type="checkbox" />
+                <label cFormCheckLabel for="invalidCheck1">Agree to terms and conditions</label>
+              </c-form-check>
+              <c-form-feedback [valid]="false">You must agree before submitting.</c-form-feedback>
+            </c-col>
+            <c-col xs="12">
+              <button cButton class="me-1" color="primary" type="submit">
+                Submit form
+              </button>
+              <button (click)="onReset2()" cButton color="secondary" type="reset">
+                Reset
+              </button>
+            </c-col>
+          </form>
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+  </c-col>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header ngPreserveWhitespaces>
+        <strong>Validation</strong> <small>Server side</small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-medium-emphasis small">
+          We recommend using client-side validation, but in case you require server-side
+          validation, you can indicate invalid and valid form fields with <code>invalid</code>
+          and <code>valid</code> boolean properties.
+        </p>
+        <p class="text-medium-emphasis small">
+          For invalid fields, ensure that the invalid feedback/error message is associated with
+          the relevant form field using <code>aria-describedby</code> (noting that this
+          attribute allows more than one <code>id</code> to be referenced, in case the field
+          already points to additional form text).
+        </p>
+        <app-docs-example href="forms/validation#server-side">
+          <form cForm class="row g-3 needs-validation" ngNativeValidate>
+            <c-col md="4">
+              <label cLabel for="validationServer01">First name</label>
+              <input [valid]="true"
+                     cFormControl
+                     id="validationServer01"
+                     required
+                     type="text"
+                     value="Mark"
+              />
+              <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+            </c-col>
+            <c-col md="4">
+              <label cLabel for="validationServer02">Last name</label>
+              <input [valid]="true"
+                     cFormControl
+                     id="validationServer02"
+                     required
+                     type="text"
+                     value="Otto"
+              />
+              <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+            </c-col>
+            <c-col md="4">
+              <label cLabel for="validationServerUsername">Username</label>
+              <c-input-group class="has-validation">
+                <span cInputGroupText id="inputGroupPrepend03">@</span>
+                <input [valid]="false"
+                       aria-describedby="inputGroupPrepend03"
+                       cFormControl
+                       id="validationServerUsername"
+                       required
+                       type="text"
+                />
+                <c-form-feedback [valid]="false">Please choose a username.</c-form-feedback>
+              </c-input-group>
+            </c-col>
+            <c-col md="6">
+              <label cLabel for="validationServer03">City</label>
+              <input [valid]="false" cFormControl id="validationServer03" required type="text" />
+              <c-form-feedback [valid]="false">Please provide a valid city.</c-form-feedback>
+            </c-col>
+            <c-col md="3">
+              <label cLabel for="validationServer04">State</label>
+              <select [valid]="false" cSelect id="validationServer04">
+                <option disabled>Choose...</option>
+                <option>...</option>
+              </select>
+              <c-form-feedback [valid]="false">Please provide a valid state.</c-form-feedback>
+            </c-col>
+            <c-col md="3">
+              <label cLabel for="validationServer05">Zip code</label>
+              <input [valid]="false" cFormControl id="validationServer05" required type="text" />
+              <c-form-feedback [valid]="false">Please provide a valid zip.</c-form-feedback>
+            </c-col>
+            <c-col xs="12">
+              <c-form-check class="mb-3">
+                <input [valid]="false" cFormCheckInput id="invalidCheckServer" required type="checkbox">
+                <label cFormCheckLabel for="invalidCheckServer">Agree to terms and conditions</label>
+              </c-form-check>
+              <c-form-feedback [valid]="false">You must agree before submitting.</c-form-feedback>
+            </c-col>
+            <c-col xs="12">
+              <button cButton color="primary" type="submit">
+                Submit form
+              </button>
+            </c-col>
+          </form>
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+  </c-col>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header ngPreserveWhitespaces>
+        <strong>Validation</strong> <small>Supported elements</small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-medium-emphasis small">
+          Validation styles are available for the following form controls and components:
+        </p>
+        <ul [flush]="true" cListGroup class="mb-3">
+          <li cListGroupItem>
+            <code>&lt;input cFormControl&gt;</code>
+          </li>
+          <li cListGroupItem>
+            <code>&lt;select cSelect&gt;</code>
+          </li>
+          <li cListGroupItem>
+            <code>&lt;c-form-check&gt;</code>
+          </li>
+        </ul>
+        <app-docs-example href="forms/validation#supported-elements">
+          <form [validated]="true" cForm>
+            <div class="mb-3">
+              <label cLabel class="form-label" for="validationTextarea">
+                Textarea
+              </label>
+              <textarea [valid]="false"
+                        cFormControl
+                        id="validationTextarea"
+                        placeholder="Required example textarea"
+                        required
+              ></textarea>
+              <c-form-feedback [valid]="false">Please enter a message in the textarea.</c-form-feedback>
+            </div>
+            <c-form-check class="mb-3">
+              <input cFormCheckInput id="validationFormCheck1" name="validationFormCheck1" required type="checkbox" />
+              <label cFormCheckLabel for="validationFormCheck1">Check this checkbox</label>
+            </c-form-check>
+            <c-form-feedback [valid]="false">Example invalid feedback text</c-form-feedback>
+
+            <c-form-check>
+              <input cFormCheckInput id="validationFormCheck2" name="radio-stacked" required type="radio" />
+              <label cFormCheckLabel for="validationFormCheck2">Check this radio</label>
+            </c-form-check>
+
+            <c-form-check class="mb-3">
+              <input cFormCheckInput id="validationFormCheck3" name="radio-stacked" required type="radio" />
+              <label cFormCheckLabel for="validationFormCheck3">Check this radio</label>
+            </c-form-check>
+
+            <c-form-feedback [valid]="false">More example invalid feedback text</c-form-feedback>
+
+            <div class="mb-3">
+              <select aria-label="select example" cSelect required>
+                <option value="">Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+              <c-form-feedback [valid]="false">Example invalid select feedback</c-form-feedback>
+            </div>
+
+            <div class="mb-3">
+              <input aria-label="file example"
+                     cFormControl
+                     id="validationText1"
+                     required
+                     type="file"
+              />
+              <c-form-feedback [valid]="false">Example invalid form file feedback</c-form-feedback>
+            </div>
+
+            <div class="mb-3">
+              <button cButton color="primary" disabled type="submit">
+                Submit form
+              </button>
+            </div>
+          </form>
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+  </c-col>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header ngPreserveWhitespaces>
+        <strong>Validation</strong> <small>Tooltips</small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-medium-emphasis small">
+          If your form layout allows it, you can swap the text for the tooltip to display
+          validation feedback in a styled tooltip. Be sure to have a parent with
+          <code>position: relative</code> on it for tooltip positioning. In the example below,
+          our column classes have this already, but your project may require an alternative
+          setup.
+        </p>
+        <app-docs-example href="forms/validation#tooltips">
+
+          <form #tooltipForm="ngForm"
+                (ngSubmit)="onSubmit3()"
+                [validated]="tooltipValidated"
+                cForm
+                class="row g-3 needs-validation"
+          >
+            <c-col class="position-relative" md="4">
+              <label cLabel for="validationTooltip01">First name</label>
+              <input cFormControl id="validationTooltip01" required type="text" value="Mark" />
+              <c-form-feedback [valid]="true" tooltip>Looks good!</c-form-feedback>
+            </c-col>
+            <c-col class="position-relative" md="4">
+              <label cLabel for="validationTooltip02">Last name</label>
+              <input cFormControl id="validationTooltip02" required type="text" value="Otto" />
+              <c-form-feedback [valid]="true" tooltip>Looks good!</c-form-feedback>
+            </c-col>
+            <c-col class="position-relative" md="4">
+              <label cLabel for="validationTooltipUsername">Username</label>
+              <c-input-group class="has-validation">
+                <span cInputGroupText id="inputGroupPrependTooltip">@</span>
+                <input aria-describedby="inputGroupPrependTooltip"
+                       cFormControl
+                       id="validationTooltipUsername"
+                       required
+                       type="text"
+                />
+                <c-form-feedback [valid]="false" tooltip>Please choose a username.</c-form-feedback>
+              </c-input-group>
+            </c-col>
+            <c-col class="position-relative" md="6">
+              <label cLabel for="validationTooltip03">City</label>
+              <input cFormControl id="validationTooltip03" required type="text" />
+              <c-form-feedback [valid]="false" tooltip>Please provide a valid city.</c-form-feedback>
+            </c-col>
+            <c-col class="position-relative" md="3">
+              <label cLabel for="validationTooltip04">State</label>
+              <select cSelect id="validationTooltip04" required>
+                <option value="">Choose...</option>
+                <option value="1">...</option>
+              </select>
+              <c-form-feedback [valid]="false" tooltip>Please provide a valid State.</c-form-feedback>
+            </c-col>
+            <c-col class="position-relative" md="3">
+              <label cLabel for="validationTooltip05">Zip code</label>
+              <input cFormControl id="validationTooltip05" required type="text" />
+              <c-form-feedback [valid]="false" tooltip>Please provide a valid zip.</c-form-feedback>
+            </c-col>
+            <c-col class="position-relative" xs="12">
+              <c-form-check>
+                <input cFormCheckInput id="invalidCheckTooltip" name="invalidCheckTooltip" required type="checkbox" />
+                <label cFormCheckLabel for="invalidCheckTooltip">Agree to terms and conditions</label>
+              </c-form-check>
+              <c-form-feedback [valid]="false" tooltip>You must agree before submitting.</c-form-feedback>
+            </c-col>
+            <c-col xs="12">
+              <button cButton class="me-1" color="primary" type="submit">
+                Submit form
+              </button>
+              <button (click)="onReset3()" cButton color="secondary" type="reset">
+                Reset
+              </button>
+            </c-col>
+          </form>
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>

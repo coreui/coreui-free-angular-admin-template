@@ -1,0 +1,64 @@
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <app-docs-callout href="components/collapse" name="Collapse"></app-docs-callout>
+  </c-col>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Angular Collapse</strong>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-medium-emphasis small">You can use a link or a button component.</p>
+        <app-docs-example href="components/collapse">
+          <a (click)="toggleCollapse(0)" cButton class="me-1" color="primary">Link</a>
+          <button (click)="toggleCollapse(0)" cButton class="me-1" color="primary">Button</button>
+          <c-card [ngClass]="'shadow mt-3'" [visible]="collapses[0]" cCollapse>
+            <c-card-body>
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+              richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes
+              anderson cred nesciunt sapiente ea proident.
+            </c-card-body>
+          </c-card>
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+  </c-col>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Angular Collapse</strong> <small> multi target</small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-medium-emphasis small">
+          A <code>&lt;c-button&gt;</code> can show and hide multiple elements.
+        </p>
+        <app-docs-example href="components/collapse#multiple-targets">
+          <button (click)="toggleCollapse(1)" cButton class="me-1" color="primary">Toggle first element</button>
+          <button (click)="toggleCollapse(2)" cButton class="me-1" color="primary">Toggle second element</button>
+          <button (click)="toggleCollapse(1); toggleCollapse(2);" cButton class="me-1" color="primary">Toggle both
+          </button>
+          <c-row>
+            <c-col xs="6">
+              <c-card [visible]="collapses[1]" cCollapse class="mt-3">
+                <c-card-body>
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                  richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes
+                  anderson cred nesciunt sapiente ea proident.
+                </c-card-body>
+              </c-card>
+            </c-col>
+            <c-col xs="6">
+              <c-card [visible]="collapses[2]" cCollapse class="mt-3">
+                <c-card-body>
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                  richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes
+                  anderson cred nesciunt sapiente ea proident.
+                </c-card-body>
+              </c-card>
+            </c-col>
+          </c-row>
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>

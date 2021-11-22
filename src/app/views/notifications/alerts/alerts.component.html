@@ -1,0 +1,159 @@
+<c-row>
+  <c-col xs="12">
+    <app-docs-callout href="components/alert" name="Alert"></app-docs-callout>
+  </c-col>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Angular Alert</strong>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-medium-emphasis small">
+          Angular Alert is prepared for any length of text, as well as an optional close button.
+          For a styling, use one of the <strong>required</strong> contextual <code>color</code>
+          props (e.g., <code>primary</code>). For inline dismissal, use the
+          <a href="https://coreui.io/angular/docs/4.0/components/alert#dismissing">
+            dismissing prop
+          </a>
+          .
+        </p>
+        <app-docs-example href="components/alert">
+          <c-alert color="primary">A simple primary alert—check it out!</c-alert>
+          <c-alert color="secondary">A simple secondary alert—check it out!</c-alert>
+          <c-alert color="success">A simple success alert—check it out!</c-alert>
+          <c-alert color="danger">A simple danger alert—check it out!</c-alert>
+          <c-alert color="warning">A simple warning alert—check it out!</c-alert>
+          <c-alert color="info">A simple info alert—check it out!</c-alert>
+          <c-alert color="light">A simple light alert—check it out!</c-alert>
+          <c-alert color="dark">A simple dark alert—check it out!</c-alert>
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+  </c-col>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header ngPreserveWhitespaces>
+        <strong>Angular Alert</strong> <small>solid variant</small>
+      </c-card-header>
+      <c-card-body>
+        <app-docs-example href="components/alert">
+          <c-alert color="primary" variant="solid">A solid primary alert—check it out!</c-alert>
+          <c-alert color="secondary" variant="solid">A solid secondary alert—check it out!</c-alert>
+          <c-alert color="success" variant="solid">A solid success alert—check it out!</c-alert>
+          <c-alert color="danger" variant="solid">A solid danger alert—check it out!</c-alert>
+          <c-alert color="warning" variant="solid">A solid warning alert—check it out!</c-alert>
+          <c-alert color="info" variant="solid">A solid info alert—check it out!</c-alert>
+          <c-alert color="light" variant="solid">A solid light alert—check it out!</c-alert>
+          <c-alert color="dark" variant="solid">A solid dark alert—check it out!</c-alert>
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+  </c-col>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header ngPreserveWhitespaces>
+        <strong>Angular Alert</strong> <small>Link color</small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-medium-emphasis small">
+          Use the <code>cAlertLink</code> directive to immediately give matching colored
+          links inside any alert.
+        </p>
+        <app-docs-example href="components/alert#link-color">
+          <c-alert color="primary">
+            A simple primary alert with <a cAlertLink [routerLink]>an example link</a>. Give
+            it a click if you like.
+          </c-alert>
+          <c-alert color="secondary">
+            A simple secondary alert with <a cAlertLink [routerLink]>an example link</a>.
+            Give it a click if you like.
+          </c-alert>
+          <c-alert color="success">
+            A simple success alert with <a cAlertLink [routerLink]>an example link</a>. Give
+            it a click if you like.
+          </c-alert>
+          <c-alert color="danger">
+            A simple danger alert with <a cAlertLink [routerLink]>an example link</a>. Give
+            it a click if you like.
+          </c-alert>
+          <c-alert color="warning">
+            A simple warning alert with <a cAlertLink [routerLink]>an example link</a>. Give
+            it a click if you like.
+          </c-alert>
+          <c-alert color="info">
+            A simple info alert with <a cAlertLink [routerLink]>an example link</a>. Give it
+            a click if you like.
+          </c-alert>
+          <c-alert color="light">
+            A simple light alert with <a cAlertLink [routerLink]>an example link</a>. Give it
+            a click if you like.
+          </c-alert>
+          <c-alert color="dark">
+            A simple dark alert with <a cAlertLink [routerLink]>an example link</a>. Give it
+            a click if you like.
+          </c-alert>
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+  </c-col>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header ngPreserveWhitespaces>
+        <strong>Angular Alert</strong> <small>Additional content</small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-medium-emphasis small">
+          Alert can also incorporate supplementary components &amp; elements like heading,
+          paragraph, and divider.
+        </p>
+        <app-docs-example href="components/alert#additional-content">
+          <c-alert color="success">
+            <h4 cAlertHeading>Well done!</h4>
+            <p>
+              Aww yeah, you successfully read this important alert message. This example text is
+              going to run a bit longer so that you can see how spacing within an alert works
+              with this kind of content.
+            </p>
+            <hr/>
+            <p class="mb-0">
+              Whenever you need to, be sure to use margin utilities to keep things nice and
+              tidy.
+            </p>
+          </c-alert>
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+  </c-col>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header ngPreserveWhitespaces>
+        <strong>Angular Alert</strong> <small>Dismissing</small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-medium-emphasis small">
+          Alerts can also be easily dismissed. Just add the <code>dismissible</code> prop.
+        </p>
+        <app-docs-example href="components/alert#dismissing">
+          <c-alert [(visible)]="visible[0]" dismissible color="warning" fade *ngIf="visible[0]">
+            <strong>Go right ahead</strong> and click that dismiss over there on the right.
+          </c-alert>
+          <c-alert #alertWithButtonCloseTemplate="cAlert"
+                   [dismissible]="dismissible"
+                   [visible]="visible[1]"
+                   (visibleChange)="onAlertVisibleChange($event)"
+                   color="dark"
+                   fade
+                   variant="solid">
+            <ng-template [ngIf]="alertWithButtonCloseTemplate.dismissible" cTemplateId="alertButtonCloseTemplate">
+              <button (click)="visible[1]=false" cButtonClose white></button>
+            </ng-template>
+            <strong>Go right ahead</strong> and click that dismiss over there on the right.
+          </c-alert>
+          <hr>
+          <button (click)="onToggleDismiss()" cButton class="'me-1'" color="primary">Toggle</button>
+          <button (click)="onResetDismiss()" cButton color="secondary">Reset</button>
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>

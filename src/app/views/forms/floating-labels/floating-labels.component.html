@@ -1,0 +1,157 @@
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <app-docs-callout href="forms/floating-labels" name="Floating Label directive"></app-docs-callout>
+  </c-col>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Angular Floating labels</strong>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-medium-emphasis small">
+          Wrap a pair of <code>&lt;cFormControl&gt;</code> and <code>&lt;label&gt;</code>
+          elements in <code>cFormControl</code> to enable floating labels with textual form
+          fields. A <code>placeholder</code> is required on each <code>&lt;input&gt;</code>
+          as our method of CSS-only floating labels uses the <code>:placeholder-shown</code>
+          pseudo-element. Also note that the <code>&lt;cFormControl&gt;</code> must come first so
+          we can utilize a sibling selector (e.g., <code>~</code>).
+        </p>
+        <app-docs-example href="forms/floating-labels">
+          <div [cFormFloating]="true" class="mb-3">
+            <input cFormControl id="floatingInput" placeholder="name@example.com" type="email" />
+            <label cLabel for="floatingInput">Email address</label>
+          </div>
+          <div cFormFloating>
+            <input cFormControl id="floatingPassword" placeholder="Password" type="password" />
+            <label cLabel for="floatingPassword">Password</label>
+          </div>
+        </app-docs-example>
+        <p class="text-medium-emphasis small">
+          When there&#39;s a <code>value</code> already defined, <code>&lt;label&gt;</code>
+          s will automatically adjust to their floated position.
+        </p>
+        <app-docs-example href="forms/floating-labels">
+          <form cForm cFormFloating>
+            <input
+              cFormControl
+              id="floatingInputValue"
+              placeholder="name@example.com"
+              type="email"
+              value="test@example.com"
+            />
+            <label cLabel for="floatingInputValue">Input with value</label>
+          </form>
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+  </c-col>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Angular Floating labels</strong> <small>Textareas</small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-medium-emphasis small">
+          By default, <code>&lt;CFormTextarea&gt;</code>s will be the same height as
+          <code>&lt;input&gt;</code>s.
+        </p>
+        <app-docs-example href="forms/floating-labels#textareas">
+          <div cFormFloating>
+            <input
+              cFormControl
+              id="floatingTextarea"
+              placeholder="Leave a comment here"
+              type="text"
+            >
+            <label cLabel for="floatingTextarea">Comments</label>
+          </div>
+        </app-docs-example>
+        <p class="text-medium-emphasis small">
+          To set a custom height on your <code>&lt;CFormTextarea;&gt;</code>, do not use the
+          <code>rows</code> attribute. Instead, set an explicit <code>height</code> (either
+          inline or via custom CSS).
+        </p>
+        <app-docs-example href="forms/floating-labels#textareas">
+          <div cFormFloating>
+            <textarea [ngStyle]="{ 'height.px': 100 }"
+                      cFormControl
+                      id="floatingTextarea2"
+                      placeholder="Leave a comment here"
+            ></textarea>
+            <label cLabel for="floatingTextarea2">Comments</label>
+          </div>
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+  </c-col>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Angular Floating labels</strong> <small>Selects</small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-medium-emphasis small">
+          Other than <code>&lt;input&gt;</code>, floating labels are only available on
+          <code>&lt;cSelect&gt;</code>s. They work in the same way, but unlike
+          <code>&lt;input&gt;</code>s, they&#39;ll always show the
+          <code>&lt;label&gt;</code> in its floated state.
+          <strong>
+            Selects with <code>size</code> and <code>multiple</code> are not supported.
+          </strong>
+        </p>
+        <app-docs-example href="forms/floating-labels#selects">
+          <div cFormFloating>
+            <select aria-label="Floating label select example" cSelect id="floatingSelect">
+              <option>Open this select menu</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+            <label cLabel for="floatingSelect">Works with selects</label>
+          </div>
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+  </c-col>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Angular Floating labels</strong> <small>Layout</small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-medium-emphasis small">
+          When working with the CoreUI for Bootstrap grid system, be sure to place form elements
+          within column classes.
+        </p>
+        <app-docs-example href="forms/floating-labels#layout">
+          <c-row [gutter]="{g: 2}">
+            <c-col md>
+              <div cFormFloating>
+                <input
+                  cFormControl
+                  id="floatingInputGrid"
+                  placeholder="name@example.com"
+                  type="email"
+                  value="email@example.com"
+                />
+                <label cLabel for="floatingInputGrid">Email address</label>
+              </div>
+            </c-col>
+            <c-col md>
+              <div cFormFloating>
+                <select aria-label="Floating label select example" cSelect id="floatingSelectGrid">
+                  <option>Open this select menu</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+                <label cLabel for="floatingSelectGrid">Works with selects</label>
+              </div>
+            </c-col>
+          </c-row>
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
+

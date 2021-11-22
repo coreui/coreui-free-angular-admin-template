@@ -1,0 +1,70 @@
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <app-docs-callout href="components/popover" name="Popover"></app-docs-callout>
+  </c-col>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Angular Popover</strong> <small>Basic example</small>
+      </c-card-header>
+      <c-card-body>
+        <app-docs-example href="components/popover">
+          <button [cPopover]="popoverHtml"
+                  cPopoverPlacement="right"
+                  [cPopoverTrigger]="'click'"
+                  [cPopoverVisible]="visible"
+                  cButton
+                  class="m-1"
+                  color="danger"
+                  size="lg">
+            Click to toggle popover
+            <ng-template #popoverHtml>
+              <h3 class="popover-header">
+                Popover Title
+              </h3>
+              <div class="popover-body">
+                And here’s some amazing content. It’s very engaging. Right?
+              </div>
+            </ng-template>
+          </button>
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+  </c-col>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Angular Popover</strong> <small>Four directions</small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-medium-emphasis small">
+          Four options are available: top, right, bottom, and left aligned. Directions are
+          mirrored when using CoreUI for Angularin RTL.
+        </p>
+        <app-docs-example href="components/popover#four-directions">
+          <button [cPopoverTrigger]="'hover'" cButton [cPopover]="tooltipHtml"
+                  cPopoverPlacement="top" class="me-1"
+                  color="secondary">Popover on top
+            <ng-template #tooltipHtml>
+              <div class="popover-body">
+                Vivamus sagittis lacus vel augue laoreet rutrum faucibus. Top!
+              </div>
+            </ng-template>
+          </button>
+          <button [cPopoverTrigger]="'hover'" cButton cPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus. Right!"
+                  cPopoverPlacement="right"
+                  class="me-1" color="secondary">Popover on right
+          </button>
+          <button [cPopoverTrigger]="'hover'" cButton cPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus. Bottom!"
+                  cPopoverPlacement="bottom"
+                  class="me-1" color="secondary">Popover on bottom
+          </button>
+          <button [cPopoverTrigger]="'hover'" cButton cPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus. Left!"
+                  cPopoverPlacement="left" class="me-1"
+                  color="secondary">Popover on left
+          </button>
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>

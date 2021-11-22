@@ -1,0 +1,21 @@
+<div class="example mb-3">
+  <c-nav variant="tabs">
+    <c-nav-item>
+      <a [active]="true" [cTabContent]="tabContent" [fragment]="fragment" [routerLink] [tabPaneIdx]="0" cNavLink>
+        <c-icon class="me-2" name="cilMediaPlay"></c-icon>
+        Preview
+      </a>
+    </c-nav-item>
+    <c-nav-item>
+      <a [href]="href" cNavLink target="_blank">
+        <c-icon class="me-2" name="cilCode"></c-icon>
+        Code
+      </a>
+    </c-nav-item>
+  </c-nav>
+  <c-tab-content #tabContent="cTabContent" cRounded="bottom">
+    <c-tab-pane aria-labelledby="docs-code-preview" class="p-3 preview" role="tabpanel">
+      <ng-content></ng-content>
+    </c-tab-pane>
+  </c-tab-content>
+</div>

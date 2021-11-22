@@ -1,0 +1,92 @@
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <app-docs-callout href="forms/range" name="Range"></app-docs-callout>
+  </c-col>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Angular Range</strong> <small></small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-medium-emphasis small">
+          Create custom <code>&lt;input type=&#34;range&#34;&gt;</code> controls
+          with <code>&lt;input cFormControl type="range"&gt;</code>.
+        </p>
+        <app-docs-example href="forms/range">
+          <label cLabel for="customRange1">Example range</label>
+          <input cFormControl id="customRange1" type="range" />
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+  </c-col>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Angular Range</strong> <small>Disabled</small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-medium-emphasis small">
+          Add the <code>disabled</code> boolean attribute on an input to give it
+          a grayed out appearance and remove pointer events.
+        </p>
+        <app-docs-example href="forms/range#disabled">
+          <label cLabel for="disabledRange">Disabled range</label>
+          <input cFormControl disabled id="disabledRange" type="range" />
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+  </c-col>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Angular Range</strong> <small>Min and max</small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-medium-emphasis small">
+          Range inputs have implicit values for <code>min-0</code> and
+          <code>max-100</code>, respectively.
+          You may specify new values for those using the <code>min</code> and
+          <code>max</code> attributes.
+        </p>
+        <app-docs-example href="forms/range#min-and-max">
+          <label cLabel for="customRange2">Example range</label>
+          <input
+            cFormControl
+            id="customRange2"
+            max="5"
+            min="0"
+            type="range"
+            value="3"
+          />
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+  </c-col>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Angular Range</strong> <small>Steps</small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-medium-emphasis small">
+          By default, range inputs &#34;snap&#34; to integer values. To change
+          this, you can specify a <code>step</code> value. In the example below,
+          we double the number of steps by using
+          <code>step=&#34;0.5&#34;</code>.
+        </p>
+        <app-docs-example href="forms/range#steps">
+          <label cLabel for="customRange3">Example range</label>
+          <input
+            cFormControl
+            id="customRange3"
+            max="5"
+            min="0"
+            step="0.5"
+            type="range"
+            value="3"
+          />
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
