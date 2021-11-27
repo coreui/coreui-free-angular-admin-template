@@ -1,51 +1,7 @@
-// styles for
+// temp fix .chartjs-tooltip-body-item
 
-//@import "~@coreui/coreui/scss/bootstrap";
-
-@import "~@coreui/coreui/scss/functions";
-@import "~@coreui/coreui/scss/variables";
-@import "~@coreui/coreui/scss/mixins";
-
-.c-chartjs-tooltip {
-  position: absolute;
-  z-index: $zindex-sticky + 1;
-  display: flex;
-  flex-direction: column;
-  padding: ($spacer * .25) ($spacer * .5);
-  color: #fff;
-  pointer-events: none;
-  background: rgba(0, 0, 0, .7);
-  opacity: 0;
-  @include transition(all .15s ease);
-  transform: translate(-50%, 0);
-  @include border-radius($border-radius);
-}
-
-.c-tooltip-header {
-  margin-bottom: ($spacer * .5);
-}
-
-.c-tooltip-header-item {
-  font-size: $font-size-sm;
-  font-weight: $font-weight-bold;
-}
-
-.c-tooltip-body-item {
-  display: flex;
-  align-items: center;
-  font-size: $font-size-sm;
-  white-space: nowrap;
-}
-
-.c-tooltip-body-item-color {
-  display: inline-block;
-  width: $font-size-sm;
-  height: $font-size-sm;
-  margin-right: $font-size-sm;
-}
-
-.c-tooltip-body-item-value {
-  padding-left: $spacer;
-  margin-left: auto;
-  font-weight: $font-weight-semibold;
+.chartjs-tooltip-body-item > td {
+  padding-bottom: 0 !important;
+  padding-top: 0 !important;
+  font-size: smaller;
 }
