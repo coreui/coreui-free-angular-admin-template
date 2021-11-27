@@ -1,25 +1,21 @@
 <c-row>
-  <c-col *ngFor="let widget of brandData; index as i" xl="3" sm="6">
+  <c-col *ngFor="let widget of brandData; index as i" sm="6" xl="3">
     <c-widget-stat-d
       [color]="widget.color ?? ''"
       [style]="widget.capBg ?? null"
       [values]="widget.values"
       class="mb-4"
     >
-      <svg cIcon [name]="widget.icon" [style]="{'display': 'content'}" class="my-4 text-white" height="52"></svg>
+      <svg [name]="widget.icon" cIcon class="my-4 text-white" height="52"></svg>
       <ng-container *ngIf="withCharts">
-        <div class="chart-wrapper position-absolute w-100 h-100">
-          <canvas
-            [colors]="colors"
-            [datasets]="widget.datasets"
-            [labels]="widget.labels"
-            [legend]="false"
-            [options]="chartOptions"
-            cNoZoneBaseChart
-            chartType="line"
-          >
-          </canvas>
-        </div>
+        <c-chart
+          #chart="cChart"
+          [data]="widget.data"
+          [options]="chartOptions"
+          class="position-absolute w-100 h-100"
+          type="line"
+        >{{ chart.id }}</c-chart
+        >
       </ng-container>
     </c-widget-stat-d>
   </c-col>

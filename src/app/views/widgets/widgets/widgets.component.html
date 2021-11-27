@@ -1,7 +1,7 @@
 <c-card class="mb-4">
   <c-card-header>Widgets</c-card-header>
   <c-card-body>
-    <app-docs-example href="components/widgets/#cwidgetstatsa">
+    <app-docs-example href="components/">
       <app-widgets-dropdown></app-widgets-dropdown>
     </app-docs-example>
     <app-docs-example href="components/widgets/#cwidgetstatsb">
@@ -121,122 +121,7 @@
       </c-row>
     </app-docs-example>
     <app-docs-example href="components/widgets/#cwidgetstatse">
-      <c-row>
-        <c-col lg="2" md="4">
-          <c-widget-stat-e
-            [title]="'title'"
-            [value]="'1,123'"
-            class="mb-4"
-          >
-            <div [ngStyle]="{ 'height.px': 40, 'width.px': 80 }" class="chart-wrapper mx-auto">
-              <canvas
-                [datasets]="chartDatasets[0]"
-                [labels]="labels"
-                [legend]="false"
-                [options]="options"
-                cNoZoneBaseChart
-                chartType="bar"
-              >
-              </canvas>
-            </div>
-          </c-widget-stat-e>
-        </c-col>
-        <c-col lg="2" md="4">
-          <c-widget-stat-e
-            [title]="'title'"
-            [value]="'1,123'"
-            class="mb-4"
-          >
-            <div [ngStyle]="{ 'height.px': 40, 'width.px': 80 }" class="chart-wrapper mx-auto">
-              <canvas
-                [datasets]="chartDatasets[1]"
-                [labels]="labels"
-                [legend]="false"
-                [options]="options"
-                cNoZoneBaseChart
-                chartType="bar"
-              >
-              </canvas>
-            </div>
-          </c-widget-stat-e>
-        </c-col>
-        <c-col lg="2" md="4">
-          <c-widget-stat-e
-            [title]="'title'"
-            [value]="'1,123'"
-            class="mb-4"
-          >
-            <div [ngStyle]="{ 'height.px': 40, 'width.px': 80 }" class="chart-wrapper mx-auto">
-              <canvas
-                [datasets]="chartDatasets[2]"
-                [labels]="labels"
-                [legend]="false"
-                [options]="options"
-                cNoZoneBaseChart
-                chartType="bar"
-              >
-              </canvas>
-            </div>
-          </c-widget-stat-e>
-        </c-col>
-        <c-col lg="2" md="4">
-          <c-widget-stat-e
-            [title]="'title'"
-            [value]="'1,123'"
-            class="mb-4"
-          >
-            <div [ngStyle]="{ 'height.px': 40, 'width.px': 80 }" class="chart-wrapper mx-auto">
-              <canvas
-                [datasets]="chartDatasets[3]"
-                [labels]="labels"
-                [legend]="false"
-                [options]="options"
-                cNoZoneBaseChart
-                chartType="line"
-              >
-              </canvas>
-            </div>
-          </c-widget-stat-e>
-        </c-col>
-        <c-col lg="2" md="4">
-          <c-widget-stat-e
-            [title]="'title'"
-            [value]="'1,123'"
-            class="mb-4"
-          >
-            <div [ngStyle]="{ 'height.px': 40, 'width.px': 80 }" class="chart-wrapper mx-auto">
-              <canvas
-                [datasets]="chartDatasets[4]"
-                [labels]="labels"
-                [legend]="false"
-                [options]="options"
-                cNoZoneBaseChart
-                chartType="line"
-              >
-              </canvas>
-            </div>
-          </c-widget-stat-e>
-        </c-col>
-        <c-col lg="2" md="4">
-          <c-widget-stat-e
-            [title]="'title'"
-            [value]="'1,123'"
-            class="mb-4"
-          >
-            <div [ngStyle]="{ 'height.px': 40, 'width.px': 80 }" class="chart-wrapper mx-auto">
-              <canvas
-                [datasets]="chartDatasets[5]"
-                [labels]="labels"
-                [legend]="false"
-                [options]="options"
-                cNoZoneBaseChart
-                chartType="line"
-              >
-              </canvas>
-            </div>
-          </c-widget-stat-e>
-        </c-col>
-      </c-row>
+      <app-widgets-e></app-widgets-e>
     </app-docs-example>
     <app-docs-example href="components/widgets/#cwidgetstatsf">
       <c-row>

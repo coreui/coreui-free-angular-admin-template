@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import {
   ButtonModule,
   CardModule,
-  ChartModule,
   DropdownModule,
   GridModule,
   ProgressModule,
@@ -12,19 +11,23 @@ import {
   WidgetModule
 } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
+import { ChartjsModule } from '@coreui/angular-chartjs';
 
 import { ComponentsModule } from '../../../components/components.module';
 
 import { WidgetsRoutingModule } from './widgets-routing.module';
 import { WidgetsComponent } from './widgets/widgets.component';
 import { WidgetsBrandComponent } from './widgets-brand/widgets-brand.component';
-import { WidgetsDropdownComponent } from './widgets-dropdown/widgets-dropdown.component';
+import { ChartSample, WidgetsDropdownComponent } from './widgets-dropdown/widgets-dropdown.component';
+import { WidgetsEComponent } from './widgets-e/widgets-e.component';
 
 @NgModule({
   declarations: [
     WidgetsComponent,
     WidgetsBrandComponent,
-    WidgetsDropdownComponent
+    WidgetsDropdownComponent,
+    ChartSample,
+    WidgetsEComponent
   ],
   imports: [
     CommonModule,
@@ -32,13 +35,13 @@ import { WidgetsDropdownComponent } from './widgets-dropdown/widgets-dropdown.co
     GridModule,
     WidgetModule,
     IconModule,
-    ChartModule,
     DropdownModule,
     SharedModule,
     ButtonModule,
     CardModule,
     ComponentsModule,
-    ProgressModule
+    ProgressModule,
+    ChartjsModule
   ],
   exports: [
     WidgetsBrandComponent,

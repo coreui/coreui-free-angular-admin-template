@@ -1,9 +1,9 @@
 <c-row>
-  <c-col xl="3" sm="6">
+  <c-col sm="6" xl="3">
     <c-widget-stat-a
-      [title]="'Users'"
       class="mb-4"
       color="primary"
+      title="Users"
     >
       <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
         26K
@@ -12,7 +12,7 @@
         </span>
       </ng-template>
       <ng-template cTemplateId="widgetActionTemplate">
-        <c-dropdown variant="btn-group" alignment="end">
+        <c-dropdown alignment="end" variant="btn-group">
           <button [caret]="false" cButton cDropdownToggle class="p-0" color="transparent">
             <svg cIcon class="text-high-emphasis-inverse" name="cilOptions"></svg>
           </button>
@@ -30,21 +30,11 @@
         </c-dropdown>
       </ng-template>
       <ng-template cTemplateId="widgetChartTemplate">
-        <div [ngStyle]="{ 'height.px': 70 }" class="chart-wrapper mt-3 mx-3">
-          <canvas
-            [datasets]="datasets[0]"
-            [labels]="['January', 'February', 'March', 'April', 'May', 'June', 'July']"
-            [legend]="false"
-            [options]="chartOptions(0)"
-            cNoZoneBaseChart
-            chartType="line"
-          >
-          </canvas>
-        </div>
+        <c-chart [data]="data[0]" [options]="options[0]" class="mt-3 mx-3" height="70" type="line"></c-chart>
       </ng-template>
     </c-widget-stat-a>
   </c-col>
-  <c-col xl="3" sm="6">
+  <c-col sm="6" xl="3">
     <c-widget-stat-a
       [title]="'Income'"
       class="mb-4"
@@ -57,7 +47,7 @@
         </span>
       </ng-template>
       <ng-template cTemplateId="widgetActionTemplate">
-        <c-dropdown variant="btn-group" alignment="end">
+        <c-dropdown alignment="end" variant="btn-group">
           <button [caret]="false" cButton cDropdownToggle class="p-0" color="transparent">
             <svg cIcon class="text-high-emphasis-inverse" name="cilOptions"></svg>
           </button>
@@ -70,21 +60,11 @@
         </c-dropdown>
       </ng-template>
       <ng-template cTemplateId="widgetChartTemplate">
-        <div [ngStyle]="{ 'height.px': 70 }" class="chart-wrapper mt-3 mx-3">
-          <canvas
-            [datasets]="datasets[1]"
-            [labels]="['January', 'February', 'March', 'April', 'May', 'June', 'July']"
-            [legend]="false"
-            [options]="chartOptions(1)"
-            cNoZoneBaseChart
-            chartType="line"
-          >
-          </canvas>
-        </div>
+        <c-chart [data]="data[1]" [options]="options[1]" class="mt-3 mx-3" height="70" type="line"></c-chart>
       </ng-template>
     </c-widget-stat-a>
   </c-col>
-  <c-col xl="3" sm="6">
+  <c-col sm="6" xl="3">
     <c-widget-stat-a
       [title]="'Conversion Rate'"
       class="mb-4"
@@ -97,7 +77,7 @@
         </span>
       </ng-template>
       <ng-template cTemplateId="widgetActionTemplate">
-        <c-dropdown variant="btn-group" alignment="end">
+        <c-dropdown alignment="end" variant="btn-group">
           <button [caret]="false" cButton cDropdownToggle class="p-0" color="transparent">
             <svg cIcon class="text-high-emphasis-inverse" name="cilOptions"></svg>
           </button>
@@ -110,21 +90,11 @@
         </c-dropdown>
       </ng-template>
       <ng-template cTemplateId="widgetChartTemplate">
-        <div [ngStyle]="{ 'height.px': 70 }" class="chart-wrapper mt-3">
-          <canvas
-            [datasets]="datasets[2]"
-            [labels]="['January', 'February', 'March', 'April', 'May', 'June', 'July']"
-            [legend]="false"
-            [options]="chartOptions(2)"
-            cNoZoneBaseChart
-            chartType="line"
-          >
-          </canvas>
-        </div>
+        <c-chart [data]="data[2]" [options]="options[2]" class="mt-3" height="70" type="line"></c-chart>
       </ng-template>
     </c-widget-stat-a>
   </c-col>
-  <c-col xl="3" sm="6">
+  <c-col sm="6" xl="3">
     <c-widget-stat-a
       [title]="'Sessions'"
       class="mb-4"
@@ -137,7 +107,7 @@
         </span>
       </ng-template>
       <ng-template cTemplateId="widgetActionTemplate">
-        <c-dropdown variant="btn-group" alignment="end">
+        <c-dropdown alignment="end" variant="btn-group">
           <button [caret]="false" cButton cDropdownToggle class="p-0" color="transparent">
             <svg cIcon class="text-high-emphasis-inverse" name="cilOptions"></svg>
           </button>
@@ -150,19 +120,8 @@
         </c-dropdown>
       </ng-template>
       <ng-template cTemplateId="widgetChartTemplate">
-        <div [ngStyle]="{ 'height.px': 70 }" class="chart-wrapper mt-3 mx-3">
-          <canvas
-            [datasets]="datasets[3]"
-            [labels]="labels"
-            [legend]="false"
-            [options]="chartOptions(3)"
-            cNoZoneBaseChart
-            chartType="bar"
-          >
-          </canvas>
-        </div>
+        <c-chart [data]="data[3]" [options]="options[3]" class="mt-3 mx-3" height="70" type="bar"></c-chart>
       </ng-template>
     </c-widget-stat-a>
   </c-col>
 </c-row>
-
