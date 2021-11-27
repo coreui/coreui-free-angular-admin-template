@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { getStyle, hexToRgba } from '@coreui/utils/src';
-import { customTooltips } from '@coreui/chartjs/dist/js/coreui-chartjs.js';
 
 export interface IChartProps {
-  Data?: any;
+  data?: any;
   labels?: any;
   options?: any;
   colors?: any;
@@ -17,11 +16,11 @@ export interface IChartProps {
   providedIn: 'any'
 })
 export class DashboardChartsData {
-  public mainChart: IChartProps = {};
-
   constructor() {
     this.initMainChart();
   }
+
+  public mainChart: IChartProps = {};
 
   public random(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -33,8 +32,6 @@ export class DashboardChartsData {
     const brandInfoBg = hexToRgba(getStyle('--cui-info'), 10) ?? '#20a8d8';
     const brandDanger = getStyle('--cui-danger') || '#f86c6b';
 
-    // console.log(brandInfo, brandInfoBg);
-
     // mainChart
     this.mainChart.elements = period === 'Month' ? 12 : 27;
     this.mainChart.Data1 = [];
@@ -43,28 +40,14 @@ export class DashboardChartsData {
 
     // generate random values for mainChart
     for (let i = 0; i <= this.mainChart.elements; i++) {
-      this.mainChart.Data1.push(this.random(50, 200));
-      this.mainChart.Data2.push(this.random(80, 100));
+      this.mainChart.Data1.push(this.random(50, 240));
+      this.mainChart.Data2.push(this.random(20, 160));
       this.mainChart.Data3.push(65);
     }
 
-    this.mainChart.Data = [
-      {
-        data: this.mainChart.Data1,
-        label: 'Current'
-      },
-      {
-        data: this.mainChart.Data2,
-        label: 'Previous'
-      },
-      {
-        data: this.mainChart.Data3,
-        label: 'BEP'
-      }
-    ];
-
+    let labels: string[] = [];
     if (period === 'Month') {
-      this.mainChart.labels = [
+      labels = [
         'January',
         'February',
         'March',
@@ -80,106 +63,26 @@ export class DashboardChartsData {
       ];
     } else {
       /* tslint:disable:max-line-length */
-      this.mainChart.labels = [
+      const week = [
         'Monday',
         'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday',
-        'Sunday',
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday',
-        'Sunday',
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday',
-        'Sunday',
-        'Monday',
-        'Thursday',
         'Wednesday',
         'Thursday',
         'Friday',
         'Saturday',
         'Sunday'
       ];
+      labels = week.concat(week, week, week);
     }
-    /* tslint:enable:max-line-length */
-    // @ts-ignore
-    this.mainChart.options = {
-      tooltips: {
-        enabled: false,
-        custom: customTooltips,
-        intersect: true,
-        mode: 'index',
-        position: 'nearest',
-        callbacks: {
-          labelColor: function (tooltipItem: { datasetIndex: string | number; }, chart: { data: { datasets: { [x: string]: { borderColor: any; }; }; }; }) {
-            return {
-              backgroundColor:
-              chart.data.datasets[tooltipItem.datasetIndex].borderColor
-            };
-          }
-        }
-      },
-      // animation: {
-      //   duration: 0
-      // },
-      responsiveAnimationDuration: 0,
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        xAxes: [
-          {
-            gridLines: {
-              drawOnChartArea: false
-            },
-            ticks: {
-              callback: function (value: any) {
-                return period === 'Month' ? value : value.charAt(0);
-              }
-            }
-          }
-        ],
-        yAxes: [
-          {
-            ticks: {
-              beginAtZero: true,
-              maxTicksLimit: 5,
-              stepSize: Math.ceil(250 / 5),
-              max: 250
-            }
-          }
-        ]
-      },
-      elements: {
-        line: {
-          borderWidth: 2
-        },
-        point: {
-          radius: 0,
-          hitRadius: 10,
-          hoverRadius: 4,
-          hoverBorderWidth: 3
-        }
-      },
-      legend: {
-        display: false
-      }
-    };
-    this.mainChart.colors = [
+
+    const colors = [
       {
         // brandInfo
         backgroundColor: brandInfoBg,
         borderColor: brandInfo,
-        pointHoverBackgroundColor: '#fff'
+        pointHoverBackgroundColor: brandInfo,
+        borderWidth: 2,
+        fill: true
       },
       {
         // brandSuccess
@@ -191,13 +94,82 @@ export class DashboardChartsData {
         // brandDanger
         backgroundColor: 'transparent',
         borderColor: brandDanger || '#f86c6b',
-        pointHoverBackgroundColor: '#fff',
+        pointHoverBackgroundColor: brandDanger,
         borderWidth: 1,
         borderDash: [8, 5]
       }
     ];
-    this.mainChart.legend = false;
+
+    const datasets = [
+      {
+        data: this.mainChart.Data1,
+        label: 'Current',
+        ...colors[0]
+      },
+      {
+        data: this.mainChart.Data2,
+        label: 'Previous',
+        ...colors[1]
+      },
+      {
+        data: this.mainChart.Data3,
+        label: 'BEP',
+        ...colors[2]
+      }
+    ];
+
+    const plugins = {
+      legend: {
+        display: false
+      },
+      tooltip: {
+        callbacks: {
+          labelColor: function(context: any) {
+            return {
+              backgroundColor: context.dataset.borderColor
+            };
+          }
+        }
+      }
+    };
+
+    const options = {
+      maintainAspectRatio: false,
+      plugins,
+      scales: {
+        x: {
+          grid: {
+            drawOnChartArea: false
+          }
+        },
+        y: {
+          beginAtZero: true,
+          max: 250,
+          ticks: {
+            maxTicksLimit: 5,
+            stepSize: Math.ceil(250 / 5)
+          }
+        }
+      },
+      elements: {
+        line: {
+          tension: 0.4
+        },
+        point: {
+          radius: 0,
+          hitRadius: 10,
+          hoverRadius: 4,
+          hoverBorderWidth: 3
+        }
+      }
+    };
+
     this.mainChart.type = 'line';
+    this.mainChart.options = options;
+    this.mainChart.data = {
+      datasets,
+      labels
+    };
   }
 
 }

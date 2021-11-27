@@ -22,6 +22,9 @@ interface IUser {
   styleUrls: ['dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  constructor(private chartsData: DashboardChartsData) {
+  }
+
   public users: IUser[] = [
     {
       name: 'Yiorgos Avraamu',
@@ -108,9 +111,6 @@ export class DashboardComponent implements OnInit {
     trafficRadio: new FormControl('Month')
   });
 
-  constructor(private chartsData: DashboardChartsData) {
-  }
-
   ngOnInit(): void {
     this.initCharts();
   }
@@ -120,7 +120,7 @@ export class DashboardComponent implements OnInit {
   }
 
   setTrafficPeriod(value: string): void {
-    this.trafficRadioGroup.setValue({trafficRadio: value});
+    this.trafficRadioGroup.setValue({ trafficRadio: value });
     this.chartsData.initMainChart(value);
     this.initCharts();
   }

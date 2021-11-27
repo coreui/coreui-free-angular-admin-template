@@ -7,7 +7,6 @@ import {
   ButtonGroupModule,
   ButtonModule,
   CardModule,
-  ChartModule,
   FormModule,
   GridModule,
   NavModule,
@@ -16,6 +15,7 @@ import {
   TabsModule
 } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
+import { ChartjsModule } from '@coreui/angular-chartjs';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
@@ -37,14 +37,12 @@ import { WidgetsModule } from '../widgets/widgets.module';
     FormModule,
     ButtonModule,
     ButtonGroupModule,
-    ChartModule,
+    ChartjsModule,
     AvatarModule,
     TableModule,
     WidgetsModule
   ],
-  declarations: [
-    DashboardComponent,
-  ]
+  declarations: [DashboardComponent]
 })
 export class DashboardModule {
 }

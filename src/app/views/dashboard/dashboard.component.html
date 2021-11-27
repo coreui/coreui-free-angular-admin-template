@@ -59,22 +59,13 @@
         </form>
       </c-col>
     </c-row>
-    <div
-      [@.disabled]="true"
-      [ngStyle]="{ 'height.px': 300, 'marginTop.px': 40 }"
-      class="chart-wrapper"
-    >
-      <canvas
-        [chartType]="mainChart.type"
-        [colors]="mainChart.colors"
-        [datasets]="mainChart.Data"
-        [labels]="mainChart.labels"
-        [options]="mainChart.options"
-        cNoZoneBaseChart
-        class="chart"
-      >
-      </canvas>
-    </div>
+    <c-chart [data]="mainChart.data"
+             [height]="300"
+             [ngStyle]="{'marginTop.px': 40}"
+             [options]="mainChart.options"
+             [type]="mainChart.type">
+      Main chart
+    </c-chart>
   </c-card-body>
   <c-card-footer>
     <c-row class="text-center" [md]="5" [xs]="1">
