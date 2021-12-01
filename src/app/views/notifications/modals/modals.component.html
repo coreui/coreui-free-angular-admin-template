@@ -60,7 +60,7 @@
       </c-card-header>
       <c-card-body>
         <p class="text-medium-emphasis small">
-          If you don’t provide an <code>(modalChange)</code> handler to the Modal component, your
+          If you don’t provide an <code>(visibleChange)</code> handler to the Modal component, your
           modal will behave as though the backdrop is static, meaning it will not close when
           clicking outside it. Click the button below to try it.
         </p>
@@ -266,7 +266,7 @@
 
 <ng-template #liveDemo>
   <button (click)="toggleLiveDemo()" cButton>Launch demo modal</button>
-  <c-modal id="liveDemoModal" [visible]="liveDemoVisible" (modalChange)="handleLiveDemoChange($event)">
+  <c-modal id="liveDemoModal" [visible]="liveDemoVisible" (visibleChange)="handleLiveDemoChange($event)">
     <c-modal-header>
       <h5 cModalTitle>Modal title</h5>
       <button (click)="toggleLiveDemo()" cButtonClose></button>

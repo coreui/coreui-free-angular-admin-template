@@ -15,7 +15,7 @@ export class ModalsComponent {
     this.liveDemoVisible = !this.liveDemoVisible;
   }
 
-  handleLiveDemoChange(event: any) {
-    this.liveDemoVisible = event.visible
+  handleLiveDemoChange(event: boolean) {
+    this.liveDemoVisible = event;
   }
 }
