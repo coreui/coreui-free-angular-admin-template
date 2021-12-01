@@ -151,6 +151,11 @@ export const navItems: INavData[] = [
     ]
   },
   {
+    name: 'Charts',
+    url: '/charts',
+    iconComponent: { name: 'cil-chart-pie' }
+  },
+  {
     name: 'Icons',
     iconComponent: { name: 'cil-star' },
     url: '/icons',

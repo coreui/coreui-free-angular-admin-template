@@ -1,0 +1,73 @@
+
+  <c-row>
+    <c-col xs="12">
+      <app-docs-callout href="charts">
+        Angular wrapper component for Chart.js 3.6, the most popular charting library.
+        <br>
+      </app-docs-callout>
+    </c-col>
+    <c-col xs="12" lg="6">
+      <c-card class="mb-4">
+        <c-card-header>
+          Bar Chart
+        </c-card-header>
+        <c-card-body>
+          <c-chart type="bar" [data]="chartBarData"></c-chart>
+        </c-card-body>
+      </c-card>
+    </c-col>
+    <c-col xs="12" lg="6">
+      <c-card class="mb-4">
+        <c-card-header>
+          Line Chart
+        </c-card-header>
+        <c-card-body>
+          <c-chart type="line" [data]="chartLineData"></c-chart>
+        </c-card-body>
+      </c-card>
+    </c-col>
+  </c-row>
+  <c-row>
+    <c-col xs="12" lg="6">
+      <c-card class="mb-4">
+        <c-card-header>
+          Doughnut Chart
+        </c-card-header>
+        <c-card-body>
+          <c-chart type="doughnut" [data]="chartDoughnutData"></c-chart>
+        </c-card-body>
+      </c-card>
+    </c-col>
+    <c-col xs="12" lg="6">
+      <c-card class="mb-4">
+        <c-card-header>
+          Pie Chart
+        </c-card-header>
+        <c-card-body>
+          <c-chart type="pie" [data]="chartPieData"></c-chart>
+        </c-card-body>
+      </c-card>
+    </c-col>
+  </c-row>
+  <c-row>
+    <c-col xs="12" lg="6">
+      <c-card class="mb-4">
+        <c-card-header>
+          Polar Area Chart
+        </c-card-header>
+        <c-card-body>
+          <c-chart type="polarArea" [data]="chartPolarAreaData"></c-chart>
+        </c-card-body>
+      </c-card>
+    </c-col>
+    <c-col xs="12" lg="6">
+      <c-card class="mb-4">
+        <c-card-header>
+          Radar Chart
+        </c-card-header>
+        <c-card-body>
+          <c-chart type="radar" [data]="chartRadarData"></c-chart>
+        </c-card-body>
+      </c-card>
+    </c-col>
+  </c-row>

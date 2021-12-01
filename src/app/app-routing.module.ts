@@ -46,6 +46,11 @@ const routes: Routes = [
           import('./views/forms/forms.module').then((m) => m.CoreUIFormsModule)
       },
       {
+        path: 'charts',
+        loadChildren: () =>
+          import('./views/charts/charts.module').then((m) => m.ChartsModule)
+      },
+      {
         path: 'icons',
         loadChildren: () =>
           import('./views/icons/icons.module').then((m) => m.IconsModule)
