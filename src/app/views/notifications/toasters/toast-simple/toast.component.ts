@@ -14,10 +14,10 @@ export class AppToastComponent extends ToastComponent {
   @Input() title = '';
 
   constructor(
-    public hostElement: ElementRef,
-    public renderer: Renderer2,
-    public toasterService: ToasterService,
-    public changeDetectorRef: ChangeDetectorRef
+    public override hostElement: ElementRef,
+    public override renderer: Renderer2,
+    public override toasterService: ToasterService,
+    public override changeDetectorRef: ChangeDetectorRef
   ) {
     super(hostElement, renderer, toasterService, changeDetectorRef);
   }

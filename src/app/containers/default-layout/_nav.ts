@@ -216,7 +216,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Pages',
-    url: '/',
+    url: '/login',
     iconComponent: { name: 'cil-star' },
     children: [
       {

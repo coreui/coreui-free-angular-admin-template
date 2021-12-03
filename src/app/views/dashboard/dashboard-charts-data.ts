@@ -33,16 +33,17 @@ export class DashboardChartsData {
     const brandDanger = getStyle('--cui-danger') || '#f86c6b';
 
     // mainChart
-    this.mainChart.elements = period === 'Month' ? 12 : 27;
-    this.mainChart.Data1 = [];
-    this.mainChart.Data2 = [];
-    this.mainChart.Data3 = [];
+    // mainChart
+    this.mainChart['elements'] = period === 'Month' ? 12 : 27;
+    this.mainChart['Data1'] = [];
+    this.mainChart['Data2'] = [];
+    this.mainChart['Data3'] = [];
 
     // generate random values for mainChart
-    for (let i = 0; i <= this.mainChart.elements; i++) {
-      this.mainChart.Data1.push(this.random(50, 240));
-      this.mainChart.Data2.push(this.random(20, 160));
-      this.mainChart.Data3.push(65);
+    for (let i = 0; i <= this.mainChart['elements']; i++) {
+      this.mainChart['Data1'].push(this.random(50, 240));
+      this.mainChart['Data2'].push(this.random(20, 160));
+      this.mainChart['Data3'].push(65);
     }
 
     let labels: string[] = [];
@@ -102,17 +103,17 @@ export class DashboardChartsData {
 
     const datasets = [
       {
-        data: this.mainChart.Data1,
+        data: this.mainChart['Data1'],
         label: 'Current',
         ...colors[0]
       },
       {
-        data: this.mainChart.Data2,
+        data: this.mainChart['Data2'],
         label: 'Previous',
         ...colors[1]
       },
       {
-        data: this.mainChart.Data3,
+        data: this.mainChart['Data3'],
         label: 'BEP',
         ...colors[2]
       }

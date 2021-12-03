@@ -19,9 +19,9 @@
             </button>
             <ul cDropdownMenu>
               <li><h6 cDropdownHeader>Header</h6></li>
-              <li><a [routerLink] cDropdownItem>Action</a></li>
-              <li><a [routerLink] cDropdownItem>Another action</a></li>
-              <li><a [routerLink] cDropdownItem>Something else here</a></li>
+              <li><a routerLink="./" cDropdownItem>Action</a></li>
+              <li><a routerLink="./" cDropdownItem>Another action</a></li>
+              <li><a routerLink="./" cDropdownItem>Something else here</a></li>
               <li>
                 <hr cDropdownDivider>
               </li>
@@ -41,13 +41,13 @@
             </button>
             <ul cDropdownMenu>
               <li>
-                <button [routerLink] cDropdownItem>Action</button>
+                <button routerLink="./" cDropdownItem>Action</button>
               </li>
               <li>
-                <button [routerLink] cDropdownItem>Another action</button>
+                <button routerLink="./" cDropdownItem>Another action</button>
               </li>
               <li>
-                <button [routerLink] cDropdownItem>Something else here</button>
+                <button routerLink="./" cDropdownItem>Something else here</button>
               </li>
               <li>
                 <hr cDropdownDivider>
@@ -88,7 +88,7 @@
             </button>
             <ul cDropdownMenu>
               <li>
-                <button [routerLink] cDropdownItem>Action</button>
+                <button routerLink="./" cDropdownItem>Action</button>
               </li>
               <li>
                 <button cDropdownItem>Another action</button>
@@ -150,7 +150,7 @@
             </button>
             <ul cDropdownMenu>
               <li>
-                <button [routerLink] cDropdownItem>Action</button>
+                <button routerLink="./" cDropdownItem>Action</button>
               </li>
               <li>
                 <button cDropdownItem>Another action</button>
@@ -199,7 +199,7 @@
             </button>
             <ul cDropdownMenu>
               <li>
-                <button [routerLink] cDropdownItem>Action</button>
+                <button routerLink="./" cDropdownItem>Action</button>
               </li>
               <li>
                 <button cDropdownItem>Another action</button>
@@ -264,14 +264,14 @@
               <div #collapseRef="cCollapse" [navbar]="true" cCollapse>
                 <c-navbar-nav class="me-auto mb-2 mb-lg-0">
                   <c-nav-item>
-                    <a [active]="true" [routerLink] cNavLink>Home</a>
+                    <a [active]="true" routerLink="./" cNavLink>Home</a>
                   </c-nav-item>
                   <c-nav-item>
-                    <a [routerLink] cNavLink>Link</a>
+                    <a routerLink="./" cNavLink>Link</a>
                   </c-nav-item>
                   <c-nav-item>
                     <c-dropdown variant="nav-item" [popper]="false">
-                      <a [routerLink] cDropdownToggle>
+                      <a routerLink="./" cDropdownToggle>
                         Dropdown
                       </a>
                       <ul cDropdownMenu dark>

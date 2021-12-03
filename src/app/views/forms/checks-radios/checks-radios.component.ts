@@ -39,7 +39,7 @@ export class ChecksRadiosComponent {
   ) { }
 
   setCheckBoxValue(controlName: string) {
-    const btnCheckGroup = this.formGroup.controls.btnCheckGroup;
+    const btnCheckGroup = this.formGroup.controls['btnCheckGroup'];
     const prevValue = btnCheckGroup.get(controlName)?.value;
     const groupValue = {...btnCheckGroup.value};
     groupValue[controlName] = !prevValue;
@@ -47,7 +47,7 @@ export class ChecksRadiosComponent {
   }
 
   setRadioValue(value: string): void {
-    const group = this.formGroup.controls.btnRadioGroup;
+    const group = this.formGroup.controls['btnRadioGroup'];
     group.setValue({ radio1: value });
   }
 

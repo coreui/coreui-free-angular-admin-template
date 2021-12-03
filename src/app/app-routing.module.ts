@@ -99,7 +99,8 @@ const routes: Routes = [
     data: {
       title: 'Register Page'
     }
-  }
+  },
+  {path: '**', component: Page404Component}
 ];
 
 @NgModule({
