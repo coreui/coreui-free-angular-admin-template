@@ -100,7 +100,7 @@ const routes: Routes = [
       title: 'Register Page'
     }
   },
-  {path: '**', component: Page404Component}
+  {path: '**', redirectTo: 'dashboard'}
 ];
 
 @NgModule({

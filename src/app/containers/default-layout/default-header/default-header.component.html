@@ -59,9 +59,10 @@
 
 <ng-template #userDropdown>
   <c-dropdown alignment="end" variant="nav-item">
-    <a
+    <button
+      cButton
+      color=""
       [caret]="false"
-      routerLink
       cDropdownToggle
       class="py-0"
     >
@@ -73,7 +74,7 @@
         status="success"
       >
       </c-avatar>
-    </a>
+    </button>
     <ul cDropdownMenu class="pt-0 pr-5 w-auto">
       <li>
         <h6 cDropdownHeader class="bg-light fw-semibold py-2">Account</h6>
