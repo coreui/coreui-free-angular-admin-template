@@ -13,7 +13,7 @@ import {
 import { IconModule } from '@coreui/icons-angular';
 import { ChartjsModule } from '@coreui/angular-chartjs';
 
-import { ComponentsModule } from '../../../components/components.module';
+import { DocsComponentsModule } from '@docs-components/docs-components.module';
 
 import { WidgetsRoutingModule } from './widgets-routing.module';
 import { WidgetsComponent } from './widgets/widgets.component';
@@ -39,7 +39,7 @@ import { WidgetsEComponent } from './widgets-e/widgets-e.component';
     SharedModule,
     ButtonModule,
     CardModule,
-    ComponentsModule,
+    DocsComponentsModule,
     ProgressModule,
     ChartjsModule
   ],

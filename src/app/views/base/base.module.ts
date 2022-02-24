@@ -30,7 +30,7 @@ import {
 import { IconModule } from '@coreui/icons-angular';
 
 // utils
-import { ComponentsModule } from '../../../components/components.module';
+import { DocsComponentsModule } from '@docs-components/docs-components.module';
 
 // views
 import { AccordionsComponent } from './accordion/accordions.component';
@@ -79,7 +79,7 @@ import { BaseRoutingModule } from './base-routing.module';
     PaginationModule,
     PopoverModule,
     TableModule,
-    ComponentsModule,
+    DocsComponentsModule,
   ],
   declarations: [
     AccordionsComponent,

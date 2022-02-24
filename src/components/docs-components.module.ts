@@ -29,5 +29,5 @@ import { DocsCalloutComponent } from './docs-callout/docs-callout.component';
     CalloutModule
   ]
 })
-export class ComponentsModule {
+export class DocsComponentsModule {
 }

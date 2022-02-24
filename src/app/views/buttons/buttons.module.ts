@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { ComponentsModule } from '../../../components/components.module';
+import { DocsComponentsModule } from '@docs-components/docs-components.module';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { ButtonGroupsComponent } from './button-groups/button-groups.component';
 import { DropdownsComponent } from './dropdowns/dropdowns.component';
@@ -44,7 +44,7 @@ import { IconModule } from '@coreui/icons-angular';
     SharedModule,
     FormModule,
     ReactiveFormsModule,
-    ComponentsModule,
+    DocsComponentsModule,
     NavbarModule,
     CollapseModule,
     NavModule,

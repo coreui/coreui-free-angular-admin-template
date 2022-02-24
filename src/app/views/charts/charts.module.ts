@@ -6,7 +6,7 @@ import { ChartjsModule } from '@coreui/angular-chartjs';
 
 import { ChartsComponent } from './charts.component';
 import { ChartsRoutingModule } from './charts-routing.module';
-import { ComponentsModule } from '../../../components/components.module';
+import { DocsComponentsModule } from '@docs-components/docs-components.module';
 
 @NgModule({
   declarations: [ChartsComponent],
@@ -17,7 +17,7 @@ import { ComponentsModule } from '../../../components/components.module';
     CardModule,
     GridModule,
     BadgeModule,
-    ComponentsModule
+    DocsComponentsModule
   ]
 })
 export class ChartsModule {
