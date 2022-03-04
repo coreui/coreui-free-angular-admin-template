@@ -17,6 +17,8 @@ import {
   UtilitiesModule
 } from '@coreui/angular';
 
+import { IconModule } from '@coreui/icons-angular';
+
 import { DocsComponentsModule } from '@docs-components/docs-components.module';
 import { NotificationsRoutingModule } from './notifications-routing.module';
 
@@ -54,7 +56,8 @@ import { AppToastComponent } from './toasters/toast-simple/toast.component';
     UtilitiesModule,
     TooltipModule,
     PopoverModule,
-    ProgressModule
+    ProgressModule,
+    IconModule
   ],
 })
 export class NotificationsModule {
