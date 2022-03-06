@@ -1,0 +1,95 @@
+<div class="bg-light min-vh-100 d-flex flex-row align-items-center">
+    <c-container>
+      <c-row class="justify-content-center">
+        <c-col lg="7" md="9" xl="6">
+          <c-card class="mx-4">
+            <c-card-body class="p-4">
+              <form [formGroup]='registerForm' 
+                    (ngSubmit)="onSubmitCredentials()"
+                     cForm>
+                <h1>Register</h1>
+                <p class="text-medium-emphasis">Create your account at Origo!</p>
+                <c-input-group class="mb-3">
+                  <span cInputGroupText>
+                    <svg cIcon name="cilUser"></svg>
+                  </span>
+                  <input formControlName="firstname" autoComplete="first name" cFormControl placeholder="first name"/>
+                  <span>
+                    <small class="form-text text-danger" *ngIf="getControlErrors('firstname')">{{getCntrolErroMessage('firstname')}}</small>
+                  </span>
+                  <!--<c-form-feedback [tooltip]="true" *ngIf="getControlErrors('firstname') !== null" [valid]="false">{{getControlErrors('firstname')!['required']!.message}}</c-form-feedback>-->
+                </c-input-group>
+                <c-input-group class="mb-3">
+                    <span cInputGroupText>
+                      <svg cIcon name="cilUser"></svg>
+                    </span>
+                    <input formControlName="secondname" autoComplete="second name" cFormControl placeholder="second name"/>
+                    <span>
+                      <small class="form-text text-danger" *ngIf="getControlErrors('secondname')">{{getCntrolErroMessage('secondname')}}</small>
+                    </span>
+                </c-input-group>
+                  <c-input-group class="mb-3">
+                    <span cInputGroupText>
+                      <svg cIcon name="cilUser"></svg>
+                    </span>
+                    <input formControlName="displayName" autoComplete="nick name" cFormControl placeholder="nick name" />
+                    <span>
+                      <small class="form-text text-danger" *ngIf="getControlErrors('displayName')">{{getCntrolErroMessage('displayName')}}</small> 
+                    </span>
+                  </c-input-group>
+                <c-input-group class="mb-3">
+                  <span cInputGroupText>
+                    <svg cIcon name="cibMailRu"></svg>
+                  </span>  
+                  <input formControlName="email" autoComplete="email" cFormControl placeholder="Email" />
+                 <span>
+                   <small class="form-text text-danger" *ngIf="getControlErrors('email')">{{getCntrolErroMessage('email')}}</small>
+                 </span>
+                </c-input-group>
+                <c-input-group class="mb-3">
+                  <span cInputGroupText>
+                    <svg cIcon name="cilLockLocked"></svg>
+                  </span>
+                  <input formControlName="password" autoComplete="new-password" cFormControl placeholder="Password" type="password" /> 
+                 <span>
+                   <small class="form-text text-danger" *ngIf="getControlErrors('password')">{{getCntrolErroMessage('password')}}</small>
+                 </span>
+                </c-input-group>
+                <c-input-group class="mb-3">
+                  <span cInputGroupText>
+                    <svg cIcon name="cilLockLocked"></svg>
+                  </span>
+                  <input formControlName="confirmpassword" autoComplete="new-password" cFormControl placeholder="Repeat password" type="password" />
+                 <span>
+                   <small class="form-text text-danger" *ngIf="getControlErrors('confirmpassword')">{{getCntrolErroMessage('confirmpassword')}}</small>
+                 </span>
+                </c-input-group>
+                <c-input-group>
+                  <span cInputGroupText>
+                    <svg cIcon name="cilFactory"></svg>
+                  </span>
+                  <select formControlName="supplier" aria-label="suppliers"  cSelect>
+                    <option disabled>Select your supplier</option>
+                    <option [value]="supplier.name" *ngFor="let supplier of suppliers | async">{{supplier.name}}</option>
+                  </select>
+                  <span>
+                    <small class="form-text text-danger" *ngIf="getControlErrors('supplier')">{{getCntrolErroMessage('supplier')}}</small>
+                  </span> 
+                </c-input-group>
+                <div class="d-grid">
+                  <button type="submit" [disabled]="registerForm.invalid" cButton color="success">Create Account</button>
+                </div>
+              </form>
+            </c-card-body>
+          </c-card>
+          <c-alert *ngIf="registed" color="success">
+            <h4 cAlertHeading>Well done!</h4>
+            <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+            <hr />
+            <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+          </c-alert>
+        </c-col>
+      </c-row>
+    </c-container>
+  </div>
+  

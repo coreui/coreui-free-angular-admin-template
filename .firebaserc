@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "origo-supplier"
+  },
+  "targets": {
+    "origo-supplier": {
+      "hosting": {
+        "coreui-free-angular-admin-template": [
+          "origo-supplier"
+        ]
+      }
+    }
+  }
+}

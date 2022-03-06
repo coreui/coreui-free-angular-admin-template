@@ -3,6 +3,7 @@ import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@a
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+import {CoreModule} from './core/core.module'
 
 import {
   PERFECT_SCROLLBAR_CONFIG,
@@ -41,10 +42,18 @@ import {
   SharedModule,
   SidebarModule,
   TabsModule,
-  UtilitiesModule,
+  UtilitiesModule
 } from '@coreui/angular';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config';
+import { provideStorage,getStorage } from '@angular/fire/storage';
+import { FeaturesModule } from './features/features.module';
+import { AngularFireModule } from '@angular/fire/compat';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -85,6 +94,14 @@ const APP_CONTAINERS = [
     BadgeModule,
     ListGroupModule,
     CardModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    AngularFireModule.initializeApp(environment.firebase), // should not be needed: bug https://github.com/angular/angularfire/issues/3079
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideRemoteConfig(() => getRemoteConfig()),
+    provideStorage(() => getStorage()),
+    CoreModule,
+    FeaturesModule
   ],
   providers: [
     {

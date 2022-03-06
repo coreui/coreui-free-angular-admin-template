@@ -4,17 +4,20 @@ import { RouterModule, Routes } from '@angular/router';
 import { DefaultLayoutComponent } from './containers';
 import { Page404Component } from './views/pages/page404/page404.component';
 import { Page500Component } from './views/pages/page500/page500.component';
-import { LoginComponent } from './views/pages/login/login.component';
-import { RegisterComponent } from './views/pages/register/register.component';
+import { LoginComponent } from '@features/login/login.component';
+import { LogoutComponent } from '@features/logout/logout.component';
+import { RegisterComponent } from '@features/register/register.component';
+import { canActivate, loggedIn, redirectUnauthorizedTo } from '@angular/fire/compat/auth-guard';
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['/login']);
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: 'dashboard',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
-    path: '',
+    path: '', 
     component: DefaultLayoutComponent,
     data: {
       title: 'Home'
@@ -22,51 +25,61 @@ const routes: Routes = [
     children: [
       {
         path: 'dashboard',
+        ...canActivate(redirectUnauthorizedToLogin),
         loadChildren: () =>
           import('./views/dashboard/dashboard.module').then((m) => m.DashboardModule)
       },
       {
         path: 'theme',
+        ...canActivate(redirectUnauthorizedToLogin),
         loadChildren: () =>
           import('./views/theme/theme.module').then((m) => m.ThemeModule)
       },
       {
         path: 'base',
+        ...canActivate(redirectUnauthorizedToLogin),
         loadChildren: () =>
           import('./views/base/base.module').then((m) => m.BaseModule)
       },
       {
         path: 'buttons',
+        ...canActivate(redirectUnauthorizedToLogin),
         loadChildren: () =>
           import('./views/buttons/buttons.module').then((m) => m.ButtonsModule)
       },
       {
         path: 'forms',
+        ...canActivate(redirectUnauthorizedToLogin),
         loadChildren: () =>
           import('./views/forms/forms.module').then((m) => m.CoreUIFormsModule)
       },
       {
         path: 'charts',
+        ...canActivate(redirectUnauthorizedToLogin),
         loadChildren: () =>
           import('./views/charts/charts.module').then((m) => m.ChartsModule)
       },
       {
         path: 'icons',
+        ...canActivate(redirectUnauthorizedToLogin),
         loadChildren: () =>
           import('./views/icons/icons.module').then((m) => m.IconsModule)
       },
       {
         path: 'notifications',
+        ...canActivate(redirectUnauthorizedToLogin),
         loadChildren: () =>
           import('./views/notifications/notifications.module').then((m) => m.NotificationsModule)
       },
       {
         path: 'widgets',
+        ...canActivate(redirectUnauthorizedToLogin),
         loadChildren: () =>
           import('./views/widgets/widgets.module').then((m) => m.WidgetsModule)
       },
       {
         path: 'pages',
+        ...canActivate(redirectUnauthorizedToLogin),
         loadChildren: () =>
           import('./views/pages/pages.module').then((m) => m.PagesModule)
       },
@@ -91,6 +104,13 @@ const routes: Routes = [
     component: LoginComponent,
     data: {
       title: 'Login Page'
+    }
+  },
+  {
+    path: 'logout',
+    component: LogoutComponent,
+    data: {
+      title: 'Logout Page'
     }
   },
   {

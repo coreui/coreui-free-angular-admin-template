@@ -87,6 +87,9 @@ import {
   cilUserFemale,
   cilUserFollow,
   cilUserUnfollow,
+  cilAccountLogout,
+  cilFactory,
+  cibMailRu
 } from '@coreui/icons';
 
 export const iconSubset = {
@@ -98,6 +101,7 @@ export const iconSubset = {
   cibCcVisa,
   cibFacebook,
   cibGoogle,
+  cibMailRu,
   cibLinkedin,
   cibSkype,
   cibTwitter,
@@ -107,6 +111,7 @@ export const iconSubset = {
   cifIn,
   cifPl,
   cifUs,
+  cilAccountLogout,
   cilAlignCenter,
   cilAlignLeft,
   cilAlignRight,
@@ -133,6 +138,7 @@ export const iconSubset = {
   cilDrop,
   cilEnvelopeClosed,
   cilEnvelopeOpen,
+  cilFactory,
   cilFile,
   cilHome,
   cilInbox,
@@ -177,7 +183,7 @@ export const iconSubset = {
   cilUser,
   cilUserFemale,
   cilUserFollow,
-  cilUserUnfollow,
+  cilUserUnfollow
 };
 
 export enum IconSubset {
@@ -190,6 +196,7 @@ export enum IconSubset {
   cibFacebook = 'cibFacebook',
   cibGoogle = 'cibGoogle',
   cibLinkedin = 'cibLinkedin',
+  cibMailRu = 'cibMailRu',
   cibSkype = 'cibSkype',
   cibTwitter = 'cibTwitter',
   cifBr = 'cifBr',
@@ -198,6 +205,7 @@ export enum IconSubset {
   cifIn = 'cifIn',
   cifPl = 'cifPl',
   cifUs = 'cifUs',
+  cilAccountLogout = 'cilAccountLogout',
   cilAlignCenter = 'cilAlignCenter',
   cilAlignLeft = 'cilAlignLeft',
   cilAlignRight = 'cilAlignRight',
@@ -224,6 +232,7 @@ export enum IconSubset {
   cilDrop = 'cilDrop',
   cilEnvelopeClosed = 'cilEnvelopeClosed',
   cilEnvelopeOpen = 'cilEnvelopeOpen',
+  cilFactory = 'cilFactory',
   cilFile = 'cilFile',
   cilHome = 'cilHome',
   cilInbox = 'cilInbox',

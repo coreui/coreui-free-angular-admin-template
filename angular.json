@@ -111,6 +111,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "coreui-free-angular-admin-template:build:production",
+            "firebaseProject": "origo-supplier",
+            "firebaseHostingSite": "origo-supplier"
+          }
         }
       }
     }
