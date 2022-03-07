@@ -67,6 +67,10 @@ export const navItems: INavData[] = [
         url: '/base/pagination'
       },
       {
+        name: 'Placeholder',
+        url: '/base/placeholder'
+      },
+      {
         name: 'Popovers',
         url: '/base/popovers'
       },

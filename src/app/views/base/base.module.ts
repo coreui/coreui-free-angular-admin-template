@@ -17,6 +17,7 @@ import {
   ListGroupModule,
   NavModule,
   PaginationModule,
+  PlaceholderModule,
   PopoverModule,
   ProgressModule,
   SharedModule,
@@ -24,7 +25,7 @@ import {
   TableModule,
   TabsModule,
   TooltipModule,
-  UtilitiesModule,
+  UtilitiesModule
 } from '@coreui/angular';
 
 import { IconModule } from '@coreui/icons-angular';
@@ -41,6 +42,7 @@ import { CollapsesComponent } from './collapses/collapses.component';
 import { ListGroupsComponent } from './list-groups/list-groups.component';
 import { NavsComponent } from './navs/navs.component';
 import { PaginationsComponent } from './paginations/paginations.component';
+import { PlaceholdersComponent } from './placeholders/placeholders.component';
 import { PopoversComponent } from './popovers/popovers.component';
 import { ProgressComponent } from './progress/progress.component';
 import { SpinnersComponent } from './spinners/spinners.component';
@@ -67,6 +69,7 @@ import { BaseRoutingModule } from './base-routing.module';
     ListGroupModule,
     IconModule,
     ListGroupModule,
+    PlaceholderModule,
     ProgressModule,
     SpinnerModule,
     TabsModule,
@@ -96,6 +99,7 @@ import { BaseRoutingModule } from './base-routing.module';
     TablesComponent,
     TooltipsComponent,
     TabsComponent,
+    PlaceholdersComponent,
   ],
 })
 export class BaseModule {}

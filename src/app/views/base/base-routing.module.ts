@@ -15,6 +15,7 @@ import { SpinnersComponent } from './spinners/spinners.component';
 import { TablesComponent } from './tables/tables.component';
 import { TooltipsComponent } from './tooltips/tooltips.component';
 import { TabsComponent } from './tabs/tabs.component';
+import { PlaceholdersComponent } from './placeholders/placeholders.component';
 
 const routes: Routes = [
   {
@@ -81,6 +82,13 @@ const routes: Routes = [
         component: PaginationsComponent,
         data: {
           title: 'Pagination',
+        },
+      },
+      {
+        path: 'placeholder',
+        component: PlaceholdersComponent,
+        data: {
+          title: 'Placeholder',
         },
       },
       {
