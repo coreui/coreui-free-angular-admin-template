@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class CollapsesComponent {
 
-  collapses = [false, false, false];
+  collapses = [false, false, false, false];
 
   constructor() { }
 

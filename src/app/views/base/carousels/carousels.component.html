@@ -131,7 +131,7 @@
             <code>.d-md-block</code>.
           </p>
           <app-docs-example href="components/carousel/#with-captions">
-            <c-carousel (itemChange)="onItemChange($event)" [interval]="3000" transition="slide">
+            <c-carousel (itemChange)="onItemChange($event)" [interval]="3000" transition="slide" [wrap]="false">
               <c-carousel-indicators></c-carousel-indicators>
               <c-carousel-inner>
                 <c-carousel-item *ngFor="let slide of slides[1]">

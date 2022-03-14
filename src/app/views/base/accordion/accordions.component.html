@@ -13,9 +13,9 @@
         </p>
         <app-docs-example href="components/accordion">
           <c-accordion [alwaysOpen]="false" [flush]="false" class="shadow">
-            <c-accordion-item #item0="cAccordionItem" [open]="false">
+            <c-accordion-item #item0="cAccordionItem" [visible]="false">
               <ng-template cTemplateId="accordionHeaderTemplate">
-                <button (click)="item0.toggleItem()" [collapsed]="!item0.open" cAccordionButton cBgColor="info">
+                <button (click)="item0.toggleItem()" [collapsed]="!item0.visible" cAccordionButton cBgColor="info">
                   Accordion item #0
                 </button>
               </ng-template>
@@ -23,9 +23,9 @@
                 <div [innerHTML]="getAccordionBodyText('first')" cBgColor="info" class="accordion-body"></div>
               </ng-template>
             </c-accordion-item>
-            <c-accordion-item #item1="cAccordionItem" [open]="false">
+            <c-accordion-item #item1="cAccordionItem" [visible]="false">
               <ng-template cTemplateId="accordionHeaderTemplate">
-                <button (click)="item1.toggleItem()" [collapsed]="!item1.open" cAccordionButton>
+                <button (click)="item1.toggleItem()" [collapsed]="!item1.visible" cAccordionButton>
                   Accordion item #1
                 </button>
               </ng-template>
@@ -43,9 +43,9 @@
                 </div>
               </ng-template>
             </c-accordion-item>
-            <c-accordion-item #item2="cAccordionItem" [open]="false">
+            <c-accordion-item #item2="cAccordionItem" [visible]="false">
               <ng-template cTemplateId="accordionHeaderTemplate">
-                <button (click)="item2.toggleItem()" [collapsed]="!item2.open" cAccordionButton>
+                <button (click)="item2.toggleItem()" [collapsed]="!item2.visible" cAccordionButton>
                   Accordion item #2
                 </button>
               </ng-template>
@@ -69,7 +69,7 @@
         </p>
         <app-docs-example href="components/accordion#flush">
           <c-accordion [flush]="true">
-            <c-accordion-item [open]="true">
+            <c-accordion-item visible>
               <ng-template cTemplateId="accordionHeader">
                 Accordion item #0
               </ng-template>
@@ -77,7 +77,7 @@
                 <span [innerHTML]="getAccordionBodyText('first')"></span>
               </ng-template>
             </c-accordion-item>
-            <c-accordion-item [open]="false">
+            <c-accordion-item [visible]="false">
               <ng-template cTemplateId="accordionHeader">
                 Accordion item #1
               </ng-template>
@@ -85,7 +85,7 @@
                 <span [innerHTML]="getAccordionBodyText('second')"></span>
               </ng-template>
             </c-accordion-item>
-            <c-accordion-item [open]="false">
+            <c-accordion-item [visible]="false">
               <ng-template cTemplateId="accordionHeader">
                 Accordion item #2
               </ng-template>
@@ -104,7 +104,7 @@
       <c-card-body>
         <app-docs-example href="components/accordion#always-open">
           <c-accordion [alwaysOpen]="true" class="shadow accordion-custom">
-            <c-accordion-item *ngFor="let item of items; index as i" [open]="i===1">
+            <c-accordion-item *ngFor="let item of items; let i = index;" [visible]="i===1">
               <ng-template cTemplateId="accordionHeader">
                 Custom Accordion item #{{i}}
               </ng-template>
