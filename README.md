@@ -71,7 +71,7 @@ Install the Angular CLI globally using a terminal/console window.
 npm install -g @angular/cli
 ```
 
-### Instalation
+### Installation
 
 ``` bash
 $ npm install
