@@ -24,7 +24,7 @@
     "@angular/platform-browser": "~13.2.0",
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
-    "@coreui/angular": "^4.0.0-alpha.14",
+    "@coreui/angular": "^4.0.0-alpha.15",
     "@coreui/angular-chartjs": "^2.0.0-alpha.9",
     "@coreui/chartjs": "^3.0.0",
     "@coreui/coreui": "~4.1.3",
