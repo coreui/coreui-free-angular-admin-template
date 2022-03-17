@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { CollapseDirective } from 'ngx-bootstrap/collapse';
+import { BsDropdownDirective, BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { NavbarsComponent } from './navbars.component';
 
@@ -8,9 +11,10 @@ describe('NavbarsComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ NavbarsComponent ]
+      declarations: [NavbarsComponent, CollapseDirective, BsDropdownDirective],
+      imports: [NoopAnimationsModule, BsDropdownModule.forRoot()]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -3,10 +3,12 @@ import { ActivatedRoute } from '@angular/router';
 import { Platform } from '@angular/cdk/platform';
 
 import { IconSetService } from '@coreui/icons-angular';
+import { freeSet } from '@coreui/icons';
 
 @Component({
   templateUrl: 'coreui-icons.component.html',
-  styleUrls: ['coreui-icons.component.scss']
+  styleUrls: ['coreui-icons.component.scss'],
+  providers: [IconSetService],
 })
 export class CoreUIIconsComponent implements OnInit {
   public title = 'CoreUI Icons';
@@ -16,7 +18,9 @@ export class CoreUIIconsComponent implements OnInit {
     public platform: Platform,
     private route: ActivatedRoute,
     public iconSet: IconSetService
-  ) {}
+  ) {
+    iconSet.icons = { ...freeSet };
+  }
 
   ngOnInit() {
     const path = this.route.routeConfig.path;
