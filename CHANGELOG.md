@@ -1,5 +1,35 @@
 ## [CoreUI for Angular](./README.md) version `changelog`
 
+###### `v2.12.0`
+
+- chore: update to `Angular 12.2`
+- refactor: icons cleanup
+
+###### dependencies update
+- update `@angular/animations` to `^12.2.16`
+- update `@angular/cdk` to `^12.2.13`
+- update `@angular/common` to `^12.2.16`
+- update `@angular/compiler` to `^12.2.16`
+- update `@angular/core` to `^12.2.16`
+- update `@angular/forms` to `^12.2.16`
+- update `@angular/localize` to `^12.2.16`
+- update `@angular/platform-browser` to `^12.2.16`
+- update `@angular/platform-browser-dynamic` to `^12.2.16`
+- update `@angular/router` to `^12.2.16`
+- update `@coreui/angular` to `~2.12.0`
+- update `zone.js` to `~0.11.4`
+- update `@angular-devkit/build-angular` to `^12.2.16`
+- update `@angular/cli` to `^12.2.16`
+- update `@angular/compiler-cli` to `^12.2.16`
+- update `@angular/language-service` to `^12.2.16`
+- update `jasmine-spec-reporter` to `~7.0.0`
+- update `karma` to `~6.3.17`
+- update `typescript` to `~4.3.5`
+
+###### `v2.11.3`
+
+- chore: dependencies update
+
 ###### `v2.11.2`
 
 - chore: update to `Angular 11.2`
