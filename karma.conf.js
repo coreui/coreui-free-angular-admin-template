@@ -25,15 +25,12 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, '../../coverage'),
+      dir: require('path').join(__dirname, './coverage/coreui-free-angular-admin-template'),
       subdir: '.',
       reporters: [
         { type: 'html' },
         { type: 'text-summary' }
       ]
-    },
-    angularCli: {
-      environment: 'dev'
     },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
