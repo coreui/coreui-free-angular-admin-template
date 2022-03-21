@@ -1,5 +1,29 @@
 ## [CoreUI for Angular](./README.md) version `changelog`
 
+###### `v2.13.0`
+
+- chore: update to `Angular 13.3`
+
+###### dependencies update
+- update `@angular/animations` to `^13.3.0`
+- update `@angular/cdk` to `^13.3.0`
+- update `@angular/common` to `^13.3.0`
+- update `@angular/compiler` to `^13.3.0`
+- update `@angular/core` to `^13.3.0`
+- update `@angular/forms` to `^13.3.0`
+- update `@angular/localize` to `^13.3.0`
+- update `@angular/platform-browser` to `^13.3.0`
+- update `@angular/platform-browser-dynamic` to `^13.3.0`
+- update `@angular/router` to `^13.3.0`
+- update `@coreui/angular` to `~2.13.0`
+- update `@angular-devkit/build-angular` to `^13.3.0`
+- update `@angular/cli` to `^13.3.0`
+- update `@angular/compiler-cli` to `^13.3.0`
+- update `@angular/language-service` to `^13.3.0`
+- update `typescript` to `~4.6.2`
+- remove: `classlist.js`
+- remove: `web-animations-js`
+
 ###### `v2.12.0`
 
 - chore: update to `Angular 12.2`

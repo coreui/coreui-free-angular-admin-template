@@ -1,4 +1,4 @@
-![angular](https://img.shields.io/badge/angular-^12.2.0-lightgrey.svg?style=flat-square&logo=angular)
+![angular](https://img.shields.io/badge/angular-^13.3.0-lightgrey.svg?style=flat-square&logo=angular)
 [![npm package][npm-coreui-angular-badge-v2]][npm-coreui-angular]
 [![npm package][npm-coreui-angular-badge-latest]][npm-coreui-angular]
 [![NPM downloads][npm-coreui-angular-download]][npm-coreui-angular]  
@@ -45,7 +45,7 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
       - [Prerequisites](#prerequisites)
           - [Node.js](#nodejs)
           - [Angular CLI](#angular-cli)
-        - [Update to Angular 12](#update-to-angular-9)
+        - [Update to Angular 13](#update-to-angular-13)
   - [Installation](#installation)
     - [Clone repo](#clone-repo)
   - [Usage](#usage)
@@ -79,7 +79,7 @@ CoreUI is built on top of Bootstrap 4 and supports popular frameworks.
 Before you begin, make sure your development environment includes `Node.js®` and an `npm` package manager.
 
 ###### Node.js
-Angular 12 requires `Node.js` version 12.20 or later.
+Angular 13 requires `Node.js` version 12.20 or later.
 
 - To check your version, run `node -v` in a terminal/console window.
 - To get `Node.js`, go to [nodejs.org](https://nodejs.org/).
@@ -90,8 +90,8 @@ Install the Angular CLI globally using a terminal/console window.
 npm install -g @angular/cli
 ```
 
-##### Update to Angular 12
-Angular 12 requires `Node.js` version 12.20 or newer    
+##### Update to Angular 13
+Angular 13 requires `Node.js` version 12.20 or newer    
 Update guide - see: [https://update.angular.io](https://update.angular.io)
 
 ## Installation
