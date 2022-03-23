@@ -21,7 +21,6 @@ import { FloatingLabelsComponent } from './floating-labels/floating-labels.compo
 import { FormControlsComponent } from './form-controls/form-controls.component';
 import { SelectComponent } from './select/select.component';
 import { ChecksRadiosComponent } from './checks-radios/checks-radios.component';
-import { MultiSelectComponent } from './multi-select/multi-select.component';
 import { InputGroupsComponent } from './input-groups/input-groups.component';
 import { LayoutComponent } from './layout/layout.component';
 import { ValidationComponent } from './validation/validation.component';
@@ -34,7 +33,6 @@ import { ValidationComponent } from './validation/validation.component';
     FormControlsComponent,
     SelectComponent,
     ChecksRadiosComponent,
-    MultiSelectComponent,
     InputGroupsComponent,
     LayoutComponent,
     ValidationComponent

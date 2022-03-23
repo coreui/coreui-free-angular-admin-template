@@ -7,7 +7,6 @@ import { InputGroupsComponent } from './input-groups/input-groups.component';
 import { RangesComponent } from './ranges/ranges.component';
 import { SelectComponent } from './select/select.component';
 import { ChecksRadiosComponent } from './checks-radios/checks-radios.component';
-import { MultiSelectComponent } from './multi-select/multi-select.component';
 import { LayoutComponent } from './layout/layout.component';
 import { ValidationComponent } from './validation/validation.component';
 
@@ -34,13 +33,6 @@ const routes: Routes = [
         component: SelectComponent,
         data: {
           title: 'Select'
-        }
-      },
-      {
-        path: 'multi-select',
-        component: MultiSelectComponent,
-        data: {
-          title: 'Multi Select'
         }
       },
       {
