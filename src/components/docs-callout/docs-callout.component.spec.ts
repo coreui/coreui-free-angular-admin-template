@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DocsCalloutComponent } from './docs-callout.component';
+import { CalloutModule } from '@coreui/angular';
 
 describe('DocsCalloutComponent', () => {
   let component: DocsCalloutComponent;
@@ -8,7 +9,8 @@ describe('DocsCalloutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DocsCalloutComponent ]
+      declarations: [ DocsCalloutComponent ],
+      imports: [CalloutModule]
     })
     .compileComponents();
   });
