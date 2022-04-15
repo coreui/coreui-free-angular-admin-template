@@ -27,6 +27,7 @@ import {
   cilBell,
   cilBold,
   cilBookmark,
+  cilBrowser,
   cilCalculator,
   cilCalendar,
   cilChart,
@@ -44,6 +45,7 @@ import {
   cilEnvelopeOpen,
   cilFile,
   cilHome,
+  cilImage,
   cilInbox,
   cilIndentDecrease,
   cilIndentIncrease,
@@ -89,7 +91,8 @@ import {
   cilUserUnfollow,
   cilAccountLogout,
   cilFactory,
-  cibMailRu
+  cibMailRu,
+  cilPhone,
 } from '@coreui/icons';
 
 export const iconSubset = {
@@ -123,6 +126,7 @@ export const iconSubset = {
   cilBell,
   cilBold,
   cilBookmark,
+  cilBrowser,
   cilCalculator,
   cilCalendar,
   cilChart,
@@ -141,6 +145,7 @@ export const iconSubset = {
   cilFactory,
   cilFile,
   cilHome,
+  cilImage,
   cilInbox,
   cilIndentDecrease,
   cilIndentIncrease,
@@ -163,6 +168,7 @@ export const iconSubset = {
   cilPen,
   cilPencil,
   cilPeople,
+  cilPhone,
   cilPrint,
   cilPuzzle,
   cilReportSlash,

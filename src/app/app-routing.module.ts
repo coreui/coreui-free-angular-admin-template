@@ -8,6 +8,7 @@ import { LoginComponent } from '@features/login/login.component';
 import { LogoutComponent } from '@features/logout/logout.component';
 import { RegisterComponent } from '@features/register/register.component';
 import { canActivate, loggedIn, redirectUnauthorizedTo } from '@angular/fire/compat/auth-guard';
+import { ProfileComponent } from '@features/profile/profile.component';
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['/login']);
 
 const routes: Routes = [
@@ -23,6 +24,13 @@ const routes: Routes = [
       title: 'Home'
     },
     children: [
+      {
+        path: 'profile',
+        ...canActivate(redirectUnauthorizedToLogin),
+        loadChildren: () =>
+          import('./features/profile/profile.module').then((m) => m.ProfileModule)
+
+      },
       {
         path: 'dashboard',
         ...canActivate(redirectUnauthorizedToLogin),
@@ -118,6 +126,13 @@ const routes: Routes = [
     component: RegisterComponent,
     data: {
       title: 'Register Page'
+    }
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    data: {
+      title: 'Profile Page'
     }
   },
   {path: '**', redirectTo: 'dashboard'}

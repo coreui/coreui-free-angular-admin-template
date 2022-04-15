@@ -1,11 +1,9 @@
 import { Injectable, NgZone } from '@angular/core';
 import { OrigoSupplierUser } from "../model/OrigoSupplierUser";
-import { Auth, authState, User, createUserWithEmailAndPassword, PhoneAuthProvider, RecaptchaVerifier, signInWithEmailAndPassword, updatePhoneNumber } from '@angular/fire/auth';
+import { Auth, User, createUserWithEmailAndPassword, PhoneAuthProvider, RecaptchaVerifier, signInWithEmailAndPassword, updatePhoneNumber } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { NavigationEnd, NavigationError, NavigationStart, Router, RouterEvent } from "@angular/router";
-import { concatMap, concatMapTo, concatWith, from, map, Observable, of, pipe, Subject, Subscription, tap } from 'rxjs';
-//import { createUserWithEmailAndPassword, PhoneAuthProvider, RecaptchaVerifier, signInWithEmailAndPassword, updatePhoneNumber } from '@angular/fire/auth/firebase';
-import * as firebase from 'firebase/app';
+import { Observable, Subject, Subscription, tap } from 'rxjs';
 import { sendEmailVerification, signOut, updateProfile, UserCredential } from 'firebase/auth';
 
 
@@ -19,15 +17,29 @@ export class AuthService {
   private _authenticatedUser: OrigoSupplierUser | null = null;//firebase.default.auth.UserCredential["user"] | null = null; // Save logged in user data
   private domainUserSubject: Subject<OrigoSupplierUser> = new Subject<OrigoSupplierUser>();
   private domainUserObservable: Observable<OrigoSupplierUser> = this.domainUserSubject.asObservable();
+  private applicationVerifier: RecaptchaVerifier | null = null;
 
   public get authenticatedUser(): OrigoSupplierUser | null {
+    if(this._authenticatedUser === null){
+      let serializedUser = localStorage.getItem('origoUser');
+      if(serializedUser != null){
+        this._authenticatedUser = JSON.parse(serializedUser) as OrigoSupplierUser;
+      }
+    } 
     return this._authenticatedUser;
   }
   private set authenticatedUser(value: OrigoSupplierUser | null) {
     console.log('setted authenticatedUser with ' + value);
     this._authenticatedUser = value;
+    this.saveUserLocally()
   }
 
+
+  saveUserLocally(){
+     // store data into local storage before browser refresh
+    localStorage.setItem('origoUser', JSON.stringify(this._authenticatedUser));
+  }
+  
   constructor(
     public afs: AngularFirestore,   // Inject Firestore service
     public auth: Auth,
@@ -82,7 +94,6 @@ export class AuthService {
   }
 
   async signIn(email: string, password: string) : Promise<string | undefined> {
-    console.log(`email=${email} passw=${password}`)
     let userCreds = null
     try {
       userCreds = await signInWithEmailAndPassword(this.auth, email, password);
@@ -121,24 +132,8 @@ export class AuthService {
     } catch (error) {
       window.alert(`signup FireAuth User profile with email ${user.email} failed with reason: ${JSON.stringify(error)}`)
     }
-    /*.then((result) => {
-       result.user?.updateProfile({displayName:username}).then(() => this.decorateDomainUserData(result.user!));
-       this.sendVerificationMail();
-     }).catch((error) => {
-       window.alert(error.message)
-     })*/
   }
 
-  // Send email verfificaiton when new user sign up
-  /*  sendVerificationMail() {
-      let subscription = this.afAuth.user.subscribe( user => {
-        user?.sendEmailVerification().then(() => {
-          this.router.navigate(['/verify-email-address']);
-        }).catch( error => {
-          console.log("Un error happened while sending verification mail " + error);
-        }).finally( () => subscription.unsubscribe());
-      });    
-    }*/
 
 
   // Reset Forggot password
@@ -151,34 +146,6 @@ export class AuthService {
     })
   }*/
 
-  // Returns true when user is looged in and email is verified
-  get isLoggedIn(): boolean {
-    
-    let userJson = localStorage.getItem('user');
-    if (!!userJson) {
-      const user = JSON.parse(userJson);
-      return (user !== null && user !== '' && user.emailVerified !== false) ? true : false;
-    } else {
-      return false;
-    }
-  }
-  // Sign in with Google
-  /*  GoogleAuth() {
-     return this.AuthLogin(this.afAuth.);
-   }
-   // Auth logic to run auth providers
-   AuthLogin(provider) {
-     return this.afAuth.signInWithPopup(provider)
-     .then((result) => {
-        this.ngZone.run(() => {
-           this.router.navigate(['dashboard']);
-         })
-       this.SetUserData(result.user);
-     }).catch((error) => {
-       window.alert(error)
-     })
-   }
- 
    /* Setting up user domain model data in Firestore database using AngularFirestore + AngularFirestoreDocument service */
 
 
@@ -189,25 +156,48 @@ export class AuthService {
       const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${uid}`);
       await userRef.set(decoratedUser, { merge: true })
       let doc = await userRef.get().toPromise();
-      this.authenticatedUser = doc?.data();
+      const userFromDocument = doc?.data();
+      if(!!userFromDocument) {
+        this.authenticatedUser = userFromDocument;
+        this.domainUserSubject.next(userFromDocument);
+      }else{
+        console.log(`error: document with id = ${uid} not found`);
+      }
     } catch (error) {
       console.log(`Error ${error} updating user profile`)
     }
   }
 
-  async updatePhoneNUmber(recaptchaContainerId: string, phoneNumber: string, verificationCodeProvider: () => string): Promise<void> {
-    
-    if(!this.auth.currentUser) {
+  async updatePhoneNUmber(phoneNumber: string, otp: string, verificationId: string): Promise<void> {
+
+    if (!this.auth.currentUser || !this.authenticatedUser) {
       throw Error('current authenticated user is null. Can not update phone number');
     }
-    // 'recaptcha-container' is the ID of an element in the DOM.
 
-    const applicationVerifier = new RecaptchaVerifier(recaptchaContainerId, {}, this.auth);
+    try {
+      const phoneCredential = PhoneAuthProvider.credential(verificationId, otp);
+      await updatePhoneNumber(this.auth.currentUser, phoneCredential);
+      await this.decorateAndStoreDomainUser({...this.authenticatedUser, phoneNumber:phoneNumber}, this.authenticatedUser?.uid)
+    }catch(e) {
+      console.log(`error while updating phone number - ${e}`)
+    }finally{
+      if(!!this.applicationVerifier) {
+        this.applicationVerifier.clear();
+        this.applicationVerifier = null;
+      }
+    }
+  }
+
+  async verifyPhoneWithRecaptcha(recaptchaContainerId: string, phoneNumber: string): Promise<string> {
+    if (!this.auth.currentUser) {
+      throw Error('current authenticated user is null. Can not verify phone number');
+    }
+    // 'recaptcha-container' is the ID of an element in the DOM.
+    this.applicationVerifier = new RecaptchaVerifier(recaptchaContainerId, {}, this.auth);
     const provider = new PhoneAuthProvider(this.auth);
-    const verificationId = await provider.verifyPhoneNumber(phoneNumber, applicationVerifier);
-    // Obtain the verificationCode from the user.
-    const phoneCredential = PhoneAuthProvider.credential(verificationId, verificationCodeProvider());
-    await updatePhoneNumber(this.auth.currentUser, phoneCredential);
+    // return the verificationId to be associated with the otp in order to generate the creds to update the phone.
+    const verificationId = await provider.verifyPhoneNumber(phoneNumber, this.applicationVerifier);
+    return verificationId;
   }
 
   async updateDomainUser2(user: Partial<OrigoSupplierUser>): Promise<[boolean, OrigoSupplierUser | undefined]> {

@@ -3,29 +3,23 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { LogoutComponent } from './logout/logout.component';
-import { ProfileComponent } from './profile/profile.component';
-import { AlertModule, ButtonModule, CardModule, FormModule, GridModule } from '@coreui/angular';
-import { IconModule } from '@coreui/icons-angular';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CoreModule } from '../core/core.module';
+import { CoreModule } from '@core/core.module';
+import { ProfileModule } from './profile/profile.module';
+import { CoreUiDepsModule } from '@coreui-deps/coreui-deps.module';
 
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
     LogoutComponent,
-    ProfileComponent
   ],
   imports: [
+    ProfileModule,
     CommonModule,
     CoreModule,
-    CardModule,
-    ButtonModule,
-    GridModule,
-    IconModule,
-    FormModule,
     ReactiveFormsModule,
-    AlertModule
+    CoreUiDepsModule
   ]
 })
 export class FeaturesModule { }

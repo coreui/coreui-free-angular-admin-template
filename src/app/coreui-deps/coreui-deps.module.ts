@@ -1,0 +1,115 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {
+  AlertModule,
+  AvatarModule,
+  BadgeModule,
+  BreadcrumbModule,
+  ButtonGroupModule,
+  ButtonModule,
+  CardModule,
+  DropdownModule,
+  FooterModule,
+  FormModule,
+  GridModule,
+  HeaderModule,
+  ListGroupModule,
+  NavModule,
+  ProgressModule,
+  SidebarModule,
+  TabsModule,
+  UtilitiesModule,
+  SharedModule
+} from '@coreui/angular';
+import { IconModule, IconSetService } from '@coreui/icons-angular';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
+import { RouterModule } from '@angular/router';
+
+
+@NgModule({
+  declarations: [],
+  imports: [
+    CommonModule,
+    AvatarModule,
+    BreadcrumbModule,
+    FooterModule,
+    DropdownModule,
+    GridModule,
+    HeaderModule,
+    SidebarModule,
+    IconModule,
+        NavModule,
+    ButtonModule,
+    FormModule,
+    UtilitiesModule,
+    ButtonGroupModule,
+    ReactiveFormsModule,
+    SidebarModule,
+    SharedModule,
+    TabsModule,
+    ListGroupModule,
+    ProgressModule,
+    BadgeModule,
+    ListGroupModule,
+    CardModule,
+    BreadcrumbModule,
+    RouterModule,
+    HeaderModule,
+    AvatarModule,
+    NavModule,
+    CardModule,
+    GridModule,
+    ButtonModule,
+    IconModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RxReactiveFormsModule,
+    AlertModule,
+    ProgressModule
+  ],
+  exports: [
+    CommonModule,
+    AvatarModule,
+    BreadcrumbModule,
+    FooterModule,
+    DropdownModule,
+    GridModule,
+    HeaderModule,
+    SidebarModule,
+    IconModule,
+    NavModule,
+    ButtonModule,
+    FormModule,
+    UtilitiesModule,
+    ButtonGroupModule,
+    ReactiveFormsModule,
+    SidebarModule,
+    SharedModule,
+    TabsModule,
+    ListGroupModule,
+    ProgressModule,
+    BadgeModule,
+    ListGroupModule,
+    CardModule,
+    BreadcrumbModule,
+    RouterModule,
+    HeaderModule,
+    AvatarModule,
+    NavModule,
+    CardModule,
+    GridModule,
+    ButtonModule,
+    IconModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RxReactiveFormsModule,
+    AlertModule,
+    ProgressModule
+  ],
+  providers: [
+    IconSetService
+  ]
+  
+})
+export class CoreUiDepsModule { }
