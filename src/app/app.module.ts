@@ -33,6 +33,8 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
 import { FeaturesModule } from './features/features.module';
 import { AngularFireModule } from '@angular/fire/compat';
 import { CoreUiDepsModule } from './coreui-deps/coreui-deps.module';
+import { IconSetService } from '@coreui/icons-angular';
+import { RouterModule } from '@angular/router';
 
 
 const APP_CONTAINERS = [
@@ -54,6 +56,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AppRoutingModule,
     PerfectScrollbarModule,
     ReactiveFormsModule,
+    RouterModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     AngularFireModule.initializeApp(environment.firebase), // should not be needed: bug https://github.com/angular/angularfire/issues/3079
     provideAuth(() => getAuth()),
@@ -76,7 +79,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
     },  
-    Title
+    Title,
+    IconSetService
   ],
   bootstrap: [AppComponent],
 })

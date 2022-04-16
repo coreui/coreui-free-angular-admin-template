@@ -58,7 +58,7 @@ export class AuthService {
     if (this.authenticatedUser) {
       next(this.authenticatedUser);
     }
-    return this.domainUserObservable.subscribe();
+    return this.domainUserObservable.subscribe(next);
   }
 
   private subscribeToFirebasAuthEvents() {

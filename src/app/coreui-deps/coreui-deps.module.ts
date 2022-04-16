@@ -19,54 +19,40 @@ import {
   SidebarModule,
   TabsModule,
   UtilitiesModule,
-  SharedModule
+  SharedModule,
+  ToastModule
 } from '@coreui/angular';
-import { IconModule, IconSetService } from '@coreui/icons-angular';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
-import { RouterModule } from '@angular/router';
+import { IconModule } from '@coreui/icons-angular';
+import { NotificationsModule } from '../views/notifications/notifications.module';
+import { AppToastComponent } from './components/toast-simple/toast.component';
+import { ToastSampleIconComponent } from './components/toast-simple/toast-sample-icon.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [AppToastComponent, ToastSampleIconComponent],
   imports: [
     CommonModule,
-    AvatarModule,
-    BreadcrumbModule,
     FooterModule,
     DropdownModule,
     GridModule,
-    HeaderModule,
-    SidebarModule,
     IconModule,
-        NavModule,
     ButtonModule,
     FormModule,
     UtilitiesModule,
     ButtonGroupModule,
-    ReactiveFormsModule,
     SidebarModule,
     SharedModule,
     TabsModule,
     ListGroupModule,
     ProgressModule,
     BadgeModule,
-    ListGroupModule,
     CardModule,
     BreadcrumbModule,
-    RouterModule,
     HeaderModule,
     AvatarModule,
     NavModule,
-    CardModule,
-    GridModule,
-    ButtonModule,
-    IconModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RxReactiveFormsModule,
     AlertModule,
-    ProgressModule
+    ToastModule
   ],
   exports: [
     CommonModule,
@@ -83,32 +69,15 @@ import { RouterModule } from '@angular/router';
     FormModule,
     UtilitiesModule,
     ButtonGroupModule,
-    ReactiveFormsModule,
-    SidebarModule,
     SharedModule,
     TabsModule,
     ListGroupModule,
     ProgressModule,
     BadgeModule,
-    ListGroupModule,
-    CardModule,
-    BreadcrumbModule,
-    RouterModule,
-    HeaderModule,
-    AvatarModule,
-    NavModule,
     CardModule,
     GridModule,
-    ButtonModule,
-    IconModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RxReactiveFormsModule,
     AlertModule,
-    ProgressModule
-  ],
-  providers: [
-    IconSetService
+    ToastModule
   ]
   
 })

@@ -12,27 +12,34 @@
         </c-input-group>
         <c-input-group class="mb-3">
 
-            <input type="file" class="file-input"
-            (change)="onProfilePhotoSelected($event)" accept=".png,.jpg" #fileUpload>
+            <input type="file" class="file-input" (change)="onProfilePhotoSelected($event)" accept=".png,.jpg"
+                #fileUpload>
 
             <span cInputGroupText>
                 <svg cIcon name="cilImage"></svg>
             </span>
             <input formControlName="profilePhoto" cFormControl placeholder="select a photo profile" />
 
-            <button (click)="fileUpload.click()" [active]="true" [color]="'primary'" [disabled]="formGroup.disabled" cButton class="me-1">
+            <button (click)="fileUpload.click()" [active]="true" [color]="'primary'" [disabled]="formGroup.disabled"
+                cButton class="me-1">
                 <svg cIcon class="me-2" name="cilBrowser"></svg>
             </button>
             <span>
                 <small class="form-text text-danger"
                     *ngIf="getControlErrors('profilePhoto') !== null">{{getCntrolErroMessage('profilePhoto')}}</small>
             </span>
+            <div>
+                <c-progress class="mb-3" *ngIf="showProgressImageProfile">
+                    <c-progress-bar [value]="(uploadProgress | async)" variant="striped" color="info">{{(uploadProgress
+                        | async)}}%</c-progress-bar>
+                </c-progress>
+            </div>
         </c-input-group>
         <c-input-group class="mb-3">
             <span cInputGroupText>
                 <svg cIcon name="cilPhone"></svg>
             </span>
-            <input type="text" formControlName="phone" placeholder="phone number" cFormControl />
+            <input type="text" formControlName="phone" placeholder="phone number" (blur)="startPhonNumberVerification()" cFormControl />
             <span>
                 <small class="form-text text-danger"
                     *ngIf="getControlErrors('phone') !== null">{{getCntrolErroMessage('phone')}}</small>
@@ -69,13 +76,7 @@
         <div class="d-grid">
             <button type="submit" [disabled]="formGroup.invalid" cButton color="success">Submit changes</button>
         </div>
-        <c-progress class="mb-3" *ngIf="showProgressImageProfile">
-            <c-progress-bar [value]="(uploadProgress | async)"  variant="striped" color="info">{{(uploadProgress | async)}}%</c-progress-bar>
-        </c-progress>
-
-        <c-alert [color]="updateSuccess ? 'success': 'error'">
-            <h4 cAlertHeading>Well done!</h4>
-            <p>Profile updated</p>
-        </c-alert>
     </form>
 </c-card-body>
+
+
