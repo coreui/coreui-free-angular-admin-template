@@ -6,6 +6,7 @@ import { Page404Component } from './views/pages/page404/page404.component';
 import { Page500Component } from './views/pages/page500/page500.component';
 import { LoginComponent } from './views/pages/login/login.component';
 import { RegisterComponent } from './views/pages/register/register.component';
+import { EditInvitationComponent } from './views/edit-invitation/edit-invitation.component';
 
 const routes: Routes = [
   {
@@ -49,6 +50,11 @@ const routes: Routes = [
         path: 'charts',
         loadChildren: () =>
           import('./views/charts/charts.module').then((m) => m.ChartsModule)
+      },
+      {
+        path: 'edit-invitation/:code',
+        loadChildren: () =>
+          import('./views/edit-invitation/edit-invitation.module').then((m) => m.EditInvitationModule)
       },
       {
         path: 'icons',
@@ -109,7 +115,6 @@ const routes: Routes = [
       scrollPositionRestoration: 'top',
       anchorScrolling: 'enabled',
       initialNavigation: 'enabledBlocking'
-      // relativeLinkResolution: 'legacy'
     })
   ],
   exports: [RouterModule]
