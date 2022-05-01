@@ -1,0 +1,218 @@
+<c-row ngPreserveWhitespaces>
+    <form cForm class="row g-3">
+        <c-col xs="12">
+            <c-card class="mb-4">
+                <c-card-header ngPreserveWhitespaces>
+                    Davetiye Bilgileri
+                </c-card-header>
+                <c-card-body>
+                    <c-row>
+                        <c-col md="12">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon3">https://davetiye.digital/</span>
+                            </div>
+                            <input type="text" id="name" name="name" class="form-control" required
+                            [(ngModel)]="invitation.invitationCode" #name="ngModel">
+                        </div>
+                    </c-col>
+                        <c-col md="6">
+                            <div cFormFloating class="mb-3">
+                                <input type="text" id="inputBride" name="inputBride" class="form-control" required
+                                [(ngModel)]="invitation.bride" #name="ngModel">
+                                <label cLabel for="inputBride">Gelin Adı</label>
+                            </div>
+                        </c-col>
+                        <c-col md="6">
+                            <div cFormFloating class="mb-3">
+                                <input type="text" id="inputGroom" name="inputGroom" class="form-control" required
+                                [(ngModel)]="invitation.groom" #name="ngModel">
+                                <label cLabel for="inputGroom">Damat Adı</label>
+                            </div>
+                        </c-col>
+                        <c-col md="6">
+                            <div cFormFloating class="mb-3">
+                                <input type="text" id="intputBrideFamily" name="intputBrideFamily" class="form-control"
+                                [(ngModel)]="invitation.brideFamily" #name="ngModel">
+                                <label cLabel for="intputBrideFamily">Gelin Ailesi</label>
+                            </div>
+                        </c-col>
+                        <c-col md="6">
+                            <div cFormFloating class="mb-3">
+                                <input type="text" id="inputGroomFamily" name="inputGroomFamily" class="form-control"
+                                [(ngModel)]="invitation.groomFamily" #name="ngModel">
+                                <label cLabel for="inputGroomFamily">Damat Ailesi</label>
+                            </div>
+                        </c-col>
+                        <c-col md="4">
+                            <div cFormFloating class="mb-3">
+                                <input type="datetime-local" id="inputDate" name="inputDate" class="form-control"
+                                [(ngModel)]="invitation.date" #name="ngModel">
+                                <label cLabel for="inputDate">Tarih & Saat</label>
+                            </div>
+                        </c-col>
+                        <c-col md="8">
+                            <div cFormFloating class="mb-3">
+                                <input type="text" id="inputUstBolumMetni" name="inputUstBolumMetni" class="form-control"
+                                [(ngModel)]="invitation.header" #name="ngModel">
+                                <label cLabel for="inputUstBolumMetni">Üst Bölüm Metni</label>
+                            </div>
+                        </c-col>
+                        <c-col md="8">
+                            <div>
+                                <label cLabel for="inputHeaderBackground">Arkaplan Görseli</label>
+                                <input cFormControl id="inputHeaderBackground" sizing="sm" type="file"  (change)="onBgImageChange($event)"/>
+                            </div>
+                        </c-col>
+                        <c-col md="4">
+                            <img cImg fluid  src="../../../assets/images/angular.jpg" width="200" />
+                        </c-col>
+                    </c-row>
+                </c-card-body>
+            </c-card>
+        </c-col>
+        <form cForm>
+            <c-col xs="12">
+                <c-card class="mb-4">
+                    <c-card-header ngPreserveWhitespaces>
+                        <c-row>
+                            <c-col md="10">Davet Bölümü</c-col>
+                            <c-col md="2">
+                                <c-form-check [switch]="true" >
+                                    <input cFormCheckInput type="checkbox" [(ngModel)]="invitation.showInvitation" name="showInvitation"/>
+                                    <label cFormCheckLabel>Bölüm Görünür</label>
+                                </c-form-check>
+                            </c-col>
+                        </c-row>
+                    </c-card-header>
+                    <c-card-body>
+                        <div cFormFloating class="mb-3">
+                            <input type="text" id="inputDavetBaslik" name="inputDavetBaslik" class="form-control"
+                                [(ngModel)]="invitation.invitationTitle" #name="ngModel">
+                            <label cLabel for="inputDavetBaslik">Davet Başlık</label>
+                        </div>
+                        <div cFormFloating class="mb-3">
+                            <input type="text" id="inputDavetMetni" name="inputDavetMetni" class="form-control"
+                                [(ngModel)]="invitation.invitationText" #name="ngModel">
+                            <label cLabel for="inputDavetMetni">Davetiye Metni</label>
+                        </div>
+                    </c-card-body>
+                </c-card>
+            </c-col>
+        </form>
+        <form cForm>
+            <c-col xs="12">
+                <c-card class="mb-4">
+                    <c-card-header ngPreserveWhitespaces>
+                        <c-row>
+                            <c-col md="10">Etkinlikler Bölümü</c-col>
+                            <c-col md="2">
+                                <c-form-check [switch]="true">
+                                    <input cFormCheckInput type="checkbox" [(ngModel)]="invitation.showEvents" name="showEvents"/>
+                                    <label cFormCheckLabel>Bölüm Görünür</label>
+                                </c-form-check>
+                            </c-col>
+                        </c-row>
+                    </c-card-header>
+                    <c-card-body>
+                        <div *ngFor="let eventObject of this.events" class="col-md-12 col-sm-12 text-center">
+                            <c-card [cBorder]="this.color" class="mb-4">
+                                <c-card-header ngPreserveWhitespaces class="bg-info">
+                                    <div class="d-grid gap-2 justify-content-md-start">
+                                        <button cButton color="light" (click)="deleteEvent(eventObject)">Sil</button>
+                                    </div>
+                                </c-card-header>
+                                <c-card-body>
+                                    <c-row>
+                                        <c-col md="6">
+                                            <div cFormFloating class="mb-3">
+                                                    <input type="text" id="inputEventName{{eventObject._id}}" name="inputEventName{{eventObject._id}}" class="form-control"
+                                                    [(ngModel)]="eventObject.eventName" #name="ngModel">
+                                                <label cLabel for="floatingInputValue">Etkinlik Başlık</label>
+                                            </div>
+                                        </c-col>
+                                        <c-col md="6">
+                                            <div cFormFloating class="mb-3">
+                                                <input type="datetime-local" id="floatingInputValue{{eventObject._id}}" name="floatingInputValue{{eventObject._id}}" class="form-control" 
+                                                [(ngModel)]="eventObject.eventDate" #name="ngModel">
+                                                <label cLabel for="floatingInputValue">Tarih & Saat</label>
+                                            </div>
+                                        </c-col>
+                                    </c-row>
+                                    <c-row>
+                                        <c-col md="6">
+                                            <div cFormFloating class="mb-3">
+                                                    <input type="text" id="inputEventPlace{{eventObject._id}}" name="inputEventPlace{{eventObject._id}}" class="form-control"
+                                                    [(ngModel)]="eventObject.eventPlace" #name="ngModel">
+                                                <label cLabel for="floatingInputValue">Etkinlik Mekan Adı</label>
+                                            </div>
+                                        </c-col>
+                                        <c-col md="6">
+                                            <div cFormFloating class="mb-3">
+                                                <input type="text" id="inputEventAddress{{eventObject._id}}" name="inputEventAddress{{eventObject._id}}" class="form-control"
+                                                [(ngModel)]="eventObject.eventAddress" #name="ngModel">
+                                                <label cLabel for="floatingInputValue">Etkinlik Adres</label>
+                                            </div>
+                                        </c-col>
+                                    </c-row>
+                                </c-card-body>
+                            </c-card>
+                        </div>
+
+                        <button cButton color="primary" (click)="etkinlikEkle()">Etkinlik Ekle</button>
+                    </c-card-body>
+                </c-card>
+            </c-col>
+        </form>
+
+        <!-- <form cForm>
+        <c-col xs="12">
+            <c-card class="mb-4">
+                <c-card-header ngPreserveWhitespaces>
+                    <form cForm class="row g-3">
+                        <c-col md="10">Anılar Bölümü</c-col>
+                        <c-col md="2">
+                            <c-form-check [switch]="true">
+                                <input cFormCheckInput type="checkbox" />
+                                <label cFormCheckLabel>Bölüm Görünür</label>
+                            </c-form-check>
+                        </c-col>
+                    </form>
+                </c-card-header>
+                <c-card-body>
+                    <div cFormFloating class="mb-3">
+                        <input cFormControl id="floatingInputValue" value="Düğünümüze Davetlisiniz!" />
+                        <label cLabel for="floatingInputValue">Davet Başlık</label>
+                    </div>
+                    <div cFormFloating class="mb-3">
+                        <input cFormControl id="floatingInputValue" value="Sizi düğünümüzde görmek istiyoruz..." />
+                        <label cLabel for="floatingInputValue">Davetiye Metni</label>
+                    </div>
+                </c-card-body>
+            </c-card>
+        </c-col>
+    </form> -->
+        <c-row>
+            <c-col xs="12">
+                <c-card class="mb-4">
+                    <c-card-header ngPreserveWhitespaces>
+                        <c-col>Katılım Formu</c-col>
+                    </c-card-header>
+                    <c-card-body>
+                        <form cForm class="row g-3">
+                            <c-col md="12">
+                                <c-form-check [switch]="true">
+                                    <input cFormCheckInput type="checkbox" [(ngModel)]="invitation.showLcv" name="showLcv"/>
+                                    <label cFormCheckLabel>Site üzerinde katılım durumu öğrenmek istiyor
+                                        musunuz?</label>
+                                </c-form-check>
+                            </c-col>
+                        </form>
+                    </c-card-body>
+                </c-card>
+            </c-col>
+        </c-row>
+        <button cButton color="primary" (click)="guncelle(this.invitation,this.events)">Güncelle</button>
+    </form>
+</c-row>
+
