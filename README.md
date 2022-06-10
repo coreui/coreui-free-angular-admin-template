@@ -60,7 +60,7 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
 Before you begin, make sure your development environment includes `Node.js®` and an `npm` package manager.
 
 ###### Node.js
-Angular 13 requires `Node.js` version `^12.20`, `^14.15` or `^16.10`.
+Angular 13 requires `Node.js` version `^14.15` or `^16.10`.
 
 - To check your version, run `node -v` in a terminal/console window.
 - To get `Node.js`, go to [nodejs.org](https://nodejs.org/).
