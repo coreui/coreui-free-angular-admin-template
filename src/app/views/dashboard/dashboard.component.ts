@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 import { DashboardChartsData, IChartProps } from './dashboard-charts-data';
 
@@ -107,8 +107,8 @@ export class DashboardComponent implements OnInit {
   ];
   public mainChart: IChartProps = {};
   public chart: Array<IChartProps> = [];
-  public trafficRadioGroup = new FormGroup({
-    trafficRadio: new FormControl('Month')
+  public trafficRadioGroup = new UntypedFormGroup({
+    trafficRadio: new UntypedFormControl('Month')
   });
 
   ngOnInit(): void {

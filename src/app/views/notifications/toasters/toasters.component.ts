@@ -1,5 +1,5 @@
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
@@ -35,13 +35,13 @@ export class ToastersComponent implements OnInit {
 
   formChanges!: Observable<any>;
 
-  toasterForm = new FormGroup({
-    autohide: new FormControl(this.autohide),
-    delay: new FormControl({value: this.delay, disabled: !this.autohide}),
-    position: new FormControl(this.position),
-    fade: new FormControl({value: true, disabled: false}),
-    closeButton: new FormControl(true),
-    color: new FormControl('')
+  toasterForm = new UntypedFormGroup({
+    autohide: new UntypedFormControl(this.autohide),
+    delay: new UntypedFormControl({value: this.delay, disabled: !this.autohide}),
+    position: new UntypedFormControl(this.position),
+    fade: new UntypedFormControl({value: true, disabled: false}),
+    closeButton: new UntypedFormControl(true),
+    color: new UntypedFormControl('')
   });
 
   @ViewChildren(ToasterComponent) viewChildren!: QueryList<ToasterComponent>;

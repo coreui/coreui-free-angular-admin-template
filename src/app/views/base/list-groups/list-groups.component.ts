@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-list-groups',
@@ -20,7 +20,7 @@ export class ListGroupsComponent {
   });
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: UntypedFormBuilder
   ) { }
 
   setValue(controlName: string) {

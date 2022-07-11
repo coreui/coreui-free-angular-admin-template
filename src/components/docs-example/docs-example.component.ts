@@ -34,8 +34,8 @@ export class DocsExampleComponent implements AfterContentInit, AfterViewInit {
     const version = packageJson?.config?.coreui_library_short_version;
     const docsUrl = packageJson?.config?.coreui_library_docs_url ?? 'https://coreui.io/angular/';
     // const path: string = version ? `${version}/#/${value}` : '#';
-    const path: string = version ? `${version}/${value}` : '';
-    this._href = `${docsUrl}${path}`;
+    // const path: string = version ? `${version}/${value}` : '';
+    this._href = `${docsUrl}${value}`;
   }
 
   ngAfterContentInit(): void {

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-button-groups',
@@ -13,12 +13,12 @@ export class ButtonGroupsComponent {
     checkbox2: false,
     checkbox3: false
   });
-  formRadio1 = new FormGroup({
-    radio1: new FormControl('Radio1')
+  formRadio1 = new UntypedFormGroup({
+    radio1: new UntypedFormControl('Radio1')
   });
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: UntypedFormBuilder
   ) { }
 
   setCheckBoxValue(controlName: string) {

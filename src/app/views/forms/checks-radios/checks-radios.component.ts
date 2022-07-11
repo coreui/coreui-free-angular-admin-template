@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-checks-radios',
@@ -35,7 +35,7 @@ export class ChecksRadiosComponent {
 
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: UntypedFormBuilder
   ) { }
 
   setCheckBoxValue(controlName: string) {
