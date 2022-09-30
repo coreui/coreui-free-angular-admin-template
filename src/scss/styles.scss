@@ -6,10 +6,10 @@ $enable-ltr: true;
 $enable-rtl: true;
 
 // Import styles with default layout.
-@import "~@coreui/coreui/scss/coreui";
+@import "@coreui/coreui/scss/coreui";
 
 // Import Chart.js custom tooltips styles
-@import "~@coreui/chartjs/scss/coreui-chartjs";
+@import "@coreui/chartjs/scss/coreui-chartjs";
 
 // perfect scrollbar theming for use with [perfectScrollbar] directive
 //@import '~perfect-scrollbar/css/perfect-scrollbar.css';

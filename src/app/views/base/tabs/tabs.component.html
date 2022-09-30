@@ -22,7 +22,7 @@
             </a>
           </c-nav-item>
           <c-nav-item>
-            <a [cTabContent]="tabContent1" [routerLink] [tabPaneIdx]="2" cNavLink>
+            <a [cTabContent]="tabContent1" [routerLink] [tabPaneIdx]="2" cNavLink [disabled]="tabContent1.activeTabPaneIdx < 1">
               <svg cIcon class="me-2" name="cilCode"></svg>
               Contact
             </a>
@@ -39,10 +39,11 @@
             tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the
             content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.
           </c-tab-pane>
-          <!--        intentionally commented out - disables third nav-item! -->
-          <!--        <c-tab-pane class="p-3 preview" role="tabpanel" >-->
-          <!--          This is some placeholder content the <strong>Contact</strong> tab's associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.-->
-          <!--        </c-tab-pane>-->
+          <c-tab-pane class="p-3 preview" role="tabpanel" *ngIf="tabContent1.activeTabPaneIdx > 0">
+            This is some placeholder content the <strong>Contact</strong> tab's associated content. Clicking another
+            tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the
+            content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.
+          </c-tab-pane>
         </c-tab-content>
       </c-card-body>
     </c-card>
