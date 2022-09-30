@@ -477,4 +477,34 @@
       </c-card-body>
     </c-card>
   </c-col>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header ngPreserveWhitespaces>
+        <strong>Angular Dropdown</strong> <small>Centered</small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-medium-emphasis small">
+          Trigger dropdown menus centered below the toggle by adding <code>direction="center"</code> to the <code>c-dropdown</code> component.
+        </p>
+        <app-docs-example href="components/dropdown#centered">
+          <c-dropdown direction="center" variant="btn-group">
+            <button cButton cDropdownToggle color="secondary">Centered dropdown</button>
+            <ul cDropdownMenu>
+              <li><button cDropdownItem>Action one</button></li>
+              <li><button cDropdownItem>Action two</button></li>
+              <li><button cDropdownItem>Action three</button></li>
+            </ul>
+          </c-dropdown>
+          <c-dropdown direction="dropup-center" class="dropup" variant="btn-group">
+            <button cButton cDropdownToggle color="secondary">Centered dropdup</button>
+            <ul cDropdownMenu>
+              <li><button cDropdownItem>Action one</button></li>
+              <li><button cDropdownItem>Action two</button></li>
+              <li><button cDropdownItem>Action three</button></li>
+            </ul>
+          </c-dropdown>
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+  </c-col>
 </c-row>
