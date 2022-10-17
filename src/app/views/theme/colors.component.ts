@@ -9,7 +9,7 @@ import { getStyle, rgbToHex } from '@coreui/utils/src';
 export class ColorsComponent implements OnInit, AfterViewInit {
 
   constructor(
-    @Inject(DOCUMENT) private document: HTMLDocument,
+    @Inject(DOCUMENT) private document: Document,
     private renderer: Renderer2
   ) {
   }
@@ -39,9 +39,7 @@ export class ColorsComponent implements OnInit, AfterViewInit {
     );
   }
 
-  ngOnInit(): void {
-    // this.themeColors();
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     this.themeColors();
