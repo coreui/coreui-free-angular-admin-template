@@ -12,7 +12,7 @@
           Click the accordions below to expand/collapse the accordion content.
         </p>
         <app-docs-example href="components/accordion">
-          <c-accordion [alwaysOpen]="false" [flush]="false" class="shadow">
+          <c-accordion [alwaysOpen]="false" [flush]="false" class="shadow rounded-2">
             <c-accordion-item #item0="cAccordionItem" [visible]="false">
               <ng-template cTemplateId="accordionHeaderTemplate">
                 <button (click)="item0.toggleItem()" [collapsed]="!item0.visible" cAccordionButton cBgColor="info">
@@ -103,7 +103,7 @@
       </c-card-header>
       <c-card-body>
         <app-docs-example href="components/accordion#always-open">
-          <c-accordion [alwaysOpen]="true" class="shadow accordion-custom">
+          <c-accordion [alwaysOpen]="true" class="shadow accordion-custom rounded-2">
             <c-accordion-item *ngFor="let item of items; let i = index;" [visible]="i===1">
               <ng-template cTemplateId="accordionHeader">
                 Custom Accordion item #{{i}}
