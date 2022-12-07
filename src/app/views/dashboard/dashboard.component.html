@@ -3,9 +3,7 @@
   <c-card-body>
     <c-row>
       <c-col sm="5">
-        <h4 class="card-title mb-0" id="traffic">
-          Traffic
-        </h4>
+        <h4 class="card-title mb-0" id="traffic">Traffic</h4>
         <div class="small text-medium-emphasis">January - December 2021</div>
       </c-col>
       <c-col class="d-none d-md-block" sm="7">
@@ -59,11 +57,13 @@
         </form>
       </c-col>
     </c-row>
-    <c-chart [data]="mainChart.data"
-             [height]="300"
-             [ngStyle]="{'marginTop.px': 40}"
-             [options]="mainChart.options"
-             [type]="mainChart.type">
+    <c-chart
+      [data]="mainChart.data"
+      [height]="300"
+      [ngStyle]="{ 'marginTop.px': 40 }"
+      [options]="mainChart.options"
+      [type]="mainChart.type"
+    >
       Main chart
     </c-chart>
   </c-card-body>
@@ -120,7 +120,7 @@
             <c-row>
               <c-col sm="6">
                 <div
-                  class="border-start border-start-4 border-start-info py-1 px-3"
+                  class="border-start border-start-4 border-start-info py-1 px-3 mb-3"
                 >
                   <div class="text-medium-emphasis small">New Clients</div>
                   <div class="fs-5 fw-semibold">9,123</div>
@@ -138,7 +138,7 @@
               </c-col>
             </c-row>
 
-            <hr class="mt-0"/>
+            <hr class="mt-0" />
 
             <div class="progress-group mb-4">
               <div class="progress-group-prepend">
@@ -146,16 +146,10 @@
               </div>
               <div class="progress-group-bars">
                 <c-progress thin>
-                  <c-progress-bar
-                    color="info"
-                    value="34"
-                  ></c-progress-bar>
+                  <c-progress-bar color="info" value="34"></c-progress-bar>
                 </c-progress>
                 <c-progress thin>
-                  <c-progress-bar
-                    color="danger"
-                    value="78"
-                  ></c-progress-bar>
+                  <c-progress-bar color="danger" value="78"></c-progress-bar>
                 </c-progress>
               </div>
             </div>
@@ -165,16 +159,10 @@
               </div>
               <div class="progress-group-bars">
                 <c-progress thin>
-                  <c-progress-bar
-                    color="info"
-                    value="56"
-                  ></c-progress-bar>
+                  <c-progress-bar color="info" value="56"></c-progress-bar>
                 </c-progress>
                 <c-progress thin>
-                  <c-progress-bar
-                    color="danger"
-                    value="94"
-                  ></c-progress-bar>
+                  <c-progress-bar color="danger" value="94"></c-progress-bar>
                 </c-progress>
               </div>
             </div>
@@ -184,16 +172,10 @@
               </div>
               <div class="progress-group-bars">
                 <c-progress thin>
-                  <c-progress-bar
-                    color="info"
-                    value="12"
-                  ></c-progress-bar>
+                  <c-progress-bar color="info" value="12"></c-progress-bar>
                 </c-progress>
                 <c-progress thin>
-                  <c-progress-bar
-                    color="danger"
-                    value="67"
-                  ></c-progress-bar>
+                  <c-progress-bar color="danger" value="67"></c-progress-bar>
                 </c-progress>
               </div>
             </div>
@@ -203,16 +185,10 @@
               </div>
               <div class="progress-group-bars">
                 <c-progress thin>
-                  <c-progress-bar
-                    color="info"
-                    value="43"
-                  ></c-progress-bar>
+                  <c-progress-bar color="info" value="43"></c-progress-bar>
                 </c-progress>
                 <c-progress thin>
-                  <c-progress-bar
-                    color="danger"
-                    value="91"
-                  ></c-progress-bar>
+                  <c-progress-bar color="danger" value="91"></c-progress-bar>
                 </c-progress>
               </div>
             </div>
@@ -222,16 +198,10 @@
               </div>
               <div class="progress-group-bars">
                 <c-progress thin>
-                  <c-progress-bar
-                    color="info"
-                    value="22"
-                  ></c-progress-bar>
+                  <c-progress-bar color="info" value="22"></c-progress-bar>
                 </c-progress>
                 <c-progress thin>
-                  <c-progress-bar
-                    color="danger"
-                    value="73"
-                  ></c-progress-bar>
+                  <c-progress-bar color="danger" value="73"></c-progress-bar>
                 </c-progress>
               </div>
             </div>
@@ -241,16 +211,10 @@
               </div>
               <div class="progress-group-bars">
                 <c-progress thin>
-                  <c-progress-bar
-                    color="info"
-                    value="53"
-                  ></c-progress-bar>
+                  <c-progress-bar color="info" value="53"></c-progress-bar>
                 </c-progress>
                 <c-progress thin>
-                  <c-progress-bar
-                    color="danger"
-                    value="82"
-                  ></c-progress-bar>
+                  <c-progress-bar color="danger" value="82"></c-progress-bar>
                 </c-progress>
               </div>
             </div>
@@ -260,33 +224,23 @@
               </div>
               <div class="progress-group-bars">
                 <c-progress thin>
-                  <c-progress-bar
-                    color="info"
-                    value="9"
-                  ></c-progress-bar>
+                  <c-progress-bar color="info" value="9"></c-progress-bar>
                 </c-progress>
                 <c-progress thin>
-                  <c-progress-bar
-                    color="danger"
-                    value="69"
-                  ></c-progress-bar>
+                  <c-progress-bar color="danger" value="69"></c-progress-bar>
                 </c-progress>
               </div>
             </div>
             <div class="legend text-center" ngPreserveWhitespaces>
               <small>
-                <sup
-                ><span class="badge badge-pill badge-sm bg-info"
-                >&nbsp;</span
-                ></sup
-                >
+                <sup>
+                  <span class="badge badge-pill badge-sm bg-info">&nbsp;</span>
+                </sup>
                 <span>New clients</span>
                 &nbsp;&nbsp;
-                <sup
-                ><span class="badge badge-pill badge-sm bg-danger"
-                >&nbsp;</span
-                ></sup
-                >
+                <sup>
+                  <span class="badge badge-pill badge-sm bg-danger">&nbsp;</span>
+                </sup>
                 <span>Recurring clients</span>
               </small>
             </div>
@@ -295,24 +249,20 @@
           <c-col md="6" xl="6" xs="12">
             <c-row>
               <c-col sm="6">
-                <div
-                  class="border-start border-start-4 border-start-warning py-1 px-3 mb-3"
-                >
+                <div class="border-start border-start-4 border-start-warning py-1 px-3 mb-3">
                   <div class="text-medium-emphasis small">Page views</div>
                   <div class="fs-5 fw-semibold">78,623</div>
                 </div>
               </c-col>
               <c-col sm="6">
-                <div
-                  class="border-start border-start-4 border-start-success py-1 px-3 mb-3"
-                >
+                <div class="border-start border-start-4 border-start-success py-1 px-3 mb-3">
                   <div class="text-medium-emphasis small">Organic</div>
                   <div class="fs-5 fw-semibold">49,123</div>
                 </div>
               </c-col>
             </c-row>
 
-            <hr class="mt-0"/>
+            <hr class="mt-0" />
 
             <div class="progress-group mb-4">
               <div class="progress-group-header">
@@ -322,10 +272,7 @@
               </div>
               <div class="progress-group-bars">
                 <c-progress thin>
-                  <c-progress-bar
-                    color="warning"
-                    value="43"
-                  ></c-progress-bar>
+                  <c-progress-bar color="warning" value="43"></c-progress-bar>
                 </c-progress>
               </div>
             </div>
@@ -337,10 +284,7 @@
               </div>
               <div class="progress-group-bars">
                 <c-progress thin>
-                  <c-progress-bar
-                    color="warning"
-                    value="37"
-                  ></c-progress-bar>
+                  <c-progress-bar color="warning" value="37"></c-progress-bar>
                 </c-progress>
               </div>
             </div>
@@ -355,10 +299,7 @@
               </div>
               <div class="progress-group-bars">
                 <c-progress thin>
-                  <c-progress-bar
-                    color="success"
-                    value="56"
-                  ></c-progress-bar>
+                  <c-progress-bar color="success" value="56"></c-progress-bar>
                 </c-progress>
               </div>
             </div>
@@ -372,10 +313,7 @@
               </div>
               <div class="progress-group-bars">
                 <c-progress thin>
-                  <c-progress-bar
-                    color="success"
-                    value="15"
-                  ></c-progress-bar>
+                  <c-progress-bar color="success" value="15"></c-progress-bar>
                 </c-progress>
               </div>
             </div>
@@ -389,10 +327,7 @@
               </div>
               <div class="progress-group-bars">
                 <c-progress thin>
-                  <c-progress-bar
-                    color="success"
-                    value="11"
-                  ></c-progress-bar>
+                  <c-progress-bar color="success" value="11"></c-progress-bar>
                 </c-progress>
               </div>
             </div>
@@ -406,10 +341,7 @@
               </div>
               <div class="progress-group-bars">
                 <c-progress thin>
-                  <c-progress-bar
-                    color="success"
-                    value="8"
-                  ></c-progress-bar>
+                  <c-progress-bar color="success" value="8"></c-progress-bar>
                 </c-progress>
               </div>
             </div>
@@ -444,69 +376,69 @@
           class="mb-0 border"
         >
           <thead cTableColor="light">
-          <tr>
-            <th class="text-center">
-              <svg cIcon name="cilPeople"></svg>
-            </th>
-            <th>User</th>
-            <th class="text-center">Country</th>
-            <th>Usage</th>
-            <th class="text-center">Payment Method</th>
-            <th>Activity</th>
-          </tr>
+            <tr>
+              <th class="text-center">
+                <svg cIcon name="cilPeople"></svg>
+              </th>
+              <th>User</th>
+              <th class="text-center">Country</th>
+              <th>Usage</th>
+              <th class="text-center">Payment Method</th>
+              <th>Activity</th>
+            </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let user of users; index as i">
-            <td class="text-center">
-              <c-avatar
-                size="md"
-                src="{{ user.avatar }}"
-                status="{{ user.status }}"
-              ></c-avatar>
-            </td>
-            <td>
-              <div>{{ user.name }}</div>
-              <div class="small text-medium-emphasis">
-                <span>{{ user.state }}</span> | Registered:
-                {{ user.registered }}
-              </div>
-            </td>
-            <td class="text-center">
-              <svg cIcon
-                id="{{ user.country + user.name }}"
-                name="cif{{ user.country }}"
-                size="xl"
-                title="{{ user.country }}"
-              ></svg>
-            </td>
-            <td>
-              <div class="clearfix">
-                <div class="float-start">
-                  <strong>{{ user.usage }}%</strong>
+            <tr *ngFor="let user of users; index as i">
+              <td class="text-center">
+                <c-avatar
+                  size="md"
+                  src="{{ user.avatar }}"
+                  status="{{ user.status }}"
+                ></c-avatar>
+              </td>
+              <td>
+                <div>{{ user.name }}</div>
+                <div class="small text-medium-emphasis text-nowrap">
+                  <span>
+                    {{ user.state }} | Registered: {{ user.registered }}
+                  </span>
                 </div>
-                <div class="float-end">
-                  <small class="text-medium-emphasis">
-                    {{ user.period }}
-                  </small>
+              </td>
+              <td class="text-center">
+                <svg
+                  cIcon
+                  id="{{ user.country + user.name }}"
+                  name="cif{{ user.country }}"
+                  size="xl"
+                  title="{{ user.country }}"
+                ></svg>
+              </td>
+              <td>
+                <div class="d-flex justify-content-between">
+                  <div class="float-start">
+                    <strong>{{ user.usage }}%</strong>
+                  </div>
+                  <div class="float-end ms-1 text-nowrap">
+                    <small class="text-medium-emphasis">
+                      {{ user.period }}
+                    </small>
+                  </div>
                 </div>
-              </div>
-              <c-progress thin
-              >
-                <c-progress-bar
-                  [value]="user.usage"
-                  color="{{ user.color }}"
-                ></c-progress-bar
-                >
-              </c-progress>
-            </td>
-            <td class="text-center">
-              <svg cIcon name="cibCc{{ user.payment }}" size="xl"></svg>
-            </td>
-            <td>
-              <div class="small text-medium-emphasis">Last login</div>
-              <strong>{{ user.activity }}</strong>
-            </td>
-          </tr>
+                <c-progress thin>
+                  <c-progress-bar
+                    [value]="user.usage"
+                    color="{{ user.color }}"
+                  ></c-progress-bar>
+                </c-progress>
+              </td>
+              <td class="text-center">
+                <svg cIcon name="cibCc{{ user.payment }}" size="xl"></svg>
+              </td>
+              <td>
+                <div class="small text-medium-emphasis">Last login</div>
+                <div class="fw-semibold text-nowrap">{{ user.activity }}</div>
+              </td>
+            </tr>
           </tbody>
         </table>
       </c-card-body>
