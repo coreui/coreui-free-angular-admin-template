@@ -289,10 +289,8 @@
                 <input class="btn-check" formControlName="radio1" id="radio2" type="radio" value="Radio2" />
                 <label (click)="setRadioValue('Radio2')" cButton cFormCheckLabel for="radio2"
                        variant="ghost">Radio 2</label>
-                <fieldset disabled>
-                  <input class="btn-check" formControlName="radio1" id="radio3" type="radio" value="Radio3" />
-                  <label (click)="setRadioValue('Radio3')" cButton cFormCheckLabel for="radio3" variant="ghost">Radio3</label>
-                </fieldset>
+                <input class="btn-check" formControlName="radio1" id="radio3" type="radio" value="Radio3" [attr.disabled]="true" />
+                <label (click)="setRadioValue('Radio3')" cButton cFormCheckLabel for="radio3" variant="ghost">Radio3</label>
               </c-button-group>
             </div>
           </app-docs-example>
