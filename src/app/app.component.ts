@@ -6,8 +6,7 @@ import { iconSubset } from './icons/icon-subset';
 import { Title } from '@angular/platform-browser';
 
 @Component({
-  // tslint:disable-next-line:component-selector
-  selector: 'body',
+  selector: 'app-root',
   template: '<router-outlet></router-outlet>',
 })
 export class AppComponent implements OnInit {
