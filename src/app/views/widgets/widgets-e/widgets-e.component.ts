@@ -82,6 +82,8 @@ export class WidgetsEComponent implements AfterContentInit {
         barThickness: 'flex',
         borderColor: 'transparent',
         backgroundColor: 'transparent',
+        pointBackgroundColor: 'transparent',
+        pointHoverBorderColor: 'transparent',
         borderWidth: 1
       }
     ];
@@ -117,20 +119,11 @@ export class WidgetsEComponent implements AfterContentInit {
     }
   }
 
-  getDataset({
-               backgroundColor = 'transparent',
-               borderColor = 'transparent',
-               borderWidth = 1
-             }) {
+  getDataset({ backgroundColor = 'transparent', borderColor = 'transparent', borderWidth = 1 }) {
     const dataset = this.baseDatasets;
-    dataset[0].backgroundColor =
-      backgroundColor !== 'transparent'
-        ? getStyle(`--cui-${backgroundColor}`)
-        : backgroundColor;
-    dataset[0].borderColor =
-      borderColor !== 'transparent'
-        ? getStyle(`--cui-${borderColor}`)
-        : borderColor;
+    dataset[0].backgroundColor = backgroundColor !== 'transparent' ? getStyle(`--cui-${backgroundColor}`) : backgroundColor;
+    dataset[0].borderColor = borderColor !== 'transparent' ? getStyle(`--cui-${borderColor}`) : borderColor;
+    dataset[0].pointBackgroundColor = getStyle(`--cui-${borderColor}`);
     dataset[0].borderWidth = borderWidth;
     return dataset;
   }
@@ -142,5 +135,4 @@ export class WidgetsEComponent implements AfterContentInit {
     baseDate.setDate(baseDate.getDate() + shift);
     return baseDate.toLocaleDateString(locale, { weekday: 'short' });
   }
-
 }

@@ -49,7 +49,8 @@ export class WidgetsBrandComponent implements AfterContentInit {
   colors = {
     backgroundColor: 'rgba(255,255,255,.1)',
     borderColor: 'rgba(255,255,255,.55)',
-    pointHoverBackgroundColor: '#fff'
+    pointHoverBackgroundColor: '#fff',
+    pointBackgroundColor: 'rgba(255,255,255,.55)'
   };
   brandData = [
     {
