@@ -1,5 +1,5 @@
 import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
-import { getStyle } from '@coreui/utils/src';
+import { getStyle } from '@coreui/utils';
 
 @Component({
   selector: 'app-widgets-e',

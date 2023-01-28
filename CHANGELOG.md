@@ -2,6 +2,16 @@
 
 ---
 
+#### `4.3.next`
+
+chore(dependencies): update `@coreui/utils` to version `^2.0.0`
+
+imports update required :boom: :exclamation:
+- from `import {getStyle, ...} from '@coreui/utils/src`
+- to `import  {getStyle, ...} from '@coreui/utils` 
+
+---
+
 #### `4.3.9`
 
 - chore: dependencies update
