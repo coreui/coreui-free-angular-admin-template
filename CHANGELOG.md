@@ -2,6 +2,13 @@
 
 ---
 
+#### `4.3.9`
+
+- chore: dependencies update
+- fix(widgets): add missing pointBackgroundColor
+
+---
+
 #### `4.3.0`
 
 update to:
