@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, HostBinding, Inject, Input, OnInit, Renderer2 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-import { getStyle, rgbToHex } from '@coreui/utils/src';
+import { getStyle, rgbToHex } from '@coreui/utils';
 
 @Component({
   templateUrl: 'colors.component.html'

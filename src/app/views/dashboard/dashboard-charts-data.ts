@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { getStyle, hexToRgba } from '@coreui/utils/src';
+import { getStyle, hexToRgba } from '@coreui/utils';
 
 export interface IChartProps {
   data?: any;
