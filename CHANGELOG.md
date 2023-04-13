@@ -2,6 +2,17 @@
 
 ---
 
+#### `4.3.11`
+
+- chore(dependencies): update `@angular/*` to version `^15.2.7`
+- standalone components:
+  - chore(dependencies): update `@coreui/angular` to version `~4.4.1`
+  - chore(dependencies): update `@coreui/angular-chartjs` to version `~4.4.1`
+  - chore(dependencies): update `@coreui/icons-angular` to version `~4.4.1`
+- fix(widgets): breakpoints
+
+---
+
 #### `4.3.10`
 
 - chore(dependencies): update `@angular/*` to version `^15.2.4`
