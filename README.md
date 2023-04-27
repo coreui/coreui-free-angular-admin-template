@@ -77,6 +77,7 @@ npm install -g @angular/cli
 
 ``` bash
 $ npm install
+$ npm update
 ```
 
 ### Basic usage

@@ -2,6 +2,12 @@
 
 ---
 
+#### `4.3.12`
+
+- chore(dependencies): update
+
+---
+
 #### `4.3.11`
 
 - chore(dependencies): update `@angular/*` to version `^15.2.7`
