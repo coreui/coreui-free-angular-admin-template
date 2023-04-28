@@ -2,6 +2,13 @@
 
 ---
 
+#### `4.3.13`
+
+- docs(LICENSE): add missing license info
+- chore(dependencies): update
+
+---
+
 #### `4.3.12`
 
 - chore(dependencies): update
