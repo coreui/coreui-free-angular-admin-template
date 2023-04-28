@@ -8,7 +8,7 @@
 
 [npm-coreui-angular]: https://www.npmjs.com/package/@coreui/angular
 [npm-coreui-angular-badge]: https://img.shields.io/npm/v/@coreui/angular.png?style=flat-square
-[npm-coreui-angular-badge-next]: https://img.shields.io/npm/v/@coreui/angular/next?style=flat-square&color=red
+[npm-coreui-angular-badge-next]: https://img.shields.io/npm/v/@coreui/angular/ng-v14?style=flat-square&color=red
 [npm-coreui-angular-download]: https://img.shields.io/npm/dm/@coreui/angular.svg?style=flat-square
 [npm-coreui]: https://www.npmjs.com/package/@coreui/coreui
 [npm-coreui-badge]: https://img.shields.io/npm/v/@coreui/coreui.png?style=flat-square
@@ -75,6 +75,7 @@ npm install -g @angular/cli
 
 ``` bash
 $ npm install
+$ npm update
 ```
 
 ### Basic usage
