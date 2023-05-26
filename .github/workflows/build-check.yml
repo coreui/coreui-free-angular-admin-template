@@ -21,7 +21,7 @@ jobs:
     strategy:
       matrix:
         platform: [ubuntu-latest, windows-latest, macOS-latest]
-        node-version: [16.x, 18.x]
+        node-version: [18.x]
     runs-on: ${{ matrix.platform }}
     steps:
       - name: Clone repository

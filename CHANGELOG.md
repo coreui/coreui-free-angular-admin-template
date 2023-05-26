@@ -2,6 +2,15 @@
 
 ---
 
+#### `4.5.0`
+
+- chore(dependencies): update to `Angular 16`
+- refactor: remove deprecated ngx-perfect-scrollbar, use `ngx-scrollbar` instead
+- fix: getStyle() add nullish check
+- refactor(toasters): use takeUntilDestroyed() operator
+
+---
+
 #### `4.3.13`
 
 - docs(LICENSE): add missing license info
