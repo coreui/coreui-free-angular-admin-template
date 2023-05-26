@@ -1,4 +1,5 @@
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
@@ -33,8 +34,6 @@ export class ToastersComponent implements OnInit {
   delay = 5000;
   fade = true;
 
-  formChanges!: Observable<any>;
-
   toasterForm = new UntypedFormGroup({
     autohide: new UntypedFormControl(this.autohide),
     delay: new UntypedFormControl({value: this.delay, disabled: !this.autohide}),
@@ -44,10 +43,14 @@ export class ToastersComponent implements OnInit {
     color: new UntypedFormControl('')
   });
 
+  formChanges: Observable<any> = this.toasterForm.valueChanges.pipe(
+    takeUntilDestroyed(),
+    filter(e => e.autohide !== this.autohide)
+  );
+
   @ViewChildren(ToasterComponent) viewChildren!: QueryList<ToasterComponent>;
 
   ngOnInit(): void {
-    this.formChanges = this.toasterForm.valueChanges.pipe(filter(e => e.autohide !== this.autohide));
     this.formChanges.subscribe(e => {
       this.autohide = e.autohide;
       this.position = e.position;
