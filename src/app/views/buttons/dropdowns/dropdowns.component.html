@@ -271,7 +271,7 @@
                   </c-nav-item>
                   <c-nav-item>
                     <c-dropdown variant="nav-item" [popper]="false">
-                      <a routerLink="./" cDropdownToggle>
+                      <a cNavLink cDropdownToggle>
                         Dropdown
                       </a>
                       <ul cDropdownMenu dark>
@@ -484,23 +484,36 @@
       </c-card-header>
       <c-card-body>
         <p class="text-medium-emphasis small">
-          Trigger dropdown menus centered below the toggle by adding <code>direction="center"</code> to the <code>c-dropdown</code> component.
+          Trigger dropdown menus centered below the toggle by adding <code>direction="center"</code> to the <code>c-dropdown</code>
+          component.
         </p>
         <app-docs-example href="components/dropdown#centered">
           <c-dropdown direction="center" variant="btn-group">
             <button cButton cDropdownToggle color="secondary">Centered dropdown</button>
             <ul cDropdownMenu>
-              <li><button cDropdownItem>Action one</button></li>
-              <li><button cDropdownItem>Action two</button></li>
-              <li><button cDropdownItem>Action three</button></li>
+              <li>
+                <button cDropdownItem>Action one</button>
+              </li>
+              <li>
+                <button cDropdownItem>Action two</button>
+              </li>
+              <li>
+                <button cDropdownItem>Action three</button>
+              </li>
             </ul>
           </c-dropdown>
           <c-dropdown direction="dropup-center" class="dropup" variant="btn-group">
             <button cButton cDropdownToggle color="secondary">Centered dropdup</button>
             <ul cDropdownMenu>
-              <li><button cDropdownItem>Action one</button></li>
-              <li><button cDropdownItem>Action two</button></li>
-              <li><button cDropdownItem>Action three</button></li>
+              <li>
+                <button cDropdownItem>Action one</button>
+              </li>
+              <li>
+                <button cDropdownItem>Action two</button>
+              </li>
+              <li>
+                <button cDropdownItem>Action three</button>
+              </li>
             </ul>
           </c-dropdown>
         </app-docs-example>
