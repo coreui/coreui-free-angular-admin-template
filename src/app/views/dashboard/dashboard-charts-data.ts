@@ -29,7 +29,7 @@ export class DashboardChartsData {
   initMainChart(period: string = 'Month') {
     const brandSuccess = getStyle('--cui-success') ?? '#4dbd74';
     const brandInfo = getStyle('--cui-info') ?? '#20a8d8';
-    const brandInfoBg = hexToRgba(getStyle('--cui-info'), 10) ?? '#20a8d8';
+    const brandInfoBg = hexToRgba(brandInfo, 10);
     const brandDanger = getStyle('--cui-danger') || '#f86c6b';
 
     // mainChart
