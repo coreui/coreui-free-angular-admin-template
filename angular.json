@@ -41,8 +41,7 @@
             ],
             "scripts": [],
             "allowedCommonJsDependencies": [
-              "chart.js",
-              "bezier-easing"
+              "chart.js"
             ]
           },
           "configurations": {
