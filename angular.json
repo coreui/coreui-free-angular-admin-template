@@ -42,7 +42,7 @@
             "scripts": [],
             "allowedCommonJsDependencies": [
               "chart.js",
-              "@coreui/chartjs/dist/js/coreui-chartjs.js"
+              "bezier-easing"
             ]
           },
           "configurations": {
