@@ -7,7 +7,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CoreModule } from '@core/core.module';
 import { ProfileModule } from './profile/profile.module';
 import { CoreUiDepsModule } from '@coreui-deps/coreui-deps.module';
+import { SharedModule } from '@shared/shared.module';
 
+/**
+ * Origo feature module
+ */
 @NgModule({
   declarations: [
     LoginComponent,
@@ -19,7 +23,8 @@ import { CoreUiDepsModule } from '@coreui-deps/coreui-deps.module';
     CommonModule,
     CoreModule,
     ReactiveFormsModule,
-    CoreUiDepsModule
+    CoreUiDepsModule,
+    SharedModule
   ]
 })
 export class FeaturesModule { }

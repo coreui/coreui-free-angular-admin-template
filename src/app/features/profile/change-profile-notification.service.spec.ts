@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ChangeProfileNotificationService } from './change-profile-notification.service';
+import { UserActionNotificationService } from '@core/services/user-action-notification.service';
 
 describe('ChangeProfileNotificationService', () => {
-  let service: ChangeProfileNotificationService;
+  let service: UserActionNotificationService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ChangeProfileNotificationService);
+    service = TestBed.inject(UserActionNotificationService);
   });
 
   it('should be created', () => {

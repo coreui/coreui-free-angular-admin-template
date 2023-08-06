@@ -23,19 +23,15 @@ import { NotificationsRoutingModule } from './notifications-routing.module';
 import { AlertsComponent } from './alerts/alerts.component';
 import { BadgesComponent } from './badges/badges.component';
 import { ModalsComponent } from './modals/modals.component';
-// import { ToastsComponent } from './toasts/toasts.component';
 import { ToastersComponent } from './toasters/toasters.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AppToastComponent } from './toasters/toast-simple/toast.component';
 
 @NgModule({
   declarations: [
     BadgesComponent,
     AlertsComponent,
     ModalsComponent,
-    // ToastsComponent,
     ToastersComponent,
-    AppToastComponent,
   ],
   imports: [
     CommonModule,

@@ -61,11 +61,22 @@ export class AuthService {
     return this.domainUserObservable.subscribe(next);
   }
 
+  // For each value change in firestore propagate the change to the components subscribed (for example edit user profile)
+  private subscribeToValueChanges(uid: string) {
+    this.afs.doc<OrigoSupplierUser | undefined>(`users/${uid}`)
+    .valueChanges()
+    .subscribe(change => {
+      if(change) this.domainUserSubject.next(change)
+    })
+  }
+
   private subscribeToFirebasAuthEvents() {
     this.auth.onAuthStateChanged(user => {
       if(user) {
        // user logged in
        console.log(`User ${user.email} just signed in!`)
+       // let's subscribe to value changes in the backend for this user
+       this.subscribeToValueChanges(user.uid)
       }else{
         // user logged out
         this.authenticatedUser = null;
@@ -207,21 +218,13 @@ export class AuthService {
       throw Error(" authenticated user is null")
     }
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.authenticatedUser?.uid}`);
-    //let updatedProfile = null
     try {
+      // Update our business user and refresh the authenticatedUser with the new fields
       await userRef.update(user);
-      /*updatedProfile = Object.create(null);
-      if(user.phoneNumber !== this.authenticatedUser?.phoneNumber) {
-        updatedProfile['phoneNumber'] = user.phoneNumber;
-      }
-      if(user.photoURL !== this.authenticatedUser?.photoURL) {
-        updatedProfile['photoURL'] = user.photoURL;
-      }*/
-      /*console.log("update profile before the update " + updatedProfile);
-      //await this.authenticatedUser?.updateProfile(updatedProfile);*/
+      this.authenticatedUser = Object.assign(this.authenticatedUser, user)
+      // Update the auth user of firebase and refresh the authenticatedUser with response from updateProfile (contained in this.auth.currentUser)
       await updateProfile(this.auth.currentUser, user);
       this.authenticatedUser = Object.assign(this.authenticatedUser, this.authToDomainUser(this.auth.currentUser));
-      //localStorage.setItem('user', JSON.stringify(this.authenticatedUser));
       console.log(`Updating FireAuth User profile with ${JSON.stringify(user)} succeeded. New Profile is: ${JSON.stringify(this.auth.currentUser)}`);
       this.domainUserSubject.next(this.authenticatedUser);
       return [true, this.authenticatedUser]

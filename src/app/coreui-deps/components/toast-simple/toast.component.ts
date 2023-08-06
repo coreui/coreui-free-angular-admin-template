@@ -2,6 +2,10 @@ import { ChangeDetectorRef, Component, ElementRef, forwardRef, Input, Renderer2 
 
 import { ToastComponent, ToasterService } from '@coreui/angular';
 
+/**
+ * This component extends the coreui ToastComponent in order to provide a toast which support also a body message
+ * and that can be dynamically added to a <c-toaster> component. See https://coreui.io/angular/docs/components/toast
+ */
 @Component({
   selector: 'app-toast-simple',
   templateUrl: './toast.component.html',
@@ -22,7 +26,7 @@ export class AppToastComponent extends ToastComponent {
   ) {
     super(hostElement, renderer, toasterService, changeDetectorRef);
     toasterService.toasterState$.subscribe(state => {
-      this.message = (state.toast as any)['message'] ?? '';
+      this.message = (state.toast ?? {} as any)['message'] ?? '';
     })
   }
 }

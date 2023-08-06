@@ -31,6 +31,10 @@ const routes: Routes = [
           import('./features/profile/profile.module').then((m) => m.ProfileModule)
 
       },
+      { 
+        path: 'products',
+        loadChildren: () => import('./features/products/products.module').then(m => m.ProductsModule)
+      },
       {
         path: 'dashboard',
         ...canActivate(redirectUnauthorizedToLogin),

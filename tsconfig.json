@@ -25,7 +25,9 @@
     "paths": {
       "@core/*": ["src/app/core/*"],
       "@features/*": ["src/app/features/*"],
+      "@shared/*": ["src/app/shared/*"],
       "@coreui-deps/*": ["src/app/coreui-deps/*"],
+
       "@test/*": ["src/app/test/*"]
     }
   },

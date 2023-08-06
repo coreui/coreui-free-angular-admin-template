@@ -55,6 +55,16 @@
                     *ngIf="verificationPhoneId !== '' && getControlErrors('otp') !== null">{{getCntrolErroMessage('otp')}}</small>
             </span>
         </c-input-group>
+        <div class="mb-3">
+            <label cLabel for="supplier">Supplier</label>
+            <select aria-label="select example" cSelect required
+            id="supplier" 
+            formControlName="supplier">
+            <option *ngFor="let supplier of suppliers" [ngValue]="supplier">{{supplier.name}}</option>
+            </select>
+            <small class="form-text text-danger"
+            *ngIf="getControlErrors('supplier') !== null">{{getCntrolErroMessage('supplier')}}</small>
+        </div>
         <!--     <c-input-group class="mb-3">
         <span cInputGroupText>
           <svg cIcon name="cilLockLocked"></svg>

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
 import { ToasterComponent, ToasterPlacement } from '@coreui/angular';
-import { AppToastComponent } from './toast-simple/toast.component';
+
 
 export enum Colors {
   '' = '',
@@ -63,9 +63,6 @@ export class ToastersComponent implements OnInit {
     const toasterPosition = this.viewChildren.filter(item => item.placement === this.toasterForm.value.position);
     toasterPosition.forEach((item) => {
       const title = `Toast ${formValues.color} ${formValues.position}`;
-      const {...props} = {...formValues, title};
-      const componentRef = item.addToast(AppToastComponent, props, {});
-      componentRef.instance['closeButton'] = props.closeButton;
     });
   }
 }

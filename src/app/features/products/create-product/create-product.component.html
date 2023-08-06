@@ -1,0 +1,138 @@
+<c-card-body>
+    <form
+      #customStylesForm="ngForm"
+      novalidate
+      [formGroup]="productForm"
+      (ngSubmit)="onSubmit()"
+      cForm cRow
+      class="needs-validation"
+    >
+        <app-stepper #cdkStepper [linear]="true" [stepControls]="groupControls" [config]="{disableSubmitWhenInvalid: false}">
+            <!-- step 1: name, code, description, tags -->
+            <cdk-step [editable]="true" formGroupName="basicInfo" [stepControl]="basicInfoControl">
+                <ng-template cdkStepLabel>
+                    <span><small>Descrivi il prodotto</small></span>
+                </ng-template>
+                <!-- first stepper group -->
+                <div class="mb-3">
+                    <label cLabel for="productCode">Codice</label>
+                    <input cFormControl formControlName="code" id="productCode" autoComplete="product code"
+                        placeholder="codice prodotto..." />
+                    <c-form-feedback *ngIf="productCode?.invalid && productCode?.touched" class="custom-invalid-feedback" [valid]="false">{{firstErroMessage(productCode!)}}</c-form-feedback>  
+                </div>
+                <div class="mb-3">
+                    <label cLabel for="productName">Nome</label>
+                    <input required cFormControl formControlName="name" id="productName" autoComplete="product name"
+                        placeholder="nome prodotto..." />
+                    <c-form-feedback *ngIf="productName?.invalid && productName?.touched" class="custom-invalid-feedback" [valid]="false">{{firstErroMessage(productName!)}}</c-form-feedback>
+                </div>
+                <div class="mb-3">
+                    <label cLabel for="productCategory">Categoria</label>
+                    <select aria-label="select example" cSelect required
+                    id="productCategory" 
+                    formControlName="category">
+                    <option *ngFor="let cat of categories | async">{{cat.name}}</option>
+                    </select>
+                    <c-form-feedback class="custom-invalid-feedback"  [valid]="false">{{firstErroMessage(category!)}}</c-form-feedback>
+                </div>
+                <div class="mb-3">
+                    <label cLabel for="productDescription">Descrizione</label>
+                    <textarea cFormControl formControlName="shortDescription" id="productDescription"
+                        placeholder="descrivi il tuo prodotto..." rows="3"></textarea>
+                </div>
+            </cdk-step>
+
+            <!-- step 2 : images and documents -->
+            <cdk-step [editable]="true" formGroupName="docs" [stepControl]="docsControl">
+                <ng-template cdkStepLabel>
+                    <span><small>Seleziona le foto</small></span>
+                </ng-template>
+                <!-- upload images -->
+                <c-input-group class="mb-3">
+                    <input type="file" class="file-input" (change)="onProductImagesSelected($event)" accept=".png,.jpg"
+                        multiple #fileUpload>
+                    <span cInputGroupText>
+                        <svg cIcon name="cilImage"></svg>
+                    </span>
+                    <button (click)="fileUpload.click()" [active]="true" [color]="'primary'"
+                        [disabled]="productForm.disabled" cButton class="me-1">
+                        <svg cIcon class="me-2" name="cilBrowser"></svg>
+                    </button>
+                    <c-form-feedback *ngIf="picturesControl?.invalid && picturesControl?.touched" class="custom-invalid-feedback" [valid]="false">{{firstErroMessage(picturesControl!)}}</c-form-feedback>    
+                </c-input-group>    
+                <!-- form array contains pic names -->
+                <ng-container formArrayName="pictures">
+                    <ng-container *ngFor="let picture of picturesControl.controls; let i=index" formGroupName="{{i}}">
+                        <input type="hidden" formControlName="src" cFormControl/>
+                    </ng-container>
+                </ng-container>
+
+                <!--<c-carousel>
+                    <c-carousel-indicators></c-carousel-indicators>
+                    <c-carousel-inner>
+                      <c-carousel-item *ngFor="let slide of imageUrlsDirect;let i=index">
+                        <div>{{slide | json}}</div>
+                        <img
+                          cImg
+                          fluid
+                          class="d-block w-100"
+                          loading="lazy"
+                          [src]="slide"
+                          />
+                      </c-carousel-item>
+                    </c-carousel-inner>
+                    <c-carousel-control [routerLink] caption="Previous" direction="prev"></c-carousel-control>
+                    <c-carousel-control [routerLink] caption="Next" direction="next"></c-carousel-control>
+                  </c-carousel>-->
+                
+                <!-- carouse is just to show previews -->
+                <div class="carousel-container">
+                    <carousel >
+                        <slide *ngFor="let picture of imageUrlsDirect;let i=index">
+                            <img cImg fluid [src]="picture"/>                          
+                        </slide>
+                    </carousel>    
+                </div>
+             </cdk-step>
+
+             <!-- Step 3: price and stock -->
+             <cdk-step [editable]="true" formGroupName="stockAndPrice" [stepControl]="stockAndPriceControl">
+                <ng-template cdkStepLabel>
+                    <span><small>Stock e prezzo</small></span>
+                </ng-template>
+                <div class="mb-3">
+                    <label cLabel for="stockRange">Stock iniziale: <strong>{{pInfo.stockAndPrice.stock}}</strong></label>
+                    <input required
+                           formControlName="stock"
+                           id="stock"
+                           cFormControl
+                           max="{{productConfig.maxStockIncrement}}"
+                           min="{{productConfig.minStockIncrement}}"
+                           step="{{productConfig.stockStepIncrement}}"
+                           type="range" />
+                    <c-form-feedback *ngIf="stockControl?.invalid && stockControl?.touched" class="custom-invalid-feedback" [valid]="false">{{firstErroMessage(stockControl!)}}</c-form-feedback>        
+                </div>
+                <div class="mb-3">
+                    <label cLabel for="unitPrice">Prezzo unitario: <strong>{{pInfo.stockAndPrice.unitPrice}}&nbsp;{{productConfig.currency}}</strong></label>
+                    <input required
+                            formControlName="unitPrice"
+                            id="unitPrice"
+                            cFormControl
+                            max="{{productConfig.maxUnitPrice}}"
+                            min="{{productConfig.minUnitPrice}}"
+                            step="{{productConfig.priceStepIncrement}}"
+                            type="range" />
+                    <c-form-feedback *ngIf="stockControl?.invalid && stockControl?.touched" class="custom-invalid-feedback" [valid]="false">{{firstErroMessage(priceControl!)}}</c-form-feedback>
+                </div>
+            </cdk-step>
+
+        </app-stepper>
+    </form>
+</c-card-body>
+
+<c-toaster placement="top-end" position="absolute" id="product-toaster" #toaster>
+</c-toaster>
+
+<!-- <div>
+    {{productForm.value | json}}
+</div> -->

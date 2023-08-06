@@ -20,14 +20,17 @@ import {
   TabsModule,
   UtilitiesModule,
   SharedModule,
-  ToastModule
+  ToastModule,
+  CarouselModule,
+  ImgModule
 } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
-import { NotificationsModule } from '../views/notifications/notifications.module';
 import { AppToastComponent } from './components/toast-simple/toast.component';
 import { ToastSampleIconComponent } from './components/toast-simple/toast-sample-icon.component';
 
-
+/**
+ * Module that collects all the coreui modules used by origo
+ */
 @NgModule({
   declarations: [AppToastComponent, ToastSampleIconComponent],
   imports: [
@@ -52,7 +55,9 @@ import { ToastSampleIconComponent } from './components/toast-simple/toast-sample
     AvatarModule,
     NavModule,
     AlertModule,
-    ToastModule
+    ToastModule,
+    ImgModule,
+    CarouselModule
   ],
   exports: [
     CommonModule,
@@ -77,7 +82,9 @@ import { ToastSampleIconComponent } from './components/toast-simple/toast-sample
     CardModule,
     GridModule,
     AlertModule,
-    ToastModule
+    ToastModule,
+    ImgModule,
+    CarouselModule
   ]
   
 })

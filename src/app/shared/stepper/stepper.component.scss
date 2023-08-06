@@ -1,0 +1,35 @@
+.header {
+    ol {
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      margin: 0 auto;
+  
+      li {
+        flex-grow: 1;
+        margin: 1rem;
+        font-weight: bold;
+        font-size: 1.3rem;
+        position: relative;
+        height: auto;
+        text-align: center;
+  
+        &.active {
+          background-color: black;
+          color: white;
+        }
+  
+        a {
+          display: block;
+          text-decoration: none;
+          padding: 1rem;
+          color: inherit;
+  
+          &:hover {
+            border-bottom: solid thin #000000;
+          }
+        }
+      }
+    }
+  }
+  

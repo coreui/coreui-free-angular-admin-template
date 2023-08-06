@@ -1,17 +1,14 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import { AuthService } from '@core/services/auth.service';
-import { AppToastComponent } from '@coreui-deps/components/toast-simple/toast.component';
-import { ToastComponent, ToasterComponent } from '@coreui/angular';
-import { Observable, Subject } from 'rxjs';
+import { ToasterComponent } from '@coreui/angular';
 import { OrigoSupplierUser } from 'src/app/core/model/OrigoSupplierUser';
-import { ActionResult, ChangeProfileNotificationService } from './change-profile-notification.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements OnInit, AfterViewInit{
+export class ProfileComponent implements OnInit/*, AfterViewInit*/{
 
   user: OrigoSupplierUser | undefined = undefined;
   activeTab = 'my-messages'
@@ -22,25 +19,12 @@ export class ProfileComponent implements OnInit, AfterViewInit{
   constructor(
      private router: Router,
      private activatedRoute: ActivatedRoute,
-     private authService: AuthService,
-     private changeProfileNotificationSvc: ChangeProfileNotificationService) { 
+     private authService: AuthService) { 
     this.authService.userDomainSubscribe(user =>  {
       this.user = user;
     })
-
-
   }
 
-  addToast(result: ActionResult) {    
-    this.toaster.addToast(AppToastComponent, {color: result.result, message: result.message, title: 'profile update'}, {});
-  }
- 
-   
-  ngAfterViewInit(): void {
-    /*this.changeProfileNotificationSvc.subscribe(notification => {
-      this.addToast(notification);
-    })*/
-  }
 
   ngOnInit(): void {
     const lastSegment = this.activatedRoute.snapshot.children[0].url[0].path;
@@ -49,9 +33,6 @@ export class ProfileComponent implements OnInit, AfterViewInit{
       if(event instanceof NavigationEnd) {
         this.activeTab = event.url.substring(event.url.lastIndexOf('/')+1);
       }
-    })
-    this.changeProfileNotificationSvc.subscribe(notification => {
-      this.addToast(notification);
     })
   }
 
