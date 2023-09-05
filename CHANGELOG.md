@@ -2,6 +2,16 @@
 
 ---
 
+#### `4.5.16`
+
+- chore(dependencies): update to `Angular 16.2`
+- fix(carousels): remove routerLink directives from carousel controls
+- chore: add CoreUI links to the sidebar-nav, minor refactors
+- refactor(styles): scrollbar tweaks
+- refactor(styles): scss variables - disable deprecation messages
+
+---
+
 #### `4.5.2`
 
 - chore(dependencies): update to `Angular 16.1`
