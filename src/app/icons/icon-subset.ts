@@ -39,6 +39,7 @@ import {
   cilCommentSquare,
   cilCreditCard,
   cilCursor,
+  cilDescription,
   cilDollar,
   cilDrop,
   cilEnvelopeClosed,
@@ -87,7 +88,7 @@ import {
   cilUser,
   cilUserFemale,
   cilUserFollow,
-  cilUserUnfollow,
+  cilUserUnfollow
 } from '@coreui/icons';
 
 export const iconSubset = {
@@ -131,6 +132,7 @@ export const iconSubset = {
   cilCommentSquare,
   cilCreditCard,
   cilCursor,
+  cilDescription,
   cilDollar,
   cilDrop,
   cilEnvelopeClosed,
@@ -179,7 +181,7 @@ export const iconSubset = {
   cilUser,
   cilUserFemale,
   cilUserFollow,
-  cilUserUnfollow,
+  cilUserUnfollow
 };
 
 export enum IconSubset {
@@ -215,7 +217,7 @@ export enum IconSubset {
   cilCalendar = 'cilCalendar',
   cilChart = 'cilChart',
   cilChartPie = 'cilChartPie',
-  cilCheck='cilCheck',
+  cilCheck = 'cilCheck',
   cilChevronLeft = 'cilChevronLeft',
   cilChevronRight = 'cilChevronRight',
   cilCloudDownload = 'cilCloudDownload',
@@ -223,6 +225,7 @@ export enum IconSubset {
   cilCommentSquare = 'cilCommentSquare',
   cilCreditCard = 'cilCreditCard',
   cilCursor = 'cilCursor',
+  cilDescription = 'cilDescription',
   cilDollar = 'cilDollar',
   cilDrop = 'cilDrop',
   cilEnvelopeClosed = 'cilEnvelopeClosed',
