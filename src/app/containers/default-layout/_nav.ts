@@ -10,27 +10,41 @@ export const navItems: INavData[] = [
       text: 'NEW'
     }
   },
+  // {
+  //   title: true,
+  //   name: 'Theme'
+  // },
   {
-    title: true,
-    name: 'Theme'
-  },
-  {
-    name: 'Colors',
+    name: 'Majors',
     url: '/theme/colors',
     iconComponent: { name: 'cil-drop' }
   },
   {
-    name: 'Typography',
+    name: 'School',
     url: '/theme/typography',
     linkProps: { fragment: 'someAnchor' },
-    iconComponent: { name: 'cil-pencil' }
+    iconComponent: { name: 'cil-pencil' },
+    children:[
+      {
+        name:'FPT University'
+      },
+      {
+        name:'Hutech University'
+      },
+      {
+        name:'Van Lang University'
+      },
+      {
+        name:'Hoa Sen University'
+      },
+    ]
   },
+  // {
+  //   name: 'Components',
+  //   title: true
+  // },
   {
-    name: 'Components',
-    title: true
-  },
-  {
-    name: 'Base',
+    name: 'Intern',
     url: '/base',
     iconComponent: { name: 'cil-puzzle' },
     children: [

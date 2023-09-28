@@ -20,7 +20,7 @@ const routes: Routes = [
         path: 'colors',
         component: ColorsComponent,
         data: {
-          title: 'Colors',
+          title: 'Majors',
         },
       },
       {
