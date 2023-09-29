@@ -10,7 +10,7 @@ const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'Notifications'
+      title: 'Semester'
     },
     children: [
       {
@@ -22,14 +22,14 @@ const routes: Routes = [
         path: 'alerts',
         component: AlertsComponent,
         data: {
-          title: 'Alerts'
+          title: 'Create New'
         }
       },
       {
         path: 'badges',
         component: BadgesComponent,
         data: {
-          title: 'Badges'
+          title: 'Update'
         }
       },
       {

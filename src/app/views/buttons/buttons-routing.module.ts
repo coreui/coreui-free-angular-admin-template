@@ -9,7 +9,7 @@ const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'Buttons'
+      title: 'School Description'
     },
     children: [
       {
@@ -21,21 +21,21 @@ const routes: Routes = [
         path: 'buttons',
         component: ButtonsComponent,
         data: {
-          title: 'Buttons'
+          title: 'FPT University'
         }
       },
       {
         path: 'button-groups',
         component: ButtonGroupsComponent,
         data: {
-          title: 'Button groups'
+          title: 'Hutech University'
         }
       },
       {
         path: 'dropdowns',
         component: DropdownsComponent,
         data: {
-          title: 'Dropdowns'
+          title: 'Van Lang University'
         }
       },
     ]

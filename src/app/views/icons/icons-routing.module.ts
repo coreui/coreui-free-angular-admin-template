@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'Icons'
+      title: 'Project List'
     },
     children: [
       {
@@ -19,21 +19,21 @@ const routes: Routes = [
         path: 'coreui-icons',
         component: CoreUIIconsComponent,
         data: {
-          title: 'CoreUI Icons'
+          title: 'Breathing Machine'
         }
       },
       {
         path: 'brands',
         component: CoreUIIconsComponent,
         data: {
-          title: 'Brands'
+          title: 'Blood Testing Machine'
         }
       },
       {
         path: 'flags',
         component: CoreUIIconsComponent,
         data: {
-          title: 'Flags'
+          title: 'Disease Diagnosis Machine'
         }
       }
     ]

@@ -21,7 +21,7 @@ const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'Base',
+      title: 'Majors',
     },
     children: [
       {
@@ -33,28 +33,28 @@ const routes: Routes = [
         path: 'accordion',
         component: AccordionsComponent,
         data: {
-          title: 'Accordion',
+          title: 'SE',
         },
       },
       {
         path: 'breadcrumbs',
         component: BreadcrumbsComponent,
         data: {
-          title: 'Breadcrumbs',
+          title: 'SS',
         },
       },
       {
         path: 'cards',
         component: CardsComponent,
         data: {
-          title: 'Cards',
+          title: 'SA',
         },
       },
       {
         path: 'carousel',
         component: CarouselsComponent,
         data: {
-          title: 'Carousel',
+          title: 'AI',
         },
       },
       {
@@ -68,7 +68,7 @@ const routes: Routes = [
         path: 'list-group',
         component: ListGroupsComponent,
         data: {
-          title: 'List Group',
+          title: 'List-group',
         },
       },
       {

@@ -14,7 +14,7 @@ const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'Forms'
+      title: 'Intern Profiles'
     },
     children: [
       {
@@ -26,56 +26,56 @@ const routes: Routes = [
         path: 'form-control',
         component: FormControlsComponent,
         data: {
-          title: 'Form Control'
+          title: 'Nguyễn Công Nguyên'
         }
       },
       {
         path: 'select',
         component: SelectComponent,
         data: {
-          title: 'Select'
+          title: 'Lê Cao Bằng'
         }
       },
       {
         path: 'checks-radios',
         component: ChecksRadiosComponent,
         data: {
-          title: 'Checks & Radios'
+          title: 'Trần Tố Mai'
         }
       },
       {
         path: 'range',
         component: RangesComponent,
         data: {
-          title: 'Range'
+          title: 'Nguyễn Đức Duy'
         }
       },
       {
         path: 'input-group',
         component: InputGroupsComponent,
         data: {
-          title: 'Input Group'
+          title: 'Cao Mỹ Duyên'
         }
       },
       {
         path: 'floating-labels',
         component: FloatingLabelsComponent,
         data: {
-          title: 'Floating Labels'
+          title: 'Lê Lư'
         }
       },
       {
         path: 'layout',
         component: LayoutComponent,
         data: {
-          title: 'Layout'
+          title: 'Nguyễn Xuân'
         }
       },
       {
         path: 'validation',
         component: ValidationComponent,
         data: {
-          title: 'Validation'
+          title: 'Đinh Cao Thắng'
         }
       }
     ]

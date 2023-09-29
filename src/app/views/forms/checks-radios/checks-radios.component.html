@@ -1,15 +1,26 @@
 <c-row ngPreserveWhitespaces>
   <c-col xs="12">
-    <app-docs-callout href="forms/checks-radios" name="Checks and Radios"></app-docs-callout>
+    <!-- <app-docs-callout href="forms/checks-radios" name="Checks and Radios"></app-docs-callout> -->
+    <img class="img-FPT" src="https://firebasestorage.googleapis.com/v0/b/img-school-c0af5.appspot.com/o/th%20(2).jpg?alt=media&token=73c790bb-226d-4db3-a76c-a133d9bb5ffa&_gl=1*12kagm2*_ga*MjA3NzQ3NjQ2OS4xNjc4NTE2MDY3*_ga_CW55HF8NVT*MTY5NTk3MTkwMi4xNy4xLjE2OTU5NzQ4NjkuNDEuMC4w">
   </c-col>
   <form [formGroup]="formGroup" cForm>
     <c-col xs="12">
       <c-card class="mb-4">
         <c-card-header>
-          <strong>Angular Checkbox</strong>
+          <strong>Trần Tố Mai</strong>
         </c-card-header>
         <c-card-body>
-          <app-docs-example href="forms/checks-radios">
+          <form cForm>
+            <div class="mb-3">
+              <label cLabel for="exampleFormControlInput1">Email address: </label>
+              <label>tomai12@gmail.com</label><br/>
+              <label>Phone number: 0123546789</label><br/>
+              <label>Major: SS</label><br/>
+              <label>Team: green</label>
+            </div>
+
+          </form>
+          <!-- <app-docs-example href="forms/checks-radios">
             <div formGroupName="flexCheckGroup">
               <c-form-check>
                 <input cFormCheckInput formControlName="checkOne" id="checkOne" type="checkbox" />
@@ -20,11 +31,11 @@
                 <label cFormCheckLabel for="checkTwo">Checked checkbox</label>
               </c-form-check>
             </div>
-          </app-docs-example>
+          </app-docs-example> -->
         </c-card-body>
       </c-card>
     </c-col>
-    <c-col xs="12">
+    <!-- <c-col xs="12">
       <c-card class="mb-4">
         <c-card-header>
           <strong>Angular Checkbox</strong> <small>Disabled</small>
@@ -330,9 +341,9 @@
                 <label (click)="setRadioValue('Radio3')" cButton color="secondary" for="radio3o" variant="outline">Radio3</label>
               </c-button-group>
             </div>
-          </app-docs-example>
-        </c-card-body>
+          </app-docs-example> -->
+        <!-- </c-card-body>
       </c-card>
-    </c-col>
+    </c-col> -->
   </form>
 </c-row>
