@@ -1,4 +1,4 @@
-<div class="bg-light min-vh-100 d-flex flex-row align-items-center">
+<!-- <div class="bg-light min-vh-100 d-flex flex-row align-items-center">
   <c-container>
     <c-row class="justify-content-center">
       <c-col md="8">
@@ -30,6 +30,7 @@
                     <button cButton class="px-4" color="primary">
                       Login
                     </button>
+
                   </c-col>
                   <c-col class="text-right" xs="6">
                     <button cButton class="px-0" color="link">
@@ -58,4 +59,48 @@
       </c-col>
     </c-row>
   </c-container>
+</div> -->
+
+<div class="container-fluid">
+  <div class="row mt-5">
+      <div class="col"></div>
+      <div class="col-4">
+          <div class="card shadow">
+              <div class="card-body">
+                  <form>
+                      <div class="mb-3">
+                          <h4 class="text-dark text-muted">Login</h4>
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email</label>
+                        <input type="email" class="form-control" name="email">
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" class="form-control" name="password">
+                      </div>
+                      <button type="button" class="btn btn-info">Login</button>
+                      <div class="row">
+                          <div class="col-md-6">
+                              <a routerLink="/register" style="text-decoration: none;">Need Account ? <span class="text-danger">Register</span></a>
+                          </div>
+                          <div class="col-md-6">
+                              <a href="/forgot-password" class="text-dark" style="text-decoration: none;"> Forgot Password ? </a>
+                          </div>
+                      </div>
+                      <div class="row mt-2">
+                          <a style="text-decoration: none;cursor: pointer;">
+                              <div class="card shadow text-center">
+                                  <div class="card-body">
+                                      <img src="https://firebasestorage.googleapis.com/v0/b/img-school-c0af5.appspot.com/o/icons8-google-100.png?alt=media&token=cd221334-942a-427e-9e64-056c3fbc49f6&_gl=1*7sgbr7*_ga*MjA3NzQ3NjQ2OS4xNjc4NTE2MDY3*_ga_CW55HF8NVT*MTY5NjA1NzI1Mi4yMS4xLjE2OTYwNTczNjQuOC4wLjA." alt="" height="50px" width="50px" color="blue"> Sign In with Google
+                                  </div>
+                              </div>
+                          </a>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+      <div class="col"></div>
+  </div>
 </div>
