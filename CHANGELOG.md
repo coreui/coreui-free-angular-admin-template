@@ -2,6 +2,14 @@
 
 ---
 
+#### `4.5.27`
+
+- chore(dependencies): update
+
+see: [Babel vulnerable to arbitrary code execution when compiling specifically crafted malicious code](https://github.com/coreui/coreui-angular/security/dependabot/31)
+
+---
+
 #### `4.5.25`
 
 - chore(dependencies): update 
