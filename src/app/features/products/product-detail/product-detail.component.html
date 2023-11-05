@@ -1,0 +1,69 @@
+<c-container>
+    <c-row>
+        <c-col>
+            <c-card>
+                <c-card-header class="bg-secondary text-white">
+                    {{ product.name | titlecase }}
+                </c-card-header>
+                <c-card-body>
+                    <c-carousel>
+                        <c-carousel-indicators></c-carousel-indicators>
+                        <c-carousel-inner>
+                            <c-carousel-item *ngFor="let slide of product.imagesUrl">
+                                <img cImg fluid [src]="slide" loading="lazy" />
+                            </c-carousel-item>
+                        </c-carousel-inner>
+                        <c-carousel-control [routerLink] caption="Previous" direction="prev"></c-carousel-control>
+                        <c-carousel-control [routerLink] caption="Next" direction="next"></c-carousel-control>
+                    </c-carousel>
+                    <form [formGroup]="productForm!">
+                        <div class="mb-3">
+                            <label for="code">Codice Fornitore:</label>
+                            <input id="code" class="form-control" type="text" [value]="product.code" readOnly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="type">Tipo:</label>
+                            <input id="type" class="form-control" type="text" [value]="product.type" readOnly>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description:</label>
+                            <textarea id="description" class="form-control" rows="3" formControlName="description"></textarea>
+                            <c-form-feedback *ngIf="descriptionControl?.invalid"
+                                             class="custom-invalid-feedback"
+                                             [valid]="false">{{firstErroMessage(descriptionControl)}}</c-form-feedback>
+                        </div>
+                        <div class="mb-3">
+                            <label cLabel for="stock">Stock: {{stockControl?.value}}</label>
+                            <c-alert *ngIf="stockInfo()" [color]="stockInfo()!">Low stock!</c-alert>
+                            <input required
+                                   formControlName="stock"
+                                   id="stock"
+                                   cFormControl
+                                   max="{{productConfig?.maxStockIncrement}}"
+                                   min="{{productConfig?.minStockIncrement}}"
+                                   step="{{productConfig?.stockStepIncrement}}"
+                                   type="range"/>
+                            <c-form-feedback *ngIf="stockControl?.invalid && stockControl?.touched"
+                                             class="custom-invalid-feedback"
+                                             [valid]="false">{{firstErroMessage(stockControl)}}</c-form-feedback>
+                        </div>
+                        <div class="mb-3">
+                            <label cLabel for="unitPrice">Prezzo: {{priceControl.value}} {{productConfig?.currency}}</label>
+                            <input required
+                                   formControlName="unitPrice"
+                                   id="unitPrice"
+                                   cFormControl
+                                   max="{{productConfig?.maxUnitPrice}}"
+                                   min="{{productConfig?.minUnitPrice}}"
+                                   step="{{productConfig?.priceStepIncrement}}"
+                                   type="range"/>
+                            <c-form-feedback *ngIf="priceControl?.invalid && priceControl?.touched"
+                                             class="custom-invalid-feedback"
+                                             [valid]="false">{{firstErroMessage(priceControl)}}</c-form-feedback>
+                        </div>
+                    </form>
+                </c-card-body>
+            </c-card>
+        </c-col>
+    </c-row>
+</c-container>

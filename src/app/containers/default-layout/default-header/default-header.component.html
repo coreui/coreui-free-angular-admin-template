@@ -52,7 +52,13 @@
   </c-container>
   <c-header-divider></c-header-divider>
   <c-container [fluid]="true">
-    <c-breadcrumb-router class="ms-2"></c-breadcrumb-router>
+    <c-breadcrumb [style]="'--cui-breadcrumb-divider:\'>\''">
+      <ng-container *ngFor="let bItem of breadcrumbsData; let i = index">
+        <c-breadcrumb-item [routerLink]="bItem.link" [active]="bItem.active">{{bItem.text}}</c-breadcrumb-item>
+      </ng-container>
+    </c-breadcrumb>
+
+    <!--<c-breadcrumb-router [items]="breadcrumbsData" class="ms-2"></c-breadcrumb-router>-->
   </c-container>
 </ng-container>
 <!--</c-header>-->

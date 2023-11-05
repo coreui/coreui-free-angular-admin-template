@@ -36,9 +36,10 @@
                     <c-form-feedback class="custom-invalid-feedback"  [valid]="false">{{firstErroMessage(category!)}}</c-form-feedback>
                 </div>
                 <div class="mb-3">
-                    <label cLabel for="productDescription">Descrizione</label>
-                    <textarea cFormControl formControlName="shortDescription" id="productDescription"
+                    <label cLabel for="description">Descrizione</label>
+                    <textarea cFormControl formControlName="description" id="description"
                         placeholder="descrivi il tuo prodotto..." rows="3"></textarea>
+                    <c-form-feedback class="custom-invalid-feedback"  [valid]="false">{{firstErroMessage(description!)}}</c-form-feedback>
                 </div>
             </cdk-step>
 
@@ -67,25 +68,7 @@
                     </ng-container>
                 </ng-container>
 
-                <!--<c-carousel>
-                    <c-carousel-indicators></c-carousel-indicators>
-                    <c-carousel-inner>
-                      <c-carousel-item *ngFor="let slide of imageUrlsDirect;let i=index">
-                        <div>{{slide | json}}</div>
-                        <img
-                          cImg
-                          fluid
-                          class="d-block w-100"
-                          loading="lazy"
-                          [src]="slide"
-                          />
-                      </c-carousel-item>
-                    </c-carousel-inner>
-                    <c-carousel-control [routerLink] caption="Previous" direction="prev"></c-carousel-control>
-                    <c-carousel-control [routerLink] caption="Next" direction="next"></c-carousel-control>
-                  </c-carousel>-->
-                
-                <!-- carouse is just to show previews -->
+                <!-- TODO: unfortunately coreui c-carousel is not working only in this component. So as workaround here is used ngx-bootstrap equivalent -->
                 <div class="carousel-container">
                     <carousel >
                         <slide *ngFor="let picture of imageUrlsDirect;let i=index">
@@ -101,7 +84,7 @@
                     <span><small>Stock e prezzo</small></span>
                 </ng-template>
                 <div class="mb-3">
-                    <label cLabel for="stockRange">Stock iniziale: <strong>{{pInfo.stockAndPrice.stock}}</strong></label>
+                    <label cLabel for="stock">Stock iniziale: <strong>{{pInfo.stockAndPrice.stock}}</strong></label>
                     <input required
                            formControlName="stock"
                            id="stock"
@@ -122,7 +105,7 @@
                             min="{{productConfig.minUnitPrice}}"
                             step="{{productConfig.priceStepIncrement}}"
                             type="range" />
-                    <c-form-feedback *ngIf="stockControl?.invalid && stockControl?.touched" class="custom-invalid-feedback" [valid]="false">{{firstErroMessage(priceControl!)}}</c-form-feedback>
+                    <c-form-feedback *ngIf="priceControl?.invalid && priceControl?.touched" class="custom-invalid-feedback" [valid]="false">{{firstErroMessage(priceControl!)}}</c-form-feedback>
                 </div>
             </cdk-step>
 

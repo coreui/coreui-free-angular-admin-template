@@ -10,7 +10,8 @@ export class Product {
      readonly stockLastIncrement: number,
      readonly stockLastUpdateDate: Date,
      readonly currency: Currency = Currency.euro,
-     public imagesUrl?: any[]){}
+     public imagesUrl?: any[]){
+    }
 }
 
 export enum Currency {
@@ -30,6 +31,8 @@ export class ProductConfiguration {
         public readonly maxUnitPrice: number = 1000.0,
         public readonly priceStepIncrement: number = 0.50,
         public readonly defaultPrice: number = 5.00,
-        public readonly currency: Currency = Currency.euro
+        public readonly currency: Currency = Currency.euro,
+        public readonly warningLowStockTreshold: number = 40,
+        public readonly dangerLowStockTreshold: number = 20
     ){}
 }

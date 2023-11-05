@@ -1,27 +1,37 @@
 <!-- products-overview.component.html -->
- <c-container breakpoint="sm">
-    <c-row [xs]="1" [sm]="2" [md]="4" [gutter]="2">
-        <c-col *ngFor="let product of products | async">
-            <c-card cCardImg="top">
+ <c-container breakpoint="md">
+    <c-row [xs]="1" [sm]="2" [md]="3" [gutter]="1">
+        <c-col *ngFor="let product of products | async" >
+
+            <c-card>
+                <!--<img cCardImg="top" height="150" width="100" *ngIf="!!product.imagesUrl && product.imagesUrl.length > 0" [src]="product.imagesUrl[0]"/>-->
                 <c-card-header>
-                  {{ product.name | titlecase }}
+                    <div>
+                        <button cButton type="button" class="mt-3" color="link" (click)="seeDetails(product)">{{ product.name | titlecase }}</button>
+                    </div>
                 </c-card-header>
                 <c-card-body>
-                    <carousel class="carousel-container-overview">
-                        <slide *ngFor="let picture of product.imagesUrl;let i=index">
-                            <img cImg fluid [src]="picture"/>                          
-                        </slide>
-                    </carousel>    
-                    <div>
+                    <c-carousel>
+                        <c-carousel-indicators></c-carousel-indicators>
+                        <c-carousel-inner>
+                            <c-carousel-item *ngFor="let slide of product.imagesUrl">
+                                <img cImg fluid [src]="slide | async" loading="lazy" />
+                            </c-carousel-item>
+                        </c-carousel-inner>
+                        <c-carousel-control [routerLink] caption="Previous" direction="prev"></c-carousel-control>
+                        <c-carousel-control [routerLink] caption="Next" direction="next"></c-carousel-control>
+                    </c-carousel>
+
+                  <div>
                       <p>
-                        <span><strong>Codice: </strong><em>{{product.code}}</em></span><br>
+                        <span><strong>Codice Fornitore: </strong><em>{{product.code}}</em></span><br>
                         <span><strong>Tipo: </strong><em>{{product.type}}</em></span>
                       </p>
                       <p><strong>Descrizione: </strong><em>{{ product.description.substring(0,50) }} ...</em></p>                    
                       <p><strong>Prezzo: </strong><em>{{product.currency}}{{ product.unitPrice }}</em></p>
                       <p>
                         <span><strong>Stock: </strong><em>{{product.stock}}</em></span><br>
-                        <span><strong>Aggiornato: </strong>+{{product.stockLastIncrement}} {{product.stockLastUpdateDate | date}}</span>
+                        <span><strong>Aggiornato: </strong>+{{product.stockLastIncrement}} {{product.stockLastUpdateDate | firebaseDate}}</span>
                       </p>
                     </div>
                 </c-card-body>

@@ -1,21 +1,31 @@
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference } from '@angular/fire/compat/firestore';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { Router } from '@angular/router';
-import { OrigoSupplierUser } from '@core/model/OrigoSupplierUser';
-import { Product, ProductConfiguration } from '@core/model/product';
-import { AuthService } from '@core/services/auth.service';
-import { ResizeImagesService } from '@core/services/resize-images.service';
-import { StorageService } from '@core/services/storage.service';
-import { SupplierConfigsService } from '@core/services/supplier-configs.service';
-import { UserActionNotificationService, Result } from '@core/services/user-action-notification.service';
-import { file, image, minLength, minNumber, numeric, prop, propArray, propObject, ReactiveFormConfig, required, RxFormBuilder } from '@rxweb/reactive-form-validators';
-import { StepperComponent } from '@shared/stepper/stepper.component';
-import { firstErrorMessage } from '@shared/utils/reactive-forms-utils';
-import { UploadTaskSnapshot, getDownloadURL } from 'firebase/storage';
-import { Subject, combineLatest, concatAll, filter, flatMap, forkJoin, map, of } from 'rxjs';
-import { Observable } from 'rxjs/internal/Observable';
+import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
+import {AngularFirestore, AngularFirestoreCollection, DocumentReference} from '@angular/fire/compat/firestore';
+import {FormArray, FormControl, FormGroup} from '@angular/forms';
+import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
+import {Router} from '@angular/router';
+import {OrigoSupplierUser} from '@core/model/OrigoSupplierUser';
+import {Product, ProductConfiguration} from '@core/model/product';
+import {AuthService} from '@core/services/auth.service';
+import {ResizeImagesService} from '@core/services/resize-images.service';
+import {StorageService} from '@core/services/storage.service';
+import {SupplierConfigsService} from '@core/services/supplier-configs.service';
+import {Result, UserActionNotificationService} from '@core/services/user-action-notification.service';
+import {
+  minLength,
+  prop,
+  propArray,
+  propObject,
+  ReactiveFormConfig,
+  required,
+  RxFormBuilder
+} from '@rxweb/reactive-form-validators';
+import {StepperComponent} from '@shared/stepper/stepper.component';
+import {firstErrorMessage} from '@shared/utils/reactive-forms-utils';
+import {getDownloadURL, UploadTaskSnapshot} from 'firebase/storage';
+import {combineLatest, filter, flatMap, forkJoin, map, mergeMap, of} from 'rxjs';
+import {Observable} from 'rxjs/internal/Observable';
+import {fromPromise} from "rxjs/internal/observable/innerFrom";
+import {getSHA256Hash} from "boring-webcrypto-sha256";
 
 
 @Component({
@@ -27,13 +37,6 @@ export class CreateProductComponent implements OnInit{
 
   firstErroMessage = firstErrorMessage
 
-  static reader = new FileReader();
-
-  imageSrc: SafeUrl[] = [];
-
-  maxWidth = 200;
-  maxHeight = 300;
-
   @ViewChild('cdkStepper')
   cdkStepper: StepperComponent | undefined = undefined;
 
@@ -43,7 +46,7 @@ export class CreateProductComponent implements OnInit{
   user: OrigoSupplierUser | undefined = undefined;
   
   categories!: Observable<{ name: string; }[]>;
-  imageUrlsDirect: any[] = [];
+  imageUrlsDirect: SafeUrl[] = [];
   productConfig: ProductConfiguration = new ProductConfiguration();
 
   constructor(
@@ -52,7 +55,6 @@ export class CreateProductComponent implements OnInit{
      private readonly fb: RxFormBuilder,
      private readonly afs: AngularFirestore,
      private readonly domSanitizer: DomSanitizer,
-     private readonly resizeImageService: ResizeImagesService,
      private readonly supplierConfigService: SupplierConfigsService,
      private actionNotificationService: UserActionNotificationService,
      private router: Router) {
@@ -62,6 +64,7 @@ export class CreateProductComponent implements OnInit{
           "no-category": "nessun risultato",
           "required": "campo obbligatorio", 
           "minLength": "inserisci almeno 3 caratteri",
+          "descriptionMinLength": "La descrizione del prodotto deve contenere almeno 10 caratteri",
           "picturesMinLength": "scegli almeno 1 fotografia del prodotto"
         }
       })
@@ -137,6 +140,10 @@ export class CreateProductComponent implements OnInit{
     return this.productForm.get('basicInfo')?.get('category')
   }
 
+  get description() {
+    return this.productForm.get('basicInfo')?.get('description')
+  }
+
   get categoryValue() {
     return this.category?.value
   }
@@ -164,33 +171,14 @@ export class CreateProductComponent implements OnInit{
   onProductImagesSelected = (event: any) => {
     const naturalSizeImages = Array.from(event.target.files as any[]);
     
-    naturalSizeImages.
-    map(async img => await this.resizeImageService.resizeImage(img, this.maxWidth, this.maxHeight))
-    .forEach( async (filePromise: Promise<File>) => {
-      let file = await filePromise;
+    naturalSizeImages
+   .forEach( file => {
       this.imageUrlsDirect.push(this.domSanitizer.bypassSecurityTrustUrl(URL.createObjectURL(file)));
       const pic = new Picture();
       pic.src = file
       this.pInfo.docs.pictures.push(pic);
-      this.picturesControl.updateValueAndValidity();      
-    });
-
-    /*naturalSizeImages.map(async img => await this.resizeImageService.resizeImage(img, this.maxWidth, this.maxHeight))
-    .forEach(async (filePromise: Promise<File>) => {
-      let file = await filePromise;
-      const reader = new FileReader()
-      reader.readAsDataURL(file);
-      
-      reader.onload = (e: any) => {
-        //this.imageSrc.push(this.domSanitizer.bypassSecurityTrustUrl(reader.result as string))
-        this.imageSrc.push(this.user?.photoURL!)
-        this.cd.detectChanges();
-      }
-      const pic = new Picture();
-      pic.src = file
-      this.pInfo.docs.pictures.push(pic);
       this.picturesControl.updateValueAndValidity();
-    })*/
+    });
     
   }
 
@@ -223,9 +211,14 @@ export class CreateProductComponent implements OnInit{
   }
 
   private uploadImages(pData: ProductInfo): Observable<String[]> {
-      // Note: pData.basicInfo.code non va bene se il codice è creato dal supplier e non è univoco. TO FIX.
       let ts: Observable<UploadTaskSnapshot>[] = pData.docs.pictures
-      .map(pFile => this.storageService.uploadImage(`products/${pData.basicInfo.code}/images`, pFile.src!)[1])
+      .map(pFile => {
+        return fromPromise(pFile.src?.text()!)
+            .pipe(
+                mergeMap(content => fromPromise(getSHA256Hash(content))), // Is important to create a univoque path to store the images in datastore. Consider to embed this in the service
+                mergeMap(fileHash => this.storageService.uploadImage(`products/${fileHash}/images/`, pFile.src!)[1])
+            )
+      })
     
       let finalUrls: Observable<String>[] = []; 
       ts.forEach( _ts => 
@@ -247,7 +240,7 @@ export class CreateProductComponent implements OnInit{
       pData.basicInfo.name!,
       pData.basicInfo.category!,
       this.user!.supplier,
-      pData.basicInfo.shortDescription!,
+      pData.basicInfo.description!,
       pData.stockAndPrice.unitPrice!,
       pData.stockAndPrice.stock!,
       pData.stockAndPrice.stock!,
@@ -294,7 +287,9 @@ export class BasicProductInfo {
   category?: string;
   
   @prop()
-  shortDescription: string = '';
+  @required({messageKey: 'required'})
+  @minLength({value:10, messageKey: 'descriptionMinLength'})
+  description?: string;
 
 }
 

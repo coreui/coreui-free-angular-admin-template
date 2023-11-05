@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFirestore, QueryFn } from '@angular/fire/compat/firestore';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Product } from '@core/model/product';
 import { Observable, of, tap } from 'rxjs';
@@ -12,9 +12,9 @@ export class ProductsService {
 
   constructor(private readonly afs: AngularFirestore,  private readonly domSanitizer: DomSanitizer,  private readonly imageCompressService: NgxImageCompressService) { }
 
-  fetchProducts(customerId: string): Observable<Product[]> {
+  fetchProducts(customerId: string, queryFn?: QueryFn): Observable<Product[]> {
 
-    return this.afs.collection<Product>(`suppliers/${customerId}/products`)
+    return this.afs.collection<Product>(`suppliers/${customerId}/products`, queryFn)
     .valueChanges()
     
     // JUST FOR TEST

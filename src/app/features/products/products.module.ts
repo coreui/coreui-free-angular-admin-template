@@ -11,11 +11,14 @@ import { SharedModule } from '@shared/shared.module';
 import { CdkStepperModule } from '@angular/cdk/stepper';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ProductsOverviewComponent } from './products-overview/products-overview.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import {CoreModule} from "@core/core.module";
 
 @NgModule({
   declarations: [
     CreateProductComponent,
-    ProductsOverviewComponent
+    ProductsOverviewComponent,
+    ProductDetailComponent
   ],
   imports: [
     CommonModule,
@@ -27,6 +30,7 @@ import { ProductsOverviewComponent } from './products-overview/products-overview
     CdkStepperModule,
     TypeaheadModule.forRoot(),
     CarouselModule.forRoot(),
+    CoreModule,
   ]
 })
 export class ProductsModule { }

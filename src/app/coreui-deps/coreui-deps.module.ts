@@ -57,7 +57,7 @@ import { ToastSampleIconComponent } from './components/toast-simple/toast-sample
     AlertModule,
     ToastModule,
     ImgModule,
-    CarouselModule
+    CarouselModule,
   ],
   exports: [
     CommonModule,
