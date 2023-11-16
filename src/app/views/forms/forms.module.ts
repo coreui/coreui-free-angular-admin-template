@@ -13,7 +13,7 @@ import {
   SharedModule
 } from '@coreui/angular';
 
-import { ComponentsModule } from '../../../components/components.module';
+import { DocsComponentsModule } from '@docs-components/docs-components.module';
 
 import { FormsRoutingModule } from './forms-routing.module';
 import { RangesComponent } from './ranges/ranges.component';
@@ -42,7 +42,7 @@ import { ValidationComponent } from './validation/validation.component';
   imports: [
     CommonModule,
     FormsRoutingModule,
-    ComponentsModule,
+    DocsComponentsModule,
     CardModule,
     FormModule,
     GridModule,

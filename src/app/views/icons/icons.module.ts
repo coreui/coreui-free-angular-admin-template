@@ -6,7 +6,7 @@ import { IconModule } from '@coreui/icons-angular';
 
 import { CoreUIIconsComponent } from './coreui-icons.component';
 import { IconsRoutingModule } from './icons-routing.module';
-import { ComponentsModule } from '../../../components/components.module';
+import { DocsComponentsModule } from '@docs-components/docs-components.module';
 
 @NgModule({
   imports: [
@@ -15,7 +15,7 @@ import { ComponentsModule } from '../../../components/components.module';
     GridModule,
     IconModule,
     CommonModule,
-    ComponentsModule
+    DocsComponentsModule
   ],
   declarations: [
     CoreUIIconsComponent

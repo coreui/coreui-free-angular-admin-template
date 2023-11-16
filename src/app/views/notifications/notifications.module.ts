@@ -17,7 +17,7 @@ import {
   UtilitiesModule
 } from '@coreui/angular';
 
-import { ComponentsModule } from '../../../components/components.module';
+import { DocsComponentsModule } from '@docs-components/docs-components.module';
 import { NotificationsRoutingModule } from './notifications-routing.module';
 
 import { AlertsComponent } from './alerts/alerts.component';
@@ -37,7 +37,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ReactiveFormsModule,
     NotificationsRoutingModule,
-    ComponentsModule,
+    DocsComponentsModule,
     AlertModule,
     GridModule,
     CardModule,
