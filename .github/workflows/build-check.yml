@@ -14,14 +14,14 @@ on:
 
 env:
   FORCE_COLOR: 2
-  NODE: 18
+  NODE: 20
 
 jobs:
   build:
     strategy:
       matrix:
         platform: [ubuntu-latest, windows-latest, macOS-latest]
-        node-version: [18.x]
+        node-version: [20.x]
     runs-on: ${{ matrix.platform }}
     steps:
       - name: Clone repository
