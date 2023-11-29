@@ -3,7 +3,7 @@
 @supports (scrollbar-width: thin) {
   * {
     scrollbar-width: thin;
-    scrollbar-color: #444 transparent;
+    scrollbar-color: #560d0d transparent;
   }
 }
 
@@ -24,11 +24,11 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #444;
+  background: #560d0d;
 }
 
 .dark-theme::-webkit-scrollbar-thumb {
-  background: #444;
+  background: #560d0d;
 }
 
 .dark-theme::-webkit-scrollbar-thumb:hover {
