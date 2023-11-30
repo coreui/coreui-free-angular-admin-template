@@ -1,40 +1,24 @@
 <!--sidebar-->
-<c-sidebar
-  #sidebar="cSidebar"
-  class="d-print-none sidebar sidebar-fixed"
-  id="sidebar"
-  visible
->
-  <c-sidebar-brand
-    [brandFull]="{
+<c-sidebar #sidebar="cSidebar" class="d-print-none sidebar sidebar-fixed" id="sidebar" visible>
+  <c-sidebar-brand [brandFull]="{
       src: 'assets/img/isoi&e.png',
       width: 300,
       height: 70,
-      alt: 'CoreUI Logo'
-    }"
-    [brandNarrow]="{
+      alt: 'KRA Logo'
+    }" [brandNarrow]="{
       src: 'assets/img/logo.jpg',
       width: 70,
       height: 70,
-      alt: 'CoreUI Logo'
-    }"
-    routerLink="./"
-  />
+      alt: 'KRA Logo'
+    }" routerLink="./" />
 
   <ng-scrollbar pointerEventsMethod="scrollbar">
-    <c-sidebar-nav
-      [navItems]="navItems"
-      dropdownMode="close"
-    />
+    <c-sidebar-nav [navItems]="navItems" dropdownMode="close" />
   </ng-scrollbar>
-  <c-sidebar-toggler
-    *ngIf="!sidebar.narrow"
-    toggle="unfoldable"
-    cSidebarToggle="sidebar"
-  />
+  <c-sidebar-toggler *ngIf="!sidebar.narrow" toggle="unfoldable" cSidebarToggle="sidebar" />
 </c-sidebar>
 
-<!--main-->
+<!--main body-->
 <div class="wrapper d-flex flex-column min-vh-100 bg-light dark:bg-transparent">
   <!--app-header-->
   <app-default-header class="mb-4 d-print-none header header-sticky" position="sticky" sidebarId="sidebar" />
