@@ -23,9 +23,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 
-import { WidgetsModule } from '../widgets/widgets.module';
-import { WidgetsRoutingModule } from '../widgets/widgets-routing.module';
-
 @NgModule({
   imports: [
     DashboardRoutingModule,
@@ -44,10 +41,8 @@ import { WidgetsRoutingModule } from '../widgets/widgets-routing.module';
     ChartjsModule,
     AvatarModule,
     TableModule,
-    WidgetsModule,
     NgbModule,
     CommonModule,
-    WidgetsRoutingModule,
     GridModule,
     WidgetModule,
     IconModule,

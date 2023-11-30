@@ -10,9 +10,6 @@
           Dashboard
         </a>
       </c-nav-item>
-      <c-nav-item>
-        <a cNavLink routerLink="/users" routerLinkActive="active">Users</a>
-      </c-nav-item>
     </c-header-nav>
     <c-header-nav class="d-none d-lg-flex">
       <c-nav-item>
@@ -50,29 +47,9 @@
         <h6 cDropdownHeader class="bg-light fw-semibold py-2">Account</h6>
       </li>
       <li>
-        <a routerLink="./" cDropdownItem>
-          <svg cIcon class="me-2" name="cilTask"></svg>
-          Tasks
-          <c-badge class="ms-2 float-end" color="danger">
-            5
-          </c-badge>
-        </a>
       </li>
       <li>
-        <h6 cDropdownHeader class="bg-light fw-semibold py-2">Settings</h6>
-      </li>
-      <li></li>
-      <li>
-        <a routerLink="./" cDropdownItem>
-          <svg cIcon class="me-2" name="cilUser"></svg>
-          Profile
-        </a>
-      </li>
-      <li>
-        <hr cDropdownDivider />
-      </li>
-      <li>
-        <a routerLink="./" cDropdownItem>
+        <a routerLink="./login" cDropdownItem>
           <svg cIcon class="me-2" name="cilLockLocked"></svg>
           Lock Account
         </a>
