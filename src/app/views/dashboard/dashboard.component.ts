@@ -22,9 +22,19 @@ export class DashboardComponent implements OnInit {
   icons = { cilOptions, cilArrowTop };
 
   getProgressBarColor(percentage: number): string {
-    if (percentage > 79) {
+    if (percentage >= 80) {
       return 'green';
-    } else if (percentage > 49) {
+    } else if (percentage >= 50) {
+      return 'orange';
+    } else {
+      return 'red';
+    }
+  }
+
+  getPCProgressBarColor(percentage: number): string {
+    if (percentage >= 90) {
+      return 'green';
+    } else if (percentage >= 80) {
       return 'orange';
     } else {
       return 'red';
