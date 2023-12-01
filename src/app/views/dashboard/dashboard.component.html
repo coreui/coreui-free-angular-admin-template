@@ -1,19 +1,12 @@
 <!-- Dashboard -->
-<div class="fade-in">
-  <c-card class="mb-4">
-    <c-card-header>
-      <strong>Dashboard</strong>
-    </c-card-header>
     <c-card-body>
       <div class="row">
         <div class="col-md-3">
           <div class="card h-100">
             <div class="c-card-header">Monthly Scorecard</div>
-            <div class="card-body">
-              <div class="percentage">
-                <p>95.00%</p>
-              </div>
-            </div>
+            <c-card-header>
+              <strong> 95.00% </strong>
+            </c-card-header>
             <div class="card-footer">
               <div class="progress-container">
                 <div class="progress-bar" [style.width]="95 + '%'" [style.background-color]="getPCProgressBarColor(95)">
@@ -25,11 +18,9 @@
         <div class="col-md-3">
           <div class="card h-100">
             <div class="c-card-header">Initiative Performance</div>
-            <div class="card-body">
-              <div class="percentage">
-                <p>23.33%</p>
-              </div>
-            </div>
+            <c-card-header>
+              <strong> 95.00% </strong>
+            </c-card-header>
             <div class="card-footer">
               <div class="progress-container">
                 <div class="progress-bar" [style.width]="23 + '%'" [style.background-color]="getPCProgressBarColor(23)">
@@ -41,22 +32,20 @@
         <div class="col-md-3">
           <div class="card h-100">
             <div class="c-card-header">Total Initiatives</div>
-            <div class="card-body">
-              <div class="percentage">
+            <c-card-header>
+              <strong>  
                 <p>Unique 30</p>
-                <p>Tasks 78</p>
-              </div>
-            </div>
+                <p>Tasks 78</p> 
+              </strong>
+            </c-card-header>
           </div>
         </div>
         <div class="col-md-3">
           <div class="card h-100">
             <div class="c-card-header">Budget Utilization</div>
-            <div class="card-body">
-              <div class="percentage">
-                <p>4.13%</p>
-              </div>
-            </div>
+            <c-card-header>
+              <strong> 95.00% </strong>
+            </c-card-header>
             <div class="card-footer">
               <div class="progress-container">
                 <div class="progress-bar" [style.width]="4 + '%'" [style.background-color]="getProgressBarColor(4)">
@@ -67,8 +56,6 @@
         </div>
       </div>
     </c-card-body>
-  </c-card>
-</div>
 <!-- Profiles Cards -->
 <div class="fade-in">
   <c-card class="mb-4">
@@ -80,11 +67,9 @@
         <div class="col">
           <div class="card h-100">
             <div class="c-card-header">No of Profiles Disseminated</div>
-            <div class="card-body">
-              <div class="percentage">
-                <p>104%</p>
-              </div>
-            </div>
+            <c-card-header>
+              <strong> <p>104%</p> </strong>
+            </c-card-header>
             <div class="card-footer">
               <div class="progress-container">
                 <div class="progress-bar" [style.width]="95 + '%'" [style.background-color]="getProgressBarColor(95)">
@@ -96,11 +81,9 @@
         <div class="col">
           <div class="card h-100">
             <div class="c-card-header">Revenue Estimates from Profile</div>
-            <div class="card-body">
-              <div class="percentage">
-                <p>150%</p>
-              </div>
-            </div>
+            <c-card-header>
+              <strong> <p>150%</p> </strong>
+            </c-card-header>
             <div class="card-footer">
               <div class="progress-container">
                 <div class="progress-bar" [style.width]="100 + '%'" [style.background-color]="getProgressBarColor(150)">
@@ -112,11 +95,9 @@
         <div class="col">
           <div class="card h-100">
             <div class="c-card-header">Revenue Conversion from Profiles</div>
-            <div class="card-body">
-              <div class="percentage">
-                <p>60%</p>
-              </div>
-            </div>
+            <c-card-header>
+              <strong> <p>60%</p> </strong>
+            </c-card-header>
             <div class="card-footer">
               <div class="progress-container">
                 <div class="progress-bar" [style.width]="60 + '%'" [style.background-color]="getProgressBarColor(60)">
@@ -140,11 +121,9 @@
         <div class="col">
           <div class="card h-100">
             <div class="c-card-header">No of Profiles Received</div>
-            <div class="card-body">
-              <div class="percentage">
-                <p>104%</p>
-              </div>
-            </div>
+            <c-card-header>
+              <strong> <p>104%</p> </strong>
+            </c-card-header>
             <div class="card-footer">
               <div class="progress-container">
                 <div class="progress-bar" [style.width]="95 + '%'" [style.background-color]="getProgressBarColor(95)">
@@ -156,11 +135,9 @@
         <div class="col">
           <div class="card h-100">
             <div class="c-card-header">Tax Assessed</div>
-            <div class="card-body">
-              <div class="percentage">
-                <p>50%</p>
-              </div>
-            </div>
+            <c-card-header>
+              <strong> <p>50%</p> </strong>
+            </c-card-header>
             <div class="card-footer">
               <div class="progress-container">
                 <div class="progress-bar" [style.width]="50 + '%'" [style.background-color]="getProgressBarColor(50)">
@@ -172,11 +149,9 @@
         <div class="col">
           <div class="card h-100">
             <div class="c-card-header">Actual Tac Collection</div>
-            <div class="card-body">
-              <div class="percentage">
-                <p>150%</p>
-              </div>
-            </div>
+            <c-card-header>
+              <strong> <p>150%</p> </strong>
+            </c-card-header>
             <div class="card-footer">
               <div class="progress-container">
                 <div class="progress-bar" [style.width]="100 + '%'" [style.background-color]="getProgressBarColor(100)">
@@ -200,11 +175,9 @@
         <div class="col">
           <div class="card h-100">
             <div class="c-card-header">No of Cases</div>
-            <div class="card-body">
-              <div class="percentage">
-                <p>104%</p>
-              </div>
-            </div>
+            <c-card-header>
+              <strong> <p>104%</p> </strong>
+            </c-card-header>
             <div class="card-footer">
               <div class="progress-container">
                 <div class="progress-bar" [style.width]="100 + '%'" [style.background-color]="getProgressBarColor(100)">
@@ -216,11 +189,9 @@
         <div class="col">
           <div class="card h-100">
             <div class="c-card-header">Amount of Disputed Tax</div>
-            <div class="card-body">
-              <div class="percentage">
-                <p>50%</p>
-              </div>
-            </div>
+            <c-card-header>
+              <strong> <p>50%</p> </strong>
+            </c-card-header>
             <div class="card-footer">
               <div class="progress-container">
                 <div class="progress-bar" [style.width]="50 + '%'" [style.background-color]="getProgressBarColor(50)">
@@ -232,11 +203,9 @@
         <div class="col">
           <div class="card h-100">
             <div class="c-card-header">No. of Closed Cases</div>
-            <div class="card-body">
-              <div class="percentage">
-                <p>104%</p>
-              </div>
-            </div>
+            <c-card-header>
+              <strong> <p>104%</p> </strong>
+            </c-card-header>
             <div class="card-footer">
               <div class="progress-container">
                 <div class="progress-bar" [style.width]="100 + '%'" [style.background-color]="getProgressBarColor(100)">
