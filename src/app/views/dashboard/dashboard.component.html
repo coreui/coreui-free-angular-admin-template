@@ -1,289 +1,411 @@
-<c-row>
-  <c-col sm="6" xl="3">
-    <c-widget-stat-a
-      class="mb-4"
-      color="primary"
-      title="Users"
-    >
-      <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
-        26K
-        <span class="fs-6 fw-normal">
-          (-12.4% <svg cIcon name="cilArrowBottom"></svg>)
-        </span>
-      </ng-template>
-      <ng-template cTemplateId="widgetActionTemplate">
-        <c-dropdown alignment="end" variant="btn-group">
-          <button [caret]="false" cButton cDropdownToggle class="p-0" color="transparent">
-            <svg cIcon class="text-high-emphasis-inverse" name="cilOptions"></svg>
-          </button>
-          <ul cDropdownMenu>
-            <li><a routerLink="./" cDropdownItem>Action</a></li>
-            <li><a routerLink="./" cDropdownItem>Another action</a></li>
-            <li><a routerLink="./" cDropdownItem>Something else here</a></li>
-            <li>
-              <hr cDropdownDivider>
-            </li>
-            <li>
-              <button cDropdownItem>Separated link</button>
-            </li>
-          </ul>
-        </c-dropdown>
-      </ng-template>
-      <ng-template cTemplateId="widgetChartTemplate">
-        <c-chart [data]="data[0]" [options]="options[0]" class="mt-3 mx-3" height="70" [type]="'line'"></c-chart>
-      </ng-template>
-    </c-widget-stat-a>
-  </c-col>
-  <c-col sm="6" xl="3">
-    <c-widget-stat-a
-      [title]="'Income'"
-      class="mb-4"
-      color="info"
-    >
-      <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
-        <span>$6.200</span>
-        <span class="fs-6 fw-normal">
-          (40.9%<svg cIcon name="cilArrowTop"></svg>)
-        </span>
-      </ng-template>
-      <ng-template cTemplateId="widgetActionTemplate">
-        <c-dropdown alignment="end" variant="btn-group">
-          <button [caret]="false" cButton cDropdownToggle class="p-0" color="transparent">
-            <svg cIcon class="text-high-emphasis-inverse" name="cilOptions"></svg>
-          </button>
-          <ul cDropdownMenu>
-            <li><a routerLink="./" cDropdownItem>Action</a></li>
-            <li><a routerLink="./" cDropdownItem>Another action</a></li>
-            <li><a routerLink="./" cDropdownItem>Something else here</a></li>
-            <li><a [disabled]="true" routerLink="./" cDropdownItem>Disabled</a></li>
-          </ul>
-        </c-dropdown>
-      </ng-template>
-      <ng-template cTemplateId="widgetChartTemplate">
-        <c-chart [data]="data[1]" [options]="options[1]" class="mt-3 mx-3" height="70" type="line"></c-chart>
-      </ng-template>
-    </c-widget-stat-a>
-  </c-col>
-  <c-col sm="6" xl="3">
-    <c-widget-stat-a
-      [title]="'Conversion Rate'"
-      class="mb-4"
-      color="warning"
-    >
-      <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
-        <span>2.49</span>
-        <span class="fs-6 fw-normal">
-          (84.7% <svg cIcon name="cilArrowTop"></svg>)
-        </span>
-      </ng-template>
-      <ng-template cTemplateId="widgetActionTemplate">
-        <c-dropdown alignment="end" variant="btn-group">
-          <button [caret]="false" cButton cDropdownToggle class="p-0" color="transparent">
-            <svg cIcon class="text-high-emphasis-inverse" name="cilOptions"></svg>
-          </button>
-          <ul cDropdownMenu>
-            <li><a routerLink="./" cDropdownItem>Action</a></li>
-            <li><a routerLink="./" cDropdownItem>Another action</a></li>
-            <li><a routerLink="./" cDropdownItem>Something else here</a></li>
-            <li><a [disabled]="true" routerLink="./" cDropdownItem>Disabled</a></li>
-          </ul>
-        </c-dropdown>
-      </ng-template>
-      <ng-template cTemplateId="widgetChartTemplate">
-        <c-chart [data]="data[2]" [options]="options[2]" class="mt-3" height="70" type="line"></c-chart>
-      </ng-template>
-    </c-widget-stat-a>
-  </c-col>
-  <c-col sm="6" xl="3">
-    <c-widget-stat-a
-      [title]="'Sessions'"
-      class="mb-4"
-      color="danger"
-    >
-      <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
-        <span>44K</span>
-        <span class="fs-6 fw-normal">
-          (-23.6% <svg cIcon name="cilArrowBottom"></svg>)
-        </span>
-      </ng-template>
-      <ng-template cTemplateId="widgetActionTemplate">
-        <c-dropdown alignment="end" variant="btn-group">
-          <button [caret]="false" cButton cDropdownToggle class="p-0" color="transparent">
-            <svg cIcon class="text-high-emphasis-inverse" name="cilOptions"></svg>
-          </button>
-          <ul cDropdownMenu>
-            <li><a routerLink="./" cDropdownItem>Action</a></li>
-            <li><a routerLink="./" cDropdownItem>Another action</a></li>
-            <li><a routerLink="./" cDropdownItem>Something else here</a></li>
-            <li><a [disabled]="true" routerLink="./" cDropdownItem>Disabled</a></li>
-          </ul>
-        </c-dropdown>
-      </ng-template>
-      <ng-template cTemplateId="widgetChartTemplate">
-        <c-chart [data]="data[3]" [options]="options[3]" class="mt-3 mx-3" height="70" type="bar"></c-chart>
-      </ng-template>
-    </c-widget-stat-a>
-  </c-col>
-</c-row>
-
-
-<c-row>
-  <c-col md="12" xl="4">
-    <c-widget-stat-a
-      class="mb-4"
-      color="primary"
-      [title]="'Widget Title'"
-    >
-      <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
-        $9000
-        <span class="fs-6 fw-normal">
-      (40.9% <svg [cIcon]="icons.cilArrowTop"></svg>)
-    </span>
-      </ng-template>
-      <ng-template cTemplateId="widgetActionTemplate">
-        <c-dropdown alignment="end" variant="btn-group">
-          <button [caret]="false" cButton cDropdownToggle class="p-0" color="transparent">
-            <svg [cIcon]="icons.cilOptions" class="text-high-emphasis-inverse"></svg>
-          </button>
-          <div cDropdownMenu>
-            <a [routerLink]="[]" cDropdownItem>Action One</a>
-            <a [routerLink]="[]" cDropdownItem>Action Two</a>
-            <a [routerLink]="[]" cDropdownItem>Action Three</a>
+<!-- Dashboard -->
+<div class="fade-in">
+  <c-card class="mb-4">
+    <c-card-header>
+      <strong>Dashboard</strong>
+    </c-card-header>
+    <c-card-body>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="card h-100">
+            <div class="c-card-header">No. of Cases Objected</div>
+            <div class="card-body">
+              <div class="percentage">
+                <p>104%</p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="progress-container">
+                <div class="progress-bar" [style.width]="100 + '%'" [style.background-color]="getProgressBarColor(100)">
+                </div>
+              </div>
+            </div>
           </div>
-        </c-dropdown>
-      </ng-template>
-      <ng-template cTemplateId="widgetChartTemplate">
-        <c-chart [data]="data" [options]="options" class="mt-3 mx-3" height="110" type="line"></c-chart>
-      </ng-template>
-    </c-widget-stat-a>
-    <ngb-progressbar class="mb-3" type="danger" textType="black" [value]="90" [showValue]="true" />
-  </c-col>
-  <c-col md="12" xl="4">
-    <c-widget-stat-a
-      class="mb-4"
-      color="primary"
-      [title]="'Widget Title'"
-    >
-      <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
-        $9000
-        <span class="fs-6 fw-normal">
-      (40.9% <svg [cIcon]="icons.cilArrowTop"></svg>)
-    </span>
-      </ng-template>
-      <ng-template cTemplateId="widgetActionTemplate">
-        <c-dropdown alignment="end" variant="btn-group">
-          <button [caret]="false" cButton cDropdownToggle class="p-0" color="transparent">
-            <svg [cIcon]="icons.cilOptions" class="text-high-emphasis-inverse"></svg>
-          </button>
-          <div cDropdownMenu>
-            <a [routerLink]="[]" cDropdownItem>Action One</a>
-            <a [routerLink]="[]" cDropdownItem>Action Two</a>
-            <a [routerLink]="[]" cDropdownItem>Action Three</a>
+        </div>
+        <div class="col-md-3">
+          <div class="card h-100">
+            <div class="c-card-header">No. of Cases Objected</div>
+            <div class="card-body">
+              <div class="percentage">
+                <p>104%</p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="progress-container">
+                <div class="progress-bar" [style.width]="100 + '%'" [style.background-color]="getProgressBarColor(100)">
+                </div>
+              </div>
+            </div>
           </div>
-        </c-dropdown>
-      </ng-template>
-      <ng-template cTemplateId="widgetChartTemplate">
-        <c-chart [data]="data" [options]="options" class="mt-3 mx-3" height="110" type="line"></c-chart>
-      </ng-template>
-    </c-widget-stat-a>
-  </c-col>
-  <c-col md="12" xl="4">
-    <c-widget-stat-a
-      class="mb-4"
-      color="primary"
-      [title]="'Widget Title'"
-    >
-      <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
-        $9000
-        <span class="fs-6 fw-normal">
-      (40.9% <svg [cIcon]="icons.cilArrowTop"></svg>)
-    </span>
-      </ng-template>
-      <ng-template cTemplateId="widgetActionTemplate">
-        <c-dropdown alignment="end" variant="btn-group">
-          <button [caret]="false" cButton cDropdownToggle class="p-0" color="transparent">
-            <svg [cIcon]="icons.cilOptions" class="text-high-emphasis-inverse"></svg>
-          </button>
-          <div cDropdownMenu>
-            <a [routerLink]="[]" cDropdownItem>Action One</a>
-            <a [routerLink]="[]" cDropdownItem>Action Two</a>
-            <a [routerLink]="[]" cDropdownItem>Action Three</a>
+        </div>
+        <div class="col-md-3">
+          <div class="card h-100">
+            <div class="c-card-header">No. of Cases Objected</div>
+            <div class="card-body">
+              <div class="percentage">
+                <p>104%</p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="progress-container">
+                <div class="progress-bar" [style.width]="100 + '%'" [style.background-color]="getProgressBarColor(100)">
+                </div>
+              </div>
+            </div>
           </div>
-        </c-dropdown>
-      </ng-template>
-      <ng-template cTemplateId="widgetChartTemplate">
-        <c-chart [data]="data" [options]="options" class="mt-3 mx-3" height="110" type="line"></c-chart>
-      </ng-template>
-    </c-widget-stat-a>
-  </c-col>
-</c-row>
-
-<c-row>
-  <c-col md="12" xl="6">
-    <c-widget-stat-b
-      [title]="'Widget title'"
-      class="mb-4"
-      text="Lorem ipsum dolor sit amet enim."
-      value="75.9%"
-    >
-      <br><br><br>
-      <c-progress class="my-2" thin>
-        <c-progress-bar [value]="75.9" color="success"></c-progress-bar>
-      </c-progress>
-    </c-widget-stat-b>
-
-  </c-col>
-  <c-col md="12" xl="6">
-    <c-widget-stat-b
-      #widgetStatB1inv="cWidgetStatB"
-      [title]="'Widget title'"
-      class="mb-4"
-      color="primary"
-      inverse
-      text="Lorem ipsum dolor sit amet enim."
-      value="75.9%"
-    >
-      <br><br><br>
-      <c-progress [white]="widgetStatB1inv.inverse" class="my-2" thin>
-        <c-progress-bar [value]="75.9"></c-progress-bar>
-      </c-progress>
-    </c-widget-stat-b>
-  </c-col>
-</c-row>
-
-<c-row>
-  <c-col md="12" xl="6">
-    <c-widget-stat-c
-      [title]="'Widget Title'"
-      class="mb-4"
-      value="28%"
-    >
-      <ng-template cTemplateId="widgetIconTemplate">
-        <svg cIcon height="36" name="cilChartPie"></svg>
-      </ng-template>
-      <ng-template cTemplateId="widgetProgressTemplate">
-        <c-progress class="mt-3 mb-0" thin>
-          <c-progress-bar [value]="28" color="primary"></c-progress-bar>
-        </c-progress>
-      </ng-template>
-    </c-widget-stat-c>
-  </c-col>
-  <c-col md="12" xl="6">
-    <c-widget-stat-c
-      [title]="'Widget Title'"
-      class="mb-4"
-      color="primary"
-      inverse
-      value="28%"
-    >
-      <ng-template cTemplateId="widgetIconTemplate">
-        <svg cIcon height="36" name="cilChartPie"></svg>
-      </ng-template>
-      <ng-template cTemplateId="widgetProgressTemplate">
-        <c-progress class="mt-3 mb-0" thin white>
-          <c-progress-bar [value]="28"></c-progress-bar>
-        </c-progress>
-      </ng-template>
-    </c-widget-stat-c>
-  </c-col>
-</c-row>
+        </div>
+        <div class="col-md-3">
+          <div class="card h-100">
+            <div class="c-card-header">No. of Cases Objected</div>
+            <div class="card-body">
+              <div class="percentage">
+                <p>104%</p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="progress-container">
+                <div class="progress-bar" [style.width]="100 + '%'" [style.background-color]="getProgressBarColor(100)">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </c-card-body>
+  </c-card>
+</div>
+<!-- Profiles Cards -->
+<div class="fade-in">
+  <c-card class="mb-4">
+    <c-card-header>
+      <strong> {{ card1 }} </strong>
+    </c-card-header>
+    <c-card-body>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card h-100">
+            <div class="c-card-header">No of Profiles Disseminated</div>
+            <div class="card-body">
+              <div class="percentage">
+                <p>104%</p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="progress-container">
+                <div class="progress-bar" [style.width]="95 + '%'" [style.background-color]="getProgressBarColor(95)">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <div class="c-card-header">Revenue Estimates from Profile</div>
+            <div class="card-body">
+              <div class="percentage">
+                <p>150%</p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="progress-container">
+                <div class="progress-bar" [style.width]="100 + '%'" [style.background-color]="getProgressBarColor(150)">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <div class="c-card-header">Revenue Conversion from Profiles</div>
+            <div class="card-body">
+              <div class="percentage">
+                <p>60%</p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="progress-container">
+                <div class="progress-bar" [style.width]="60 + '%'" [style.background-color]="getProgressBarColor(60)">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </c-card-body>
+  </c-card>
+</div>
+<!-- Investigations Cards -->
+<div class="fade-in">
+  <c-card class="mb-4">
+    <c-card-header>
+      <strong> {{ card2 }} </strong>
+    </c-card-header>
+    <c-card-body>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card h-100">
+            <div class="c-card-header">No of Profiles Received</div>
+            <div class="card-body">
+              <div class="percentage">
+                <p>104%</p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="progress-container">
+                <div class="progress-bar" [style.width]="95 + '%'" [style.background-color]="getProgressBarColor(95)">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <div class="c-card-header">Tax Assessed</div>
+            <div class="card-body">
+              <div class="percentage">
+                <p>50%</p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="progress-container">
+                <div class="progress-bar" [style.width]="50 + '%'" [style.background-color]="getProgressBarColor(50)">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <div class="c-card-header">Actual Tac Collection</div>
+            <div class="card-body">
+              <div class="percentage">
+                <p>150%</p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="progress-container">
+                <div class="progress-bar" [style.width]="100 + '%'" [style.background-color]="getProgressBarColor(100)">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </c-card-body>
+  </c-card>
+</div>
+<!-- Prosecution Cards -->
+<div class="fade-in">
+  <c-card class="mb-4">
+    <c-card-header>
+      <strong> {{ card3 }} </strong>
+    </c-card-header>
+    <c-card-body>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card h-100">
+            <div class="c-card-header">No of Cases</div>
+            <div class="card-body">
+              <div class="percentage">
+                <p>104%</p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="progress-container">
+                <div class="progress-bar" [style.width]="100 + '%'" [style.background-color]="getProgressBarColor(100)">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <div class="c-card-header">Amount of Disputed Tax</div>
+            <div class="card-body">
+              <div class="percentage">
+                <p>50%</p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="progress-container">
+                <div class="progress-bar" [style.width]="50 + '%'" [style.background-color]="getProgressBarColor(50)">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <div class="c-card-header">No. of Closed Cases</div>
+            <div class="card-body">
+              <div class="percentage">
+                <p>104%</p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="progress-container">
+                <div class="progress-bar" [style.width]="100 + '%'" [style.background-color]="getProgressBarColor(100)">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </c-card-body>
+  </c-card>
+</div>
+<!-- split cards -->
+<div class="row">
+  <!-- Objective Review Cards -->
+  <div class="col-md-6">
+    <div class="fade-in">
+      <c-card class="mb-4">
+        <c-card-header>
+          <strong> {{ card4 }} </strong>
+        </c-card-header>
+        <c-card-body>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card h-100">
+                <div class="c-card-header">No. of Cases Objected</div>
+                <div class="card-body">
+                  <div class="percentage">
+                    <p>104%</p>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="progress-container">
+                    <div class="progress-bar" [style.width]="100 + '%'" [style.background-color]="getProgressBarColor(100)">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card h-100">
+                <div class="c-card-header">Tax Amount under Objection</div>
+                <div class="card-body">
+                  <div class="percentage">
+                    <p>50%</p>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="progress-container">
+                    <div class="progress-bar" [style.width]="50 + '%'" [style.background-color]="getProgressBarColor(50)">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </c-card-body>
+      </c-card>
+    </div>
+  </div>
+  <!-- ADR Cards -->
+  <div class="col-md-6">
+    <div class="fade-in">
+      <c-card class="mb-4">
+        <c-card-header>
+          <strong> {{ card5 }} </strong>
+        </c-card-header>
+        <c-card-body>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card h-100">
+                <div class="c-card-header">No. of Cases Objected</div>
+                <div class="card-body">
+                  <div class="percentage">
+                    <p>104%</p>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="progress-container">
+                    <div class="progress-bar" [style.width]="100 + '%'" [style.background-color]="getProgressBarColor(100)">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card h-100">
+                <div class="c-card-header">Tax Amount under Objection</div>
+                <div class="card-body">
+                  <div class="percentage">
+                    <p>50%</p>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="progress-container">
+                    <div class="progress-bar" [style.width]="50 + '%'" [style.background-color]="getProgressBarColor(50)">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </c-card-body>
+      </c-card>
+    </div>
+  </div>
+</div>
+<!-- Debt Cards -->
+<div class="fade-in">
+  <c-card class="mb-4">
+    <c-card-header>
+      <strong> {{ card6 }} </strong>
+    </c-card-header>
+    <c-card-body>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card h-100">
+            <div class="c-card-header">Confirmed Debt</div>
+            <div class="card-body">
+              <div class="percentage">
+                <p>50%</p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="progress-container">
+                <div class="progress-bar" [style.width]="50 + '%'" [style.background-color]="getProgressBarColor(50)">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <div class="c-card-header">Collected Debt</div>
+            <div class="card-body">
+              <div class="percentage">
+                <p>50%</p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="progress-container">
+                <div class="progress-bar" [style.width]="50 + '%'" [style.background-color]="getProgressBarColor(50)">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <div class="c-card-header">Outstanding Debt</div>
+            <div class="card-body">
+              <div class="percentage">
+                <p>50%</p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="progress-container">
+                <div class="progress-bar" [style.width]="50 + '%'" [style.background-color]="getProgressBarColor(50)">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </c-card-body>
+  </c-card>
+</div>

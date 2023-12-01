@@ -9,3 +9,76 @@
 .grey-bg {  
   background-color: #F5F7FA;
 }
+.shadow{
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+}
+.container {
+  margin: 10px auto; /* Center the container */
+  max-width: 1200px;
+
+}
+.card-body {
+  padding: 10px; /* Add some padding inside card body for better visual appeal */
+  height: auto;
+}
+.card {
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Horizontal offset, vertical offset, blur radius, color */
+  height: 100%
+}
+.card:hover {
+  background-color: rgb(241, 235, 235); /* Example: Change background color on hover */
+  box-shadow: 0 4px 8px 0 rgba(24, 15, 15, 0.2); /* Example: Add shadow on hover */
+  transform: translateY(-5px); /* Example: Slight lift effect on hover */
+}
+
+
+h4 {
+    font-weight: 550; 
+    font-size: 17px; 
+    color: black; 
+}
+
+p {
+    font-weight: 600; 
+    font-size: 30px;
+    color: black; 
+    margin-bottom: 0;
+}
+  
+  .progress-bar {
+    position: relative;
+    height: 9px;
+    transition: width 0.3s ease-in-out;
+    border-radius: 5px;
+    overflow: hidden;
+
+  }
+  
+  .progress-container {
+    position: relative;
+  }
+
+  .column{
+    padding: 10px;
+  }
+  .column-container {
+  padding: 10px 10px 10px 10px;
+  }
+  .column-card-body {
+    padding: 0px;
+}
+.header-body{
+  // margin: 100px 75px 50px 70px;
+  // padding: 10px;
+  margin-top: 100px;  
+  margin-bottom: -20px;
+}
+.mt--7{
+  margin-bottom: 0px;
+}
+.c-card-header{
+  padding: 10px;
+}
