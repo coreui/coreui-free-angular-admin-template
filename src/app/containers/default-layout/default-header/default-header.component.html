@@ -13,18 +13,18 @@
     </c-header-nav>
     <c-header-nav class="d-none d-lg-flex">
       <c-nav-item>
-        <a routerLink="./" cNavLink>
+        <a routerLink="/dashboard" cNavLink>
           <svg cIcon name="cilBell" size="lg"></svg>
         </a>
       </c-nav-item>
       <c-nav-item>
-        <a routerLink="./" cNavLink>
+        <a routerLink="/dashboard" cNavLink>
           <svg cIcon name="cilList" size="lg"></svg>
         </a>
       </c-nav-item>
     </c-header-nav>
+    <div class="c-card-header"> {{ username }} </div>
     <c-header-nav class="ms-3">
-      <div class="username">Mr David Yegoh</div>
       <ng-container *ngTemplateOutlet="userDropdown"></ng-container>
     </c-header-nav>
 
