@@ -17,14 +17,14 @@ export class DashboardComponent implements OnInit {
   card3 = "PROSECUTION"
   card4 = "OBJECTION REVIEW"
   card5 = "ADR"
-  card6 = " DEBT"
+  card6 = "DEBT"
 
   icons = { cilOptions, cilArrowTop };
 
   getProgressBarColor(percentage: number): string {
-    if (percentage > 90) {
+    if (percentage > 79) {
       return 'green';
-    } else if (percentage > 80) {
+    } else if (percentage > 49) {
       return 'orange';
     } else {
       return 'red';
