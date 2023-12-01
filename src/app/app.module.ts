@@ -38,6 +38,11 @@ import {
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BudgetComponent } from './views/modules/budget/budget.component';
+import { ComplaintsComponent } from './views/modules/complaints/complaints.component';
+import { ProfileComponent } from './views/modules/profile/profile.component';
+import { StaffdataComponent } from './views/modules/staffdata/staffdata.component';
+import { PcComponent } from './views/modules/pc/pc.component';
 
 const APP_CONTAINERS = [
   DefaultFooterComponent,

@@ -8,15 +8,12 @@ import { LoginComponent } from './views/pages/login/login.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
     path: '',
     component: DefaultLayoutComponent,
-    data: {
-      title: 'Home'
-    },
     children: [
       {
         path: 'dashboard',
@@ -27,6 +24,11 @@ const routes: Routes = [
         path: 'pages',
         loadChildren: () =>
           import('./views/pages/pages.module').then((m) => m.PagesModule)
+      },
+      {
+        path: '',
+        loadChildren: () =>
+          import('./views/modules/modules.module').then((m) => m.ModulesModule)
       },
     ]
   },
@@ -44,7 +46,7 @@ const routes: Routes = [
       title: 'Login Page'
     }
   },
-  {path: '**', redirectTo: 'dashboard'}
+  {path: '**', redirectTo: '404'}
 ];
 
 @NgModule({
