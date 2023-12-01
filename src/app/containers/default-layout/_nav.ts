@@ -17,37 +17,27 @@ export const navItems: INavData[] = [
   {
     name: 'PC',
     url: '/pc',
-    iconComponent: { name: 'cil-speedometer' }
+    iconComponent: { name: 'cilChartPie' }
   },
   {
     name: 'Budget',
     url: '/budget',
-    iconComponent: { name: 'cil-speedometer' }
+    iconComponent: { name: 'cilCreditCard' }
   },
   {
     name: 'Staff Data',
     url: '/staffdata',
-    iconComponent: { name: 'cil-speedometer' }
+    iconComponent: { name: 'cilPeople' }
   },
   {
     name: 'Complaints',
     url: '/complaints',
-    iconComponent: { name: 'cil-speedometer' }
+    iconComponent: { name: 'cilShareBoxed' }
   },
   {
     name: 'Profile',
     url: '/profile',
-    iconComponent: { name: 'cil-speedometer' }
-  },
-  {
-    name: 'VLA',
-    url: '/vla',
-    iconComponent: { name: 'cil-speedometer' }
-  },
-  {
-    name: 'IMD',
-    url: '/imd',
-    iconComponent: { name: 'cil-speedometer' }
+    iconComponent: { name: 'cil-Spreadsheet' }
   },
   {
     title: true,
