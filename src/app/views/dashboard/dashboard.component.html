@@ -35,7 +35,6 @@
             <c-card-header>
               <strong>  
                 <p>Unique 30</p>
-                <p>Tasks 78</p> 
               </strong>
             </c-card-header>
           </div>
@@ -108,11 +107,7 @@
         </div>
       </div>
     </c-card-body>
-  </c-card>
-</div>
-<!-- Investigations Cards -->
-<div class="fade-in">
-  <c-card class="mb-4">
+    <!-- Investigations Cards -->
     <c-card-header>
       <strong> {{ card2 }} </strong>
     </c-card-header>
@@ -162,11 +157,7 @@
         </div>
       </div>
     </c-card-body>
-  </c-card>
-</div>
-<!-- Prosecution Cards -->
-<div class="fade-in">
-  <c-card class="mb-4">
+    <!-- Prosecution Cards -->
     <c-card-header>
       <strong> {{ card3 }} </strong>
     </c-card-header>
@@ -216,113 +207,85 @@
         </div>
       </div>
     </c-card-body>
-  </c-card>
-</div>
-<!-- split cards -->
-<div class="row">
-  <!-- Objective Review Cards -->
-  <div class="col-md-6">
-    <div class="fade-in">
-      <c-card class="mb-4">
-        <c-card-header>
-          <strong> {{ card4 }} </strong>
-        </c-card-header>
-        <c-card-body>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="card h-100">
-                <div class="c-card-header">No. of Cases Objected</div>
-                <div class="card-body">
-                  <div class="percentage">
-                    <p>104%</p>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <div class="progress-container">
-                    <div class="progress-bar" [style.width]="100 + '%'"
-                      [style.background-color]="getProgressBarColor(100)">
-                    </div>
-                  </div>
-                </div>
+    <c-card-header>
+      <strong> {{ card4 }} {{ card5 }} </strong>
+    </c-card-header>
+    <c-card-body>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="card h-100">
+            <div class="c-card-header">No. of Cases Objected</div>
+            <div class="card-body">
+              <div class="percentage">
+                <p>104%</p>
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="card h-100">
-                <div class="c-card-header">Tax Amount under Objection</div>
-                <div class="card-body">
-                  <div class="percentage">
-                    <p>50%</p>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <div class="progress-container">
-                    <div class="progress-bar" [style.width]="50 + '%'"
-                      [style.background-color]="getProgressBarColor(50)">
-                    </div>
-                  </div>
+            <div class="card-footer">
+              <div class="progress-container">
+                <div class="progress-bar" [style.width]="100 + '%'"
+                  [style.background-color]="getProgressBarColor(100)">
                 </div>
               </div>
             </div>
           </div>
-        </c-card-body>
-      </c-card>
-    </div>
-  </div>
-  <!-- ADR Cards -->
-  <div class="col-md-6">
-    <div class="fade-in">
-      <c-card class="mb-4">
-        <c-card-header>
-          <strong> {{ card5 }} </strong>
-        </c-card-header>
-        <c-card-body>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="card h-100">
-                <div class="c-card-header">No. of Cases Objected</div>
-                <div class="card-body">
-                  <div class="percentage">
-                    <p>104%</p>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <div class="progress-container">
-                    <div class="progress-bar" [style.width]="100 + '%'"
-                      [style.background-color]="getProgressBarColor(100)">
-                    </div>
-                  </div>
-                </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card h-100">
+            <div class="c-card-header">Tax Amount under Objection</div>
+            <div class="card-body">
+              <div class="percentage">
+                <p>50%</p>
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="card h-100">
-                <div class="c-card-header">Tax Amount under Objection</div>
-                <div class="card-body">
-                  <div class="percentage">
-                    <p>50%</p>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <div class="progress-container">
-                    <div class="progress-bar" [style.width]="50 + '%'"
-                      [style.background-color]="getProgressBarColor(50)">
-                    </div>
-                  </div>
+            <div class="card-footer">
+              <div class="progress-container">
+                <div class="progress-bar" [style.width]="50 + '%'"
+                  [style.background-color]="getProgressBarColor(50)">
                 </div>
               </div>
             </div>
           </div>
-        </c-card-body>
-      </c-card>
-    </div>
-  </div>
-</div>
-<!-- Debt Cards -->
-<div class="fade-in">
-  <c-card class="mb-4">
+        </div>
+        <div class="col-md-3">
+          <div class="card h-100">
+            <div class="c-card-header">Tax Amount under Objection</div>
+            <div class="card-body">
+              <div class="percentage">
+                <p>50%</p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="progress-container">
+                <div class="progress-bar" [style.width]="50 + '%'"
+                  [style.background-color]="getProgressBarColor(50)">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card h-100">
+            <div class="c-card-header">Tax Amount under Objection</div>
+            <div class="card-body">
+              <div class="percentage">
+                <p>50%</p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="progress-container">
+                <div class="progress-bar" [style.width]="50 + '%'"
+                  [style.background-color]="getProgressBarColor(50)">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </c-card-body>
     <c-card-header>
       <strong> {{ card6 }} </strong>
     </c-card-header>
+    <!-- Debt Cards -->
     <c-card-body>
       <div class="row row-cols-1 row-cols-md-3 g-4">
         <div class="col">
