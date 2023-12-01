@@ -12,70 +12,42 @@ export const navItems: INavData[] = [
   },
   {
     title: true,
-    name: 'Extras'
+    name: 'Details'
   },
   {
     name: 'PC',
     url: '/pc',
-    iconComponent: { name: 'cil-speedometer' },
-    badge: {
-      color: 'success',
-      text: 'NEW'
-    }
+    iconComponent: { name: 'cil-speedometer' }
   },
   {
     name: 'Budget',
     url: '/budget',
-    iconComponent: { name: 'cil-speedometer' },
-    badge: {
-      color: 'success',
-      text: 'NEW'
-    }
+    iconComponent: { name: 'cil-speedometer' }
   },
   {
     name: 'Staff Data',
     url: '/staffdata',
-    iconComponent: { name: 'cil-speedometer' },
-    badge: {
-      color: 'success',
-      text: 'NEW'
-    }
+    iconComponent: { name: 'cil-speedometer' }
   },
   {
     name: 'Complaints',
     url: '/complaints',
-    iconComponent: { name: 'cil-speedometer' },
-    badge: {
-      color: 'success',
-      text: 'NEW'
-    }
+    iconComponent: { name: 'cil-speedometer' }
   },
   {
     name: 'Profile',
     url: '/profile',
-    iconComponent: { name: 'cil-speedometer' },
-    badge: {
-      color: 'success',
-      text: 'NEW'
-    }
+    iconComponent: { name: 'cil-speedometer' }
   },
   {
     name: 'VLA',
     url: '/vla',
-    iconComponent: { name: 'cil-speedometer' },
-    badge: {
-      color: 'success',
-      text: 'NEW'
-    }
+    iconComponent: { name: 'cil-speedometer' }
   },
   {
     name: 'IMD',
     url: '/imd',
-    iconComponent: { name: 'cil-speedometer' },
-    badge: {
-      color: 'success',
-      text: 'NEW'
-    }
+    iconComponent: { name: 'cil-speedometer' }
   },
   {
     title: true,

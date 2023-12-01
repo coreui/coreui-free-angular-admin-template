@@ -11,13 +11,13 @@
       height: 70,
       alt: 'KRA Logo'
     }" routerLink="./" />
-
+  <!-- sidebar body -->
   <ng-scrollbar pointerEventsMethod="scrollbar">
-    <c-sidebar-nav [navItems]="navItems" dropdownMode="close" />
+    <!-- sidebar content -->
+    <c-sidebar-nav [navItems]="navItems" dropdownMode="close" class="sidebardata" />
   </ng-scrollbar>
   <c-sidebar-toggler *ngIf="!sidebar.narrow" toggle="unfoldable" cSidebarToggle="sidebar" />
 </c-sidebar>
-
 <!--main body-->
 <div class="wrapper d-flex flex-column min-vh-100 bg-light dark:bg-transparent">
   <!--app-header-->
