@@ -20,17 +20,7 @@ export class DashboardComponent implements OnInit {
   card6 = "DEBT"
 
   icons = { cilOptions, cilArrowTop };
-
-  getProgressBarColor(percentage: number): string {
-    if (percentage >= 80) {
-      return 'green';
-    } else if (percentage >= 50) {
-      return 'orange';
-    } else {
-      return 'red';
-    }
-  }
-
+  
   getPCProgressBarColor(percentage: number): string {
     if (percentage >= 90) {
       return 'green';
