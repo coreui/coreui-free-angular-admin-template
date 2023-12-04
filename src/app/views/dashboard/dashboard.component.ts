@@ -40,26 +40,35 @@ export class DashboardComponent implements OnInit {
    debt1 = "Confirmed Debt"
    debt2 = "Collected Debt"
    debt3 = "Outstanding Debt"
-   
 
-  icons = { cilOptions, cilArrowTop };
-  
+   budget: number = 157211964
+
   getPCProgressBarColor(percentage: number): string {
     if (percentage >= 90) {
-      return 'green';
+      return 'success';
     } else if (percentage >= 80) {
-      return 'orange';
+      return 'warning';
     } else {
-      return 'red';
+      return 'danger';
+    }
+  }
+  
+  getProgressBarColor(percentage: number): string {
+    if (percentage >= 80) {
+      return 'success';
+    } else if (percentage >= 50) {
+      return 'warning';
+    } else {
+      return 'danger';
     }
   }
 
   progress: number = 0;
 
   updateProgress() {
-    this.progress += 10;
+    this.progress += 1;
     if (this.progress > 100) {
-      this.progress = 0;
+      this.progress = 100;
     }
   }
 

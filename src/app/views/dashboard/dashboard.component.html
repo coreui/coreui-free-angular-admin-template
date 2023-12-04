@@ -37,7 +37,7 @@
                 </span>
               </div>
               <c-progress class="mb-3" [height]="5">
-                <c-progress-bar color="danger" [value]="95"></c-progress-bar>
+                <c-progress-bar [color]="getPCProgressBarColor(195.00)" [value]="95.00"></c-progress-bar>
               </c-progress>
             </c-card-footer>
           </div>
@@ -76,7 +76,7 @@
                 </span>
               </div>
               <c-progress class="mb-3" [height]="5">
-                <c-progress-bar color="danger" [value]="95"></c-progress-bar>
+                <c-progress-bar [color]="getPCProgressBarColor(23.33)" [value]="23.33"></c-progress-bar>
               </c-progress>
             </c-card-footer>
           </div>
@@ -105,7 +105,6 @@
             </c-card-footer>
           </div>
         </div>
-
         <div class="col-md-4">
           <div class="card h-100">
             <div class="c-card-header"> {{ dashboard4 }}
@@ -136,11 +135,11 @@
                 </span>
                 <span class="ms-auto font-semibold">
                   <div class="text-medium-emphasis">Allocated</div>
-                  <strong>KES 175,211,964</strong>
+                  <strong>{{ budget | currency:'KSH':'symbol':'1.2-2' }}</strong>
                 </span>
               </div>
               <c-progress class="mb-3" [height]="5">
-                <c-progress-bar color="danger" [value]="95"></c-progress-bar>
+                <c-progress-bar [color]="getProgressBarColor(4.13)" [value]="4.13"></c-progress-bar>
               </c-progress>
             </c-card-footer>
           </div>
@@ -173,7 +172,6 @@
         </ul>
       </c-dropdown>
     </c-card-header>
-
     <c-card-body>
       <div class="row row-cols-1 row-cols-md-3 g-4">
         <div class="col">
@@ -187,11 +185,11 @@
                 </span>
                 <span class="ms-auto font-semibold">
                   <div class="text-medium-emphasis">YTD</div>
-                  <strong>96.58%</strong>
+                  <strong>104%</strong>
                 </span>
               </div>
               <c-progress class="mb-3" [height]="5">
-                <c-progress-bar color="success" [value]="95"></c-progress-bar>
+                <c-progress-bar [color]="getProgressBarColor(104)" [value]="104"></c-progress-bar>
               </c-progress>
             </c-card-footer>
           </div>
@@ -207,11 +205,11 @@
                 </span>
                 <span class="ms-auto font-semibold">
                   <div class="text-medium-emphasis">YTD</div>
-                  <strong>96.58%</strong>
+                  <strong>150%</strong>
                 </span>
               </div>
               <c-progress class="mb-3" [height]="5">
-                <c-progress-bar color="warning" [value]="95"></c-progress-bar>
+                <c-progress-bar [color]="getProgressBarColor(150)" [value]="150"></c-progress-bar>
               </c-progress>
             </c-card-footer>
           </div>
@@ -227,11 +225,11 @@
                 </span>
                 <span class="ms-auto font-semibold">
                   <div class="text-medium-emphasis">YTD</div>
-                  <strong>96.58%</strong>
+                  <strong>60%</strong>
                 </span>
               </div>
               <c-progress class="mb-3" [height]="5">
-                <c-progress-bar color="danger" [value]="95"></c-progress-bar>
+                <c-progress-bar [color]="getProgressBarColor(60)" [value]="60"></c-progress-bar>
               </c-progress>
             </c-card-footer>
           </div>
@@ -260,7 +258,6 @@
         </ul>
       </c-dropdown>
     </c-card-header>
-
     <c-card-body>
       <div class="row row-cols-1 row-cols-md-3 g-4">
         <div class="col">
@@ -274,11 +271,11 @@
                 </span>
                 <span class="ms-auto font-semibold">
                   <div class="text-medium-emphasis">YTD</div>
-                  <strong>96.58%</strong>
+                  <strong>104%</strong>
                 </span>
               </div>
               <c-progress class="mb-3" [height]="5">
-                <c-progress-bar color="success" [value]="95"></c-progress-bar>
+                <c-progress-bar [color]="getProgressBarColor(104)" [value]="104"></c-progress-bar>
               </c-progress>
             </c-card-footer>
           </div>
@@ -294,11 +291,11 @@
                 </span>
                 <span class="ms-auto font-semibold">
                   <div class="text-medium-emphasis">YTD</div>
-                  <strong>96.58%</strong>
+                  <strong>50%</strong>
                 </span>
               </div>
               <c-progress class="mb-3" [height]="5">
-                <c-progress-bar color="warning" [value]="95"></c-progress-bar>
+                <c-progress-bar [color]="getProgressBarColor(50)" [value]="50"></c-progress-bar>
               </c-progress>
             </c-card-footer>
           </div>
@@ -314,11 +311,11 @@
                 </span>
                 <span class="ms-auto font-semibold">
                   <div class="text-medium-emphasis">YTD</div>
-                  <strong>96.58%</strong>
+                  <strong>150%</strong>
                 </span>
               </div>
               <c-progress class="mb-3" [height]="5">
-                <c-progress-bar color="danger" [value]="95"></c-progress-bar>
+                <c-progress-bar [color]="getProgressBarColor(150)" [value]="150"></c-progress-bar>
               </c-progress>
             </c-card-footer>
           </div>
@@ -347,14 +344,13 @@
         </ul>
       </c-dropdown>
     </c-card-header>
-
     <c-card-body>
       <div class="row row-cols-1 row-cols-md-3 g-4">
         <div class="col">
           <div class="card h-100">
             <div class="c-card-header"> {{ prosecution1 }} </div>
             <c-card-footer>
-              <strong class="percentage">95.00%</strong>
+              <strong class="percentage">104%</strong>
               <div class="progress-group-header">
                 <span>
                   <div class="text-medium-emphasis">Performance 0/0</div>
@@ -365,7 +361,7 @@
                 </span>
               </div>
               <c-progress class="mb-3" [height]="5">
-                <c-progress-bar color="success" [value]="95"></c-progress-bar>
+                <c-progress-bar [color]="getProgressBarColor(104)" [value]="104"></c-progress-bar>
               </c-progress>
             </c-card-footer>
           </div>
@@ -374,7 +370,7 @@
           <div class="card h-100">
             <div class="c-card-header"> {{ prosecution2 }} </div>
             <c-card-footer>
-              <strong class="percentage">95.00%</strong>
+              <strong class="percentage">50%</strong>
               <div class="progress-group-header">
                 <span>
                   <div class="text-medium-emphasis">Performance 0/0</div>
@@ -385,7 +381,7 @@
                 </span>
               </div>
               <c-progress class="mb-3" [height]="5">
-                <c-progress-bar color="warning" [value]="95"></c-progress-bar>
+                <c-progress-bar [color]="getProgressBarColor(50)" [value]="50"></c-progress-bar>
               </c-progress>
             </c-card-footer>
           </div>
@@ -401,11 +397,11 @@
                 </span>
                 <span class="ms-auto font-semibold">
                   <div class="text-medium-emphasis">YTD</div>
-                  <strong>96.58%</strong>
+                  <strong>104%</strong>
                 </span>
               </div>
               <c-progress class="mb-3" [height]="5">
-                <c-progress-bar color="danger" [value]="95"></c-progress-bar>
+                <c-progress-bar [color]="getProgressBarColor(104)" [value]="104"></c-progress-bar>
               </c-progress>
             </c-card-footer>
           </div>
@@ -444,7 +440,7 @@
                   <div class="card h-100">
                     <div class="c-card-header"> {{ objection1 }} </div>
                     <c-card-footer>
-                      <strong class="percentage">95.00%</strong>
+                      <strong class="percentage">104%</strong>
                       <div class="progress-group-header">
                         <span>
                           <div class="text-medium-emphasis">Performance 0/0</div>
@@ -455,7 +451,7 @@
                         </span>
                       </div>
                       <c-progress class="mb-3" [height]="5">
-                        <c-progress-bar color="danger" [value]="95"></c-progress-bar>
+                        <c-progress-bar [color]="getProgressBarColor(104)" [value]="104"></c-progress-bar>
                       </c-progress>
                     </c-card-footer>
                   </div>
@@ -464,7 +460,7 @@
                   <div class="card h-100">
                     <div class="c-card-header"> {{ objection2 }} </div>
                     <c-card-footer>
-                      <strong class="percentage">95.00%</strong>
+                      <strong class="percentage">50%</strong>
                       <div class="progress-group-header">
                         <span>
                           <div class="text-medium-emphasis">Performance 0/0</div>
@@ -475,7 +471,7 @@
                         </span>
                       </div>
                       <c-progress class="mb-3" [height]="5">
-                        <c-progress-bar color="danger" [value]="95"></c-progress-bar>
+                        <c-progress-bar [color]="getProgressBarColor(50)" [value]="50"></c-progress-bar>
                       </c-progress>
                     </c-card-footer>
                   </div>
@@ -510,14 +506,13 @@
                 </ul>
               </c-dropdown>
             </c-card-header>
-            
             <c-card-body>
               <div class="row">
                 <div class="col-sm-6">
                   <div class="card h-100">
                     <div class="c-card-header"> {{ adr1 }} </div>
                     <c-card-footer>
-                      <strong class="percentage">95.00%</strong>
+                      <strong class="percentage">104%</strong>
                       <div class="progress-group-header">
                         <span>
                           <div class="text-medium-emphasis">Performance 0/0</div>
@@ -528,7 +523,7 @@
                         </span>
                       </div>
                       <c-progress class="mb-3" [height]="5">
-                        <c-progress-bar color="danger" [value]="95"></c-progress-bar>
+                        <c-progress-bar [color]="getProgressBarColor(104)" [value]="104"></c-progress-bar>
                       </c-progress>
                     </c-card-footer>
                   </div>
@@ -537,7 +532,7 @@
                   <div class="card h-100">
                     <div class="c-card-header"> {{ adr2 }} </div>
                     <c-card-footer>
-                      <strong class="percentage">95.00%</strong>
+                      <strong class="percentage">50%</strong>
                       <div class="progress-group-header">
                         <span>
                           <div class="text-medium-emphasis">Performance 0/0</div>
@@ -548,7 +543,7 @@
                         </span>
                       </div>
                       <c-progress class="mb-3" [height]="5">
-                        <c-progress-bar color="danger" [value]="95"></c-progress-bar>
+                        <c-progress-bar [color]="getProgressBarColor(50)" [value]="50"></c-progress-bar>
                       </c-progress>
                     </c-card-footer>
                   </div>
@@ -559,150 +554,91 @@
         </div>
       </div>
     </div>
-<!-- debt cards -->
-<c-card-header>
-  <strong> {{ card6 }} </strong>
-  <c-dropdown direction="center" variant="btn-group">
-    <button cButton color="white" size="sm">
-      OCT
-    </button>
-    <button [split]="true" cButton cDropdownToggle color="white" size="sm">
-    </button>
-    <ul cDropdownMenu dark>
-      <li>
-        <button cDropdownItem>OCT</button>
-      </li>
-      <li>
-        <button cDropdownItem>NOV</button>
-      </li>
-      <li>
-        <button cDropdownItem>DEC</button>
-      </li>
-    </ul>
-  </c-dropdown>
-</c-card-header>
-
-<c-card-body>
-  <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col">
-      <div class="card h-100">
-        <div class="c-card-header"> {{ debt1 }} </div>
-        <c-card-footer>
-          <strong class="percentage">95.00%</strong>
-          <div class="progress-group-header">
-            <span>
-              <div class="text-medium-emphasis">Performance 0/0</div>
-            </span>
-            <span class="ms-auto font-semibold">
-              <div class="text-medium-emphasis">YTD</div>
-              <strong>96.58%</strong>
-            </span>
+    <!-- debt cards -->
+    <c-card-header>
+      <strong> {{ card6 }} </strong>
+      <c-dropdown direction="center" variant="btn-group">
+        <button cButton color="white" size="sm">
+          OCT
+        </button>
+        <button [split]="true" cButton cDropdownToggle color="white" size="sm">
+        </button>
+        <ul cDropdownMenu dark>
+          <li>
+            <button cDropdownItem>OCT</button>
+          </li>
+          <li>
+            <button cDropdownItem>NOV</button>
+          </li>
+          <li>
+            <button cDropdownItem>DEC</button>
+          </li>
+        </ul>
+      </c-dropdown>
+    </c-card-header>
+    <c-card-body>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card h-100">
+            <div class="c-card-header"> {{ debt1 }} </div>
+            <c-card-footer>
+              <strong class="percentage">50%</strong>
+              <div class="progress-group-header">
+                <span>
+                  <div class="text-medium-emphasis">Performance 0/0</div>
+                </span>
+                <span class="ms-auto font-semibold">
+                  <div class="text-medium-emphasis">YTD</div>
+                  <strong>96.58%</strong>
+                </span>
+              </div>
+              <c-progress class="mb-3" [height]="5">
+                <c-progress-bar [color]="getProgressBarColor(50)" [value]="50"></c-progress-bar>
+              </c-progress>
+            </c-card-footer>
           </div>
-          <c-progress class="mb-3" [height]="5">
-            <c-progress-bar color="success" [value]="95"></c-progress-bar>
-          </c-progress>
-        </c-card-footer>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <div class="c-card-header"> {{ debt2 }} </div>
-        <c-card-footer>
-          <strong class="percentage">95.00%</strong>
-          <div class="progress-group-header">
-            <span>
-              <div class="text-medium-emphasis">Performance 0/0</div>
-            </span>
-            <span class="ms-auto font-semibold">
-              <div class="text-medium-emphasis">YTD</div>
-              <strong>96.58%</strong>
-            </span>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <div class="c-card-header"> {{ debt2 }} </div>
+            <c-card-footer>
+              <strong class="percentage">50%</strong>
+              <div class="progress-group-header">
+                <span>
+                  <div class="text-medium-emphasis">Performance 0/0</div>
+                </span>
+                <span class="ms-auto font-semibold">
+                  <div class="text-medium-emphasis">YTD</div>
+                  <strong>96.58%</strong>
+                </span>
+              </div>
+              <c-progress class="mb-3" [height]="5">
+                <c-progress-bar [color]="getProgressBarColor(50)" [value]="50"></c-progress-bar>
+              </c-progress>
+            </c-card-footer>
           </div>
-          <c-progress class="mb-3" [height]="5">
-            <c-progress-bar color="warning" [value]="95"></c-progress-bar>
-          </c-progress>
-        </c-card-footer>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <div class="c-card-header"> {{ debt3 }} </div>
-        <c-card-footer>
-          <strong class="percentage">95.00%</strong>
-          <div class="progress-group-header">
-            <span>
-              <div class="text-medium-emphasis">Performance 0/0</div>
-            </span>
-            <span class="ms-auto font-semibold">
-              <div class="text-medium-emphasis">YTD</div>
-              <strong>96.58%</strong>
-            </span>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <div class="c-card-header"> {{ debt3 }} </div>
+            <c-card-footer>
+              <strong class="percentage">50%</strong>
+              <div class="progress-group-header">
+                <span>
+                  <div class="text-medium-emphasis">Performance 0/0</div>
+                </span>
+                <span class="ms-auto font-semibold">
+                  <div class="text-medium-emphasis">YTD</div>
+                  <strong>96.58%</strong>
+                </span>
+              </div>
+              <c-progress class="mb-3" [height]="5">
+                <c-progress-bar [color]="getProgressBarColor(50)" [value]="50"></c-progress-bar>
+              </c-progress>
+            </c-card-footer>
           </div>
-          <c-progress class="mb-3" [height]="5">
-            <c-progress-bar color="danger" [value]="95"></c-progress-bar>
-          </c-progress>
-        </c-card-footer>
+        </div>
       </div>
-    </div>
-  </div>
-</c-card-body>
+    </c-card-body>
   </c-card>
 </div>
-
-<!-- Dashboard -->
-<c-card-body>
-  <div class="row">
-    <div class="col-md-3">
-      <div class="card h-100">
-        <div class="c-card-header">Monthly Scorecard</div>
-        <c-card-header>
-          <strong> 95.00% </strong>
-        </c-card-header>
-        <div class="card-footer">
-          <div class="progress-container">
-            <div class="progress-bar" [style.width]="95 + '%'" [style.background-color]="getPCProgressBarColor(95)">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card h-100">
-        <div class="c-card-header">Initiative Performance</div>
-        <c-card-header>
-          <strong> 95.00% </strong>
-        </c-card-header>
-        <div class="card-footer">
-          <div class="progress-container">
-            <div class="progress-bar" [style.width]="23 + '%'" [style.background-color]="getPCProgressBarColor(23)">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card h-100">
-        <div class="c-card-header">Total Initiatives</div>
-        <c-card-header>
-          <strong>
-            <p>Unique 30</p>
-          </strong>
-        </c-card-header>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card h-100">
-        <div class="c-card-header">Budget Utilization</div>
-        <c-card-header>
-          <strong> 95.00% </strong>
-        </c-card-header>
-        <div class="card-footer">
-          <div class="progress-container">
-            <div class="progress-bar" [style.width]="4 + '%'" [style.background-color]="getPCProgressBarColor(4)">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</c-card-body>
