@@ -1,3 +1,654 @@
+<!-- dashboard cards -->
+<div class="fade-in">
+  <c-card class="mb-4">
+    <c-card-body>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="card h-100">
+            <div class="c-card-header"> {{ dashboard1 }}
+              <c-dropdown direction="center" variant="btn-group">
+                <button cButton color="white" size="sm">
+                  OCT
+                </button>
+                <button [split]="true" cButton cDropdownToggle color="white" size="sm">
+                </button>
+                <ul cDropdownMenu dark>
+                  <li>
+                    <button cDropdownItem>OCT</button>
+                  </li>
+                  <li>
+                    <button cDropdownItem>NOV</button>
+                  </li>
+                  <li>
+                    <button cDropdownItem>DEC</button>
+                  </li>
+                </ul>
+              </c-dropdown>
+            </div>
+            <c-card-footer>
+              <strong class="percentage">95.00%</strong>
+              <div class="progress-group-header">
+                <span>
+                  <div class="text-medium-emphasis">Performance 0/0</div>
+                </span>
+                <span class="ms-auto font-semibold">
+                  <div class="text-medium-emphasis">YTD</div>
+                  <strong>96.58%</strong>
+                </span>
+              </div>
+              <c-progress class="mb-3" [height]="5">
+                <c-progress-bar color="danger" [value]="95"></c-progress-bar>
+              </c-progress>
+            </c-card-footer>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card h-100">
+            <div class="c-card-header"> {{ dashboard2 }}
+              <c-dropdown direction="center" variant="btn-group">
+                <button cButton color="white" size="sm">
+                  OCT
+                </button>
+                <button [split]="true" cButton cDropdownToggle color="white" size="sm">
+                </button>
+                <ul cDropdownMenu dark>
+                  <li>
+                    <button cDropdownItem>OCT</button>
+                  </li>
+                  <li>
+                    <button cDropdownItem>NOV</button>
+                  </li>
+                  <li>
+                    <button cDropdownItem>DEC</button>
+                  </li>
+                </ul>
+              </c-dropdown>
+            </div>
+            <c-card-footer>
+              <strong class="percentage">23.33%</strong>
+              <div class="progress-group-header">
+                <span>
+                  <div class="text-medium-emphasis">Performance 0/0</div>
+                </span>
+                <span class="ms-auto font-semibold">
+                  <div class="text-medium-emphasis">Incomplete</div>
+                  <strong>23/30%</strong>
+                </span>
+              </div>
+              <c-progress class="mb-3" [height]="5">
+                <c-progress-bar color="danger" [value]="95"></c-progress-bar>
+              </c-progress>
+            </c-card-footer>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="card h-100">
+            <div class="c-card-header">{{ dashboard3 }}</div>
+            <c-card-footer>
+              <div class="progress-group-header">
+                <span class="ms-auto font-semibold">
+                  <div class="text-medium-emphasis">Unique</div>
+                </span>
+                <span>
+                  <strong class="percentage">30</strong>
+                </span>
+              </div>
+              <br>
+              <div class="progress-group-header">
+                <span class="ms-auto font-semibold">
+                  <div class="text-medium-emphasis">Tasks</div>
+                </span>
+                <span>
+                  <strong class="percentage">78</strong>
+                </span>
+              </div>
+            </c-card-footer>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card h-100">
+            <div class="c-card-header"> {{ dashboard4 }}
+              <c-dropdown direction="center" variant="btn-group">
+                <button cButton color="white" size="sm">
+                  OCT
+                </button>
+                <button [split]="true" cButton cDropdownToggle color="white" size="sm">
+                </button>
+                <ul cDropdownMenu dark>
+                  <li>
+                    <button cDropdownItem>OCT</button>
+                  </li>
+                  <li>
+                    <button cDropdownItem>NOV</button>
+                  </li>
+                  <li>
+                    <button cDropdownItem>DEC</button>
+                  </li>
+                </ul>
+              </c-dropdown>
+            </div>
+            <c-card-footer>
+              <strong class="percentage">4.13%</strong>
+              <div class="progress-group-header">
+                <span>
+                  <div class="text-medium-emphasis">Utilized KES 7,589,618.96</div>
+                </span>
+                <span class="ms-auto font-semibold">
+                  <div class="text-medium-emphasis">Allocated</div>
+                  <strong>KES 175,211,964</strong>
+                </span>
+              </div>
+              <c-progress class="mb-3" [height]="5">
+                <c-progress-bar color="danger" [value]="95"></c-progress-bar>
+              </c-progress>
+            </c-card-footer>
+          </div>
+        </div>
+      </div>
+    </c-card-body>
+  </c-card>
+</div>
+<!-- Profiles Cards -->
+<div class="fade-in">
+  <c-card class="mb-4">
+    <c-card-header>
+      <strong> {{ card1 }} </strong>
+      <c-dropdown direction="center" variant="btn-group">
+        <button cButton color="white" size="sm">
+          OCT
+        </button>
+        <button [split]="true" cButton cDropdownToggle color="white" size="sm">
+        </button>
+        <ul cDropdownMenu dark>
+          <li>
+            <button cDropdownItem>OCT</button>
+          </li>
+          <li>
+            <button cDropdownItem>NOV</button>
+          </li>
+          <li>
+            <button cDropdownItem>DEC</button>
+          </li>
+        </ul>
+      </c-dropdown>
+    </c-card-header>
+
+    <c-card-body>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card h-100">
+            <div class="c-card-header"> {{ profile1 }} </div>
+            <c-card-footer>
+              <strong class="percentage">95.00%</strong>
+              <div class="progress-group-header">
+                <span>
+                  <div class="text-medium-emphasis">Performance 0/0</div>
+                </span>
+                <span class="ms-auto font-semibold">
+                  <div class="text-medium-emphasis">YTD</div>
+                  <strong>96.58%</strong>
+                </span>
+              </div>
+              <c-progress class="mb-3" [height]="5">
+                <c-progress-bar color="success" [value]="95"></c-progress-bar>
+              </c-progress>
+            </c-card-footer>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <div class="c-card-header"> {{ profile2 }} </div>
+            <c-card-footer>
+              <strong class="percentage">95.00%</strong>
+              <div class="progress-group-header">
+                <span>
+                  <div class="text-medium-emphasis">Performance 0/0</div>
+                </span>
+                <span class="ms-auto font-semibold">
+                  <div class="text-medium-emphasis">YTD</div>
+                  <strong>96.58%</strong>
+                </span>
+              </div>
+              <c-progress class="mb-3" [height]="5">
+                <c-progress-bar color="warning" [value]="95"></c-progress-bar>
+              </c-progress>
+            </c-card-footer>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <div class="c-card-header"> {{ profile3 }} </div>
+            <c-card-footer>
+              <strong class="percentage">95.00%</strong>
+              <div class="progress-group-header">
+                <span>
+                  <div class="text-medium-emphasis">Performance 0/0</div>
+                </span>
+                <span class="ms-auto font-semibold">
+                  <div class="text-medium-emphasis">YTD</div>
+                  <strong>96.58%</strong>
+                </span>
+              </div>
+              <c-progress class="mb-3" [height]="5">
+                <c-progress-bar color="danger" [value]="95"></c-progress-bar>
+              </c-progress>
+            </c-card-footer>
+          </div>
+        </div>
+      </div>
+    </c-card-body>
+    <!-- investigations cards -->
+    <c-card-header>
+      <strong> {{ card2 }} </strong>
+      <c-dropdown direction="center" variant="btn-group">
+        <button cButton color="white" size="sm">
+          OCT
+        </button>
+        <button [split]="true" cButton cDropdownToggle color="white" size="sm">
+        </button>
+        <ul cDropdownMenu dark>
+          <li>
+            <button cDropdownItem>OCT</button>
+          </li>
+          <li>
+            <button cDropdownItem>NOV</button>
+          </li>
+          <li>
+            <button cDropdownItem>DEC</button>
+          </li>
+        </ul>
+      </c-dropdown>
+    </c-card-header>
+
+    <c-card-body>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card h-100">
+            <div class="c-card-header"> {{ investigation1 }} </div>
+            <c-card-footer>
+              <strong class="percentage">95.00%</strong>
+              <div class="progress-group-header">
+                <span>
+                  <div class="text-medium-emphasis">Performance 0/0</div>
+                </span>
+                <span class="ms-auto font-semibold">
+                  <div class="text-medium-emphasis">YTD</div>
+                  <strong>96.58%</strong>
+                </span>
+              </div>
+              <c-progress class="mb-3" [height]="5">
+                <c-progress-bar color="success" [value]="95"></c-progress-bar>
+              </c-progress>
+            </c-card-footer>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <div class="c-card-header"> {{ investigation2 }} </div>
+            <c-card-footer>
+              <strong class="percentage">95.00%</strong>
+              <div class="progress-group-header">
+                <span>
+                  <div class="text-medium-emphasis">Performance 0/0</div>
+                </span>
+                <span class="ms-auto font-semibold">
+                  <div class="text-medium-emphasis">YTD</div>
+                  <strong>96.58%</strong>
+                </span>
+              </div>
+              <c-progress class="mb-3" [height]="5">
+                <c-progress-bar color="warning" [value]="95"></c-progress-bar>
+              </c-progress>
+            </c-card-footer>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <div class="c-card-header"> {{ investigation3 }} </div>
+            <c-card-footer>
+              <strong class="percentage">95.00%</strong>
+              <div class="progress-group-header">
+                <span>
+                  <div class="text-medium-emphasis">Performance 0/0</div>
+                </span>
+                <span class="ms-auto font-semibold">
+                  <div class="text-medium-emphasis">YTD</div>
+                  <strong>96.58%</strong>
+                </span>
+              </div>
+              <c-progress class="mb-3" [height]="5">
+                <c-progress-bar color="danger" [value]="95"></c-progress-bar>
+              </c-progress>
+            </c-card-footer>
+          </div>
+        </div>
+      </div>
+    </c-card-body>
+    <!-- prosecution cards -->
+    <c-card-header>
+      <strong> {{ card3 }} </strong>
+      <c-dropdown direction="center" variant="btn-group">
+        <button cButton color="white" size="sm">
+          OCT
+        </button>
+        <button [split]="true" cButton cDropdownToggle color="white" size="sm">
+        </button>
+        <ul cDropdownMenu dark>
+          <li>
+            <button cDropdownItem>OCT</button>
+          </li>
+          <li>
+            <button cDropdownItem>NOV</button>
+          </li>
+          <li>
+            <button cDropdownItem>DEC</button>
+          </li>
+        </ul>
+      </c-dropdown>
+    </c-card-header>
+
+    <c-card-body>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card h-100">
+            <div class="c-card-header"> {{ prosecution1 }} </div>
+            <c-card-footer>
+              <strong class="percentage">95.00%</strong>
+              <div class="progress-group-header">
+                <span>
+                  <div class="text-medium-emphasis">Performance 0/0</div>
+                </span>
+                <span class="ms-auto font-semibold">
+                  <div class="text-medium-emphasis">YTD</div>
+                  <strong>96.58%</strong>
+                </span>
+              </div>
+              <c-progress class="mb-3" [height]="5">
+                <c-progress-bar color="success" [value]="95"></c-progress-bar>
+              </c-progress>
+            </c-card-footer>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <div class="c-card-header"> {{ prosecution2 }} </div>
+            <c-card-footer>
+              <strong class="percentage">95.00%</strong>
+              <div class="progress-group-header">
+                <span>
+                  <div class="text-medium-emphasis">Performance 0/0</div>
+                </span>
+                <span class="ms-auto font-semibold">
+                  <div class="text-medium-emphasis">YTD</div>
+                  <strong>96.58%</strong>
+                </span>
+              </div>
+              <c-progress class="mb-3" [height]="5">
+                <c-progress-bar color="warning" [value]="95"></c-progress-bar>
+              </c-progress>
+            </c-card-footer>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <div class="c-card-header"> {{ prosecution3 }} </div>
+            <c-card-footer>
+              <strong class="percentage">95.00%</strong>
+              <div class="progress-group-header">
+                <span>
+                  <div class="text-medium-emphasis">Performance 0/0</div>
+                </span>
+                <span class="ms-auto font-semibold">
+                  <div class="text-medium-emphasis">YTD</div>
+                  <strong>96.58%</strong>
+                </span>
+              </div>
+              <c-progress class="mb-3" [height]="5">
+                <c-progress-bar color="danger" [value]="95"></c-progress-bar>
+              </c-progress>
+            </c-card-footer>
+          </div>
+        </div>
+      </div>
+    </c-card-body>
+    <!-- objection review cards-->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="fade-in">
+          <c-card class="mb-4">
+            <c-card-header>
+              <strong> {{ card4 }} </strong>
+              <c-dropdown direction="center" variant="btn-group">
+                <button cButton color="white" size="sm">
+                  OCT
+                </button>
+                <button [split]="true" cButton cDropdownToggle color="white" size="sm">
+                </button>
+                <ul cDropdownMenu dark>
+                  <li>
+                    <button cDropdownItem>OCT</button>
+                  </li>
+                  <li>
+                    <button cDropdownItem>NOV</button>
+                  </li>
+                  <li>
+                    <button cDropdownItem>DEC</button>
+                  </li>
+                </ul>
+              </c-dropdown>
+            </c-card-header>
+            <c-card-body>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="card h-100">
+                    <div class="c-card-header"> {{ objection1 }} </div>
+                    <c-card-footer>
+                      <strong class="percentage">95.00%</strong>
+                      <div class="progress-group-header">
+                        <span>
+                          <div class="text-medium-emphasis">Performance 0/0</div>
+                        </span>
+                        <span class="ms-auto font-semibold">
+                          <div class="text-medium-emphasis">YTD</div>
+                          <strong>96.58%</strong>
+                        </span>
+                      </div>
+                      <c-progress class="mb-3" [height]="5">
+                        <c-progress-bar color="danger" [value]="95"></c-progress-bar>
+                      </c-progress>
+                    </c-card-footer>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="card h-100">
+                    <div class="c-card-header"> {{ objection2 }} </div>
+                    <c-card-footer>
+                      <strong class="percentage">95.00%</strong>
+                      <div class="progress-group-header">
+                        <span>
+                          <div class="text-medium-emphasis">Performance 0/0</div>
+                        </span>
+                        <span class="ms-auto font-semibold">
+                          <div class="text-medium-emphasis">YTD</div>
+                          <strong>96.58%</strong>
+                        </span>
+                      </div>
+                      <c-progress class="mb-3" [height]="5">
+                        <c-progress-bar color="danger" [value]="95"></c-progress-bar>
+                      </c-progress>
+                    </c-card-footer>
+                  </div>
+                </div>
+              </div>
+            </c-card-body>
+          </c-card>
+        </div>
+      </div>
+      <!-- ADR cards-->
+      <div class="col-md-6">
+        <div class="fade-in">
+          <c-card class="mb-4">
+            <c-card-header>
+              <strong> {{ card5 }} </strong>
+              <c-dropdown direction="center" variant="btn-group">
+                <button cButton color="white" size="sm">
+                  OCT
+                </button>
+                <button [split]="true" cButton cDropdownToggle color="white" size="sm">
+                </button>
+                <ul cDropdownMenu dark>
+                  <li>
+                    <button cDropdownItem>OCT</button>
+                  </li>
+                  <li>
+                    <button cDropdownItem>NOV</button>
+                  </li>
+                  <li>
+                    <button cDropdownItem>DEC</button>
+                  </li>
+                </ul>
+              </c-dropdown>
+            </c-card-header>
+            
+            <c-card-body>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="card h-100">
+                    <div class="c-card-header"> {{ adr1 }} </div>
+                    <c-card-footer>
+                      <strong class="percentage">95.00%</strong>
+                      <div class="progress-group-header">
+                        <span>
+                          <div class="text-medium-emphasis">Performance 0/0</div>
+                        </span>
+                        <span class="ms-auto font-semibold">
+                          <div class="text-medium-emphasis">YTD</div>
+                          <strong>96.58%</strong>
+                        </span>
+                      </div>
+                      <c-progress class="mb-3" [height]="5">
+                        <c-progress-bar color="danger" [value]="95"></c-progress-bar>
+                      </c-progress>
+                    </c-card-footer>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="card h-100">
+                    <div class="c-card-header"> {{ adr2 }} </div>
+                    <c-card-footer>
+                      <strong class="percentage">95.00%</strong>
+                      <div class="progress-group-header">
+                        <span>
+                          <div class="text-medium-emphasis">Performance 0/0</div>
+                        </span>
+                        <span class="ms-auto font-semibold">
+                          <div class="text-medium-emphasis">YTD</div>
+                          <strong>96.58%</strong>
+                        </span>
+                      </div>
+                      <c-progress class="mb-3" [height]="5">
+                        <c-progress-bar color="danger" [value]="95"></c-progress-bar>
+                      </c-progress>
+                    </c-card-footer>
+                  </div>
+                </div>
+              </div>
+            </c-card-body>
+          </c-card>
+        </div>
+      </div>
+    </div>
+<!-- debt cards -->
+<c-card-header>
+  <strong> {{ card6 }} </strong>
+  <c-dropdown direction="center" variant="btn-group">
+    <button cButton color="white" size="sm">
+      OCT
+    </button>
+    <button [split]="true" cButton cDropdownToggle color="white" size="sm">
+    </button>
+    <ul cDropdownMenu dark>
+      <li>
+        <button cDropdownItem>OCT</button>
+      </li>
+      <li>
+        <button cDropdownItem>NOV</button>
+      </li>
+      <li>
+        <button cDropdownItem>DEC</button>
+      </li>
+    </ul>
+  </c-dropdown>
+</c-card-header>
+
+<c-card-body>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+      <div class="card h-100">
+        <div class="c-card-header"> {{ debt1 }} </div>
+        <c-card-footer>
+          <strong class="percentage">95.00%</strong>
+          <div class="progress-group-header">
+            <span>
+              <div class="text-medium-emphasis">Performance 0/0</div>
+            </span>
+            <span class="ms-auto font-semibold">
+              <div class="text-medium-emphasis">YTD</div>
+              <strong>96.58%</strong>
+            </span>
+          </div>
+          <c-progress class="mb-3" [height]="5">
+            <c-progress-bar color="success" [value]="95"></c-progress-bar>
+          </c-progress>
+        </c-card-footer>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <div class="c-card-header"> {{ debt2 }} </div>
+        <c-card-footer>
+          <strong class="percentage">95.00%</strong>
+          <div class="progress-group-header">
+            <span>
+              <div class="text-medium-emphasis">Performance 0/0</div>
+            </span>
+            <span class="ms-auto font-semibold">
+              <div class="text-medium-emphasis">YTD</div>
+              <strong>96.58%</strong>
+            </span>
+          </div>
+          <c-progress class="mb-3" [height]="5">
+            <c-progress-bar color="warning" [value]="95"></c-progress-bar>
+          </c-progress>
+        </c-card-footer>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <div class="c-card-header"> {{ debt3 }} </div>
+        <c-card-footer>
+          <strong class="percentage">95.00%</strong>
+          <div class="progress-group-header">
+            <span>
+              <div class="text-medium-emphasis">Performance 0/0</div>
+            </span>
+            <span class="ms-auto font-semibold">
+              <div class="text-medium-emphasis">YTD</div>
+              <strong>96.58%</strong>
+            </span>
+          </div>
+          <c-progress class="mb-3" [height]="5">
+            <c-progress-bar color="danger" [value]="95"></c-progress-bar>
+          </c-progress>
+        </c-card-footer>
+      </div>
+    </div>
+  </div>
+</c-card-body>
+  </c-card>
+</div>
+
 <!-- Dashboard -->
 <c-card-body>
   <div class="row">
@@ -51,183 +702,6 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</c-card-body>
-<!-- Profiles Cards -->
-<div class="fade-in">
-  <c-card class="mb-4">
-      <!-- Debt Cards -->
-    <c-card-header>
-      <strong> {{ card6 }} </strong>
-      <c-dropdown direction="center" variant="btn-group">
-        <button cButton color="secondary" size="sm">
-          OCT
-        </button>
-        <button [split]="true" cButton cDropdownToggle color="secondary" size="sm">
-        </button>
-        <ul cDropdownMenu dark>
-          <li>
-            <button cDropdownItem>OCT</button>
-          </li>
-          <li>
-            <button cDropdownItem>NOV</button>
-          </li>
-          <li>
-            <button cDropdownItem>DEC</button>
-          </li>
-        </ul>
-      </c-dropdown>
-    </c-card-header>
-
-    <c-card-body>
-      <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
-          <div class="card h-100">
-            <div class="c-card-header">Outstanding Debt</div>
-            <c-card-footer>
-              <strong class="percentage">95.00%</strong>
-              <div class="progress-group-header">
-                <span>
-                  <div class="text-medium-emphasis">Performance 0/0</div>
-                </span>
-                <span class="ms-auto font-semibold">
-                  <div class="text-medium-emphasis">YTD</div>
-                  <strong>96.58%</strong>
-                </span>
-              </div>
-              <c-progress class="mb-3" [height]="5">
-                <c-progress-bar color="success" [value]="95"></c-progress-bar>
-              </c-progress>
-            </c-card-footer>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100">
-            <div class="c-card-header">Outstanding Debt</div>
-            <c-card-footer>
-              <strong class="percentage">95.00%</strong>
-              <div class="progress-group-header">
-                <span>
-                  <div class="text-medium-emphasis">Performance 0/0</div>
-                </span>
-                <span class="ms-auto font-semibold">
-                  <div class="text-medium-emphasis">YTD</div>
-                  <strong>96.58%</strong>
-                </span>
-              </div>
-              <c-progress class="mb-3" [height]="5">
-                <c-progress-bar color="warning" [value]="95"></c-progress-bar>
-              </c-progress>
-            </c-card-footer>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100">
-            <div class="c-card-header">Outstanding Debt</div>
-            <c-card-footer>
-              <strong class="percentage">95.00%</strong>
-              <div class="progress-group-header">
-                <span>
-                  <div class="text-medium-emphasis">Performance 0/0</div>
-                </span>
-                <span class="ms-auto font-semibold">
-                  <div class="text-medium-emphasis">YTD</div>
-                  <strong>96.58%</strong>
-                </span>
-              </div>
-              <c-progress class="mb-3" [height]="5">
-                <c-progress-bar color="danger" [value]="95"></c-progress-bar>
-              </c-progress>
-            </c-card-footer>
-          </div>
-        </div>
-      </div>
-    </c-card-body>
-  </c-card>
-</div>
-
-<c-card-body>
-  <div class="row">
-    <div class="col-md-3">
-      <div class="card h-100">
-        <div class="c-card-header">Outstanding Debt</div>
-        <c-card-footer>
-          <strong class="percentage">95.00%</strong>
-          <div class="progress-group-header">
-            <span>
-              <div class="text-medium-emphasis">Performance 0/0</div>
-            </span>
-            <span class="ms-auto font-semibold">
-              <div class="text-medium-emphasis">YTD</div>
-              <strong>96.58%</strong>
-            </span>
-          </div>
-          <c-progress class="mb-3" [height]="5">
-            <c-progress-bar color="danger" [value]="95"></c-progress-bar>
-          </c-progress>
-        </c-card-footer>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card h-100">
-        <div class="c-card-header">Outstanding Debt</div>
-        <c-card-footer>
-          <strong class="percentage">95.00%</strong>
-          <div class="progress-group-header">
-            <span>
-              <div class="text-medium-emphasis">Performance 0/0</div>
-            </span>
-            <span class="ms-auto font-semibold">
-              <div class="text-medium-emphasis">YTD</div>
-              <strong>96.58%</strong>
-            </span>
-          </div>
-          <c-progress class="mb-3" [height]="5">
-            <c-progress-bar color="danger" [value]="95"></c-progress-bar>
-          </c-progress>
-        </c-card-footer>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card h-100">
-        <div class="c-card-header">Outstanding Debt</div>
-        <c-card-footer>
-          <strong class="percentage">95.00%</strong>
-          <div class="progress-group-header">
-            <span>
-              <div class="text-medium-emphasis">Performance 0/0</div>
-            </span>
-            <span class="ms-auto font-semibold">
-              <div class="text-medium-emphasis">YTD</div>
-              <strong>96.58%</strong>
-            </span>
-          </div>
-          <c-progress class="mb-3" [height]="5">
-            <c-progress-bar color="danger" [value]="95"></c-progress-bar>
-          </c-progress>
-        </c-card-footer>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card h-100">
-        <div class="c-card-header">Outstanding Debt</div>
-        <c-card-footer>
-          <strong class="percentage">95.00%</strong>
-          <div class="progress-group-header">
-            <span>
-              <div class="text-medium-emphasis">Performance 0/0</div>
-            </span>
-            <span class="ms-auto font-semibold">
-              <div class="text-medium-emphasis">YTD</div>
-              <strong>96.58%</strong>
-            </span>
-          </div>
-          <c-progress class="mb-3" [height]="5">
-            <c-progress-bar color="danger" [value]="95"></c-progress-bar>
-          </c-progress>
-        </c-card-footer>
       </div>
     </div>
   </div>

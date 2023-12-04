@@ -18,6 +18,29 @@ export class DashboardComponent implements OnInit {
   card4 = "OBJECTION REVIEW"
   card5 = "ADR"
   card6 = "DEBT"
+   // PROFILES items
+   profile1 = "No. of Profiles Disseminated"
+   profile2 = "Revenue Estimate from Profiles"
+   profile3 = "Revenue Conversions from Profiles"
+   // INVESTIGATION items
+   investigation1 = "No. of Profiles Received"
+   investigation2 = "Tax Assessed"
+   investigation3 = "Actual Tax Collection"
+   // PROSECUTION items
+   prosecution1 = "No. of Cases"
+   prosecution2 = "Amount of Disputed Tax"
+   prosecution3 = "No. of Closed Cases"
+   // OBJECTION REVIEW items
+   objection1 = "No. of Cases Objected"
+   objection2 = "Tax Amount under Objection"
+   // ADR items
+   adr1 = "No. of Cases Objected"
+   adr2 = "Tax Amount under Objection"
+   // DEBT items
+   debt1 = "Confirmed Debt"
+   debt2 = "Collected Debt"
+   debt3 = "Outstanding Debt"
+   
 
   icons = { cilOptions, cilArrowTop };
   
