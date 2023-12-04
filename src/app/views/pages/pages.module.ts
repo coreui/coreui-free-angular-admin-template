@@ -6,12 +6,13 @@ import { LoginComponent } from './login/login.component';
 import { Page404Component } from './page404/page404.component';
 import { ButtonModule, CardModule, FormModule, GridModule } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    Page404Component
+    Page404Component,
   ],
   imports: [
     CommonModule,
@@ -20,7 +21,8 @@ import { IconModule } from '@coreui/icons-angular';
     ButtonModule,
     GridModule,
     IconModule,
-    FormModule
+    FormModule,
+    SignInComponent
   ]
 })
 export class PagesModule {

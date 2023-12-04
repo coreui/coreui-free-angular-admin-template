@@ -1,0 +1,67 @@
+<!-- Page content -->
+<!-- <div class="container mt--8 pb-0"> -->
+<div class="row d-flex justify-content-center align-items-center bg-login auth-body">
+    <!-- Inner content class="col-lg-5 col-md-7"-->
+    <div class="login-wrapper">
+        <div class="card h-100" style="border-radius: 12px;">
+            <!-- <div class="card-header bg-transparent pb-5"> </div> -->
+            <div class="card-body p-0 h-100 row no-gutters">
+                <div class="banner col-md-6 p-4">
+                    <div class="text-center">
+                        <h2 style="color: #402D27; font-size: 24px; font-weight: 500;margin-top: 20px">Welcome to ISOI&E
+                        </h2>
+                        <h2 style="color: #402D27; font-size: 24px; font-weight: 500;">Executive Dashboard</h2>
+                    </div>
+                    <!-- Banner inside -->
+                    <div>
+                        <img src="./assets/img/login-image.png" alt="..." width="100%" height="100%">
+                    </div>
+                </div>
+                <div class="col-md-6 login-form p-4">
+                    <!-- KRA Logo -->
+                    <div class="kesra-logo" style="height:30%;">
+                        <img class="display-logo" src="./assets/img/isoi&e.png">
+                    </div>
+                    <!-- Login Form -->
+                    <div>
+                        <form formGroup="Form" class="Form">
+                            <!-- Input fields -->
+                            <div class="form-group mb-3">
+                                <div class="input-group input-group-alternative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                                    </div>
+                                    <input class="form-control" formControlName="username" required
+                                        placeholder="username(DOMAIN)" type="text">
+                                    <span class="invalid-feedback p-1 pt-0 mt-0 pl-2">
+                                        <span class="text-left">
+                                            Enter your Domain credentials
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <div class="input-group input-group-alternative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                    </div>
+                                    <input formControlName="password" class="form-control" placeholder="Password">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <button type="submit" class="submit-btn btn-lg btn-block">
+                                        <span> Sign in </span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- </div> -->
