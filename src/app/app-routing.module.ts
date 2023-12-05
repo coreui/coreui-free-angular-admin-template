@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DefaultLayoutComponent } from './containers';
 import { Page404Component } from './views/pages/page404/page404.component';
-import { SignInComponent } from './views/pages/sign-in/sign-in.component';
+import { LoginComponent } from './views/pages/login/login.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'Sign-in',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -39,10 +39,10 @@ const routes: Routes = [
     }
   },
   {
-    path: 'Sign-in',
-    component: SignInComponent,
+    path: 'login',
+    component: LoginComponent,
     data: {
-      title: 'Sign-in'
+      title: 'Login'
     }
   },
   {path: '**', redirectTo: '404'}

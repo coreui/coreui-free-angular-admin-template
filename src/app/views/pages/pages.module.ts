@@ -6,7 +6,6 @@ import { LoginComponent } from './login/login.component';
 import { Page404Component } from './page404/page404.component';
 import { ButtonModule, CardModule, FormModule, GridModule } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
-import { SignInComponent } from './sign-in/sign-in.component';
 
 
 @NgModule({
@@ -22,7 +21,6 @@ import { SignInComponent } from './sign-in/sign-in.component';
     GridModule,
     IconModule,
     FormModule,
-    SignInComponent
   ]
 })
 export class PagesModule {
