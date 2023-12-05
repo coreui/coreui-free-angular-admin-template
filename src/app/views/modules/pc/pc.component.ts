@@ -47,6 +47,7 @@ import {MatTableDataSource, MatTableModule} from '@angular/material/table';
   styleUrl: './pc.component.scss'
 })
 export class PcComponent implements AfterViewInit  {
+  url = 'http://localhost:3000/users'
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
