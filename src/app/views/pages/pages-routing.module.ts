@@ -20,7 +20,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'sign-in',
+    path: '',
     component: SignInComponent,
     data: {
       title: 'Sign-in'

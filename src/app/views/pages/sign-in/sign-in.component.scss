@@ -117,6 +117,8 @@
     border: none;
     color: #fff;
     background-color: #E12827;
+    height: 35px;
+    width: 100%;
 }
 .display-logo {
     width: 350px;
@@ -124,7 +126,7 @@
     // object-fit: contain;
 }
 .login-form{
-    background-color: #f4f0ef;
+    background-color: #ffffff;
     border-radius: 0 12px 12px 0;
     display: flex;
     min-height: 480px;
