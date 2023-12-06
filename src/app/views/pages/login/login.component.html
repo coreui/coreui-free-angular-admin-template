@@ -1,49 +1,56 @@
-<div class="bg-light min-vh-100 d-flex flex-row align-items-center">
-  <c-container>
-    <c-row class="justify-content-center">
-      <c-col md="8">
-        <c-card-group>
-          <c-card class="p-4">
-            <c-card-body>
-              <form cForm>
-                <h1>Login</h1>
-                <c-input-group class="mb-3">
-                  <span cInputGroupText>
-                    <svg cIcon name="cilUser"></svg>
-                  </span>
-                  <input autoComplete="username" cFormControl placeholder="Username" />
-                </c-input-group>
-                <c-input-group class="mb-4">
-                  <span cInputGroupText>
-                    <svg cIcon name="cilLockLocked"></svg>
-                  </span>
-                  <input
-                    autoComplete="current-password"
-                    cFormControl
-                    placeholder="Password"
-                    type="password"
-                  />
-                </c-input-group>
-                <c-row>
-                  <c-col xs="6">
-                    <button cButton class="px-4" color="danger" routerLink="/dashboard">
-                      Login
-                    </button>
-                  </c-col>
-                  <c-col class="text-right" xs="6">
-                  </c-col>
-                </c-row>
-              </form>
-            </c-card-body>
-          </c-card>
-          <c-card [ngStyle]="{'width.%': 44}" class="text-white bg-primary py-5">
-            <c-card-body class="text-center">
-              <div>
+<!-- Page content -->
+<!-- <div class="container mt--8 pb-0"> -->
+<div class="row d-flex justify-content-center align-items-center bg-login auth-body">
+  <!-- Inner content class="col-lg-5 col-md-7"-->
+  <div class="login-wrapper">
+    <div class="card h-100" style="border-radius: 12px;">
+      <!-- <div class="card-header bg-transparent pb-5"> </div> -->
+      <div class="card-body p-0 h-100 row no-gutters">
+        <div class="banner col-md-6 p-4">
+          <div class="text-center">
+            <h2 style="color: #402D27; font-size: 24px; font-weight: 500;margin-top: 20px">Welcome to ISOI&E</h2>
+            <h2 style="color: #402D27; font-size: 24px; font-weight: 500;">Executive Dashboard</h2>
+          </div>
+
+          <!-- Banner inside -->
+          <div>
+            <img src="./assets/img/login-image.png" alt="..." width="100%" height="100%">
+          </div>
+        </div>
+        <div class="col-md-6 login-form p-4">
+          <!-- KRA Logo -->
+          <div class="kesra-logo" style="height:30%;">
+            <img class="display-logo" src="./assets/img/logo.png">
+          </div>
+          <!-- Login Form -->
+          <div>
+            <form cForm>
+              <c-input-group class="mb-3">
+                <span cInputGroupText>
+                  <svg cIcon name="cilUser"></svg>
+                </span>
+                <input autoComplete="username" cFormControl placeholder="Username" />
+              </c-input-group>
+              <c-input-group class="mb-4">
+                <span cInputGroupText>
+                  <svg cIcon name="cilLockLocked"></svg>
+                </span>
+                <input autoComplete="current-password" cFormControl placeholder="Password" type="password" />
+              </c-input-group>
+              <div class="form-group row">
+                <div class="col-12">
+                  <button cButton class="px-6" class="submit-btn btn-lg btn-block" color="bg-transparent"
+                    routerLink="/dashboard">
+                    <span> Sign in </span>
+                  </button>
+                </div>
               </div>
-            </c-card-body>
-          </c-card>
-        </c-card-group>
-      </c-col>
-    </c-row>
-  </c-container>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
+<!-- </div> -->
