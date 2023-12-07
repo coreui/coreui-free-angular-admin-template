@@ -1,31 +1,51 @@
-<section class="example-container mat-elevation-z8" tabindex="0">
-  <table mat-table [dataSource]="dataSource">
-
+<div class="table-responsive">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
     <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
     </ng-container>
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  
+    <ng-container matColumnDef="division">
+      <th mat-header-cell *matHeaderCellDef> division </th>
+      <td mat-cell *matCellDef="let element"> {{element.division}} </td>
     </ng-container>
-
-    <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef> Weight </th>
-      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+  
+    <ng-container matColumnDef="received_complaints">
+      <th mat-header-cell *matHeaderCellDef> received_complaints </th>
+      <td mat-cell *matCellDef="let element"> {{element.received_complaints}} </td>
     </ng-container>
-
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
-      <th mat-header-cell *matHeaderCellDef> Symbol </th>
-      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+    <ng-container matColumnDef="resolved_complaints">
+      <th mat-header-cell *matHeaderCellDef> resolved_complaints </th>
+      <td mat-cell *matCellDef="let element"> {{element.resolved_complaints}} </td>
     </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+    <ng-container matColumnDef="days_0_30">
+      <th mat-header-cell *matHeaderCellDef> days_0_30 </th>
+      <td mat-cell *matCellDef="let element"> {{element.days_0_30}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="days_30_60">
+      <th mat-header-cell *matHeaderCellDef> days_30_60 </th>
+      <td mat-cell *matCellDef="let element"> {{element.days_30_60}} </td>
+    </ng-container>
+    <ng-container matColumnDef="days_60_90">
+      <th mat-header-cell *matHeaderCellDef> days_60_90 </th>
+      <td mat-cell *matCellDef="let element"> {{element.days_60_90}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="days_90">
+      <th mat-header-cell *matHeaderCellDef> days_90 </th>
+      <td mat-cell *matCellDef="let element"> {{element.days_90}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="resolution_status">
+      <th mat-header-cell *matHeaderCellDef> resolution_status </th>
+      <td mat-cell *matCellDef="let element"> {{element.resolution_status}} </td>
+    </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="displayColumn"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayColumn;"></tr>
   </table>
-</section>
+</div>

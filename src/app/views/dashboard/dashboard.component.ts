@@ -1,10 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
+import { Component, NgZone, OnInit, ViewChild } from '@angular/core';
+import { take } from 'rxjs';
 
 @Component({
   templateUrl: 'dashboard.component.html',
   styleUrls: ['dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+
+  
   // dashboard items
   dashboard1 = "Monthly Scorecard"
   dashboard2 = "Initiative Performance"
@@ -72,4 +76,5 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {}
+
 }

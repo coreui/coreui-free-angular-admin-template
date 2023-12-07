@@ -1,17 +1,12 @@
-.example-container {
-    height: 270px;
-    overflow: auto;
-  }
-  
-  table {
-    width: 100%;
-  }
-  
-  tr.mat-mdc-footer-row {
-    font-weight: bold;
-  }
-  
-  .mat-mdc-table-sticky {
-    border-top: 1px solid #e0e0e0;
-  }
-  
+table {
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}

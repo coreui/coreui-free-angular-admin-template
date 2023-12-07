@@ -1,36 +1,50 @@
-import {Component} from '@angular/core';
-import {MatTableModule} from '@angular/material/table';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-complaints',
   standalone: true,
   imports: [
+    CommonModule,
+    HttpClientModule,
     MatTableModule,
   ],
   templateUrl: './complaints.component.html',
   styleUrls: ['./complaints.component.scss'],
 })
-export class ComplaintsComponent {
-  displayedColumns = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
-}
+export class ComplaintsComponent implements OnInit {
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
+  public getJsonvalue: any;
+  public displayColumn: string[] = [
+    'id',
+    'division',
+    'received_complaints',
+    'resolved_complaints',
+    'days_0_30',
+    'days_30_60',
+    'days_60_90',
+    'days_90',
+    'resolution_status',
+  ];
+  public dataSource: any = [];
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
+  constructor(private http: HttpClient) {
+
+  }
+  ngOnInit(): void {
+    this.getMethod();
+  }
+  public getMethod() {
+    this.http.get('http://10.153.1.170/iso-dashboard/api/complaints-data.php').subscribe((data) => {
+      console.table(data);
+      this.getJsonvalue = data;
+      this.dataSource = data;
+    }
+
+    );
+  }
+
+
+}

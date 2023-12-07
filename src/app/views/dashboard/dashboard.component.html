@@ -150,24 +150,16 @@
   <c-card class="mb-4">
     <c-card-header>
       <strong> {{ card1 }} </strong>
-      <c-dropdown direction="center" variant="btn-group">
-        <button cButton color="white" size="sm">
-          OCT
-        </button>
-        <button [split]="true" cButton cDropdownToggle color="white" size="sm">
-        </button>
-        <ul cDropdownMenu dark>
-          <li>
-            <button cDropdownItem>OCT</button>
-          </li>
-          <li>
-            <button cDropdownItem>NOV</button>
-          </li>
-          <li>
-            <button cDropdownItem>DEC</button>
-          </li>
-        </ul>
-      </c-dropdown>
+      <mat-form-field>
+        <mat-select #fontSize value="5px">
+          <mat-option value="5px">Jul</mat-option>
+          <mat-option value="5px">Aug</mat-option>
+          <mat-option value="5px">Sep</mat-option>
+          <mat-option value="5px">Oct</mat-option>
+          <mat-option value="5px">Nov</mat-option>
+          <mat-option value="5px">Dec</mat-option>
+        </mat-select>
+      </mat-form-field>
     </c-card-header>
     <c-card-body>
       <div class="row row-cols-1 row-cols-md-3 g-4">

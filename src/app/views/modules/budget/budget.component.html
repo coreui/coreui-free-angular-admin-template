@@ -1,45 +1,80 @@
-<mat-form-field>
-    <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
-  </mat-form-field>
+<div class="table-responsive">
+  <table mat-table [dataSource]="transactions" class="mat-elevation-z8">
+    <!-- Item Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let transaction"> {{transaction.id}} </td>
+      <td mat-footer-cell *matFooterCellDef> ID </td>
+    </ng-container>
+    <!-- Item Column -->
+    <ng-container matColumnDef="division">
+      <th mat-header-cell *matHeaderCellDef> DIVISION </th>
+      <td mat-cell *matCellDef="let transaction"> {{transaction.division}} </td>
+      <td mat-footer-cell *matFooterCellDef> DIVISION </td>
+    </ng-container>
+    <!-- Item Column -->
+    <ng-container matColumnDef="breakfast_lunch">
+      <th mat-header-cell *matHeaderCellDef> FOOD </th>
+      <td mat-cell *matCellDef="let transaction"> {{transaction.breakfast_lunch}} </td>
+      <td mat-footer-cell *matFooterCellDef> FOOD </td>
+    </ng-container>
+    <!-- Item Column -->
+    <ng-container matColumnDef="per_diem">
+      <th mat-header-cell *matHeaderCellDef> PERDIEM </th>
+      <td mat-cell *matCellDef="let transaction"> {{transaction.per_diem}} </td>
+      <td mat-footer-cell *matFooterCellDef> PERDIEM </td>
+    </ng-container>
+    <!-- Item Column -->
+    <ng-container matColumnDef="ticketing_travel">
+      <th mat-header-cell *matHeaderCellDef> TICKETS </th>
+      <td mat-cell *matCellDef="let transaction"> {{transaction.ticketing_travel}} </td>
+      <td mat-footer-cell *matFooterCellDef> TICKETS </td>
+    </ng-container>
+    <!-- Item Column -->
+    <ng-container matColumnDef="conference">
+      <th mat-header-cell *matHeaderCellDef> CONFERENCE </th>
+      <td mat-cell *matCellDef="let transaction"> {{transaction.conference}} </td>
+      <td mat-footer-cell *matFooterCellDef> CONFERENCE </td>
+    </ng-container>
+    <!-- Item Column -->
+    <ng-container matColumnDef="accountable_imprest">
+      <th mat-header-cell *matHeaderCellDef> IMPREST </th>
+      <td mat-cell *matCellDef="let transaction"> {{transaction.accountable_imprest}} </td>
+      <td mat-footer-cell *matFooterCellDef> IMPREST </td>
+    </ng-container>
+    <!-- Cost Column -->
+    <ng-container matColumnDef="total_expenditure">
+      <th mat-header-cell *matHeaderCellDef> TOTAL </th>
+      <td mat-cell *matCellDef="let transaction"> {{transaction.total_expenditure | currency:'KSH':'symbol':'1.2-2'}} </td>
+      <td mat-footer-cell *matFooterCellDef> {{getTotalCost() | currency:'KSH':'symbol':'1.2-2'}} </td>
+    </ng-container>
   
-  <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource" matSort>
+    <!-- Item Description Column -->
+    <ng-container matColumnDef="item-description">
+      <th mat-header-cell *matHeaderCellDef> Divisions</th>
+    </ng-container>
   
-      <!-- ID Column -->
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
-      </ng-container>
+    <!-- Cost Description Column -->
+    <ng-container matColumnDef="cost-description">
+      <th mat-header-cell *matHeaderCellDef> Amount in KSH</th>
+    </ng-container>
   
-      <!-- Progress Column -->
-      <ng-container matColumnDef="progress">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Progress </th>
-        <td mat-cell *matCellDef="let row"> {{row.progress}}% </td>
-      </ng-container>
+    <!-- Disclaimer column -->
+    <ng-container matColumnDef="disclaimer">
+      <td mat-footer-cell *matFooterCellDef colspan="2">Departimental Budget</td>
+    </ng-container>
   
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-        <td mat-cell *matCellDef="let row"> {{row.name}} </td>
-      </ng-container>
+    <!-- The table will render two header rows, one data row per data object, and two footer rows. -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"
+        class="example-first-header-row">
+    </tr>
+    <tr mat-header-row *matHeaderRowDef="['item-description', 'cost-description']"
+        class="example-second-header-row">
+    </tr>
   
-      <!-- Fruit Column -->
-      <ng-container matColumnDef="fruit">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Fruit </th>
-        <td mat-cell *matCellDef="let row"> {{row.fruit}} </td>
-      </ng-container>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  
-      <!-- Row shown when there is no matching data. -->
-      <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-      </tr>
-    </table>
-  
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
-  </div>
-  
-  
+    <tr mat-footer-row *matFooterRowDef="displayedColumns" class="example-first-footer-row"></tr>
+    <tr mat-footer-row *matFooterRowDef="['disclaimer']" class="example-second-footer-row"></tr>
+  </table>
+</div>

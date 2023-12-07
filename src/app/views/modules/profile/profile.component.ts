@@ -1,37 +1,70 @@
-import {Component} from '@angular/core';
-import {CommonModule, CurrencyPipe} from '@angular/common';
-import {MatTableModule} from '@angular/material/table';
+import { AfterViewInit, Component, ViewChild, OnInit } from '@angular/core';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { HttpClient } from '@angular/common/http';
 
-export interface Transaction {
-  item: string;
-  cost: number;
+export interface UserData {
+  id: number;
+  staff_no: number;
+  employee_name: string;
+  gender: string;
+  cadre: string;
+  department: string;
+  region: string;
+  division: string;
+  section: string;
+  temporary_away: string;
+  leave_balance: number;
+  leave_status: string;
 }
 
 @Component({
   selector: 'app-profile',
   standalone: true,
   imports: [
-    CommonModule,
+    MatFormFieldModule,
+    MatInputModule,
     MatTableModule,
-    MatTableModule, 
-    CurrencyPipe
+    MatSortModule,
+    MatPaginatorModule,
   ],
   templateUrl: './profile.component.html',
-  styleUrl: './profile.component.scss'
+  styleUrls: ['./profile.component.scss'],
 })
-export class ProfileComponent {
-  displayedColumns = ['item', 'cost'];
-  transactions: Transaction[] = [
-    {item: 'Beach ball', cost: 4},
-    {item: 'Towel', cost: 5},
-    {item: 'Frisbee', cost: 2},
-    {item: 'Sunscreen', cost: 4},
-    {item: 'Cooler', cost: 25},
-    {item: 'Swim suit', cost: 15},
-  ];
+export class ProfileComponent implements OnInit, AfterViewInit {
+  displayedColumns: string[] = ['id', 'staff_no', 'employee_name', 'gender', 'cadre', 'department', 'region', 'division', 'section', 'temporary_away', 'leave_balance', 'leave_status'];
+  dataSource: MatTableDataSource<UserData>;
 
-  /** Gets the total cost of all transactions. */
-  getTotalCost() {
-    return this.transactions.map(t => t.cost).reduce((acc, value) => acc + value, 0);
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
+  @ViewChild(MatSort)
+  sort!: MatSort;
+
+  constructor(private http: HttpClient) {
+    this.dataSource = new MatTableDataSource<UserData>();
+  }
+
+  ngOnInit() {
+    // Make the HTTP request to get user data
+    this.http.get<UserData[]>('http://10.153.1.170/iso-dashboard/api/staff-data.php?query=all').subscribe((data) => {
+      this.dataSource.data = data;
+    });
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 }

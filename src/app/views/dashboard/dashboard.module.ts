@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TextFieldModule} from '@angular/cdk/text-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 import {
   AvatarModule,
@@ -51,7 +55,7 @@ import { DashboardComponent } from './dashboard.component';
     ButtonModule,
     CardModule,
     ProgressModule,
-    ChartjsModule
+    ChartjsModule,MatFormFieldModule, MatSelectModule, MatInputModule, TextFieldModule
   ],
   declarations: [DashboardComponent]
 })
