@@ -26,6 +26,9 @@ import { ChartjsModule } from '@coreui/angular-chartjs';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
+import { MatButtonModule } from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   imports: [
@@ -55,7 +58,7 @@ import { DashboardComponent } from './dashboard.component';
     ButtonModule,
     CardModule,
     ProgressModule,
-    ChartjsModule,MatFormFieldModule, MatSelectModule, MatInputModule, TextFieldModule
+    ChartjsModule,MatFormFieldModule, MatSelectModule, MatInputModule, TextFieldModule,MatButtonModule, MatMenuModule, MatIconModule
   ],
   declarations: [DashboardComponent]
 })

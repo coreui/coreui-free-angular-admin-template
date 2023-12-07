@@ -150,16 +150,12 @@
   <c-card class="mb-4">
     <c-card-header>
       <strong> {{ card1 }} </strong>
-      <mat-form-field>
-        <mat-select #fontSize value="5px">
-          <mat-option value="5px">Jul</mat-option>
-          <mat-option value="5px">Aug</mat-option>
-          <mat-option value="5px">Sep</mat-option>
-          <mat-option value="5px">Oct</mat-option>
-          <mat-option value="5px">Nov</mat-option>
-          <mat-option value="5px">Dec</mat-option>
-        </mat-select>
-      </mat-form-field>
+          <button mat-button [matMenuTriggerFor]="menu" color="warn" class="dropdown-toggle">Oct</button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Nov</button>
+            <button mat-menu-item>Dec</button>
+            <button mat-menu-item>Sep</button>
+          </mat-menu>
     </c-card-header>
     <c-card-body>
       <div class="row row-cols-1 row-cols-md-3 g-4">
