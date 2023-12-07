@@ -6,24 +6,12 @@
         <div class="col-md-3">
           <div class="card h-100">
             <div class="c-card-header"> {{ dashboard1 }}
-              <c-dropdown direction="center" variant="btn-group">
-                <button cButton color="white" size="sm">
-                  OCT
-                </button>
-                <button [split]="true" cButton cDropdownToggle color="white" size="sm">
-                </button>
-                <ul cDropdownMenu dark>
-                  <li>
-                    <button cDropdownItem>OCT</button>
-                  </li>
-                  <li>
-                    <button cDropdownItem>NOV</button>
-                  </li>
-                  <li>
-                    <button cDropdownItem>DEC</button>
-                  </li>
-                </ul>
-              </c-dropdown>
+              <button mat-button [matMenuTriggerFor]="menu" color="warn" class="dropdown-toggle">Oct</button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item>Nov</button>
+                <button mat-menu-item>Dec</button>
+                <button mat-menu-item>Sep</button>
+              </mat-menu>
             </div>
             <c-card-footer>
               <strong class="percentage">95.00%</strong>
@@ -45,24 +33,12 @@
         <div class="col-md-3">
           <div class="card h-100">
             <div class="c-card-header"> {{ dashboard2 }}
-              <c-dropdown direction="center" variant="btn-group">
-                <button cButton color="white" size="sm">
-                  OCT
-                </button>
-                <button [split]="true" cButton cDropdownToggle color="white" size="sm">
-                </button>
-                <ul cDropdownMenu dark>
-                  <li>
-                    <button cDropdownItem>OCT</button>
-                  </li>
-                  <li>
-                    <button cDropdownItem>NOV</button>
-                  </li>
-                  <li>
-                    <button cDropdownItem>DEC</button>
-                  </li>
-                </ul>
-              </c-dropdown>
+              <button mat-button [matMenuTriggerFor]="menu" color="warn" class="dropdown-toggle">Oct</button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item>Nov</button>
+                <button mat-menu-item>Dec</button>
+                <button mat-menu-item>Sep</button>
+              </mat-menu>
             </div>
             <c-card-footer>
               <strong class="percentage">23.33%</strong>
@@ -105,24 +81,12 @@
         <div class="col-md-4">
           <div class="card h-100">
             <div class="c-card-header"> {{ dashboard4 }}
-              <c-dropdown direction="center" variant="btn-group">
-                <button cButton color="white" size="sm">
-                  OCT
-                </button>
-                <button [split]="true" cButton cDropdownToggle color="white" size="sm">
-                </button>
-                <ul cDropdownMenu dark>
-                  <li>
-                    <button cDropdownItem>OCT</button>
-                  </li>
-                  <li>
-                    <button cDropdownItem>NOV</button>
-                  </li>
-                  <li>
-                    <button cDropdownItem>DEC</button>
-                  </li>
-                </ul>
-              </c-dropdown>
+              <button mat-button [matMenuTriggerFor]="menu" color="warn" class="dropdown-toggle">Oct</button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item>Nov</button>
+                <button mat-menu-item>Dec</button>
+                <button mat-menu-item>Sep</button>
+              </mat-menu>
             </div>
             <c-card-footer>
               <strong class="percentage">4.13%</strong>
@@ -150,12 +114,12 @@
   <c-card class="mb-4">
     <c-card-header>
       <strong> {{ card1 }} </strong>
-          <button mat-button [matMenuTriggerFor]="menu" color="warn" class="dropdown-toggle">Oct</button>
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item>Nov</button>
-            <button mat-menu-item>Dec</button>
-            <button mat-menu-item>Sep</button>
-          </mat-menu>
+      <button mat-button [matMenuTriggerFor]="menu" color="warn" class="dropdown-toggle">Oct</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Nov</button>
+        <button mat-menu-item>Dec</button>
+        <button mat-menu-item>Sep</button>
+      </mat-menu>
     </c-card-header>
     <c-card-body>
       <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -224,24 +188,12 @@
     <!-- investigations cards -->
     <c-card-header>
       <strong> {{ card2 }} </strong>
-      <c-dropdown direction="center" variant="btn-group">
-        <button cButton color="white" size="sm">
-          OCT
-        </button>
-        <button [split]="true" cButton cDropdownToggle color="white" size="sm">
-        </button>
-        <ul cDropdownMenu dark>
-          <li>
-            <button cDropdownItem>OCT</button>
-          </li>
-          <li>
-            <button cDropdownItem>NOV</button>
-          </li>
-          <li>
-            <button cDropdownItem>DEC</button>
-          </li>
-        </ul>
-      </c-dropdown>
+      <button mat-button [matMenuTriggerFor]="menu" color="warn" class="dropdown-toggle">Oct</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Nov</button>
+        <button mat-menu-item>Dec</button>
+        <button mat-menu-item>Sep</button>
+      </mat-menu>
     </c-card-header>
     <c-card-body>
       <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -310,24 +262,12 @@
     <!-- prosecution cards -->
     <c-card-header>
       <strong> {{ card3 }} </strong>
-      <c-dropdown direction="center" variant="btn-group">
-        <button cButton color="white" size="sm">
-          OCT
-        </button>
-        <button [split]="true" cButton cDropdownToggle color="white" size="sm">
-        </button>
-        <ul cDropdownMenu dark>
-          <li>
-            <button cDropdownItem>OCT</button>
-          </li>
-          <li>
-            <button cDropdownItem>NOV</button>
-          </li>
-          <li>
-            <button cDropdownItem>DEC</button>
-          </li>
-        </ul>
-      </c-dropdown>
+      <button mat-button [matMenuTriggerFor]="menu" color="warn" class="dropdown-toggle">Oct</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Nov</button>
+        <button mat-menu-item>Dec</button>
+        <button mat-menu-item>Sep</button>
+      </mat-menu>
     </c-card-header>
     <c-card-body>
       <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -400,24 +340,12 @@
           <c-card class="mb-4">
             <c-card-header>
               <strong> {{ card4 }} </strong>
-              <c-dropdown direction="center" variant="btn-group">
-                <button cButton color="white" size="sm">
-                  OCT
-                </button>
-                <button [split]="true" cButton cDropdownToggle color="white" size="sm">
-                </button>
-                <ul cDropdownMenu dark>
-                  <li>
-                    <button cDropdownItem>OCT</button>
-                  </li>
-                  <li>
-                    <button cDropdownItem>NOV</button>
-                  </li>
-                  <li>
-                    <button cDropdownItem>DEC</button>
-                  </li>
-                </ul>
-              </c-dropdown>
+              <button mat-button [matMenuTriggerFor]="menu" color="warn" class="dropdown-toggle">Oct</button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item>Nov</button>
+                <button mat-menu-item>Dec</button>
+                <button mat-menu-item>Sep</button>
+              </mat-menu>
             </c-card-header>
             <c-card-body>
               <div class="row">
@@ -472,24 +400,12 @@
           <c-card class="mb-4">
             <c-card-header>
               <strong> {{ card5 }} </strong>
-              <c-dropdown direction="center" variant="btn-group">
-                <button cButton color="white" size="sm">
-                  OCT
-                </button>
-                <button [split]="true" cButton cDropdownToggle color="white" size="sm">
-                </button>
-                <ul cDropdownMenu dark>
-                  <li>
-                    <button cDropdownItem>OCT</button>
-                  </li>
-                  <li>
-                    <button cDropdownItem>NOV</button>
-                  </li>
-                  <li>
-                    <button cDropdownItem>DEC</button>
-                  </li>
-                </ul>
-              </c-dropdown>
+              <button mat-button [matMenuTriggerFor]="menu" color="warn" class="dropdown-toggle">Oct</button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item>Nov</button>
+                <button mat-menu-item>Dec</button>
+                <button mat-menu-item>Sep</button>
+              </mat-menu>
             </c-card-header>
             <c-card-body>
               <div class="row">
@@ -542,24 +458,12 @@
     <!-- debt cards -->
     <c-card-header>
       <strong> {{ card6 }} </strong>
-      <c-dropdown direction="center" variant="btn-group">
-        <button cButton color="white" size="sm">
-          OCT
-        </button>
-        <button [split]="true" cButton cDropdownToggle color="white" size="sm">
-        </button>
-        <ul cDropdownMenu dark>
-          <li>
-            <button cDropdownItem>OCT</button>
-          </li>
-          <li>
-            <button cDropdownItem>NOV</button>
-          </li>
-          <li>
-            <button cDropdownItem>DEC</button>
-          </li>
-        </ul>
-      </c-dropdown>
+      <button mat-button [matMenuTriggerFor]="menu" color="warn" class="dropdown-toggle">Oct</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Nov</button>
+        <button mat-menu-item>Dec</button>
+        <button mat-menu-item>Sep</button>
+      </mat-menu>
     </c-card-header>
     <c-card-body>
       <div class="row row-cols-1 row-cols-md-3 g-4">
