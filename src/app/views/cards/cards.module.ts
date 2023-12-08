@@ -5,6 +5,7 @@ import { CardsRoutingModule } from './cards-routing.module';
 import { BudgetCardComponent } from './budget-card/budget-card.component';
 import { PcCardComponent } from './pc-card/pc-card.component';
 import { ProfileCardComponent } from './profile-card/profile-card.component';
+import { ComplaintsCardComponent } from './complaints-card/complaints-card.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { ProfileCardComponent } from './profile-card/profile-card.component';
     CommonModule,
     BudgetCardComponent,
     PcCardComponent,
-    ProfileCardComponent
+    ProfileCardComponent,
+    ComplaintsCardComponent
    ],
   declarations: []
 })
