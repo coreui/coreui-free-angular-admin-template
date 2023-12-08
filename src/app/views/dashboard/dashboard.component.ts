@@ -8,7 +8,6 @@ import { take } from 'rxjs';
 })
 export class DashboardComponent implements OnInit {
 
-  
   // dashboard items
   dashboard1 = "Monthly Scorecard"
   dashboard2 = "Initiative Performance"
@@ -45,6 +44,8 @@ export class DashboardComponent implements OnInit {
    debt3 = "Outstanding Debt"
 
    budget: number = 157211964
+   utilized: number = 17589618.96
+   percentage: number = (this.utilized/this.budget)*100
 
   getPCProgressBarColor(percentage: number): string {
     if (percentage >= 90) {

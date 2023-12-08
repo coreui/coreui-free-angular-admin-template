@@ -89,18 +89,18 @@
               </mat-menu>
             </div>
             <c-card-footer>
-              <strong class="percentage">4.13%</strong>
+              <strong class="percentage">{{percentage | number:'1.2-2'}}%</strong>
               <div class="progress-group-header">
                 <span>
-                  <div class="text-medium-emphasis">Utilized KES 7,589,618.96</div>
+                  <div class="text-medium-emphasis">Utilized {{utilized | currency:'Ksh':'symbol':'1.2-2'}} </div>
                 </span>
                 <span class="ms-auto font-semibold">
                   <div class="text-medium-emphasis">Allocated</div>
-                  <strong>{{ budget | currency:'KSH':'symbol':'1.2-2' }}</strong>
+                  <strong>{{ budget | currency:'Ksh':'symbol':'1.2-2' }}</strong>
                 </span>
               </div>
               <c-progress class="mb-3" [height]="5">
-                <c-progress-bar [color]="getProgressBarColor(4.13)" [value]="4.13"></c-progress-bar>
+                <c-progress-bar [color]="getProgressBarColor(percentage)" [value]="percentage"></c-progress-bar>
               </c-progress>
             </c-card-footer>
           </div>
