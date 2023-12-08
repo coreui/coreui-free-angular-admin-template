@@ -18,7 +18,7 @@ export class PcCardComponent {
   chart: any;
 
   chartOptions = {
-    theme: "light2",
+    theme: "dark",
     title: {
       text: "Summery of Expenditure"
     },

@@ -15,7 +15,7 @@ import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 export class ComplaintsCardComponent {
   chartOptions = {
 	  animationEnabled: true,
-	  theme: "dark2",
+	  theme: "dark",
 	  title:{
 		text: "Complaints Reported"
 	  },

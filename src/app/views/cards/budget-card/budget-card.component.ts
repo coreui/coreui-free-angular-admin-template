@@ -15,6 +15,7 @@ import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 export class BudgetCardComponent {
   chartOptions = {
 	  animationEnabled: true,
+	  theme: "dark",
 	  title:{
 		text: "ISOI&E Staff"
 	  },

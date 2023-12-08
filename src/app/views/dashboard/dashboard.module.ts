@@ -29,6 +29,10 @@ import { DashboardComponent } from './dashboard.component';
 import { MatButtonModule } from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
+import { BudgetCardComponent } from '../cards/budget-card/budget-card.component';
+import { ComplaintsCardComponent } from '../cards/complaints-card/complaints-card.component';
+import { PcCardComponent } from '../cards/pc-card/pc-card.component';
+import { ProfileCardComponent } from '../cards/profile-card/profile-card.component';
 
 @NgModule({
   imports: [
@@ -58,7 +62,18 @@ import {MatMenuModule} from '@angular/material/menu';
     ButtonModule,
     CardModule,
     ProgressModule,
-    ChartjsModule,MatFormFieldModule, MatSelectModule, MatInputModule, TextFieldModule,MatButtonModule, MatMenuModule, MatIconModule
+    ChartjsModule,
+    MatFormFieldModule, 
+    MatSelectModule, 
+    MatInputModule, 
+    TextFieldModule,
+    MatButtonModule, 
+    MatMenuModule, 
+    MatIconModule,
+    BudgetCardComponent,
+    PcCardComponent,
+    ProfileCardComponent,
+    ComplaintsCardComponent
   ],
   declarations: [DashboardComponent]
 })

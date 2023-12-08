@@ -17,7 +17,7 @@ export class ProfileCardComponent {
 	
 	chartOptions = {
 	  animationEnabled: true,
-	  theme: "light2",
+	  theme: "dark",
 	  title:{
 		text: "Commissioner's PC Implimentation"
 	  },
