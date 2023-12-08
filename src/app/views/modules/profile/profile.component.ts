@@ -5,7 +5,6 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { HttpClient } from '@angular/common/http';
-import {MatCardModule} from '@angular/material/card';
 
 export interface UserData {
   id: number;
@@ -31,7 +30,6 @@ export interface UserData {
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    MatCardModule
   ],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],

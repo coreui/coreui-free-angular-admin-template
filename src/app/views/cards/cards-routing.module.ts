@@ -4,7 +4,6 @@ import { BudgetCardComponent } from './budget-card/budget-card.component';
 import { PcCardComponent } from './pc-card/pc-card.component';
 import { ProfileCardComponent } from './profile-card/profile-card.component';
 
-
 const routes: Routes = [
   {
     path: '',
