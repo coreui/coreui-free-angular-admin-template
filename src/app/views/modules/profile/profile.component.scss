@@ -10,3 +10,15 @@ table {
 td, th {
   width: 25%;
 }
+.card-data {
+  max-height: 300px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+mat-card {
+  padding: 10px;
+  margin: 10px;
+  background: rgb(192, 105, 102);
+}

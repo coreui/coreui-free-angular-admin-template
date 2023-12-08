@@ -33,12 +33,6 @@
         <div class="col-md-3">
           <div class="card h-100">
             <div class="c-card-header"> {{ dashboard2 }}
-              <button mat-button [matMenuTriggerFor]="menu" color="warn" class="dropdown-toggle">Oct</button>
-              <mat-menu #menu="matMenu">
-                <button mat-menu-item>Nov</button>
-                <button mat-menu-item>Dec</button>
-                <button mat-menu-item>Sep</button>
-              </mat-menu>
             </div>
             <c-card-footer>
               <strong class="percentage">23.33%</strong>
@@ -81,12 +75,6 @@
         <div class="col-md-4">
           <div class="card h-100">
             <div class="c-card-header"> {{ dashboard4 }}
-              <button mat-button [matMenuTriggerFor]="menu" color="warn" class="dropdown-toggle">Oct</button>
-              <mat-menu #menu="matMenu">
-                <button mat-menu-item>Nov</button>
-                <button mat-menu-item>Dec</button>
-                <button mat-menu-item>Sep</button>
-              </mat-menu>
             </div>
             <c-card-footer>
               <strong class="percentage">{{percentage | number:'1.2-2'}}%</strong>

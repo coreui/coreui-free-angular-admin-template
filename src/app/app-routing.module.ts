@@ -29,6 +29,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./views/modules/modules.module').then((m) => m.ModulesModule)
       },
+      {
+        path: '',
+        loadChildren: () =>
+          import('./views/cards/cards.module').then((m) => m.CardsModule)
+      },
     ]
   },
   {
