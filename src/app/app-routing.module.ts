@@ -34,6 +34,16 @@ const routes: Routes = [
         loadChildren: () =>
           import('./views/cards/cards.module').then((m) => m.CardsModule)
       },
+      {
+        path: '',
+        loadChildren: () =>
+          import('./views/charts/charts.module').then((m) => m.ChartsModule)
+      },
+      {
+        path: '',
+        loadChildren: () =>
+          import('./views/tables/tables.module').then((m) => m.TablesModule)
+      },
     ]
   },
   {
