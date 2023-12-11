@@ -4,6 +4,7 @@ import { Page404Component } from './page404/page404.component';
 import { Page500Component } from './page500/page500.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { WithdrawListComponent } from './withdraw-list/withdraw-list.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,13 @@ const routes: Routes = [
     component: RegisterComponent,
     data: {
       title: 'Register Page'
+    }
+  },
+  {
+    path: 'withdraw',
+    component: WithdrawListComponent,
+    data: {
+      title: 'Withdrawal List'
     }
   }
 ];
