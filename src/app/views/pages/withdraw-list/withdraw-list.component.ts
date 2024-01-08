@@ -18,7 +18,7 @@ import { IconModule } from '@coreui/icons-angular';
 import { ChartjsModule } from '@coreui/angular-chartjs';
 import { WidgetsModule } from '../../widgets/widgets.module';
 import { WalletService } from '../../../services/wallet/wallet.service';
-import { IWithdraw } from 'src/app/services/user/user.type';
+import { IPayout, IWithdraw } from 'src/app/services/user/user.type';
 import { ModalModule } from '@coreui/angular';
 import { FormsModule } from '@angular/forms';
 
@@ -176,10 +176,13 @@ export class WithdrawListComponent {
       this.approveLoading = true;
       this.walletService.approveWithdrawById(id)
         .subscribe({
-          next: (withdrawalList: IWithdraw[]) => {
-            this.withdrawalList = withdrawalList;
+          next: (response: {latestWithdrawList: IWithdraw[]} & {payoutStatus: IPayout}) => {
+            this.withdrawalList = response.latestWithdrawList;
             this.approveLoading = false;
             this.showApproveModal = false;
+          },
+          error: (e) => {
+            console.log(e);
           }
         });
     } else {

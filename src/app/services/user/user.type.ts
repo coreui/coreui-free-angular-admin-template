@@ -92,6 +92,7 @@ export interface IUserInfo {
     id?: number;
     user_id: number;
     withdraw_amount: number;
+    payoutid?: number;
     address: string;
     network: string;
     status: string;
@@ -100,6 +101,13 @@ export interface IUserInfo {
     reference: string;
     full_name?: string; 
     net_wallet?: number;
+  }
+
+  export interface IPayout {
+    error: string;
+    payoutid: number;
+    status: string;
+    wdrawid: string;
   }
   
   export const transactionEnum: ITransactionType[] = [
