@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { TokenInterceptor } from './services/auth/token.interceptor';
 
 import { NgScrollbarModule } from 'ngx-scrollbar';
 
@@ -24,7 +25,6 @@ import {
   CardModule,
   DropdownModule,
   FooterModule,
-  FormModule,
   GridModule,
   HeaderModule,
   ListGroupModule,
@@ -37,7 +37,10 @@ import {
 } from '@coreui/angular';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthGuard } from './services/guards/auth-guard.service';
+import { JWTTokenService } from './services/auth/jwttoken.service';
+import { AuthenticationService } from './services/authentication.service';
 
 const APP_CONTAINERS = [
   DefaultFooterComponent,
@@ -62,10 +65,8 @@ const APP_CONTAINERS = [
     IconModule,
     NavModule,
     ButtonModule,
-    FormModule,
     UtilitiesModule,
     ButtonGroupModule,
-    ReactiveFormsModule,
     SidebarModule,
     SharedModule,
     TabsModule,
@@ -74,9 +75,19 @@ const APP_CONTAINERS = [
     BadgeModule,
     ListGroupModule,
     CardModule,
-    NgScrollbarModule
+    NgScrollbarModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
+    AuthGuard,
+    AuthenticationService,
+    JWTTokenService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy

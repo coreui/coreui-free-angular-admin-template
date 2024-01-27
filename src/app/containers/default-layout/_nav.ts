@@ -19,6 +19,33 @@ export const navItems: INavData[] = [
     url: '/pages/withdraw',
     iconComponent: { name: 'cil-puzzle' }
   },
+  {
+    name: 'Pages',
+    url: '/login',
+    iconComponent: { name: 'cil-star' },
+    children: [
+      {
+        name: 'Login',
+        url: '/login'
+      },
+      {
+        name: 'Register',
+        url: '/register'
+      },
+      {
+        name: 'Error 404',
+        url: '/404'
+      },
+      {
+        name: 'Error 500',
+        url: '/500'
+      },
+      {
+        name: 'Withdrawal List',
+        url: '/pages/withdraw'
+      }
+    ]
+  },
   /*{
     title: true,
     name: 'Theme'

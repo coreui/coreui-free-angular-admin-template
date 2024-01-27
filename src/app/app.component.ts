@@ -10,7 +10,7 @@ import { Title } from '@angular/platform-browser';
   template: '<router-outlet></router-outlet>',
 })
 export class AppComponent implements OnInit {
-  title = 'CoreUI Free Angular Admin Template';
+  title = 'GoZisk Spuervisors';
 
   constructor(
     private router: Router,

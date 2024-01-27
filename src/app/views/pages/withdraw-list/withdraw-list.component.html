@@ -43,7 +43,7 @@
                         </td>
                         <td>
                           <c-button-group *ngIf="!item.payoutid; else payoutStatus" aria-label="Basic mixed styles example" role="group">
-                            <button *ngIf="item.net_wallet! > item.withdraw_amount!" (click)="showApproveConfirmation(item)" cButton
+                            <button (click)="showApproveConfirmation(item)" cButton
                               color="success">Approve</button>
                             <button cButton color="danger" variant="outline" (click)="showRejectConfirmation(item)">Reject</button>
                           </c-button-group>

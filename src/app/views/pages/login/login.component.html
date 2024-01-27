@@ -5,34 +5,45 @@
         <c-card-group>
           <c-card class="p-4">
             <c-card-body>
-              <form cForm>
+              <form>
                 <h1>Login</h1>
                 <p class="text-medium-emphasis">Sign In to your account</p>
                 <c-input-group class="mb-3">
                   <span cInputGroupText>
                     <svg cIcon name="cilUser"></svg>
                   </span>
-                  <input autoComplete="username" cFormControl placeholder="Username" />
+                  <input 
+                        #emailInput
+                        (keyup)="setFormValue(emailInput.value, 'email')"
+                        autoComplete="email"
+                        type="email"
+                        name="email"
+                        required
+                        class="form-control"
+                        id="email1"
+                        placeholder="Your e-mail" />
                 </c-input-group>
                 <c-input-group class="mb-4">
                   <span cInputGroupText>
                     <svg cIcon name="cilLockLocked"></svg>
                   </span>
-                  <input
-                    autoComplete="current-password"
-                    cFormControl
-                    placeholder="Password"
-                    type="password"
-                  />
+                  <input autoComplete="password" cFormControl required 
+                        #passwordInput
+                        (keyup)="setFormValue(passwordInput.value, 'password')"
+                        type="password"
+                        name="password"
+                        class="form-control"
+                        id="password1"
+                        placeholder="Your password">
                 </c-input-group>
                 <c-row>
                   <c-col xs="6">
-                    <button cButton class="px-4" color="primary">
+                    <button (click)="login()" cButton class="px-4" color="primary">
                       Login
                     </button>
                   </c-col>
                   <c-col class="text-right" xs="6">
-                    <button cButton class="px-0" color="link">
+                    <button cButton class="px-0" color="link" disabled>
                       Forgot password?
                     </button>
                   </c-col>
@@ -43,14 +54,10 @@
           <c-card [ngStyle]="{'width.%': 44}" class="text-white bg-primary py-5">
             <c-card-body class="text-center">
               <div>
-                <h2>Sign up</h2>
+                <h2>Welcome To GoZisk</h2>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua.
+                  GoZisk is a pioneering company in cryptocurrency arbitrage, utilizing advanced technology and expert knowledge to enable users to capitalize on price disparities across exchanges, offering a secure and seamless platform for maximizing profits with minimal risk.
                 </p>
-                <button [active]="true" cButton class="mt-3" color="primary" routerLink="/register">
-                  Register Now!
-                </button>
               </div>
             </c-card-body>
           </c-card>

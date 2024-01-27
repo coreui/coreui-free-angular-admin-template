@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { AuthGuard } from './services/guards/auth-guard.service';
+
 import { DefaultLayoutComponent } from './containers';
 import { Page404Component } from './views/pages/page404/page404.component';
 import { Page500Component } from './views/pages/page500/page500.component';
@@ -16,6 +18,7 @@ const routes: Routes = [
   {
     path: '',
     component: DefaultLayoutComponent,
+    canActivate: [AuthGuard],
     data: {
       title: 'Home'
     },
@@ -91,6 +94,14 @@ const routes: Routes = [
     component: LoginComponent,
     data: {
       title: 'Login Page'
+    }
+  },
+  {
+    path: 'logout',
+    component: LoginComponent,
+    data: {
+      title: 'Logout',
+      action: 'true'
     }
   },
   {
