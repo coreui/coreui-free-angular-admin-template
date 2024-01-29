@@ -25,6 +25,11 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-puzzle' }
   },
   {
+    name: 'Deposit List',
+    url: '/pages/deposit',
+    iconComponent: { name: 'cil-puzzle' }
+  },
+  /*{
     name: 'Pages',
     url: '/login',
     iconComponent: { name: 'cil-star' },
@@ -51,7 +56,7 @@ export const navItems: INavData[] = [
       }
     ]
   },
-  /*{
+  {
     title: true,
     name: 'Theme'
   },

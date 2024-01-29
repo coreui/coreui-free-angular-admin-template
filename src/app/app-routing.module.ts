@@ -12,7 +12,7 @@ import { RegisterComponent } from './views/pages/register/register.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'pages/withdraw',
+    redirectTo: 'dashboard',
     pathMatch: 'full'
   },
   {
@@ -111,7 +111,7 @@ const routes: Routes = [
       title: 'Register Page'
     }
   },
-  {path: '**', redirectTo: 'pages/withdraw'}
+  {path: '**', redirectTo: 'dashboard'}
 ];
 
 @NgModule({

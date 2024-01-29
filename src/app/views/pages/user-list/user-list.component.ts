@@ -21,6 +21,7 @@ import { WalletService } from '../../../services/wallet/wallet.service';
 import { IPayout, IWithdraw } from 'src/app/services/user/user.type';
 import { ModalModule } from '@coreui/angular';
 import { FormsModule } from '@angular/forms';
+import { UserService } from 'src/app/services/user/user.service';
 
 interface IUser {
   name: string;
@@ -64,9 +65,8 @@ interface IUser {
 })
 export class UserListComponent {
   @ViewChild('approveConfirmation') approveConfirmationModal!: ElementRef;
-  withdrawalList: IWithdraw[] = [];
-  selectedWithdrawal: IWithdraw = this.withdrawalList[0];
-  rejectMessage: string = '';
+  userList: any[];
+  totalUsers: number;
 
   showApproveModal: boolean = false;
   showRejectModal: boolean = false;
@@ -154,70 +154,21 @@ export class UserListComponent {
     }
   ];
 
-  constructor(private walletService: WalletService) {}
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    this.fetchWithdrawal();
+    this.fetchUserList();
   }
 
-  fetchWithdrawal(): void {
+  fetchUserList(): void {
     // fetch all withdrawal list
     this.loadingWithdrawal = true;
-    this.walletService.fetchAllWithdraw()
+    this.userService.fetchUserList()
       .subscribe({
-        next: (withdrawalList: IWithdraw[]) => {
-          this.withdrawalList = withdrawalList;
+        next: (userList: any) => {
+          this.userList = userList.users;
+          this.totalUsers = userList.total;
         }
       });
-  }
-
-  approve(id: number): void {
-    if (id) {
-      this.approveLoading = true;
-      this.walletService.approveWithdrawById(id)
-        .subscribe({
-          next: (response: {latestWithdrawList: IWithdraw[]} & {payoutStatus: IPayout}) => {
-            this.withdrawalList = response.latestWithdrawList;
-            this.approveLoading = false;
-            this.showApproveModal = false;
-          },
-          error: (e) => {
-            console.log(e);
-          }
-        });
-    } else {
-      this.showApproveModal = false;
-    }
-  }
-
-  reject(id: number): void {
-    if (id) {
-      this.rejectLoading = true;
-      this.walletService.rejectWithdrawById(id, this.rejectMessage)
-        .subscribe({
-          next: (withdrawalList: IWithdraw[]) => {
-            this.withdrawalList = withdrawalList;
-            this.rejectLoading = false;
-            this.showRejectModal = false;
-            this.rejectMessage = '';
-          }
-        });
-    } else {
-      this.showRejectModal = false;
-    }
-  }
-
-  getRounded(value: number): number {
-    return Math.trunc(value * 10000) / 10000;
-  }
-
-  showApproveConfirmation(item: IWithdraw): void {
-    this.selectedWithdrawal = item;
-    this.showApproveModal = true;
-  }
-
-  showRejectConfirmation(item: IWithdraw): void {
-    this.selectedWithdrawal = item;
-    this.showRejectModal = true;
   }
 }

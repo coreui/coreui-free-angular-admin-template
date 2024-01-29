@@ -20,4 +20,7 @@ export class UserService {
   }
 
   // fetchUserList()
+  fetchUserList(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.apiUrl}users`);
+  }
 }
