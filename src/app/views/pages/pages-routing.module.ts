@@ -5,6 +5,7 @@ import { Page500Component } from './page500/page500.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { WithdrawListComponent } from './withdraw-list/withdraw-list.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 const routes: Routes = [
   {
@@ -40,6 +41,13 @@ const routes: Routes = [
     component: WithdrawListComponent,
     data: {
       title: 'Withdrawal List'
+    }
+  },
+  {
+    path: 'users',
+    component: UserListComponent,
+    data: {
+      title: 'User List'
     }
   }
 ];

@@ -18,4 +18,6 @@ export class UserService {
   forgetPassword(email: string): Observable<string> {
     return this.http.post<string>(`${environment.apiUrl}users/forget-password`, {email});
   }
+
+  // fetchUserList()
 }

@@ -59,10 +59,10 @@ interface IUser {
     FormsModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  templateUrl: './withdraw-list.component.html',
-  styleUrl: './withdraw-list.component.scss',
+  templateUrl: './user-list.component.html',
+  styleUrl: './user-list.component.scss',
 })
-export class WithdrawListComponent {
+export class UserListComponent {
   @ViewChild('approveConfirmation') approveConfirmationModal!: ElementRef;
   withdrawalList: IWithdraw[] = [];
   selectedWithdrawal: IWithdraw = this.withdrawalList[0];

@@ -1,7 +1,7 @@
 {
   "name": "coreui-free-angular-admin-template",
   "version": "4.7.0",
-  "copyright": "Copyright 2023 creativeLabs Łukasz Holeczek",
+  "copyright": "Copyright 2024 GoZisk",
   "license": "MIT",
   "author": "The CoreUI Team (https://github.com/orgs/coreui/people) and contributors",
   "homepage": "https://coreui.io/angular",
@@ -12,6 +12,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "startProd": "ng serve -c production",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"

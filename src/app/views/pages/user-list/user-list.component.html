@@ -39,12 +39,7 @@
                             {{ item.address}}
                         </td>
                         <td>
-                          <div>{{ item.reference}}</div>
-                          <div class="small text-medium-emphasis text-nowrap">
-                            <span>
-                              Requested on: {{ item.modified_on | date: 'dd-MM-YYYY HH:mm:ss': 'UTC+0' }}
-                            </span>
-                          </div>
+                            {{ item.reference}}
                         </td>
                         <td>
                           <c-button-group *ngIf="!item.payoutid; else payoutStatus" aria-label="Basic mixed styles example" role="group">
