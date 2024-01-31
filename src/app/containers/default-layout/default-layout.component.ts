@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 
-import { navItems } from './_nav';
+import { navItemsAll, navItemsWithdrawal, navItemsMember } from './_nav';
+import { INavData } from '@coreui/angular';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +11,26 @@ import { navItems } from './_nav';
 })
 export class DefaultLayoutComponent {
 
-  public navItems = navItems;
+  public navItems: INavData[] = null;
 
-  constructor() {}
+  constructor(private auth: AuthenticationService) {}
+
+  ngOnInit() {
+    switch (this.auth.userRole) {
+      case 1: this.navItems = navItemsAll;
+        break;
+      
+      case 2: this.navItems = navItemsAll;
+        break;
+      
+      case 3: this.navItems = navItemsAll;
+        break;
+      
+      case 4: this.navItems = navItemsMember;
+        break;
+
+      case 5: this.navItems = navItemsWithdrawal;
+        break;
+    }
+  }
 }

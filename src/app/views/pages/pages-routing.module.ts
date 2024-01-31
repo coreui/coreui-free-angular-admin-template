@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { WithdrawListComponent } from './withdraw-list/withdraw-list.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { UserWalletComponent } from './user-wallet/user-wallet.component';
 import { DepositListComponent } from './deposit-list/deposit-list.component';
 
 const routes: Routes = [
@@ -49,6 +50,13 @@ const routes: Routes = [
     component: UserListComponent,
     data: {
       title: 'User List'
+    }
+  },
+  {
+    path: 'users-wallet',
+    component: UserWalletComponent,
+    data: {
+      title: 'User Wallet'
     }
   },
   {

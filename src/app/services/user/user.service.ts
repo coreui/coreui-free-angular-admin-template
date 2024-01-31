@@ -11,7 +11,7 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
   loginUser(userData: IUserLoginData): Observable<IUserInfo> {
-    return this.http.post<IUserInfo>(`${environment.apiUrl}users/login`, userData);
+    return this.http.post<IUserInfo>(`${environment.apiUrl}users/login/admin`, userData);
   }
 
 

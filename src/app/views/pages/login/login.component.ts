@@ -34,7 +34,7 @@ export class LoginComponent {
     if (this.route.snapshot.data['action']) {
       this.auth.logout();
     }
-    console.log(this.auth.isLoggedIn());
+    
     if (this.auth.isLoggedIn()) {
       this.router.navigate(['dashboard']);
     }

@@ -16,9 +16,6 @@ import {
 } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
 import { ChartjsModule } from '@coreui/angular-chartjs';
-import { WidgetsModule } from '../../widgets/widgets.module';
-import { WalletService } from '../../../services/wallet/wallet.service';
-import { IPayout, IWithdraw } from 'src/app/services/user/user.type';
 import { ModalModule } from '@coreui/angular';
 import { FormsModule } from '@angular/forms';
 import { UserService } from 'src/app/services/user/user.service';

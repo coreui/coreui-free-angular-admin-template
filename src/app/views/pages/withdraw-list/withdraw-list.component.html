@@ -19,7 +19,7 @@
                         <th class="text-center">Withdraw Amount</th>
                         <th>Address</th>
                         <th class="text-center">Reference</th>
-                        <th>Activity</th>
+                        <th *ngIf="isApproval">Activity</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -46,7 +46,7 @@
                             </span>
                           </div>
                         </td>
-                        <td>
+                        <td *ngIf="isApproval">
                           <c-button-group *ngIf="!item.payoutid; else payoutStatus" aria-label="Basic mixed styles example" role="group">
                             <button (click)="showApproveConfirmation(item)" cButton
                               color="success">Approve</button>

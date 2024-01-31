@@ -31,6 +31,14 @@ export class AuthenticationService {
     });
   }
 
+  get userRole() {
+    return this.jwtService.getDecodedAccessToken(this.bearerToken).role;
+  }
+
+  get userTokenDetail() {
+    return this.jwtService.getDecodedAccessToken(this.bearerToken);
+  }
+
   set viewNotifications(state: boolean) {
     this.showNotification$.next(state);
   }
