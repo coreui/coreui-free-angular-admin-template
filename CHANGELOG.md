@@ -2,6 +2,18 @@
 
 ---
 
+#### `4.7.13`
+
+- chore(dependencies): update to `Angular 17.1`
+  - `Angular 17`
+  - `TypeScript ~5.2`
+  - `zone.js ~0.14.3`
+  - `@coreui/angular ~4.7.13`
+  - `@coreui/angular-chartjs ~4.7.13`
+  - `@coreui/icons-angular ~4.7.13`
+
+---
+
 #### `4.7.0`
 
 - chore(dependencies): update to `Angular 17`
