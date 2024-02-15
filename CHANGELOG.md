@@ -2,14 +2,14 @@
 
 ---
 
-#### `4.7.14`
+#### `4.7.15`
 
 - chore: move to `application` builder
 - chore(dependencies): update to `Angular 17.2`
   - `Angular 17.2`
   - `TypeScript ~5.3`
   - `zone.js ~0.14.4`
-  - `@coreui/angular ~4.7.14`
+  - `@coreui/angular ~4.7.15`
   - `@coreui/angular-chartjs ~4.7.14`
   - `@coreui/icons-angular ~4.7.14`
 
