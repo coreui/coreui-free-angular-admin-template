@@ -22,4 +22,19 @@ export class WalletService {
   rejectWithdrawById(withdrawalId: number, message: string): Observable<IWithdraw[]> {
     return this.http.post<IWithdraw[]>(`${environment.apiUrl}wallet/withdraw/reject`, {withdrawalId, message});
   }
+
+  // user list
+  fetchAlUsers(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.apiUrl}wallet/report/users/all`);
+  }
+  
+  // wallet list
+  fetchAllWallet(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.apiUrl}wallet/report/view_user_wallet/all`);
+  }
+  
+  // deposit list
+  fetchAllDeposit(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.apiUrl}wallet/report/view_deposit_list/all`);
+  }
 }

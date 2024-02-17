@@ -19,6 +19,8 @@ import { ChartjsModule } from '@coreui/angular-chartjs';
 import { ModalModule } from '@coreui/angular';
 import { FormsModule } from '@angular/forms';
 import { UserService } from 'src/app/services/user/user.service';
+import { WalletService } from 'src/app/services/wallet/wallet.service';
+import { AgGridAngular } from 'ag-grid-angular';
 
 interface IUser {
   name: string;
@@ -54,118 +56,58 @@ interface IUser {
     TabsModule,
     ModalModule,
     SpinnerModule,
-    FormsModule
+    FormsModule,
+    AgGridAngular
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.scss',
 })
 export class UserListComponent {
-  @ViewChild('approveConfirmation') approveConfirmationModal!: ElementRef;
-  userList: any[];
-  totalUsers: number;
+  loadingWalletList: boolean;
+  walletList: any[];
+  rowData = [];
 
-  showApproveModal: boolean = false;
-  showRejectModal: boolean = false;
-  loadingWithdrawal: boolean = false;
-  approveLoading: boolean = false;
-  rejectLoading: boolean = false;
-  public users: IUser[] = [
-    {
-      name: 'Yiorgos Avraamu',
-      state: 'New',
-      registered: 'Jan 1, 2021',
-      country: 'Us',
-      usage: 50,
-      period: 'Jun 11, 2021 - Jul 10, 2021',
-      payment: 'Mastercard',
-      activity: '10 sec ago',
-      avatar: './assets/img/avatars/1.jpg',
-      status: 'success',
-      color: 'success'
-    },
-    {
-      name: 'Avram Tarasios',
-      state: 'Recurring ',
-      registered: 'Jan 1, 2021',
-      country: 'Br',
-      usage: 10,
-      period: 'Jun 11, 2021 - Jul 10, 2021',
-      payment: 'Visa',
-      activity: '5 minutes ago',
-      avatar: './assets/img/avatars/2.jpg',
-      status: 'danger',
-      color: 'info'
-    },
-    {
-      name: 'Quintin Ed',
-      state: 'New',
-      registered: 'Jan 1, 2021',
-      country: 'In',
-      usage: 74,
-      period: 'Jun 11, 2021 - Jul 10, 2021',
-      payment: 'Stripe',
-      activity: '1 hour ago',
-      avatar: './assets/img/avatars/3.jpg',
-      status: 'warning',
-      color: 'warning'
-    },
-    {
-      name: 'Enéas Kwadwo',
-      state: 'Sleep',
-      registered: 'Jan 1, 2021',
-      country: 'Fr',
-      usage: 98,
-      period: 'Jun 11, 2021 - Jul 10, 2021',
-      payment: 'Paypal',
-      activity: 'Last month',
-      avatar: './assets/img/avatars/4.jpg',
-      status: 'secondary',
-      color: 'danger'
-    },
-    {
-      name: 'Agapetus Tadeáš',
-      state: 'New',
-      registered: 'Jan 1, 2021',
-      country: 'Es',
-      usage: 22,
-      period: 'Jun 11, 2021 - Jul 10, 2021',
-      payment: 'ApplePay',
-      activity: 'Last week',
-      avatar: './assets/img/avatars/5.jpg',
-      status: 'success',
-      color: 'primary'
-    },
-    {
-      name: 'Friderik Dávid',
-      state: 'New',
-      registered: 'Jan 1, 2021',
-      country: 'Pl',
-      usage: 43,
-      period: 'Jun 11, 2021 - Jul 10, 2021',
-      payment: 'Amex',
-      activity: 'Yesterday',
-      avatar: './assets/img/avatars/6.jpg',
-      status: 'info',
-      color: 'dark'
-    }
+  // Column Definitions: Defines & controls grid columns.
+  colDefs: any[] = [
+    { headerName: 'Name', field: "full_name", filter: true},
+    { headerName: 'Username', field: "username", filter: true },
+    { headerName: 'Email', field: "email", filter: true },
+    { headerName: 'Phone', field: "phone", filter: true },
+    { headerName: 'Country', field: "country", filter: true },
+    { headerName: 'Refer Code', field: "refer_code", filter: true },
+    { headerName: 'Active', field: "active", filter: true }
   ];
 
-  constructor(private userService: UserService) {}
+  constructor(private walletService: WalletService) { }
 
   ngOnInit(): void {
-    this.fetchUserList();
+    this.fetchAllWallet();
   }
 
-  fetchUserList(): void {
+  fetchAllWallet(): void {
     // fetch all withdrawal list
-    this.loadingWithdrawal = true;
-    this.userService.fetchUserList()
+    this.loadingWalletList = true;
+    this.walletService.fetchAlUsers()
       .subscribe({
-        next: (userList: any) => {
-          this.userList = userList.users;
-          this.totalUsers = userList.total;
+        next: (walletList: any[]) => {
+          this.walletList = walletList;
+          this.walletList.forEach(item => {
+            this.rowData.push({
+              "full_name": item.full_name,
+              "username": item.username,
+              "email": item.email,
+              "phone": item.phone,
+              "country": item.country,
+              'refer_code': item.refer_code,
+              'active': item.active === 1 ? 'Active' : 'Inactive'
+            });
+          });
         }
       });
+  }
+  
+  getRounded(value: number): number {
+    return Math.trunc(value * 10000) / 10000;
   }
 }

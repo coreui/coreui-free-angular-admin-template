@@ -8,12 +8,14 @@
               <form>
                 <h1>Login</h1>
                 <p class="text-medium-emphasis">Sign In to your account</p>
+                <span *ngIf="loginError" class="text-medium-emphasis error">{{loginErrorMessage}}</span>
                 <c-input-group class="mb-3">
                   <span cInputGroupText>
                     <svg cIcon name="cilUser"></svg>
                   </span>
-                  <input 
+                  <input (keyup)='loginError = false'
                         #emailInput
+                        (paste)="setFormValue(emailInput.value, 'email')" 
                         (keyup)="setFormValue(emailInput.value, 'email')"
                         autoComplete="email"
                         type="email"
@@ -27,8 +29,9 @@
                   <span cInputGroupText>
                     <svg cIcon name="cilLockLocked"></svg>
                   </span>
-                  <input autoComplete="password" cFormControl required 
+                  <input (keyup)='loginError = false' autoComplete="password" cFormControl required 
                         #passwordInput
+                        (paste)="setFormValue(passwordInput.value, 'password')" 
                         (keyup)="setFormValue(passwordInput.value, 'password')"
                         type="password"
                         name="password"
@@ -40,6 +43,7 @@
                   <c-col xs="6">
                     <button (click)="login()" cButton class="px-4" color="primary">
                       Login
+                      <i *ngIf="loginLoading" class="spinner-grow spinner-grow-sm"></i>
                     </button>
                   </c-col>
                   <c-col class="text-right" xs="6">

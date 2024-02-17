@@ -11,7 +11,7 @@ import {Observable} from 'rxjs';
 export class TokenInterceptor implements HttpInterceptor {
   constructor(public auth: AuthenticationService) {}
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (request.url.match(/api.gozisk.com\//)) {
+    if (request.url.match(/api.gozisk.com\//) || request.url.match(/localhost:8080\//)) {
       request = request.clone({
         setHeaders: {
           Authorization: `Bearer ${this.auth.getToken()}`,

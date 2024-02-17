@@ -1,5 +1,19 @@
 <c-card class="mb-4">
   <c-card-body>
-    <iframe frameborder=0 width="100%" height="900" src="https://analytics.zoho.com/open-view/2867856000000005979/419e10d1b13b17287f6ab17866d6cda7"></iframe>
+    <c-row>
+      <c-col>
+        <!-- The AG Grid component -->
+        <ag-grid-angular
+          *ngIf="rowData.length > 0"
+          class="ag-theme-quartz-auto-dark"
+          style="height: 500px;"
+          [rowData]="rowData"
+          [columnDefs]="colDefs"
+          [pagination]="true"
+          [paginationPageSizeSelector]="[25, 50, 100]"
+          [paginationPageSize]="25">
+        </ag-grid-angular>
+      </c-col>
+    </c-row>
   </c-card-body>
 </c-card>
