@@ -11,10 +11,15 @@ import {Observable} from 'rxjs';
 export class TokenInterceptor implements HttpInterceptor {
   constructor(public auth: AuthenticationService) {}
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const bearerToken = this.auth.getToken();
+    if (!this.auth.isLoggedIn()) {
+      this.auth.logout();
+    }
+
     if (request.url.match(/api.gozisk.com\//) || request.url.match(/localhost:8080\//)) {
       request = request.clone({
         setHeaders: {
-          Authorization: `Bearer ${this.auth.getToken()}`,
+          Authorization: `Bearer ${bearerToken}`,
           "Bypass-Tunnel-Reminder": 'anything'
         }
       });
@@ -22,7 +27,7 @@ export class TokenInterceptor implements HttpInterceptor {
     } else if (request.url.match(/sayem7746.loca.lt\//)) {
       request = request.clone({
         setHeaders: {
-          Authorization: `Bearer ${this.auth.getToken()}`,
+          Authorization: `Bearer ${bearerToken}`,
           "Bypass-Tunnel-Reminder": 'anything'
         }
       });
