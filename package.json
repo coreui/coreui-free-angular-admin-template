@@ -6,16 +6,19 @@
   "author": "The CoreUI Team (https://github.com/orgs/coreui/people) and contributors",
   "homepage": "https://coreui.io/angular",
   "config": {
-    "theme": "default",
+    "theme": "free",
     "coreui_library_short_version": "5.0",
     "coreui_library_docs_url": "https://coreui.io/angular/docs/"
   },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "prebuild": "ng test --watch=false",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "prebuild:demo": "npm i && npm prune && npm run prebuild",
+    "build:demo": "ng build --base-href=\"/demos/angular/$npm_package_config_coreui_library_short_version/$npm_package_config_theme/\""
   },
   "private": true,
   "dependencies": {
