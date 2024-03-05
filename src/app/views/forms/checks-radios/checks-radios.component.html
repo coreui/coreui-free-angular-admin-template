@@ -1,7 +1,4 @@
 <c-row ngPreserveWhitespaces>
-  <c-col xs="12">
-    <app-docs-callout href="forms/checks-radios" name="Checks and Radios"></app-docs-callout>
-  </c-col>
   <form [formGroup]="formGroup" cForm>
     <c-col xs="12">
       <c-card class="mb-4">
@@ -30,7 +27,7 @@
           <strong>Angular Checkbox</strong> <small>Disabled</small>
         </c-card-header>
         <c-card-body>
-          <p class="text-medium-emphasis small">
+          <p class="text-body-secondary small">
             Add the <code>disabled</code> attribute and the associated <code>&lt;label&gt;</code>s
             are automatically styled to match with a lighter color to help indicate the
             input&#39;s state.
@@ -77,7 +74,7 @@
           <strong>Angular Radio</strong> <small>Disabled</small>
         </c-card-header>
         <c-card-body>
-          <p class="text-medium-emphasis small">
+          <p class="text-body-secondary small">
             Add the <code>disabled</code> attribute and the associated <code>&lt;label&gt;</code>s
             are automatically styled to match with a lighter color to help indicate the
             input&#39;s state.
@@ -103,7 +100,7 @@
           <strong>Angular Switches</strong>
         </c-card-header>
         <c-card-body>
-          <p class="text-medium-emphasis small">
+          <p class="text-body-secondary small">
             A switch has the markup of a custom checkbox but uses the <code>switch</code> boolean
             properly to render a toggle switch. Switches also support the <code>disabled</code>
             attribute.
@@ -158,7 +155,7 @@
           <strong>Angular Checks and Radios</strong> <small>Default layout (stacked)</small>
         </c-card-header>
         <c-card-body>
-          <p class="text-medium-emphasis small">
+          <p class="text-body-secondary small">
             By default, any number of checkboxes and radios that are immediate sibling will be
             vertically stacked and appropriately spaced.
           </p>
@@ -195,7 +192,7 @@
           <strong>Angular Checks and Radios</strong> <small>Inline</small>
         </c-card-header>
         <c-card-body>
-          <p class="text-medium-emphasis small">
+          <p class="text-body-secondary small">
             Group checkboxes or radios on the same horizontal row by adding <code>inline</code>
             boolean property to any <code>&lt;c-form-check&gt;</code>.
           </p>
@@ -237,7 +234,7 @@
           <strong>Angular Checks and Radios</strong> <small>Without labels</small>
         </c-card-header>
         <c-card-body>
-          <p class="text-medium-emphasis small">
+          <p class="text-body-secondary small">
             Remember to still provide some form of accessible name for assistive technologies (for
             instance, using <code>aria-label</code>).
           </p>
@@ -258,7 +255,7 @@
           <strong>Toggle buttons</strong>
         </c-card-header>
         <c-card-body>
-          <p class="text-medium-emphasis small">
+          <p class="text-body-secondary small">
             Create button-like checkboxes and radio buttons by using <code>button</code> boolean
             property on the <code>&lt;CFormCheck&gt;</code> component. These toggle buttons can
             further be grouped in a button group if needed.
@@ -295,7 +292,7 @@
             </div>
           </app-docs-example>
           <h5>Outlined styles</h5>
-          <p class="text-medium-emphasis small">
+          <p class="text-body-secondary small">
             Different variants of button, such at the various outlined styles, are supported.
           </p>
           <app-docs-example href="forms/checks-radios#toggle-buttons">

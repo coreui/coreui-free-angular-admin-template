@@ -1,8 +1,5 @@
 <c-row ngPreserveWhitespaces>
   <c-col xs="12">
-    <app-docs-callout href="components/popover" name="Popover"></app-docs-callout>
-  </c-col>
-  <c-col xs="12">
     <c-card class="mb-4">
       <c-card-header>
         <strong>Angular Popover</strong> <small>Basic example</small>
@@ -23,7 +20,7 @@
                 Popover Title
               </h3>
               <div class="popover-body">
-                And here’s some amazing content. It’s very engaging. Right?
+                And here’s some amazing content. It’s very engaging. <span class="text-danger">Right?</span>
               </div>
             </ng-template>
           </button>
@@ -37,7 +34,7 @@
         <strong>Angular Popover</strong> <small>Four directions</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Four options are available: top, right, bottom, and left aligned.
         </p>
         <app-docs-example href="components/popover#four-directions">
@@ -50,15 +47,18 @@
               </div>
             </ng-template>
           </button>
-          <button [cPopoverTrigger]="'hover'" cButton cPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus. Right!"
+          <button [cPopoverTrigger]="'hover'" cButton
+                  cPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus. Right!"
                   cPopoverPlacement="right"
                   class="me-1" color="secondary">Popover on right
           </button>
-          <button [cPopoverTrigger]="'hover'" cButton cPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus. Bottom!"
+          <button [cPopoverTrigger]="'hover'" cButton
+                  cPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus. Bottom!"
                   cPopoverPlacement="bottom"
                   class="me-1" color="secondary">Popover on bottom
           </button>
-          <button [cPopoverTrigger]="'hover'" cButton cPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus. Left!"
+          <button [cPopoverTrigger]="'hover'" cButton
+                  cPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus. Left!"
                   cPopoverPlacement="left" class="me-1"
                   color="secondary">Popover on left
           </button>

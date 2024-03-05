@@ -2,6 +2,12 @@
 
 ---
 
+#### `5.0.0-next.23`
+
+CoreUI v5 for Angular 17 pre-release
+
+---
+
 #### `4.7.15`
 
 - chore: move to `application` builder

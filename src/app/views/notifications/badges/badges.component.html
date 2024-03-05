@@ -1,14 +1,11 @@
 <c-row>
-  <c-col xs="12">
-    <app-docs-callout href="components/badge" name="Badges"></app-docs-callout>
-  </c-col>
   <c-col lg="6">
     <c-card class="mb-4">
       <c-card-header ngPreserveWhitespaces>
         <strong>Angular Badges</strong>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Bootstrap badge scale to suit the size of the parent element by using relative font
           sizing and <code>em</code> units.
         </p>
@@ -38,7 +35,7 @@
             <c-badge color="secondary">New</c-badge>
           </h6>
         </app-docs-example>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Badges can be used as part of links or buttons to provide a counter.
         </p>
         <app-docs-example href="components/badge">
@@ -47,11 +44,11 @@
             <c-badge color="secondary">4</c-badge>
           </button>
         </app-docs-example>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Remark that depending on how you use them, badges may be complicated for users of
           screen readers and related assistive technologies.
         </p>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Unless the context is clear, consider including additional context with a visually
           hidden piece of additional text.
         </p>
@@ -71,7 +68,7 @@
         <strong>AngularBadges</strong> <small>Contextual variations</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Add any of the below-mentioned <code>color</code> props to modify the presentation of
           a badge.
         </p>
@@ -81,7 +78,7 @@
           <c-badge class="me-1" color="danger">danger</c-badge>
           <c-badge class="me-1" color="warning">warning</c-badge>
           <c-badge class="me-1" color="info">info</c-badge>
-          <c-badge class="me-1" color="light">light</c-badge>
+          <c-badge class="me-1" color="light" textColor="dark">light</c-badge>
           <c-badge class="me-1" color="dark">dark</c-badge>
         </app-docs-example>
       </c-card-body>
@@ -91,7 +88,7 @@
         <strong>Angular Badges</strong> <small>Pill badges</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Apply the <code>shape=&#34;rounded-pill&#34;</code> prop to make badges rounded.
         </p>
         <app-docs-example href="components/badge#pill-badges">
@@ -110,7 +107,7 @@
           <c-badge class="me-1" color="info" shape="rounded-pill">
             info
           </c-badge>
-          <c-badge class="me-1" color="light" shape="rounded-pill">
+          <c-badge class="me-1" color="light" shape="rounded-pill" textColor="dark">
             light
           </c-badge>
           <c-badge class="me-1" color="dark" shape="rounded-pill">
@@ -124,7 +121,7 @@
         <strong>Angular Badges</strong> <small>Positioned</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Use position prop to modify a component and position it in the corner of a link or button.
         </p>
         <app-docs-example href="components/badge#positioned">
@@ -157,7 +154,7 @@
         <strong>Angular Badges</strong> <small>Indicator</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           You can also create more generic indicators without a counter using a few more utilities.
         </p>
         <app-docs-example href="components/badge#positioned">

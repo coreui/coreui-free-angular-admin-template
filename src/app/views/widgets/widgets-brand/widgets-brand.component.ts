@@ -1,10 +1,25 @@
 import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
+import { ChartjsComponent } from '@coreui/angular-chartjs';
+import { IconDirective } from '@coreui/icons-angular';
+import { ColComponent, RowComponent, WidgetStatDComponent } from '@coreui/angular';
+import { ChartData } from 'chart.js';
+
+type BrandData = {
+  icon: string
+  values: any[]
+  capBg?: any
+  color?: string
+  labels?: string[]
+  data: ChartData
+}
 
 @Component({
   selector: 'app-widgets-brand',
   templateUrl: './widgets-brand.component.html',
   styleUrls: ['./widgets-brand.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Default
+  changeDetection: ChangeDetectionStrategy.Default,
+  standalone: true,
+  imports: [RowComponent, ColComponent, WidgetStatDComponent, IconDirective, ChartjsComponent]
 })
 export class WidgetsBrandComponent implements AfterContentInit {
 
@@ -52,7 +67,7 @@ export class WidgetsBrandComponent implements AfterContentInit {
     pointHoverBackgroundColor: '#fff',
     pointBackgroundColor: 'rgba(255,255,255,.55)'
   };
-  brandData = [
+  brandData: BrandData[] = [
     {
       icon: 'cibFacebook',
       values: [{ title: 'friends', value: '89K' }, { title: 'feeds', value: '459' }],

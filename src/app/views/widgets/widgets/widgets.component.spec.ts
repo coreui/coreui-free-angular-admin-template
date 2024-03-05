@@ -5,7 +5,6 @@ import { CardModule, GridModule, ProgressModule, WidgetModule } from '@coreui/an
 import { ChartjsModule } from '@coreui/angular-chartjs';
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from '../../../icons/icon-subset';
-import { DocsComponentsModule } from '../../../../components';
 import { WidgetsBrandComponent } from '../widgets-brand/widgets-brand.component';
 import { WidgetsDropdownComponent } from '../widgets-dropdown/widgets-dropdown.component';
 import { WidgetsEComponent } from '../widgets-e/widgets-e.component';
@@ -18,10 +17,9 @@ describe('WidgetsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [WidgetsComponent, WidgetsBrandComponent, WidgetsDropdownComponent, WidgetsEComponent],
-      imports: [WidgetModule, ProgressModule, GridModule, DocsComponentsModule, CardModule, RouterTestingModule, ChartjsModule, IconModule],
-      providers: [IconSetService]
-    })
+    imports: [WidgetModule, ProgressModule, GridModule, CardModule, RouterTestingModule, ChartjsModule, IconModule, WidgetsComponent, WidgetsBrandComponent, WidgetsDropdownComponent, WidgetsEComponent],
+    providers: [IconSetService]
+})
       .compileComponents();
   });
 

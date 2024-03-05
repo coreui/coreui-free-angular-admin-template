@@ -1,12 +1,14 @@
 import { ChangeDetectorRef, Component, ElementRef, forwardRef, Input, Renderer2 } from '@angular/core';
 
-import { ToastComponent, ToasterService } from '@coreui/angular';
+import { ToastComponent, ToasterService, ToastHeaderComponent, ToastBodyComponent, ToastCloseDirective, ProgressBarDirective, ProgressComponent } from '@coreui/angular';
 
 @Component({
-  selector: 'app-toast-simple',
-  templateUrl: './toast.component.html',
-  styleUrls: ['./toast.component.scss'],
-  providers: [{ provide: ToastComponent, useExisting: forwardRef(() => AppToastComponent) }]
+    selector: 'app-toast-simple',
+    templateUrl: './toast.component.html',
+    styleUrls: ['./toast.component.scss'],
+    providers: [{ provide: ToastComponent, useExisting: forwardRef(() => AppToastComponent) }],
+    standalone: true,
+    imports: [ToastHeaderComponent, ToastBodyComponent, ToastCloseDirective, ProgressBarDirective, ProgressComponent]
 })
 export class AppToastComponent extends ToastComponent {
 

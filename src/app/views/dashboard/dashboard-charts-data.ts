@@ -29,10 +29,9 @@ export class DashboardChartsData {
   initMainChart(period: string = 'Month') {
     const brandSuccess = getStyle('--cui-success') ?? '#4dbd74';
     const brandInfo = getStyle('--cui-info') ?? '#20a8d8';
-    const brandInfoBg = hexToRgba(brandInfo, 10);
-    const brandDanger = getStyle('--cui-danger') || '#f86c6b';
+    const brandInfoBg = hexToRgba(getStyle('--cui-info') ?? '#20a8d8', 10) ;
+    const brandDanger = getStyle('--cui-danger') ?? '#f86c6b';
 
-    // mainChart
     // mainChart
     this.mainChart['elements'] = period === 'Month' ? 12 : 27;
     this.mainChart['Data1'] = [];
@@ -140,13 +139,24 @@ export class DashboardChartsData {
       scales: {
         x: {
           grid: {
+            color: getStyle('--cui-border-color-translucent'),
             drawOnChartArea: false
-          }
+          },
+          ticks: {
+            color: getStyle('--cui-body-color'),
+          },
         },
         y: {
-          beginAtZero: true,
+          border: {
+            color: getStyle('--cui-border-color-translucent'),
+          },
+          grid: {
+            color: getStyle('--cui-border-color-translucent'),
+          },
           max: 250,
+          beginAtZero: true,
           ticks: {
+            color: getStyle('--cui-body-color'),
             maxTicksLimit: 5,
             stepSize: Math.ceil(250 / 5)
           }

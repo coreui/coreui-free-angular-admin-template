@@ -13,10 +13,9 @@ describe('RegisterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RegisterComponent ],
-      imports: [CardModule, FormModule, GridModule, ButtonModule, IconModule],
-      providers: [IconSetService]
-    })
+    imports: [CardModule, FormModule, GridModule, ButtonModule, IconModule, RegisterComponent],
+    providers: [IconSetService]
+})
     .compileComponents();
   });
 

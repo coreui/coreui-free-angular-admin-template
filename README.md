@@ -19,7 +19,7 @@
 CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of redundant components, so the app is light enough to offer ultimate user experience. This means mobile devices also, where the navigation is just as easy and intuitive as on a desktop or laptop. The CoreUI Layout API lets you customize your project for almost any device – be it Mobile, Web or WebApp – CoreUI covers them all!
 
 - [CoreUI Angular Admin Dashboard Template & UI Components Library](https://coreui.io/angular)  
-- [CoreUI Angular Demo](https://coreui.io/angular/demo/4.3/free/)
+- [CoreUI Angular Demo](https://coreui.io/angular/demo/5.0/free/)
 - [CoreUI Angular Docs](https://coreui.io/angular/docs/)  
 
 ## Table of Contents
@@ -45,13 +45,22 @@ CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of 
 
 ## CoreUI Pro
 
-**Only customers with [Enterpise Membership Plan](https://coreui.io/pro/#buy) have access to private GitHub CoreUI Pro repository.**
-
 * 💪  [CoreUI Pro Angular Admin Template](https://coreui.io/product/angular-dashboard-template/)
 * 💪  [CoreUI Pro Bootstrap Admin Template](https://coreui.io/product/bootstrap-dashboard-template/)
 * 💪  [CoreUI Pro React Admin Template](https://coreui.io/product/react-dashboard-template/)
 * 💪  [CoreUI Pro Next.js Admin Template](https://coreui.io/product/next-js-dashboard-template/)
 * 💪  [CoreUI Pro Vue Admin Template](https://coreui.io/product/vue-dashboard-template/)
+
+## CoreUI PRO Angular Admin Templates
+
+| Default Theme                                                                                                                                                                      | Light Theme                                                                                                                                                                    |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [![CoreUI PRO Angular Admin Template](https://coreui.io/images/templates/coreui_pro_default_light_dark.webp)](https://coreui.io/product/angular-dashboard-template/?theme=default) | [![CoreUI PRO Angular Admin Template](https://coreui.io/images/templates/coreui_pro_light_light_dark.webp)](https://coreui.io/product/angular-dashboard-template/?theme=light) |
+
+| Modern Theme                                                                                                                                                                             | Bright Theme                                                                                                                                                                    |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [![CoreUI PRO Angular Admin Template](https://coreui.io/images/templates/coreui_pro_default_v3_light_dark.webp)](https://coreui.io/product/angular-dashboard-template/?theme=default-v3) | [![CoreUI PRO React Admin Template](https://coreui.io/images/templates/coreui_pro_light_v3_light_dark.webp)](https://coreui.io/product/angular-dashboard-template/?theme=light) |
+
 
 ## Quick Start
 
@@ -105,10 +114,10 @@ Within the download you'll find the following directories and files, logically g
 coreui-free-angular-admin-template
 ├── src/                         # project root
 │   ├── app/                     # main app directory
-|   │   ├── containers/          # layout containers
-|   |   │   └── default-layout/  # layout containers
-|   |   |       └── _nav.js      # sidebar navigation config
 |   │   ├── icons/               # icons set for the app
+|   │   ├── layout/              # layout 
+|   |   │   └── default-layout/  # layout components
+|   |   |       └── _nav.js      # sidebar navigation config
 |   │   └── views/               # application views
 │   ├── assets/                  # images, icons, etc.
 │   ├── components/              # components for demo only
@@ -215,7 +224,7 @@ Thanks to all the backers and sponsors! Support this project by [becoming a back
 
 ## Copyright and License
 
-copyright 2017-2024 creativeLabs Łukasz Holeczek.   
+copyright 2024 creativeLabs Łukasz Holeczek.   
 
  
 Code released under [the MIT license](https://github.com/coreui/coreui-free-react-admin-template/blob/master/LICENSE).

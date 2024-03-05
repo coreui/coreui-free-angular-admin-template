@@ -5,7 +5,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ButtonModule, CardModule, CollapseModule, GridModule } from '@coreui/angular';
 import { IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from '../../../icons/icon-subset';
-import { DocsComponentsModule } from '../../../../components';
 import { CollapsesComponent } from './collapses.component';
 
 describe('CollapsesComponent', () => {
@@ -15,10 +14,9 @@ describe('CollapsesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CollapsesComponent],
-      imports: [CardModule, CollapseModule, NoopAnimationsModule, GridModule, ButtonModule, DocsComponentsModule, RouterTestingModule],
-      providers: [IconSetService]
-    })
+    imports: [CardModule, CollapseModule, NoopAnimationsModule, GridModule, ButtonModule, RouterTestingModule, CollapsesComponent],
+    providers: [IconSetService]
+})
       .compileComponents();
   });
 

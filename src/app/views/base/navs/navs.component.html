@@ -1,14 +1,11 @@
 <c-row ngPreserveWhitespaces>
   <c-col xs="12">
-    <app-docs-callout href="components/nav" name="Nav"></app-docs-callout>
-  </c-col>
-  <c-col xs="12">
     <c-card class="mb-4">
       <c-card-header>
         <strong>Angular Navs</strong> <small>Base navs</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           The base <code>c-nav</code> component is built with flexbox and provide a strong
           foundation for building all types of navigation components. It includes some style
           overrides (for working with lists), some link padding for larger hit areas, and basic
@@ -17,37 +14,38 @@
         <app-docs-example href="components/nav#base-nav">
           <c-nav>
             <c-nav-item>
-              <a [active]="true" cNavLink routerLink="./">
+              <a [active]="true" cNavLink [routerLink]="[]">
                 Active
               </a>
             </c-nav-item>
             <c-nav-item>
-              <a cNavLink routerLink="./">Link</a>
+              <a cNavLink [routerLink]="[]">Link</a>
             </c-nav-item>
             <c-nav-item>
-              <a cNavLink routerLink="./">Link</a>
+              <a cNavLink [routerLink]="[]">Link</a>
             </c-nav-item>
             <c-nav-item>
-              <a [disabled]="true" cNavLink routerLink="./">
+              <a [disabled]="true" cNavLink [routerLink]="[]">
                 Disabled
               </a>
             </c-nav-item>
           </c-nav>
         </app-docs-example>
-        <p class="text-medium-emphasis small mt-3">
+        <p class="text-body-secondary small mt-3">
           Classes are used throughout, so your markup can be super flexible. Use
           <code>c-nav-item</code> like above, or roll your own with a <code>&lt;c-nav&gt;</code> element. Because
-          the <code>.nav</code> uses <code>display: flex</code>, the <code>cNavLink</code> behaves the same as <code>c-nav-item</code> would, but
+          the <code>.nav</code> uses <code>display: flex</code>, the <code>cNavLink</code> behaves the same as <code>c-nav-item</code>
+          would, but
           without the extra markup.
         </p>
         <app-docs-example href="components/nav#base-nav">
           <c-nav role="navigation">
-            <a [active]="true" cNavLink routerLink="./">
+            <a [active]="true" cNavLink [routerLink]="[]">
               Active
             </a>
-            <a cNavLink routerLink="./">Link</a>
-            <a cNavLink routerLink="./">Link</a>
-            <a [disabled]="true" cNavLink routerLink="./">
+            <a cNavLink [routerLink]="[]">Link</a>
+            <a cNavLink [routerLink]="[]">Link</a>
+            <a [disabled]="true" cNavLink [routerLink]="[]">
               Disabled
             </a>
           </c-nav>
@@ -61,7 +59,7 @@
         <strong>Angular Navs</strong> <small>Horizontal alignment</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Change the horizontal alignment of your nav with
           <a href="https://coreui.io/docs/layout/grid/#horizontal-alignment">
             flexbox utilities
@@ -69,47 +67,47 @@
           . By default, navs are left-aligned, but you can easily change them to center or right
           aligned.
         </p>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Centered with <code>.justify-content-center</code>:
         </p>
         <app-docs-example href="components/nav#horizontal-alignment">
           <c-nav class="justify-content-center">
             <c-nav-item>
-              <a [active]="true" cNavLink routerLink="./">
+              <a [active]="true" cNavLink [routerLink]="[]">
                 Active
               </a>
             </c-nav-item>
             <c-nav-item>
-              <a cNavLink routerLink="./">Link</a>
+              <a cNavLink [routerLink]="[]">Link</a>
             </c-nav-item>
             <c-nav-item>
-              <a cNavLink routerLink="./">Link</a>
+              <a cNavLink [routerLink]="[]">Link</a>
             </c-nav-item>
             <c-nav-item>
-              <a [disabled]="true" cNavLink routerLink="./">
+              <a [disabled]="true" cNavLink [routerLink]="[]">
                 Disabled
               </a>
             </c-nav-item>
           </c-nav>
         </app-docs-example>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Right-aligned with <code>.justify-content-end</code>:
         </p>
         <app-docs-example href="components/nav#base-nav">
           <c-nav class="justify-content-end">
             <c-nav-item>
-              <a [active]="true" cNavLink routerLink="./">
+              <a [active]="true" cNavLink [routerLink]="[]">
                 Active
               </a>
             </c-nav-item>
             <c-nav-item>
-              <a cNavLink routerLink="./">Link</a>
+              <a cNavLink [routerLink]="[]">Link</a>
             </c-nav-item>
             <c-nav-item>
-              <a cNavLink routerLink="./">Link</a>
+              <a cNavLink [routerLink]="[]">Link</a>
             </c-nav-item>
             <c-nav-item>
-              <a [disabled]="true" cNavLink routerLink="./">
+              <a [disabled]="true" cNavLink [routerLink]="[]">
                 Disabled
               </a>
             </c-nav-item>
@@ -124,7 +122,7 @@
         <strong>Angular Navs</strong> <small>Vertical</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Stack your navigation by changing the flex item direction with the
           <code>.flex-column</code> utility. Need to stack them on some viewports but not
           others? Use the responsive versions (e.g., <code>.flex-sm-column</code>).
@@ -132,18 +130,18 @@
         <app-docs-example href="components/nav#vertical">
           <c-nav class="flex-column">
             <c-nav-item>
-              <a [active]="true" cNavLink routerLink="./">
+              <a [active]="true" cNavLink [routerLink]="[]">
                 Active
               </a>
             </c-nav-item>
             <c-nav-item>
-              <a cNavLink routerLink="./">Link</a>
+              <a cNavLink [routerLink]="[]">Link</a>
             </c-nav-item>
             <c-nav-item>
-              <a cNavLink routerLink="./">Link</a>
+              <a cNavLink [routerLink]="[]">Link</a>
             </c-nav-item>
             <c-nav-item>
-              <a [disabled]="true" cNavLink routerLink="./">
+              <a [disabled]="true" cNavLink [routerLink]="[]">
                 Disabled
               </a>
             </c-nav-item>
@@ -158,25 +156,25 @@
         <strong>Angular Navs</strong> <small>Tabs</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Take the basic nav from above and add the <code>variant=&#34;tabs&#34;</code> class
           to generate a tabbed interface
         </p>
         <app-docs-example href="components/nav#tabs">
           <c-nav variant="tabs">
             <c-nav-item>
-              <a [active]="true" cNavLink routerLink="./">
+              <a [active]="true" cNavLink [routerLink]="[]">
                 Active
               </a>
             </c-nav-item>
             <c-nav-item>
-              <a cNavLink routerLink="./">Link</a>
+              <a cNavLink [routerLink]="[]">Link</a>
             </c-nav-item>
             <c-nav-item>
-              <a cNavLink routerLink="./">Link</a>
+              <a cNavLink [routerLink]="[]">Link</a>
             </c-nav-item>
             <c-nav-item>
-              <a [disabled]="true" cNavLink routerLink="./">
+              <a [disabled]="true" cNavLink [routerLink]="[]">
                 Disabled
               </a>
             </c-nav-item>
@@ -191,24 +189,56 @@
         <strong>Angular Navs</strong> <small>Pills</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Take that same HTML, but use <code>variant=&#34;pills&#34;</code> instead:
         </p>
         <app-docs-example href="components/nav#pills">
           <c-nav variant="pills">
             <c-nav-item>
-              <a [active]="true" cNavLink routerLink="./">
+              <a [active]="true" cNavLink [routerLink]="[]">
                 Active
               </a>
             </c-nav-item>
             <c-nav-item>
-              <a cNavLink routerLink="./">Link</a>
+              <a cNavLink [routerLink]="[]">Link</a>
             </c-nav-item>
             <c-nav-item>
-              <a cNavLink routerLink="./">Link</a>
+              <a cNavLink [routerLink]="[]">Link</a>
             </c-nav-item>
             <c-nav-item>
-              <a [disabled]="true" cNavLink routerLink="./">
+              <a [disabled]="true" cNavLink [routerLink]="[]">
+                Disabled
+              </a>
+            </c-nav-item>
+          </c-nav>
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+  </c-col>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Angular Navs</strong> <small>Underline</small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-body-secondary small">
+          Take that same HTML, but use <code>variant=&#34;Underline&#34;</code> instead:
+        </p>
+        <app-docs-example href="components/nav#Underline">
+          <c-nav variant="underline">
+            <c-nav-item>
+              <a [active]="true" cNavLink [routerLink]>
+                Active
+              </a>
+            </c-nav-item>
+            <c-nav-item>
+              <a cNavLink [routerLink]>Link</a>
+            </c-nav-item>
+            <c-nav-item>
+              <a cNavLink [routerLink]>Link</a>
+            </c-nav-item>
+            <c-nav-item>
+              <a [disabled]="true" cNavLink [routerLink]>
                 Disabled
               </a>
             </c-nav-item>
@@ -223,7 +253,7 @@
         <strong>Angular Navs</strong> <small>Fill and justify</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Force your <code>.nav</code>&#39;s contents to extend the full available width one of
           two modifier classes. To proportionately fill all available space with your
           <code>.nav-item</code>s, use <code>layout=&#34;fill&#34;</code>. Notice that all
@@ -232,24 +262,24 @@
         <app-docs-example href="components/nav#fill-and-justify">
           <c-nav layout="fill" variant="pills">
             <c-nav-item>
-              <a [active]="true" cNavLink routerLink="./">
+              <a [active]="true" cNavLink [routerLink]="[]">
                 Active
               </a>
             </c-nav-item>
             <c-nav-item>
-              <a cNavLink routerLink="./">Link</a>
+              <a cNavLink [routerLink]="[]">Link</a>
             </c-nav-item>
             <c-nav-item>
-              <a cNavLink routerLink="./">Link</a>
+              <a cNavLink [routerLink]="[]">Link</a>
             </c-nav-item>
             <c-nav-item>
-              <a [disabled]="true" cNavLink routerLink="./">
+              <a [disabled]="true" cNavLink [routerLink]="[]">
                 Disabled
               </a>
             </c-nav-item>
           </c-nav>
         </app-docs-example>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           For equal-width elements, use <code>layout=&#34;justified&#34;</code>. All horizontal
           space will be occupied by nav links, but unlike the .nav-fill above, every nav item
           will be the same width.
@@ -257,18 +287,18 @@
         <app-docs-example href="components/nav#fill-and-justify">
           <c-nav layout="justified" variant="pills">
             <c-nav-item>
-              <a [active]="true" cNavLink routerLink="./">
+              <a [active]="true" cNavLink [routerLink]="[]">
                 Active
               </a>
             </c-nav-item>
             <c-nav-item>
-              <a cNavLink routerLink="./">Link</a>
+              <a cNavLink [routerLink]="[]">Link</a>
             </c-nav-item>
             <c-nav-item>
-              <a cNavLink routerLink="./">Link</a>
+              <a cNavLink [routerLink]="[]">Link</a>
             </c-nav-item>
             <c-nav-item>
-              <a [disabled]="true" cNavLink routerLink="./">
+              <a [disabled]="true" cNavLink [routerLink]="[]">
                 Disabled
               </a>
             </c-nav-item>
@@ -283,7 +313,7 @@
         <strong>Angular Navs</strong> <small>Working with flex utilities</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           If you need responsive nav variations, consider using a series of
           <a href="https://coreui.io/docs/utilities/flex">flexbox utilities</a>. While more
           verbose, these utilities offer greater customization across responsive breakpoints. In
@@ -292,12 +322,12 @@
         </p>
         <app-docs-example href="components/nav#working-with-flex-utilities">
           <c-nav class="flex-column flex-sm-row" role="navigation" variant="pills">
-            <a [active]="true" cNavLink routerLink="./">
+            <a [active]="true" cNavLink [routerLink]="[]">
               Active
             </a>
-            <a cNavLink routerLink="./">Link</a>
-            <a cNavLink routerLink="./">Link</a>
-            <a [disabled]="true" cNavLink routerLink="./">
+            <a cNavLink [routerLink]="[]">Link</a>
+            <a cNavLink [routerLink]="[]">Link</a>
+            <a [disabled]="true" cNavLink [routerLink]="[]">
               Disabled
             </a>
           </c-nav>
@@ -314,27 +344,33 @@
         <app-docs-example href="components/nav#tabs-with-dropdowns">
           <c-nav variant="tabs">
             <c-nav-item>
-              <a [active]="true" cNavLink routerLink="./">
+              <button [active]="true " cNavLink [routerLink]="[]">
                 Active
-              </a>
+              </button>
             </c-nav-item>
             <c-dropdown variant="nav-item">
-              <a cDropdownToggle href>
+              <button cDropdownToggle href cNavLink>
                 Dropdown button
-              </a>
+              </button>
               <ul cDropdownMenu>
-                <li><a cDropdownItem routerLink="./">Action</a></li>
-                <li><a cDropdownItem routerLink="./">Another action</a></li>
-                <li><a cDropdownItem routerLink="./">Something else here</a></li>
+                <li>
+                  <button cDropdownItem [routerLink]="[]">Action</button>
+                </li>
+                <li>
+                  <button cDropdownItem [routerLink]="[]">Another action</button>
+                </li>
+                <li>
+                  <button cDropdownItem [routerLink]="[]">Something else here</button>
+                </li>
               </ul>
             </c-dropdown>
             <c-nav-item>
-              <a cNavLink routerLink="./">Link</a>
+              <button cNavLink [routerLink]="[]">Link</button>
             </c-nav-item>
             <c-nav-item>
-              <a [disabled]="true" cNavLink routerLink="./">
+              <button [disabled]="true" cNavLink [routerLink]="[]">
                 Disabled
-              </a>
+              </button>
             </c-nav-item>
           </c-nav>
         </app-docs-example>
@@ -350,7 +386,7 @@
         <app-docs-example href="components/nav#pills-with-dropdowns">
           <c-nav variant="pills">
             <c-nav-item>
-              <a [active]="true" cNavLink routerLink="./">
+              <a [active]="true" cNavLink>
                 Active
               </a>
             </c-nav-item>
@@ -359,16 +395,16 @@
                 Dropdown button
               </a>
               <ul cDropdownMenu>
-                <li><a cDropdownItem routerLink="./">Action</a></li>
-                <li><a cDropdownItem routerLink="./">Another action</a></li>
-                <li><a cDropdownItem routerLink="./">Something else here</a></li>
+                <li><a cDropdownItem [routerLink]="[]">Action</a></li>
+                <li><a cDropdownItem [routerLink]="[]">Another action</a></li>
+                <li><a cDropdownItem [routerLink]="[]">Something else here</a></li>
               </ul>
             </c-dropdown>
             <c-nav-item>
-              <a cNavLink routerLink="./">Link</a>
+              <a cNavLink>Link</a>
             </c-nav-item>
             <c-nav-item>
-              <a [disabled]="true" cNavLink routerLink="./">
+              <a [disabled]="true" cNavLink>
                 Disabled
               </a>
             </c-nav-item>

@@ -4,7 +4,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { CardModule, FormModule, GridModule } from '@coreui/angular';
 import { IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from '../../../icons/icon-subset';
-import { DocsComponentsModule } from '../../../../components';
 import { FloatingLabelsComponent } from './floating-labels.component';
 
 describe('FloatingLabelsComponent', () => {
@@ -14,10 +13,9 @@ describe('FloatingLabelsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [FloatingLabelsComponent],
-      imports: [CardModule, GridModule, DocsComponentsModule, RouterTestingModule, FormModule],
-      providers: [IconSetService]
-    })
+    imports: [CardModule, GridModule, RouterTestingModule, FormModule, FloatingLabelsComponent],
+    providers: [IconSetService]
+})
       .compileComponents();
   });
 

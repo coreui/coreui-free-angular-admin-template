@@ -1,9 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+
 // If you want to override variables do it here
 @import "variables";
-
-$enable-ltr: true;
-$enable-rtl: true;
 
 // Import styles with default layout.
 @import "@coreui/coreui/scss/coreui";
@@ -11,13 +9,15 @@ $enable-rtl: true;
 // Import Chart.js custom tooltips styles
 @import "@coreui/chartjs/scss/coreui-chartjs";
 
-@import "layout";
+// Custom styles for this theme
+@import "theme";
 
 // Some temp fixes
-@import "fixes";
+//@import "fixes";
 
-// Prism.js
-@import "examples";
-
-// If you want to add something do it here
+// If you want to add custom CSS you can put it here.
 @import "custom";
+
+// Examples
+// We use those styles to show code examples, you should remove them in your application.
+@import "examples";

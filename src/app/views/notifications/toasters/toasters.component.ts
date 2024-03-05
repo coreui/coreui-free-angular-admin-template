@@ -1,10 +1,33 @@
+import { JsonPipe, NgClass, NgStyle, SlicePipe } from '@angular/common';
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { ReactiveFormsModule, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
-import { ToasterComponent, ToasterPlacement } from '@coreui/angular';
+import {
+  ButtonDirective,
+  CardBodyComponent,
+  CardComponent,
+  CardHeaderComponent,
+  ColComponent,
+  ContainerComponent,
+  FormCheckComponent,
+  FormCheckInputDirective,
+  FormCheckLabelDirective,
+  FormControlDirective,
+  FormDirective,
+  FormSelectDirective,
+  InputGroupComponent,
+  InputGroupTextDirective,
+  RowComponent,
+  TextColorDirective,
+  ToastBodyComponent,
+  ToastComponent,
+  ToasterComponent,
+  ToasterPlacement,
+  ToastHeaderComponent
+} from '@coreui/angular';
 import { AppToastComponent } from './toast-simple/toast.component';
 
 export enum Colors {
@@ -22,7 +45,9 @@ export enum Colors {
 @Component({
   selector: 'app-toasters',
   templateUrl: './toasters.component.html',
-  styleUrls: ['./toasters.component.scss']
+  styleUrls: ['./toasters.component.scss'],
+  standalone: true,
+  imports: [RowComponent, ColComponent, ToasterComponent, NgClass, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, ContainerComponent, ReactiveFormsModule, FormDirective, FormCheckComponent, FormCheckInputDirective, FormCheckLabelDirective, InputGroupComponent, InputGroupTextDirective, FormControlDirective, FormSelectDirective, ButtonDirective, NgStyle, ToastComponent, ToastHeaderComponent, ToastBodyComponent, AppToastComponent, JsonPipe, SlicePipe, TextColorDirective]
 })
 export class ToastersComponent implements OnInit {
 
@@ -36,9 +61,9 @@ export class ToastersComponent implements OnInit {
 
   toasterForm = new UntypedFormGroup({
     autohide: new UntypedFormControl(this.autohide),
-    delay: new UntypedFormControl({value: this.delay, disabled: !this.autohide}),
+    delay: new UntypedFormControl({ value: this.delay, disabled: !this.autohide }),
     position: new UntypedFormControl(this.position),
-    fade: new UntypedFormControl({value: true, disabled: false}),
+    fade: new UntypedFormControl({ value: true, disabled: false }),
     closeButton: new UntypedFormControl(true),
     color: new UntypedFormControl('')
   });
@@ -66,7 +91,7 @@ export class ToastersComponent implements OnInit {
     const toasterPosition = this.viewChildren.filter(item => item.placement === this.toasterForm.value.position);
     toasterPosition.forEach((item) => {
       const title = `Toast ${formValues.color} ${formValues.position}`;
-      const {...props} = {...formValues, title};
+      const { ...props } = { ...formValues, title };
       const componentRef = item.addToast(AppToastComponent, props, {});
       componentRef.instance['closeButton'] = props.closeButton;
     });

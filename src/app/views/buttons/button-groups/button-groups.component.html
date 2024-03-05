@@ -1,8 +1,5 @@
 <c-row ngPreserveWhitespaces>
   <c-col xs="12">
-    <app-docs-callout href="components/button-group" name="Button Group"></app-docs-callout>
-  </c-col>
-  <c-col xs="12">
     <c-card class="mb-4">
       <c-card-header>
         <strong>Angular Button Group</strong> <span>Basic example</span>
@@ -25,13 +22,13 @@
         </p>
         <app-docs-example href="components/button-group">
           <c-button-group>
-            <a [active]="true" cButton color="primary" routerLink="./">
+            <a [active]="true" cButton color="primary" [routerLink]="[]">
               Active link
             </a>
-            <a cButton color="primary" routerLink="./">
+            <a cButton color="primary" [routerLink]="[]">
               Link
             </a>
-            <a cButton color="primary" routerLink="./">
+            <a cButton color="primary" [routerLink]="[]">
               Link
             </a>
           </c-button-group>
@@ -270,7 +267,7 @@
         <strong>Angular Button Group</strong> <span>Nesting</span>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Put a <code>&lt;c-button-group&gt;</code> inside another
           <code>&lt;c-button-group&gt;</code> when you need dropdown menus combined with a series
           of buttons.
@@ -284,11 +281,11 @@
                 Dropdown
               </button>
               <ul cDropdownMenu>
-                <li><a cDropdownItem routerLink="./">Action</a></li>
-                <li><a cDropdownItem routerLink="./">Another action</a></li>
-                <li><a cDropdownItem routerLink="./">Something else here</a></li>
+                <li><a cDropdownItem [routerLink]="[]">Action</a></li>
+                <li><a cDropdownItem [routerLink]="[]">Another action</a></li>
+                <li><a cDropdownItem [routerLink]="[]">Something else here</a></li>
                 <li cDropdownDivider></li>
-                <li><a cDropdownItem routerLink="./">Separated link</a></li>
+                <li><a cDropdownItem [routerLink]="[]">Separated link</a></li>
               </ul>
             </c-dropdown>
           </c-button-group>
@@ -302,7 +299,7 @@
         <strong>Angular Button Group</strong> <span>Vertical variation</span>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Create a set of buttons that appear vertically stacked rather than horizontally.
           <strong>Split button dropdowns are not supported here.</strong>
         </p>
@@ -327,11 +324,11 @@
                 Dropdown
               </button>
               <ul cDropdownMenu>
-                <li><a cDropdownItem routerLink="./">Action</a></li>
-                <li><a cDropdownItem routerLink="./">Another action</a></li>
-                <li><a cDropdownItem routerLink="./">Something else here</a></li>
+                <li><a cDropdownItem [routerLink]="[]">Action</a></li>
+                <li><a cDropdownItem [routerLink]="[]">Another action</a></li>
+                <li><a cDropdownItem [routerLink]="[]">Something else here</a></li>
                 <li cDropdownDivider></li>
-                <li><a cDropdownItem routerLink="./">Separated link</a></li>
+                <li><a cDropdownItem [routerLink]="[]">Separated link</a></li>
               </ul>
             </c-dropdown>
             <button cButton color="primary">Button</button>
@@ -341,11 +338,11 @@
                 Dropdown
               </button>
               <ul cDropdownMenu>
-                <li><a cDropdownItem routerLink="./">Action</a></li>
-                <li><a cDropdownItem routerLink="./">Another action</a></li>
-                <li><a cDropdownItem routerLink="./">Something else here</a></li>
+                <li><a cDropdownItem [routerLink]="[]">Action</a></li>
+                <li><a cDropdownItem [routerLink]="[]">Another action</a></li>
+                <li><a cDropdownItem [routerLink]="[]">Something else here</a></li>
                 <li cDropdownDivider></li>
-                <li><a cDropdownItem routerLink="./">Separated link</a></li>
+                <li><a cDropdownItem [routerLink]="[]">Separated link</a></li>
               </ul>
             </c-dropdown>
             <c-dropdown placement="right-start" variant="btn-group">
@@ -353,11 +350,11 @@
                 Dropdown
               </button>
               <ul cDropdownMenu dark>
-                <li><a cDropdownItem routerLink="./">Action</a></li>
-                <li><a cDropdownItem routerLink="./">Another action</a></li>
-                <li><a cDropdownItem routerLink="./">Something else here</a></li>
+                <li><a cDropdownItem [routerLink]="[]">Action</a></li>
+                <li><a cDropdownItem [routerLink]="[]">Another action</a></li>
+                <li><a cDropdownItem [routerLink]="[]">Something else here</a></li>
                 <li cDropdownDivider></li>
-                <li><a cDropdownItem routerLink="./">Separated link</a></li>
+                <li><a cDropdownItem [routerLink]="[]">Separated link</a></li>
               </ul>
             </c-dropdown>
             <c-dropdown variant="btn-group">
@@ -365,11 +362,11 @@
                 Dropdown
               </button>
               <ul cDropdownMenu>
-                <li><a cDropdownItem routerLink="./">Action</a></li>
-                <li><a cDropdownItem routerLink="./">Another action</a></li>
-                <li><a cDropdownItem routerLink="./">Something else here</a></li>
+                <li><a cDropdownItem [routerLink]="[]">Action</a></li>
+                <li><a cDropdownItem [routerLink]="[]">Another action</a></li>
+                <li><a cDropdownItem [routerLink]="[]">Something else here</a></li>
                 <li cDropdownDivider></li>
-                <li><a cDropdownItem routerLink="./">Separated link</a></li>
+                <li><a cDropdownItem [routerLink]="[]">Separated link</a></li>
               </ul>
             </c-dropdown>
           </c-button-group>

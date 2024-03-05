@@ -1,7 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
-
+import { DOCUMENT, NgStyle } from '@angular/common';
+import { Component, DestroyRef, inject, OnInit, Renderer2, signal, WritableSignal } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { getStyle } from '@coreui/utils';
 import { DashboardChartsData, IChartProps } from './dashboard-charts-data';
+import { WidgetsBrandComponent } from '../widgets/widgets-brand/widgets-brand.component';
+import { ChartjsComponent } from '@coreui/angular-chartjs';
+import { IconDirective } from '@coreui/icons-angular';
+import { TextColorDirective, CardComponent, CardBodyComponent, RowComponent, ColComponent, ButtonDirective, ButtonGroupComponent, FormCheckLabelDirective, CardFooterComponent, GutterDirective, ProgressBarDirective, ProgressComponent, CardHeaderComponent, TableDirective, AvatarComponent } from '@coreui/angular';
+import { WidgetsDropdownComponent } from '../widgets/widgets-dropdown/widgets-dropdown.component';
 
 interface IUser {
   name: string;
@@ -18,12 +24,17 @@ interface IUser {
 }
 
 @Component({
-  templateUrl: 'dashboard.component.html',
-  styleUrls: ['dashboard.component.scss']
+    templateUrl: 'dashboard.component.html',
+    styleUrls: ['dashboard.component.scss'],
+    standalone: true,
+    imports: [WidgetsDropdownComponent, TextColorDirective, CardComponent, CardBodyComponent, RowComponent, ColComponent, ButtonDirective, IconDirective, ReactiveFormsModule, ButtonGroupComponent, FormCheckLabelDirective, ChartjsComponent, NgStyle, CardFooterComponent, GutterDirective, ProgressBarDirective, ProgressComponent, WidgetsBrandComponent, CardHeaderComponent, TableDirective, AvatarComponent]
 })
 export class DashboardComponent implements OnInit {
-  constructor(private chartsData: DashboardChartsData) {
-  }
+
+  readonly #destroyRef: DestroyRef = inject(DestroyRef);
+  readonly #document: Document = inject(DOCUMENT);
+  readonly #renderer: Renderer2 = inject(Renderer2);
+  readonly #chartsData: DashboardChartsData = inject(DashboardChartsData);
 
   public users: IUser[] = [
     {
@@ -35,7 +46,7 @@ export class DashboardComponent implements OnInit {
       period: 'Jun 11, 2021 - Jul 10, 2021',
       payment: 'Mastercard',
       activity: '10 sec ago',
-      avatar: './assets/img/avatars/1.jpg',
+      avatar: './assets/images/avatars/1.jpg',
       status: 'success',
       color: 'success'
     },
@@ -48,7 +59,7 @@ export class DashboardComponent implements OnInit {
       period: 'Jun 11, 2021 - Jul 10, 2021',
       payment: 'Visa',
       activity: '5 minutes ago',
-      avatar: './assets/img/avatars/2.jpg',
+      avatar: './assets/images/avatars/2.jpg',
       status: 'danger',
       color: 'info'
     },
@@ -61,7 +72,7 @@ export class DashboardComponent implements OnInit {
       period: 'Jun 11, 2021 - Jul 10, 2021',
       payment: 'Stripe',
       activity: '1 hour ago',
-      avatar: './assets/img/avatars/3.jpg',
+      avatar: './assets/images/avatars/3.jpg',
       status: 'warning',
       color: 'warning'
     },
@@ -74,7 +85,7 @@ export class DashboardComponent implements OnInit {
       period: 'Jun 11, 2021 - Jul 10, 2021',
       payment: 'Paypal',
       activity: 'Last month',
-      avatar: './assets/img/avatars/4.jpg',
+      avatar: './assets/images/avatars/4.jpg',
       status: 'secondary',
       color: 'danger'
     },
@@ -87,7 +98,7 @@ export class DashboardComponent implements OnInit {
       period: 'Jun 11, 2021 - Jul 10, 2021',
       payment: 'ApplePay',
       activity: 'Last week',
-      avatar: './assets/img/avatars/5.jpg',
+      avatar: './assets/images/avatars/5.jpg',
       status: 'success',
       color: 'primary'
     },
@@ -100,28 +111,58 @@ export class DashboardComponent implements OnInit {
       period: 'Jun 11, 2021 - Jul 10, 2021',
       payment: 'Amex',
       activity: 'Yesterday',
-      avatar: './assets/img/avatars/6.jpg',
+      avatar: './assets/images/avatars/6.jpg',
       status: 'info',
       color: 'dark'
     }
   ];
   public mainChart: IChartProps = {};
+  public mainChartRef: WritableSignal<any> = signal(undefined);
   public chart: Array<IChartProps> = [];
-  public trafficRadioGroup = new UntypedFormGroup({
-    trafficRadio: new UntypedFormControl('Month')
+  public trafficRadioGroup = new FormGroup({
+    trafficRadio: new FormControl('Month')
   });
 
   ngOnInit(): void {
     this.initCharts();
+    this.updateChartOnColorModeChange();
   }
 
   initCharts(): void {
-    this.mainChart = this.chartsData.mainChart;
+    this.mainChart = this.#chartsData.mainChart;
   }
 
   setTrafficPeriod(value: string): void {
     this.trafficRadioGroup.setValue({ trafficRadio: value });
-    this.chartsData.initMainChart(value);
+    this.#chartsData.initMainChart(value);
     this.initCharts();
+  }
+
+  handleChartRef($chartRef: any) {
+    if ($chartRef) {
+      this.mainChartRef.set($chartRef);
+    }
+  }
+
+  updateChartOnColorModeChange() {
+    const unListen = this.#renderer.listen(this.#document.documentElement, 'ColorSchemeChange', () => {
+      if (this.mainChartRef()) {
+        setTimeout(() => {
+          const scales = { ...this.mainChart.options.scales };
+          scales.x.grid.borderColor = getStyle('--cui-border-color-translucent');
+          scales.x.grid.color = getStyle('--cui-border-color-translucent');
+          scales.x.ticks.color = getStyle('--cui-body-color');
+          scales.y.border.color = getStyle('--cui-border-color-translucent');
+          scales.y.grid.borderColor = getStyle('--cui-border-color-translucent');
+          scales.y.grid.color = getStyle('--cui-border-color-translucent');
+          scales.y.ticks.color = getStyle('--cui-body-color');
+          this.mainChartRef().options.scales = { ...scales };
+          this.mainChartRef().update();
+        });
+      }
+    });
+    this.#destroyRef.onDestroy(() => {
+      unListen();
+    });
   }
 }

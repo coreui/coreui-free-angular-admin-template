@@ -1,14 +1,11 @@
 <c-row ngPreserveWhitespaces>
   <c-col xs="12">
-    <app-docs-callout href="components/card" name="Card"></app-docs-callout>
-  </c-col>
-  <c-col xs="12">
     <c-card class="mb-4">
       <c-card-header>
         <strong>Angular Card</strong>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Cards are built with as little markup and styles as possible but still
           manage to deliver a bunch of control and customization. Built with
           flexbox, they offer easy alignment and mix well with other CoreUI
@@ -20,14 +17,14 @@
           as needed. They have no fixed width to start, so they&#39;ll fill the
           full width of its parent.
         </p>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Below is an example of a basic card with mixed content and a fixed
           width. Cards have no fixed width to start, so they&#39;ll naturally
           fill the full width of its parent element.
         </p>
         <app-docs-example href="components/card">
           <c-card style="width: 18rem;">
-            <ng-container *ngTemplateOutlet="imgPlaceholderTemplate"></ng-container>
+            <ng-container *ngTemplateOutlet="imgAngularTemplate" />
             <c-card-body>
               <h5 cCardTitle>Card title</h5>
               <p cCardText>
@@ -46,7 +43,7 @@
         <strong>Angular Card</strong> <small>Body</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           The main block of a card is the <code>&lt;c-card-body&gt;</code>. Use
           it whenever you need a padded section within a card.
         </p>
@@ -64,14 +61,14 @@
         <strong>Angular Card</strong> <small>Titles, text, and links</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Card titles are managed by <code>cCardTitle</code> directive for
           <code>&lt;h*&gt;</code>. Identically, links are attached and collected
           next to each other by <code>cCardLink</code> directive for
           <code>&lt;a&gt;</code> tag. Subtitles are handled by
           <code>cCardSubtitle</code> directive.
         </p>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Store <code>cCardTitle</code> and the <code>cCardSubtitle</code> items
           in a <code>&lt;c-card-body&gt;</code>. The card title, and subtitle
           are arranged properly.
@@ -80,15 +77,15 @@
           <c-card style="width: 18rem;">
             <c-card-body>
               <h5 cCardTitle>Card title</h5>
-              <h6 cCardSubtitle class="mb-2 text-medium-emphasis">
+              <h6 cCardSubtitle class="mb-2 text-body-secondary">
                 Card subtitle
               </h6>
               <p cCardText>
                 Some quick example text to build on the card title and make up the
                 bulk of the card content.
               </p>
-              <a cCardLink>Card link</a>
-              <a cCardLink>Another link</a>
+              <a cCardLink [routerLink]="[]">Card link</a>
+              <a cCardLink [routerLink]="[]">Another link</a>
             </c-card-body>
           </c-card>
         </app-docs-example>
@@ -101,7 +98,7 @@
         <strong>Angular Card</strong> <small>Images</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           <code>cCardImg="top"</code> places a picture to the top of the card.
           With <code>cCardText</code>, text can be added to the card. Text
           within <code>cCardText</code> can additionally be styled with the
@@ -109,7 +106,7 @@
         </p>
         <app-docs-example href="components/card/#images">
           <c-card style="width: 18rem;">
-            <ng-container *ngTemplateOutlet="imgPlaceholderTemplate"></ng-container>
+            <ng-container *ngTemplateOutlet="imgAngularTemplate" />
             <c-card-body>
               <p cCardText>
                 Some quick example <strong>text</strong> to build on the card
@@ -127,7 +124,7 @@
         <strong>Angular Card</strong> <small>list groups</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Create lists of content in a card with a flush list group.
         </p>
         <app-docs-example href="components/card/#list-groups">
@@ -172,14 +169,14 @@
         <strong>Angular Card</strong> <small>kitchen sink</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Combine and match many content types to build the card you need, or
           throw everything in there. Shown below are image styles, blocks, text
           styles, and a list group—all wrapped in a fixed-width card.
         </p>
         <app-docs-example href="components/card/#kitchen-sink">
           <c-card style="width: 18rem;">
-            <ng-container *ngTemplateOutlet="imgPlaceholderTemplate"></ng-container>
+            <ng-container *ngTemplateOutlet="imgAngularTemplate" />
             <c-card-body>
               <h5 cCardTitle>Card title</h5>
               <p cCardText>
@@ -193,8 +190,8 @@
               <li cListGroupItem>Vestibulum at eros</li>
             </ul>
             <c-card-body>
-              <a cCardLink>Card link</a>
-              <a cCardLink>Another link</a>
+              <a cCardLink [routerLink]="[]">Card link</a>
+              <a cCardLink [routerLink]="[]">Another link</a>
             </c-card-body>
           </c-card>
         </app-docs-example>
@@ -207,32 +204,32 @@
         <strong>Card</strong> <small>Header and footer</small>
       </c-card-header>
       <c-card-body>
-        <c-row>
+        <c-row class="g-4">
           <c-col>
-            <p class="text-medium-emphasis small">
+            <p class="text-body-secondary small">
               Add an optional header and/or footer within a card.
             </p>
-            <app-docs-example href="components/card/#header-and-footer">
-              <c-card class="mb-4">
-                <c-card-header>Header</c-card-header>
+            <app-docs-example href="components/card/#header-and-footer" class="mb-1">
+              <c-card>
+                <c-card-header>Featured</c-card-header>
                 <c-card-body>
-                  <ng-container *ngTemplateOutlet="cardBodyTemplate"></ng-container>
+                  <ng-container *ngTemplateOutlet="headerAndFooterTemplate" />
                 </c-card-body>
               </c-card>
             </app-docs-example>
           </c-col>
           <c-col>
-            <p class="text-medium-emphasis small">
+            <p class="text-body-secondary small">
               Card headers can be styled by adding ex.
               <code>&#34;h5&#34;</code>.
             </p>
-            <app-docs-example href="components/card/#header-and-footer">
-              <c-card class="mb-4">
+            <app-docs-example href="components/card/#header-and-footer" class="mb-1">
+              <c-card>
                 <c-card-header>
                   <h5>Header</h5>
                 </c-card-header>
                 <c-card-body>
-                  <ng-container *ngTemplateOutlet="cardBodyTemplate"></ng-container>
+                  <ng-container *ngTemplateOutlet="headerAndFooterTemplate" />
                 </c-card-body>
               </c-card>
             </app-docs-example>
@@ -241,7 +238,7 @@
         <c-row>
           <c-col>
             <app-docs-example href="components/card/#header-and-footer">
-              <c-card class="mb-4">
+              <c-card>
                 <c-card-header>Quote</c-card-header>
                 <c-card-body>
                   <blockquote class="blockquote mb-0">
@@ -260,15 +257,14 @@
           </c-col>
           <c-col>
             <app-docs-example href="components/card/#header-and-footer">
-              <c-card class="text-center mb-4">
+              <c-card class="text-center">
                 <c-card-header>Header</c-card-header>
                 <c-card-body>
-                  <ng-container *ngTemplateOutlet="cardBodyTemplate"></ng-container>
+                  <ng-container *ngTemplateOutlet="cardBodyTemplate" />
                 </c-card-body>
-                <c-card-footer class="text-medium-emphasis"
-                >2 days ago
-                </c-card-footer
-                >
+                <c-card-footer class="text-body-secondary">
+                  2 days ago
+                </c-card-footer>
               </c-card>
             </app-docs-example>
           </c-col>
@@ -282,61 +278,58 @@
         <strong>Angular Card</strong> <small>Sizing</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Cards assume no specific <code>width</code> to start, so they&#39;ll
           be 100% wide unless otherwise stated. You can adjust this as required
           with custom CSS, grid classes, grid Sass mixins, or services.
         </p>
         <h3>Using grid markup</h3>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Using the grid, wrap cards in columns and rows as needed.
         </p>
-        <app-docs-example href="components/card/#sizing">
-          <c-row>
+        <app-docs-example href="components/card/#sizing" class="mb-2">
+          <c-row class="g-4">
             <c-col sm="6">
-              <c-card class="mb-4">
+              <c-card>
                 <c-card-body>
-                  <ng-container *ngTemplateOutlet="cardBodyTemplate"></ng-container>
+                  <ng-container *ngTemplateOutlet="cardBodyTemplate" />
                 </c-card-body>
               </c-card>
             </c-col>
             <c-col sm="6">
-              <c-card class="mb-4">
+              <c-card>
                 <c-card-body>
-                  <ng-container *ngTemplateOutlet="cardBodyTemplate"></ng-container>
+                  <ng-container *ngTemplateOutlet="cardBodyTemplate" />
                 </c-card-body>
               </c-card>
             </c-col>
           </c-row>
         </app-docs-example>
         <h3>Using utilities</h3>
-        <p class="text-medium-emphasis small">
-          Use some of
-          <a href="https://coreui.io/docs/utilities/sizing/"
-          >available sizing utilities</a
-          >
-          to rapidly set a card width.
+        <p class="text-body-secondary small">
+          Use some of <a href="https://coreui.io/docs/utilities/sizing/">available sizing utilities</a> to rapidly set a
+          card width.
         </p>
-        <app-docs-example href="components/card/#sizing">
-          <c-card class="w-75 mb-4">
+        <app-docs-example href="components/card/#sizing" class="mb-2">
+          <c-card class="w-75 mb-2">
             <c-card-body>
-              <ng-container *ngTemplateOutlet="cardBodyTemplate"></ng-container>
+              <ng-container *ngTemplateOutlet="cardBodyTemplate" />
             </c-card-body>
           </c-card>
-          <c-card class="w-50 mb-4">
+          <c-card class="w-50">
             <c-card-body>
-              <ng-container *ngTemplateOutlet="cardBodyTemplate"></ng-container>
+              <ng-container *ngTemplateOutlet="cardBodyTemplate" />
             </c-card-body>
           </c-card>
         </app-docs-example>
         <strong>Using custom CSS</strong>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Use custom CSS in your stylesheets or as inline styles to set a width.
         </p>
         <app-docs-example href="components/card/#sizing">
-          <c-card class="mb-4" style="width: 18rem;">
+          <c-card class="mb-2" style="width: 18rem;">
             <c-card-body>
-              <ng-container *ngTemplateOutlet="cardBodyTemplate"></ng-container>
+              <ng-container *ngTemplateOutlet="cardBodyTemplate" />
             </c-card-body>
           </c-card>
         </app-docs-example>
@@ -349,7 +342,7 @@
         <strong>Card</strong> <small>Text alignment</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           You can instantly change the text arrangement of any card—in its whole
           or specific parts—with
           <a href="https://coreui.io/docs/utilities/text/#text-alignment"
@@ -358,25 +351,25 @@
           classes.
         </p>
         <app-docs-example href="components/card/#text-alignment">
-          <c-row>
+          <c-row class="g-4">
             <c-col>
-              <c-card class="mb-4">
+              <c-card>
                 <c-card-body>
-                  <ng-container *ngTemplateOutlet="cardBodyTemplate"></ng-container>
+                  <ng-container *ngTemplateOutlet="cardBodyTemplate" />
                 </c-card-body>
               </c-card>
             </c-col>
             <c-col>
-              <c-card class="text-center mb-4">
+              <c-card class="text-center">
                 <c-card-body>
-                  <ng-container *ngTemplateOutlet="cardBodyTemplate"></ng-container>
+                  <ng-container *ngTemplateOutlet="cardBodyTemplate" />
                 </c-card-body>
               </c-card>
             </c-col>
             <c-col>
-              <c-card class="text-end mb-4">
+              <c-card class="text-end">
                 <c-card-body>
-                  <ng-container *ngTemplateOutlet="cardBodyTemplate"></ng-container>
+                  <ng-container *ngTemplateOutlet="cardBodyTemplate" />
                 </c-card-body>
               </c-card>
             </c-col>
@@ -391,59 +384,59 @@
         <strong>Card</strong> <small>Navigation</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Add some navigation to a <code>&lt;c-card-header&gt;</code> with our
           <code>&lt;c-nav&gt;</code> component.
         </p>
         <c-row>
           <c-col>
             <app-docs-example href="components/card/##navigation">
-              <c-card class="text-center mb-4">
+              <c-card class="text-center">
                 <c-card-header>
                   <c-nav class="card-header-tabs" variant="tabs">
                     <c-nav-item>
-                      <a [active]="true" cNavLink routerLink="./">
+                      <a [active]="true" cNavLink [routerLink]="[]">
                         Active
                       </a>
                     </c-nav-item>
                     <c-nav-item>
-                      <a cNavLink routerLink="./">Link</a>
+                      <a cNavLink [routerLink]="[]">Link</a>
                     </c-nav-item>
                     <c-nav-item>
-                      <a cNavLink disabled routerLink="./">
+                      <a cNavLink disabled [routerLink]="[]">
                         Disabled
                       </a>
                     </c-nav-item>
                   </c-nav>
                 </c-card-header>
                 <c-card-body>
-                  <ng-container *ngTemplateOutlet="cardBodyTemplate"></ng-container>
+                  <ng-container *ngTemplateOutlet="cardBodyTemplate" />
                 </c-card-body>
               </c-card>
             </app-docs-example>
           </c-col>
           <c-col>
             <app-docs-example href="components/card/##navigation">
-              <c-card class="text-center mb-4">
+              <c-card class="text-center">
                 <c-card-header>
                   <c-nav class="card-header-pills" variant="pills">
                     <c-nav-item>
-                      <a [active]="true" cNavLink routerLink="./">
+                      <a [active]="true" cNavLink [routerLink]="[]">
                         Active
                       </a>
                     </c-nav-item>
                     <c-nav-item>
-                      <a cNavLink routerLink="./">Link</a>
+                      <a cNavLink [routerLink]="[]">Link</a>
                     </c-nav-item>
                     <c-nav-item>
-                      <a cNavLink disabled routerLink="./">
+                      <a cNavLink disabled [routerLink]="[]">
                         Disabled
                       </a>
                     </c-nav-item>
                   </c-nav>
                 </c-card-header>
                 <c-card-body>
-                  <ng-container *ngTemplateOutlet="cardBodyTemplate"></ng-container>
+                  <ng-container *ngTemplateOutlet="cardBodyTemplate" />
                 </c-card-body>
               </c-card>
             </app-docs-example>
@@ -458,7 +451,7 @@
         <strong>Card</strong> <small>Image caps</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Similar to headers and footers, cards can include top and bottom &#34;image
           caps&#34;—images at the top or bottom of a card.
         </p>
@@ -466,7 +459,7 @@
           <c-row>
             <c-col lg="6">
               <c-card class="mb-3">
-                <ng-container *ngTemplateOutlet="imgPlaceholderTemplate"></ng-container>
+                <ng-container *ngTemplateOutlet="imgAngularTemplate" />
                 <c-card-body>
                   <h5 cCardTitle>Card title</h5>
                   <p cCardText>
@@ -474,7 +467,7 @@
                     additional content. This content is a little bit longer.
                   </p>
                   <p cCardText>
-                    <small class="text-medium-emphasis">Last updated 3 mins ago</small>
+                    <small class="text-body-secondary">Last updated 3 mins ago</small>
                   </p>
                 </c-card-body>
               </c-card>
@@ -488,10 +481,10 @@
                     additional content. This content is a little bit longer.
                   </p>
                   <p cCardText>
-                    <small class="text-medium-emphasis">Last updated 3 mins ago</small>
+                    <small class="text-body-secondary">Last updated 3 mins ago</small>
                   </p>
                 </c-card-body>
-                <ng-container *ngTemplateOutlet="imgPlaceholderTemplate; context: {$implicit: 'bottom'}"></ng-container>
+                <ng-container *ngTemplateOutlet="imgAngularTemplate; context: {$implicit: 'bottom'}" />
               </c-card>
             </c-col>
           </c-row>
@@ -505,58 +498,62 @@
         <strong>Card</strong> <small>Styles</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Cards include various options for customizing their backgrounds, borders, and color.
         </p>
         <h3>Background and color</h3>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Use <code>color</code> property to change the appearance of a card.
         </p>
-        <app-docs-example href="components/card/#background-and-color">
+        <app-docs-example href="components/card/#background-and-color" class="mb-1">
           <c-row>
-            <c-col *ngFor="let item of colors; index as i" lg="4">
-              <c-card [color]="item.color"
-                      [textColor]="item.color === 'warning' || item.color === 'light' ? '' :  'white'"
-                      class="mb-3">
-                <c-card-header>Header</c-card-header>
-                <c-card-body class="bg">
-                  <h5 cCardTitle>{{item.color}} card title</h5>
-                  <p cCardText>
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card&#39;s content.
-                  </p>
-                  <button [color]="item.color" cButton class="shadow">Go somewhere</button>
-                </c-card-body>
-              </c-card>
-            </c-col>
+            @for (item of colors; track item; let i = $index) {
+              <c-col lg="4">
+                <c-card [color]="item.color"
+                        [textColor]="item.color === 'warning' || item.color === 'light' ? 'dark' : 'white'"
+                        class="mb-3">
+                  <c-card-header>Header</c-card-header>
+                  <c-card-body class="bg-gradient">
+                    <h5 cCardTitle>{{ item.color }} card title</h5>
+                    <p cCardText>
+                      Some quick example text to build on the card title and make up the bulk of
+                      the card&#39;s content.
+                    </p>
+                    <button [color]="item.color" cButton class="shadow">Go somewhere</button>
+                  </c-card-body>
+                </c-card>
+              </c-col>
+            }
           </c-row>
         </app-docs-example>
         <h3>Border</h3>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Use <a href="https://coreui.io/docs/utilities/borders/">border utilities</a> to change
           just the <code>border-color</code> of a card. Note that you can set
           <code>textColor</code> property on the <code>&lt;c-card&gt;</code> or a subset of the
           card&#39;s contents as shown below.
         </p>
-        <app-docs-example href="components/card/#border">
-          <c-row>
-            <c-col *ngFor="let item of colors; index as i" lg="4">
-              <c-card [cBorder]="item.color" [textColor]="item.textColor" class="mb-3">
-                <c-card-header>Header</c-card-header>
-                <c-card-body>
-                  <h5 cCardTitle>{{item.color}} card title</h5>
-                  <p cCardText>
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card&#39;s content.
-                  </p>
-                  <button [color]="item.color" cButton>Go somewhere</button>
-                </c-card-body>
-              </c-card>
-            </c-col>
+        <app-docs-example href="components/card/#border" class="mb-1">
+          <c-row class="g-4">
+            @for (item of colors; track item; let i = $index) {
+              <c-col lg="4">
+                <c-card [cBorder]="item.color" [textColor]="item?.textColor ?? ''">
+                  <c-card-header>Header</c-card-header>
+                  <c-card-body>
+                    <h5 cCardTitle>{{ item.color }} card title</h5>
+                    <p cCardText>
+                      Some quick example text to build on the card title and make up the bulk of
+                      the card&#39;s content.
+                    </p>
+                    <button [color]="item.color" cButton>Go somewhere</button>
+                  </c-card-body>
+                </c-card>
+              </c-col>
+            }
           </c-row>
         </app-docs-example>
         <h3>Top border</h3>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Use <a href="https://coreui.io/docs/utilities/borders/">border utilities</a> to change
           just the <code>border-color</code> of a card. Note that you can set
           <code>textColor</code> property on the <code>&lt;c-card&gt;</code> or a subset of the
@@ -564,11 +561,12 @@
         </p>
         <app-docs-example href="components/card/#top-border">
           <c-row>
-            <c-col *ngFor="let item of colors; index as i" lg="4">
-              <c-card [cBorder]="{top: {color: item.color, width: 3}}" [textColor]="item.textColor" class="mb-3">
+            @for (item of colors; track item; let i = $index) {
+            <c-col lg="4">
+              <c-card [cBorder]="{top: {color: item.color, width: 3}}" [textColor]="item?.textColor ?? ''" class="mb-3">
                 <c-card-header>Header</c-card-header>
                 <c-card-body>
-                  <h5 cCardTitle>{{item.color}} card title</h5>
+                  <h5 cCardTitle>{{ item.color }} card title</h5>
                   <p cCardText>
                     Some quick example text to build on the card title and make up the bulk of
                     the card&#39;s content.
@@ -577,19 +575,19 @@
                 </c-card-body>
               </c-card>
             </c-col>
+            }
           </c-row>
         </app-docs-example>
       </c-card-body>
     </c-card>
   </c-col>
-  <!--***-->
   <c-col xs="12">
     <c-card class="mb-4">
       <c-card-header>
         <strong>Card</strong> <small>Card groups</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Use card groups to render cards as a single, attached element with equal width and
           height columns. Card groups start off stacked and use <code>display: flex;</code> to
           become attached with uniform dimensions starting at the <code>sm</code> breakpoint.
@@ -597,7 +595,7 @@
         <app-docs-example href="components/card/#card-groups">
           <c-card-group class="mb-4">
             <c-card>
-              <ng-container *ngTemplateOutlet="imgPlaceholderTemplate"></ng-container>
+              <ng-container *ngTemplateOutlet="imgAngularTemplate" />
               <c-card-body>
                 <h5 cCardTitle>Card title</h5>
                 <p cCardText>
@@ -605,12 +603,12 @@
                   additional content. This content is a little bit longer.
                 </p>
                 <p cCardText>
-                  <small class="text-medium-emphasis">Last updated 3 mins ago</small>
+                  <small class="text-body-secondary">Last updated 3 mins ago</small>
                 </p>
               </c-card-body>
             </c-card>
             <c-card>
-              <ng-container *ngTemplateOutlet="imgPlaceholderTemplate"></ng-container>
+              <ng-container *ngTemplateOutlet="imgAngularTemplate" />
               <c-card-body>
                 <h5 cCardTitle>Card title</h5>
                 <p cCardText>
@@ -618,12 +616,12 @@
                   content.
                 </p>
                 <p cCardText>
-                  <small class="text-medium-emphasis">Last updated 3 mins ago</small>
+                  <small class="text-body-secondary">Last updated 3 mins ago</small>
                 </p>
               </c-card-body>
             </c-card>
             <c-card>
-              <ng-container *ngTemplateOutlet="imgPlaceholderTemplate"></ng-container>
+              <ng-container *ngTemplateOutlet="imgAngularTemplate" />
               <c-card-body>
                 <h5 cCardTitle>Card title</h5>
                 <p cCardText>
@@ -632,19 +630,19 @@
                   that equal height action.
                 </p>
                 <p cCardText>
-                  <small class="text-medium-emphasis">Last updated 3 mins ago</small>
+                  <small class="text-body-secondary">Last updated 3 mins ago</small>
                 </p>
               </c-card-body>
             </c-card>
           </c-card-group>
         </app-docs-example>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           When using card groups with footers, their content will automatically line up.
         </p>
         <app-docs-example href="components/card/#card-groups">
           <c-card-group class="mb-4">
             <c-card>
-              <ng-container *ngTemplateOutlet="imgPlaceholderTemplate"></ng-container>
+              <ng-container *ngTemplateOutlet="imgAngularTemplate" />
               <c-card-body>
                 <h5 cCardTitle>Card title</h5>
                 <p cCardText>
@@ -653,11 +651,11 @@
                 </p>
               </c-card-body>
               <c-card-footer>
-                <small class="text-medium-emphasis">Last updated 3 mins ago</small>
+                <small class="text-body-secondary">Last updated 3 mins ago</small>
               </c-card-footer>
             </c-card>
             <c-card>
-              <ng-container *ngTemplateOutlet="imgPlaceholderTemplate"></ng-container>
+              <ng-container *ngTemplateOutlet="imgAngularTemplate" />
               <c-card-body>
                 <h5 cCardTitle>Card title</h5>
                 <p cCardText>
@@ -666,11 +664,11 @@
                 </p>
               </c-card-body>
               <c-card-footer>
-                <small class="text-medium-emphasis">Last updated 3 mins ago</small>
+                <small class="text-body-secondary">Last updated 3 mins ago</small>
               </c-card-footer>
             </c-card>
             <c-card>
-              <ng-container *ngTemplateOutlet="imgPlaceholderTemplate"></ng-container>
+              <ng-container *ngTemplateOutlet="imgAngularTemplate" />
               <c-card-body>
                 <h5 cCardTitle>Card title</h5>
                 <p cCardText>
@@ -680,7 +678,7 @@
                 </p>
               </c-card-body>
               <c-card-footer>
-                <small class="text-medium-emphasis">Last updated 3 mins ago</small>
+                <small class="text-body-secondary">Last updated 3 mins ago</small>
               </c-card-footer>
             </c-card>
           </c-card-group>
@@ -694,7 +692,7 @@
         <strong>Card</strong> <small>Grid cards</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Use the <code>c-row</code> component and set <code>xs|sm|md|lg|xl|xxl</code> property
           to control how many grid columns (wrapped around your cards) you show per row. For
           example <code>xs="1"</code> laying out the cards on one column, and <code>md="1"</code> splitting
@@ -704,7 +702,7 @@
           <c-row [gutter]="{g: 4}" class="mb-3" [md]="2" [xs]="1">
             <c-col>
               <c-card>
-                <ng-container *ngTemplateOutlet="imgPlaceholderTemplate"></ng-container>
+                <ng-container *ngTemplateOutlet="imgAngularTemplate" />
                 <c-card-body>
                   <h5 cCardTitle>Card title</h5>
                   <p cCardText>
@@ -713,13 +711,13 @@
                   </p>
                 </c-card-body>
                 <c-card-footer>
-                  <small class="text-medium-emphasis">Last updated 3 mins ago</small>
+                  <small class="text-body-secondary">Last updated 3 mins ago</small>
                 </c-card-footer>
               </c-card>
             </c-col>
             <c-col>
               <c-card>
-                <ng-container *ngTemplateOutlet="imgPlaceholderTemplate"></ng-container>
+                <ng-container *ngTemplateOutlet="imgAngularTemplate" />
                 <c-card-body>
                   <h5 cCardTitle>Card title</h5>
                   <p cCardText>
@@ -728,13 +726,13 @@
                   </p>
                 </c-card-body>
                 <c-card-footer>
-                  <small class="text-medium-emphasis">Last updated 3 mins ago</small>
+                  <small class="text-body-secondary">Last updated 3 mins ago</small>
                 </c-card-footer>
               </c-card>
             </c-col>
             <c-col>
               <c-card>
-                <ng-container *ngTemplateOutlet="imgPlaceholderTemplate"></ng-container>
+                <ng-container *ngTemplateOutlet="imgAngularTemplate" />
                 <c-card-body>
                   <h5 cCardTitle>Card title</h5>
                   <p cCardText>
@@ -743,13 +741,13 @@
                   </p>
                 </c-card-body>
                 <c-card-footer>
-                  <small class="text-medium-emphasis">Last updated 3 mins ago</small>
+                  <small class="text-body-secondary">Last updated 3 mins ago</small>
                 </c-card-footer>
               </c-card>
             </c-col>
             <c-col>
               <c-card>
-                <ng-container *ngTemplateOutlet="imgPlaceholderTemplate"></ng-container>
+                <ng-container *ngTemplateOutlet="imgAngularTemplate" />
                 <c-card-body>
                   <h5 cCardTitle>Card title</h5>
                   <p cCardText>
@@ -758,20 +756,20 @@
                   </p>
                 </c-card-body>
                 <c-card-footer>
-                  <small class="text-medium-emphasis">Last updated 3 mins ago</small>
+                  <small class="text-body-secondary">Last updated 3 mins ago</small>
                 </c-card-footer>
               </c-card>
             </c-col>
           </c-row>
         </app-docs-example>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Change it to <code>md="3"</code> and you'll see the fourth card wraps.
         </p>
         <app-docs-example href="components/card/#grid-cards">
           <c-row [gutter]="{g: 4}" [md]="3" [xs]="1">
             <c-col>
               <c-card>
-                <ng-container *ngTemplateOutlet="imgPlaceholderTemplate"></ng-container>
+                <ng-container *ngTemplateOutlet="imgAngularTemplate" />
                 <c-card-body>
                   <h5 cCardTitle>Card title</h5>
                   <p cCardText>
@@ -780,13 +778,13 @@
                   </p>
                 </c-card-body>
                 <c-card-footer>
-                  <small class="text-medium-emphasis">Last updated 3 mins ago</small>
+                  <small class="text-body-secondary">Last updated 3 mins ago</small>
                 </c-card-footer>
               </c-card>
             </c-col>
             <c-col>
               <c-card>
-                <ng-container *ngTemplateOutlet="imgPlaceholderTemplate"></ng-container>
+                <ng-container *ngTemplateOutlet="imgAngularTemplate" />
                 <c-card-body>
                   <h5 cCardTitle>Card title</h5>
                   <p cCardText>
@@ -795,13 +793,13 @@
                   </p>
                 </c-card-body>
                 <c-card-footer>
-                  <small class="text-medium-emphasis">Last updated 3 mins ago</small>
+                  <small class="text-body-secondary">Last updated 3 mins ago</small>
                 </c-card-footer>
               </c-card>
             </c-col>
             <c-col>
               <c-card>
-                <ng-container *ngTemplateOutlet="imgPlaceholderTemplate"></ng-container>
+                <ng-container *ngTemplateOutlet="imgAngularTemplate" />
                 <c-card-body>
                   <h5 cCardTitle>Card title</h5>
                   <p cCardText>
@@ -810,13 +808,13 @@
                   </p>
                 </c-card-body>
                 <c-card-footer>
-                  <small class="text-medium-emphasis">Last updated 3 mins ago</small>
+                  <small class="text-body-secondary">Last updated 3 mins ago</small>
                 </c-card-footer>
               </c-card>
             </c-col>
             <c-col>
               <c-card>
-                <ng-container *ngTemplateOutlet="imgPlaceholderTemplate"></ng-container>
+                <ng-container *ngTemplateOutlet="imgAngularTemplate" />
                 <c-card-body>
                   <h5 cCardTitle>Card title</h5>
                   <p cCardText>
@@ -825,7 +823,7 @@
                   </p>
                 </c-card-body>
                 <c-card-footer>
-                  <small class="text-medium-emphasis">Last updated 3 mins ago</small>
+                  <small class="text-body-secondary">Last updated 3 mins ago</small>
                 </c-card-footer>
               </c-card>
             </c-col>
@@ -836,6 +834,9 @@
   </c-col>
 </c-row>
 
+<ng-template #imgAngularTemplate let-orientation>
+  <img [cCardImg]="orientation ?? 'top'" src="assets/images/angular.jpg">
+</ng-template>
 
 <ng-template #imgPlaceholderTemplate let-orientation>
   <svg
@@ -859,6 +860,14 @@
   <h5 cCardTitle>Card title</h5>
   <p cCardText>
     Some quick example text to build on the card title and make up the bulk of the card's content.
+  </p>
+  <button cButton color="primary">Go somewhere</button>
+</ng-template>
+
+<ng-template #headerAndFooterTemplate>
+  <h5 cCardTitle>Special title treatment</h5>
+  <p cCardText>
+    With supporting text below as a natural lead-in to additional content.
   </p>
   <button cButton color="primary">Go somewhere</button>
 </ng-template>
