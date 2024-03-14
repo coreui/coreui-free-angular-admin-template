@@ -1,13 +1,31 @@
 import { DOCUMENT, NgStyle } from '@angular/common';
-import { Component, DestroyRef, inject, OnInit, Renderer2, signal, WritableSignal } from '@angular/core';
+import { Component, DestroyRef, effect, inject, OnInit, Renderer2, signal, WritableSignal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { getStyle } from '@coreui/utils';
-import { DashboardChartsData, IChartProps } from './dashboard-charts-data';
-import { WidgetsBrandComponent } from '../widgets/widgets-brand/widgets-brand.component';
+import { ChartOptions, ScaleOptions } from 'chart.js';
+import {
+  AvatarComponent,
+  ButtonDirective,
+  ButtonGroupComponent,
+  CardBodyComponent,
+  CardComponent,
+  CardFooterComponent,
+  CardHeaderComponent,
+  ColComponent,
+  FormCheckLabelDirective,
+  GutterDirective,
+  ProgressBarDirective,
+  ProgressComponent,
+  RowComponent,
+  TableDirective,
+  TextColorDirective
+} from '@coreui/angular';
 import { ChartjsComponent } from '@coreui/angular-chartjs';
 import { IconDirective } from '@coreui/icons-angular';
-import { TextColorDirective, CardComponent, CardBodyComponent, RowComponent, ColComponent, ButtonDirective, ButtonGroupComponent, FormCheckLabelDirective, CardFooterComponent, GutterDirective, ProgressBarDirective, ProgressComponent, CardHeaderComponent, TableDirective, AvatarComponent } from '@coreui/angular';
+import { getStyle } from '@coreui/utils';
+
+import { WidgetsBrandComponent } from '../widgets/widgets-brand/widgets-brand.component';
 import { WidgetsDropdownComponent } from '../widgets/widgets-dropdown/widgets-dropdown.component';
+import { DashboardChartsData, IChartProps } from './dashboard-charts-data';
 
 interface IUser {
   name: string;
@@ -24,10 +42,10 @@ interface IUser {
 }
 
 @Component({
-    templateUrl: 'dashboard.component.html',
-    styleUrls: ['dashboard.component.scss'],
-    standalone: true,
-    imports: [WidgetsDropdownComponent, TextColorDirective, CardComponent, CardBodyComponent, RowComponent, ColComponent, ButtonDirective, IconDirective, ReactiveFormsModule, ButtonGroupComponent, FormCheckLabelDirective, ChartjsComponent, NgStyle, CardFooterComponent, GutterDirective, ProgressBarDirective, ProgressComponent, WidgetsBrandComponent, CardHeaderComponent, TableDirective, AvatarComponent]
+  templateUrl: 'dashboard.component.html',
+  styleUrls: ['dashboard.component.scss'],
+  standalone: true,
+  imports: [WidgetsDropdownComponent, TextColorDirective, CardComponent, CardBodyComponent, RowComponent, ColComponent, ButtonDirective, IconDirective, ReactiveFormsModule, ButtonGroupComponent, FormCheckLabelDirective, ChartjsComponent, NgStyle, CardFooterComponent, GutterDirective, ProgressBarDirective, ProgressComponent, WidgetsBrandComponent, CardHeaderComponent, TableDirective, AvatarComponent]
 })
 export class DashboardComponent implements OnInit {
 
@@ -116,8 +134,14 @@ export class DashboardComponent implements OnInit {
       color: 'dark'
     }
   ];
-  public mainChart: IChartProps = {};
+
+  public mainChart: IChartProps = { type: 'line' };
   public mainChartRef: WritableSignal<any> = signal(undefined);
+  #mainChartRefEffect = effect(() => {
+    if (this.mainChartRef()) {
+      this.setChartStyles();
+    }
+  });
   public chart: Array<IChartProps> = [];
   public trafficRadioGroup = new FormGroup({
     trafficRadio: new FormControl('Month')
@@ -146,23 +170,51 @@ export class DashboardComponent implements OnInit {
 
   updateChartOnColorModeChange() {
     const unListen = this.#renderer.listen(this.#document.documentElement, 'ColorSchemeChange', () => {
-      if (this.mainChartRef()) {
-        setTimeout(() => {
-          const scales = { ...this.mainChart.options.scales };
-          scales.x.grid.borderColor = getStyle('--cui-border-color-translucent');
-          scales.x.grid.color = getStyle('--cui-border-color-translucent');
-          scales.x.ticks.color = getStyle('--cui-body-color');
-          scales.y.border.color = getStyle('--cui-border-color-translucent');
-          scales.y.grid.borderColor = getStyle('--cui-border-color-translucent');
-          scales.y.grid.color = getStyle('--cui-border-color-translucent');
-          scales.y.ticks.color = getStyle('--cui-body-color');
-          this.mainChartRef().options.scales = { ...scales };
-          this.mainChartRef().update();
-        });
-      }
+      this.setChartStyles();
     });
+
     this.#destroyRef.onDestroy(() => {
       unListen();
     });
+  }
+
+  setChartStyles() {
+    if (this.mainChartRef()) {
+      setTimeout(() => {
+
+        const options: ChartOptions = { ...this.mainChart.options };
+        const colorBorderTranslucent = getStyle('--cui-border-color-translucent');
+        const colorBody = getStyle('--cui-body-color');
+
+        const scales: ScaleOptions<any> = {
+          x: {
+            grid: {
+              color: colorBorderTranslucent,
+              drawOnChartArea: false
+            },
+            ticks: {
+              color: colorBody
+            }
+          },
+          y: {
+            border: {
+              color: colorBorderTranslucent
+            },
+            grid: {
+              color: colorBorderTranslucent
+            },
+            max: 250,
+            beginAtZero: true,
+            ticks: {
+              color: colorBody,
+              maxTicksLimit: 5,
+              stepSize: Math.ceil(250 / 5)
+            }
+          }
+        };
+        this.mainChartRef().options = { ...options, scales: { ...options.scales, ...scales } };
+        this.mainChartRef().update();
+      });
+    }
   }
 }

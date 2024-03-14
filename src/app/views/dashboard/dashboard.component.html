@@ -339,7 +339,7 @@
             @for (user of users; track user.name; let i = $index) {
               <tr>
                 <td class="text-center">
-                  <c-avatar size="md" src="{{ user.avatar }}" status="{{ user.status }}" />
+                  <c-avatar [size]="'md'" src="{{ user.avatar }}" status="{{ user.status }}" />
                 </td>
                 <td>
                   <div>{{ user.name }}</div>
