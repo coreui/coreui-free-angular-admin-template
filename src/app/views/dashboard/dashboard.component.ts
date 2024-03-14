@@ -1,7 +1,7 @@
 import { DOCUMENT, NgStyle } from '@angular/common';
 import { Component, DestroyRef, effect, inject, OnInit, Renderer2, signal, WritableSignal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { ChartOptions, ScaleOptions } from 'chart.js';
+import { ChartOptions } from 'chart.js';
 import {
   AvatarComponent,
   ButtonDirective,
@@ -21,7 +21,6 @@ import {
 } from '@coreui/angular';
 import { ChartjsComponent } from '@coreui/angular-chartjs';
 import { IconDirective } from '@coreui/icons-angular';
-import { getStyle } from '@coreui/utils';
 
 import { WidgetsBrandComponent } from '../widgets/widgets-brand/widgets-brand.component';
 import { WidgetsDropdownComponent } from '../widgets/widgets-dropdown/widgets-dropdown.component';
@@ -181,38 +180,9 @@ export class DashboardComponent implements OnInit {
   setChartStyles() {
     if (this.mainChartRef()) {
       setTimeout(() => {
-
         const options: ChartOptions = { ...this.mainChart.options };
-        const colorBorderTranslucent = getStyle('--cui-border-color-translucent');
-        const colorBody = getStyle('--cui-body-color');
-
-        const scales: ScaleOptions<any> = {
-          x: {
-            grid: {
-              color: colorBorderTranslucent,
-              drawOnChartArea: false
-            },
-            ticks: {
-              color: colorBody
-            }
-          },
-          y: {
-            border: {
-              color: colorBorderTranslucent
-            },
-            grid: {
-              color: colorBorderTranslucent
-            },
-            max: 250,
-            beginAtZero: true,
-            ticks: {
-              color: colorBody,
-              maxTicksLimit: 5,
-              stepSize: Math.ceil(250 / 5)
-            }
-          }
-        };
-        this.mainChartRef().options = { ...options, scales: { ...options.scales, ...scales } };
+        const scales = this.#chartsData.getScales();
+        this.mainChartRef().options.scales = { ...options.scales, ...scales };
         this.mainChartRef().update();
       });
     }

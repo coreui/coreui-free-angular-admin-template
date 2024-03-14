@@ -1,5 +1,13 @@
 import { Injectable } from '@angular/core';
-import { ChartData, ChartDataset, ChartOptions, ChartType, PluginOptionsByType, TooltipLabelStyle } from 'chart.js';
+import {
+  ChartData,
+  ChartDataset,
+  ChartOptions,
+  ChartType,
+  PluginOptionsByType,
+  ScaleOptions,
+  TooltipLabelStyle
+} from 'chart.js';
 import { DeepPartial } from 'chart.js/dist/types/utils';
 import { getStyle, hexToRgba } from '@coreui/utils';
 
@@ -19,7 +27,7 @@ export interface IChartProps {
 })
 export class DashboardChartsData {
   constructor() {
-      this.initMainChart();
+    this.initMainChart();
   }
 
   public mainChart: IChartProps = { type: 'line' };
@@ -131,38 +139,12 @@ export class DashboardChartsData {
       }
     };
 
-    const colorBorderTranslucent = getStyle('--cui-border-color-translucent');
-    const colorBody = getStyle('--cui-body-color');
+    const scales = this.getScales();
 
     const options: ChartOptions = {
       maintainAspectRatio: false,
       plugins,
-      scales: {
-        x: {
-          grid: {
-            color: colorBorderTranslucent,
-            drawOnChartArea: false
-          },
-          ticks: {
-            color: colorBody
-          }
-        },
-        y: {
-          border: {
-            color: colorBorderTranslucent
-          },
-          grid: {
-            color: colorBorderTranslucent
-          },
-          max: 250,
-          beginAtZero: true,
-          ticks: {
-            color: colorBody,
-            maxTicksLimit: 5,
-            stepSize: Math.ceil(250 / 5)
-          }
-        }
-      },
+      scales,
       elements: {
         line: {
           tension: 0.4
@@ -182,5 +164,38 @@ export class DashboardChartsData {
       datasets,
       labels
     };
+  }
+
+  getScales() {
+    const colorBorderTranslucent = getStyle('--cui-border-color-translucent');
+    const colorBody = getStyle('--cui-body-color');
+
+    const scales: ScaleOptions<any> = {
+      x: {
+        grid: {
+          color: colorBorderTranslucent,
+          drawOnChartArea: false
+        },
+        ticks: {
+          color: colorBody
+        }
+      },
+      y: {
+        border: {
+          color: colorBorderTranslucent
+        },
+        grid: {
+          color: colorBorderTranslucent
+        },
+        max: 250,
+        beginAtZero: true,
+        ticks: {
+          color: colorBody,
+          maxTicksLimit: 5,
+          stepSize: Math.ceil(250 / 5)
+        }
+      }
+    };
+    return scales;
   }
 }
