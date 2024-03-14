@@ -2,7 +2,7 @@
 
 ---
 
-#### `5.0.0-rc.0`
+#### `5.0.0-rc.1`
 
 CoreUI v5 for Angular 17 pre-release
 
@@ -14,6 +14,7 @@ CoreUI v5 for Angular 17 pre-release
 - refactor: project structure (containers->layout)
 - refactor: use control flow
 - refactor(dashboard): main chart data - typings and theme switching fix
+- fix(dashboard): missing custom tooltips on first render, refactor main chart scales
 
 ---
 
