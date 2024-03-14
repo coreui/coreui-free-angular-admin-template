@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
+import { ChartData, ChartDataset, ChartOptions, ChartType, PluginOptionsByType, TooltipLabelStyle } from 'chart.js';
+import { DeepPartial } from 'chart.js/dist/types/utils';
 import { getStyle, hexToRgba } from '@coreui/utils';
 
 export interface IChartProps {
-  data?: any;
+  data?: ChartData;
   labels?: any;
-  options?: any;
+  options?: ChartOptions;
   colors?: any;
-  type?: any;
+  type: ChartType;
   legend?: any;
 
   [propName: string]: any;
@@ -17,10 +19,10 @@ export interface IChartProps {
 })
 export class DashboardChartsData {
   constructor() {
-    this.initMainChart();
+      this.initMainChart();
   }
 
-  public mainChart: IChartProps = {};
+  public mainChart: IChartProps = { type: 'line' };
 
   public random(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -29,7 +31,7 @@ export class DashboardChartsData {
   initMainChart(period: string = 'Month') {
     const brandSuccess = getStyle('--cui-success') ?? '#4dbd74';
     const brandInfo = getStyle('--cui-info') ?? '#20a8d8';
-    const brandInfoBg = hexToRgba(getStyle('--cui-info') ?? '#20a8d8', 10) ;
+    const brandInfoBg = hexToRgba(getStyle('--cui-info') ?? '#20a8d8', 10);
     const brandDanger = getStyle('--cui-danger') ?? '#f86c6b';
 
     // mainChart
@@ -100,7 +102,7 @@ export class DashboardChartsData {
       }
     ];
 
-    const datasets = [
+    const datasets: ChartDataset[] = [
       {
         data: this.mainChart['Data1'],
         label: 'Current',
@@ -118,45 +120,44 @@ export class DashboardChartsData {
       }
     ];
 
-    const plugins = {
+    const plugins: DeepPartial<PluginOptionsByType<any>> = {
       legend: {
         display: false
       },
       tooltip: {
         callbacks: {
-          labelColor: function(context: any) {
-            return {
-              backgroundColor: context.dataset.borderColor
-            };
-          }
+          labelColor: (context) => ({ backgroundColor: context.dataset.borderColor } as TooltipLabelStyle)
         }
       }
     };
 
-    const options = {
+    const colorBorderTranslucent = getStyle('--cui-border-color-translucent');
+    const colorBody = getStyle('--cui-body-color');
+
+    const options: ChartOptions = {
       maintainAspectRatio: false,
       plugins,
       scales: {
         x: {
           grid: {
-            color: getStyle('--cui-border-color-translucent'),
+            color: colorBorderTranslucent,
             drawOnChartArea: false
           },
           ticks: {
-            color: getStyle('--cui-body-color'),
-          },
+            color: colorBody
+          }
         },
         y: {
           border: {
-            color: getStyle('--cui-border-color-translucent'),
+            color: colorBorderTranslucent
           },
           grid: {
-            color: getStyle('--cui-border-color-translucent'),
+            color: colorBorderTranslucent
           },
           max: 250,
           beginAtZero: true,
           ticks: {
-            color: getStyle('--cui-body-color'),
+            color: colorBody,
             maxTicksLimit: 5,
             stepSize: Math.ceil(250 / 5)
           }
@@ -182,5 +183,4 @@ export class DashboardChartsData {
       labels
     };
   }
-
 }
