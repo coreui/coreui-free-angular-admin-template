@@ -5,7 +5,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonGroupModule, ButtonModule, CardModule, DropdownModule, FormModule, GridModule } from '@coreui/angular';
 import { IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from '../../../icons/icon-subset';
-import { DocsComponentsModule } from '../../../../components';
 import { ButtonGroupsComponent } from './button-groups.component';
 
 describe('ButtonGroupsComponent', () => {
@@ -15,10 +14,9 @@ describe('ButtonGroupsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ButtonGroupsComponent],
-      imports: [ReactiveFormsModule, ButtonModule, DropdownModule, FormModule, DocsComponentsModule, GridModule, CardModule, RouterTestingModule, ButtonModule, ButtonGroupModule],
-      providers: [IconSetService]
-    })
+    imports: [ReactiveFormsModule, ButtonModule, DropdownModule, FormModule, GridModule, CardModule, RouterTestingModule, ButtonModule, ButtonGroupModule, ButtonGroupsComponent],
+    providers: [IconSetService]
+})
       .compileComponents();
   });
 

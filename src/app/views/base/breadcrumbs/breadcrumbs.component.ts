@@ -1,8 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { NgClass } from '@angular/common';
+import { DocsExampleComponent } from '@docs-components/public-api';
+import {
+  BreadcrumbComponent,
+  BreadcrumbItemComponent,
+  BreadcrumbRouterComponent,
+  CardBodyComponent,
+  CardComponent,
+  CardHeaderComponent,
+  ColComponent,
+  RowComponent,
+  TextColorDirective
+} from '@coreui/angular';
 
 @Component({
   templateUrl: './breadcrumbs.component.html',
-  styleUrls: ['./breadcrumbs.component.scss']
+  styleUrls: ['./breadcrumbs.component.scss'],
+  standalone: true,
+  imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, BreadcrumbComponent, BreadcrumbItemComponent, NgClass, BreadcrumbRouterComponent]
 })
 export class BreadcrumbsComponent implements OnInit {
   public items = <any>[];

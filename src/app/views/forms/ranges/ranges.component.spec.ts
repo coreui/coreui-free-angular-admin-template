@@ -4,7 +4,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { CardModule, FormModule, GridModule } from '@coreui/angular';
 import { IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from '../../../icons/icon-subset';
-import { DocsComponentsModule } from '../../../../components';
 import { RangesComponent } from './ranges.component';
 
 describe('RangesComponent', () => {
@@ -14,10 +13,9 @@ describe('RangesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RangesComponent ],
-      imports: [CardModule, GridModule, FormModule, DocsComponentsModule, RouterTestingModule],
-      providers: [IconSetService]
-    })
+    imports: [CardModule, GridModule, FormModule, RouterTestingModule, RangesComponent],
+    providers: [IconSetService]
+})
     .compileComponents();
   });
 

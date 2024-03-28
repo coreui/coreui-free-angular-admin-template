@@ -5,7 +5,6 @@ import { ButtonModule, CardModule, DropdownModule, FormModule, GridModule } from
 import { IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from '../../../icons/icon-subset';
 import { InputGroupsComponent } from './input-groups.component';
-import { DocsComponentsModule } from '../../../../components';
 
 describe('InputGroupsComponent', () => {
   let component: InputGroupsComponent;
@@ -14,10 +13,9 @@ describe('InputGroupsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [InputGroupsComponent],
-      imports: [FormModule, CardModule, GridModule, ButtonModule, DropdownModule, DocsComponentsModule, RouterTestingModule],
-      providers: [IconSetService]
-    })
+    imports: [FormModule, CardModule, GridModule, ButtonModule, DropdownModule, RouterTestingModule, InputGroupsComponent],
+    providers: [IconSetService]
+})
       .compileComponents();
   });
 

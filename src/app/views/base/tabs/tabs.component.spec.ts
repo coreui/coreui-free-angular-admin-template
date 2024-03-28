@@ -4,7 +4,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { CardModule, GridModule, NavModule, TabsModule } from '@coreui/angular';
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from '../../../icons/icon-subset';
-import { DocsComponentsModule } from '../../../../components';
 import { TabsComponent } from './tabs.component';
 
 describe('TabsComponent', () => {
@@ -14,10 +13,9 @@ describe('TabsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TabsComponent],
-      imports: [TabsModule, GridModule, CardModule, IconModule, RouterTestingModule, NavModule, DocsComponentsModule],
-      providers: [IconSetService]
-    })
+    imports: [TabsModule, GridModule, CardModule, IconModule, RouterTestingModule, NavModule, TabsComponent],
+    providers: [IconSetService]
+})
       .compileComponents();
   });
 

@@ -1,12 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { IconSetService } from '@coreui/icons-angular';
+import { IconDirective, IconSetService } from '@coreui/icons-angular';
 import { brandSet, flagSet, freeSet } from '@coreui/icons';
+import { CardBodyComponent, CardComponent, CardHeaderComponent, ColComponent, RowComponent } from '@coreui/angular';
+import { DocsLinkComponent } from '@docs-components/public-api';
 
 @Component({
   templateUrl: 'coreui-icons.component.html',
   providers: [IconSetService],
+  standalone: true,
+  imports: [
+    CardComponent,
+    CardHeaderComponent,
+    CardBodyComponent,
+    ColComponent,
+    DocsLinkComponent,
+    IconDirective,
+    RowComponent
+  ]
 })
 export class CoreUIIconsComponent implements OnInit {
   public title = 'CoreUI Icons';

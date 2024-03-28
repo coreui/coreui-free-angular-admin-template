@@ -1,25 +1,24 @@
-<c-row>
+<c-row class="g-4">
   <c-col sm="6" xl="3">
     <c-widget-stat-a
-      class="mb-4"
       color="primary"
-      title="Users"
+      [title]="'Users'"
     >
       <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
         26K
-        <span class="fs-6 fw-normal">
-          (-12.4% <svg cIcon name="cilArrowBottom"></svg>)
+        <span class="fw-normal" style="font-size: 12px;">
+          (-12.4% <svg cIcon name="cilArrowBottom" size="sm"></svg>)
         </span>
       </ng-template>
       <ng-template cTemplateId="widgetActionTemplate">
         <c-dropdown alignment="end" variant="btn-group">
-          <button [caret]="false" cButton cDropdownToggle class="p-0" color="transparent">
-            <svg cIcon class="text-high-emphasis-inverse" name="cilOptions"></svg>
+          <button [caret]="false" cButton cDropdownToggle class="p-0 text-white" color="transparent">
+            <svg cIcon name="cilOptions"></svg>
           </button>
           <ul cDropdownMenu>
-            <li><a routerLink="./" cDropdownItem>Action</a></li>
-            <li><a routerLink="./" cDropdownItem>Another action</a></li>
-            <li><a routerLink="./" cDropdownItem>Something else here</a></li>
+            <li><a [routerLink]="[]" cDropdownItem>Action</a></li>
+            <li><a [routerLink]="[]" cDropdownItem>Another action</a></li>
+            <li><a [routerLink]="[]" cDropdownItem>Something else here</a></li>
             <li>
               <hr cDropdownDivider>
             </li>
@@ -37,25 +36,24 @@
   <c-col sm="6" xl="3">
     <c-widget-stat-a
       [title]="'Income'"
-      class="mb-4"
       color="info"
     >
       <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
         <span>$6.200</span>
-        <span class="fs-6 fw-normal">
-          (40.9%<svg cIcon name="cilArrowTop"></svg>)
+        <span class="fw-normal" style="font-size: 12px;">
+          (40.9%<svg cIcon name="cilArrowTop" size="sm"></svg>)
         </span>
       </ng-template>
       <ng-template cTemplateId="widgetActionTemplate">
         <c-dropdown alignment="end" variant="btn-group">
-          <button [caret]="false" cButton cDropdownToggle class="p-0" color="transparent">
-            <svg cIcon class="text-high-emphasis-inverse" name="cilOptions"></svg>
+          <button [caret]="false" cButton cDropdownToggle class="p-0 text-white" color="transparent">
+            <svg cIcon name="cilOptions"></svg>
           </button>
           <ul cDropdownMenu>
-            <li><a routerLink="./" cDropdownItem>Action</a></li>
-            <li><a routerLink="./" cDropdownItem>Another action</a></li>
-            <li><a routerLink="./" cDropdownItem>Something else here</a></li>
-            <li><a [disabled]="true" routerLink="./" cDropdownItem>Disabled</a></li>
+            <li><a [routerLink]="[]" cDropdownItem>Action</a></li>
+            <li><a [routerLink]="[]" cDropdownItem>Another action</a></li>
+            <li><a [routerLink]="[]" cDropdownItem>Something else here</a></li>
+            <li><a [disabled]="true" [routerLink]="[]" cDropdownItem>Disabled</a></li>
           </ul>
         </c-dropdown>
       </ng-template>
@@ -67,25 +65,24 @@
   <c-col sm="6" xl="3">
     <c-widget-stat-a
       [title]="'Conversion Rate'"
-      class="mb-4"
       color="warning"
     >
       <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
         <span>2.49</span>
-        <span class="fs-6 fw-normal">
-          (84.7% <svg cIcon name="cilArrowTop"></svg>)
+        <span class="fw-normal" style="font-size: 12px;">
+          (84.7% <svg cIcon name="cilArrowTop" size="sm"></svg>)
         </span>
       </ng-template>
       <ng-template cTemplateId="widgetActionTemplate">
         <c-dropdown alignment="end" variant="btn-group">
-          <button [caret]="false" cButton cDropdownToggle class="p-0" color="transparent">
-            <svg cIcon class="text-high-emphasis-inverse" name="cilOptions"></svg>
+          <button [caret]="false" cButton cDropdownToggle class="p-0 text-white" color="transparent">
+            <svg cIcon name="cilOptions"></svg>
           </button>
           <ul cDropdownMenu>
-            <li><a routerLink="./" cDropdownItem>Action</a></li>
-            <li><a routerLink="./" cDropdownItem>Another action</a></li>
-            <li><a routerLink="./" cDropdownItem>Something else here</a></li>
-            <li><a [disabled]="true" routerLink="./" cDropdownItem>Disabled</a></li>
+            <li><a [routerLink]="[]" cDropdownItem>Action</a></li>
+            <li><a [routerLink]="[]" cDropdownItem>Another action</a></li>
+            <li><a [routerLink]="[]" cDropdownItem>Something else here</a></li>
+            <li><a [disabled]="true" [routerLink]="[]" cDropdownItem>Disabled</a></li>
           </ul>
         </c-dropdown>
       </ng-template>
@@ -97,25 +94,24 @@
   <c-col sm="6" xl="3">
     <c-widget-stat-a
       [title]="'Sessions'"
-      class="mb-4"
       color="danger"
     >
       <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
         <span>44K</span>
-        <span class="fs-6 fw-normal">
-          (-23.6% <svg cIcon name="cilArrowBottom"></svg>)
+        <span class="fw-normal" style="font-size: 12px;">
+          (-23.6% <svg cIcon name="cilArrowBottom" size="sm"></svg>)
         </span>
       </ng-template>
       <ng-template cTemplateId="widgetActionTemplate">
         <c-dropdown alignment="end" variant="btn-group">
-          <button [caret]="false" cButton cDropdownToggle class="p-0" color="transparent">
-            <svg cIcon class="text-high-emphasis-inverse" name="cilOptions"></svg>
+          <button [caret]="false" cButton cDropdownToggle class="p-0 text-white" color="transparent">
+            <svg cIcon name="cilOptions"></svg>
           </button>
           <ul cDropdownMenu>
-            <li><a routerLink="./" cDropdownItem>Action</a></li>
-            <li><a routerLink="./" cDropdownItem>Another action</a></li>
-            <li><a routerLink="./" cDropdownItem>Something else here</a></li>
-            <li><a [disabled]="true" routerLink="./" cDropdownItem>Disabled</a></li>
+            <li><a [routerLink]="[]" cDropdownItem>Action</a></li>
+            <li><a [routerLink]="[]" cDropdownItem>Another action</a></li>
+            <li><a [routerLink]="[]" cDropdownItem>Something else here</a></li>
+            <li><a [disabled]="true" [routerLink]="[]" cDropdownItem>Disabled</a></li>
           </ul>
         </c-dropdown>
       </ng-template>

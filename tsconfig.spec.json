@@ -6,7 +6,10 @@
     "types": [
       "jasmine",
       "@angular/localize"
-    ]
+    ],
+    "paths": {
+      "@docs-components/*": ["./src/components/*"]
+    }
   },
   "files": [
     "src/test.ts",

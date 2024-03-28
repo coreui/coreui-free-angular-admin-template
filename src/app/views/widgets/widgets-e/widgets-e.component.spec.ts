@@ -13,10 +13,9 @@ describe('WidgetsEComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WidgetsEComponent ],
-      imports: [WidgetModule, GridModule, ChartjsModule],
-      providers: [IconSetService]
-    })
+    imports: [WidgetModule, GridModule, ChartjsModule, WidgetsEComponent],
+    providers: [IconSetService]
+})
     .compileComponents();
   });
 

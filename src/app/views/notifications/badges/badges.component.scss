@@ -1,0 +1,10 @@
+:host-context(.dark-theme) ::ng-deep c-badge {
+  &.bg-light:not([class*="dark:"]) {
+    color: var(--cui-body-bg);
+  }
+
+  &.bg-light-gradient:not([class*="dark:"]) {
+    color: var(--cui-body-bg);
+  }
+}
+

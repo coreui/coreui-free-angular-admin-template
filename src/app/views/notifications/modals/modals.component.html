@@ -1,14 +1,11 @@
 <c-row>
   <c-col xs="12">
-    <app-docs-callout href="components/modal" name="Modal"></app-docs-callout>
-  </c-col>
-  <c-col xs="12">
     <c-card class="mb-4">
       <c-card-header>
         <strong>Angular Modal</strong>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small" ngPreserveWhitespaces>
+        <p class="text-body-secondary small" ngPreserveWhitespaces>
           Below is a static modal example (meaning its <code>position</code> and
           <code>display</code> have been overridden). Included are the modal header, modal body
           (required for <code>padding</code>), and modal footer (optional). We ask that you
@@ -43,12 +40,12 @@
         <strong>Angular Modal</strong> <small>Live demo</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Toggle a working modal demo by clicking the button below. It will slide down and fade
           in from the top of the page.
         </p>
         <app-docs-example href="components/modal#live-demo">
-          <ng-container *ngTemplateOutlet="liveDemo"></ng-container>
+          <ng-container *ngTemplateOutlet="liveDemo" />
         </app-docs-example>
       </c-card-body>
     </c-card>
@@ -59,13 +56,13 @@
         <strong>Angular Modal</strong> <small>Static backdrop</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           If you don’t provide an <code>(visibleChange)</code> handler to the Modal component, your
           modal will behave as though the backdrop is static, meaning it will not close when
           clicking outside it. Click the button below to try it.
         </p>
         <app-docs-example href="components/modal#static-backdrop">
-          <ng-container *ngTemplateOutlet="staticBackdrop"></ng-container>
+          <ng-container *ngTemplateOutlet="staticBackdrop" />
         </app-docs-example>
       </c-card-body>
     </c-card>
@@ -76,18 +73,18 @@
         <strong>Angular Modal</strong> <small>Scrolling long content</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           If your modals are too long for the user’s viewport, they scroll the page by itself.
         </p>
         <app-docs-example href="components/modal#scrolling-long-content">
-          <ng-container *ngTemplateOutlet="scrollingLongContent"></ng-container>
+          <ng-container *ngTemplateOutlet="scrollingLongContent" />
         </app-docs-example>
-        <p class="text-medium-emphasis small" ngPreserveWhitespaces>
+        <p class="text-body-secondary small" ngPreserveWhitespaces>
           You can also create a scrollable modal that allows scroll the modal body by adding <code>scrollable</code>
           prop.
         </p>
         <app-docs-example href="components/modal#scrolling-long-content">
-          <ng-container *ngTemplateOutlet="scrollableLongContent"></ng-container>
+          <ng-container *ngTemplateOutlet="scrollableLongContent" />
         </app-docs-example>
       </c-card-body>
     </c-card>
@@ -98,15 +95,15 @@
         <strong>Angular Modal</strong> <small>Vertically centered</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Add <code>alignment=&#34;center&#34;</code> to <code>&lt;c-modal&gt;</code> to
           vertically center the modal.
         </p>
         <app-docs-example href="components/modal#vertically-centered">
-          <ng-container *ngTemplateOutlet="verticallyCentered"></ng-container>
+          <ng-container *ngTemplateOutlet="verticallyCentered" />
         </app-docs-example>
         <app-docs-example href="components/modal#vertically-centered">
-          <ng-container *ngTemplateOutlet="verticallyCenteredScrollable"></ng-container>
+          <ng-container *ngTemplateOutlet="verticallyCenteredScrollable" />
         </app-docs-example>
       </c-card-body>
     </c-card>
@@ -117,13 +114,13 @@
         <strong>Angular Modal</strong> <small>Tooltips and popovers</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           <code>cTooltip</code> and <code>cPopover</code> can be placed within
           modals as needed. When modals are closed, any tooltips and popovers within are also
           automatically dismissed.
         </p>
         <app-docs-example href="components/modal#tooltips-and-popovers">
-          <ng-container *ngTemplateOutlet="withPopover"></ng-container>
+          <ng-container *ngTemplateOutlet="withPopover" />
         </app-docs-example>
       </c-card-body>
     </c-card>
@@ -134,7 +131,7 @@
         <strong>Angular Modal</strong> <small>Optional sizes</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small" ngPreserveWhitespaces>
+        <p class="text-body-secondary small" ngPreserveWhitespaces>
           Modals have three optional sizes, available via modifier classes to be placed on a
           <code>&lt;c-modal&gt;</code>. These sizes kick in at certain breakpoints to avoid
           horizontal scrollbars on narrower viewports.
@@ -159,7 +156,7 @@
           </tr>
           <tr>
             <td>Default</td>
-            <td class="text-medium-emphasis">None</td>
+            <td class="text-body-secondary">None</td>
             <td>
               <code>500px</code>
             </td>
@@ -185,7 +182,7 @@
           </tbody>
         </table>
         <app-docs-example href="components/modal#optional-sizes">
-          <ng-container *ngTemplateOutlet="optionalSizes"></ng-container>
+          <ng-container *ngTemplateOutlet="optionalSizes" />
         </app-docs-example>
       </c-card-body>
     </c-card>
@@ -196,14 +193,14 @@
         <strong>Angular Modal</strong> <small>Fullscreen Modal</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Another override is the option to pop up a modal that covers the user viewport,
           available via property <code>fullscreen</code>.
         </p>
         <table class="table">
           <thead>
           <tr>
-            <th>Property fullscrean</th>
+            <th>Property fullscreen</th>
             <th>Availability</th>
           </tr>
           </thead>
@@ -257,7 +254,7 @@
           </tbody>
         </table>
         <app-docs-example href="components/modal#fullscreen-modal">
-          <ng-container *ngTemplateOutlet="fullScreen"></ng-container>
+          <ng-container *ngTemplateOutlet="fullScreen" />
         </app-docs-example>
       </c-card-body>
     </c-card>
@@ -283,7 +280,7 @@
 
 <ng-template #staticBackdrop>
   <button [cModalToggle]="staticBackdropModal.id" cButton>Launch static backdrop modal</button>
-  <c-modal #staticBackdropModal backdrop="static" id="staticBackdropModal">
+  <c-modal #staticBackdropModal backdrop="static" id="staticBackdropModal" [@.disabled]="true">
     <c-modal-header>
       <h5 cModalTitle>Modal title</h5>
       <button [cModalToggle]="staticBackdropModal.id" cButtonClose></button>
@@ -394,7 +391,9 @@
     <c-modal-body>
       <h5>Popover in a modal</h5>
       This
-      <button [cPopoverTrigger]="'click'" [cPopover]="popoverHtml" [cPopoverOptions]="{strategy: 'fixed'}" cButton>button</button>
+      <button [cPopoverTrigger]="'click'" [cPopover]="popoverHtml" [cPopoverOptions]="{strategy: 'fixed'}" cButton>
+        button
+      </button>
       triggers a popover on click.
       <ng-template #popoverHtml>
         <h3 class="popover-header">
@@ -404,7 +403,7 @@
           And here’s some amazing content. It’s very engaging. Right?
         </div>
       </ng-template>
-      <hr/>
+      <hr />
       <h5>Tooltips in a modal</h5>
       <p>
         <a cTooltip="Tooltip text" href>This link</a> and <a [cTooltipOptions]="{strategy: 'fixed'}"

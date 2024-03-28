@@ -7,7 +7,7 @@ on:
   pull_request:
     branches:
       - main
-      - v4
+      - v5.*
   schedule:
     - # build runs every weekday at 4:15AM UTC
     - cron: '15 4 * * *'

@@ -1,18 +1,15 @@
 <c-row ngPreserveWhitespaces>
   <c-col xs="12">
-    <app-docs-callout href="components/accordion" name="Accordion"></app-docs-callout>
-  </c-col>
-  <c-col xs="12">
     <c-card class="mb-4">
       <c-card-header>
         <strong>Angular Accordion</strong>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Click the accordions below to expand/collapse the accordion content.
         </p>
         <app-docs-example href="components/accordion">
-          <c-accordion [alwaysOpen]="false" [flush]="false" class="shadow rounded-2">
+          <c-accordion [alwaysOpen]="false" class="shadow rounded-2">
             <c-accordion-item #item0="cAccordionItem" [visible]="false">
               <ng-template cTemplateId="accordionHeaderTemplate">
                 <button (click)="item0.toggleItem()" [collapsed]="!item0.visible" cAccordionButton cBgColor="info">
@@ -20,7 +17,7 @@
                 </button>
               </ng-template>
               <ng-template cTemplateId="accordionBodyTemplate">
-                <div [innerHTML]="getAccordionBodyText('first')" cBgColor="info" class="accordion-body"></div>
+                <div [innerHTML]="getAccordionBodyText('first')" cBgColor="info" class="accordion-body" [gradient]="true"></div>
               </ng-template>
             </c-accordion-item>
             <c-accordion-item #item1="cAccordionItem" [visible]="false">
@@ -64,8 +61,10 @@
         <strong>Angular Accordion</strong> flush
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
-          Click the accordions below to expand/collapse the accordion content.
+        <p class="text-body-secondary small">
+          Add <code>flush</code> to remove the default <code>background-color</code>, some
+          borders, and some rounded corners to render accordions edge-to-edge with their parent
+          container.
         </p>
         <app-docs-example href="components/accordion#flush">
           <c-accordion [flush]="true">
@@ -102,17 +101,24 @@
         <strong>Angular Accordion</strong> alwaysOpen
       </c-card-header>
       <c-card-body>
+        <p class="text-body-secondary small">
+          Add <code>alwaysOpen</code> property to make accordion items stay open when another
+          item is opened.
+        </p>
         <app-docs-example href="components/accordion#always-open">
-          <c-accordion [alwaysOpen]="true" class="shadow accordion-custom rounded-2">
-            <c-accordion-item *ngFor="let item of items; let i = index;" [visible]="i===1">
-              <ng-template cTemplateId="accordionHeader">
-                Custom Accordion item #{{i}}
-              </ng-template>
-              <ng-template cTemplateId="accordionBody">
-                <small><i>{{i}}.</i></small>
-                <span [innerHTML]="getAccordionBodyText(i.toString())"></span>
-              </ng-template>
-            </c-accordion-item>
+          <c-accordion alwaysOpen class="shadow accordion-custom rounded-2">
+            @for(item of items; track item; let i = $index;) {
+              <c-accordion-item [visible]="i===1">
+                <ng-template cTemplateId="accordionHeader">
+                  Custom Accordion item #{{ i }}
+                </ng-template>
+                <ng-template cTemplateId="accordionBody">
+                  <small><i>{{ i }}.</i></small>
+                  <span [innerHTML]="getAccordionBodyText(i)"></span>
+                </ng-template>
+              </c-accordion-item>
+            }
+
           </c-accordion>
         </app-docs-example>
       </c-card-body>

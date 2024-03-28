@@ -1,12 +1,18 @@
 import { Component } from '@angular/core';
-import { UntypedFormBuilder } from '@angular/forms';
+import { FormControl, UntypedFormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { DocsExampleComponent } from '@docs-components/public-api';
+import { RowComponent, FormDirective, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, FormCheckComponent, FormCheckInputDirective, FormCheckLabelDirective, ButtonGroupComponent, ButtonDirective } from '@coreui/angular';
 
 @Component({
-  selector: 'app-checks-radios',
-  templateUrl: './checks-radios.component.html',
-  styleUrls: ['./checks-radios.component.scss']
+    selector: 'app-checks-radios',
+    templateUrl: './checks-radios.component.html',
+    styleUrls: ['./checks-radios.component.scss'],
+    standalone: true,
+    imports: [RowComponent, ReactiveFormsModule, FormDirective, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, FormCheckComponent, FormCheckInputDirective, FormCheckLabelDirective, ButtonGroupComponent, ButtonDirective]
 })
 export class ChecksRadiosComponent {
+
+inputDisabled: null = null;
 
   formGroup = this.formBuilder.group({
     flexRadioGroup: this.formBuilder.group({

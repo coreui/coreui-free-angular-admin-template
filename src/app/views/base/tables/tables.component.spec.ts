@@ -5,7 +5,6 @@ import { CardModule, GridModule, TableModule, UtilitiesModule } from '@coreui/an
 import { IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from '../../../icons/icon-subset';
 import { TablesComponent } from './tables.component';
-import { DocsComponentsModule } from '../../../../components';
 
 describe('TablesComponent', () => {
   let component: TablesComponent;
@@ -14,10 +13,9 @@ describe('TablesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TablesComponent ],
-      imports: [GridModule, CardModule, TableModule, GridModule, UtilitiesModule, DocsComponentsModule, RouterTestingModule],
-      providers: [IconSetService]
-    })
+    imports: [GridModule, CardModule, TableModule, GridModule, UtilitiesModule, RouterTestingModule, TablesComponent],
+    providers: [IconSetService]
+})
     .compileComponents();
   });
 

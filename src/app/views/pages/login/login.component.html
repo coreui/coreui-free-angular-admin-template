@@ -1,13 +1,13 @@
-<div class="bg-light min-vh-100 d-flex flex-row align-items-center">
-  <c-container>
+<div class="bg-light dark:bg-transparent min-vh-100 d-flex flex-row align-items-center">
+  <c-container breakpoint="md">
     <c-row class="justify-content-center">
-      <c-col md="8">
+      <c-col lg="10" xl="8">
         <c-card-group>
           <c-card class="p-4">
             <c-card-body>
               <form cForm>
                 <h1>Login</h1>
-                <p class="text-medium-emphasis">Sign In to your account</p>
+                <p class="text-body-secondary">Sign In to your account</p>
                 <c-input-group class="mb-3">
                   <span cInputGroupText>
                     <svg cIcon name="cilUser"></svg>
@@ -40,7 +40,7 @@
               </form>
             </c-card-body>
           </c-card>
-          <c-card [ngStyle]="{'width.%': 44}" class="text-white bg-primary py-5">
+          <c-card [ngStyle]="{'minWidth.%': 44}" class="text-white bg-primary py-5">
             <c-card-body class="text-center">
               <div>
                 <h2>Sign up</h2>

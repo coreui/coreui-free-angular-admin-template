@@ -4,7 +4,6 @@ import { CardModule, GridModule } from '@coreui/angular';
 import { ChartjsModule } from '@coreui/angular-chartjs';
 import { IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from '../../icons/icon-subset';
-import { DocsComponentsModule } from '../../../components';
 import { ChartsComponent } from './charts.component';
 
 describe('ChartsComponent', () => {
@@ -14,10 +13,9 @@ describe('ChartsComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ChartsComponent],
-      imports: [GridModule, CardModule, DocsComponentsModule, ChartjsModule],
-      providers: [IconSetService]
-    }).compileComponents();
+    imports: [GridModule, CardModule, ChartjsModule, ChartsComponent],
+    providers: [IconSetService]
+}).compileComponents();
   }));
 
   beforeEach(() => {

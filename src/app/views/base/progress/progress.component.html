@@ -1,14 +1,11 @@
 <c-row ngPreserveWhitespaces>
   <c-col xs="12">
-    <app-docs-callout href="components/progress" name="Progress"></app-docs-callout>
-  </c-col>
-  <c-col xs="12">
     <c-card class="mb-4">
       <c-card-header>
         <strong>Angular Progress</strong> <small>Basic example</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Progress components are built with two HTML elements, some CSS to set the width, and a
           few attributes. We don't use
           <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress">
@@ -17,21 +14,16 @@
           , ensuring you can stack progress bars, animate them, and place text labels over them.
         </p>
         <app-docs-example href="components/progress">
+          <c-progress [value]="0" class="mb-3" />
+          <c-progress [value]="25" class="mb-3" />
+          <c-progress [value]="50" class="mb-3" />
+          <c-progress [value]="75" class="mb-3" />
+          <c-progress [value]="value" [variant]="variant" animated class="mb-3">{{ value }}%</c-progress>
+          <hr>
           <c-progress class="mb-3">
-            <c-progress-bar [value]="0"></c-progress-bar>
+            <c-progress-bar [value]="33">33%</c-progress-bar>
           </c-progress>
-          <c-progress class="mb-3">
-            <c-progress-bar [value]="25"></c-progress-bar>
-          </c-progress>
-          <c-progress class="mb-3">
-            <c-progress-bar [value]="50"></c-progress-bar>
-          </c-progress>
-          <c-progress class="mb-3">
-            <c-progress-bar [value]="75"></c-progress-bar>
-          </c-progress>
-          <c-progress class="mb-3">
-            <c-progress-bar [value]="100"></c-progress-bar>
-          </c-progress>
+
         </app-docs-example>
       </c-card-body>
     </c-card>
@@ -42,14 +34,12 @@
         <strong>Angular Progress</strong> <small>Labels</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
-          Add labels to your progress bars by placing text within the
-          <code>&lt;c-progress-bar&gt;</code>.
+        <p class="text-body-secondary small">
+          Add labels to your progress bars by placing text as
+          <code>&lt;c-progress&gt;</code> content.
         </p>
         <app-docs-example href="components/progress#labels">
-          <c-progress class="mb-3">
-            <c-progress-bar [value]="25">25%</c-progress-bar>
-          </c-progress>
+          <c-progress [value]="25" class="mb-3">25%</c-progress>
         </app-docs-example>
       </c-card-body>
     </c-card>
@@ -60,36 +50,22 @@
         <strong>Angular Progress</strong> <small>Height</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
-          We only set a <code>height</code> [value] on the <code>&lt;c-progress&gt;</code>, so if
-          you change that [value] the inner <code>&lt;c-progress-bar&gt;</code> will automatically
+        <p class="text-body-secondary small">
+          We only set a <code>height</code> value on the <code>&lt;c-progress&gt;</code>, so if
+          you change that value, the inner <code>&lt;c-progress-bar&gt;</code> will automatically
           resize accordingly.
         </p>
         <app-docs-example href="components/progress#height">
-          <c-progress class="mb-3" height="1">
-            <c-progress-bar [value]="25"></c-progress-bar>
-          </c-progress>
-          <c-progress class="mb-3" height="3">
-            <c-progress-bar [value]="25"></c-progress-bar>
-          </c-progress>
-          <c-progress class="mb-3" height="5">
-            <c-progress-bar [value]="25"></c-progress-bar>
-          </c-progress>
-          <c-progress class="mb-3" height="7">
-            <c-progress-bar [value]="25"></c-progress-bar>
-          </c-progress>
-          <c-progress class="mb-3" height="11">
-            <c-progress-bar [value]="25"></c-progress-bar>
-          </c-progress>
-          <c-progress class="mb-3" height="13">
-            <c-progress-bar [value]="25"></c-progress-bar>
-          </c-progress>
-          <c-progress class="mb-3" height="17">
-            <c-progress-bar [value]="25"></c-progress-bar>
-          </c-progress>
-          <c-progress class="mb-3" height="19">
-            <c-progress-bar [value]="25"></c-progress-bar>
-          </c-progress>
+          <c-progress [value]="25" class="mb-3" height="1" />
+          <c-progress [value]="25" class="mb-3" height="3" />
+          <c-progress [value]="25" class="mb-3" height="5" />
+          <c-progress [value]="25" class="mb-3" height="7" />
+          <c-progress [value]="25" class="mb-3" height="11" />
+          <c-progress [value]="25" class="mb-3" height="13" />
+          <c-progress [value]="25" class="mb-3" height="17" />
+          <c-progress [value]="25" class="mb-3" height="19" />
+          <c-progress [value]="25" class="mb-3" thin />
+          <c-progress [value]="25" class="mb-3" style="height: 2rem;" />
         </app-docs-example>
       </c-card-body>
     </c-card>
@@ -100,22 +76,14 @@
         <strong>Angular Progress</strong> <small>Backgrounds</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Use <code>color</code> prop to change the appearance of individual progress bars.
         </p>
         <app-docs-example href="components/progress#backgrounds">
-          <c-progress class="mb-3">
-            <c-progress-bar [value]="25" color="success"></c-progress-bar>
-          </c-progress>
-          <c-progress class="mb-3">
-            <c-progress-bar [value]="50" color="info"></c-progress-bar>
-          </c-progress>
-          <c-progress class="mb-3">
-            <c-progress-bar [value]="75" color="warning"></c-progress-bar>
-          </c-progress>
-          <c-progress class="mb-3">
-            <c-progress-bar [value]="100" color="danger"></c-progress-bar>
-          </c-progress>
+          <c-progress [value]="25" class="mb-3" color="success" />
+          <c-progress [value]="50" class="mb-3" color="info" />
+          <c-progress [value]="75" class="mb-3" color="warning" />
+          <c-progress [value]="100" class="mb-3" color="danger" />
         </app-docs-example>
       </c-card-body>
     </c-card>
@@ -126,10 +94,18 @@
         <strong>Angular Progress</strong> <small>Multiple bars</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           Include multiple progress bars in a progress component if you need.
         </p>
         <app-docs-example href="components/progress#multiple-bars">
+          <c-progress-stacked>
+            <c-progress [value]="15" class="mb-3" color="primary">15%</c-progress>
+            <c-progress [value]="30" class="mb-3" color="info">30%</c-progress>
+            <c-progress [value]="20" class="mb-3">
+              <c-progress-bar color="danger">20%</c-progress-bar>
+            </c-progress>
+          </c-progress-stacked>
+          <hr>
           <c-progress class="mb-3">
             <c-progress-bar [value]="15">15</c-progress-bar>
             <c-progress-bar [value]="30" color="success">30</c-progress-bar>
@@ -145,23 +121,15 @@
         <strong>Angular Progress</strong> <small>Striped</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
-          Add <code>variant=&#34;striped&#34;</code> to any <code>&lt;c-progress-bar&gt;</code> to
+        <p class="text-body-secondary small">
+          Add <code>variant=&#34;striped&#34;</code> to any <code>&lt;c-progress&gt;</code> to
           apply a stripe via CSS gradient over the progress bar&#39;s background color.
         </p>
         <app-docs-example href="components/progress#striped">
-          <c-progress class="mb-3">
-            <c-progress-bar [value]="25" color="success" variant="striped"></c-progress-bar>
-          </c-progress>
-          <c-progress class="mb-3">
-            <c-progress-bar [value]="50" color="info" variant="striped"></c-progress-bar>
-          </c-progress>
-          <c-progress class="mb-3">
-            <c-progress-bar [value]="75" color="warning" variant="striped"></c-progress-bar>
-          </c-progress>
-          <c-progress class="mb-3">
-            <c-progress-bar [value]="100" color="danger" variant="striped"></c-progress-bar>
-          </c-progress>
+          <c-progress [value]="25" class="mb-3" color="success" variant="striped" />
+          <c-progress [value]="50" class="mb-3" color="info" variant="striped" />
+          <c-progress [value]="75" class="mb-3" color="warning" variant="striped" />
+          <c-progress [value]="100" class="mb-3" color="danger" variant="striped" />
         </app-docs-example>
       </c-card-body>
     </c-card>
@@ -172,24 +140,16 @@
         <strong>Angular Progress</strong> <small>Animated stripes</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
+        <p class="text-body-secondary small">
           The striped gradient can also be animated. Add <code>[animated]="true"</code> property to
-          <code>&lt;c-progress-bar&gt;</code> to animate the stripes right to left via CSS3
+          <code>&lt;c-progress&gt;</code> to animate the stripes right to left via CSS3
           animations.
         </p>
         <app-docs-example href="components/progress#animated-stripes">
-          <c-progress class="mb-3">
-            <c-progress-bar [animated]="true" [value]="25" color="success" variant="striped"></c-progress-bar>
-          </c-progress>
-          <c-progress class="mb-3">
-            <c-progress-bar [animated]="true" [value]="50" color="info" variant="striped"></c-progress-bar>
-          </c-progress>
-          <c-progress class="mb-3">
-            <c-progress-bar [animated]="true" [value]="75" color="warning" variant="striped"></c-progress-bar>
-          </c-progress>
-          <c-progress class="mb-3">
-            <c-progress-bar [animated]="true" [value]="100" color="danger" variant="striped"></c-progress-bar>
-          </c-progress>
+          <c-progress [value]="25" animated class="mb-3" color="success" variant="striped" />
+          <c-progress [value]="50" animated class="mb-3" color="info" variant="striped" />
+          <c-progress [value]="75" animated class="mb-3" color="warning" variant="striped" />
+          <c-progress [value]="100" animated class="mb-3" color="danger" variant="striped" />
         </app-docs-example>
       </c-card-body>
     </c-card>

@@ -5,7 +5,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AlertModule, ButtonModule, CardModule, GridModule } from '@coreui/angular';
 import { IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from '../../../icons/icon-subset';
-import { DocsComponentsModule } from '../../../../components';
 import { AlertsComponent } from './alerts.component';
 
 describe('AlertsComponent', () => {
@@ -15,10 +14,9 @@ describe('AlertsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AlertsComponent],
-      imports: [AlertModule, ButtonModule, NoopAnimationsModule, GridModule, CardModule, DocsComponentsModule, RouterTestingModule],
-      providers: [IconSetService]
-    })
+    imports: [AlertModule, ButtonModule, NoopAnimationsModule, GridModule, CardModule, RouterTestingModule, AlertsComponent],
+    providers: [IconSetService]
+})
       .compileComponents();
   });
 
