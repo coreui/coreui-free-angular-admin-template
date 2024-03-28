@@ -2,6 +2,12 @@
 
 ---
 
+#### `4.7.18`
+
+- chore(dependencies): update to `Angular 17.3`
+
+---
+
 #### `4.7.15`
 
 - chore: move to `application` builder
