@@ -13,13 +13,11 @@
     </c-sidebar-brand>
   </c-sidebar-header>
 
-  <ng-scrollbar #scrollbar="ngScrollbar" (updated)="onScrollbarUpdate(scrollbar.state)" class="overflow"
-                pointerEventsMethod="scrollbar" visibility="hover">
+  <ng-scrollbar #scrollbar="ngScrollbar" (updated)="onScrollbarUpdate(scrollbar.state)" class="overflow" pointerEventsMethod="scrollbar" visibility="hover">
     <c-sidebar-nav #overflow [navItems]="navItems" dropdownMode="close" compact />
   </ng-scrollbar>
   @if (!sidebar1.narrow) {
-    <c-sidebar-footer cSidebarToggle="sidebar1" class="border-top d-none d-lg-flex" toggle="unfoldable"
-                      style="cursor: pointer;">
+    <c-sidebar-footer cSidebarToggle="sidebar1" class="border-top d-none d-lg-flex" toggle="unfoldable" style="cursor: pointer;">
       <button cSidebarToggler></button>
     </c-sidebar-footer>
   }

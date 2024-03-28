@@ -2,9 +2,9 @@
 
 ---
 
-#### `5.0.0-rc.1`
+#### `5.0.0`
 
-CoreUI v5 for Angular 17 pre-release
+CoreUI v5 for Angular 17
 
 - chore(dependencies): update to `Angular 17.3`
 - refactor: update to CoreUI v5 (styles, structure, api)
