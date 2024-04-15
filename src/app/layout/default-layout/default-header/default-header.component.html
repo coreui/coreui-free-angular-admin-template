@@ -160,49 +160,21 @@
 <ng-template #themeDropdown>
   <c-dropdown alignment="end" variant="nav-item">
     <button [caret]="false" cDropdownToggle>
-      @switch (colorMode()) {
-        @case ("dark") {
-          <svg cIcon name="cilMoon" size="lg"></svg>
-        }
-        @case ("auto") {
-          <svg cIcon name="cilContrast" size="lg"></svg>
-        }
-        @default {
-          <svg cIcon name="cilSun" size="lg"></svg>
-        }
-      }
+      <svg cIcon [name]="icons()" size="lg"></svg>
     </button>
     <div cDropdownMenu>
-      <button
-        (click)="colorMode.set('light')"
-        [active]="colorMode()==='light'"
-        [routerLink]="[]"
-        cDropdownItem
-        class="d-flex align-items-center"
-      >
-        <svg cIcon class="me-2" name="cilSun" size="lg"></svg>
-        Light
-      </button>
-      <button
-        (click)="colorMode.set('dark')"
-        [active]="colorMode()==='dark'"
-        [routerLink]="[]"
-        cDropdownItem
-        class="d-flex align-items-center"
-      >
-        <svg cIcon class="me-2" name="cilMoon" size="lg"></svg>
-        Dark
-      </button>
-      <button
-        (click)="colorMode.set('auto')"
-        [active]="colorMode()==='auto'"
-        [routerLink]="[]"
-        cDropdownItem
-        class="d-flex align-items-center"
-      >
-        <svg cIcon class="me-2" name="cilContrast" size="lg"></svg>
-        Auto
-      </button>
+      @for (mode of colorModes; track mode.name) {
+        <button
+          (click)="colorMode.set(mode.name)"
+          [active]="colorMode()===mode.name"
+          [routerLink]="[]"
+          cDropdownItem
+          class="d-flex align-items-center"
+        >
+          <svg cIcon class="me-2" [name]="mode.icon" size="lg"></svg>
+          {{ mode.text }}
+        </button>
+      }
     </div>
   </c-dropdown>
 </ng-template>
