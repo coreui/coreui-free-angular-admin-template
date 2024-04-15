@@ -2,6 +2,13 @@
 
 ---
 
+#### `5.0.2`
+
+- chore(dependencies): update 
+- refactor(default-header): color modes dropdown
+
+---
+
 #### `5.0.0`
 
 CoreUI v5 for Angular 17
