@@ -15,6 +15,11 @@ export class WalletService {
     return this.http.get<IWithdraw[]>(`${environment.apiUrl}wallet/withdrawal-list`);
   }
 
+  // Approved withdrawal list
+  fetchAllApprovedWithdrawal(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.apiUrl}wallet/report/view_approved_withdrawal_list/all`);
+  }
+
   approveWithdrawById(withdrawalId: number): Observable<{latestWithdrawList: IWithdraw[]} & {payoutStatus: IPayout}> {
     return this.http.post<{latestWithdrawList: IWithdraw[]} & {payoutStatus: IPayout}>(`${environment.apiUrl}wallet/withdraw/approve`, {withdrawalId});
   }
@@ -25,7 +30,7 @@ export class WalletService {
 
   // user list
   fetchAlUsers(): Observable<any[]> {
-    return this.http.get<any[]>(`${environment.apiUrl}wallet/report/users/all`);
+    return this.http.get<any[]>(`${environment.apiUrl}wallet/report/view_user_list/all`);
   }
   
   // wallet list
@@ -36,5 +41,15 @@ export class WalletService {
   // deposit list
   fetchAllDeposit(): Observable<any[]> {
     return this.http.get<any[]>(`${environment.apiUrl}wallet/report/view_deposit_list/all`);
+  }
+  
+  // deposit list
+  fetchAllPurchase(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.apiUrl}wallet/report/view_purchased_amount/all`);
+  }
+  
+  // deposit list
+  fetchGroupSale(userId: number, dateFrom: string, dateTo: string): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.apiUrl}wallet/group-sale/${userId}/${dateFrom}/${dateTo}`);
   }
 }

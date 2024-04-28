@@ -24,6 +24,10 @@ $enable-rtl: true;
 
 // ag-grid styles
 /* Core Grid CSS */
-@import 'ag-grid-community/styles/ag-grid.css';
+@import '@ag-grid-community/styles/ag-grid.css';
 /* Quartz Theme Specific CSS */
-@import 'ag-grid-community/styles/ag-theme-quartz.css';
+@import '@ag-grid-community/styles/ag-theme-quartz.css';
+// @import '@ag-grid-community/styles/ag-theme-alpine.css';
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';

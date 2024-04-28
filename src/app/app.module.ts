@@ -41,6 +41,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './services/guards/auth-guard.service';
 import { JWTTokenService } from './services/auth/jwttoken.service';
 import { AuthenticationService } from './services/authentication.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const APP_CONTAINERS = [
   DefaultFooterComponent,
@@ -77,7 +78,8 @@ const APP_CONTAINERS = [
     CardModule,
     NgScrollbarModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [
     AuthGuard,

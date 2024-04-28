@@ -8,6 +8,7 @@ import { WithdrawListComponent } from './withdraw-list/withdraw-list.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserWalletComponent } from './user-wallet/user-wallet.component';
 import { DepositListComponent } from './deposit-list/deposit-list.component';
+import { PurchasedListComponent } from './purchased-list/purchased-list.component';
 
 const routes: Routes = [
   {
@@ -64,6 +65,13 @@ const routes: Routes = [
     component: DepositListComponent,
     data: {
       title: 'Deposit List'
+    }
+  },
+  {
+    path: 'purchased-packages',
+    component: PurchasedListComponent,
+    data: {
+      title: 'Group Sale'
     }
   }
 ];

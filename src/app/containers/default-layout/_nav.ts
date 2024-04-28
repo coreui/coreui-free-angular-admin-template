@@ -24,6 +24,11 @@ export const navItemsAll: INavData[] = [
     name: 'Deposit List',
     url: '/pages/deposit',
     iconComponent: { name: 'cil-cloud-download' }
+  },
+  {
+    name: 'Group Sale',
+    url: '/pages/purchased-packages',
+    iconComponent: { name: 'cil-calculator' }
   }
 ];
 

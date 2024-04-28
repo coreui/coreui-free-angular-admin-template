@@ -1,67 +1,94 @@
 <c-card class="mb-4">
-    <c-card-body>
-        <c-row>
-            <c-col xs>
-              <c-card class="mb-4">
-                <c-card-header>Users</c-card-header>
-                <c-card-body>
-                  <table
-                    [hover]="true"
-                    [responsive]="true"
-                    [striped]="true"
-                    align="middle"
-                    cTable
-                    class="mb-0 border"
-                  >
-                    <thead cTableColor="light">
-                      <tr>
-                        <th>User</th>
-                        <th class="text-center">Withdraw Amount</th>
-                        <th>Address</th>
-                        <th class="text-center">Reference</th>
-                        <th *ngIf="isApproval">Activity</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let item of withdrawalList; index as i">
-                        <td>
-                          <div>{{ item.full_name }}</div>
-                          <div class="small text-medium-emphasis text-nowrap">
-                            <span>
-                              Balance: {{ getRounded(item.net_wallet!) }}
-                            </span>
-                          </div>
-                        </td>
-                        <td class="text-center">
-                            {{ getRounded(item.withdraw_amount!) }}
-                        </td>
-                        <td>
-                            {{ item.address}}
-                        </td>
-                        <td>
-                          <div>{{ item.reference}}</div>
-                          <div class="small text-medium-emphasis text-nowrap">
-                            <span>
-                              Requested on: {{ item.modified_on | date: 'dd-MM-YYYY HH:mm:ss': 'UTC+0' }}
-                            </span>
-                          </div>
-                        </td>
-                        <td *ngIf="isApproval">
-                          <c-button-group *ngIf="!item.payoutid; else payoutStatus" aria-label="Basic mixed styles example" role="group">
-                            <button (click)="showApproveConfirmation(item)" cButton
-                              color="success">Approve</button>
-                            <button cButton color="danger" variant="outline" (click)="showRejectConfirmation(item)">Reject</button>
-                          </c-button-group>
-                          <ng-template #payoutStatus>Payout in progress.</ng-template>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </c-card-body>
-              </c-card>
-            </c-col>
-          </c-row>
-    </c-card-body>
+  <c-card-body>
+    <c-row>
+      <c-col>
+        <c-nav layout="fill" variant="pills">
+          <c-nav-item>
+            <a [active]="selectedTab === 'withdrawal'" cNavLink (click)="selectTab('withdrawal')">Withdrawal List</a>
+          </c-nav-item>
+          <c-nav-item>
+            <a [active]="selectedTab === 'approve'" cNavLink (click)="selectTab('approve')">Approved/Rejected Withdrawal</a>
+          </c-nav-item>
+        </c-nav>
+      </c-col>
+    </c-row>
+    <c-row>
+      <c-col>&nbsp;</c-col>
+    </c-row>
+    <c-row>
+      <c-col xs>
+        <c-card *ngIf="selectedTab === 'withdrawal'" class="mb-4">
+          <c-card-body>
+            <table [hover]="true" [responsive]="true" [striped]="true" align="middle" cTable class="mb-0 border">
+              <thead cTableColor="light">
+                <tr>
+                  <th>User</th>
+                  <th class="text-center">Withdraw Amount</th>
+                  <th>Address</th>
+                  <th class="text-center">Reference</th>
+                  <th *ngIf="isApproval">Activity</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of withdrawalList; index as i">
+                  <td>
+                    <div>{{ item.full_name }}</div>
+                    <div class="small text-medium-emphasis text-nowrap">
+                      <span>
+                        Balance: {{ getRounded(item.net_wallet!) }}
+                      </span>
+                    </div>
+                  </td>
+                  <td class="text-center">
+                    {{ getRounded(item.withdraw_amount!) }}
+                  </td>
+                  <td>
+                    {{ item.address}}
+                  </td>
+                  <td>
+                    <div>{{ item.reference}}</div>
+                    <div class="small text-medium-emphasis text-nowrap">
+                      <span>
+                        Requested on: {{ item.modified_on | date: 'dd-MM-YYYY HH:mm:ss': 'UTC+0' }}
+                      </span>
+                    </div>
+                  </td>
+                  <td *ngIf="isApproval">
+                    <c-button-group *ngIf="!item.payoutid; else payoutStatus" aria-label="Basic mixed styles example"
+                      role="group">
+                      <button (click)="showApproveConfirmation(item)" cButton color="success">Approve</button>
+                      <button cButton color="danger" variant="outline"
+                        (click)="showRejectConfirmation(item)">Reject</button>
+                    </c-button-group>
+                    <ng-template #payoutStatus>Payout in progress.</ng-template>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </c-card-body>
+        </c-card>
+        <c-card *ngIf="selectedTab === 'approve'"  class="mb-4">
+          <c-card-body>
+            <c-row>
+              <c-col>
+                <!-- The AG Grid component -->
+                <ag-grid-angular
+                  *ngIf="rowData.length > 0"
+                  class="ag-theme-quartz-auto-dark"
+                  style="height: 500px;"
+                  [rowData]="rowData"
+                  [columnDefs]="colDefs"
+                  [pagination]="true"
+                  [paginationPageSizeSelector]="[25, 50, 100]"
+                  [paginationPageSize]="25">
+                </ag-grid-angular>
+              </c-col>
+            </c-row>
+          </c-card-body>
+        </c-card>
+      </c-col>
+    </c-row>
+  </c-card-body>
 </c-card>
 
 
@@ -77,33 +104,35 @@
     <button (click)="showApproveModal = false" cButton color="secondary">
       Close
     </button>
-    <button *ngIf="!approveLoading; else spinnerApproveLoading" cButton (click)="approve(selectedWithdrawal.id!)" color="primary">Ok</button>
+    <button *ngIf="!approveLoading; else spinnerApproveLoading" cButton (click)="approve(selectedWithdrawal.id!)"
+      color="primary">Ok</button>
     <ng-template #spinnerApproveLoading>
-        <c-spinner color="primary"></c-spinner>
+      <c-spinner color="primary"></c-spinner>
     </ng-template>
   </c-modal-footer>
 </c-modal>
 
 <c-modal [visible]="showRejectModal" alignment="center">
-    <c-modal-header>
-      <h5 cModalTitle>Reject Withdrawal</h5>
-      <button (click)="showRejectModal = false" cButtonClose></button>
-    </c-modal-header>
-    <c-modal-body>
-        <form cForm class="row g-3">
-            <c-col [md]="6">
-              <label cLabel for="rejectMessage">Reject Message</label>
-              <input cFormControl id="rejectMessage" name="rejectMessage" [(ngModel)]="rejectMessage" type="text" />
-            </c-col>
-        </form>
-    </c-modal-body>
-    <c-modal-footer>
-      <button (click)="showRejectModal = false" cButton color="secondary">
-        Close
-      </button>
-      <button *ngIf="!rejectLoading; else spinnerRejectLoading" cButton (click)="reject(selectedWithdrawal.id!)" color="danger">Ok</button>
-      <ng-template #spinnerRejectLoading>
-          <c-spinner color="danger"></c-spinner>
-      </ng-template>
-    </c-modal-footer>
-  </c-modal>
+  <c-modal-header>
+    <h5 cModalTitle>Reject Withdrawal</h5>
+    <button (click)="showRejectModal = false" cButtonClose></button>
+  </c-modal-header>
+  <c-modal-body>
+    <form cForm class="row g-3">
+      <c-col [md]="6">
+        <label cLabel for="rejectMessage">Reject Message</label>
+        <input cFormControl id="rejectMessage" name="rejectMessage" [(ngModel)]="rejectMessage" type="text" />
+      </c-col>
+    </form>
+  </c-modal-body>
+  <c-modal-footer>
+    <button (click)="showRejectModal = false" cButton color="secondary">
+      Close
+    </button>
+    <button *ngIf="!rejectLoading; else spinnerRejectLoading" cButton (click)="reject(selectedWithdrawal.id!)"
+      color="danger">Ok</button>
+    <ng-template #spinnerRejectLoading>
+      <c-spinner color="danger"></c-spinner>
+    </ng-template>
+  </c-modal-footer>
+</c-modal>

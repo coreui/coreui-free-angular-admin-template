@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AvatarModule, ButtonGroupModule, ButtonModule, CardModule, FormModule, GridModule, NavModule, ProgressModule, TableModule, TabsModule, ModalModule, SpinnerModule } from '@coreui/angular';
 import { ChartjsModule } from '@coreui/angular-chartjs';
 import { IconModule } from '@coreui/icons-angular';
-import { AgGridAngular } from 'ag-grid-angular';
+import { AgGridAngular } from '@ag-grid-community/angular';
 import { WalletService } from 'src/app/services/wallet/wallet.service';
 import { DatePipe } from '@angular/common';
 
@@ -44,6 +44,7 @@ export class DepositListComponent {
 
   // Column Definitions: Defines & controls grid columns.
   colDefs: any[] = [
+    { headerName: '#', field: "id", filter: true, width: 100},
     { headerName: 'User', field: "username", filter: true},
     { headerName: 'Amount', field: "amount", filter: true },
     { headerName: 'Deposit Address', field: "send_to", filter: true },
@@ -66,8 +67,9 @@ export class DepositListComponent {
       .subscribe({
         next: (walletList: any[]) => {
           this.walletList = walletList;
-          this.walletList.forEach(item => {
+          this.walletList.forEach((item, i) => {
             this.rowData.push({
+              "id": i,
               "username": item.username,
               "amount": item.amount,
               "send_to": item.send_to,

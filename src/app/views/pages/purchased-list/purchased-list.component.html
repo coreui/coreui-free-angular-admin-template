@@ -1,0 +1,64 @@
+<c-card class="mb-4">
+    <c-card-body>
+        <c-row>
+            <c-col>
+                <!-- The AG Grid component -->
+                <ag-grid-angular *ngIf="rowData.length > 0"
+                    class="ag-theme-quartz-auto-dark"
+                    style="height: 500px;"
+                    [rowData]="rowData"
+                    [columnDefs]="colDefs"
+                    [pagination]="true"
+                    [paginationPageSizeSelector]="[25, 50, 100]"
+                    [paginationPageSize]="25"
+                    [frameworkComponents]="frameworkComponents"
+                    [context]="{ componentParent: this }"
+                    (gridReady)="onGridReady($event)">
+                </ag-grid-angular>
+            </c-col>
+        </c-row>
+    </c-card-body>
+</c-card>
+<c-modal [visible]="showGroupSale" alignment="center">
+    <c-modal-header>
+      <h5 cModalTitle>Group Sale Detail</h5>
+      <button (click)="showGroupSale = false" cButtonClose></button>
+    </c-modal-header>
+    <c-modal-body>
+      <form cForm class="row g-3">
+        <c-col [md]="12">
+          <strong>{{selectedUser?.username}} ({{selectedUser?.email}}) total group sale: 
+            ${{(totalGroupSale && totalGroupSale.total_sale !== null) ? totalGroupSale.total_sale : 0 | number:'1.0':'en-US'}}</strong>
+        </c-col>
+        <c-col [md]="12">
+          <strong>Select Date Range</strong>
+        </c-col>
+        <c-col [md]="12">
+            <ngb-datepicker #dp (dateSelect)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t" outsideDays="hidden" />
+
+            <ng-template #t let-date let-focused="focused">
+                <span
+                    class="custom-day"
+                    [class.focused]="focused"
+                    [class.range]="isRange(date)"
+                    [class.faded]="isHovered(date) || isInside(date)"
+                    (mouseenter)="hoveredDate = date"
+                    (mouseleave)="hoveredDate = null"
+                >
+                    {{ date.day }}
+                </span>
+            </ng-template>
+        </c-col>
+      </form>
+    </c-modal-body>
+    <c-modal-footer>
+      <button (click)="showGroupSale = false" cButton color="secondary">
+        Close
+      </button>
+      <button *ngIf="!fetchTotalSaleLoading; else spinnerFetchLoading" cButton (click)="fetchTotalSale()"
+        color="success">Fetch</button>
+      <ng-template #spinnerFetchLoading>
+        <c-spinner color="success"></c-spinner>
+      </ng-template>
+    </c-modal-footer>
+  </c-modal>

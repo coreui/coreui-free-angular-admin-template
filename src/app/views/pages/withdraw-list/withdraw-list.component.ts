@@ -21,6 +21,7 @@ import { WalletService } from '../../../services/wallet/wallet.service';
 import { IPayout, IWithdraw } from 'src/app/services/user/user.type';
 import { ModalModule } from '@coreui/angular';
 import { FormsModule } from '@angular/forms';
+import { AgGridAngular } from '@ag-grid-community/angular';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 interface IUser {
@@ -54,10 +55,10 @@ interface IUser {
     TableModule,
     TabsModule,
     ChartjsModule,
-    TabsModule,
     ModalModule,
     SpinnerModule,
-    FormsModule
+    FormsModule,
+    AgGridAngular
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './withdraw-list.component.html',
@@ -77,11 +78,30 @@ export class WithdrawListComponent {
   isApproval: boolean = false;
   userRole: number = null;
 
+  loadingApprovedWithdrawalList: boolean = false;
+  walletList: any[];
+  rowData = [];
+  selectedTab: string = 'withdrawal';
+
+  // Column Definitions: Defines & controls grid columns.
+  colDefs: any[] = [
+    { headerName: '#', field: "id", filter: true, width: 100},
+    { headerName: 'User', field: "user", filter: true},
+    { headerName: 'Username', field: "username", filter: true },
+    { headerName: 'Email', field: "email", filter: true },
+    { headerName: 'Reference', field: "reference", filter: true },
+    { headerName: 'Amount', field: "withdraw_amount", filter: true },
+    { headerName: 'Status', field: "status", filter: true },
+    { headerName: 'Note', field: "note", filter: true },
+    { headerName: 'Updated On', field: "modified_on", filter: true }
+  ];
+
   constructor(private walletService: WalletService,
     private auth: AuthenticationService) {}
 
   ngOnInit(): void {
     this.fetchWithdrawal();
+    this.fetchApprovedWithdrawal();
     this.isApproval = (this.auth.userRole === 2 || this.auth.userRole === 5);
   }
 
@@ -92,6 +112,30 @@ export class WithdrawListComponent {
       .subscribe({
         next: (withdrawalList: IWithdraw[]) => {
           this.withdrawalList = withdrawalList;
+        }
+      });
+  }
+
+  fetchApprovedWithdrawal(): void {
+    // fetch all withdrawal list
+    this.loadingApprovedWithdrawalList = true;
+    this.walletService.fetchAllApprovedWithdrawal()
+      .subscribe({
+        next: (walletList: any[]) => {
+          this.walletList = walletList;
+          this.walletList.forEach((item, i) => {
+            this.rowData.push({
+              "id": i,
+              "user": item.full_name,
+              "username": item.username,
+              "email": item.email,
+              "reference": item.reference,
+              "withdraw_amount": item.withdraw_amount,
+              "status": item.status,
+              "note": item.txid !== null ? item.txid : item.cancel_reason,
+              "modified_on": item.modified_on
+            });
+          });
         }
       });
   }
@@ -144,5 +188,9 @@ export class WithdrawListComponent {
   showRejectConfirmation(item: IWithdraw): void {
     this.selectedWithdrawal = item;
     this.showRejectModal = true;
+  }
+
+  selectTab(clickedTab: string): void {
+    this.selectedTab = clickedTab;
   }
 }
