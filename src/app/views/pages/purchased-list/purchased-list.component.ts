@@ -1,5 +1,5 @@
 import { CommonModule, DatePipe } from '@angular/common';
-import { CUSTOM_ELEMENTS_SCHEMA, Component, inject } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, HostListener, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AvatarModule, ButtonGroupModule, ButtonModule, CardModule, FormModule, GridModule, NavModule, ProgressModule, TableModule, TabsModule, ModalModule, SpinnerModule } from '@coreui/angular';
 import { ChartjsModule } from '@coreui/angular-chartjs';
@@ -53,11 +53,12 @@ export class PurchasedListComponent {
   showGroupSale: boolean = false;
   selectedUser: any;
   fetchTotalSaleLoading: boolean = false;
-  totalGroupSale: any;
+  totalGroupSale: number = 0;
 
   // Bootstrap date range selector
   calendar = inject(NgbCalendar);
 	formatter = inject(NgbDateParserFormatter);
+  agGridParams: any;
 
   hoveredDate: NgbDate | null = null;
 	fromDate: NgbDate | null = this.calendar.getToday();
@@ -109,6 +110,7 @@ export class PurchasedListComponent {
               "sale_id": item.id
             });
           });
+          // window.addEventListener('resize', () => this.onGridReady());
         }
       });
   }
@@ -123,9 +125,10 @@ export class PurchasedListComponent {
     return Math.trunc(value * 10000) / 10000;
   }
 
-  onGridReady(params) {
-    params.api.sizeColumnsToFit();
-  }
+  // onGridReady(params = this.agGridParams) {
+  //   this.agGridParams = params;
+  //   params.api.sizeColumnsToFit();
+  // }
 
   onDateSelection(date: NgbDate) {
 		if (!this.fromDate && !this.toDate) {
@@ -164,7 +167,7 @@ export class PurchasedListComponent {
 
   fetchTotalSale() {
     this.fetchTotalSaleLoading = true;
-    this.totalGroupSale = null;
+    this.totalGroupSale = 0;
     if (!this.fromDate || !this.toDate){
       this.resetGroupSale();
       return;
@@ -173,8 +176,10 @@ export class PurchasedListComponent {
     const dateTo = `${this.toDate.year}-${this.toDate.month}-${this.toDate.day}`;
     this.walletService.fetchGroupSale(this.selectedUser.sale_id, dateFrom, dateTo)
       .subscribe({
-        next: (groupSale: any[]) => {
-          this.totalGroupSale = groupSale;
+        next: (groupSale: any) => {
+          this.totalGroupSale = groupSale.reduce((n, {invest_amount}) => n + invest_amount, 0);
+          console.log(this.totalGroupSale, groupSale);
+
           this.resetGroupSale();
         }
       });

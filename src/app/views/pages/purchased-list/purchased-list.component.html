@@ -12,8 +12,7 @@
                     [paginationPageSizeSelector]="[25, 50, 100]"
                     [paginationPageSize]="25"
                     [frameworkComponents]="frameworkComponents"
-                    [context]="{ componentParent: this }"
-                    (gridReady)="onGridReady($event)">
+                    [context]="{ componentParent: this }">
                 </ag-grid-angular>
             </c-col>
         </c-row>
@@ -28,7 +27,7 @@
       <form cForm class="row g-3">
         <c-col [md]="12">
           <strong>{{selectedUser?.username}} ({{selectedUser?.email}}) total group sale: 
-            ${{(totalGroupSale && totalGroupSale.total_sale !== null) ? totalGroupSale.total_sale : 0 | number:'1.0':'en-US'}}</strong>
+            ${{totalGroupSale | number:'1.0-0'}}</strong>
         </c-col>
         <c-col [md]="12">
           <strong>Select Date Range</strong>
