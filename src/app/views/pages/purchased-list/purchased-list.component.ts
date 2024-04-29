@@ -178,7 +178,6 @@ export class PurchasedListComponent {
       .subscribe({
         next: (groupSale: any) => {
           this.totalGroupSale = groupSale.reduce((n, {invest_amount}) => n + invest_amount, 0);
-          console.log(this.totalGroupSale, groupSale);
 
           this.resetGroupSale();
         }
