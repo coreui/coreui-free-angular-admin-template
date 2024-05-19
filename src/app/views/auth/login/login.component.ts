@@ -17,6 +17,7 @@ import {
 } from '@coreui/angular';
 import { FormsModule } from '@angular/forms';
 import { LoginService } from '../../../services/auth/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -45,10 +46,22 @@ export class LoginComponent {
   email = '';
   password = '';
 
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService, private router: Router) {}
 
   login(): void {
-    this.loginService.postLogin({ email: this.email, password: this.password })
-      .subscribe;
+    this.loginService
+      .postLogin({ email: this.email, password: this.password })
+      .subscribe({
+        next: (response) => {
+          localStorage.setItem('token', response.token);
+          localStorage.setItem('id', response.id);
+          localStorage.setItem('email', response.email);
+          localStorage.setItem('role', response.role);
+          console.log(localStorage.getItem('token'));
+          this.router.navigate(['/dashboard']);
+        },
+        error: (error) =>
+          console.error('Error al realizar la solicitud:', error),
+      });
   }
 }
