@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
-import { NgStyle } from '@angular/common';
 import { IconDirective } from '@coreui/icons-angular';
 import {
   ContainerComponent,
   RowComponent,
   ColComponent,
-  CardGroupComponent,
   TextColorDirective,
   CardComponent,
   CardBodyComponent,
@@ -14,15 +12,17 @@ import {
   InputGroupTextDirective,
   FormControlDirective,
   ButtonDirective,
+  CardGroupComponent,
 } from '@coreui/angular';
 import { FormsModule } from '@angular/forms';
-import { LoginService } from '../../../services/auth/login.service';
+import { NgStyle } from '@angular/common';
 import { Router } from '@angular/router';
+import { RegisterService } from '../../../services/auth/register.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss'],
   standalone: true,
   imports: [
     ContainerComponent,
@@ -42,25 +42,36 @@ import { Router } from '@angular/router';
     FormsModule,
   ],
 })
-export class LoginComponent {
+export class RegisterComponent {
+  name = '';
   email = '';
   password = '';
+  confirmPassword = '';
+  role = '';
+  birthdate = '';
 
-  constructor(private loginService: LoginService, private router: Router) {}
+  constructor(
+    private registerService: RegisterService,
+    private router: Router
+  ) {}
 
-  redirectToRegister(): void {
-    this.router.navigate(['/auth/register']);
+  redirectToLogin(): void {
+    this.router.navigate(['/auth/login']);
   }
 
-  login(): void {
-    this.loginService
-      .postLogin({ email: this.email, password: this.password })
+  register(): void {
+    this.registerService
+      .postRegister({
+        name: this.name,
+        email: this.email,
+        password: this.password,
+        confirmPassword: this.confirmPassword,
+        role: this.role,
+        birthdate: this.birthdate,
+      })
       .subscribe({
         next: (response) => {
-          localStorage.setItem('token', response.token);
-          localStorage.setItem('id', response.id);
-          localStorage.setItem('email', response.email);
-          localStorage.setItem('role', response.role);
+          alert(`Usuario ${response.name} ha sido registrado correctamente`);
           this.router.navigate(['/dashboard']);
         },
         error: (error) =>

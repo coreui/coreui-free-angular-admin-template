@@ -216,6 +216,5 @@ export class DefaultHeaderComponent extends HeaderComponent {
 
   logout(): void {
     localStorage.clear();
-    console.log(localStorage.getItem('token'));
   }
 }

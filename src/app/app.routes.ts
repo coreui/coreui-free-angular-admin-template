@@ -1,11 +1,21 @@
 import { Routes } from '@angular/router';
 import { DefaultLayoutComponent } from './layout';
-
+import { authGuard } from './auth.guard';
 export const routes: Routes = [
+  {
+    path: 'auth/login',
+    loadChildren: () =>
+      import('./views/auth/login/routes').then((m) => m.routes),
+  },
+  {
+    path: 'auth/register',
+    loadChildren: () =>
+      import('./views/auth/register/routes').then((m) => m.routes),
+  },
   {
     path: '',
     component: DefaultLayoutComponent,
-
+    canActivate: [authGuard],
     data: {
       title: 'Home',
     },
@@ -55,6 +65,7 @@ export const routes: Routes = [
         loadChildren: () =>
           import('./views/charts/routes').then((m) => m.routes),
       },
+
       {
         path: '**',
         loadChildren: () =>
@@ -62,16 +73,8 @@ export const routes: Routes = [
       },
     ],
   },
-  {
-    path: 'auth/login',
-    loadComponent: () =>
-      import('./views/auth/login/login.component').then(
-        (m) => m.LoginComponent
-      ),
-    data: {
-      title: 'Login',
-    },
-  },
+
+  /*
   {
     path: '404',
     loadComponent: () =>
@@ -103,9 +106,5 @@ export const routes: Routes = [
       title: 'Register Page',
     },
   },
+  */
 ];
-
-/*
-
-
-*/
