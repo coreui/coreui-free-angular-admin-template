@@ -1,0 +1,80 @@
+<c-row>
+    <c-col xs>
+      <c-card class="mb-4">
+        <c-card-body>
+            <button cButton color="success" class=" text-white me-md-2 mb-3">
+                Añadir Usuario
+            </button>
+          <table
+            [hover]="true"
+            [responsive]="true"
+            [striped]="true"
+            align="middle"
+            cTable
+            class="mb-0 border"
+          >
+            <thead class="text-nowrap text-truncate">
+            <tr>
+              <th class="bg-body-tertiary ">
+                <!-- <svg cIcon name="cilPeople"></svg> -->
+              </th>
+              <th class="bg-body-tertiary">Nombre</th>
+              <th class="bg-body-tertiary">Departamento</th>
+              <th class="bg-body-tertiary">Correo</th>
+              <th class="bg-body-tertiary">Permisos</th>
+               
+              <!-- <svg cIcon class="icon icon-lg me-2" name="cilPlus"></svg> -->
+            
+            </tr>
+            </thead>
+            <tbody>
+              @for (user of users; track user.name; let i = $index) {
+                <tr>
+                  <td class="text-center">
+                    <c-avatar [size]="'md'" src="{{ user.avatar }}" status="{{ user.status }}" />
+                  </td>
+                  <td>
+                    <div>{{ user.name }}</div>
+                    <div class="small text-body-secondary text-nowrap">
+                    <span>
+                      {{ user.state }} | Registered: {{ user.registered }}
+                    </span>
+                    </div>
+                  </td>
+                  <td class="text-center">
+                    <svg
+                      cIcon
+                      id="{{ user.country + user.name }}"
+                      name="cif{{ user.country }}"
+                      size="xl"
+                      title="{{ user.country }}"
+                    ></svg>
+                  </td>
+                  <td>
+                    <div class="d-flex justify-content-between">
+                      <div class="float-start">
+                        <strong>{{ user.usage }}%</strong>
+                      </div>
+                      <div class="float-end ms-1 text-nowrap">
+                        <small class="text-body-secondary">
+                          {{ user.period }}
+                        </small>
+                      </div>
+                    </div>
+                    <c-progress thin [value]="user.usage" color="{{ user.color }}" />
+                  </td>
+                  <td class="text-end">
+                    <div class="small text-body-secondary"></div>
+                    <div class="fw-semibold text-nowrap">
+                      <svg cIcon class="icon icon-lg me-2 move-left" name="cilPencil"></svg>
+                      <svg cIcon class="icon icon-lg me-2 move-left" name="cilTrash"></svg>
+                    </div>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </c-card-body>
+      </c-card>
+    </c-col>
+  </c-row>
