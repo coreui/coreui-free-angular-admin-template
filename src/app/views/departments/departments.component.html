@@ -1,0 +1,72 @@
+<c-row>
+  <c-col xs>
+    <c-card class="mb-4">
+      <c-card-body>
+        <table
+          [hover]="true"
+          [responsive]="true"
+          [striped]="true"
+          align="middle"
+          cTable
+          class="mb-0 border"
+        >
+          <thead className="text-nowrap text-truncate">
+            <tr>
+              <th class="bg-body-tertiary text-center">Id</th>
+              <th class="bg-body-tertiary text-center">Nombre</th>
+              <th class="bg-body-tertiary text-center">Director</th>
+              <th class="bg-body-tertiary text-center">Integrantes</th>
+              <th class="bg-body-tertiary text-center">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (department of departments; track department.id; let i =
+            $index) {
+            <tr>
+              <td class="text-center">
+                {{ department.id }}
+              </td>
+              <td class="text-center">
+                {{ department.name }}
+              </td>
+              <td class="text-center">
+                {{ department.director }}
+              </td>
+              <td class="text-center">
+                {{ department.membersQuantity }}
+              </td>
+              <td class="text-center">
+                <div class="action-buttons-container">
+                  <button variant="ghost" cButton>
+                    <svg cIcon name="cil-pencil"></svg>
+                  </button>
+                  <button variant="ghost" cButton (click)="toggleLiveDemo()">
+                    <svg cIcon name="cil-trash"></svg>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
+
+<c-modal
+  id="liveDemoModal"
+  [visible]="visible"
+  (visibleChange)="handleLiveDemoChange($event)"
+  alignment="center"
+>
+  <c-modal-body class="delete-modal"
+    ><h6>¿Estás seguro que deseas borrar este departamento?</h6>
+    <div class="delete-modal-buttons-container">
+      <button (click)="toggleLiveDemo()" cButton color="primary">
+        Cerrar
+      </button>
+      <button cButton color="danger">Borrar</button>
+    </div>
+  </c-modal-body>
+</c-modal>
