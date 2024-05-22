@@ -4,7 +4,7 @@
         <c-card-body>
           <div class="d-flex justify-content-between align-items-center">
             <h4 class="card-title" id="users">Gestión de Usuarios</h4>
-            <button cButton color="success" class="text-white ms-md-2 mb-3">
+            <button cButton  color="success" class="text-white ms-md-2 mb-3">
               Agregar Usuario
             </button>
         </div>
@@ -59,14 +59,31 @@
                   <td class="text-center">
                     <div class="small text-body-secondary"></div>
                     <div class="fw-semibold text-nowrap">
-                      <svg cIcon (click)="editUser(user)" class="icon icon-lg me-2 move-left" name="cilPencil"></svg>
-                      <svg cIcon (click)="deleteUser(user)" class="icon icon-lg me-2 move-left" name="cilTrash"></svg>
+                      <svg cIcon class="icon icon-lg me-2 move-left" name="cilPencil"></svg>
+                      <svg cIcon class="icon icon-lg me-2 move-left" name="cilTrash"></svg>	                     
                     </div>
                   </td>
                 </tr>
               }
             </tbody>
           </table>
+          <c-pagination aria-label="Page navigation example " class="ms-md-2">
+            <li cPageItem>
+              <a cPageLink >Previous</a>
+            </li>
+            <li cPageItem>
+              <a cPageLink >1</a>
+            </li>
+            <li cPageItem>
+              <a cPageLink >2</a>
+            </li>
+            <li cPageItem>
+              <a cPageLink >3</a>
+            </li>
+            <li cPageItem>
+              <a cPageLink >Next</a>
+            </li>
+          </c-pagination>
         </c-card-body>
       </c-card>
     </c-col>

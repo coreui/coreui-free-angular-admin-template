@@ -1,6 +1,7 @@
 import { DOCUMENT, NgStyle } from '@angular/common';
 import { Component, DestroyRef, effect, inject, OnInit, Renderer2, signal, WritableSignal } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   AvatarComponent,
   ButtonDirective,
@@ -16,7 +17,10 @@ import {
   ProgressComponent,
   RowComponent,
   TableDirective,
-  TextColorDirective
+  TextColorDirective,
+  PageItemDirective,
+  PageLinkDirective,
+  PaginationComponent
 } from '@coreui/angular';
 import { IconDirective } from '@coreui/icons-angular';
 import { WidgetsBrandComponent } from '../widgets/widgets-brand/widgets-brand.component';
@@ -33,11 +37,12 @@ interface IUser {
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [WidgetsDropdownComponent, TextColorDirective, CardComponent, CardBodyComponent, RowComponent, ColComponent, ButtonDirective, IconDirective, ReactiveFormsModule, ButtonGroupComponent, FormCheckLabelDirective, NgStyle, CardFooterComponent, GutterDirective, ProgressBarDirective, ProgressComponent, WidgetsBrandComponent, CardHeaderComponent, TableDirective, AvatarComponent],
+  imports: [PaginationComponent,PageItemDirective,PageLinkDirective,RouterLink,WidgetsDropdownComponent, TextColorDirective, CardComponent, CardBodyComponent, RowComponent, ColComponent, ButtonDirective, IconDirective, ReactiveFormsModule, ButtonGroupComponent, FormCheckLabelDirective, FormsModule, NgStyle, CardFooterComponent, GutterDirective, ProgressBarDirective, ProgressComponent, WidgetsBrandComponent, CardHeaderComponent, TableDirective, AvatarComponent],
   templateUrl: './users.component.html',
   styleUrl: './users.component.scss'
 })
 export class UsersComponent {
+  
   public users: IUser[] = [
     {
       name: "Anna",
@@ -47,35 +52,7 @@ export class UsersComponent {
       status: "Proteger a los ucabistas"
     },
     {
-      name: "Anna",
-      email: "anna@gmail.com",
-      registered: "Hoy",
-      activity: "Seguridad",
-      status: "Proteger a los ucabistas"
-    },
-    {
-      name: "Anna",
-      email: "anna@gmail.com",
-      registered: "Hoy",
-      activity: "Seguridad",
-      status: "Proteger a los ucabistas"
-    },
-    {
-      name: "Anna",
-      email: "anna@gmail.com",
-      registered: "Hoy",
-      activity: "Seguridad",
-      status: "Proteger a los ucabistas"
-    },
-    {
-      name: "Anna",
-      email: "anna@gmail.com",
-      registered: "Hoy",
-      activity: "Seguridad",
-      status: "Proteger a los ucabistas"
-    },
-    {
-      name: "Anna",
+      name: "Ana",
       email: "anna@gmail.com",
       registered: "Hoy",
       activity: "Seguridad",
@@ -90,6 +67,5 @@ export class UsersComponent {
   deleteUser(user: IUser) {
     console.log(user);
   }
-
 
 }
