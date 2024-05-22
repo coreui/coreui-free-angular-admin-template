@@ -1,7 +1,6 @@
 import { DOCUMENT, NgStyle } from '@angular/common';
 import { Component, DestroyRef, effect, inject, OnInit, Renderer2, signal, WritableSignal } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import {
   AvatarComponent,
   ButtonDirective,
@@ -34,13 +33,18 @@ interface IUser {
   status: string;
 }
 
+
+
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [PaginationComponent,PageItemDirective,PageLinkDirective,RouterLink,WidgetsDropdownComponent, TextColorDirective, CardComponent, CardBodyComponent, RowComponent, ColComponent, ButtonDirective, IconDirective, ReactiveFormsModule, ButtonGroupComponent, FormCheckLabelDirective, FormsModule, NgStyle, CardFooterComponent, GutterDirective, ProgressBarDirective, ProgressComponent, WidgetsBrandComponent, CardHeaderComponent, TableDirective, AvatarComponent],
+  imports: [WidgetsDropdownComponent, TextColorDirective, CardComponent, CardBodyComponent, RowComponent, ColComponent, ButtonDirective, IconDirective, ReactiveFormsModule, ButtonGroupComponent, FormCheckLabelDirective, NgStyle, CardFooterComponent, GutterDirective, ProgressBarDirective, ProgressComponent, WidgetsBrandComponent, CardHeaderComponent, TableDirective, AvatarComponent],
   templateUrl: './users.component.html',
   styleUrl: './users.component.scss'
 })
+
+
+
 export class UsersComponent {
   
   public users: IUser[] = [
@@ -69,3 +73,5 @@ export class UsersComponent {
   }
 
 }
+
+
