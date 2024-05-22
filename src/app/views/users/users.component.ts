@@ -2,6 +2,8 @@ import { DOCUMENT, NgStyle } from '@angular/common';
 import { Component, DestroyRef, effect, inject, OnInit, Renderer2, signal, WritableSignal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ChartOptions } from 'chart.js';
+import { ModalModule } from '@coreui/angular';
+
 import {
   AvatarComponent,
   ButtonDirective,
@@ -39,13 +41,18 @@ interface IUser {
   color: string;
 }
 
+
+
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [WidgetsDropdownComponent, TextColorDirective, CardComponent, CardBodyComponent, RowComponent, ColComponent, ButtonDirective, IconDirective, ReactiveFormsModule, ButtonGroupComponent, FormCheckLabelDirective, ChartjsComponent, NgStyle, CardFooterComponent, GutterDirective, ProgressBarDirective, ProgressComponent, WidgetsBrandComponent, CardHeaderComponent, TableDirective, AvatarComponent],
+  imports: [WidgetsDropdownComponent, TextColorDirective,ModalModule ,CardComponent, CardBodyComponent, RowComponent, ColComponent, ButtonDirective, IconDirective, ReactiveFormsModule, ButtonGroupComponent, FormCheckLabelDirective, ChartjsComponent, NgStyle, CardFooterComponent, GutterDirective, ProgressBarDirective, ProgressComponent, WidgetsBrandComponent, CardHeaderComponent, TableDirective, AvatarComponent],
   templateUrl: './users.component.html',
   styleUrl: './users.component.scss'
 })
+
+
+
 export class UsersComponent {
   public users: IUser[] = [
     {
@@ -128,3 +135,5 @@ export class UsersComponent {
     }
   ];
 }
+
+

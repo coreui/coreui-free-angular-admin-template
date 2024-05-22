@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UsersComponent } from './users.component';
+import { FormsModule } from '@angular/forms'; // Importa los módulos que UsersComponent utiliza, como FormsModule, ReactiveFormsModule, etc.
 
 describe('UsersComponent', () => {
   let component: UsersComponent;
@@ -8,7 +9,8 @@ describe('UsersComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [UsersComponent]
+      imports: [FormsModule], // Agrega aquí los módulos que utiliza UsersComponent
+      declarations: [UsersComponent]
     })
     .compileComponents();
     
@@ -20,4 +22,6 @@ describe('UsersComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  
 });

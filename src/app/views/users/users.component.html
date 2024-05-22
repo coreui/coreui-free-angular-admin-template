@@ -66,13 +66,45 @@
                     </div>
                     <c-progress thin [value]="user.usage" color="{{ user.color }}" />
                   </td>
+                  ...
                   <td class="text-end">
                     <div class="small text-body-secondary"></div>
                     <div class="fw-semibold text-nowrap">
-                      <svg cIcon class="icon icon-lg me-2 move-left" name="cilPencil"></svg>
-                      <svg cIcon class="icon icon-lg me-2 move-left" name="cilTrash"></svg>
+                      <svg cIcon class="icon icon-lg me-2 move-left" name="cilPencil" ></svg>
+                      <button [cModalToggle]="verticallyCenteredModal.id" cButton class="btn-white">
+                        <svg cIcon class="icon me-2" name="cilTrash"></svg>
+                      </button>
                     </div>
                   </td>
+                  <c-modal #verticallyCenteredModal alignment="center" id="verticallyCenteredModal">
+                    <c-modal-header>
+                      <h5 cModalTitle>¿Deseas eliminar?</h5>
+                      <button [cModalToggle]="verticallyCenteredModal.id" cButtonClose></button>
+                    </c-modal-header>
+                    <c-modal-body>
+                      una vez eliminado no podra ser recuperado
+                    </c-modal-body>
+                    <c-modal-footer>
+                      <button [cModalToggle]="verticallyCenteredModal.id" cButton color="secondary">
+                        Cerrar
+                      </button>
+                      <button cButton color="primary">Eliminar</button>
+                    </c-modal-footer>
+                  </c-modal>
+
+                      <script>
+                        function openModal() {
+                          var modal = document.getElementById('verticallyCenteredModal');
+                          modal.classList.add('show'); 
+                          modal.style.display = 'block'; 
+                        }
+
+                        function openDeleteModal() {
+                          var deleteModal = document.getElementById('deleteUserModal');
+                          deleteModal.classList.add('show');
+                          deleteModal.style.display = 'block'; 
+                      </script>
+
                 </tr>
               }
             </tbody>
