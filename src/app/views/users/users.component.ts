@@ -5,6 +5,13 @@ import {
   AvatarComponent,
   ButtonDirective,
   ButtonGroupComponent,
+  ButtonCloseDirective,
+  ModalBodyComponent,
+  ModalComponent,
+  ModalFooterComponent,
+  ModalHeaderComponent,
+  ModalTitleDirective,
+  ThemeDirective,
   CardBodyComponent,
   CardComponent,
   CardFooterComponent,
@@ -19,8 +26,10 @@ import {
   TextColorDirective,
   PageItemDirective,
   PageLinkDirective,
-  PaginationComponent
+  PaginationComponent,
+  ModalModule
 } from '@coreui/angular';
+import { FormsModule } from '@angular/forms';
 import { IconDirective } from '@coreui/icons-angular';
 import { WidgetsBrandComponent } from '../widgets/widgets-brand/widgets-brand.component';
 import { WidgetsDropdownComponent } from '../widgets/widgets-dropdown/widgets-dropdown.component';
@@ -38,7 +47,8 @@ interface IUser {
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [WidgetsDropdownComponent, TextColorDirective, CardComponent, CardBodyComponent, RowComponent, ColComponent, ButtonDirective, IconDirective, ReactiveFormsModule, ButtonGroupComponent, FormCheckLabelDirective, NgStyle, CardFooterComponent, GutterDirective, ProgressBarDirective, ProgressComponent, WidgetsBrandComponent, CardHeaderComponent, TableDirective, AvatarComponent],
+  imports: [WidgetsDropdownComponent, TextColorDirective,PaginationComponent, PageItemDirective,
+    PageLinkDirective, CardComponent, ModalModule, CardBodyComponent, RowComponent, ColComponent, ButtonDirective,ModalComponent, ModalHeaderComponent, ModalTitleDirective, ThemeDirective, ButtonCloseDirective, ModalBodyComponent, ModalFooterComponent, IconDirective, ReactiveFormsModule, ButtonGroupComponent, FormCheckLabelDirective, NgStyle, CardFooterComponent, GutterDirective, ProgressBarDirective, ProgressComponent, WidgetsBrandComponent, CardHeaderComponent, TableDirective, AvatarComponent, FormsModule],
   templateUrl: './users.component.html',
   styleUrl: './users.component.scss'
 })
@@ -64,12 +74,14 @@ export class UsersComponent {
     }
   ];
 
-  editUser(user: IUser) {
-    console.log(user);
+  public visible = false;
+
+  toggleLiveDemo() {
+    this.visible = !this.visible;
   }
 
-  deleteUser(user: IUser) {
-    console.log(user);
+  handleLiveDemoChange(event: any) {
+    this.visible = event;
   }
 
 }

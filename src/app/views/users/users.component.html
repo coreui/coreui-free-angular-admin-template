@@ -55,55 +55,38 @@
                         <div>{{ user.status }}</div>
                       </div>
                     </div>
-                  </td>
-                  ...
-                  <td class="text-end">
+                  </td> 
+                  
+                  <td class="text-center">
                     <div class="small text-body-secondary"></div>
                     <div class="fw-semibold text-nowrap">
-<<<<<<< HEAD
-                      <svg cIcon class="icon icon-lg me-2 move-left" name="cilPencil"></svg>
-                      <svg cIcon class="icon icon-lg me-2 move-left" name="cilTrash"></svg>	                     
-=======
-                      <svg cIcon class="icon icon-lg me-2 move-left" name="cilPencil" ></svg>
-                      <button [cModalToggle]="verticallyCenteredModal.id" cButton class="btn-white">
-                        <svg cIcon class="icon me-2" name="cilTrash"></svg>
+                      <button cButton color="warning" variant="outline" class="mx-1">
+                        <svg cIcon class="icon icon-lg" name="cilPencil"></svg>
                       </button>
->>>>>>> 1fd1d8230c623205848386a8f3b615984f285ac2
+                      <button cButton [cModalToggle]="staticBackdropModal.id" color="danger" variant="outline" class="mx-1">
+                        <svg cIcon class="icon icon-lg" name="cilTrash"></svg>	
+                      </button>                
                     </div>
                   </td>
-                  <c-modal #verticallyCenteredModal alignment="center" id="verticallyCenteredModal">
+
+                  <c-modal #staticBackdropModal backdrop="static" id="staticBackdropModal">
                     <c-modal-header>
-                      <h5 cModalTitle>¿Deseas eliminar?</h5>
-                      <button [cModalToggle]="verticallyCenteredModal.id" cButtonClose></button>
+                      <h5 cModalTitle class="float-center">¿Deseas eliminar?</h5>
+                      <button [cModalToggle]="staticBackdropModal.id" cButtonClose></button>
                     </c-modal-header>
-                    <c-modal-body>
-                      una vez eliminado no podra ser recuperado
-                    </c-modal-body>
+                    <c-modal-body>Una vez eliminado no podra ser recuperado</c-modal-body>
                     <c-modal-footer>
-                      <button [cModalToggle]="verticallyCenteredModal.id" cButton color="secondary">
+                      <button [cModalToggle]="staticBackdropModal.id" cButton color="secondary">
                         Cerrar
                       </button>
-                      <button cButton color="primary">Eliminar</button>
+                      <button cButton color="primary">Aceptar</button>
                     </c-modal-footer>
                   </c-modal>
-
-                      <script>
-                        function openModal() {
-                          var modal = document.getElementById('verticallyCenteredModal');
-                          modal.classList.add('show'); 
-                          modal.style.display = 'block'; 
-                        }
-
-                        function openDeleteModal() {
-                          var deleteModal = document.getElementById('deleteUserModal');
-                          deleteModal.classList.add('show');
-                          deleteModal.style.display = 'block'; 
-                      </script>
-
                 </tr>
               }
             </tbody>
           </table>
+
           <c-pagination aria-label="Page navigation example " class="ms-md-2">
             <li cPageItem>
               <a cPageLink >Previous</a>
