@@ -40,7 +40,11 @@
                   <button variant="ghost" cButton>
                     <svg cIcon name="cil-pencil"></svg>
                   </button>
-                  <button variant="ghost" cButton (click)="toggleLiveDemo()">
+                  <button
+                    variant="ghost"
+                    cButton
+                    (click)="toggleModal(department.id)"
+                  >
                     <svg cIcon name="cil-trash"></svg>
                   </button>
                 </div>
@@ -63,10 +67,10 @@
   <c-modal-body class="delete-modal"
     ><h6>¿Estás seguro que deseas borrar este departamento?</h6>
     <div class="delete-modal-buttons-container">
-      <button (click)="toggleLiveDemo()" cButton color="primary">
-        Cerrar
+      <button (click)="toggleModal(0)" cButton color="primary">Cerrar</button>
+      <button (click)="deleteDepartment()" cButton color="danger">
+        Borrar
       </button>
-      <button cButton color="danger">Borrar</button>
     </div>
   </c-modal-body>
 </c-modal>

@@ -1,6 +1,6 @@
 import { NgStyle } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import {
   AvatarComponent,
   ButtonCloseDirective,
@@ -32,6 +32,7 @@ import { WidgetsBrandComponent } from '../../widgets/widgets-brand/widgets-brand
 import { WidgetsDropdownComponent } from '../../widgets/widgets-dropdown/widgets-dropdown.component';
 
 import { DepartmentsService } from '../../../services/departments/get-paginated-departments.service';
+import { DeleteDepartmentService } from '../../../services/departments/delete-department.service';
 
 interface Department {
   id: number;
@@ -77,13 +78,17 @@ interface Department {
 })
 export class DepartmentsComponent implements OnInit {
   departments: Department[] = [];
-
-  constructor(private departmentsService: DepartmentsService) {}
+  currentId = 0;
+  constructor(
+    private departmentsService: DepartmentsService,
+    private deleteDepartmentService: DeleteDepartmentService
+  ) {}
 
   public visible = false;
 
-  toggleLiveDemo() {
+  toggleModal(id: number) {
     this.visible = !this.visible;
+    this.currentId = id;
   }
 
   handleLiveDemoChange(event: any) {
@@ -96,6 +101,18 @@ export class DepartmentsComponent implements OnInit {
         this.departments = response.data;
       },
       error: (error) => console.error('Error al realizar la solicitud:', error),
+    });
+  }
+
+  deleteDepartment(): void {
+    this.deleteDepartmentService.deleteDepartment(this.currentId).subscribe({
+      next: () => {
+        this.getPaginatedDepartments();
+        this.visible = !this.visible;
+      },
+      error: (error) => {
+        console.log(error);
+      },
     });
   }
 
