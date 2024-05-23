@@ -1,0 +1,40 @@
+<c-row>
+  <c-col xs>
+    <c-card class="mb-4">
+      <c-card-body>
+        <form cForm>
+          <div class="form-container">
+            <div class="two-inputs-container">
+              <div class="input-container">
+                <label cLabel for="exampleFormControlInput1"
+                  >Nombre del departamento</label
+                >
+                <input
+                  cFormControl
+                  id="name"
+                  placeholder="Nombre del departamento"
+                  type="text"
+                  name="name"
+                  [(ngModel)]="name"
+                  value="{{ name }}"
+                />
+              </div>
+              <div class="input-container">
+                <label cLabel for="exampleFormControlInput1">Director</label>
+                <select aria-label="director-select" cSelect>
+                  <option>Selecciona un director</option>
+                  <option value="1">ID: 1, Luis Vasquez</option>
+                  <option value="2">ID: 2, Cristina Morales</option>
+                  <option value="3">ID: 3, Aurimart Garcia</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <button (click)="createDepartment()" cButton>Guardar</button>
+            </div>
+          </div>
+        </form>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>

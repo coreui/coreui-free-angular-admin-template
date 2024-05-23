@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DepartmentsService } from './departments.service';
+import { DepartmentsService } from './get-paginated-departments.service';
 
 describe('DepartmentsService', () => {
   let service: DepartmentsService;

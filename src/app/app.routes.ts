@@ -68,7 +68,12 @@ export const routes: Routes = [
       {
         path: 'departments',
         loadChildren: () =>
-          import('./views/departments/routes').then((m) => m.routes),
+          import('./views/departments/list/routes').then((m) => m.routes),
+      },
+      {
+        path: 'create-department',
+        loadChildren: () =>
+          import('./views/departments/create/routes').then((m) => m.routes),
       },
       {
         path: '**',

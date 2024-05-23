@@ -295,7 +295,7 @@ export const navItems: INavData[] = [
       },
       {
         name: 'Crear departamentos',
-        url: '/register',
+        url: '/create-department',
         icon: 'nav-icon-bullet',
       },
     ],
