@@ -193,12 +193,12 @@ export const navItems: INavData[] = [
       {
         name: 'Listado',
         url: '/users',
-        iconComponent: { name: 'cilPeople' }
+        icon: 'nav-icon-bullet'
       },
       {
         name: 'Añadir',
-        url: '/users/adduser',
-        iconComponent: { name: 'cilPeople' }
+        url: '/addusers',
+        icon: 'nav-icon-bullet'
       },
     ]
   },
