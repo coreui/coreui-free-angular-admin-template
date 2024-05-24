@@ -6,13 +6,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class GetPaginatedUserService {
-  private apiUrl = 'http://localhost:3000/api/v1/users';
+  private apiUrl = 'http://localhost:3000/api/v1/';
 
   constructor(private http: HttpClient) {}
 
   getPaginatedUser(): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.get(`${this.apiUrl}/users`, {
+    return this.http.get(`${this.apiUrl}users`, {
       headers,
     });
   }

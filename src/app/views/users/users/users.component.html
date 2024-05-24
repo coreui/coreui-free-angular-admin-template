@@ -1,106 +1,139 @@
 <c-row>
-    <c-col xs>
-      <c-card class="mb-4">
-        <c-card-body>
-          <div class="d-flex justify-content-between align-items-center">
-            <h4 class="card-title" id="users">Gestión de Usuarios</h4>
-            <a cButton routerLink="/addusers" routerLinkActive="active" color="success" class="text-white ms-md-2 mb-3">
-              Agregar Usuario
-            </a>
-            
-        </div>
-          <table
-            [hover]="true"
-            [responsive]="true"
-            [striped]="true"
-            align="middle"
-            cTable
-            class="mb-0 border"
+  <c-col xs>
+    <c-card class="mb-4">
+      <c-card-body>
+        <div class="d-flex justify-content-between align-items-center">
+          <h4 class="card-title" id="users">Gestión de Usuarios</h4>
+          <a
+            cButton
+            routerLink="/addusers"
+            routerLinkActive="active"
+            color="success"
+            class="text-white ms-md-2 mb-3"
           >
-            <thead class="text-nowrap text-truncate">
+            Agregar Usuario
+          </a>
+        </div>
+        <table
+          [hover]="true"
+          [responsive]="true"
+          [striped]="true"
+          align="middle"
+          cTable
+          class="mb-0 border"
+        >
+          <thead class="text-nowrap text-truncate">
             <tr>
               <th class="bg-body-tertiary">Nombre</th>
               <th class="bg-body-tertiary">Departamento</th>
               <th class="bg-body-tertiary">Correo</th>
               <th class="bg-body-tertiary">Permisos</th>
-              <th class="bg-body-tertiary"></th>       
-              <!-- <svg cIcon class="icon icon-lg me-2" name="cilPlus"></svg> -->          
+              <th class="bg-body-tertiary"></th>
+              <!-- <svg cIcon class="icon icon-lg me-2" name="cilPlus"></svg> -->
             </tr>
-            </thead>
-            <tbody>
-              @for (user of users; track user.id; let i = $index) {
-                <tr>
-                  <td>
-                    <div>{{ user.name }}</div>
-                  </td>
-                  <td class="text-center">
-                    <div class="float-start">
-                      <div>{{ user.birthdate }}</div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="d-flex justify-content-between">
-                      <div class="float-start">
-                        <div>{{ user.email }}</div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="d-flex justify-content-between">
-                      <div class="float-start">
-                        <div>{{ user.role }}</div>
-                      </div>
-                    </div>
-                  </td> 
-                  
-                  <td class="text-center">
-                    <div class="small text-body-secondary"></div>
-                    <div class="fw-semibold text-nowrap">
-                      <a cButton routerLink="/addusers" routerLinkActive="active" color="warning" variant="outline" class="mx-1">
-                        <svg cIcon class="icon icon-lg" name="cilPencil"></svg>
-                      </a>
-                      <button cButton [cModalToggle]="staticBackdropModal.id" color="danger" variant="outline" class="mx-1">
-                        <svg cIcon class="icon icon-lg" name="cilTrash"></svg>	
-                      </button>                
-                    </div>
-                  </td>
-                </tr>
-              }
-            </tbody>
-          </table>
+          </thead>
+          <tbody>
+            @for (user of users; track user.id; let i = $index) {
+            <tr>
+              <td>
+                <div>{{ user.name }}</div>
+              </td>
+              <td class="text-center">
+                <div class="float-start">
+                  <div>{{ user.birthdate }}</div>
+                </div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-between">
+                  <div class="float-start">
+                    <div>{{ user.email }}</div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-between">
+                  <div class="float-start">
+                    <div>{{ user.role }}</div>
+                  </div>
+                </div>
+              </td>
 
-          <c-pagination aria-label="Pagination"  class="ms-md-2">
-            <li cPageItem>
-              <a cPageLink>Previous</a>
-            </li>
-            <li cPageItem>
-              <a cPageLink>1</a>
-            </li>
-            <li cPageItem>
-              <a cPageLink>2</a>
-            </li>
-            <li cPageItem>
-              <a cPageLink>3</a>
-            </li>
-            <li cPageItem>
-              <a cPageLink>Next</a>
-            </li>
-          </c-pagination>
-        </c-card-body>
-      </c-card>
-    </c-col>
-  </c-row>
+              <td class="text-center">
+                <div class="small text-body-secondary"></div>
+                <div class="fw-semibold text-nowrap">
+                  <a
+                    cButton
+                    routerLink="/addusers"
+                    routerLinkActive="active"
+                    color="warning"
+                    variant="outline"
+                    class="mx-1"
+                  >
+                    <svg cIcon class="icon icon-lg" name="cilPencil"></svg>
+                  </a>
+                  <button
+                    cButton
+                    [cModalToggle]="staticBackdropModal.id"
+                    (click)="toggleLiveDemo(user.id)"
+                    color="danger"
+                    variant="outline"
+                    class="mx-1"
+                  >
+                    <svg cIcon class="icon icon-lg" name="cilTrash"></svg>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
 
-  <c-modal #staticBackdropModal backdrop="static" id="staticBackdropModal" alignment="center">
-    <c-modal-header>
-      <h5 cModalTitle class="float-center">¿Estás seguro de eliminar este usuario?</h5>
-      <button [cModalToggle]="staticBackdropModal.id" cButtonClose></button>
-    </c-modal-header>
-    <c-modal-body>Una vez eliminado no podra ser recuperado</c-modal-body>
-    <c-modal-footer>
-      <button [cModalToggle]="staticBackdropModal.id" cButton color="secondary">
-        Cerrar
-      </button>
-      <button cButton (click)="deleteUser()" color="primary">Aceptar</button>
-    </c-modal-footer>
-  </c-modal>
+        <c-pagination aria-label="Pagination" class="ms-md-2">
+          <li cPageItem>
+            <a cPageLink>Previous</a>
+          </li>
+          <li cPageItem>
+            <a cPageLink>1</a>
+          </li>
+          <li cPageItem>
+            <a cPageLink>2</a>
+          </li>
+          <li cPageItem>
+            <a cPageLink>3</a>
+          </li>
+          <li cPageItem>
+            <a cPageLink>Next</a>
+          </li>
+        </c-pagination>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
+
+<c-modal
+  #staticBackdropModal
+  backdrop="static"
+  id="staticBackdropModal"
+  alignment="center"
+>
+  <c-modal-header>
+    <h5 cModalTitle class="float-center">
+      ¿Estás seguro de eliminar este usuario?
+    </h5>
+    <button [cModalToggle]="staticBackdropModal.id" cButtonClose></button>
+  </c-modal-header>
+  <c-modal-body>Una vez eliminado no podra ser recuperado</c-modal-body>
+  <c-modal-footer>
+    <button [cModalToggle]="staticBackdropModal.id" cButton color="secondary">
+      Cerrar
+    </button>
+    <button
+      cButton
+      (click)="deleteUser()"
+      [cModalToggle]="staticBackdropModal.id"
+      color="primary"
+    >
+      Aceptar
+    </button>
+  </c-modal-footer>
+</c-modal>

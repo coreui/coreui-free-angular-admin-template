@@ -23,7 +23,7 @@ import {
   PageItemDirective,
   PageLinkDirective,
   PaginationComponent,
-  ModalModule
+  ModalModule,
 } from '@coreui/angular';
 import { FormsModule } from '@angular/forms';
 import { IconDirective } from '@coreui/icons-angular';
@@ -32,49 +32,48 @@ import { GetPaginatedUserService } from '../../../services/users/get-paginated-u
 import { DeleteUserService } from '../../../services/users/delete-user.service';
 
 interface User {
-  id: number,
-  name: string,
-  email: string,
-  password: string,
-  birthdate: string,
-  role: string
+  id: number;
+  name: string;
+  email: string;
+  password: string;
+  birthdate: string;
+  role: string;
 }
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [ TextColorDirective,
-             PaginationComponent,
-             PageItemDirective,
-             PageLinkDirective,
-             CardComponent,
-             ModalModule,
-             CardBodyComponent,
-             RowComponent,
-             ColComponent,
-             ButtonDirective,
-             ModalComponent,
-             ModalHeaderComponent,
-             ModalTitleDirective,
-             ThemeDirective,
-             ButtonCloseDirective,
-             ModalBodyComponent,
-             ModalFooterComponent,
-             IconDirective,
-             ReactiveFormsModule,
-             ButtonGroupComponent,
-             NgStyle,
-             CardFooterComponent,
-             CardHeaderComponent,
-             TableDirective,
-             FormsModule,
-             RouterLink
-            ],
+  imports: [
+    TextColorDirective,
+    PaginationComponent,
+    PageItemDirective,
+    PageLinkDirective,
+    CardComponent,
+    ModalModule,
+    CardBodyComponent,
+    RowComponent,
+    ColComponent,
+    ButtonDirective,
+    ModalComponent,
+    ModalHeaderComponent,
+    ModalTitleDirective,
+    ThemeDirective,
+    ButtonCloseDirective,
+    ModalBodyComponent,
+    ModalFooterComponent,
+    IconDirective,
+    ReactiveFormsModule,
+    ButtonGroupComponent,
+    NgStyle,
+    CardFooterComponent,
+    CardHeaderComponent,
+    TableDirective,
+    FormsModule,
+    RouterLink,
+  ],
   templateUrl: './users.component.html',
-  styleUrl: './users.component.scss'
+  styleUrl: './users.component.scss',
 })
-
-export class UsersComponent implements OnInit{
-  
+export class UsersComponent implements OnInit {
   currentId = 0;
 
   constructor(
@@ -82,11 +81,12 @@ export class UsersComponent implements OnInit{
     private deleteUserService: DeleteUserService
   ) {}
 
-   public users: User[] = [];
+  public users: User[] = [];
 
   public visible = false;
 
-  toggleLiveDemo() {
+  toggleLiveDemo(id: number) {
+    this.currentId = id;
     this.visible = !this.visible;
   }
 
@@ -97,7 +97,7 @@ export class UsersComponent implements OnInit{
   getPaginatedUser(): void {
     this.getPaginatedUserService.getPaginatedUser().subscribe({
       next: (response) => {
-        console.log(response)
+        console.log(response);
         this.users = response.data;
       },
       error: (error) => console.error('Error al realizar la solicitud:', error),
@@ -119,7 +119,4 @@ export class UsersComponent implements OnInit{
   ngOnInit(): void {
     this.getPaginatedUser();
   }
-
 }
-
-
