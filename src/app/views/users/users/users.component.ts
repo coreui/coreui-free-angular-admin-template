@@ -32,10 +32,12 @@ import { GetPaginatedUserService } from '../../../services/users/get-paginated-u
 import { DeleteUserService } from '../../../services/users/delete-user.service';
 
 interface User {
-  name: string;
-  email: string;
-  department: string;
-  rol: string;
+  id: number,
+  name: string,
+  email: string,
+  password: string,
+  birthdate: string,
+  role: string
 }
 @Component({
   selector: 'app-users',
@@ -80,32 +82,7 @@ export class UsersComponent implements OnInit{
     private deleteUserService: DeleteUserService
   ) {}
 
-   public users: User[] = [
-     {
-       name: "Anna",
-       email: "anna@gmail.com",
-       department: "Hoy",
-       rol: "Seguridad",
-     },
-     {
-       name: "Ana",
-       email: "anna@gmail.com",
-       department: "Hoy",
-       rol: "Seguridad", 
-     },
-     {
-       name: "Anna",
-       email: "anna@gmail.com",
-       department: "Hoy",
-       rol: "Seguridad",
-     },
-     {
-       name: "Ana",
-       email: "anna@gmail.com",
-       department: "Hoy",
-       rol: "Seguridad", 
-     }
-   ];
+   public users: User[] = [];
 
   public visible = false;
 
@@ -120,6 +97,7 @@ export class UsersComponent implements OnInit{
   getPaginatedUser(): void {
     this.getPaginatedUserService.getPaginatedUser().subscribe({
       next: (response) => {
+        console.log(response)
         this.users = response.data;
       },
       error: (error) => console.error('Error al realizar la solicitud:', error),

@@ -9,12 +9,12 @@ export const routes: Routes = [
     },
     children: [
       {
-        path: '',
+        path: 'users',
         redirectTo: 'users',
         pathMatch: 'full'
       },
       {
-        path: '',
+        path: 'userslist',
         loadComponent: () => import('./users/users.component').then(m => m.UsersComponent),
         data: {
           title: 'Listado'

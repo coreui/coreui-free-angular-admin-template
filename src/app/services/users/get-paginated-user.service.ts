@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class GetPaginatedUserService {
-  private apiUrl = 'http://localhost:3000/api/v1';
+  private apiUrl = 'http://localhost:3000/api/v1/users';
 
   constructor(private http: HttpClient) {}
 

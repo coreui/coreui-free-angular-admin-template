@@ -28,14 +28,14 @@
             </tr>
             </thead>
             <tbody>
-              @for (user of users; track user.name; let i = $index) {
+              @for (user of users; track user.id; let i = $index) {
                 <tr>
                   <td>
                     <div>{{ user.name }}</div>
                   </td>
                   <td class="text-center">
                     <div class="float-start">
-                      <div>{{ user.department }}</div>
+                      <div>{{ user.birthdate }}</div>
                     </div>
                   </td>
                   <td>
@@ -48,7 +48,7 @@
                   <td>
                     <div class="d-flex justify-content-between">
                       <div class="float-start">
-                        <div>{{ user.rol }}</div>
+                        <div>{{ user.role }}</div>
                       </div>
                     </div>
                   </td> 
