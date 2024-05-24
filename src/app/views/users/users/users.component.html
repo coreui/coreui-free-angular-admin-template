@@ -64,20 +64,6 @@
                       </button>                
                     </div>
                   </td>
-
-                  <c-modal #staticBackdropModal backdrop="static" id="staticBackdropModal" alignment="center">
-                    <c-modal-header>
-                      <h5 cModalTitle class="float-center">¿Estás seguro de eliminar este usuario?</h5>
-                      <button [cModalToggle]="staticBackdropModal.id" cButtonClose></button>
-                    </c-modal-header>
-                    <c-modal-body>Una vez eliminado no podra ser recuperado</c-modal-body>
-                    <c-modal-footer>
-                      <button [cModalToggle]="staticBackdropModal.id" cButton color="secondary">
-                        Cerrar
-                      </button>
-                      <button cButton color="primary">Aceptar</button>
-                    </c-modal-footer>
-                  </c-modal>
                 </tr>
               }
             </tbody>
@@ -104,3 +90,17 @@
       </c-card>
     </c-col>
   </c-row>
+
+  <c-modal #staticBackdropModal backdrop="static" id="staticBackdropModal" alignment="center">
+    <c-modal-header>
+      <h5 cModalTitle class="float-center">¿Estás seguro de eliminar este usuario?</h5>
+      <button [cModalToggle]="staticBackdropModal.id" cButtonClose></button>
+    </c-modal-header>
+    <c-modal-body>Una vez eliminado no podra ser recuperado</c-modal-body>
+    <c-modal-footer>
+      <button [cModalToggle]="staticBackdropModal.id" cButton color="secondary">
+        Cerrar
+      </button>
+      <button cButton (click)="deleteUser()" color="primary">Aceptar</button>
+    </c-modal-footer>
+  </c-modal>

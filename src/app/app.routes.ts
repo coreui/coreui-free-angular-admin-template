@@ -55,10 +55,6 @@ export const routes: Routes = [
         loadChildren: () => import('./views/users/routes').then((m) => m.routes)
       },
       {
-        path: 'addusers',
-        loadChildren: () => import('./views/add-user/routes').then((m) => m.routes)
-      },
-      {
         path: 'pages',
         loadChildren: () => import('./views/pages/routes').then((m) => m.routes)
       }

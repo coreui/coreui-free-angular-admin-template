@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CardBodyComponent,
    CardComponent,
@@ -9,14 +9,12 @@ import { CardBodyComponent,
        ButtonDirective,
        ButtonGroupComponent,
        ButtonCloseDirective } from '@coreui/angular';
-import { UsersComponent } from 'src/app/views/users/users.component';
 
 @Component({
   selector: 'app-add-user',
   standalone: true,
   imports: [CardBodyComponent,
      CardComponent,
-      UsersComponent,
        FormDirective,
         FormLabelDirective,
          FormControlDirective,
@@ -28,6 +26,7 @@ import { UsersComponent } from 'src/app/views/users/users.component';
   templateUrl: './add-user.component.html',
   styleUrl: './add-user.component.scss'
 })
+
 export class AddUserComponent {
 
 }

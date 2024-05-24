@@ -1,7 +1,7 @@
 import { NgStyle } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { Component, DestroyRef, effect, inject, OnInit, Renderer2, signal, WritableSignal } from '@angular/core';
-import {  ReactiveFormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import {
   ButtonDirective,
   ButtonGroupComponent,
@@ -28,7 +28,10 @@ import {
 import { FormsModule } from '@angular/forms';
 import { IconDirective } from '@coreui/icons-angular';
 
-interface IUser {
+import { GetPaginatedUserService } from '../../../services/users/get-paginated-user.service';
+import { DeleteUserService } from '../../../services/users/delete-user.service';
+
+interface User {
   name: string;
   email: string;
   department: string;
@@ -68,34 +71,41 @@ interface IUser {
   styleUrl: './users.component.scss'
 })
 
-export class UsersComponent {
+export class UsersComponent implements OnInit{
   
-  public users: IUser[] = [
-    {
-      name: "Anna",
-      email: "anna@gmail.com",
-      department: "Hoy",
-      rol: "Seguridad",
-    },
-    {
-      name: "Ana",
-      email: "anna@gmail.com",
-      department: "Hoy",
-      rol: "Seguridad", 
-    },
-    {
-      name: "Anna",
-      email: "anna@gmail.com",
-      department: "Hoy",
-      rol: "Seguridad",
-    },
-    {
-      name: "Ana",
-      email: "anna@gmail.com",
-      department: "Hoy",
-      rol: "Seguridad", 
-    }
-  ];
+  currentId = 0;
+
+  constructor(
+    private getPaginatedUserService: GetPaginatedUserService,
+    private deleteUserService: DeleteUserService
+  ) {}
+
+   public users: User[] = [
+     {
+       name: "Anna",
+       email: "anna@gmail.com",
+       department: "Hoy",
+       rol: "Seguridad",
+     },
+     {
+       name: "Ana",
+       email: "anna@gmail.com",
+       department: "Hoy",
+       rol: "Seguridad", 
+     },
+     {
+       name: "Anna",
+       email: "anna@gmail.com",
+       department: "Hoy",
+       rol: "Seguridad",
+     },
+     {
+       name: "Ana",
+       email: "anna@gmail.com",
+       department: "Hoy",
+       rol: "Seguridad", 
+     }
+   ];
 
   public visible = false;
 
@@ -105,6 +115,31 @@ export class UsersComponent {
 
   handleLiveDemoChange(event: any) {
     this.visible = event;
+  }
+
+  getPaginatedUser(): void {
+    this.getPaginatedUserService.getPaginatedUser().subscribe({
+      next: (response) => {
+        this.users = response.data;
+      },
+      error: (error) => console.error('Error al realizar la solicitud:', error),
+    });
+  }
+
+  deleteUser(): void {
+    this.deleteUserService.deleteUser(this.currentId).subscribe({
+      next: () => {
+        this.getPaginatedUser();
+        this.visible = !this.visible;
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
+
+  ngOnInit(): void {
+    this.getPaginatedUser();
   }
 
 }
