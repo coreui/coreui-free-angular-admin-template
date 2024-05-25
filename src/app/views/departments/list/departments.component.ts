@@ -1,6 +1,7 @@
 import { NgStyle } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import {
   AvatarComponent,
   ButtonCloseDirective,
@@ -18,6 +19,9 @@ import {
   ModalFooterComponent,
   ModalHeaderComponent,
   ModalTitleDirective,
+  PageItemDirective,
+  PageLinkDirective,
+  PaginationComponent,
   ProgressBarDirective,
   ProgressComponent,
   RowComponent,
@@ -33,6 +37,7 @@ import { WidgetsDropdownComponent } from '../../widgets/widgets-dropdown/widgets
 
 import { DepartmentsService } from '../../../services/departments/get-paginated-departments.service';
 import { DeleteDepartmentService } from '../../../services/departments/delete-department.service';
+import { Router } from '@angular/router';
 
 interface Department {
   id: number;
@@ -74,14 +79,29 @@ interface Department {
     ButtonCloseDirective,
     ModalBodyComponent,
     ModalFooterComponent,
+    PageItemDirective,
+    PageLinkDirective,
+    PaginationComponent,
+    RouterLink,
   ],
 })
 export class DepartmentsComponent implements OnInit {
   departments: Department[] = [];
   currentId = 0;
+
+  pagination = {
+    page: 1,
+    take: 10,
+    itemCount: 0,
+    pageCount: 0,
+    hasPreviousPage: false,
+    hasNextPage: true,
+  };
+
   constructor(
     private departmentsService: DepartmentsService,
-    private deleteDepartmentService: DeleteDepartmentService
+    private deleteDepartmentService: DeleteDepartmentService,
+    private router: Router
   ) {}
 
   public visible = false;
@@ -95,8 +115,8 @@ export class DepartmentsComponent implements OnInit {
     this.visible = event;
   }
 
-  getPaginatedDepartments(): void {
-    this.departmentsService.getPaginatedDepartments().subscribe({
+  getPaginatedDepartments(page: number, take: number): void {
+    this.departmentsService.getPaginatedDepartments(page, take).subscribe({
       next: (response) => {
         this.departments = response.data;
       },
@@ -107,7 +127,7 @@ export class DepartmentsComponent implements OnInit {
   deleteDepartment(): void {
     this.deleteDepartmentService.deleteDepartment(this.currentId).subscribe({
       next: () => {
-        this.getPaginatedDepartments();
+        this.getPaginatedDepartments(this.pagination.page, 10);
         this.visible = !this.visible;
       },
       error: (error) => {
@@ -116,7 +136,17 @@ export class DepartmentsComponent implements OnInit {
     });
   }
 
+  setPage(page: number): void {
+    this.pagination.page = page;
+    this.getPaginatedDepartments(page, 10);
+    console.log(this.pagination.page);
+  }
+
+  redirectToEdit(id: number): void {
+    this.router.navigate([`edit-department/${id}`]);
+  }
+
   ngOnInit(): void {
-    this.getPaginatedDepartments();
+    this.getPaginatedDepartments(this.pagination.page, 10);
   }
 }

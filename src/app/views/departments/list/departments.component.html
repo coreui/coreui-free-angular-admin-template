@@ -2,6 +2,18 @@
   <c-col xs>
     <c-card class="mb-4">
       <c-card-body>
+        <div class="d-flex justify-content-between align-items-center">
+          <h4 class="card-title" id="departments">Gestión de Departamentos</h4>
+          <a
+            cButton
+            [routerLink]="['/create-department']"
+            routerLinkActive="active"
+            color="success"
+            class="text-white ms-md-2 mb-3"
+          >
+            Agregar Departamento
+          </a>
+        </div>
         <table
           [hover]="true"
           [responsive]="true"
@@ -10,11 +22,10 @@
           cTable
           class="mb-0 border"
         >
-          <thead className="text-nowrap text-truncate">
+          <thead class="text-nowrap text-truncate">
             <tr>
               <th class="bg-body-tertiary text-center">Id</th>
               <th class="bg-body-tertiary text-center">Nombre</th>
-              <th class="bg-body-tertiary text-center">Director</th>
               <th class="bg-body-tertiary text-center">Integrantes</th>
               <th class="bg-body-tertiary text-center">Acciones</th>
             </tr>
@@ -30,22 +41,30 @@
                 {{ department.name }}
               </td>
               <td class="text-center">
-                {{ department.director }}
-              </td>
-              <td class="text-center">
                 {{ department.membersQuantity }}
               </td>
+
               <td class="text-center">
-                <div class="action-buttons-container">
-                  <button variant="ghost" cButton>
-                    <svg cIcon name="cil-pencil"></svg>
-                  </button>
+                <div class="small text-body-secondary"></div>
+                <div class="fw-semibold text-nowrap">
+                  <a
+                    cButton
+                    (click)="redirectToEdit(department.id)"
+                    routerLinkActive="active"
+                    color="warning"
+                    variant="outline"
+                    class="mx-1"
+                  >
+                    <svg cIcon class="icon icon-lg" name="cilPencil"></svg>
+                  </a>
                   <button
-                    variant="ghost"
                     cButton
                     (click)="toggleModal(department.id)"
+                    color="danger"
+                    variant="outline"
+                    class="mx-1"
                   >
-                    <svg cIcon name="cil-trash"></svg>
+                    <svg cIcon class="icon icon-lg" name="cilTrash"></svg>
                   </button>
                 </div>
               </td>
@@ -53,6 +72,28 @@
             }
           </tbody>
         </table>
+
+        <c-pagination aria-label="Pagination" class="ms-md-2">
+          <li cPageItem>
+            <button cPageLink (click)="setPage(pagination.page - 1)">
+              Previous
+            </button>
+          </li>
+          <li cPageItem>
+            <a cPageLink>1</a>
+          </li>
+          <li cPageItem>
+            <a cPageLink>2</a>
+          </li>
+          <li cPageItem>
+            <a cPageLink>3</a>
+          </li>
+          <li cPageItem>
+            <button cPageLink (click)="setPage(pagination.page + 1)">
+              Next
+            </button>
+          </li>
+        </c-pagination>
       </c-card-body>
     </c-card>
   </c-col>

@@ -5,19 +5,19 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class DepartmentsService {
+export class EditDepartmentService {
   private apiUrl = 'http://localhost:3000/api/v1';
 
   constructor(private http: HttpClient) {}
 
-  getPaginatedDepartments(page: number, take: number): Observable<any> {
-    console.log(page, take);
+  patchDepartment(id: number, body: EditDepartmentBody): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.get(
-      `${this.apiUrl}/dptos?order=ASC&page=${page}&take=${take}`,
-      {
-        headers,
-      }
-    );
+    return this.http.patch(`${this.apiUrl}/dptos/${id}`, body, {
+      headers,
+    });
   }
+}
+
+export interface EditDepartmentBody {
+  name: string;
 }
