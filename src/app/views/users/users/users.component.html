@@ -24,42 +24,31 @@
         >
           <thead class="text-nowrap text-truncate">
             <tr>
-              <th class="bg-body-tertiary">Nombre</th>
-              <th class="bg-body-tertiary">Departamento</th>
-              <th class="bg-body-tertiary">Correo</th>
-              <th class="bg-body-tertiary">Permisos</th>
-              <th class="bg-body-tertiary"></th>
-              <!-- <svg cIcon class="icon icon-lg me-2" name="cilPlus"></svg> -->
+              <th class="bg-body-tertiary text-center">Nombre</th>
+              <th class="bg-body-tertiary text-center">Departamento</th>
+              <th class="bg-body-tertiary text-center">Correo</th>
+              <th class="bg-body-tertiary text-center">Permisos</th>
+              <th class="bg-body-tertiary text-center">Acciones</th>
             </tr>
           </thead>
+
           <tbody>
             @for (user of users; track user.id; let i = $index) {
             <tr>
-              <td>
-                <div>{{ user.name }}</div>
+              <td class="text-center">
+                {{ user.name }}
               </td>
               <td class="text-center">
-                <div class="float-start">
-                  <div>{{ user.birthdate }}</div>
-                </div>
+                {{ user.birthdate }}
               </td>
-              <td>
-                <div class="d-flex justify-content-between">
-                  <div class="float-start">
-                    <div>{{ user.email }}</div>
-                  </div>
-                </div>
+              <td class="text-center">
+                {{ user.email }}
               </td>
-              <td>
-                <div class="d-flex justify-content-between">
-                  <div class="float-start">
-                    <div>{{ user.role }}</div>
-                  </div>
-                </div>
+              <td class="text-center">
+                <div>{{ user.role }}</div>
               </td>
 
               <td class="text-center">
-                <div class="small text-body-secondary"></div>
                 <div class="fw-semibold text-nowrap">
                   <a
                     cButton
