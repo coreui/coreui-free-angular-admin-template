@@ -11,7 +11,6 @@ export class DepartmentsService {
   constructor(private http: HttpClient) {}
 
   getPaginatedDepartments(page: number, take: number): Observable<any> {
-    console.log(page, take);
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.get(
       `${this.apiUrl}/dptos?order=ASC&page=${page}&take=${take}`,

@@ -98,6 +98,8 @@ export class DepartmentsComponent implements OnInit {
     hasNextPage: true,
   };
 
+  pages = this.pagination.pageCount;
+
   constructor(
     private departmentsService: DepartmentsService,
     private deleteDepartmentService: DeleteDepartmentService,
@@ -128,6 +130,7 @@ export class DepartmentsComponent implements OnInit {
     this.deleteDepartmentService.deleteDepartment(this.currentId).subscribe({
       next: () => {
         this.getPaginatedDepartments(this.pagination.page, 10);
+
         this.visible = !this.visible;
       },
       error: (error) => {
@@ -137,9 +140,9 @@ export class DepartmentsComponent implements OnInit {
   }
 
   setPage(page: number): void {
+    if (page < 1 || page > this.pagination.pageCount) return;
     this.pagination.page = page;
     this.getPaginatedDepartments(page, 10);
-    console.log(this.pagination.page);
   }
 
   redirectToEdit(id: number): void {

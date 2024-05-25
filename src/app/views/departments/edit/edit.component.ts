@@ -62,9 +62,7 @@ export class EditComponent {
     this.editDepartmentService
       .patchDepartment(this.currentId, { name: this.name })
       .subscribe({
-        next: (response) => {
-          console.log('hola');
-          console.log(response);
+        next: () => {
           this.router.navigate(['/departments']);
         },
         error: (error) => {
@@ -76,7 +74,6 @@ export class EditComponent {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.currentId = params['id'];
-      console.log('ID:', this.currentId);
     });
     this.getDepartmentById(this.currentId);
   }
