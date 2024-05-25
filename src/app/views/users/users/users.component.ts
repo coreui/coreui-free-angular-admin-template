@@ -1,5 +1,5 @@
 import { NgStyle } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
@@ -31,7 +31,7 @@ import { IconDirective } from '@coreui/icons-angular';
 import { GetPaginatedUserService } from '../../../services/users/get-paginated-user.service';
 import { DeleteUserService } from '../../../services/users/delete-user.service';
 
-interface User {
+export interface User {
   id: number;
   name: string;
   email: string;
@@ -73,12 +73,13 @@ interface User {
   templateUrl: './users.component.html',
   styleUrl: './users.component.scss',
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent {
   currentId = 0;
 
   constructor(
     private getPaginatedUserService: GetPaginatedUserService,
-    private deleteUserService: DeleteUserService
+    private deleteUserService: DeleteUserService,
+    private router: Router
   ) {}
 
   public users: User[] = [];
