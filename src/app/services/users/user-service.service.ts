@@ -23,6 +23,6 @@ export class UserServiceService {
 export interface addUserBody {
   name: string;
   email: string;
-  department: string;
+  department: number;
   rol: string;
 }

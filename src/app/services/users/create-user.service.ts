@@ -21,6 +21,8 @@ export class CreateUserService {
 export interface CreateUserBody {
   name: string;
   email: string;
-  department: string;
+  password: string;
+  birthdate: string;
+  department: number;
   role: string;
 }

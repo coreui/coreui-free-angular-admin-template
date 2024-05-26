@@ -9,15 +9,17 @@ import { CardBodyComponent,
        ButtonDirective,
        ButtonGroupComponent,
        ButtonCloseDirective } from '@coreui/angular';
-import { User } from 'src/app/views/users/users/users.component';
+import { FormsModule } from '@angular/forms';
 
 import { CreateUserService } from '../../../services/users/create-user.service';
+import { GetPaginatedUserService } from 'src/app/services/users/get-paginated-user.service';
 
 @Component({
   selector: 'app-add-user',
   standalone: true,
   imports: [CardBodyComponent,
      CardComponent,
+     FormsModule,
        FormDirective,
         FormLabelDirective,
          FormControlDirective,
@@ -34,7 +36,9 @@ export class AddUserComponent {
 
   name= "";
   email= "";
-  department= "";
+  password= "";
+  birthdate= "";
+  department= 1;
   role= ""; 
 
   constructor(
@@ -42,7 +46,7 @@ export class AddUserComponent {
   ) {}
 
   createUser(): void {
-     this.createUserService.createUser({ name: this.name, email: this.email, department: this.department, role: this.role }).subscribe({
+     this.createUserService.createUser({ name: this.name, email: this.email, password: this.password, birthdate: this.birthdate, department: this.department, role: this.role }).subscribe({
       next: (response) => {
         console.log('hola');
         console.log(response);

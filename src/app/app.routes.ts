@@ -76,7 +76,7 @@ export const routes: Routes = [
           import('./views/users/add-user/routes').then((m) => m.routes),
       },
       {
-        path: 'editusers',
+        path: 'editusers/:id',
         loadChildren: () =>
           import('./views/users/edit-user/routes').then((m) => m.routes),
       },

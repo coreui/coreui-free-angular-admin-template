@@ -38,6 +38,7 @@ export interface User {
   password: string;
   birthdate: string;
   role: string;
+  department: number;
 }
 @Component({
   selector: 'app-users',
@@ -115,6 +116,10 @@ export class UsersComponent {
         console.log(error);
       },
     });
+  }
+
+  redirectToEdit(id: number): void {
+    this.router.navigate([`editusers/${id}`]);
   }
 
   ngOnInit(): void {

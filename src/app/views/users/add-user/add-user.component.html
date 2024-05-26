@@ -10,8 +10,9 @@
             <label cLabel for="exampleFormControlInput1">Nombre</label>
             <input cFormControl
                    id="exampleFormControlInput1"
-                   placeholder="name@example.com"
-                   type="email"
+                   type="text"
+                   [ngModelOptions]="{standalone: true}"
+                   [(ngModel)]="name"
                    value="{{ name }}"
             />
           </div>
@@ -21,42 +22,50 @@
                    id="exampleFormControlInput1"
                    placeholder="name@example.com"
                    type="email"
-                   [value]="email"
+                   [ngModelOptions]="{standalone: true}"
+                   [(ngModel)]="email"
+                   value="{{ email }}"
             />
           </div>
           <div>
             <label cLabel for="exampleFormControlInput1">Contraseña</label>
             <input cFormControl
                    id="exampleFormControlInput1"
-                   placeholder="name@example.com"
-                   type="email"
+                   type="text"
+                   [ngModelOptions]="{standalone: true}"
+                   [(ngModel)]="password"
+                   value="{{ password }}"
             />
           </div>
           <div>
-            <label cLabel for="exampleFormControlInput1">Confirmar Contraseña</label>
+            <label cLabel for="exampleFormControlInput1">Birthdate</label>
             <input cFormControl
                    id="exampleFormControlInput1"
-                   placeholder="name@example.com"
-                   type="email"
+                   type="text"
+                   [ngModelOptions]="{standalone: true}"
+                   [(ngModel)]="birthdate"
+                   value="{{ birthdate }}"
             />
           </div>
           <div>
             <label cLabel for="exampleFormControlInput1">Departamento</label>
-            <select aria-label="Default select example" cSelect>
-              <option>Open this select menu</option>
-              <option value="{{ department }}">dpto</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
+            <input cFormControl
+                   id="exampleFormControlInput1"
+                   type="number"
+                   [ngModelOptions]="{standalone: true}"
+                   [(ngModel)]="department"
+                   value="{{ department }}"
+            />
           </div>
           <div>
             <label cLabel for="exampleFormControlInput1">Rol</label>
-            <select aria-label="Default select example" cSelect>
-              <option>Open this select menu</option>
-              <option [value]="role">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
+            <input cFormControl
+                   id="exampleFormControlInput1"
+                   type="text"
+                   [ngModelOptions]="{standalone: true}"
+                   [(ngModel)]="role"
+                   value="{{ role }}"
+            />
           </div>
 
           <a cButton (click)="createUser()" routerLink="/users" routerLinkActive="active" color="success" class="text-white ms-md-2 mb-3">

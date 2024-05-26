@@ -19,7 +19,7 @@ export class EditUserService {
 }
 export interface EditUserBody {
   name: string;
-  email: string;
-  department: string;
+  email: string;  
+  department: number;
   role: string;
 }
