@@ -12,8 +12,8 @@
                 <tr>
                   <th class="bg-body-tertiary">Numero</th>
                   <th class="bg-body-tertiary">Nombre</th>
-                  <th class="bg-body-tertiary text-center">Índice</th>
-                  <th class="bg-body-tertiary custom-th-style">Acción</th>
+                  <th class="bg-body-tertiary">Índice</th>
+                  <th class="bg-body-tertiary">Acción</th>
                 </tr>
               </thead>
               <tbody>
@@ -35,7 +35,7 @@
                         <button class="btn btn-sm btn-outline-warning">
                           <svg cIcon name="cil-pencil"></svg>
                         </button>
-                        <button class="btn btn-sm btn-outline-danger ms-2">
+                        <button [cModalToggle]="staticBackdropModal.id" class="btn btn-sm btn-outline-danger ms-2">
                           <svg cIcon name="cil-trash"></svg>
                         </button>
                       </div>
@@ -44,12 +44,23 @@
                 </tr>
                 }
               </tbody>
-            </table>
-            
+            </table>           
           </div>
-          
-  
         </c-card-body>
       </c-card>
     </c-col>
   </c-row>
+
+<c-modal #staticBackdropModal backdrop="static" id="staticBackdropModal">
+  <c-modal-header>
+    <h5 cModalTitle>¿Estás seguro de eliminar?</h5>
+    <button [cModalToggle]="staticBackdropModal.id" cButtonClose></button>
+  </c-modal-header>
+  <c-modal-body>Esta acción no se puede deshacer</c-modal-body>
+  <c-modal-footer>
+    <button [cModalToggle]="staticBackdropModal.id" cButton color="secondary">
+      Cancelar
+    </button>
+    <button cButton color="primary">Aceptar</button>
+  </c-modal-footer>
+</c-modal>

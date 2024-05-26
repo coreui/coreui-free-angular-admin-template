@@ -1,7 +1,14 @@
 import { Component } from '@angular/core';
 import {
-  AvatarComponent,
+  ButtonCloseDirective,
   ButtonDirective,
+  ModalBodyComponent,
+  ModalComponent,
+  ModalFooterComponent,
+  ModalHeaderComponent,
+  ModalTitleDirective,
+  ModalModule,
+  ThemeDirective,
   ButtonGroupComponent,
   CardBodyComponent,
   CardComponent,
@@ -16,6 +23,7 @@ import {
   TableDirective,
   TextColorDirective
 } from '@coreui/angular';
+import { CommonModule } from '@angular/common';
 
 interface IUser {
   name: string;
@@ -35,25 +43,46 @@ interface IUser {
   selector: 'app-indicators',
   standalone: true,
   imports: [ TextColorDirective,
-     CardComponent,
-      CardBodyComponent,
-       RowComponent,
-        ColComponent,
-         ButtonDirective,
-         ButtonGroupComponent,
+          CardComponent,
+          CardBodyComponent,
+          RowComponent,
+          ColComponent,
+          ButtonDirective,
+          ButtonGroupComponent,
           FormCheckLabelDirective,
-         CardFooterComponent,
+          CardFooterComponent,
           GutterDirective,
-           ProgressBarDirective,
-            ProgressComponent,
-         CardHeaderComponent,
+          ProgressBarDirective,
+          ProgressComponent,
+          CommonModule,
+          CardHeaderComponent,
           TableDirective,
-           AvatarComponent],
+          ButtonCloseDirective,
+          ButtonDirective,
+          ModalModule,
+          ModalBodyComponent,
+          ModalComponent,
+          ModalFooterComponent,
+          ModalHeaderComponent,
+          ModalTitleDirective,
+          ThemeDirective],
   templateUrl: './indicators.component.html',
   styleUrl: './indicators.component.scss'
 })
 export class IndicatorsComponent {
 
-  public users: IUser[] = [];
+  currentId = 1;
+  public visible = false;
+
+  public users: IUser[] = []
+
+  toggleLiveDemo(id: number) {
+    this.currentId = id;
+    this.visible = !this.visible;
+  }
+
+  handleLiveDemoChange(event: any) {
+    this.visible = event;
+  }
 
 }
