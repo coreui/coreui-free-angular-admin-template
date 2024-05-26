@@ -118,8 +118,6 @@ export class DepartmentsComponent implements OnInit {
   getPaginatedDepartments(page: number, take: number): void {
     this.departmentsService.getPaginatedDepartments(page, take).subscribe({
       next: (response) => {
-        console.log('entro');
-        console.log('paginas:', response.meta.pageCount);
         this.departments = response.data;
         this.pagination.pageCount = response.meta.pageCount;
       },
@@ -140,7 +138,6 @@ export class DepartmentsComponent implements OnInit {
   }
 
   setPage(page: number): void {
-    console.log('antes', this.pagination.page);
     if (
       this.pagination.page < 1 ||
       this.pagination.page > this.pagination.pageCount
@@ -148,7 +145,7 @@ export class DepartmentsComponent implements OnInit {
       return;
     }
     this.pagination.page = page;
-    console.log('pagina actual', this.pagination.page);
+
     this.getPaginatedDepartments(this.pagination.page, 10);
   }
 
