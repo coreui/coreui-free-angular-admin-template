@@ -98,8 +98,6 @@ export class DepartmentsComponent implements OnInit {
     hasNextPage: true,
   };
 
-  pages = this.pagination.pageCount;
-
   constructor(
     private departmentsService: DepartmentsService,
     private deleteDepartmentService: DeleteDepartmentService,
@@ -120,7 +118,10 @@ export class DepartmentsComponent implements OnInit {
   getPaginatedDepartments(page: number, take: number): void {
     this.departmentsService.getPaginatedDepartments(page, take).subscribe({
       next: (response) => {
+        console.log('entro');
+        console.log('paginas:', response.meta.pageCount);
         this.departments = response.data;
+        this.pagination.pageCount = response.meta.pageCount;
       },
       error: (error) => console.error('Error al realizar la solicitud:', error),
     });
@@ -130,7 +131,6 @@ export class DepartmentsComponent implements OnInit {
     this.deleteDepartmentService.deleteDepartment(this.currentId).subscribe({
       next: () => {
         this.getPaginatedDepartments(this.pagination.page, 10);
-
         this.visible = !this.visible;
       },
       error: (error) => {
@@ -140,9 +140,16 @@ export class DepartmentsComponent implements OnInit {
   }
 
   setPage(page: number): void {
-    if (page < 1 || page > this.pagination.pageCount) return;
+    console.log('antes', this.pagination.page);
+    if (
+      this.pagination.page < 1 ||
+      this.pagination.page > this.pagination.pageCount
+    ) {
+      return;
+    }
     this.pagination.page = page;
-    this.getPaginatedDepartments(page, 10);
+    console.log('pagina actual', this.pagination.page);
+    this.getPaginatedDepartments(this.pagination.page, 10);
   }
 
   redirectToEdit(id: number): void {
