@@ -7,6 +7,7 @@
       class="btn"
       toggle="visible"
       style="margin-inline-start: -14px;"
+      aria-label="Toggle sidebar navigation"
     >
       <svg cIcon name="cilMenu" size="lg"></svg>
     </button>
@@ -57,13 +58,14 @@
 
 <ng-template #userDropdown>
   <c-dropdown [popperOptions]="{ placement: 'bottom-start' }" variant="nav-item">
-    <button [caret]="false" cDropdownToggle class="py-0 pe-0">
+    <button [caret]="false" cDropdownToggle class="py-0 pe-0" aria-label="Open user menu">
       <c-avatar
         shape="rounded-1"
         [size]="'md'"
         src="./assets/images/avatars/8.jpg"
         status="success"
         textColor="primary"
+        alt="User avatar"
       />
     </button>
     <ul cDropdownMenu class="pt-0 w-auto">
@@ -159,7 +161,7 @@
 
 <ng-template #themeDropdown>
   <c-dropdown alignment="end" variant="nav-item">
-    <button [caret]="false" cDropdownToggle>
+    <button [caret]="false" cDropdownToggle aria-label="Open theme picker">
       <svg cIcon [name]="icons()" size="lg"></svg>
     </button>
     <div cDropdownMenu>
