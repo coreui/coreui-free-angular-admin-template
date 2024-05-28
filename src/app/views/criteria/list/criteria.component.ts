@@ -32,8 +32,8 @@ import {
 
 import { IconDirective } from '@coreui/icons-angular';
 
-//import { CriteriaService } from '../../../services/criteria/get-paginated-criteria.service';
-//import { DeleteCriteriaervice } from '../../../services/criteria/delete-criterion.service';
+import { CriteriaService } from '../../../services/criteria/get-paginated-criteria.service';
+import { DeleteCriterionService } from '../../../services/criteria/delete-criterion.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -41,7 +41,6 @@ import { Router } from '@angular/router';
   styleUrls: ['criteria.component.scss'],
   standalone: true,
   imports: [
-    TextColorDirective,
     CardComponent,
     CardBodyComponent,
     RowComponent,
@@ -74,6 +73,7 @@ import { Router } from '@angular/router';
 })
 export class CriteriaComponent implements OnInit {
   criteria: any = [];
+
   currentId = 0;
 
   pagination = {
@@ -87,36 +87,30 @@ export class CriteriaComponent implements OnInit {
 
   pages = this.pagination.pageCount;
 
-  /*
+  constructor(
+    private criteriaService: CriteriaService,
+    private deleteCriterionService: DeleteCriterionService,
+    private router: Router
+  ) {}
+
   getPaginatedCriteria(page: number, take: number): void {
     this.criteriaService.getPaginatedCriteria(page, take).subscribe({
       next: (response) => {
         this.criteria = response.data;
       },
-      error: (error) => console.error('Error al realizar la solicitud:', error),
+      error: (error) => console.error(error),
     });
   }
-
-  
-
 
   redirectToEdit(id: number): void {
     this.router.navigate([`edit-criterion/${id}`]);
   }
-*/
-
-  constructor(
-    //private criteriaService: CriteriaService,
-    //private deleteCriteriaervice: DeleteCriteriaervice,
-    private router: Router
-  ) {}
 
   public visible = false;
 
-  toggleModal() {
-    //id: number
+  toggleModal(id: number) {
     this.visible = !this.visible;
-    //this.currentId = id;
+    this.currentId = id;
   }
 
   handleLiveDemoChange(event: any) {
@@ -124,24 +118,22 @@ export class CriteriaComponent implements OnInit {
   }
 
   deleteCriterion(): void {
-    /*this.deleteCriteriaervice.deleteCriterion(this.currentId).subscribe({
+    this.deleteCriterionService.deleteCriterion(this.currentId).subscribe({
       next: () => {
         this.getPaginatedCriteria(this.pagination.page, 10);
-
         this.visible = !this.visible;
       },
       error: (error) => {
         console.log(error);
       },
-    }); */
+    });
   }
 
   setPage(page: number): void {
     if (page < 1 || page > this.pagination.pageCount) return;
     this.pagination.page = page;
-    // this.getPaginatedCriteria(page, 10);
   }
   ngOnInit(): void {
-    //this.getPaginatedCriteria(this.pagination.page, 10);
+    this.getPaginatedCriteria(this.pagination.page, 10);
   }
 }

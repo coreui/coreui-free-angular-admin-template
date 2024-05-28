@@ -34,13 +34,11 @@
             @for (criterion of criteria; track criterion.id; let i = $index) {
             <tr>
               <td class="text-center">
-                {{ criterion.id }}
-              </td>
-              <td class="text-center">
                 {{ criterion.name }}
               </td>
+              <td class="text-center"></td>
               <td class="text-center">
-                {{ criterion.membersQuantity }}
+                {{ criterion.index }}
               </td>
 
               <td class="text-center">
@@ -52,12 +50,13 @@
                     color="warning"
                     variant="outline"
                     class="mx-1"
+                    (click)="redirectToEdit(criterion.id)"
                   >
                     <svg cIcon class="icon icon-lg" name="cilPencil"></svg>
                   </a>
                   <button
                     cButton
-                    (click)="toggleModal()"
+                    (click)="toggleModal(criterion.id)"
                     color="danger"
                     variant="outline"
                     class="mx-1"
@@ -98,7 +97,7 @@
   <c-modal-body class="delete-modal"
     ><h6>¿Estás seguro que deseas borrar este criterio?</h6>
     <div class="delete-modal-buttons-container">
-      <button (click)="toggleModal()" cButton color="primary">Cerrar</button>
+      <button (click)="toggleModal(0)" cButton color="primary">Cerrar</button>
       <button (click)="deleteCriterion()" cButton color="danger">Borrar</button>
     </div>
   </c-modal-body>

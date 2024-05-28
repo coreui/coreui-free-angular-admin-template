@@ -39,12 +39,7 @@ import { DepartmentsService } from '../../../services/departments/get-paginated-
 import { DeleteDepartmentService } from '../../../services/departments/delete-department.service';
 import { Router } from '@angular/router';
 
-interface Department {
-  id: number;
-  name: string;
-  director: string;
-  membersQuantity: number;
-}
+import { Department } from '../../../types';
 
 @Component({
   templateUrl: 'departments.component.html',

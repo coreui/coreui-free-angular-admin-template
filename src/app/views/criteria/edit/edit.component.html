@@ -24,32 +24,42 @@
               </div>
               <div class="input-container">
                 <label cLabel for="exampleFormControlInput1">Indicador</label>
-                <select aria-label="Indicator Select" cSelect>
+                <select
+                  aria-label="Indicator Select"
+                  name="indicatorID"
+                  [(ngModel)]="indicatorID"
+                  value="{{ indicatorID }}"
+                  cSelect
+                >
                   <option>Selecciona un indicador</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  @for (indicator of indicators; track indicator.id) {
+                  <option value="{{ indicator.id }}">
+                    {{ indicator.index }} {{ indicator.name }}
+                  </option>
+                  }
                 </select>
               </div>
               <div class="input-container">
                 <label cLabel for="exampleFormControlInput1">Índice</label>
                 <input
                   cFormControl
-                  id="name"
+                  id="index"
                   placeholder="Índice"
                   type="number"
-                  name="name"
-                  [(ngModel)]="name"
-                  value="{{ name }}"
+                  name="index"
+                  [(ngModel)]="index"
+                  value="{{ index }}"
                 />
               </div>
               <div class="input-container">
                 <label cLabel for="exampleFormControlInput1">Descripción</label>
                 <textarea
                   cFormControl
-                  id="exampleFormControlTextarea1"
+                  name="description"
                   rows="3"
                   placeholder="Descripción del criterio"
+                  [(ngModel)]="description"
+                  value="{{ description }}"
                 ></textarea>
               </div>
             </div>

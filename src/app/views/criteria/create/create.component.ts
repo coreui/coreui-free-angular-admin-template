@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GetAllIndicatorsService } from '../../../services/indicators/get-all-indicators.service';
 import { CreateCriterionService } from '../../../services/criteria/create-criterion.service';
 import { Router } from '@angular/router';
 import {
@@ -16,6 +17,7 @@ import {
 } from '@coreui/angular';
 import { IconDirective } from '@coreui/icons-angular';
 import { FormsModule } from '@angular/forms';
+import { Indicator } from 'src/app/types';
 @Component({
   selector: 'app-create',
   standalone: true,
@@ -39,22 +41,80 @@ import { FormsModule } from '@angular/forms';
 })
 export class CreateComponent {
   name = '';
+  description = '';
+  index = 0;
+  indicatorID = 0;
+
+  indicators: Indicator[] = [];
+
+  currentId = 0;
+
+  pagination = {
+    page: 1,
+    take: 10,
+    itemCount: 0,
+    pageCount: 0,
+    hasPreviousPage: false,
+    hasNextPage: true,
+  };
+
+  pages = this.pagination.pageCount;
+
+  getIndicators(): void {
+    this.getIndicatorsService.getAllIndicators().subscribe({
+      next: (response) => {
+        console.log(response);
+        this.indicators = response.data;
+      },
+      error: (error) => console.error('Error al realizar la solicitud:', error),
+    });
+  }
+
+  /*
+  getPaginatedCriteria(page: number, take: number): void {
+    this.criteriaService.getPaginatedCriteria(page, take).subscribe({
+      next: (response) => {
+        this.criteria = response.data;
+      },
+      error: (error) => console.error('Error al realizar la solicitud:', error),
+    });
+  }
+
+  
+
+
+  redirectToEdit(id: number): void {
+    this.router.navigate([`edit-criterion/${id}`]);
+  }
+*/
 
   constructor(
     private createCriterionService: CreateCriterionService,
+    //private criteriaService: CriteriaService,
+    //private deleteCriteriaervice: DeleteCriteriaervice,
+    private getIndicatorsService: GetAllIndicatorsService,
     private router: Router
   ) {}
 
   createCriterion(): void {
-    /*this.createCriterionService.postCriterion({ name: this.name }).subscribe({
-      next: (response) => {
-        console.log('hola');
-        console.log(response);
-        this.router.navigate(['/criteria']);
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });*/
+    this.createCriterionService
+      .postCriterion({
+        name: this.name,
+        description: this.description,
+        index: this.index,
+        indicatorID: this.indicatorID,
+      })
+      .subscribe({
+        next: () => {
+          this.router.navigate(['/criteria']);
+        },
+        error: (error) => {
+          console.log(error);
+        },
+      });
+  }
+
+  ngOnInit(): void {
+    this.getIndicators();
   }
 }
