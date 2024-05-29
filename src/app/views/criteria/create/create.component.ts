@@ -70,24 +70,6 @@ export class CreateComponent {
     });
   }
 
-  /*
-  getPaginatedCriteria(page: number, take: number): void {
-    this.criteriaService.getPaginatedCriteria(page, take).subscribe({
-      next: (response) => {
-        this.criteria = response.data;
-      },
-      error: (error) => console.error('Error al realizar la solicitud:', error),
-    });
-  }
-
-  
-
-
-  redirectToEdit(id: number): void {
-    this.router.navigate([`edit-criterion/${id}`]);
-  }
-*/
-
   constructor(
     private createCriterionService: CreateCriterionService,
     //private criteriaService: CriteriaService,
