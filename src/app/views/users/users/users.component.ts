@@ -121,6 +121,7 @@ export class UsersComponent {
     });
   }
 
+
   redirectToEdit(id: number): void {
     this.router.navigate([`editusers/${id}`]);
   }
