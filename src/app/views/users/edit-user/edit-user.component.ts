@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute,Router, RouterLink } from '@angular/router';
 import { CardBodyComponent,
    CardComponent,
@@ -10,7 +10,6 @@ import { CardBodyComponent,
        ButtonGroupComponent,
        ButtonCloseDirective } from '@coreui/angular';
 import { FormsModule } from '@angular/forms';
-
 import { EditUserService } from '../../../services/users/edit-user.service';
 import { GetUserByIdService } from 'src/app/services/users/get-user-by-id.service';
 
@@ -39,7 +38,7 @@ export class EditUserComponent {
 
   name= "";
   email= "";
-  department= 1;
+  department= 0;
   role= ""; 
 
   constructor(
@@ -55,16 +54,16 @@ export class EditUserComponent {
         this.name = response.name;
         this.email = response.email;
         this.role = response.role;
+        this.department = response.department;
       },
       error: (error) => console.error('Error al realizar la solicitud:', error),
     });
   }
 
   editUser(): void {
-    console.log(this.name);
-    this.editUserService.editUser( this.currentId, { name: this.name, email: this.email, department: this.department, role: this.role }).subscribe({
+    this.editUserService.editUser( this.currentId,
+       { name: this.name, email: this.email, department: this.department, role: this.role }).subscribe({
      next: (response) => {
-       console.log('hola');
        console.log(response);
      },
      error: (error) => {
@@ -77,8 +76,6 @@ export class EditUserComponent {
   this.route.params.subscribe((params) => {
     this.currentId = params['id'];
     this.currentName = params['name'];
-    console.log('ID:', this.currentId);
-    console.log('Nombre:', this.name);
   });
 
   this.getUserById(this.currentId);

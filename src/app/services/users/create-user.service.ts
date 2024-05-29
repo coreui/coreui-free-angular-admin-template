@@ -23,6 +23,9 @@ export interface CreateUserBody {
   email: string;
   password: string;
   birthdate: string;
-  department: number;
+  department: {
+    name: string;
+    id: number;
+  };
   role: string;
 }

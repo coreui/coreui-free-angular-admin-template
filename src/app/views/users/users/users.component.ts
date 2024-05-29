@@ -38,7 +38,10 @@ export interface User {
   password: string;
   birthdate: string;
   role: string;
-  department: number;
+  department: {
+    id: number;
+    name: string;
+  };
 }
 @Component({
   selector: 'app-users',
@@ -124,5 +127,6 @@ export class UsersComponent {
 
   ngOnInit(): void {
     this.getPaginatedUser();
+    
   }
 }
