@@ -2,54 +2,98 @@
     <c-col xs>
       <c-card class="mb-4">
         <c-card-body>
-          <div class="table-container">
-            <div class="d-flex justify-content-between mb-3">
-              <input type="text" class="form-control" style="max-width: 50%;" placeholder="Buscar...">
-              <button class="btn btn-primary bg-success">Agregar</button>
+          <div class="d-flex justify-content-between align-items-center">
+            <h4 class="card-title" id="users">Gestión de Indicadores</h4>
+            <a
+              cButton
+              routerLink="/"
+              routerLinkActive="active"
+              color="success"
+              class="text-white ms-md-2 mb-3"
+            >
+              Agregar Indicador
+            </a>
           </div>
-            <table class="table table-hover table-responsive table-striped align-middle mb-0 border">
+
+            <table
+            [hover]="true"
+            [responsive]="true"
+            [striped]="true"
+            align="middle"
+            cTable
+            class="mb-0 border">
               <thead class="text-nowrap text-truncate">
                 <tr>
-                  <th class="bg-body-tertiary">Numero</th>
-                  <th class="bg-body-tertiary">Nombre</th>
-                  <th class="bg-body-tertiary">Índice</th>
-                  <th class="bg-body-tertiary">Acción</th>
+                  <th class="bg-body-tertiary text-center">Nombre</th>
+                  <th class="bg-body-tertiary text-center">Índice</th>
+                  <th class="bg-body-tertiary text-center">Acción</th>
                 </tr>
               </thead>
               <tbody>
-                @for (user of users; track user.name; let i = $index)
+                @for (ind of indicators; track ind.name; let i = $index)
                 {
-                <tr>
-                  <td class="text-center" style="width: 10%;">
-                    <span id="numeroCreciente">{{i + 1}}</span>
-                </td>         
-                  <td style="width: 30%;">
-                    <div>{{ user.name }}</div>
+                <tr>       
+                  <td class="text-center">
+                    <div>{{ ind.name }}</div>
                   </td>
-                  <td class="text-center" style="width: 60%; vertical-align: 10%;">
-                    <span>{{i + 1}}</span>
+                  <td class="text-center">
+                    <span>{{ind.index}}</span>
                   </td>
-                  <td style="width: 40%;">
-                    <div class="d-flex flex-column align-items-end">
-                      <div class="d-flex align-items-center">
-                        <button class="btn btn-sm btn-outline-warning">
-                          <svg cIcon name="cil-pencil"></svg>
-                        </button>
-                        <button [cModalToggle]="staticBackdropModal.id" class="btn btn-sm btn-outline-danger ms-2">
-                          <svg cIcon name="cil-trash"></svg>
-                        </button>
-                      </div>
+                  <td class="text-center">
+                    <p>{{ind.description}}</p>
+                  </td>
+                  <td class="text-center">
+                    <div class="fw-semibold text-nowrap">
+                      <a
+                        cButton
+                        color="warning"
+                        variant="outline"
+                        class="mx-1"
+                      >
+                       <svg cIcon class="icon icon-lg" name="cilPencil"></svg>
+                      </a>
+                      <button
+                        cButton
+                        [cModalToggle]="staticBackdropModal.id"
+                        color="danger"
+                        variant="outline"
+                        class="mx-1"
+                      >
+                       <svg cIcon class="icon icon-lg" name="cilTrash"></svg>
+                      </button>
                     </div>
                   </td>
                 </tr>
                 }
               </tbody>
-            </table>           
-          </div>
+            </table>  
+
+            <c-pagination aria-label="Pagination" class="ms-md-2">
+              <li cPageItem>
+                <a cPageLink>Previous</a>
+              </li>
+              <li cPageItem>
+                <a cPageLink>1</a>
+              </li>
+              <li cPageItem>
+                <a cPageLink>2</a>
+              </li>
+              <li cPageItem>
+                <a cPageLink>3</a>
+              </li>
+              <li cPageItem>
+                <a cPageLink>Next</a>
+              </li>
+            </c-pagination>
+                     
         </c-card-body>
       </c-card>
     </c-col>
   </c-row>
+
+
+
+  
 
 <c-modal #staticBackdropModal backdrop="static" id="staticBackdropModal">
   <c-modal-header>

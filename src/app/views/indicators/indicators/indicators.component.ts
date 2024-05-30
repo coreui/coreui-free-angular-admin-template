@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import {
   ButtonCloseDirective,
   ButtonDirective,
@@ -21,22 +22,21 @@ import {
   ProgressComponent,
   RowComponent,
   TableDirective,
-  TextColorDirective
+  TextColorDirective,
+  PageLinkDirective,
+  PaginationComponent,
+  PageItemDirective
 } from '@coreui/angular';
+import { IconDirective } from '@coreui/icons-angular';
 import { CommonModule } from '@angular/common';
 
-interface IUser {
+import { DeleteIndicatorService } from '../../../services/delete-indicator.service';
+import { GetPaginatedIndicatorService } from '../../../services/get-paginated-indicator.service';
+
+interface indicator {
   name: string;
-  state: string;
-  registered: string;
-  country: string;
-  usage: number;
-  period: string;
-  payment: string;
-  activity: string;
-  avatar: string;
-  status: string;
-  color: string;
+  index: number;
+  description: string;
 }
 
 @Component({
@@ -65,16 +65,26 @@ interface IUser {
           ModalFooterComponent,
           ModalHeaderComponent,
           ModalTitleDirective,
-          ThemeDirective],
+          ThemeDirective,
+          PageItemDirective,
+          PageLinkDirective,
+          PaginationComponent,
+          IconDirective],
   templateUrl: './indicators.component.html',
   styleUrl: './indicators.component.scss'
 })
 export class IndicatorsComponent {
 
+  constructor(
+    private router: Router,
+    private getPaginatedIndicatorService: GetPaginatedIndicatorService,
+    private deleteIndicatorService: DeleteIndicatorService
+    ) { }
+
   currentId = 1;
   public visible = false;
 
-  public users: IUser[] = []
+  public indicators: indicator[] = []
 
   toggleLiveDemo(id: number) {
     this.currentId = id;
@@ -83,6 +93,38 @@ export class IndicatorsComponent {
 
   handleLiveDemoChange(event: any) {
     this.visible = event;
+  }
+
+  getPaginatedIndicator(): void {
+    this.getPaginatedIndicatorService.getPaginatedIndicator().subscribe({
+      next: (response) => {
+        console.log(response);
+        this.indicators = response.data;
+      },
+      error: (error) => console.error('Error al realizar la solicitud:', error),
+    });
+  }
+
+  deleteIndicator(): void {
+    this.deleteIndicatorService.deleteIndicator(this.currentId).subscribe({
+      next: () => {
+        this.getPaginatedIndicator();
+        this.visible = !this.visible;
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
+
+
+  // redirectToEdit(id: number): void {
+  //   this.router.navigate([`editusers/${id}`]);
+  // }
+
+  ngOnInit(): void {
+    this.getPaginatedIndicator();
+    
   }
 
 }
