@@ -123,8 +123,7 @@ export class IndicatorsComponent {
   // }
 
   ngOnInit(): void {
-    this.getPaginatedIndicator();
-    
-  }
+     this.getPaginatedIndicator();
+ }
 
 }

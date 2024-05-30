@@ -2,8 +2,10 @@
     <c-col xs>
       <c-card class="mb-4">
         <c-card-body>
+          <h4 class="card-title text-center" id="users">Gestión de Indicadores</h4>
           <div class="d-flex justify-content-between align-items-center">
-            <h4 class="card-title" id="users">Gestión de Indicadores</h4>
+            <input type="text" class="form-control w-25  ms-md-2 mb-3" placeholder="Buscar...">
+           
             <a
               cButton
               routerLink="/"
@@ -25,7 +27,8 @@
               <thead class="text-nowrap text-truncate">
                 <tr>
                   <th class="bg-body-tertiary text-center">Nombre</th>
-                  <th class="bg-body-tertiary text-center">Índice</th>
+                  <th class="bg-body-tertiary text-center">Indice</th>
+                  <th class="bg-body-tertiary text-center">Descripción</th>
                   <th class="bg-body-tertiary text-center">Acción</th>
                 </tr>
               </thead>
@@ -39,7 +42,7 @@
                   <td class="text-center">
                     <span>{{ind.index}}</span>
                   </td>
-                  <td class="text-center">
+                  <td class="text-center ">
                     <p>{{ind.description}}</p>
                   </td>
                   <td class="text-center">
