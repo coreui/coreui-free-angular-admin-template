@@ -188,7 +188,19 @@ export const navItems: INavData[] = [
   {
     name: 'Indicadores',
     iconComponent: { name: 'cil-chart' },
-    url: '/indicators'
+    url: '/indicators',
+    children: [
+      {
+        name: 'Listado',
+        url: '/indicators',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Agregar Indicadores',
+        url: '/addIndicators',
+        icon: 'nav-icon-bullet'
+      },
+    ]
   },
   {
     name: 'Icons',

@@ -10,7 +10,7 @@ export class AddIndicatorService {
 
   constructor(private http: HttpClient) {}
 
-  createindicator(body: CreateIndicatorBody): Observable<any> {
+  addIndicator(body: AddIndicatorBody): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(`${this.apiUrl}indicators`,body, {
       headers,
@@ -18,7 +18,7 @@ export class AddIndicatorService {
   }
 }
 
-export interface CreateIndicatorBody {
+export interface AddIndicatorBody {
   name: string;
   index: number;
   description: string;

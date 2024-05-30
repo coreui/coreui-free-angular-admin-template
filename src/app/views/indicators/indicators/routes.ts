@@ -1,11 +1,12 @@
 import { Routes } from '@angular/router';
+import { IndicatorsComponent } from './indicators.component';
 
 export const routes: Routes = [
   {
     path: '',
-    loadComponent: () => import('./indicators.component').then(m => m.IndicatorsComponent),
+    component: IndicatorsComponent,
     data: {
-      title: $localize`Indicators`
+      title: 'Lista de Indicadores'
     }
   }
 ];

@@ -57,6 +57,14 @@ export const routes: Routes = [
       {
         path: 'indicators',
         loadChildren: () => import('./views/indicators/indicators/routes').then((m) => m.routes)
+      },
+      {
+        path: 'addIndicators',
+        loadChildren: () => import('./views/indicators/add-indicator/routes').then((m) => m.routes)
+      },
+      {
+        path: 'editIndicators/:id',
+        loadChildren: () => import('./views/indicators/edit-indicator/routes').then((m) => m.routes)
       }
     ]
   },

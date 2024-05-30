@@ -7,14 +7,14 @@
             <input type="text" class="form-control w-25  ms-md-2 mb-3" placeholder="Buscar...">
            
             <a
-              cButton
-              routerLink="/"
-              routerLinkActive="active"
-              color="success"
-              class="text-white ms-md-2 mb-3"
-            >
-              Agregar Indicador
-            </a>
+            cButton
+            routerLink="/addIndicators"
+            routerLinkActive="active"
+            color="success"
+            class="text-white ms-md-2 mb-3"
+          >
+            Agregar Indicador
+          </a>
           </div>
 
             <table
@@ -33,22 +33,23 @@
                 </tr>
               </thead>
               <tbody>
-                @for (ind of indicators; track ind.name; let i = $index)
+                @for (ind of indicators; track ind.id; let i = $index)
                 {
                 <tr>       
                   <td class="text-center">
-                    <div>{{ ind.name }}</div>
+                      {{ ind.name }}
                   </td>
                   <td class="text-center">
-                    <span>{{ind.index}}</span>
+                      {{ind.index}}
                   </td>
-                  <td class="text-center ">
-                    <p>{{ind.description}}</p>
+                  <td class="text-center my-5">
+                      {{ind.description}}
                   </td>
                   <td class="text-center">
                     <div class="fw-semibold text-nowrap">
                       <a
                         cButton
+                        (click)="redirectToEdit(ind.id)"
                         color="warning"
                         variant="outline"
                         class="mx-1"
@@ -58,6 +59,7 @@
                       <button
                         cButton
                         [cModalToggle]="staticBackdropModal.id"
+                        (click)="toggleLiveDemo(ind.id)"
                         color="danger"
                         variant="outline"
                         class="mx-1"
@@ -108,6 +110,13 @@
     <button [cModalToggle]="staticBackdropModal.id" cButton color="secondary">
       Cancelar
     </button>
-    <button cButton color="primary">Aceptar</button>
+    <button
+      cButton
+      (click)="deleteIndicator()"
+      [cModalToggle]="staticBackdropModal.id"
+      color="primary"
+    >
+      Aceptar
+    </button>
   </c-modal-footer>
 </c-modal>

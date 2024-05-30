@@ -30,10 +30,11 @@ import {
 import { IconDirective } from '@coreui/icons-angular';
 import { CommonModule } from '@angular/common';
 
-import { DeleteIndicatorService } from '../../../services/delete-indicator.service';
-import { GetPaginatedIndicatorService } from '../../../services/get-paginated-indicator.service';
+import { DeleteIndicatorService } from '../../../services/indicators/delete-indicator.service';
+import { GetPaginatedIndicatorService } from '../../../services/indicators/get-paginated-indicator.service';
 
 interface indicator {
+  id: number;
   name: string;
   index: number;
   description: string;
@@ -69,7 +70,8 @@ interface indicator {
           PageItemDirective,
           PageLinkDirective,
           PaginationComponent,
-          IconDirective],
+          IconDirective,
+          RouterLink],
   templateUrl: './indicators.component.html',
   styleUrl: './indicators.component.scss'
 })
@@ -81,7 +83,7 @@ export class IndicatorsComponent {
     private deleteIndicatorService: DeleteIndicatorService
     ) { }
 
-  currentId = 1;
+  currentId = 0;
   public visible = false;
 
   public indicators: indicator[] = []
@@ -118,9 +120,9 @@ export class IndicatorsComponent {
   }
 
 
-  // redirectToEdit(id: number): void {
-  //   this.router.navigate([`editusers/${id}`]);
-  // }
+  redirectToEdit(id: number): void {
+     this.router.navigate([`editIndicators/${id}`]);
+  }
 
   ngOnInit(): void {
      this.getPaginatedIndicator();
