@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { CardBodyComponent,
          CardComponent,
          FormDirective,
@@ -35,13 +35,15 @@ export class AddUserComponent {
 
  
   constructor(
-    private createUserService: CreateUserService
+    private createUserService: CreateUserService,
+    private router: Router
   ) {}
 
   createUser(): void {
-     this.createUserService.createUser({ name: this.name, email: this.email, password: this.password, birthdate: this.birthdate, department: this.department, role: this.role }).subscribe({
+     this.createUserService.createUser({ name: this.name, email: this.email, password: this.password, birthdate: this.birthdate, departmentId: this.departmentId, role: this.role }).subscribe({
       next: (response) => {
         console.log(response);
+        this.router.navigate([`users`]);
       },
       error: (error) => {
         console.log(error);
@@ -53,10 +55,7 @@ export class AddUserComponent {
   email= "";
   password= "";
   birthdate= "";
-  department = {
-    id: 0,
-    name: ""
-  };
+  departmentId= 0;
   role= ""; 
 
 

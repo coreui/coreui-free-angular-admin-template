@@ -53,8 +53,8 @@
                    id="exampleFormControlInput1"
                    type="number"
                    [ngModelOptions]="{standalone: true}"
-                   [(ngModel)]="department"
-                   value="{{ department }}"
+                   [(ngModel)]="departmentId"
+                   value="{{ departmentId }}"
             />
           </div>
           <div>
@@ -68,7 +68,7 @@
             />
           </div>
 
-          <a cButton (click)="createUser()" routerLink="/users" routerLinkActive="active" color="success" class="text-white ms-md-2 mb-3">
+          <a cButton (click)="createUser()" color="success" class="text-white ms-md-2 mb-3">
             Guardar
           </a>
         </form>
