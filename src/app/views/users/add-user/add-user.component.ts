@@ -12,7 +12,6 @@ import { CardBodyComponent,
 import { FormsModule } from '@angular/forms';
 
 import { CreateUserService } from '../../../services/users/create-user.service';
-import { GetPaginatedUserService } from 'src/app/services/users/get-paginated-user.service';
 
 @Component({
   selector: 'app-add-user',

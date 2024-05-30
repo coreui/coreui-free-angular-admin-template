@@ -2,8 +2,11 @@
   <c-col xs>
     <c-card class="mb-4">
       <c-card-body>
+        <h4 class="card-title text-center" id="users">Gestión de Usuarios</h4>
         <div class="d-flex justify-content-between align-items-center">
-          <h4 class="card-title" id="users">Gestión de Usuarios</h4>
+          <input type="text" class="form-control w-25  ms-md-2 mb-3" placeholder="Buscar...">
+          <!-- <input type="filter" class="form-control w-25  ms-md-2 mb-3" placeholder="filtrar 1...">
+          <input type="text" class="form-control w-25  ms-md-2 mb-3" placeholder="filtrar 2..."> -->
           <a
             cButton
             routerLink="/addusers"
@@ -38,7 +41,7 @@
                 {{ user.name }}
               </td>
               <td class="text-center">              
-                  {{user.department.name}}
+                  {{user.department.name ? user.department.name : 'No se le ha asignado un departamento'}}
               </td>
               <td class="text-center">
                     {{ user.email }}
