@@ -10,8 +10,8 @@ import { CardBodyComponent,
        ButtonGroupComponent,
        ButtonCloseDirective } from '@coreui/angular';
 import { FormsModule } from '@angular/forms';
-import { EditUserService } from '../../../services/users/edit-user.service';
-import { GetUserByIdService } from 'src/app/services/users/get-user-by-id.service';
+
+import { UsersService } from 'src/app/services/users/users.service';
 
 @Component({
   selector: 'app-edit-user',
@@ -42,14 +42,13 @@ export class EditUserComponent {
   role= ""; 
 
   constructor(
-    private editUserService: EditUserService,
-    private getUserByIdService: GetUserByIdService,
+    private usersService: UsersService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
   
   getUserById(id: number): void {
-    this.getUserByIdService.getUserById(id).subscribe({
+    this.usersService.getUserById(id).subscribe({
       next: (response) => {
         this.name = response.name;
         this.email = response.email;
@@ -61,10 +60,11 @@ export class EditUserComponent {
   }
 
   editUser(): void {
-    this.editUserService.editUser( this.currentId,
+    this.usersService.editUser( this.currentId,
        { name: this.name, email: this.email, department: this.department, role: this.role }).subscribe({
      next: (response) => {
        console.log(response);
+       this.router.navigate([`users`]);
      },
      error: (error) => {
        console.log(error);

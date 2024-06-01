@@ -5,8 +5,22 @@
         <h4 class="card-title text-center" id="users">Gestión de Usuarios</h4>
         <div class="d-flex justify-content-between align-items-center">
           <input type="text" class="form-control w-25  ms-md-2 mb-3" placeholder="Buscar...">
-          <!-- <input type="filter" class="form-control w-25  ms-md-2 mb-3" placeholder="filtrar 1...">
-          <input type="text" class="form-control w-25  ms-md-2 mb-3" placeholder="filtrar 2..."> -->
+          <c-dropdown>
+            <button cButton cDropdownToggle class="form-control  ms-md-2 mb-3" color="dark">Filtrado por departamento</button>
+            <ul cDropdownMenu dark>
+              <li><button cDropdownItem>Departamento 1</button></li>
+              <li><button cDropdownItem>Departamento 2</button></li>
+              <li><button cDropdownItem>Departamento 3</button></li>
+            </ul>
+          </c-dropdown>
+          <c-dropdown>
+            <button cButton cDropdownToggle class="form-control  ms-md-2 mb-3" color="dark">Filtrado por roles</button>
+            <ul cDropdownMenu dark>
+              <li><button cDropdownItem>Rol 1</button></li>
+              <li><button cDropdownItem>Rol 2</button></li>
+              <li><button cDropdownItem>Rol 3</button></li>
+            </ul>
+          </c-dropdown>
           <a
             cButton
             routerLink="/addusers"

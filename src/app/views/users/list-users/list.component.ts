@@ -20,6 +20,10 @@ import {
   RowComponent,
   TableDirective,
   TextColorDirective,
+  DropdownComponent,
+  DropdownItemDirective,
+  DropdownMenuDirective,
+  DropdownToggleDirective,
   PageItemDirective,
   PageLinkDirective,
   PaginationComponent,
@@ -28,8 +32,7 @@ import {
 import { FormsModule } from '@angular/forms';
 import { IconDirective } from '@coreui/icons-angular';
 
-import { GetPaginatedUserService } from '../../../services/users/get-paginated-user.service';
-import { DeleteUserService } from '../../../services/users/delete-user.service';
+import { UsersService } from 'src/app/services/users/users.service';
 
 export interface User {
   id: number;
@@ -48,6 +51,10 @@ export interface User {
   standalone: true,
   imports: [
     TextColorDirective,
+    DropdownComponent,
+    DropdownItemDirective,
+    DropdownMenuDirective,
+    DropdownToggleDirective,
     PaginationComponent,
     PageItemDirective,
     PageLinkDirective,
@@ -81,8 +88,7 @@ export class ListComponent {
   currentId = 0;
 
   constructor(
-    private getPaginatedUserService: GetPaginatedUserService,
-    private deleteUserService: DeleteUserService,
+    private usersService: UsersService,
     private router: Router
   ) {}
 
@@ -100,7 +106,7 @@ export class ListComponent {
   }
 
   getPaginatedUser(): void {
-    this.getPaginatedUserService.getPaginatedUser().subscribe({
+    this.usersService.getPaginatedUser().subscribe({
       next: (response) => {
         console.log(response);
         this.users = response.data;
@@ -110,7 +116,7 @@ export class ListComponent {
   }
 
   deleteUser(): void {
-    this.deleteUserService.deleteUser(this.currentId).subscribe({
+    this.usersService.deleteUser(this.currentId).subscribe({
       next: () => {
         this.getPaginatedUser();
         this.visible = !this.visible;

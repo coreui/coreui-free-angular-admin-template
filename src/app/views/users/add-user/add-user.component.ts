@@ -11,7 +11,7 @@ import { CardBodyComponent,
          ButtonCloseDirective } from '@coreui/angular';
 import { FormsModule } from '@angular/forms';
 
-import { CreateUserService } from '../../../services/users/create-user.service';
+import { UsersService } from 'src/app/services/users/users.service';
 
 @Component({
   selector: 'app-add-user',
@@ -35,12 +35,12 @@ export class AddUserComponent {
 
  
   constructor(
-    private createUserService: CreateUserService,
+    private usersService: UsersService,
     private router: Router
   ) {}
 
   createUser(): void {
-     this.createUserService.createUser({ name: this.name, email: this.email, password: this.password, birthdate: this.birthdate, departmentId: this.departmentId, role: this.role }).subscribe({
+     this.usersService.createUser({ name: this.name, email: this.email, password: this.password, birthdate: this.birthdate, departmentId: this.departmentId, role: this.role }).subscribe({
       next: (response) => {
         console.log(response);
         this.router.navigate([`users`]);
