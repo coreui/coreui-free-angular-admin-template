@@ -7,7 +7,7 @@
         <div class="small text-body-secondary">January - December 2023</div>
       </c-col>
       <c-col class="d-none d-md-block" sm="7">
-        <button cButton class="float-end" color="primary">
+        <button cButton class="float-end" color="primary" aria-label="Download">
           <svg cIcon name="cilCloudDownload"></svg>
         </button>
         <form [formGroup]="trafficRadioGroup">
@@ -17,6 +17,7 @@
               formControlName="trafficRadio"
               type="radio"
               value="Day"
+              id="dayRadio"
             />
             <label
               (click)="setTrafficPeriod('Day')"
@@ -24,6 +25,7 @@
               cFormCheckLabel
               color="secondary"
               variant="outline"
+              for="dayRadio"
             >
               Day
             </label>
@@ -32,6 +34,7 @@
               formControlName="trafficRadio"
               type="radio"
               value="Month"
+              id="radioMonth"
             />
             <label
               (click)="setTrafficPeriod('Month')"
@@ -39,6 +42,7 @@
               cFormCheckLabel
               color="secondary"
               variant="outline"
+              for="radioMonth"
             >
               Month
             </label>
@@ -47,6 +51,7 @@
               formControlName="trafficRadio"
               type="radio"
               value="Year"
+              id="radioYear"
             />
             <label
               (click)="setTrafficPeriod('Year')"
@@ -54,6 +59,7 @@
               cFormCheckLabel
               color="secondary"
               variant="outline"
+              for="radioYear"
             >
               Year
             </label>
@@ -77,27 +83,27 @@
       <c-col>
         <div class="text-body-secondary">Visits</div>
         <strong>29.703 Users (40%)</strong>
-        <c-progress class="mt-2" thin color="success" value="40" />
+        <c-progress class="mt-2" thin color="success" value="40" aria-label="User visits" />
       </c-col>
       <c-col>
         <div class="text-body-secondary">Unique</div>
         <div class="fw-semibold text-truncate">24.093 Users (20%)</div>
-        <c-progress class="mt-2" thin color="info" value="20" />
+        <c-progress class="mt-2" thin color="info" value="20" aria-label="Unique users" />
       </c-col>
       <c-col>
         <div class="text-body-secondary">Page views</div>
         <div class="fw-semibold text-truncate">78.706 Views (60%)</div>
-        <c-progress class="mt-2" thin color="warning" value="60" />
+        <c-progress class="mt-2" thin color="warning" value="60" aria-label="Page views" />
       </c-col>
       <c-col>
         <div class="text-body-secondary">New Users</div>
         <div class="fw-semibold text-truncate">22.123 Users (80%)</div>
-        <c-progress class="mt-2" thin color="danger" value="80" />
+        <c-progress class="mt-2" thin color="danger" value="80" aria-label="New users" />
       </c-col>
       <c-col class="d-none d-xl-block">
         <div class="text-body-secondary">Bounce Rate</div>
         <div class="fw-semibold text-truncate">Average Rate (40.15%)</div>
-        <c-progress class="mt-2" thin value="40" />
+        <c-progress class="mt-2" thin value="40" aria-label="Bounce rate" />
       </c-col>
     </c-row>
   </c-card-footer>
@@ -134,8 +140,8 @@
                 <span class="text-body-secondary small">Monday</span>
               </div>
               <div class="progress-group-bars">
-                <c-progress thin color="info" value="34" />
-                <c-progress thin color="danger" value="78" />
+                <c-progress thin color="info" value="34" aria-label="Monday new clients" />
+                <c-progress thin color="danger" value="78" aria-label="Monday recurring clients" />
               </div>
             </div>
             <div class="progress-group mb-4">
@@ -143,8 +149,8 @@
                 <span class="text-body-secondary small">Tuesday</span>
               </div>
               <div class="progress-group-bars">
-                <c-progress thin color="info" value="56" />
-                <c-progress thin color="danger" value="94" />
+                <c-progress thin color="info" value="56" aria-label="Tuesday new clients" />
+                <c-progress thin color="danger" value="94" aria-label="Tuesday recurring clients" />
               </div>
             </div>
             <div class="progress-group mb-4">
@@ -152,8 +158,8 @@
                 <span class="text-body-secondary small">Wednesday</span>
               </div>
               <div class="progress-group-bars">
-                <c-progress thin color="info" value="12" />
-                <c-progress thin color="danger" value="67" />
+                <c-progress thin color="info" value="12" aria-label="Wednesday new clients" />
+                <c-progress thin color="danger" value="67" aria-label="Wednesday recurring clients" />
               </div>
             </div>
             <div class="progress-group mb-4">
@@ -161,8 +167,8 @@
                 <span class="text-body-secondary small">Thursday</span>
               </div>
               <div class="progress-group-bars">
-                <c-progress thin color="info" value="43" />
-                <c-progress thin color="danger" value="91" />
+                <c-progress thin color="info" value="43" aria-label="Thursday new clients" />
+                <c-progress thin color="danger" value="91" aria-label="Thursday recurring clients" />
               </div>
             </div>
             <div class="progress-group mb-4">
@@ -170,8 +176,8 @@
                 <span class="text-body-secondary small">Friday</span>
               </div>
               <div class="progress-group-bars">
-                <c-progress thin color="info" value="22" />
-                <c-progress thin color="danger" value="73" />
+                <c-progress thin color="info" value="22" aria-label="Friday new clients" />
+                <c-progress thin color="danger" value="73" aria-label="Friday recurring clients" />
               </div>
             </div>
             <div class="progress-group mb-4">
@@ -179,8 +185,8 @@
                 <span class="text-body-secondary small">Saturday</span>
               </div>
               <div class="progress-group-bars">
-                <c-progress thin color="info" value="53" />
-                <c-progress thin color="danger" value="82" />
+                <c-progress thin color="info" value="53" aria-label="Saturday new clients" />
+                <c-progress thin color="danger" value="82" aria-label="Saturday recurring clients" />
               </div>
             </div>
             <div class="progress-group mb-4">
@@ -188,8 +194,8 @@
                 <span class="text-body-secondary small">Sunday</span>
               </div>
               <div class="progress-group-bars">
-                <c-progress thin color="info" value="9" />
-                <c-progress thin color="danger" value="69" />
+                <c-progress thin color="info" value="9" aria-label="Sunday new clients" />
+                <c-progress thin color="danger" value="69" aria-label="Sunday recurring clients" />
               </div>
             </div>
             <div class="legend text-center d-none d-md-block" ngPreserveWhitespaces>
@@ -232,7 +238,7 @@
                 <span class="ms-auto font-semibold">43%</span>
               </div>
               <div class="progress-group-bars">
-                <c-progress thin color="warning" value="43" />
+                <c-progress thin color="warning" value="43" aria-label="Male users" />
               </div>
             </div>
             <div class="progress-group mb-5">
@@ -242,7 +248,7 @@
                 <span class="ms-auto font-semibold">37%</span>
               </div>
               <div class="progress-group-bars">
-                <c-progress thin color="warning" value="37" />
+                <c-progress thin color="warning" value="37" aria-label="Feale users" />
               </div>
             </div>
 
@@ -255,7 +261,7 @@
                 </span>
               </div>
               <div class="progress-group-bars">
-                <c-progress thin color="success" value="56" />
+                <c-progress thin color="success" value="56" aria-label="Organic search" />
               </div>
             </div>
             <div class="progress-group">
@@ -267,7 +273,7 @@
                 </span>
               </div>
               <div class="progress-group-bars">
-                <c-progress thin color="success" value="15" />
+                <c-progress thin color="success" value="15" aria-label="Facebook" />
               </div>
             </div>
             <div class="progress-group">
@@ -279,7 +285,7 @@
                 </span>
               </div>
               <div class="progress-group-bars">
-                <c-progress thin color="success" value="11" />
+                <c-progress thin color="success" value="11" aria-label="Twitter" />
               </div>
             </div>
             <div class="progress-group">
@@ -291,7 +297,7 @@
                 </span>
               </div>
               <div class="progress-group-bars">
-                <c-progress thin color="success" value="8" />
+                <c-progress thin color="success" value="8" aria-label="LinkedIn" />
               </div>
             </div>
             <div class="divider d-flex justify-content-center">
@@ -301,6 +307,7 @@
                 color="transparent"
                 size="sm"
                 type="button"
+                aria-label="Options"
               >
                 <svg cIcon name="cil-options"></svg>
               </button>
@@ -369,7 +376,7 @@
                       </small>
                     </div>
                   </div>
-                  <c-progress thin [value]="user.usage" color="{{ user.color }}" />
+                  <c-progress thin [value]="user.usage" color="{{ user.color }}" aria-label="Usage" />
                 </td>
                 <td class="text-center">
                   <svg cIcon name="cibCc{{ user.payment }}" size="xl"></svg>

@@ -2,6 +2,14 @@
 
 ---
 
+#### `5.0.3`
+
+- chore(dependencies): update
+- fix: add missing `aria-label` attributes etc
+- refactor(tabs): add `role="tablist"`, minor cleanups
+
+---
+
 #### `5.0.2`
 
 - chore(dependencies): update 
