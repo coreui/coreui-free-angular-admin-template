@@ -203,6 +203,23 @@ export const navItems: INavData[] = [
     ]
   },
   {
+    name: 'Usuarios',
+    iconComponent: { name: 'cilPeople' },
+    url: '/users',
+    children: [
+      {
+        name: 'Listado',
+        url: '/users',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Añadir',
+        url: '/addusers',
+        icon: 'nav-icon-bullet'
+      },
+    ]
+  },
+  {
     name: 'Icons',
     iconComponent: { name: 'cil-star' },
     url: '/icons',
