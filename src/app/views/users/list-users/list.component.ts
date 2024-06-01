@@ -74,10 +74,10 @@ export interface User {
     FormsModule,
     RouterLink,
   ],
-  templateUrl: './users.component.html',
-  styleUrl: './users.component.scss',
+  templateUrl: './list.component.html',
+  styleUrl: './list.component.scss',
 })
-export class UsersComponent {
+export class ListComponent {
   currentId = 0;
 
   constructor(
