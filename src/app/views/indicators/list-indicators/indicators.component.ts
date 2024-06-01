@@ -30,8 +30,7 @@ import {
 import { IconDirective } from '@coreui/icons-angular';
 import { CommonModule } from '@angular/common';
 
-import { DeleteIndicatorService } from '../../../services/indicators/delete-indicator.service';
-import { GetPaginatedIndicatorService } from '../../../services/indicators/get-paginated-indicator.service';
+import { IndicatorsService } from 'src/app/services/indicators/indicators.service';
 
 interface indicator {
   id: number;
@@ -79,8 +78,7 @@ export class IndicatorsComponent {
 
   constructor(
     private router: Router,
-    private getPaginatedIndicatorService: GetPaginatedIndicatorService,
-    private deleteIndicatorService: DeleteIndicatorService
+    private indicatorsService: IndicatorsService
     ) { }
 
   currentId = 0;
@@ -98,7 +96,7 @@ export class IndicatorsComponent {
   }
 
   getPaginatedIndicator(): void {
-    this.getPaginatedIndicatorService.getPaginatedIndicator().subscribe({
+    this.indicatorsService.getPaginatedIndicator().subscribe({
       next: (response) => {
         console.log(response);
         this.indicators = response.data;
@@ -108,7 +106,7 @@ export class IndicatorsComponent {
   }
 
   deleteIndicator(): void {
-    this.deleteIndicatorService.deleteIndicator(this.currentId).subscribe({
+    this.indicatorsService.deleteIndicator(this.currentId).subscribe({
       next: () => {
         this.getPaginatedIndicator();
         this.visible = !this.visible;

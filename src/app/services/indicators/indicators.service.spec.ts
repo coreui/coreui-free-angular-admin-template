@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { EditIndicatorService } from './edit-indicator.service';
+import { IndicatorsService } from './indicators.service';
 
-describe('EditIndicatorService', () => {
-  let service: EditIndicatorService;
+describe('IndicatorsService', () => {
+  let service: IndicatorsService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(EditIndicatorService);
+    service = TestBed.inject(IndicatorsService);
   });
 
   it('should be created', () => {

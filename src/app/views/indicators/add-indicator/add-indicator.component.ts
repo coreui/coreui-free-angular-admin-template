@@ -11,7 +11,7 @@ import { CardBodyComponent,
          ButtonCloseDirective } from '@coreui/angular';
 import { FormsModule } from '@angular/forms';
 
-import { AddIndicatorService } from '../../../services/indicators/add-indicator.service';
+import { IndicatorsService } from 'src/app/services/indicators/indicators.service';
 
 @Component({
   selector: 'app-add-indicator',
@@ -32,11 +32,11 @@ import { AddIndicatorService } from '../../../services/indicators/add-indicator.
 })
 export class AddIndicatorComponent {
   constructor(
-    private addIndicatorService: AddIndicatorService
+    private indicatorsService: IndicatorsService
   ) {}
 
   addIndicator(): void {
-     this.addIndicatorService.addIndicator({ name: this.name, index: this.index, description: this.description }).subscribe({
+     this.indicatorsService.addIndicator({ name: this.name, index: this.index, description: this.description }).subscribe({
       next: (response) => {
         console.log(response);
       },

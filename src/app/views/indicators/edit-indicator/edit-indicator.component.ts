@@ -11,8 +11,7 @@ import { CardBodyComponent,
        ButtonCloseDirective } from '@coreui/angular';
 import { FormsModule } from '@angular/forms';
 
-import { EditIndicatorService } from '../../../services/indicators/edit-indicator.service';
-import { GetIndicatorByIdService } from '../../../services/indicators/get-indicator-by-id.service';
+import { IndicatorsService } from 'src/app/services/indicators/indicators.service';
 
 @Component({
   selector: 'app-edit-indicator',
@@ -40,14 +39,13 @@ export class EditIndicatorComponent {
   index = 0;
   description = "";
   constructor(
-    private editIndicatorService: EditIndicatorService,
-    private getIndicatorByIdService: GetIndicatorByIdService,
+    private indicatorsService: IndicatorsService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
 
   getIndicatorById(id: number): void {
-    this.getIndicatorByIdService.getIndicatorById(id).subscribe({
+    this.indicatorsService.getIndicatorById(id).subscribe({
       next: (response) => {
         this.name = response.name;
         this.index = response.index;
@@ -58,7 +56,7 @@ export class EditIndicatorComponent {
   }
 
   editIndicator(): void {
-    this.editIndicatorService.editIndicator( this.currentId,
+    this.indicatorsService.editIndicator( this.currentId,
        { name: this.name, index: this.index, description: this.description }).subscribe({
      next: (response) => {
        console.log(response);
