@@ -28,13 +28,13 @@
       </div>
       <div>
         <label cLabel for="exampleFormControlInput1">Descripción</label>
-        <input cFormControl
+        <textarea cFormControl
                id="exampleFormControlInput1"
                type="text"
                [ngModelOptions]="{standalone: true}"
                [(ngModel)]="description"
                value="{{ description }}"
-        />
+        ></textarea>
       </div>
 
       <a cButton (click)="addIndicator()" routerLink="/indicators" routerLinkActive="active" color="success" class="text-white ms-md-2 mb-3">
