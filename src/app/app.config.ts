@@ -9,8 +9,6 @@ import {
   withViewTransitions,
 } from '@angular/router';
 
-import { provideHttpClient, withFetch } from '@angular/common/http';
-
 import { DropdownModule, SidebarModule } from '@coreui/angular';
 import { IconSetService } from '@coreui/icons-angular';
 import { routes } from './app.routes';
@@ -20,7 +18,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideHttpClient(withFetch()),
     provideRouter(
-      routes, staging
+      routes,
       withRouterConfig({
         onSameUrlNavigation: 'reload',
       }),
