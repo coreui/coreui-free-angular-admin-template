@@ -62,7 +62,6 @@ export class EditComponent {
   getIndicators(): void {
     this.getIndicatorsService.getAllIndicators().subscribe({
       next: (response) => {
-        console.log(response);
         this.indicators = response.data;
       },
       error: (error) => console.error('Error al realizar la solicitud:', error),
@@ -72,10 +71,9 @@ export class EditComponent {
   getCriterionById(id: number): void {
     this.getCriterionByIdService.getCriterionById(id).subscribe({
       next: (response) => {
-        console.log(response);
         this.name = response.name;
         this.description = response.description;
-        this.indicatorID = response.indicatorID;
+        this.indicatorID = response.indicator.id;
         this.index = response.index;
       },
       error: (error) => console.error('Error al realizar la solicitud:', error),

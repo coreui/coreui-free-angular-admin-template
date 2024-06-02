@@ -63,7 +63,6 @@ export class CreateComponent {
   getIndicators(): void {
     this.getIndicatorsService.getAllIndicators().subscribe({
       next: (response) => {
-        console.log(response);
         this.indicators = response.data;
       },
       error: (error) => console.error('Error al realizar la solicitud:', error),
@@ -72,8 +71,6 @@ export class CreateComponent {
 
   constructor(
     private createCriterionService: CreateCriterionService,
-    //private criteriaService: CriteriaService,
-    //private deleteCriteriaervice: DeleteCriteriaervice,
     private getIndicatorsService: GetAllIndicatorsService,
     private router: Router
   ) {}
