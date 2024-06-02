@@ -1,4 +1,4 @@
-import { NgStyle } from '@angular/common';
+import { NgIf, NgStyle } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -83,6 +83,7 @@ interface Department {
     PageLinkDirective,
     PaginationComponent,
     RouterLink,
+    NgIf,
   ],
 })
 export class DepartmentsComponent implements OnInit {
@@ -91,7 +92,7 @@ export class DepartmentsComponent implements OnInit {
 
   pagination = {
     page: 1,
-    take: 10,
+    take: 1,
     itemCount: 0,
     pageCount: 0,
     hasPreviousPage: false,
@@ -119,7 +120,7 @@ export class DepartmentsComponent implements OnInit {
     this.departmentsService.getPaginatedDepartments(page, take).subscribe({
       next: (response) => {
         this.departments = response.data;
-        this.pagination.pageCount = response.meta.pageCount;
+        this.pagination = response.meta;
       },
       error: (error) => console.error('Error al realizar la solicitud:', error),
     });
@@ -138,15 +139,13 @@ export class DepartmentsComponent implements OnInit {
   }
 
   setPage(page: number): void {
-    if (
-      this.pagination.page < 1 ||
-      this.pagination.page > this.pagination.pageCount
-    ) {
+    if (page < 1 || page > this.pagination.pageCount) {
       return;
     }
     this.pagination.page = page;
 
-    this.getPaginatedDepartments(this.pagination.page, 10);
+    console.log(this.pagination.page);
+    this.getPaginatedDepartments(this.pagination.page, this.pagination.take);
   }
 
   redirectToEdit(id: number): void {
@@ -154,6 +153,6 @@ export class DepartmentsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getPaginatedDepartments(this.pagination.page, 10);
+    this.getPaginatedDepartments(this.pagination.page, this.pagination.take);
   }
 }
