@@ -47,6 +47,6 @@ export class AddIndicatorComponent {
   }
 
   name = '';
-  index = 0;
+  index = 1;
   description = '';
 }

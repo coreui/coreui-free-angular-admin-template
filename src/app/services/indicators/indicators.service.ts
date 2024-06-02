@@ -21,7 +21,7 @@ export class IndicatorsService {
 
   getIndicatorById(id: number): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.get(`${this.apiUrl}/indicators/${id}`, {
+    return this.http.get(`${this.apiUrl}indicators/${id}`, {
       headers,
     });
   }

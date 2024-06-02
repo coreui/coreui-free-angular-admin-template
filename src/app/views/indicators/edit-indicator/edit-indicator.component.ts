@@ -36,7 +36,7 @@ export class EditIndicatorComponent {
   currentName = '';
 
   name= "";
-  index = 0;
+  index = 1;
   description = "";
   constructor(
     private indicatorsService: IndicatorsService,

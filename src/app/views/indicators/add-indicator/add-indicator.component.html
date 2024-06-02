@@ -17,10 +17,11 @@
         />
       </div>
       <div>
-        <label cLabel for="exampleFormControlInput1">Index</label>
+        <label cLabel for="exampleFormControlInput1">Indice</label>
         <input cFormControl
                id="exampleFormControlInput1"
                type="number"
+               min="1"
                [ngModelOptions]="{standalone: true}"
                [(ngModel)]="index"
                value="{{ index }}"
