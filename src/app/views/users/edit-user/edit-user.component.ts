@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute,Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CardBodyComponent,
    CardComponent,
     FormDirective,
@@ -9,8 +9,8 @@ import { CardBodyComponent,
        ButtonDirective,
        ButtonGroupComponent,
        ButtonCloseDirective } from '@coreui/angular';
-import { FormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Department } from '../add-user/add-user.component';
 import { UsersService } from 'src/app/services/users/users.service';
 
 @Component({
@@ -19,6 +19,7 @@ import { UsersService } from 'src/app/services/users/users.service';
   imports: [CardBodyComponent,
      CardComponent,
      FormsModule,
+      ReactiveFormsModule,
        FormDirective,
         FormLabelDirective,
          FormControlDirective,
@@ -38,8 +39,10 @@ export class EditUserComponent {
 
   name= "";
   email= "";
-  department= 0;
+  departmentId= 0;
   role= ""; 
+
+  departments: Department[] = [];
 
   constructor(
     private usersService: UsersService,
@@ -53,7 +56,17 @@ export class EditUserComponent {
         this.name = response.name;
         this.email = response.email;
         this.role = response.role;
-        this.department = response.department;
+        this.departmentId = response.departmentId;
+      },
+      error: (error) => console.error('Error al realizar la solicitud:', error),
+    });
+  }
+
+  getDepartments(): void {
+    this.usersService.getAllDepartments().subscribe({
+      next: (response) => {
+        console.log(response);
+        this.departments = response.data;
       },
       error: (error) => console.error('Error al realizar la solicitud:', error),
     });
@@ -61,7 +74,7 @@ export class EditUserComponent {
 
   editUser(): void {
     this.usersService.editUser( this.currentId,
-       { name: this.name, email: this.email, department: this.department, role: this.role }).subscribe({
+       { name: this.name, email: this.email, department: this.departmentId, role: this.role }).subscribe({
      next: (response) => {
        console.log(response);
        this.router.navigate([`users`]);
@@ -73,6 +86,7 @@ export class EditUserComponent {
  }
 
  ngOnInit(): void {
+  this.getDepartments();
   this.route.params.subscribe((params) => {
     this.currentId = params['id'];
     this.currentName = params['name'];
