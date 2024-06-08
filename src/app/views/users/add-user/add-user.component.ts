@@ -1,14 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
-import { CardBodyComponent,
-         CardComponent,
-         FormDirective,
-         FormLabelDirective,
-         FormSelectDirective,
-         FormControlDirective,
-         ButtonDirective,
-         ButtonGroupComponent,
-         ButtonCloseDirective } from '@coreui/angular';
+import { 
+  ButtonDirective,
+  ButtonGroupComponent,
+  ButtonCloseDirective,
+  CardBodyComponent,
+  CardComponent,
+  FormDirective,
+  FormControlDirective,
+  FormLabelDirective,
+  FormSelectDirective,
+  ProgressBarComponent,
+  ProgressBarDirective,
+  ProgressComponent,
+  ToastBodyComponent,
+  ToastComponent,
+  ToastHeaderComponent,
+  ToasterComponent
+} from '@coreui/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { User } from '../list-users/list.component';
 import { UsersService } from 'src/app/services/users/users.service';
@@ -24,23 +33,32 @@ export interface Department {
   selector: 'app-add-user',
   standalone: true,
   imports: [
-  CardBodyComponent,
-   CardComponent,
+    ButtonDirective,
+    ButtonGroupComponent,
+    ButtonCloseDirective,
+    CardBodyComponent,
+    CardComponent,
+    FormDirective,
+    FormControlDirective,
+    FormLabelDirective,
+    FormSelectDirective,
     FormsModule,
-     ReactiveFormsModule,
-      FormDirective,
-       FormLabelDirective,
-        FormControlDirective,
-          FormSelectDirective,
-        ButtonDirective,
-       ButtonGroupComponent,
-      ButtonCloseDirective,
-    RouterLink],
+    ReactiveFormsModule,
+    ProgressBarComponent,
+    ProgressBarDirective,
+    ProgressComponent,
+    RouterLink,
+    ToastBodyComponent,
+    ToastComponent,
+    ToastHeaderComponent,
+    ToasterComponent
+  ],
   templateUrl: './add-user.component.html',
   styleUrl: './add-user.component.scss'
 })
-
-export class AddUserComponent {
+export class AddUserComponent implements OnInit {
+  toastMessage = ''; 
+  toastClass: string = ''; 
 
   constructor(
     private usersService: UsersService,
@@ -49,6 +67,15 @@ export class AddUserComponent {
 
   users: User[] = [];
   departments: Department[] = [];
+  name = "";
+  email = "";
+  password = "";
+  birthdate = "";
+  departmentId = 0;
+  role = ""; 
+  position = 'top-end';
+  visible = false;
+  percentage = 0;
 
   getDepartments(): void {
     this.usersService.getAllDepartments().subscribe({
@@ -61,26 +88,49 @@ export class AddUserComponent {
   }
 
   createUser(): void {
-     this.usersService.createUser({ name: this.name, email: this.email, password: this.password, birthdate: this.birthdate, departmentId: this.departmentId, role: this.role }).subscribe({
+    this.usersService.createUser({ 
+      name: this.name, 
+      email: this.email, 
+      password: this.password, 
+      birthdate: this.birthdate, 
+      departmentId: this.departmentId, 
+      role: this.role 
+    }).subscribe({
       next: (response) => {
-        console.log(response);
-        this.router.navigate([`users`]);
+        this.toggleToast('Usuario creado exitosamente', true); // Mostrar toast de éxito
+        setTimeout(() => {
+          this.router.navigate([`users`]); 
+        }, 1500);
       },
       error: (error) => {
+        this.toggleToast('Error al crear usuario', false); 
         console.log(error);
       },
     });
   }
 
-  name= "";
-  email= "";
-  password= "";
-  birthdate= "";
-  departmentId= 0;
-  role= ""; 
+  toggleToast(message: string, success: boolean): void {
+    this.visible = true;
+    this.percentage = 100;
+    if (success) {
+      this.toastMessage = message;
+      this.toastClass = 'toast-success';
+    } else {
+      this.toastMessage = message;
+      this.toastClass = 'toast-error';
+    }
+  }
+
+  onVisibleChange($event: boolean) {
+    this.visible = $event;
+    this.percentage = !this.visible ? 0 : this.percentage;
+  }
+
+  onTimerChange($event: number) {
+    this.percentage = $event * 25;
+  }
 
   ngOnInit(): void {
     this.getDepartments();
   }
-
 }

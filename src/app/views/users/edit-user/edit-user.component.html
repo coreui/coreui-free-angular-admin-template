@@ -1,8 +1,7 @@
 <c-card class="mb-4">
-    <c-card-body>
-        
+  <c-card-body>
     <div class="d-flex justify-content-between align-items-center">
-        <h4 class="card-title" id="users">Editar Usuario</h4>     
+      <h4 class="card-title" id="users">Editar Usuario</h4>     
     </div>
 
     <form cForm>
@@ -24,7 +23,7 @@
                [ngModelOptions]="{standalone: true}"
                [(ngModel)]="email"
                value="{{ email }}"
-         />
+        />
       </div>
       <div class="input-container">
         <label cLabel for="exampleFormControlInput1">Departamento</label>
@@ -59,5 +58,20 @@
       </a>
     </form>
 
-    </c-card-body>
-    </c-card>
+  </c-card-body>
+</c-card>
+
+<c-toaster [placement]="position" class="p-3" position="fixed">
+  <c-toast
+    (timer)="onTimerChange($event)"
+    (visibleChange)="onVisibleChange($event)"
+    [visible]="visible"
+    [class]="toastClass">
+    <c-toast-body>
+      <p>{{ toastMessage }}</p>
+      <c-progress thin>
+        <c-progress-bar [value]="percentage"></c-progress-bar>
+      </c-progress>
+    </c-toast-body>
+  </c-toast>
+</c-toaster>
