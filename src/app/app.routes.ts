@@ -8,11 +8,6 @@ export const routes: Routes = [
       import('./views/auth/login/routes').then((m) => m.routes),
   },
   {
-    path: 'auth/register',
-    loadChildren: () =>
-      import('./views/auth/register/routes').then((m) => m.routes),
-  },
-  {
     path: '',
     component: DefaultLayoutComponent,
     canActivate: [authGuard],
