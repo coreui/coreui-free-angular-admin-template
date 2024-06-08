@@ -88,12 +88,6 @@ export class AddUserComponent implements OnInit {
       error: (error) => console.error('Error al realizar la solicitud:', error),
     });
   }
-  
-  passwordVisible = false;
-
-  togglePasswordVisibility() {
-    this.passwordVisible = !this.passwordVisible;
-  }
 
   createUser(): void {
     this.usersService.createUser({ 
