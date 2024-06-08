@@ -40,6 +40,7 @@ import { DeleteDepartmentService } from '../../../services/departments/delete-de
 import { Router } from '@angular/router';
 
 import { Department } from '../../../types';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   templateUrl: 'departments.component.html',
@@ -79,15 +80,17 @@ import { Department } from '../../../types';
     PaginationComponent,
     RouterLink,
     NgIf,
+    NgxPaginationModule,
   ],
 })
 export class DepartmentsComponent implements OnInit {
   departments: Department[] = [];
   currentId = 0;
+  maxSize = 9;
 
   pagination = {
     page: 1,
-    take: 1,
+    take: 10,
     itemCount: 0,
     pageCount: 0,
     hasPreviousPage: false,
@@ -124,7 +127,10 @@ export class DepartmentsComponent implements OnInit {
   deleteDepartment(): void {
     this.deleteDepartmentService.deleteDepartment(this.currentId).subscribe({
       next: () => {
-        this.getPaginatedDepartments(this.pagination.page, 10);
+        this.getPaginatedDepartments(
+          this.pagination.page,
+          this.pagination.take
+        );
         this.visible = !this.visible;
       },
       error: (error) => {
@@ -134,12 +140,7 @@ export class DepartmentsComponent implements OnInit {
   }
 
   setPage(page: number): void {
-    if (page < 1 || page > this.pagination.pageCount) {
-      return;
-    }
     this.pagination.page = page;
-
-    console.log(this.pagination.page);
     this.getPaginatedDepartments(this.pagination.page, this.pagination.take);
   }
 

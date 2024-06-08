@@ -39,6 +39,7 @@
     "chart.js": "^4.4.2",
     "crypto-js": "^4.2.0",
     "lodash-es": "^4.17.21",
+    "ngx-pagination": "^6.0.3",
     "ngx-scrollbar": "^13.0.3",
     "rxjs": "~7.8.1",
     "tslib": "^2.6.2",
