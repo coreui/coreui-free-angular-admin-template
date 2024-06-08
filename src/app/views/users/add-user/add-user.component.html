@@ -28,13 +28,14 @@
       </div>
       <div>
         <label cLabel for="exampleFormControlInput1">Contraseña</label>
-        <input cFormControl
+        <svg cIcon class="icon icon-lg mx-3" (click)="togglePasswordVisibility()" name="cilShare"></svg>
+          <input cFormControl
                id="exampleFormControlInput1"
-               type="text"
+               type="password"
                [ngModelOptions]="{standalone: true}"
                [(ngModel)]="password"
                value="{{ password }}"
-        />
+        />  
       </div>
       <div>
         <label cLabel for="exampleFormControlInput1">Fecha de nacimiento</label>

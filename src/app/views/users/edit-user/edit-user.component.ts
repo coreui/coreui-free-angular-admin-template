@@ -100,10 +100,10 @@ export class EditUserComponent implements OnInit {
     this.usersService.editUser( this.currentId,
        { name: this.name, email: this.email, department: this.departmentId, role: this.role }).subscribe({
      next: (response) => {
-      this.toggleToast('Usuario editado exitosamente', true); 
+      this.toggleToast('Usuario editado exitosamente', true);
       setTimeout(() => {
         this.router.navigate([`users`]); 
-      }, 1500);
+      },1500)
      },
      error: (error) => {
       this.toggleToast('Error al editar usuario', false); 
@@ -130,7 +130,7 @@ onVisibleChange($event: boolean) {
 }
 
 onTimerChange($event: number) {
-  this.percentage = $event * 25;
+  this.percentage = $event * 100;
 }
 
  ngOnInit(): void {

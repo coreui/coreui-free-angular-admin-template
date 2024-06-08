@@ -106,6 +106,7 @@ export class ListComponent implements OnInit {
   percentage = 0;
   toastMessage = '';
   toastClass = '';
+  visibleModal = false;
   visible = false;
 
   constructor(
@@ -117,7 +118,7 @@ export class ListComponent implements OnInit {
 
   toggleLiveDemo(id: number) {
     this.currentId = id;
-    this.visible = !this.visible;
+    this.visibleModal = !this.visibleModal;
   }
 
   handleLiveDemoChange(event: any) {
@@ -137,11 +138,9 @@ export class ListComponent implements OnInit {
   deleteUser(): void {
     this.usersService.deleteUser(this.currentId).subscribe({
       next: () => {
-        setTimeout(() => {
-          this.getPaginatedUser();
-          this.visible = false;
-          this.toggleToast('Usuario eliminado exitosamente', true); // Mostrar toast de éxito después de eliminar
-        }, 1500);
+        this.getPaginatedUser();
+        this.visible = false;
+        this.toggleToast('Usuario eliminado exitosamente', true); // Mostrar toast de éxito después de eliminar
       },
       error: (error) => {
         this.toggleToast('Error al eliminar usuario', false); // Mostrar toast de error
@@ -173,7 +172,7 @@ export class ListComponent implements OnInit {
   }
 
   onTimerChange($event: number) {
-    this.percentage = $event * 25;
+    this.percentage = $event * 34;
   }
 
   ngOnInit(): void {

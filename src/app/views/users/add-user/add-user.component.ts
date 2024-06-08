@@ -19,6 +19,7 @@ import {
   ToasterComponent
 } from '@coreui/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IconDirective } from '@coreui/icons-angular';
 import { User } from '../list-users/list.component';
 import { UsersService } from 'src/app/services/users/users.service';
 
@@ -43,6 +44,7 @@ export interface Department {
     FormLabelDirective,
     FormSelectDirective,
     FormsModule,
+    IconDirective,
     ReactiveFormsModule,
     ProgressBarComponent,
     ProgressBarDirective,
@@ -86,6 +88,12 @@ export class AddUserComponent implements OnInit {
       error: (error) => console.error('Error al realizar la solicitud:', error),
     });
   }
+  
+  passwordVisible = false;
+
+  togglePasswordVisibility() {
+    this.passwordVisible = !this.passwordVisible;
+  }
 
   createUser(): void {
     this.usersService.createUser({ 
@@ -100,7 +108,7 @@ export class AddUserComponent implements OnInit {
         this.toggleToast('Usuario creado exitosamente', true); // Mostrar toast de éxito
         setTimeout(() => {
           this.router.navigate([`users`]); 
-        }, 1500);
+        },1500)
       },
       error: (error) => {
         this.toggleToast('Error al crear usuario', false); 
@@ -127,7 +135,7 @@ export class AddUserComponent implements OnInit {
   }
 
   onTimerChange($event: number) {
-    this.percentage = $event * 25;
+    this.percentage = $event * 100;
   }
 
   ngOnInit(): void {
