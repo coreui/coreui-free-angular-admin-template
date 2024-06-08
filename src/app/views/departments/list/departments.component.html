@@ -26,7 +26,6 @@
             <tr>
               <th class="bg-body-tertiary text-center">Id</th>
               <th class="bg-body-tertiary text-center">Nombre</th>
-              <th class="bg-body-tertiary text-center">Integrantes</th>
               <th class="bg-body-tertiary text-center">Acciones</th>
             </tr>
           </thead>
@@ -39,9 +38,6 @@
               </td>
               <td class="text-center">
                 {{ department.name }}
-              </td>
-              <td class="text-center">
-                {{ department.membersQuantity }}
               </td>
 
               <td class="text-center">
@@ -79,8 +75,80 @@
               Previous
             </button>
           </li>
+          <li cPageItem *ngIf="pagination.page - 4 > 0">
+            <button cPageLink (click)="setPage(pagination.page - 4)">
+              {{ pagination.page - 4 }}
+            </button>
+          </li>
+          <li cPageItem *ngIf="pagination.page - 3 > 0">
+            <button cPageLink (click)="setPage(pagination.page - 3)">
+              {{ pagination.page - 3 }}
+            </button>
+          </li>
+          <li cPageItem *ngIf="pagination.page - 2 > 0">
+            <button cPageLink (click)="setPage(pagination.page - 2)">
+              {{ pagination.page - 2 }}
+            </button>
+          </li>
+          <li cPageItem *ngIf="pagination.page - 1 > 0">
+            <button cPageLink (click)="setPage(pagination.page - 1)">
+              {{ pagination.page - 1 }}
+            </button>
+          </li>
+          <li cPageItem [active]="true">
+            <button cPageLink (click)="setPage(pagination.page)">
+              {{ pagination.page }}
+            </button>
+          </li>
 
-          <li cPageItem>
+          <li
+            cPageItem
+            *ngIf="
+              pagination.page + 1 <= pagination.pageCount &&
+              pagination.page - 4 <= 0
+            "
+          >
+            <button cPageLink (click)="setPage(pagination.page + 1)">
+              {{ pagination.page + 1 }}
+            </button>
+          </li>
+
+          <li
+            cPageItem
+            *ngIf="
+              pagination.page + 2 <= pagination.pageCount &&
+              pagination.page - 3 <= 0
+            "
+          >
+            <button cPageLink (click)="setPage(pagination.page + 2)">
+              {{ pagination.page + 2 }}
+            </button>
+          </li>
+          <li
+            cPageItem
+            *ngIf="
+              pagination.page + 3 <= pagination.pageCount &&
+              pagination.page - 2 <= 0
+            "
+          >
+            <button cPageLink (click)="setPage(pagination.page + 3)">
+              {{ pagination.page + 3 }}
+            </button>
+          </li>
+
+          <li
+            cPageItem
+            *ngIf="
+              pagination.page + 4 <= pagination.pageCount &&
+              pagination.page - 1 <= 0
+            "
+          >
+            <button cPageLink (click)="setPage(pagination.page + 4)">
+              {{ pagination.page + 4 }}
+            </button>
+          </li>
+
+          <li cPageItem *ngIf="pagination.hasNextPage">
             <button cPageLink (click)="setPage(pagination.page + 1)">
               Next
             </button>
