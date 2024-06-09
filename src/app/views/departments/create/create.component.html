@@ -1,0 +1,34 @@
+<c-row>
+  <c-col xs>
+    <c-card class="mb-4">
+      <c-card-body>
+        <form cForm>
+          <div class="d-flex justify-content-between align-items-center">
+            <h4 class="card-title" id="users">Agregar Departamento</h4>
+          </div>
+          <div class="form-container">
+            <div class="two-inputs-container">
+              <div class="input-container">
+                <label cLabel for="exampleFormControlInput1"
+                  >Nombre del departamento</label
+                >
+                <input
+                  cFormControl
+                  id="name"
+                  placeholder="Nombre del departamento"
+                  type="text"
+                  name="name"
+                  [(ngModel)]="name"
+                  value="{{ name }}"
+                />
+              </div>
+            </div>
+            <div class="button-container">
+              <button (click)="createDepartment()" cButton>Guardar</button>
+            </div>
+          </div>
+        </form>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>

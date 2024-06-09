@@ -1,0 +1,33 @@
+.action-buttons-container {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  justify-content: center;
+}
+
+.delete-modal-buttons-container {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  justify-content: center;
+}
+
+.delete-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  h6 {
+    text-align: center;
+    font-weight: 600;
+    font-size: medium;
+  }
+
+  button {
+    width: 100px;
+  }
+}

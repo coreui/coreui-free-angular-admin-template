@@ -76,6 +76,21 @@ export const routes: Routes = [
           import('./views/users/edit-user/routes').then((m) => m.routes),
       },
       {
+        path: 'departments',
+        loadChildren: () =>
+          import('./views/departments/list/routes').then((m) => m.routes),
+      },
+      {
+        path: 'create-department',
+        loadChildren: () =>
+          import('./views/departments/create/routes').then((m) => m.routes),
+      },
+      {
+        path: 'edit-department/:id',
+        loadChildren: () =>
+          import('./views/departments/edit/routes').then((m) => m.routes),
+      },
+      {
         path: '**',
         loadChildren: () =>
           import('./views/pages/page404/routes').then((m) => m.routes),
