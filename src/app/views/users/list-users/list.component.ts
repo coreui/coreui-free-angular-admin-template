@@ -1,7 +1,7 @@
-import { NgStyle } from '@angular/common';
-import { Router, RouterLink } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+
 import {
   ButtonDirective,
   ButtonGroupComponent,
@@ -27,11 +27,18 @@ import {
   PageItemDirective,
   PageLinkDirective,
   PaginationComponent,
+  ProgressBarComponent,
+  ProgressBarDirective,
+  ProgressComponent,
+  ToastBodyComponent,
+  ToastComponent,
+  ToastHeaderComponent,
+  ToasterComponent,
   ModalModule,
 } from '@coreui/angular';
-import { FormsModule } from '@angular/forms';
-import { IconDirective } from '@coreui/icons-angular';
 
+import { IconDirective } from '@coreui/icons-angular';
+import { NgStyle } from '@angular/common';
 import { UsersService } from 'src/app/services/users/users.service';
 
 export interface User {
@@ -46,6 +53,7 @@ export interface User {
     name: string;
   };
 }
+
 @Component({
   selector: 'app-users',
   standalone: true,
@@ -79,13 +87,27 @@ export interface User {
     CardHeaderComponent,
     TableDirective,
     FormsModule,
+    ReactiveFormsModule,
+    ProgressBarComponent,
+    ProgressBarDirective,
+    ProgressComponent,
+    ToastBodyComponent,
+    ToastComponent,
+    ToastHeaderComponent,
+    ToasterComponent,
     RouterLink,
   ],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss',
 })
-export class ListComponent {
+export class ListComponent implements OnInit {
   currentId = 0;
+  position = 'top-end';
+  percentage = 0;
+  toastMessage = '';
+  toastClass = '';
+  visibleModal = false;
+  visible = false;
 
   constructor(
     private usersService: UsersService,
@@ -94,11 +116,9 @@ export class ListComponent {
 
   public users: User[] = [];
 
-  public visible = false;
-
   toggleLiveDemo(id: number) {
     this.currentId = id;
-    this.visible = !this.visible;
+    this.visibleModal = !this.visibleModal;
   }
 
   handleLiveDemoChange(event: any) {
@@ -119,21 +139,43 @@ export class ListComponent {
     this.usersService.deleteUser(this.currentId).subscribe({
       next: () => {
         this.getPaginatedUser();
-        this.visible = !this.visible;
+        this.visible = false;
+        this.toggleToast('Usuario eliminado exitosamente', true); // Mostrar toast de éxito después de eliminar
       },
       error: (error) => {
+        this.toggleToast('Error al eliminar usuario', false); // Mostrar toast de error
         console.log(error);
       },
     });
   }
+  
 
+  toggleToast(message: string, success: boolean): void {
+    this.visible = true;
+    this.percentage = 100;
+    if (success) {
+      this.toastMessage = message;
+      this.toastClass = 'toast-success';
+    } else {
+      this.toastMessage = message;
+      this.toastClass = 'toast-error';
+    }
+  }
 
   redirectToEdit(id: number): void {
     this.router.navigate([`editusers/${id}`]);
   }
 
+  onVisibleChange($event: boolean) {
+    this.visible = $event;
+    this.percentage = !this.visible ? 0 : this.percentage;
+  }
+
+  onTimerChange($event: number) {
+    this.percentage = $event * 34;
+  }
+
   ngOnInit(): void {
     this.getPaginatedUser();
-    
   }
 }

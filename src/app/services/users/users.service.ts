@@ -53,4 +53,11 @@ export class UsersService {
       headers,
     });
   }
+
+  getAllDepartments(): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.get(`${this.apiUrl}/dptos`, {
+      headers,
+    });
+  }
 }

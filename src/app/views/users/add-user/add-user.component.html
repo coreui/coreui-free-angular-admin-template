@@ -1,77 +1,99 @@
-        <c-card class="mb-4">
-        <c-card-body>
-            
-        <div class="d-flex justify-content-between align-items-center">
-            <h4 class="card-title" id="users">Agregar Usuario</h4>     
-        </div>
+<c-card class="mb-4">
+  <c-card-body>
+    <div class="d-flex justify-content-between align-items-center">
+      <h4 class="card-title" id="users">Agregar Usuario</h4>     
+    </div>
 
-        <form cForm>
-          <div>
-            <label cLabel for="exampleFormControlInput1">Nombre</label>
-            <input cFormControl
-                   id="exampleFormControlInput1"
-                   type="text"
-                   [ngModelOptions]="{standalone: true}"
-                   [(ngModel)]="name"
-                   value="{{ name }}"
-            />
-          </div>
-          <div>
-            <label cLabel for="exampleFormControlInput1">Correo electrónico</label>
-            <input cFormControl
-                   id="exampleFormControlInput1"
-                   placeholder="name@example.com"
-                   type="email"
-                   [ngModelOptions]="{standalone: true}"
-                   [(ngModel)]="email"
-                   value="{{ email }}"
-            />
-          </div>
-          <div>
-            <label cLabel for="exampleFormControlInput1">Contraseña</label>
-            <input cFormControl
-                   id="exampleFormControlInput1"
-                   type="text"
-                   [ngModelOptions]="{standalone: true}"
-                   [(ngModel)]="password"
-                   value="{{ password }}"
-            />
-          </div>
-          <div>
-            <label cLabel for="exampleFormControlInput1">Fecha de nacimiento</label>
-            <input cFormControl
-                   id="exampleFormControlInput1"
-                   type="date"
-                   [ngModelOptions]="{standalone: true}"
-                   [(ngModel)]="birthdate"
-                   value="{{ birthdate }}"
-            />
-          </div>
-          <div>
-            <label cLabel for="exampleFormControlInput1">Departamento</label>
-            <input cFormControl
-                   id="exampleFormControlInput1"
-                   type="number"
-                   [ngModelOptions]="{standalone: true}"
-                   [(ngModel)]="departmentId"
-                   value="{{ departmentId }}"
-            />
-          </div>
-          <div>
-            <label cLabel for="exampleFormControlInput1">Rol</label>
-            <input cFormControl
-                   id="exampleFormControlInput1"
-                   type="text"
-                   [ngModelOptions]="{standalone: true}"
-                   [(ngModel)]="role"
-                   value="{{ role }}"
-            />
-          </div>
+    <form cForm>
+      <div>
+        <label cLabel for="exampleFormControlInput1">Nombre</label>
+        <input cFormControl
+               id="exampleFormControlInput1"
+               type="text"
+               [ngModelOptions]="{standalone: true}"
+               [(ngModel)]="name"
+               value="{{ name }}"
+        />
+      </div>
+      <div>
+        <label cLabel for="exampleFormControlInput1">Correo electrónico</label>
+        <input cFormControl
+               id="exampleFormControlInput1"
+               placeholder="name@example.com"
+               type="email"
+               [ngModelOptions]="{standalone: true}"
+               [(ngModel)]="email"
+               value="{{ email }}"
+        />
+      </div>
+      <div>
+        <label cLabel for="exampleFormControlInput1">Contraseña</label>
+          <input cFormControl
+               id="exampleFormControlInput1"
+               type="password"
+               [ngModelOptions]="{standalone: true}"
+               [(ngModel)]="password"
+               value="{{ password }}"
+        />  
+      </div>
+      <div>
+        <label cLabel for="exampleFormControlInput1">Fecha de nacimiento</label>
+        <input cFormControl
+               id="exampleFormControlInput1"
+               type="date"
+               [ngModelOptions]="{standalone: true}"
+               [(ngModel)]="birthdate"
+               value="{{ birthdate }}"
+        />
+      </div>
+      <div class="input-container">
+        <label cLabel for="exampleFormControlInput1">Departamento</label>
+        <select
+          aria-label="department select"
+          name="departmentId"
+          [(ngModel)]="departmentId"
+          value="{{ departmentId }}"
+          cSelect
+        >
+          @for (department of departments; track department.id) {
+          <option value="{{ department.id }}">
+            {{ department.id }} {{ department.name }}
+          </option>
+          }
+        </select>
+      </div>
+      <div>
+        <label cLabel for="exampleFormControlInput1">Rol</label>
+        <select cFormControl
+               aria-label="Role Select"
+               [ngModelOptions]="{standalone: true}"
+               [(ngModel)]="role"
+               value="{{ role }}"
+               cSelect>
+          <option value="dpto">dpto</option>
+          <option value="admin">admin</option>
+        </select>
+      </div>          
 
-          <a cButton (click)="createUser()" color="success" class="text-white ms-md-2 mb-3">
-            Guardar
-          </a>
-        </form>
-   
-        </c-card-body>
-        </c-card>
+      <a cButton (click)="createUser()" color="success" class="text-white ms-md-2 mb-3">
+        Guardar
+      </a>
+    </form>
+
+  </c-card-body>
+</c-card>
+
+<c-toaster [placement]="position" class="p-3" position="fixed">
+  <c-toast
+    (timer)="onTimerChange($event)"
+    (visibleChange)="onVisibleChange($event)"
+    [visible]="visible"
+    [class]="toastClass">
+    <c-toast-body>
+      <p>{{ toastMessage }}</p>
+      <c-progress thin>
+        <c-progress-bar [value]="percentage"></c-progress-bar>
+      </c-progress>
+    </c-toast-body>
+  </c-toast>
+</c-toaster>

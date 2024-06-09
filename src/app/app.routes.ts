@@ -8,53 +8,56 @@ export const routes: Routes = [
       import('./views/auth/login/routes').then((m) => m.routes),
   },
   {
-    path: 'auth/register',
-    loadChildren: () =>
-      import('./views/auth/register/routes').then((m) => m.routes),
-  },
-  {
     path: '',
     component: DefaultLayoutComponent,
     canActivate: [authGuard],
     data: {
-      title: 'Home'
-  },
+      title: 'Home',
+    },
     children: [
       {
         path: 'dashboard',
-        loadChildren: () => import('./views/dashboard/routes').then((m) => m.routes)
+        loadChildren: () =>
+          import('./views/dashboard/routes').then((m) => m.routes),
       },
       {
         path: 'theme',
-        loadChildren: () => import('./views/theme/routes').then((m) => m.routes)
+        loadChildren: () =>
+          import('./views/theme/routes').then((m) => m.routes),
       },
       {
         path: 'base',
-        loadChildren: () => import('./views/base/routes').then((m) => m.routes)
+        loadChildren: () => import('./views/base/routes').then((m) => m.routes),
       },
       {
         path: 'buttons',
-        loadChildren: () => import('./views/buttons/routes').then((m) => m.routes)
+        loadChildren: () =>
+          import('./views/buttons/routes').then((m) => m.routes),
       },
       {
         path: 'forms',
-        loadChildren: () => import('./views/forms/routes').then((m) => m.routes)
+        loadChildren: () =>
+          import('./views/forms/routes').then((m) => m.routes),
       },
       {
         path: 'icons',
-        loadChildren: () => import('./views/icons/routes').then((m) => m.routes)
+        loadChildren: () =>
+          import('./views/icons/routes').then((m) => m.routes),
       },
       {
         path: 'notifications',
-        loadChildren: () => import('./views/notifications/routes').then((m) => m.routes)
+        loadChildren: () =>
+          import('./views/notifications/routes').then((m) => m.routes),
       },
       {
         path: 'widgets',
-        loadChildren: () => import('./views/widgets/routes').then((m) => m.routes)
+        loadChildren: () =>
+          import('./views/widgets/routes').then((m) => m.routes),
       },
       {
         path: 'charts',
-        loadChildren: () => import('./views/charts/routes').then((m) => m.routes)
+        loadChildren: () =>
+          import('./views/charts/routes').then((m) => m.routes),
       },
       {
         path: 'users',
@@ -72,26 +75,52 @@ export const routes: Routes = [
           import('./views/users/edit-user/routes').then((m) => m.routes),
       },
       {
-        path: 'pages',
-        loadChildren: () => import('./views/pages/routes').then((m) => m.routes)
+        path: 'departments',
+        loadChildren: () =>
+          import('./views/departments/list/routes').then((m) => m.routes),
       },
       {
-        path: 'indicators',
-        loadChildren: () => import('./views/indicators/list-indicators/routes').then((m) => m.routes)
+        path: 'create-department',
+        loadChildren: () =>
+          import('./views/departments/create/routes').then((m) => m.routes),
       },
       {
-        path: 'addIndicators',
-        loadChildren: () => import('./views/indicators/add-indicator/routes').then((m) => m.routes)
-      },
-      {
-        path: 'editIndicators/:id',
-        loadChildren: () => import('./views/indicators/edit-indicator/routes').then((m) => m.routes)
+        path: 'edit-department/:id',
+        loadChildren: () =>
+          import('./views/departments/edit/routes').then((m) => m.routes),
       },
       {
         path: '**',
-        loadChildren: () => import('./views/pages/page404/routes').then((m) => m.routes),
-      }
-    ]
+        loadChildren: () =>
+          import('./views/pages/page404/routes').then((m) => m.routes),
+      },
+      {
+        path: 'indicators',
+        loadChildren: () =>
+          import('./views/indicators/list-indicators/routes').then(
+            (m) => m.routes
+          ),
+      },
+      {
+        path: 'addIndicators',
+        loadChildren: () =>
+          import('./views/indicators/add-indicator/routes').then(
+            (m) => m.routes
+          ),
+      },
+      {
+        path: 'editIndicators/:id',
+        loadChildren: () =>
+          import('./views/indicators/edit-indicator/routes').then(
+            (m) => m.routes
+          ),
+      },
+      {
+        path: '**',
+        loadChildren: () =>
+          import('./views/pages/page404/routes').then((m) => m.routes),
+      },
+    ],
   },
 
   /*

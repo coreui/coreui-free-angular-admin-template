@@ -1,8 +1,7 @@
 <c-card class="mb-4">
-    <c-card-body>
-        
+  <c-card-body>
     <div class="d-flex justify-content-between align-items-center">
-        <h4 class="card-title" id="users">Editar Usuario</h4>     
+      <h4 class="card-title" id="users">Editar Usuario</h4>     
     </div>
 
     <form cForm>
@@ -24,32 +23,55 @@
                [ngModelOptions]="{standalone: true}"
                [(ngModel)]="email"
                value="{{ email }}"
-         />
-      </div>
-      <div>
-        <label cLabel for="exampleFormControlInput1">Departamento</label>
-        <input cFormControl
-               id="exampleFormControlInput1"
-               type="number"
-               [ngModelOptions]="{standalone: true}"
-               [(ngModel)]="department"
-               value="{{ department }}"
         />
+      </div>
+      <div class="input-container">
+        <label cLabel for="exampleFormControlInput1">Departamento</label>
+        <select
+          aria-label="department select"
+          name="departmentId"
+          [(ngModel)]="departmentId"
+          value="{{ departmentId }}"
+          cSelect
+        >
+          @for (department of departments; track department.id) {
+          <option value="{{ department.id }}">
+            {{ department.id }} {{ department.name }}
+          </option>
+          }
+        </select>
       </div>
       <div>
         <label cLabel for="exampleFormControlInput1">Rol</label>
-        <input cFormControl
-               id="exampleFormControlInput1"
-               type="text"
+        <select cFormControl
+               aria-label="Role Select"
                [ngModelOptions]="{standalone: true}"
                [(ngModel)]="role"
                value="{{ role }}"
-        />
-      </div>
+               cSelect>
+          <option value="dpto">dpto</option>
+          <option value="admin">admin</option>
+        </select>
+      </div>    
       <a cButton (click)="editUser()" color="success" class="text-white ms-md-2 mb-3">
         Guardar
       </a>
     </form>
 
-    </c-card-body>
-    </c-card>
+  </c-card-body>
+</c-card>
+
+<c-toaster [placement]="position" class="p-3" position="fixed">
+  <c-toast
+    (timer)="onTimerChange($event)"
+    (visibleChange)="onVisibleChange($event)"
+    [visible]="visible"
+    [class]="toastClass">
+    <c-toast-body>
+      <p>{{ toastMessage }}</p>
+      <c-progress thin>
+        <c-progress-bar [value]="percentage"></c-progress-bar>
+      </c-progress>
+    </c-toast-body>
+  </c-toast>
+</c-toaster>
