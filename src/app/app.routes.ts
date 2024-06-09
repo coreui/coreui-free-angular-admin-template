@@ -14,7 +14,6 @@ export const routes: Routes = [
     data: {
       title: 'Home',
     },
-
     children: [
       {
         path: 'dashboard',
@@ -89,6 +88,32 @@ export const routes: Routes = [
         path: 'edit-department/:id',
         loadChildren: () =>
           import('./views/departments/edit/routes').then((m) => m.routes),
+      },
+      {
+        path: '**',
+        loadChildren: () =>
+          import('./views/pages/page404/routes').then((m) => m.routes),
+      },
+      {
+        path: 'indicators',
+        loadChildren: () =>
+          import('./views/indicators/list-indicators/routes').then(
+            (m) => m.routes
+          ),
+      },
+      {
+        path: 'addIndicators',
+        loadChildren: () =>
+          import('./views/indicators/add-indicator/routes').then(
+            (m) => m.routes
+          ),
+      },
+      {
+        path: 'editIndicators/:id',
+        loadChildren: () =>
+          import('./views/indicators/edit-indicator/routes').then(
+            (m) => m.routes
+          ),
       },
       {
         path: '**',
