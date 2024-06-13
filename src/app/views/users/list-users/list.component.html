@@ -4,9 +4,20 @@
       <c-card-body>
         <h4 class="card-title text-center" id="users">Gestión de Usuarios</h4>
         <div class="d-flex justify-content-between align-items-center">
-          <input type="text" class="form-control w-25  ms-md-2 mb-3" placeholder="Buscar...">
+          <input
+            type="text"
+            class="form-control w-25 ms-md-2 mb-3"
+            placeholder="Buscar..."
+          />
           <c-dropdown>
-            <button cButton cDropdownToggle class="form-control  ms-md-2 mb-3" color="dark">Filtrado por departamento</button>
+            <button
+              cButton
+              cDropdownToggle
+              class="form-control ms-md-2 mb-3"
+              color="dark"
+            >
+              Filtrado por departamento
+            </button>
             <ul cDropdownMenu dark>
               <li><button cDropdownItem>Departamento 1</button></li>
               <li><button cDropdownItem>Departamento 2</button></li>
@@ -14,7 +25,14 @@
             </ul>
           </c-dropdown>
           <c-dropdown>
-            <button cButton cDropdownToggle class="form-control  ms-md-2 mb-3" color="dark">Filtrado por roles</button>
+            <button
+              cButton
+              cDropdownToggle
+              class="form-control ms-md-2 mb-3"
+              color="dark"
+            >
+              Filtrado por roles
+            </button>
             <ul cDropdownMenu dark>
               <li><button cDropdownItem>Rol 1</button></li>
               <li><button cDropdownItem>Rol 2</button></li>
@@ -49,19 +67,25 @@
             </tr>
           </thead>
           <tbody>
-            @for (user of users; track user.id; let i = $index) {
+            @for (user of users| paginate : { itemsPerPage: pagination.take,
+            currentPage: pagination.page, totalItems:pagination.itemCount };
+            track user.id; let i = $index) {
             <tr>
               <td class="text-center">
                 {{ user.name }}
               </td>
-              <td class="text-center">              
-                  {{user.department.name ? user.department.name : 'No se le ha asignado un departamento'}}
+              <td class="text-center">
+                {{
+                  user.department.name
+                    ? user.department.name
+                    : "No se le ha asignado un departamento"
+                }}
               </td>
               <td class="text-center">
-                    {{ user.email }}
+                {{ user.email }}
               </td>
               <td class="text-center">
-                    {{ user.role }}
+                {{ user.role }}
               </td>
               <td class="text-center">
                 <div class="fw-semibold text-nowrap">
@@ -91,23 +115,16 @@
           </tbody>
         </table>
 
-        <c-pagination aria-label="Pagination" class="ms-md-2">
-          <li cPageItem>
-            <a cPageLink>Previous</a>
-          </li>
-          <li cPageItem>
-            <a cPageLink>1</a>
-          </li>
-          <li cPageItem>
-            <a cPageLink>2</a>
-          </li>
-          <li cPageItem>
-            <a cPageLink>3</a>
-          </li>
-          <li cPageItem>
-            <a cPageLink>Next</a>
-          </li>
-        </c-pagination>
+        <div class="pagination-container">
+          <pagination-controls
+            (pageChange)="setPage($event)"
+            previousLabel=""
+            nextLabel=""
+            screenReaderPaginationLabel="Pagination"
+            screenReaderPageLabel="page"
+            screenReaderCurrentLabel="You're on page"
+          ></pagination-controls>
+        </div>
       </c-card-body>
     </c-card>
   </c-col>
@@ -131,14 +148,13 @@
       Cerrar
     </button>
     <button
-  cButton
-  (click)="deleteUser()"
-  [cModalToggle]="staticBackdropModal.id"
-  color="primary"
->
-  Aceptar
-</button>
-
+      cButton
+      (click)="deleteUser()"
+      [cModalToggle]="staticBackdropModal.id"
+      color="primary"
+    >
+      Aceptar
+    </button>
   </c-modal-footer>
 </c-modal>
 
@@ -147,7 +163,8 @@
     (timer)="onTimerChange($event)"
     (visibleChange)="onVisibleChange($event)"
     [visible]="visible"
-    [class]="toastClass">
+    [class]="toastClass"
+  >
     <c-toast-body>
       <p>{{ toastMessage }}</p>
       <c-progress thin>

@@ -40,6 +40,7 @@ import {
 import { IconDirective } from '@coreui/icons-angular';
 import { NgStyle } from '@angular/common';
 import { UsersService } from 'src/app/services/users/users.service';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 export interface User {
   id: number;
@@ -96,6 +97,7 @@ export interface User {
     ToastHeaderComponent,
     ToasterComponent,
     RouterLink,
+    NgxPaginationModule,
   ],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss',
@@ -108,11 +110,16 @@ export class ListComponent implements OnInit {
   toastClass = '';
   visibleModal = false;
   visible = false;
+  pagination = {
+    page: 1,
+    take: 10,
+    itemCount: 0,
+    pageCount: 0,
+    hasPreviousPage: false,
+    hasNextPage: true,
+  };
 
-  constructor(
-    private usersService: UsersService,
-    private router: Router
-  ) {}
+  constructor(private usersService: UsersService, private router: Router) {}
 
   public users: User[] = [];
 
@@ -125,11 +132,11 @@ export class ListComponent implements OnInit {
     this.visible = event;
   }
 
-  getPaginatedUser(): void {
-    this.usersService.getPaginatedUser().subscribe({
+  getPaginatedUser(page: number, take: number): void {
+    this.usersService.getPaginatedUser(page, take).subscribe({
       next: (response) => {
-        console.log(response);
         this.users = response.data;
+        this.pagination = response.meta;
       },
       error: (error) => console.error('Error al realizar la solicitud:', error),
     });
@@ -138,7 +145,7 @@ export class ListComponent implements OnInit {
   deleteUser(): void {
     this.usersService.deleteUser(this.currentId).subscribe({
       next: () => {
-        this.getPaginatedUser();
+        this.getPaginatedUser(this.pagination.page, this.pagination.take);
         this.visible = false;
         this.toggleToast('Usuario eliminado exitosamente', true); // Mostrar toast de éxito después de eliminar
       },
@@ -148,7 +155,6 @@ export class ListComponent implements OnInit {
       },
     });
   }
-  
 
   toggleToast(message: string, success: boolean): void {
     this.visible = true;
@@ -175,7 +181,12 @@ export class ListComponent implements OnInit {
     this.percentage = $event * 34;
   }
 
+  setPage(page: number): void {
+    this.pagination.page = page;
+    this.getPaginatedUser(this.pagination.page, this.pagination.take);
+  }
+
   ngOnInit(): void {
-    this.getPaginatedUser();
+    this.getPaginatedUser(this.pagination.page, this.pagination.take);
   }
 }

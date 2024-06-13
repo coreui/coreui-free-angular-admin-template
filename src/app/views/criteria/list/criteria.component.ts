@@ -26,7 +26,6 @@ import {
   ProgressComponent,
   RowComponent,
   TableDirective,
-  TextColorDirective,
   ThemeDirective,
 } from '@coreui/angular';
 
@@ -35,6 +34,7 @@ import { IconDirective } from '@coreui/icons-angular';
 import { CriteriaService } from '../../../services/criteria/get-paginated-criteria.service';
 import { DeleteCriterionService } from '../../../services/criteria/delete-criterion.service';
 import { Router } from '@angular/router';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   templateUrl: 'criteria.component.html',
@@ -67,7 +67,7 @@ import { Router } from '@angular/router';
     ModalFooterComponent,
     PageItemDirective,
     PageLinkDirective,
-    PaginationComponent,
+    NgxPaginationModule,
     RouterLink,
   ],
 })

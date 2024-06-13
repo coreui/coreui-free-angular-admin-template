@@ -105,11 +105,6 @@ export const routes: Routes = [
           import('./views/criteria/edit/routes').then((m) => m.routes),
       },
       {
-        path: '**',
-        loadChildren: () =>
-          import('./views/pages/page404/routes').then((m) => m.routes),
-      },
-      {
         path: 'indicators',
         loadChildren: () =>
           import('./views/indicators/list-indicators/routes').then(

@@ -21,7 +21,6 @@ import {
   ModalTitleDirective,
   PageItemDirective,
   PageLinkDirective,
-  PaginationComponent,
   ProgressBarDirective,
   ProgressComponent,
   RowComponent,
@@ -77,7 +76,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ModalFooterComponent,
     PageItemDirective,
     PageLinkDirective,
-    PaginationComponent,
     RouterLink,
     NgIf,
     NgxPaginationModule,
@@ -86,7 +84,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
 export class DepartmentsComponent implements OnInit {
   departments: Department[] = [];
   currentId = 0;
-  maxSize = 9;
 
   pagination = {
     page: 1,
