@@ -90,6 +90,21 @@ export const routes: Routes = [
           import('./views/departments/edit/routes').then((m) => m.routes),
       },
       {
+        path: 'criteria',
+        loadChildren: () =>
+          import('./views/criteria/list/routes').then((m) => m.routes),
+      },
+      {
+        path: 'create-criterion',
+        loadChildren: () =>
+          import('./views/criteria/create/routes').then((m) => m.routes),
+      },
+      {
+        path: 'edit-criterion/:id',
+        loadChildren: () =>
+          import('./views/criteria/edit/routes').then((m) => m.routes),
+      },
+      {
         path: '**',
         loadChildren: () =>
           import('./views/pages/page404/routes').then((m) => m.routes),

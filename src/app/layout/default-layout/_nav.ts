@@ -334,4 +334,21 @@ export const navItems: INavData[] = [
       },
     ],
   },
+  {
+    name: 'Criterios',
+    url: '/criteria',
+    iconComponent: { name: 'cil-star' },
+    children: [
+      {
+        name: 'Lista de Criterios',
+        url: '/criteria',
+        icon: 'nav-icon-bullet',
+      },
+      {
+        name: 'Crear criterios',
+        url: '/create-criterion',
+        icon: 'nav-icon-bullet',
+      },
+    ],
+  },
 ];

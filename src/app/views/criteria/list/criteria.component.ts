@@ -1,4 +1,4 @@
-import { NgIf, NgStyle } from '@angular/common';
+import { NgStyle } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -29,25 +29,18 @@ import {
   TextColorDirective,
   ThemeDirective,
 } from '@coreui/angular';
-import { ChartjsComponent } from '@coreui/angular-chartjs';
+
 import { IconDirective } from '@coreui/icons-angular';
 
-import { WidgetsBrandComponent } from '../../widgets/widgets-brand/widgets-brand.component';
-import { WidgetsDropdownComponent } from '../../widgets/widgets-dropdown/widgets-dropdown.component';
-
-import { DepartmentsService } from '../../../services/departments/get-paginated-departments.service';
-import { DeleteDepartmentService } from '../../../services/departments/delete-department.service';
+import { CriteriaService } from '../../../services/criteria/get-paginated-criteria.service';
+import { DeleteCriterionService } from '../../../services/criteria/delete-criterion.service';
 import { Router } from '@angular/router';
 
-import { Department } from '../../../types';
-
 @Component({
-  templateUrl: 'departments.component.html',
-  styleUrls: ['departments.component.scss'],
+  templateUrl: 'criteria.component.html',
+  styleUrls: ['criteria.component.scss'],
   standalone: true,
   imports: [
-    WidgetsDropdownComponent,
-    TextColorDirective,
     CardComponent,
     CardBodyComponent,
     RowComponent,
@@ -57,13 +50,11 @@ import { Department } from '../../../types';
     ReactiveFormsModule,
     ButtonGroupComponent,
     FormCheckLabelDirective,
-    ChartjsComponent,
     NgStyle,
     CardFooterComponent,
     GutterDirective,
     ProgressBarDirective,
     ProgressComponent,
-    WidgetsBrandComponent,
     CardHeaderComponent,
     TableDirective,
     AvatarComponent,
@@ -78,27 +69,42 @@ import { Department } from '../../../types';
     PageLinkDirective,
     PaginationComponent,
     RouterLink,
-    NgIf,
   ],
 })
-export class DepartmentsComponent implements OnInit {
-  departments: Department[] = [];
+export class CriteriaComponent implements OnInit {
+  criteria: any = [];
+
   currentId = 0;
 
   pagination = {
     page: 1,
-    take: 1,
+    take: 10,
     itemCount: 0,
     pageCount: 0,
     hasPreviousPage: false,
     hasNextPage: true,
   };
 
+  pages = this.pagination.pageCount;
+
   constructor(
-    private departmentsService: DepartmentsService,
-    private deleteDepartmentService: DeleteDepartmentService,
+    private criteriaService: CriteriaService,
+    private deleteCriterionService: DeleteCriterionService,
     private router: Router
   ) {}
+
+  getPaginatedCriteria(page: number, take: number): void {
+    this.criteriaService.getPaginatedCriteria(page, take).subscribe({
+      next: (response) => {
+        this.criteria = response.data;
+      },
+      error: (error) => console.error(error),
+    });
+  }
+
+  redirectToEdit(id: number): void {
+    this.router.navigate([`edit-criterion/${id}`]);
+  }
 
   public visible = false;
 
@@ -111,20 +117,10 @@ export class DepartmentsComponent implements OnInit {
     this.visible = event;
   }
 
-  getPaginatedDepartments(page: number, take: number): void {
-    this.departmentsService.getPaginatedDepartments(page, take).subscribe({
-      next: (response) => {
-        this.departments = response.data;
-        this.pagination = response.meta;
-      },
-      error: (error) => console.error('Error al realizar la solicitud:', error),
-    });
-  }
-
-  deleteDepartment(): void {
-    this.deleteDepartmentService.deleteDepartment(this.currentId).subscribe({
+  deleteCriterion(): void {
+    this.deleteCriterionService.deleteCriterion(this.currentId).subscribe({
       next: () => {
-        this.getPaginatedDepartments(this.pagination.page, 10);
+        this.getPaginatedCriteria(this.pagination.page, 10);
         this.visible = !this.visible;
       },
       error: (error) => {
@@ -134,20 +130,10 @@ export class DepartmentsComponent implements OnInit {
   }
 
   setPage(page: number): void {
-    if (page < 1 || page > this.pagination.pageCount) {
-      return;
-    }
+    if (page < 1 || page > this.pagination.pageCount) return;
     this.pagination.page = page;
-
-    console.log(this.pagination.page);
-    this.getPaginatedDepartments(this.pagination.page, this.pagination.take);
   }
-
-  redirectToEdit(id: number): void {
-    this.router.navigate([`edit-department/${id}`]);
-  }
-
   ngOnInit(): void {
-    this.getPaginatedDepartments(this.pagination.page, this.pagination.take);
+    this.getPaginatedCriteria(this.pagination.page, 10);
   }
 }

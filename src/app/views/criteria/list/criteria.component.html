@@ -1,0 +1,104 @@
+<c-row>
+  <c-col xs>
+    <c-card class="mb-4">
+      <c-card-body>
+        <div class="d-flex justify-content-between align-items-center">
+          <h4 class="card-title" id="criteria">Gestión de Criterios</h4>
+          <a
+            cButton
+            [routerLink]="['/create-criterion']"
+            routerLinkActive="active"
+            color="success"
+            class="text-white ms-md-2 mb-3"
+          >
+            Agregar Criterio
+          </a>
+        </div>
+        <table
+          [hover]="true"
+          [responsive]="true"
+          [striped]="true"
+          align="middle"
+          cTable
+          class="mb-0 border"
+        >
+          <thead class="text-nowrap text-truncate">
+            <tr>
+              <th class="bg-body-tertiary text-center">Nombre</th>
+              <th class="bg-body-tertiary text-center">Indicador</th>
+              <th class="bg-body-tertiary text-center">Índice</th>
+              <th class="bg-body-tertiary text-center">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (criterion of criteria; track criterion.id; let i = $index) {
+            <tr>
+              <td class="text-center">
+                {{ criterion.name }}
+              </td>
+              <td class="text-center">{{ criterion.indicator.name }}</td>
+              <td class="text-center">
+                {{ criterion.index }}
+              </td>
+
+              <td class="text-center">
+                <div class="small text-body-secondary"></div>
+                <div class="fw-semibold text-nowrap">
+                  <a
+                    cButton
+                    routerLinkActive="active"
+                    color="warning"
+                    variant="outline"
+                    class="mx-1"
+                    (click)="redirectToEdit(criterion.id)"
+                  >
+                    <svg cIcon class="icon icon-lg" name="cilPencil"></svg>
+                  </a>
+                  <button
+                    cButton
+                    (click)="toggleModal(criterion.id)"
+                    color="danger"
+                    variant="outline"
+                    class="mx-1"
+                  >
+                    <svg cIcon class="icon icon-lg" name="cilTrash"></svg>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+
+        <c-pagination aria-label="Pagination" class="ms-md-2">
+          <li cPageItem>
+            <button cPageLink (click)="setPage(pagination.page - 1)">
+              Previous
+            </button>
+          </li>
+
+          <li cPageItem>
+            <button cPageLink (click)="setPage(pagination.page + 1)">
+              Next
+            </button>
+          </li>
+        </c-pagination>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
+
+<c-modal
+  id="liveDemoModal"
+  [visible]="visible"
+  (visibleChange)="handleLiveDemoChange($event)"
+  alignment="center"
+>
+  <c-modal-body class="delete-modal"
+    ><h6>¿Estás seguro que deseas borrar este criterio?</h6>
+    <div class="delete-modal-buttons-container">
+      <button (click)="toggleModal(0)" cButton color="primary">Cerrar</button>
+      <button (click)="deleteCriterion()" cButton color="danger">Borrar</button>
+    </div>
+  </c-modal-body>
+</c-modal>

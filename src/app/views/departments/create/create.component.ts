@@ -47,7 +47,7 @@ export class CreateComponent {
 
   createDepartment(): void {
     this.createDepartmentService.postDepartment({ name: this.name }).subscribe({
-      next: (response) => {
+      next: () => {
         this.router.navigate(['/departments']);
       },
       error: (error) => {
