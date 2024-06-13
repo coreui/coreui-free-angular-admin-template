@@ -48,10 +48,6 @@ export class LoginComponent {
 
   constructor(private loginService: LoginService, private router: Router) {}
 
-  redirectToRegister(): void {
-    this.router.navigate(['/auth/register']);
-  }
-
   login(): void {
     this.loginService
       .postLogin({ email: this.email, password: this.password })
