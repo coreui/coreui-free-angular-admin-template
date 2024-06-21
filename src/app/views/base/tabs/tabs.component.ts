@@ -1,30 +1,40 @@
-import { Component } from '@angular/core';
-import { IconDirective } from '@coreui/icons-angular';
-import { RouterLink } from '@angular/router';
+import { Component, signal } from '@angular/core';
 import {
   CardBodyComponent,
   CardComponent,
   CardHeaderComponent,
   ColComponent,
-  NavComponent,
-  NavItemComponent,
-  NavLinkDirective,
   RoundedDirective,
   RowComponent,
-  TabContentComponent,
-  TabContentRefDirective,
-  TabPaneComponent,
-  TextColorDirective
+  TabDirective,
+  TabPanelComponent,
+  TabsComponent,
+  TabsContentComponent,
+  TabsListComponent
 } from '@coreui/angular';
+import { IconDirective } from '@coreui/icons-angular';
 
 @Component({
   selector: 'app-tabs',
   templateUrl: './tabs.component.html',
   styleUrls: ['./tabs.component.scss'],
   standalone: true,
-  imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, NavComponent, NavItemComponent, NavLinkDirective, TabContentRefDirective, RouterLink, IconDirective, TabContentComponent, RoundedDirective, TabPaneComponent]
+  imports: [
+    CardBodyComponent,
+    CardComponent,
+    CardHeaderComponent,
+    ColComponent,
+    RoundedDirective,
+    RowComponent,
+    TabDirective,
+    TabPanelComponent,
+    TabsComponent,
+    TabsContentComponent,
+    TabsListComponent,
+    IconDirective
+  ]
 })
-export class TabsComponent {
+export class AppTabsComponent {
 
   public panes = [
     { name: 'Home 01', id: 'tab-01', icon: 'cilHome' },
@@ -32,6 +42,9 @@ export class TabsComponent {
     { name: 'Contact 03', id: 'tab-03', icon: 'cilCode' }
   ];
 
-  constructor() { }
+  activeItem = signal(0);
 
+  handleActiveItemChange(value: string | number | undefined) {
+    this.activeItem.set(<number>value);
+  }
 }
