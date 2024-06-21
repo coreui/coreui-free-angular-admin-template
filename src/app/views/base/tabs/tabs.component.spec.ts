@@ -1,29 +1,26 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import { CardModule, GridModule, NavModule, TabsModule } from '@coreui/angular';
-import { IconModule, IconSetService } from '@coreui/icons-angular';
+import { IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from '../../../icons/icon-subset';
-import { TabsComponent } from './tabs.component';
+import { AppTabsComponent } from './tabs.component';
 
 describe('TabsComponent', () => {
-  let component: TabsComponent;
-  let fixture: ComponentFixture<TabsComponent>;
+  let component: AppTabsComponent;
+  let fixture: ComponentFixture<AppTabsComponent>;
   let iconSetService: IconSetService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [TabsModule, GridModule, CardModule, IconModule, RouterTestingModule, NavModule, TabsComponent],
-    providers: [IconSetService]
-})
-      .compileComponents();
+      imports: [AppTabsComponent, NoopAnimationsModule], providers: [IconSetService], teardown: { destroyAfterEach: false }   // <- add this line
+    }).compileComponents();
   });
 
   beforeEach(() => {
     iconSetService = TestBed.inject(IconSetService);
     iconSetService.icons = { ...iconSubset };
 
-    fixture = TestBed.createComponent(TabsComponent);
+    fixture = TestBed.createComponent(AppTabsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

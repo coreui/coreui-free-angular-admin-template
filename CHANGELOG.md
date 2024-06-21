@@ -2,6 +2,13 @@
 
 ---
 
+#### `5.2.0`
+
+- chore(dependencies): update ta Angular 18
+- refactor(tabs): update to the latest api
+
+---
+
 #### `5.0.4`
 
 - chore(dependencies): update

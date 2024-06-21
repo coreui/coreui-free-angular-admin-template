@@ -105,7 +105,7 @@ export const routes: Routes = [
       },
       {
         path: 'tabs',
-        loadComponent: () => import('./tabs/tabs.component').then(m => m.TabsComponent),
+        loadComponent: () => import('./tabs/tabs.component').then(m => m.AppTabsComponent),
         data: {
           title: 'Tabs'
         }
