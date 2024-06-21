@@ -2,6 +2,12 @@
 
 ---
 
+#### `5.0.4`
+
+- chore(dependencies): update
+
+---
+
 #### `5.0.3`
 
 - chore(dependencies): update
