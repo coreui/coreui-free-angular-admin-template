@@ -2,7 +2,7 @@
   <c-card-header>Widgets</c-card-header>
   <c-card-body>
     <app-docs-example href="components/widgets/#cwidgetstatsa">
-      <app-widgets-dropdown></app-widgets-dropdown>
+      <app-widgets-dropdown />
     </app-docs-example>
     <app-docs-example href="components/widgets/#cwidgetstatsb">
       <c-row class="g-4">
@@ -55,7 +55,7 @@
             text="Lorem ipsum dolor sit amet enim."
             value="89.9%"
           >
-            <c-progress [white]="widgetStatB1inv.inverse" class="my-2" thin [value]="89.9" />
+            <c-progress [white]="widgetStatB1inv.inverse()" class="my-2" thin [value]="89.9" />
           </c-widget-stat-b>
         </c-col>
         <c-col xl="3" md="6" sm="6">
@@ -67,7 +67,7 @@
             text="Lorem ipsum dolor sit amet enim."
             value="12.124"
           >
-            <c-progress [white]="widgetStatB2inv.inverse" class="my-2" thin [value]="89.9" />
+            <c-progress [white]="widgetStatB2inv.inverse()" class="my-2" thin [value]="89.9" />
           </c-widget-stat-b>
         </c-col>
         <c-col xl="3" md="6" sm="6">
@@ -79,7 +79,7 @@
             text="Lorem ipsum dolor sit amet enim."
             value="$98,111.00"
           >
-            <c-progress [white]="widgetStatB3inv.inverse" class="my-2" thin [value]="89.9" />
+            <c-progress [white]="widgetStatB3inv.inverse()" class="my-2" thin [value]="89.9" />
           </c-widget-stat-b>
         </c-col>
         <c-col xl="3" md="6" sm="6">
@@ -91,7 +91,7 @@
             text="Lorem ipsum dolor sit amet enim."
             value="2 TB"
           >
-            <c-progress [white]="widgetStatB4inv.inverse" class="my-2" thin [value]="89.9" />
+            <c-progress [white]="widgetStatB4inv.inverse()" class="my-2" thin [value]="89.9" />
           </c-widget-stat-b>
         </c-col>
       </c-row>
