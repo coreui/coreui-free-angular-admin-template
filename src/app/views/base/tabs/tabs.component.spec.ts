@@ -12,7 +12,9 @@ describe('TabsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppTabsComponent, NoopAnimationsModule], providers: [IconSetService], teardown: { destroyAfterEach: false }   // <- add this line
+      imports: [AppTabsComponent, NoopAnimationsModule],
+      providers: [IconSetService],
+      teardown: { destroyAfterEach: false }   // <- add this line for Error: NG0205: Injector has already been destroyed.
     }).compileComponents();
   });
 

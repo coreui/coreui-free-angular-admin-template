@@ -84,8 +84,8 @@
                 Some quick example text to build on the card title and make up the
                 bulk of the card content.
               </p>
-              <a cCardLink [routerLink]="[]">Card link</a>
-              <a cCardLink [routerLink]="[]">Another link</a>
+              <a [routerLink]="[]" cCardLink>Card link</a>
+              <a [routerLink]="[]" cCardLink>Another link</a>
             </c-card-body>
           </c-card>
         </app-docs-example>
@@ -190,8 +190,8 @@
               <li cListGroupItem>Vestibulum at eros</li>
             </ul>
             <c-card-body>
-              <a cCardLink [routerLink]="[]">Card link</a>
-              <a cCardLink [routerLink]="[]">Another link</a>
+              <a [routerLink]="[]" cCardLink>Card link</a>
+              <a [routerLink]="[]" cCardLink>Another link</a>
             </c-card-body>
           </c-card>
         </app-docs-example>
@@ -209,7 +209,7 @@
             <p class="text-body-secondary small">
               Add an optional header and/or footer within a card.
             </p>
-            <app-docs-example href="components/card/#header-and-footer" class="mb-1">
+            <app-docs-example class="mb-1" href="components/card/#header-and-footer">
               <c-card>
                 <c-card-header>Featured</c-card-header>
                 <c-card-body>
@@ -223,7 +223,7 @@
               Card headers can be styled by adding ex.
               <code>&#34;h5&#34;</code>.
             </p>
-            <app-docs-example href="components/card/#header-and-footer" class="mb-1">
+            <app-docs-example class="mb-1" href="components/card/#header-and-footer">
               <c-card>
                 <c-card-header>
                   <h5>Header</h5>
@@ -287,7 +287,7 @@
         <p class="text-body-secondary small">
           Using the grid, wrap cards in columns and rows as needed.
         </p>
-        <app-docs-example href="components/card/#sizing" class="mb-2">
+        <app-docs-example class="mb-2" href="components/card/#sizing">
           <c-row class="g-4">
             <c-col sm="6">
               <c-card>
@@ -310,7 +310,7 @@
           Use some of <a href="https://coreui.io/docs/utilities/sizing/">available sizing utilities</a> to rapidly set a
           card width.
         </p>
-        <app-docs-example href="components/card/#sizing" class="mb-2">
+        <app-docs-example class="mb-2" href="components/card/#sizing">
           <c-card class="w-75 mb-2">
             <c-card-body>
               <ng-container *ngTemplateOutlet="cardBodyTemplate" />
@@ -390,55 +390,55 @@
         </p>
         <c-row>
           <c-col>
-            <app-docs-example href="components/card/##navigation">
-              <c-card class="text-center">
-                <c-card-header>
-                  <c-nav class="card-header-tabs" variant="tabs">
-                    <c-nav-item>
-                      <a [active]="true" cNavLink [routerLink]="[]">
-                        Active
-                      </a>
-                    </c-nav-item>
-                    <c-nav-item>
-                      <a cNavLink [routerLink]="[]">Link</a>
-                    </c-nav-item>
-                    <c-nav-item>
-                      <a cNavLink disabled [routerLink]="[]">
-                        Disabled
-                      </a>
-                    </c-nav-item>
-                  </c-nav>
-                </c-card-header>
-                <c-card-body>
-                  <ng-container *ngTemplateOutlet="cardBodyTemplate" />
-                </c-card-body>
-              </c-card>
+            <app-docs-example href="components/card/#navigation">
+              <c-tabs activeItemKey="Active">
+                <c-card class="text-center">
+                  <c-card-header>
+                    <c-tabs-list class="card-header-tabs" variant="tabs">
+                      @for (tab of tabs; track tab) {
+                        <button [itemKey]="tab" cTab [disabled]="tab==='Disabled'">
+                          {{ tab }}
+                        </button>
+                      }
+                    </c-tabs-list>
+                  </c-card-header>
+                  <c-card-body>
+                    <c-tabs-content>
+                      @for (panel of tabs; track panel) {
+                        <c-tab-panel [itemKey]="panel">
+                          <ng-container *ngTemplateOutlet="cardBodyTemplate; context: {$implicit: panel}" />
+                        </c-tab-panel>
+                      }
+                    </c-tabs-content>
+                  </c-card-body>
+                </c-card>
+              </c-tabs>
             </app-docs-example>
           </c-col>
           <c-col>
-            <app-docs-example href="components/card/##navigation">
-              <c-card class="text-center">
-                <c-card-header>
-                  <c-nav class="card-header-pills" variant="pills">
-                    <c-nav-item>
-                      <a [active]="true" cNavLink [routerLink]="[]">
-                        Active
-                      </a>
-                    </c-nav-item>
-                    <c-nav-item>
-                      <a cNavLink [routerLink]="[]">Link</a>
-                    </c-nav-item>
-                    <c-nav-item>
-                      <a cNavLink disabled [routerLink]="[]">
-                        Disabled
-                      </a>
-                    </c-nav-item>
-                  </c-nav>
-                </c-card-header>
-                <c-card-body>
-                  <ng-container *ngTemplateOutlet="cardBodyTemplate" />
-                </c-card-body>
-              </c-card>
+            <app-docs-example href="components/card/#navigation">
+              <c-tabs activeItemKey="Active">
+                <c-card class="text-center">
+                  <c-card-header>
+                    <c-tabs-list class="card-header-pills" variant="pills">
+                      @for (tab of tabs; track tab) {
+                        <button [itemKey]="tab" cTab [disabled]="tab==='Disabled'">
+                          {{ tab }}
+                        </button>
+                      }
+                    </c-tabs-list>
+                  </c-card-header>
+                  <c-card-body>
+                    <c-tabs-content>
+                      @for (panel of tabs; track panel) {
+                        <c-tab-panel [itemKey]="panel">
+                          <ng-container *ngTemplateOutlet="cardBodyTemplate; context: {$implicit: panel}" />
+                        </c-tab-panel>
+                      }
+                    </c-tabs-content>
+                  </c-card-body>
+                </c-card>
+              </c-tabs>
             </app-docs-example>
           </c-col>
         </c-row>
@@ -505,7 +505,7 @@
         <p class="text-body-secondary small">
           Use <code>color</code> property to change the appearance of a card.
         </p>
-        <app-docs-example href="components/card/#background-and-color" class="mb-1">
+        <app-docs-example class="mb-1" href="components/card/#background-and-color">
           <c-row>
             @for (item of colors; track item; let i = $index) {
               <c-col lg="4">
@@ -533,7 +533,7 @@
           <code>textColor</code> property on the <code>&lt;c-card&gt;</code> or a subset of the
           card&#39;s contents as shown below.
         </p>
-        <app-docs-example href="components/card/#border" class="mb-1">
+        <app-docs-example class="mb-1" href="components/card/#border">
           <c-row class="g-4">
             @for (item of colors; track item; let i = $index) {
               <c-col lg="4">
@@ -562,19 +562,19 @@
         <app-docs-example href="components/card/#top-border">
           <c-row>
             @for (item of colors; track item; let i = $index) {
-            <c-col lg="4">
-              <c-card [cBorder]="{top: {color: item.color, width: 3}}" [textColor]="item?.textColor ?? ''" class="mb-3">
-                <c-card-header>Header</c-card-header>
-                <c-card-body>
-                  <h5 cCardTitle>{{ item.color }} card title</h5>
-                  <p cCardText>
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card&#39;s content.
-                  </p>
-                  <button [color]="item.color" cButton>Go somewhere</button>
-                </c-card-body>
-              </c-card>
-            </c-col>
+              <c-col lg="4">
+                <c-card [cBorder]="{top: {color: item.color, width: 3}}" [textColor]="item?.textColor ?? ''" class="mb-3">
+                  <c-card-header>Header</c-card-header>
+                  <c-card-body>
+                    <h5 cCardTitle>{{ item.color }} card title</h5>
+                    <p cCardText>
+                      Some quick example text to build on the card title and make up the bulk of
+                      the card&#39;s content.
+                    </p>
+                    <button [color]="item.color" cButton>Go somewhere</button>
+                  </c-card-body>
+                </c-card>
+              </c-col>
             }
           </c-row>
         </app-docs-example>
@@ -699,7 +699,7 @@
           four cards to equal width across multiple rows, from the medium breakpoint up.
         </p>
         <app-docs-example href="components/card/#grid-cards">
-          <c-row [gutter]="{g: 4}" class="mb-3" [md]="2" [xs]="1">
+          <c-row [gutter]="{g: 4}" [md]="2" [xs]="1" class="mb-3">
             <c-col>
               <c-card>
                 <ng-container *ngTemplateOutlet="imgAngularTemplate" />
@@ -835,7 +835,7 @@
 </c-row>
 
 <ng-template #imgAngularTemplate let-orientation>
-  <img [cCardImg]="orientation ?? 'top'" src="assets/images/angular.jpg">
+  <img [cCardImg]="orientation ?? 'top'" src="assets/images/angular.jpg" alt="CoreUI for Angular">
 </ng-template>
 
 <ng-template #imgPlaceholderTemplate let-orientation>
@@ -856,8 +856,8 @@
   </svg>
 </ng-template>
 
-<ng-template #cardBodyTemplate>
-  <h5 cCardTitle>Card title</h5>
+<ng-template #cardBodyTemplate let-title>
+  <h5 cCardTitle>Card {{ title ?? 'title' }}</h5>
   <p cCardText>
     Some quick example text to build on the card title and make up the bulk of the card's content.
   </p>

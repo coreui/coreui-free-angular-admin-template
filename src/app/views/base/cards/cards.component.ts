@@ -19,12 +19,15 @@ import {
   GutterDirective,
   ListGroupDirective,
   ListGroupItemDirective,
-  NavComponent,
-  NavItemComponent,
-  NavLinkDirective,
   RowComponent,
+  TabDirective,
+  TabPanelComponent,
+  TabsComponent,
+  TabsContentComponent,
+  TabsListComponent,
   TextColorDirective
 } from '@coreui/angular';
+import { IconDirective } from '@coreui/icons-angular';
 
 type CardColor = {
   color: string
@@ -36,7 +39,7 @@ type CardColor = {
   templateUrl: './cards.component.html',
   styleUrls: ['./cards.component.scss'],
   standalone: true,
-  imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, NgTemplateOutlet, CardTitleDirective, CardTextDirective, ButtonDirective, CardSubtitleDirective, CardLinkDirective, RouterLink, ListGroupDirective, ListGroupItemDirective, CardFooterComponent, NavComponent, NavItemComponent, NavLinkDirective, BorderDirective, CardGroupComponent, GutterDirective, CardImgDirective]
+  imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, NgTemplateOutlet, CardTitleDirective, CardTextDirective, ButtonDirective, CardSubtitleDirective, CardLinkDirective, RouterLink, ListGroupDirective, ListGroupItemDirective, CardFooterComponent, BorderDirective, CardGroupComponent, GutterDirective, CardImgDirective, TabsComponent, TabsListComponent, IconDirective, TabDirective, TabsContentComponent, TabPanelComponent]
 })
 export class CardsComponent {
 
@@ -53,6 +56,6 @@ export class CardsComponent {
 
   imgContext = { $implicit: 'top', bottom: 'bottom' };
 
-  constructor() { }
+  tabs = ['Active', 'List', 'Disabled']
 
 }
