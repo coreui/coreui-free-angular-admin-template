@@ -2,6 +2,13 @@
 
 ---
 
+#### `5.2.5`
+
+- chore(dependencies): update to Angular 18.1
+- refactor(cards): card navigation update to the latest `tabs` api
+
+---
+
 #### `5.2.3`
 
 - chore(dependencies): update
