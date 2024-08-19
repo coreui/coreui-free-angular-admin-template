@@ -1,4 +1,7 @@
-import { Component, computed, DestroyRef, inject, Input } from '@angular/core';
+import { NgStyle, NgTemplateOutlet } from '@angular/common';
+import { Component, computed, inject, input } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+
 import {
   AvatarComponent,
   BadgeComponent,
@@ -22,11 +25,8 @@ import {
   TextColorDirective,
   ThemeDirective
 } from '@coreui/angular';
-import { NgStyle, NgTemplateOutlet } from '@angular/common';
-import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
+
 import { IconDirective } from '@coreui/icons-angular';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { delay, filter, map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-default-header',
@@ -36,10 +36,8 @@ import { delay, filter, map, tap } from 'rxjs/operators';
 })
 export class DefaultHeaderComponent extends HeaderComponent {
 
-  readonly #activatedRoute: ActivatedRoute = inject(ActivatedRoute);
   readonly #colorModeService = inject(ColorModeService);
   readonly colorMode = this.#colorModeService.colorMode;
-  readonly #destroyRef: DestroyRef = inject(DestroyRef);
 
   readonly colorModes = [
     { name: 'light', text: 'Light', icon: 'cilSun' },
@@ -49,28 +47,14 @@ export class DefaultHeaderComponent extends HeaderComponent {
 
   readonly icons = computed(() => {
     const currentMode = this.colorMode();
-    return this.colorModes.find(mode=> mode.name === currentMode)?.icon ?? 'cilSun';
+    return this.colorModes.find(mode => mode.name === currentMode)?.icon ?? 'cilSun';
   });
 
   constructor() {
     super();
-    this.#colorModeService.localStorageItemName.set('coreui-free-angular-admin-template-theme-default');
-    this.#colorModeService.eventName.set('ColorSchemeChange');
-
-    this.#activatedRoute.queryParams
-      .pipe(
-        delay(1),
-        map(params => <string>params['theme']?.match(/^[A-Za-z0-9\s]+/)?.[0]),
-        filter(theme => ['dark', 'light', 'auto'].includes(theme)),
-        tap(theme => {
-          this.colorMode.set(theme);
-        }),
-        takeUntilDestroyed(this.#destroyRef)
-      )
-      .subscribe();
   }
 
-  @Input() sidebarId: string = 'sidebar1';
+  sidebarId = input('sidebar1');
 
   public newMessages = [
     {

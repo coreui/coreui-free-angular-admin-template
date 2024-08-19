@@ -2,7 +2,7 @@
 <ng-container>
   <c-container [fluid]="true" class="border-bottom px-4">
     <button
-      [cSidebarToggle]="sidebarId"
+      [cSidebarToggle]="sidebarId()"
       cHeaderToggler
       class="btn"
       toggle="visible"
@@ -169,7 +169,6 @@
         <button
           (click)="colorMode.set(mode.name)"
           [active]="colorMode()===mode.name"
-          [routerLink]="[]"
           cDropdownItem
           class="d-flex align-items-center"
         >
