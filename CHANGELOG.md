@@ -2,9 +2,17 @@
 
 ---
 
+#### `5.2.15`
+
+- chore(dependencies): update to `Angular 18.2`
+- refactor: move ColorModeService setup from default-header to app component
+- chore(karma.conf): add custom chrome launcher with `--disable-search-engine-choice-screen` flag
+
+---
+
 #### `5.2.5`
 
-- chore(dependencies): update to Angular 18.1
+- chore(dependencies): update to `Angular 18.1`
 - refactor(cards): card navigation update to the latest `tabs` api
 
 ---
