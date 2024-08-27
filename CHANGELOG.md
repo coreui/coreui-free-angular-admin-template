@@ -2,6 +2,15 @@
 
 ---
 
+#### `5.2.16`
+
+- chore(dependencies): update
+  - `tslib` to `^2.7.0`
+  - `micromatch` to `4.0.8`
+    - see vulnerability [Regular Expression Denial of Service (ReDoS) in micromatch](https://github.com/advisories/GHSA-952p-6rrq-rcjv)
+
+---
+
 #### `5.2.15`
 
 - chore(dependencies): update to `Angular 18.2`
