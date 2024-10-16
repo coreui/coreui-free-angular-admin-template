@@ -15,3 +15,28 @@
 .select-week .calendar-row.current {
   cursor: pointer;
 }
+
+.sidebar-dark{
+  // --cui-body-bg: #154b1f;
+  // --cui-body-bg: #fff;
+  .sidebar-nav {
+    --cui-sidebar-nav-link-active-bg: #154b1f;
+  }
+}
+
+.btn-primary {
+  --cui-btn-color: #fff;
+  --cui-btn-bg: #154b1f;
+  --cui-btn-border-color: #154b1f !important;
+  --cui-btn-hover-color: #fff;
+  --cui-btn-hover-bg: #154b1f;
+  --cui-btn-hover-border-color: #154b1f;
+  --cui-btn-focus-shadow-rgb: 113, 111, 220;
+  --cui-btn-active-color: #fff;
+  --cui-btn-active-bg: #154b1f;
+  --cui-btn-active-border-color: #154b1f;
+  --cui-btn-active-shadow: inset 0 3px 5px rgba(8, 10, 12, 0.125);
+  --cui-btn-disabled-color: #fff;
+  --cui-btn-disabled-bg: #154b1f;
+  --cui-btn-disabled-border-color: #154b1f;
+}
