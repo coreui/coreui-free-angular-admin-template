@@ -5,14 +5,14 @@
         <c-card-group>
           <c-card class="p-4">
             <c-card-body>
-              <form cForm>
                 <h1>Login</h1>
                 <p class="text-body-secondary">Sign In to your account</p>
                 <c-input-group class="mb-3">
                   <span cInputGroupText>
                     <svg cIcon name="cilUser"></svg>
                   </span>
-                  <input autoComplete="username" cFormControl placeholder="Username" />
+                  <input autoComplete="username" cFormControl placeholder="Username"
+                  [(ngModel)]="username"/>
                 </c-input-group>
                 <c-input-group class="mb-4">
                   <span cInputGroupText>
@@ -23,11 +23,12 @@
                     cFormControl
                     placeholder="Password"
                     type="password"
+                    [(ngModel)]="password"
                   />
                 </c-input-group>
                 <c-row>
                   <c-col xs="6">
-                    <button cButton class="px-4" color="primary">
+                    <button cButton type="button" class="px-4" color="primary" (click)="signIn()" [disabled]="loading">
                       Login
                     </button>
                   </c-col>
@@ -37,7 +38,6 @@
                     </button>
                   </c-col>
                 </c-row>
-              </form>
             </c-card-body>
           </c-card>
           <!-- <c-card [ngStyle]="{'minWidth.%': 44}" class="text-white bg-primary py-5">

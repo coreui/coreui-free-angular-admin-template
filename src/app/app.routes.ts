@@ -1,3 +1,5 @@
+import { AuthGuard } from './core/guards/auth/auth.guard';
+import { guestGuard } from './core/guards/guest/guest.guard';
 import { Routes } from '@angular/router';
 import { DefaultLayoutComponent } from './layout';
 
@@ -13,10 +15,15 @@ export const routes: Routes = [
     data: {
       title: 'Home'
     },
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'dashboard',
         loadChildren: () => import('./views/dashboard/routes').then((m) => m.routes)
+      },
+      {
+        path: 'courses',
+        loadChildren: () => import('./pages/courses/routes').then(m => m.routes)
       },
       {
         path: 'theme',
@@ -75,7 +82,8 @@ export const routes: Routes = [
     loadComponent: () => import('./views/pages/login/login.component').then(m => m.LoginComponent),
     data: {
       title: 'Login Page'
-    }
+    },
+    canActivate: [guestGuard],
   },
   {
     path: 'register',

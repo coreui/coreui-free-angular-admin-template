@@ -11,7 +11,7 @@
     >
       <svg cIcon name="cilMenu" size="lg"></svg>
     </button>
-    <c-header-nav class="d-none d-md-flex">
+    <!-- <c-header-nav class="d-none d-md-flex">
       <c-nav-item>
         <a cNavLink routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
       </c-nav-item>
@@ -21,7 +21,8 @@
       <c-nav-item>
         <a cNavLink routerLink="/settings" routerLinkActive="active">Settings</a>
       </c-nav-item>
-    </c-header-nav>
+    </c-header-nav> -->
+    <c-breadcrumb-router/>
 
     <c-header-nav class="d-none d-md-flex ms-auto ">
       <a cNavLink>
@@ -50,9 +51,9 @@
     </c-header-nav>
 
   </c-container>
-  <c-container [fluid]="true" class="px-4">
+  <!-- <c-container [fluid]="true" class="px-4">
     <c-breadcrumb-router [items]="[{label: 'd'}]"/>
-  </c-container>
+  </c-container> -->
 </ng-container>
 <!--</c-header>-->
 
@@ -150,7 +151,7 @@
         </a>
       </li>
       <li>
-        <a cDropdownItem routerLink="">
+        <a cDropdownItem routerLink="" (click)="logout()">
           <svg cIcon class="me-2" name="cilAccountLogout"></svg>
           Logout
         </a>

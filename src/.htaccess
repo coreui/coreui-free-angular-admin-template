@@ -1,0 +1,31 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # If the request is for a file or directory, don't rewrite
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+  # Redirect everything else to index.html to handle Angular routes
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# Serve the correct MIME types for various file types
+AddType application/javascript .js
+AddType text/css .css
+
+# Enable GZIP compression for better performance (optional)
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Caching for static assets to improve performance (optional)
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/gif "access plus 1 month"
+  ExpiresByType image/webp "access plus 1 month"
+</IfModule>

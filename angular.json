@@ -38,7 +38,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/scss/styles.scss"
+              "src/scss/styles.scss",
+              "node_modules/@coreui/icons/css/all.css"
             ],
             "scripts": [],
             "allowedCommonJsDependencies": []
@@ -63,7 +64,13 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"

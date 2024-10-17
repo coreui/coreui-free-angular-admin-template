@@ -12,6 +12,19 @@ export const navItems: INavData[] = [
   },
   {
     title: true,
+    name: 'Learning'
+  },
+  {
+    name: 'Courses',
+    url: '/courses',
+    iconComponent: { name: 'cil-school' },
+    badge: {
+      text: '5+',
+      color: 'success'
+    }
+  },
+  {
+    title: true,
     name: 'Theme'
   },
   {

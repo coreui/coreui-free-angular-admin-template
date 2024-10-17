@@ -1,0 +1,16 @@
+<h1>Courses</h1>
+
+<c-row>
+  <c-col lg="3" md="6" sm="6" *ngFor="let course of courses" class="mt-3">
+    <c-card>
+      <img cCardImg="top" [src]="course.image">
+      <c-card-body>
+        <h5 cCardTitle>{{ course.name }}</h5>
+        <p cCardText>
+          {{ course.intro }}
+        </p>
+        <button cButton color="light" (click)="open(course)">Open</button>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>

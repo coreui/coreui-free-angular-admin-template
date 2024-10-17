@@ -77,6 +77,7 @@ import {
   cilPuzzle,
   cilReportSlash,
   cilSave,
+  cilSchool,
   cilSettings,
   cilShare,
   cilShareAll,
@@ -195,6 +196,7 @@ export const iconSubset = {
   cilUserFemale,
   cilUserFollow,
   cilUserUnfollow,
+  cilSchool,
   logo,
   signet
 };
@@ -296,6 +298,7 @@ export enum IconSubset {
   cilUserFollow = 'cilUserFollow',
   cilUserUnfollow = 'cilUserUnfollow',
   logo = 'logo',
-  signet = 'signet'
+  signet = 'signet',
+  cilSchool = 'cilSchool'
 }
 
