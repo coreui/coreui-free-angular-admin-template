@@ -7,7 +7,7 @@
     <strong>{{ title }}</strong>
   </c-toast-header>
   <c-toast-body #toastBody [cToastClose]="toastBody.toast">
-    <p class="mb-1">This is a dynamic toast no {{ toastBody.toast?.index }} {{ toastBody.toast?.clock }}</p>
+    <p class="mb-1">This is a dynamic toast no {{ toastBody.toast?.index() }} {{ toastBody.toast?.clock }}</p>
     <ng-content />
     <c-progress thin [value]="25*(toastBody.toast?.clock ?? 1)" />
   </c-toast-body>
