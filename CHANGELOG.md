@@ -2,6 +2,14 @@
 
 ---
 
+#### `5.2.22`
+
+- chore(dependencies): update to `Angular 18.2.9`
+- fix(widgets-brand): use capBg instead of color
+- fix(toasters): toast.index is a signal
+
+---
+
 #### `5.2.16`
 
 - chore(dependencies): update
