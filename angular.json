@@ -41,7 +41,12 @@
               "src/scss/styles.scss"
             ],
             "scripts": [],
-            "allowedCommonJsDependencies": []
+            "allowedCommonJsDependencies": [],
+            "stylePreprocessorOptions": {
+              "sass": {
+                "silenceDeprecations": ["import"]
+              }
+            }
           },
           "configurations": {
             "production": {
