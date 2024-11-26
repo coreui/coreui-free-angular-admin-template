@@ -7,7 +7,6 @@ import { RowComponent, ColComponent, TextColorDirective, CardComponent, CardHead
     selector: 'app-select',
     templateUrl: './select.component.html',
     styleUrls: ['./select.component.scss'],
-    standalone: true,
     imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, FormSelectDirective, ReactiveFormsModule]
 })
 export class SelectComponent {

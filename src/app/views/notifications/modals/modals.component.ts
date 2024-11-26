@@ -22,11 +22,10 @@ import {
 } from '@coreui/angular';
 
 @Component({
-  selector: 'app-modals',
-  templateUrl: './modals.component.html',
-  styleUrls: ['./modals.component.scss'],
-  standalone: true,
-  imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, ModalComponent, ModalHeaderComponent, ModalTitleDirective, ThemeDirective, ButtonCloseDirective, ModalBodyComponent, ModalFooterComponent, ButtonDirective, NgTemplateOutlet, ModalToggleDirective, PopoverDirective, TooltipDirective]
+    selector: 'app-modals',
+    templateUrl: './modals.component.html',
+    styleUrls: ['./modals.component.scss'],
+    imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, ModalComponent, ModalHeaderComponent, ModalTitleDirective, ThemeDirective, ButtonCloseDirective, ModalBodyComponent, ModalFooterComponent, ButtonDirective, NgTemplateOutlet, ModalToggleDirective, PopoverDirective, TooltipDirective]
 })
 export class ModalsComponent {
 

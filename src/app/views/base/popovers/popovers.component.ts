@@ -6,7 +6,6 @@ import { RowComponent, ColComponent, TextColorDirective, CardComponent, CardHead
     selector: 'app-popovers',
     templateUrl: './popovers.component.html',
     styleUrls: ['./popovers.component.scss'],
-    standalone: true,
     imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, ButtonDirective, PopoverDirective]
 })
 export class PopoversComponent implements OnInit {

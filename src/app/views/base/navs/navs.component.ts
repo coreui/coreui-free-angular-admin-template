@@ -7,7 +7,6 @@ import { RowComponent, ColComponent, TextColorDirective, CardComponent, CardHead
     selector: 'app-navs',
     templateUrl: './navs.component.html',
     styleUrls: ['./navs.component.scss'],
-    standalone: true,
     imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, NavComponent, NavItemComponent, NavLinkDirective, RouterLink, ThemeDirective, DropdownComponent, DropdownToggleDirective, DropdownMenuDirective, DropdownItemDirective]
 })
 export class NavsComponent {

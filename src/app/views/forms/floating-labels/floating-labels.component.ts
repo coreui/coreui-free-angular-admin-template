@@ -8,7 +8,6 @@ import { RowComponent, ColComponent, TextColorDirective, CardComponent, CardHead
     selector: 'app-floating-labels',
     templateUrl: './floating-labels.component.html',
     styleUrls: ['./floating-labels.component.scss'],
-    standalone: true,
     imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, FormFloatingDirective, FormControlDirective, FormLabelDirective, ReactiveFormsModule, FormsModule, FormDirective, NgStyle, FormSelectDirective, GutterDirective]
 })
 export class FloatingLabelsComponent {

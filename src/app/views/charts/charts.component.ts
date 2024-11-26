@@ -8,7 +8,6 @@ import { DocsCalloutComponent } from '@docs-components/public-api';
     selector: 'app-charts',
     templateUrl: './charts.component.html',
     styleUrls: ['./charts.component.scss'],
-    standalone: true,
     imports: [RowComponent, ColComponent, DocsCalloutComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, ChartjsComponent]
 })
 export class ChartsComponent {

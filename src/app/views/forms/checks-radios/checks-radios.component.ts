@@ -7,7 +7,6 @@ import { RowComponent, FormDirective, ColComponent, TextColorDirective, CardComp
     selector: 'app-checks-radios',
     templateUrl: './checks-radios.component.html',
     styleUrls: ['./checks-radios.component.scss'],
-    standalone: true,
     imports: [RowComponent, ReactiveFormsModule, FormDirective, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, FormCheckComponent, FormCheckInputDirective, FormCheckLabelDirective, ButtonGroupComponent, ButtonDirective]
 })
 export class ChecksRadiosComponent {

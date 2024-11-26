@@ -19,11 +19,10 @@ import { IconDirective } from '@coreui/icons-angular';
 import { DocsExampleComponent } from '@docs-components/public-api';
 
 @Component({
-  selector: 'app-alerts',
-  templateUrl: './alerts.component.html',
-  styleUrls: ['./alerts.component.scss'],
-  standalone: true,
-  imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, AlertComponent, AlertLinkDirective, RouterLink, AlertHeadingDirective, IconDirective, TemplateIdDirective, ThemeDirective, ButtonCloseDirective, ButtonDirective]
+    selector: 'app-alerts',
+    templateUrl: './alerts.component.html',
+    styleUrls: ['./alerts.component.scss'],
+    imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, AlertComponent, AlertLinkDirective, RouterLink, AlertHeadingDirective, IconDirective, TemplateIdDirective, ThemeDirective, ButtonCloseDirective, ButtonDirective]
 })
 export class AlertsComponent implements OnInit {
 

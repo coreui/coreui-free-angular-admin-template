@@ -7,7 +7,6 @@ import { RowComponent, ColComponent, TextColorDirective, CardComponent, CardHead
     selector: 'app-validation',
     templateUrl: './validation.component.html',
     styleUrls: ['./validation.component.scss'],
-    standalone: true,
     imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, ReactiveFormsModule, FormsModule, FormDirective, FormLabelDirective, FormControlDirective, FormFeedbackComponent, InputGroupComponent, InputGroupTextDirective, FormSelectDirective, FormCheckComponent, FormCheckInputDirective, FormCheckLabelDirective, ButtonDirective, ListGroupDirective, ListGroupItemDirective]
 })
 export class ValidationComponent implements OnInit {

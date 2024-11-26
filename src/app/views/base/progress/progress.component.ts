@@ -5,7 +5,6 @@ import { RowComponent, ColComponent, TextColorDirective, CardComponent, CardHead
 @Component({
     selector: 'app-progress',
     templateUrl: './progress.component.html',
-    standalone: true,
     imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, ProgressBarDirective, ProgressComponent_1, ProgressBarComponent, ProgressStackedComponent]
 })
 export class ProgressComponent {

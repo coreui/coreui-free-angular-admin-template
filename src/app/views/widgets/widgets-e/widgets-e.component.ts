@@ -8,7 +8,6 @@ import { RowComponent, ColComponent, WidgetStatEComponent, TextColorDirective } 
     templateUrl: './widgets-e.component.html',
     styleUrls: ['./widgets-e.component.scss'],
     changeDetection: ChangeDetectionStrategy.Default,
-    standalone: true,
     imports: [RowComponent, ColComponent, TextColorDirective, WidgetStatEComponent, ChartjsComponent]
 })
 export class WidgetsEComponent implements AfterContentInit {

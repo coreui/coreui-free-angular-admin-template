@@ -6,7 +6,6 @@ import { ContainerComponent, RowComponent, ColComponent, InputGroupComponent, In
     selector: 'app-page500',
     templateUrl: './page500.component.html',
     styleUrls: ['./page500.component.scss'],
-    standalone: true,
     imports: [ContainerComponent, RowComponent, ColComponent, InputGroupComponent, InputGroupTextDirective, IconDirective, FormControlDirective, ButtonDirective]
 })
 export class Page500Component {

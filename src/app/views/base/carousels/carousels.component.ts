@@ -8,7 +8,6 @@ import { RowComponent, ColComponent, TextColorDirective, CardComponent, CardHead
     selector: 'app-carousels',
     templateUrl: './carousels.component.html',
     styleUrls: ['./carousels.component.scss'],
-    standalone: true,
     imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, ThemeDirective, CarouselComponent, CarouselInnerComponent, CarouselItemComponent, CarouselControlComponent, IconDirective, CarouselIndicatorsComponent, CarouselCaptionComponent]
 })
 export class CarouselsComponent {

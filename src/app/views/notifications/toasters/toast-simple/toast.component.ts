@@ -7,7 +7,6 @@ import { ToastComponent, ToasterService, ToastHeaderComponent, ToastBodyComponen
     templateUrl: './toast.component.html',
     styleUrls: ['./toast.component.scss'],
     providers: [{ provide: ToastComponent, useExisting: forwardRef(() => AppToastComponent) }],
-    standalone: true,
     imports: [ToastHeaderComponent, ToastBodyComponent, ToastCloseDirective, ProgressBarDirective, ProgressComponent]
 })
 export class AppToastComponent extends ToastComponent {

@@ -6,7 +6,6 @@ import { RowComponent, ColComponent, TextColorDirective, CardComponent, CardHead
     selector: 'app-collapses',
     templateUrl: './collapses.component.html',
     styleUrls: ['./collapses.component.scss'],
-    standalone: true,
     imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, ButtonDirective, CollapseDirective]
 })
 export class CollapsesComponent {

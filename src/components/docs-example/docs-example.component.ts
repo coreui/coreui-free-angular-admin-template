@@ -18,7 +18,6 @@ import { NavComponent, NavItemComponent, NavLinkDirective } from '@coreui/angula
     templateUrl: './docs-example.component.html',
     styleUrls: ['./docs-example.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [NavComponent, NavItemComponent, NavLinkDirective, RouterLink, IconDirective]
 })
 export class DocsExampleComponent implements AfterContentInit, AfterViewInit {

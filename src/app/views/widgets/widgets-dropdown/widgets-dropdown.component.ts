@@ -18,7 +18,6 @@ import { RowComponent, ColComponent, WidgetStatAComponent, TemplateIdDirective, 
     templateUrl: './widgets-dropdown.component.html',
     styleUrls: ['./widgets-dropdown.component.scss'],
     changeDetection: ChangeDetectionStrategy.Default,
-    standalone: true,
     imports: [RowComponent, ColComponent, WidgetStatAComponent, TemplateIdDirective, IconDirective, ThemeDirective, DropdownComponent, ButtonDirective, DropdownToggleDirective, DropdownMenuDirective, DropdownItemDirective, RouterLink, DropdownDividerDirective, ChartjsComponent]
 })
 export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
@@ -182,7 +181,6 @@ export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
 @Component({
     selector: 'app-chart-sample',
     template: '<c-chart type="line" [data]="data" [options]="options" width="300" #chart></c-chart>',
-    standalone: true,
     imports: [ChartjsComponent]
 })
 export class ChartSample implements AfterViewInit {

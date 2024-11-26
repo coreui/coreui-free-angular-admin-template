@@ -7,7 +7,6 @@ import { DocsExampleComponent } from '@docs-components/public-api';
     selector: 'app-accordions',
     templateUrl: './accordions.component.html',
     styleUrls: ['./accordions.component.scss'],
-    standalone: true,
     imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, AccordionComponent, AccordionItemComponent, TemplateIdDirective, AccordionButtonDirective, BgColorDirective]
 })
 export class AccordionsComponent {

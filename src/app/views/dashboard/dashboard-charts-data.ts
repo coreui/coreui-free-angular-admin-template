@@ -1,15 +1,7 @@
 import { Injectable } from '@angular/core';
-import {
-  ChartData,
-  ChartDataset,
-  ChartOptions,
-  ChartType,
-  PluginOptionsByType,
-  ScaleOptions,
-  TooltipLabelStyle
-} from 'chart.js';
+import { ChartData, ChartDataset, ChartOptions, ChartType, PluginOptionsByType, ScaleOptions, TooltipLabelStyle } from 'chart.js';
 import { DeepPartial } from 'chart.js/dist/types/utils';
-import { getStyle, hexToRgba } from '@coreui/utils';
+import { getStyle } from '@coreui/utils';
 
 export interface IChartProps {
   data?: ChartData;

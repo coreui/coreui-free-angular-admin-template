@@ -9,10 +9,9 @@ import { IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from './icons/icon-subset';
 
 @Component({
-  selector: 'app-root',
-  template: '<router-outlet />',
-  standalone: true,
-  imports: [RouterOutlet]
+    selector: 'app-root',
+    template: '<router-outlet />',
+    imports: [RouterOutlet]
 })
 export class AppComponent implements OnInit {
   title = 'CoreUI Angular Admin Template';

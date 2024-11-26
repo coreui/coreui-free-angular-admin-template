@@ -26,27 +26,26 @@ function isOverflown(element: HTMLElement) {
 }
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './default-layout.component.html',
-  styleUrls: ['./default-layout.component.scss'],
-  standalone: true,
-  imports: [
-    SidebarComponent,
-    SidebarHeaderComponent,
-    SidebarBrandComponent,
-    RouterLink,
-    IconDirective,
-    NgScrollbar,
-    SidebarNavComponent,
-    SidebarFooterComponent,
-    SidebarToggleDirective,
-    SidebarTogglerDirective,
-    DefaultHeaderComponent,
-    ShadowOnScrollDirective,
-    ContainerComponent,
-    RouterOutlet,
-    DefaultFooterComponent
-  ]
+    selector: 'app-dashboard',
+    templateUrl: './default-layout.component.html',
+    styleUrls: ['./default-layout.component.scss'],
+    imports: [
+        SidebarComponent,
+        SidebarHeaderComponent,
+        SidebarBrandComponent,
+        RouterLink,
+        IconDirective,
+        NgScrollbar,
+        SidebarNavComponent,
+        SidebarFooterComponent,
+        SidebarToggleDirective,
+        SidebarTogglerDirective,
+        DefaultHeaderComponent,
+        ShadowOnScrollDirective,
+        ContainerComponent,
+        RouterOutlet,
+        DefaultFooterComponent
+    ]
 })
 export class DefaultLayoutComponent {
   public navItems = navItems;

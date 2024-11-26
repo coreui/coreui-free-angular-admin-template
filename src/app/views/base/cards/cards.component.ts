@@ -24,10 +24,8 @@ import {
   TabPanelComponent,
   TabsComponent,
   TabsContentComponent,
-  TabsListComponent,
-  TextColorDirective
+  TabsListComponent
 } from '@coreui/angular';
-import { IconDirective } from '@coreui/icons-angular';
 
 type CardColor = {
   color: string
@@ -35,11 +33,10 @@ type CardColor = {
 }
 
 @Component({
-  selector: 'app-cards',
-  templateUrl: './cards.component.html',
-  styleUrls: ['./cards.component.scss'],
-  standalone: true,
-  imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, NgTemplateOutlet, CardTitleDirective, CardTextDirective, ButtonDirective, CardSubtitleDirective, CardLinkDirective, RouterLink, ListGroupDirective, ListGroupItemDirective, CardFooterComponent, BorderDirective, CardGroupComponent, GutterDirective, CardImgDirective, TabsComponent, TabsListComponent, IconDirective, TabDirective, TabsContentComponent, TabPanelComponent]
+    selector: 'app-cards',
+    templateUrl: './cards.component.html',
+    styleUrls: ['./cards.component.scss'],
+  imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, NgTemplateOutlet, CardTitleDirective, CardTextDirective, ButtonDirective, CardSubtitleDirective, CardLinkDirective, RouterLink, ListGroupDirective, ListGroupItemDirective, CardFooterComponent, BorderDirective, CardGroupComponent, GutterDirective, CardImgDirective, TabsComponent, TabsListComponent, TabDirective, TabsContentComponent, TabPanelComponent]
 })
 export class CardsComponent {
 

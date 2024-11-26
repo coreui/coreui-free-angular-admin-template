@@ -11,7 +11,6 @@ import { TextColorDirective, CardComponent, CardHeaderComponent, CardBodyCompone
     templateUrl: './widgets.component.html',
     styleUrls: ['./widgets.component.scss'],
     changeDetection: ChangeDetectionStrategy.Default,
-    standalone: true,
     imports: [TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, WidgetsDropdownComponent, RowComponent, ColComponent, WidgetStatBComponent, ProgressBarDirective, ProgressComponent, WidgetsEComponent, WidgetStatFComponent, TemplateIdDirective, IconDirective, WidgetsBrandComponent, CardGroupComponent, WidgetStatCComponent]
 })
 export class WidgetsComponent implements AfterContentInit {

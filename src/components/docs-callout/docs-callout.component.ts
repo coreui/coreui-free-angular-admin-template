@@ -4,11 +4,10 @@ import { NgTemplateOutlet } from '@angular/common';
 import { CalloutComponent } from '@coreui/angular';
 
 @Component({
-  selector: 'app-docs-callout',
-  templateUrl: './docs-callout.component.html',
-  styleUrls: ['./docs-callout.component.scss'],
-  standalone: true,
-  imports: [CalloutComponent, NgTemplateOutlet]
+    selector: 'app-docs-callout',
+    templateUrl: './docs-callout.component.html',
+    styleUrls: ['./docs-callout.component.scss'],
+    imports: [CalloutComponent, NgTemplateOutlet]
 })
 export class DocsCalloutComponent {
 

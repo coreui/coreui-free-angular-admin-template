@@ -13,10 +13,9 @@ import {
 } from '@coreui/angular';
 
 @Component({
-  selector: 'app-buttons',
-  templateUrl: './buttons.component.html',
-  standalone: true,
-  imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, ButtonDirective, IconDirective, RouterLink]
+    selector: 'app-buttons',
+    templateUrl: './buttons.component.html',
+    imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, ButtonDirective, IconDirective, RouterLink]
 })
 export class ButtonsComponent {
 
