@@ -1,5 +1,16 @@
 ### [coreui-free-angular-admin-template](https://coreui.io/angular/) changelog
 
+
+---
+
+#### `5.3.1`
+ 
+- chore(dependencies): update to Angular 19
+- refactor: directives, components and pipes are now standalone by default
+- fix(dashboard-charts-data): brandInfoBg rgb is not a valid hex color
+- chore(build): silence sass import deprecation warnings
+- fix(toasters): remove position from props for AppToastComponent
+
 ---
 
 #### `5.2.22`

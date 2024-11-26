@@ -5,7 +5,7 @@
 [![@coreui coreui](https://img.shields.io/badge/@coreui%20-coreui-lightgrey.svg?style=flat-square)](https://github.com/coreui/coreui)
 [![npm package][npm-coreui-badge]][npm-coreui]
 [![NPM downloads][npm-coreui-download]][npm-coreui]  
-![angular](https://img.shields.io/badge/angular-^18.2.0-lightgrey.svg?style=flat-square&logo=angular)
+![angular](https://img.shields.io/badge/angular-^19.0.0-lightgrey.svg?style=flat-square&logo=angular)
 
 [npm-coreui-angular]: https://www.npmjs.com/package/@coreui/angular
 
@@ -21,7 +21,7 @@
 
 [npm-coreui-download]: https://img.shields.io/npm/dm/@coreui/coreui.svg?style=flat-square
 
-# CoreUI Free Admin Dashboard Template for Angular 18
+# CoreUI Free Admin Dashboard Template for Angular 19
 
 CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of redundant components, so the app is light enough to offer ultimate user
 experience. This means mobile devices also, where the navigation is just as easy and intuitive as on a desktop or laptop. The CoreUI Layout API lets you
@@ -81,7 +81,7 @@ Before you begin, make sure your development environment includes `Node.js®` an
 
 ###### Node.js
 
-[**Angular 18**](https://angular.io/guide/what-is-angular) requires `Node.js` LTS version `^18.19` or `^20.11`.
+[**Angular 19**](https://angular.io/guide/what-is-angular) requires `Node.js` LTS version `^18.19.1` or `^20.11.1`.
 
 - To check your version, run `node -v` in a terminal/console window.
 - To get `Node.js`, go to [nodejs.org](https://nodejs.org/).
