@@ -1,6 +1,6 @@
 {
   "name": "coreui-free-angular-admin-template",
-  "version": "5.3.2",
+  "version": "5.3.3",
   "copyright": "Copyright 2024 creativeLabs Łukasz Holeczek",
   "license": "MIT",
   "author": "The CoreUI Team (https://github.com/orgs/coreui/people) and contributors",
@@ -62,5 +62,12 @@
   "engines": {
     "node": "^18.19.1 || ^20.11.1 || ^22.0.0",
     "npm": ">= 9"
+  },
+  "bugs": {
+    "url": "https://github.com/coreui/coreui-free-angular-admin-template/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coreui/coreui-free-angular-admin-template.git"
   }
 }

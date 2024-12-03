@@ -3,6 +3,13 @@
 
 ---
 
+#### `5.3.3`
+
+- chore(dependencies): update
+- chore(workflows): update node-version to 22.x
+
+---
+
 #### `5.3.2`
 
 - chore(dependencies): update 

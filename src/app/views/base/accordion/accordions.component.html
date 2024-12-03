@@ -76,7 +76,7 @@
                 <span [innerHTML]="getAccordionBodyText('first')"></span>
               </ng-template>
             </c-accordion-item>
-            <c-accordion-item [visible]="false">
+            <c-accordion-item>
               <ng-template cTemplateId="accordionHeader">
                 Accordion item #1
               </ng-template>
@@ -84,7 +84,7 @@
                 <span [innerHTML]="getAccordionBodyText('second')"></span>
               </ng-template>
             </c-accordion-item>
-            <c-accordion-item [visible]="false">
+            <c-accordion-item>
               <ng-template cTemplateId="accordionHeader">
                 Accordion item #2
               </ng-template>
@@ -118,7 +118,6 @@
                 </ng-template>
               </c-accordion-item>
             }
-
           </c-accordion>
         </app-docs-example>
       </c-card-body>
