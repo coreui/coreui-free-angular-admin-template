@@ -3,6 +3,14 @@
 
 ---
 
+#### `5.3.4`
+
+- chore(dependencies): update
+- chore(dependencies): security patch for `path-to-regexp` ReDoS in 0.1.x
+- fix(toast.component): remove constructor-based dependency injection
+
+---
+
 #### `5.3.3`
 
 - chore(dependencies): update
