@@ -3,6 +3,13 @@
 
 ---
 
+#### `5.3.8`
+
+- chore(dependencies): update to `Angular 19.1`
+- fix(toast): narrow type for cToastClose
+
+---
+
 #### `5.3.4`
 
 - chore(dependencies): update

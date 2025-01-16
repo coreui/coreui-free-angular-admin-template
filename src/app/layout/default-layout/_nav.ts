@@ -285,7 +285,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Docs',
-    url: 'https://coreui.io/angular/docs/5.x/',
+    url: 'https://coreui.io/angular/docs/',
     iconComponent: { name: 'cil-description' },
     attributes: { target: '_blank' }
   }
