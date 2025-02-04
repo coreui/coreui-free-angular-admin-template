@@ -15,7 +15,8 @@
     "start": "ng serve -o",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "link:ln": "ln -s ../coreui-angular/dist/coreui-angular/ @lib"
   },
   "private": true,
   "dependencies": {
