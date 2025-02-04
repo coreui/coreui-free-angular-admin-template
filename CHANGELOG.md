@@ -1,5 +1,13 @@
 ### [coreui-free-angular-admin-template](https://coreui.io/angular/) changelog
 
+---
+
+#### `5.3.9`
+
+- chore(dependencies): update
+- refactor(carousels): cleanup, add config
+- refactor(app.config): use provideAnimationAsync
+- chore(modals): remove @.disabled animations
 
 ---
 
