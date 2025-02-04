@@ -280,7 +280,7 @@
 
 <ng-template #staticBackdrop>
   <button [cModalToggle]="staticBackdropModal.id" cButton>Launch static backdrop modal</button>
-  <c-modal #staticBackdropModal backdrop="static" id="staticBackdropModal" [@.disabled]="true">
+  <c-modal #staticBackdropModal backdrop="static" id="staticBackdropModal" [@.disabled]="false">
     <c-modal-header>
       <h5 cModalTitle>Modal title</h5>
       <button [cModalToggle]="staticBackdropModal.id" cButtonClose></button>

@@ -12,10 +12,7 @@ import {
   CarouselInnerComponent,
   CarouselItemComponent,
   ColComponent,
-  RowComponent,
-  TemplateIdDirective,
-  TextColorDirective,
-  ThemeDirective
+  RowComponent
 } from '@coreui/angular';
 import { IconDirective } from '@coreui/icons-angular';
 
@@ -25,7 +22,7 @@ export type Slide = { id: number, src: SafeUrl | string, title: string, subtitle
   selector: 'app-carousels',
   templateUrl: './carousels.component.html',
   styleUrls: ['./carousels.component.scss'],
-  imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, ThemeDirective, CarouselComponent, CarouselInnerComponent, CarouselItemComponent, CarouselControlComponent, IconDirective, CarouselIndicatorsComponent, CarouselCaptionComponent, TemplateIdDirective]
+  imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, CarouselComponent, CarouselInnerComponent, CarouselItemComponent, CarouselControlComponent, IconDirective, CarouselIndicatorsComponent, CarouselCaptionComponent]
   // providers: [{ provide: CarouselConfig, useClass: CarouselCustomConfig  }]
 })
 export class CarouselsComponent {
