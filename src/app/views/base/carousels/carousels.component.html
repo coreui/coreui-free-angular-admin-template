@@ -48,8 +48,8 @@
                 </c-carousel-item>
               }
             </c-carousel-inner>
-            <c-carousel-control caption="Previous" direction="prev" i18n-caption></c-carousel-control>
-            <c-carousel-control caption="Next" direction="next" i18n-caption></c-carousel-control>
+            <c-carousel-control caption="Previous" direction="prev" i18n-caption />
+            <c-carousel-control caption="Next" direction="next" i18n-caption />
           </c-carousel>
         </app-docs-example>
       </c-card-body>
@@ -101,9 +101,8 @@
           You can attach the indicators to the carousel, lengthwise the controls, too.
         </p>
         <app-docs-example href="components/carousel/#with-indicators">
-          <c-carousel (itemChange)="onItemChange($event)" [activeIndex]="1" [dark]="true" [interval]="5000"
-                      direction="prev">
-            <c-carousel-indicators></c-carousel-indicators>
+          <c-carousel (itemChange)="onItemChange($event)" [activeIndex]="1" [dark]="true" [interval]="5000" direction="prev">
+            <c-carousel-indicators />
             <c-carousel-inner>
               @for (slide of slides[0]; track slide.src) {
                 <c-carousel-item>
@@ -137,7 +136,7 @@
         </p>
         <app-docs-example href="components/carousel/#with-captions">
           <c-carousel (itemChange)="onItemChange($event)" [interval]="3000" transition="slide" [wrap]="false">
-            <c-carousel-indicators></c-carousel-indicators>
+            <c-carousel-indicators />
             <c-carousel-inner>
               @for (slide of slides[1]; track slide.src) {
                 <c-carousel-item>
@@ -154,8 +153,8 @@
                 </c-carousel-item>
               }
             </c-carousel-inner>
-            <c-carousel-control caption="Previous" direction="prev" i18n-caption></c-carousel-control>
-            <c-carousel-control caption="Next" direction="next" i18n-caption></c-carousel-control>
+            <c-carousel-control caption="Previous" direction="prev" i18n-caption />
+            <c-carousel-control caption="Next" direction="next" i18n-caption />
           </c-carousel>
         </app-docs-example>
       </c-card-body>
@@ -180,7 +179,6 @@
                     [src]="slide.src"
                     alt="{{slide.title}}"
                     class="d-block w-100"
-                    loading="lazy"
                   />
                   <c-carousel-caption class="d-none d-md-block">
                     <h3>{{ slide.title }}</h3>
@@ -189,8 +187,8 @@
                 </c-carousel-item>
               }
             </c-carousel-inner>
-            <c-carousel-control caption="Previous" direction="prev" i18n-caption></c-carousel-control>
-            <c-carousel-control caption="Next" direction="next" i18n-caption></c-carousel-control>
+            <c-carousel-control caption="Previous" direction="prev" i18n-caption />
+            <c-carousel-control caption="Next" direction="next" i18n-caption />
           </c-carousel>
         </app-docs-example>
       </c-card-body>
@@ -210,7 +208,7 @@
         </p>
         <app-docs-example href="components/carousel/#dark-variant">
           <c-carousel (itemChange)="onItemChange($event)" [dark]="true" [interval]="3000" transition="slide">
-            <c-carousel-indicators></c-carousel-indicators>
+            <c-carousel-indicators />
             <c-carousel-inner>
               @for (slide of slides[2]; track slide.src) {
                 <c-carousel-item>
@@ -227,8 +225,8 @@
                 </c-carousel-item>
               }
             </c-carousel-inner>
-            <c-carousel-control caption="Previous" direction="prev" i18n-caption></c-carousel-control>
-            <c-carousel-control caption="Next" direction="next" i18n-caption></c-carousel-control>
+            <c-carousel-control caption="Previous" direction="prev" i18n-caption />
+            <c-carousel-control caption="Next" direction="next" i18n-caption />
           </c-carousel>
         </app-docs-example>
       </c-card-body>
