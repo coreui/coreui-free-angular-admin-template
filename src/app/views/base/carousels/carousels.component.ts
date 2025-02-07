@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { DocsExampleComponent } from '@docs-components/public-api';
 import {
+  ButtonDirective,
   CardBodyComponent,
   CardComponent,
   CardHeaderComponent,
@@ -22,7 +23,7 @@ export type Slide = { id: number, src: SafeUrl | string, title: string, subtitle
   selector: 'app-carousels',
   templateUrl: './carousels.component.html',
   styleUrls: ['./carousels.component.scss'],
-  imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, CarouselComponent, CarouselInnerComponent, CarouselItemComponent, CarouselControlComponent, IconDirective, CarouselIndicatorsComponent, CarouselCaptionComponent]
+  imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, CarouselComponent, CarouselInnerComponent, CarouselItemComponent, CarouselControlComponent, CarouselIndicatorsComponent, CarouselCaptionComponent, ButtonDirective, IconDirective]
   // providers: [{ provide: CarouselConfig, useClass: CarouselCustomConfig  }]
 })
 export class CarouselsComponent {
@@ -77,7 +78,12 @@ export class CarouselsComponent {
   }
 
   onItemChange($event: any): void {
-    console.log('Carousel onItemChange', $event);
+    // console.log('Carousel onItemChange', $event);
   }
 
+  readonly interval = signal(5000);
+
+  toggleInterval() {
+    this.interval.update((value) => value ? 0 : 2500);
+  }
 }
