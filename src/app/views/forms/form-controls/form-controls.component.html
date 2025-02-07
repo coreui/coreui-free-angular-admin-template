@@ -123,10 +123,10 @@
         </p>
         <app-docs-example href="forms/form-control#readonly">
           <c-row class="mb-3">
-            <label cLabel class="col-sm-2 col-form-label" for="staticEmail">
+            <label [sm]="2" cCol cLabel="col" for="staticEmail">
               Email
             </label>
-            <div class="col-sm-10">
+            <c-col sm="10">
               <input [plaintext]="true"
                      cFormControl
                      id="staticEmail"
@@ -134,20 +134,20 @@
                      type="text"
                      value="email@example.com"
               />
-            </div>
+            </c-col>
           </c-row>
           <c-row class="mb-3">
-            <label cLabel class="col-sm-2 col-form-label" for="inputPassword">
+            <label [sm]="2" cCol cLabel="col" for="inputPassword">
               Password
             </label>
-            <div class="col-sm-10">
+            <c-col sm="10">
               <input cFormControl id="inputPassword" type="password" />
-            </div>
+            </c-col>
           </c-row>
         </app-docs-example>
         <app-docs-example href="forms/form-control#readonly">
-          <form cForm class="row g-3">
-            <div class="col-auto">
+          <form cForm [gutter]="3" cRow>
+            <c-col xs="auto">
               <label cLabel class="visually-hidden" for="staticEmail2">
                 Email
               </label>
@@ -158,18 +158,18 @@
                      type="text"
                      value="email@example.com"
               />
-            </div>
-            <div class="col-auto">
+            </c-col>
+            <c-col xs="auto">
               <label cLabel class="visually-hidden" for="inputPassword2">
                 Password
               </label>
               <input cFormControl id="inputPassword2" placeholder="Password" type="password" />
-            </div>
-            <div class="col-auto">
-              <button cButton class="mb-3" type="submit">
+            </c-col>
+            <c-col xs="auto">
+              <button cButton class="m-0" type="submit">
                 Confirm identity
               </button>
-            </div>
+            </c-col>
           </form>
         </app-docs-example>
       </c-card-body>
@@ -228,11 +228,11 @@
               <div [ngStyle]="{'backgroundColor': favoriteColor}" class="color-box p-1 m-1"></div>
             </c-col>
             <c-col xs="auto">
-              <strong>{{favoriteColor}}</strong>
+              <strong>{{ favoriteColor }}</strong>
             </c-col>
-          </c-row>        </app-docs-example>
+          </c-row>
+        </app-docs-example>
       </c-card-body>
     </c-card>
   </c-col>
 </c-row>
-
