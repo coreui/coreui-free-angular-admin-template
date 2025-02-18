@@ -2,6 +2,19 @@
 
 ---
 
+#### `5.4.0`
+
+- **refactor(styles): migrate to Sass modules, cleanup**
+- refactor(default-layout): scrollbar cleanups
+- chore(dependencies): update
+- refactor(carousels): toggle interval example
+- refactor(form-control): cleanup readonly / plaintext example
+- fix(icon-subset): typo in cilContrast
+- refactor(dropdowns): disabled cDropdownItem example
+- fix(docs-example): set routerLink="" for Preview nav-item
+
+---
+
 #### `5.3.9`
 
 - chore(dependencies): update
