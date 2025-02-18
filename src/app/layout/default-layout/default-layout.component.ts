@@ -33,26 +33,20 @@ function isOverflown(element: HTMLElement) {
     SidebarComponent,
     SidebarHeaderComponent,
     SidebarBrandComponent,
-    RouterLink,
-    IconDirective,
-    NgScrollbar,
     SidebarNavComponent,
     SidebarFooterComponent,
     SidebarToggleDirective,
     SidebarTogglerDirective,
-    DefaultHeaderComponent,
-    ShadowOnScrollDirective,
     ContainerComponent,
+    DefaultFooterComponent,
+    DefaultHeaderComponent,
+    IconDirective,
+    NgScrollbar,
     RouterOutlet,
-        DefaultFooterComponent
+    RouterLink,
+    ShadowOnScrollDirective
   ]
 })
 export class DefaultLayoutComponent {
-  public navItems = navItems;
-
-  onScrollbarUpdate($event: any) {
-    // if ($event.verticalUsed) {
-    // console.log('verticalUsed', $event.verticalUsed);
-    // }
-  }
+  public navItems = [...navItems];
 }

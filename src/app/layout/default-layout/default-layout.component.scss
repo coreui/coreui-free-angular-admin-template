@@ -1,11 +1,20 @@
-:host {
+:host::ng-deep {
   .ng-scrollbar {
     --scrollbar-padding: 1px;
     --scrollbar-size: 5px;
-    --scrollbar-thumb-color: var(--cui-gray-500, #999);
-    --scrollbar-thumb-hover-color: var(--cui-gray-400, #999);
+    --scrollbar-thumb-color: var(--cui-gray-500, #aab3c5);
+    --scrollbar-thumb-hover-color: var(--cui-gray-400, #cfd4de);
     --scrollbar-hover-size: calc(var(--scrollbar-size) * 1.5);
+    --scrollbar-border-radius: 5px;
   }
+
+  .ng-scroll-content {
+    display: flex;
+  }
+
+  //.sidebar-nav {
+  //  scrollbar-color: var(--cui-gray-500, #444) transparent;
+  //}
 }
 
 // ng-scrollbar css variables
