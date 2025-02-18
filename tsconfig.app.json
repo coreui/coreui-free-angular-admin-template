@@ -7,10 +7,6 @@
       "@angular/localize"
     ],
     "paths": {
-      "@coreui/angular": [
-        "./@lib",
-        "./node-modules/@coreui/angular"
-      ],
       "@docs-components/*": [
         "./src/components/*"
       ]
