@@ -1,10 +1,10 @@
 // Here you can add other styles
 
 // custom .chartjs-tooltip-body-item padding
-@import "charts";
+@use "charts";
 
 // custom tweaks for scrollbar styling (wip)
-@import "scrollbar";
+@use "scrollbar";
 
  // custom calendar today cell color
 .calendar-cell.today {

@@ -1,23 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
 
-// If you want to override variables do it here
-@import "variables";
-
 // Import styles with default layout.
-@import "@coreui/coreui/scss/coreui";
+@use "@coreui/coreui/scss/coreui" as * with (
+  $enable-deprecation-messages: false
+);
 
 // Import Chart.js custom tooltips styles
-@import "@coreui/chartjs/scss/coreui-chartjs";
+@use "@coreui/chartjs/scss/coreui-chartjs";
 
 // Custom styles for this theme
-@import "theme";
+@use "theme";
 
 // Some temp fixes
-//@import "fixes";
+//@use "fixes";
 
 // If you want to add custom CSS you can put it here.
-@import "custom";
+@use "custom";
 
 // Examples
 // We use those styles to show code examples, you should remove them in your application.
-@import "examples";
+@use "examples";
+
