@@ -1,13 +1,13 @@
 {
   "name": "coreui-free-angular-admin-template",
-  "version": "5.4.0",
+  "version": "5.4.1",
   "copyright": "Copyright 2024 creativeLabs Łukasz Holeczek",
   "license": "MIT",
   "author": "The CoreUI Team (https://github.com/orgs/coreui/people) and contributors",
   "homepage": "https://coreui.io/angular",
   "config": {
     "theme": "default",
-    "coreui_library_short_version": "5.3",
+    "coreui_library_short_version": "5.4",
     "coreui_library_docs_url": "https://coreui.io/angular/docs/"
   },
   "scripts": {
@@ -29,12 +29,12 @@
     "@angular/platform-browser": "^19.1.6",
     "@angular/platform-browser-dynamic": "^19.1.6",
     "@angular/router": "^19.1.6",
-    "@coreui/angular": "~5.3.15",
-    "@coreui/angular-chartjs": "~5.3.15",
+    "@coreui/angular": "~5.4.0",
+    "@coreui/angular-chartjs": "~5.4.0",
     "@coreui/chartjs": "~4.1.0",
     "@coreui/coreui": "~5.3.1",
     "@coreui/icons": "^3.0.1",
-    "@coreui/icons-angular": "~5.3.15",
+    "@coreui/icons-angular": "~5.4.0",
     "@coreui/utils": "^2.0.2",
     "chart.js": "^4.4.7",
     "lodash-es": "^4.17.21",

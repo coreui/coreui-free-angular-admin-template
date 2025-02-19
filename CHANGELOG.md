@@ -2,6 +2,12 @@
 
 ---
 
+#### `5.4.1`
+
+- chore(dependencies): version bump for tilde `~` dependencies for @coreui/* to avoid Sass modules mismatch
+
+---
+
 #### `5.4.0`
 
 - **refactor(styles): migrate to Sass modules, cleanup**
