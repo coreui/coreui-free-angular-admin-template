@@ -2,6 +2,12 @@
 
 ---
 
+#### `5.4.3`
+
+- chore(dependencies): update to `Angular 19.2`
+
+---
+
 #### `5.4.1`
 
 - chore(dependencies): version bump for tilde `~` dependencies for @coreui/* to avoid Sass modules mismatch
