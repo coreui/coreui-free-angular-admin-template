@@ -2,6 +2,13 @@
 
 ---
 
+#### `5.4.5`
+
+- chore(dependencies): update
+- fix(default-layout): missing min-height for .ng-scroll-content
+
+---
+
 #### `5.4.3`
 
 - chore(dependencies): update to `Angular 19.2`
