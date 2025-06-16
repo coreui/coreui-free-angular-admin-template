@@ -1,4 +1,4 @@
-import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
 import { getStyle } from '@coreui/utils';
 import { ChartjsComponent } from '@coreui/angular-chartjs';
 import { RowComponent, ColComponent, WidgetStatEComponent, TextColorDirective } from '@coreui/angular';
@@ -11,10 +11,10 @@ import { RowComponent, ColComponent, WidgetStatEComponent, TextColorDirective } 
     imports: [RowComponent, ColComponent, TextColorDirective, WidgetStatEComponent, ChartjsComponent]
 })
 export class WidgetsEComponent implements AfterContentInit {
+  private changeDetectorRef = inject(ChangeDetectorRef);
 
-  constructor(
-    private changeDetectorRef: ChangeDetectorRef
-  ) {
+
+  constructor() {
     this.prepareLabels();
     this.prepareDatasets();
     this.prepareData();

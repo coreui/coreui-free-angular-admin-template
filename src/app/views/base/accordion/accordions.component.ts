@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, AccordionComponent, AccordionItemComponent, TemplateIdDirective, AccordionButtonDirective, BgColorDirective } from '@coreui/angular';
 import { DocsExampleComponent } from '@docs-components/public-api';
@@ -10,12 +10,10 @@ import { DocsExampleComponent } from '@docs-components/public-api';
     imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, AccordionComponent, AccordionItemComponent, TemplateIdDirective, AccordionButtonDirective, BgColorDirective]
 })
 export class AccordionsComponent {
+  private sanitizer = inject(DomSanitizer);
+
 
   items = [1, 2, 3, 4];
-
-  constructor(
-    private sanitizer: DomSanitizer
-  ) { }
 
   getAccordionBodyText(value: string|number) {
     const textSample = `

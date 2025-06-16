@@ -1,4 +1,4 @@
-import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
 import { WidgetsBrandComponent } from '../widgets-brand/widgets-brand.component';
 import { IconDirective } from '@coreui/icons-angular';
 import { WidgetsEComponent } from '../widgets-e/widgets-e.component';
@@ -14,9 +14,8 @@ import { TextColorDirective, CardComponent, CardHeaderComponent, CardBodyCompone
     imports: [TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, WidgetsDropdownComponent, RowComponent, ColComponent, WidgetStatBComponent, ProgressBarDirective, ProgressComponent, WidgetsEComponent, WidgetStatFComponent, TemplateIdDirective, IconDirective, WidgetsBrandComponent, CardGroupComponent, WidgetStatCComponent]
 })
 export class WidgetsComponent implements AfterContentInit {
-  constructor(
-    private changeDetectorRef: ChangeDetectorRef
-  ) {}
+  private changeDetectorRef = inject(ChangeDetectorRef);
+
 
   ngAfterContentInit(): void {
     this.changeDetectorRef.detectChanges();

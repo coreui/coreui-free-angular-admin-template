@@ -1,4 +1,4 @@
-import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
+import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, inject } from '@angular/core';
 import { ChartjsComponent } from '@coreui/angular-chartjs';
 import { IconDirective } from '@coreui/icons-angular';
 import { ColComponent, RowComponent, WidgetStatDComponent } from '@coreui/angular';
@@ -21,10 +21,8 @@ type BrandData = {
     imports: [RowComponent, ColComponent, WidgetStatDComponent, IconDirective, ChartjsComponent]
 })
 export class WidgetsBrandComponent implements AfterContentInit {
+  private changeDetectorRef = inject(ChangeDetectorRef);
 
-  constructor(
-    private changeDetectorRef: ChangeDetectorRef
-  ) {}
 
   @Input() withCharts?: boolean;
   // @ts-ignore

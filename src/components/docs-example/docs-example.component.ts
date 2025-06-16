@@ -1,12 +1,4 @@
-import {
-  AfterContentInit,
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  HostBinding,
-  Input
-} from '@angular/core';
+import { AfterContentInit, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, Input, inject } from '@angular/core';
 
 import packageJson from '../../../package.json';
 import { IconDirective } from '@coreui/icons-angular';
@@ -21,10 +13,8 @@ import { NavComponent, NavItemComponent, NavLinkDirective } from '@coreui/angula
     imports: [NavComponent, NavItemComponent, NavLinkDirective, RouterLink, IconDirective]
 })
 export class DocsExampleComponent implements AfterContentInit, AfterViewInit {
+  private changeDetectorRef = inject(ChangeDetectorRef);
 
-  constructor(
-    private changeDetectorRef: ChangeDetectorRef
-  ) {}
 
   @Input() fragment?: string;
 

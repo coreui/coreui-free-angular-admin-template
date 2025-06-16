@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, HostBinding, Inject, Input, OnInit, Renderer2, forwardRef, DOCUMENT } from '@angular/core';
+import { AfterViewInit, Component, HostBinding, Input, OnInit, Renderer2, forwardRef, DOCUMENT, inject } from '@angular/core';
 import { NgClass } from '@angular/common';
 
 import { getStyle, rgbToHex } from '@coreui/utils';
@@ -9,12 +9,9 @@ import { TextColorDirective, CardComponent, CardHeaderComponent, CardBodyCompone
     imports: [TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, RowComponent, forwardRef(() => ThemeColorComponent)]
 })
 export class ColorsComponent implements OnInit, AfterViewInit {
+  private document = inject<Document>(DOCUMENT);
+  private renderer = inject(Renderer2);
 
-  constructor(
-    @Inject(DOCUMENT) private document: Document,
-    private renderer: Renderer2
-  ) {
-  }
 
   public themeColors(): void {
     Array.from(this.document.querySelectorAll('.theme-color')).forEach(

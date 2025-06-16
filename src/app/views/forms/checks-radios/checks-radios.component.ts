@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, UntypedFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { DocsExampleComponent } from '@docs-components/public-api';
 import { RowComponent, FormDirective, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, FormCheckComponent, FormCheckInputDirective, FormCheckLabelDirective, ButtonGroupComponent, ButtonDirective } from '@coreui/angular';
@@ -10,6 +10,8 @@ import { RowComponent, FormDirective, ColComponent, TextColorDirective, CardComp
     imports: [RowComponent, ReactiveFormsModule, FormDirective, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, FormCheckComponent, FormCheckInputDirective, FormCheckLabelDirective, ButtonGroupComponent, ButtonDirective]
 })
 export class ChecksRadiosComponent {
+private formBuilder = inject(UntypedFormBuilder);
+
 
 inputDisabled: null = null;
 
@@ -37,11 +39,6 @@ inputDisabled: null = null;
       radio1: this.formBuilder.control({ value: 'Radio2' })
     })
   });
-
-
-  constructor(
-    private formBuilder: UntypedFormBuilder
-  ) { }
 
   setCheckBoxValue(controlName: string) {
     const btnCheckGroup = this.formGroup.controls['btnCheckGroup'];
