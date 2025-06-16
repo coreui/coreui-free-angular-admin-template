@@ -1,21 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-
+import { provideRouter } from '@angular/router';
 import { CardModule, GridModule, ProgressModule } from '@coreui/angular';
 import { IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from '../../../icons/icon-subset';
-import { ProgressComponent } from './progress.component';
+import { AppProgressComponent } from './progress.component';
 
-describe('ProgressComponent', () => {
-  let component: ProgressComponent;
-  let fixture: ComponentFixture<ProgressComponent>;
+describe('AppProgressComponent', () => {
+  let component: AppProgressComponent;
+  let fixture: ComponentFixture<AppProgressComponent>;
   let iconSetService: IconSetService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [ProgressModule, CardModule, GridModule, RouterTestingModule, ProgressComponent],
-    providers: [IconSetService]
-})
+      imports: [ProgressModule, CardModule, GridModule, AppProgressComponent], providers: [IconSetService, provideRouter([])]
+    })
       .compileComponents();
   });
 
@@ -23,7 +21,7 @@ describe('ProgressComponent', () => {
     iconSetService = TestBed.inject(IconSetService);
     iconSetService.icons = { ...iconSubset };
 
-    fixture = TestBed.createComponent(ProgressComponent);
+    fixture = TestBed.createComponent(AppProgressComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

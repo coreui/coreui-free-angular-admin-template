@@ -1,23 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter } from '@angular/router';
 
 import { ButtonModule, CardModule, GridModule } from '@coreui/angular';
-import { IconModule } from '@coreui/icons-angular';
-import { IconSetService } from '@coreui/icons-angular';
+import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from '../../../icons/icon-subset';
 import { ButtonsComponent } from './buttons.component';
 
 describe('ButtonsComponent', () => {
   let component: ButtonsComponent;
   let fixture: ComponentFixture<ButtonsComponent>;
-  let iconSetService: IconSetService
+  let iconSetService: IconSetService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [CardModule, GridModule, ButtonModule, RouterTestingModule, IconModule, ButtonsComponent],
-    providers: [IconSetService]
-})
-    .compileComponents();
+      imports: [CardModule, GridModule, ButtonModule, IconModule, ButtonsComponent], providers: [IconSetService, provideRouter([])]
+    })
+      .compileComponents();
   });
 
   beforeEach(() => {

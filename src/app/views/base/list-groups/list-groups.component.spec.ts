@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter } from '@angular/router';
 
 import { BadgeModule, ButtonModule, CardModule, FormModule, GridModule, ListGroupModule } from '@coreui/angular';
 import { IconSetService } from '@coreui/icons-angular';
@@ -14,9 +14,9 @@ describe('ListGroupsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [ListGroupModule, ButtonModule, ReactiveFormsModule, BadgeModule, FormModule, GridModule, CardModule, RouterTestingModule, ListGroupsComponent],
-    providers: [IconSetService]
-})
+      imports: [ListGroupModule, ButtonModule, ReactiveFormsModule, BadgeModule, FormModule, GridModule, CardModule, ListGroupsComponent],
+      providers: [IconSetService, provideRouter([])]
+    })
       .compileComponents();
   });
 
