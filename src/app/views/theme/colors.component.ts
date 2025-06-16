@@ -1,5 +1,5 @@
-import { AfterViewInit, Component, HostBinding, Inject, Input, OnInit, Renderer2, forwardRef } from '@angular/core';
-import { DOCUMENT, NgClass } from '@angular/common';
+import { AfterViewInit, Component, HostBinding, Inject, Input, OnInit, Renderer2, forwardRef, DOCUMENT } from '@angular/core';
+import { NgClass } from '@angular/common';
 
 import { getStyle, rgbToHex } from '@coreui/utils';
 import { TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, RowComponent, ColComponent } from '@coreui/angular';
