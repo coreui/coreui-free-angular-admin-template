@@ -1,37 +1,27 @@
-import { Component, Input } from '@angular/core';
-import packageJson from '../../../package.json';
+import { Component, computed, input } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
 import { CalloutComponent } from '@coreui/angular';
+import packageJson from '../../../package.json';
 
 @Component({
-    selector: 'app-docs-callout',
-    templateUrl: './docs-callout.component.html',
-    styleUrls: ['./docs-callout.component.scss'],
-    imports: [CalloutComponent, NgTemplateOutlet]
+  selector: 'app-docs-callout',
+  templateUrl: './docs-callout.component.html',
+  imports: [CalloutComponent, NgTemplateOutlet]
 })
 export class DocsCalloutComponent {
 
-  @Input() name: string = '';
+  readonly name = input('');
 
-  constructor() { }
+  readonly hrefInput = input<string>('https://coreui.io/angular/docs/', { alias: 'href' });
 
-  private _href: string = 'https://coreui.io/angular/docs/';
+  readonly plural = computed(() => this.name()?.slice(-1) === 's');
 
-  get href(): string {
-    return this._href;
-  }
-
-  @Input()
-  set href(value: string) {
+  readonly href = computed(() => {
     const version = packageJson?.config?.coreui_library_short_version;
     const docsUrl = packageJson?.config?.coreui_library_docs_url ?? 'https://coreui.io/angular/';
-    // const path: string = version ? `${version}/${value}` : `${value}`;
-    const path: string = value;
-    this._href = `${docsUrl}${path}`;
-  }
-
-  get plural() {
-    return this.name?.slice(-1) === 's';
-  }
-
+    const href = this.hrefInput();
+    // const path: string = version ? `${version}/${href}` : `${href}`;
+    const path: string = href;
+    return `${docsUrl}${path}`;
+  });
 }

@@ -1,12 +1,12 @@
 <c-nav variant="underline-border" class="border-bottom w-100">
   <c-nav-item>
-    <a [active]="true" [fragment]="fragment" [routerLink]="" cNavLink>
+    <a [active]="true" [fragment]="fragment()" [routerLink]="" cNavLink>
       <svg cIcon class="me-2" name="cilMediaPlay"></svg>
       Preview
     </a>
   </c-nav-item>
   <c-nav-item>
-    <a [href]="href" cNavLink target="_blank">
+    <a [href]="href()" cNavLink target="_blank">
       <svg cIcon class="me-2" name="cilCode"></svg>
       Code
     </a>

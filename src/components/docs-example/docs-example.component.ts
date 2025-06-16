@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, Input, inject } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, computed, inject, input } from '@angular/core';
 
 import packageJson from '../../../package.json';
 import { IconDirective } from '@coreui/icons-angular';
@@ -10,38 +10,24 @@ import { NavComponent, NavItemComponent, NavLinkDirective } from '@coreui/angula
     templateUrl: './docs-example.component.html',
     styleUrls: ['./docs-example.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [NavComponent, NavItemComponent, NavLinkDirective, RouterLink, IconDirective]
+    imports: [NavComponent, NavItemComponent, NavLinkDirective, RouterLink, IconDirective],
+    host: {
+      'class': 'example',
+    }
 })
-export class DocsExampleComponent implements AfterContentInit, AfterViewInit {
-  private changeDetectorRef = inject(ChangeDetectorRef);
+export class DocsExampleComponent {
+  readonly #changeDetectorRef = inject(ChangeDetectorRef);
 
+  readonly hrefInput = input<string>('https://coreui.io/angular/docs/', { alias: 'href' });
+  readonly fragment = input<string>();
 
-  @Input() fragment?: string;
-
-  @HostBinding('class.example')
-  get exampleClass() {
-    return true;
-  };
-
-  private _href = 'https://coreui.io/angular/docs/';
-
-  get href(): string {
-    return this._href;
-  }
-
-  @Input()
-  set href(value: string) {
+  readonly href = computed(() => {
     const version = packageJson?.config?.coreui_library_short_version;
     const docsUrl = packageJson?.config?.coreui_library_docs_url ?? 'https://coreui.io/angular/';
-    // const path: string = version ? `${version}/${value}` : '';
-    this._href = `${docsUrl}${value}`;
-  }
-
-  ngAfterContentInit(): void {
-    // this.changeDetectorRef.detectChanges();
-  }
-
-  ngAfterViewInit(): void {
-    this.changeDetectorRef.markForCheck();
-  }
+    const href = this.hrefInput();
+    // const path: string = version ? `${version}/${href}` : `${href}`;
+    const path: string = href;
+    this.#changeDetectorRef.markForCheck();
+    return `${docsUrl}${path}`;
+  });
 }

@@ -1,10 +1,10 @@
 <ng-container>
-  <c-toast-header [closeButton]="closeButton">
+  <c-toast-header [closeButton]="closeButton()">
     <svg class="rounded me-2" focusable="false" height="20" preserveAspectRatio="xMidYMid slice"
          role="img" width="20" xmlns="http://www.w3.org/2000/svg">
       <rect fill="#007aff" height="100%" width="100%"></rect>
     </svg>
-    <strong>{{ title }}</strong>
+    <strong>{{ title() }}</strong>
   </c-toast-header>
   <c-toast-body #toastBody [cToastClose]="toastBody.toast ?? undefined">
     <p class="mb-1">This is a dynamic toast no {{ toastBody.toast?.index() }} {{ toastBody.toast?.clock }}</p>

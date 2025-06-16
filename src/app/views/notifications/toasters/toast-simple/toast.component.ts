@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input } from '@angular/core';
+import { Component, forwardRef, input } from '@angular/core';
 
 import { ProgressComponent, ToastBodyComponent, ToastCloseDirective, ToastComponent, ToastHeaderComponent } from '@coreui/angular';
 
@@ -15,6 +15,6 @@ export class AppToastComponent extends ToastComponent {
     super();
   }
 
-  @Input() closeButton = true;
-  @Input() title = '';
+  readonly closeButton = input(true);
+  readonly title = input('');
 }

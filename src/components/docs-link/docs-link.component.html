@@ -1,9 +1,9 @@
 <div class="float-end">
-  <a href="{{href}}"
+  <a [href]="href()"
      class="card-header-action"
      rel="noreferrer noopener"
      target="_blank"
   >
-    <small class="text-body-secondary">{{text ?? 'docs'}}</small>
+    <small class="text-body-secondary">{{text() ?? 'docs'}}</small>
   </a>
 </div>

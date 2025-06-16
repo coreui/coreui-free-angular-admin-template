@@ -1,4 +1,4 @@
-import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, inject } from '@angular/core';
+import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, input } from '@angular/core';
 import { ChartjsComponent } from '@coreui/angular-chartjs';
 import { IconDirective } from '@coreui/icons-angular';
 import { ColComponent, RowComponent, WidgetStatDComponent } from '@coreui/angular';
@@ -24,7 +24,7 @@ export class WidgetsBrandComponent implements AfterContentInit {
   private changeDetectorRef = inject(ChangeDetectorRef);
 
 
-  @Input() withCharts?: boolean;
+  readonly withCharts = input<boolean>();
   // @ts-ignore
   chartOptions = {
     elements: {
