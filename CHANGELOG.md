@@ -2,6 +2,32 @@
 
 ---
 
+#### `5.5.1`
+
+- chore(dependencies): update to `Angular 20`
+  - update `@angular/*` to `^20.0.x`
+  - update `typescript` to `~5.8.3`
+  - move `@angular/localize` to `dependencies` for use at runtime
+  - update `@coreui/angular` to `~5.5.1`
+  - update `@coreui/angular-chartjs` to `~5.5.1`
+  - update `@coreui/icons-angular` to `~5.5.1`
+  - update `moduleResolution` to `bundler` in TypeScript configurations
+  - migrate application project to the new build system with `application` builder
+  - update imports of `DOCUMENT` from `@angular/common` to `@angular/core`
+  - update Node.js version list to the supported versions
+  
+- fix(dashboard): `TS2307`: Cannot find module `chart.js/dist/types/utils` or its corresponding type declarations. `[plugin angular-compiler]` - tempfix
+- refactor: migrate to `inject` function (remove constructor-based dependency injection)
+- refactor(toasters): use ComponentRef `setInput()` api
+- refactor: migration to signal inputs, host bindings, cleanups
+- refactor: migration to signal queries
+- fix(mainChart): chart.js - Cannot read properties of undefined _clip (reading 'disabled')  - fixed by stop() current animations
+- test: remove deprecated RouterTestingModule, use provideRouter() instead
+- refactor: migration to lazy-loaded routes
+- refactor: migration to self-closing tags
+
+---
+
 #### `5.4.6`
 
 - chore(dependencies): update
