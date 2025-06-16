@@ -2,6 +2,13 @@
 
 ---
 
+#### `5.4.6`
+
+- chore(dependencies): update
+- fix(pages): obsolete css class used in login page example, closes #279 - thanks @bernik1980
+
+---
+
 #### `5.4.5`
 
 - chore(dependencies): update
