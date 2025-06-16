@@ -303,7 +303,7 @@
       <button [cModalToggle]="scrollingLongContentModal.id" cButtonClose></button>
     </c-modal-header>
     <c-modal-body>
-      <ng-container *ngTemplateOutlet="longContent"></ng-container>
+      <ng-container *ngTemplateOutlet="longContent" />
     </c-modal-body>
     <c-modal-footer>
       <button [cModalToggle]="scrollingLongContentModal.id" cButton color="secondary">
@@ -322,7 +322,7 @@
       <button [cModalToggle]="scrollableLongContentModal.id" cButtonClose></button>
     </c-modal-header>
     <c-modal-body>
-      <ng-container *ngTemplateOutlet="longContent"></ng-container>
+      <ng-container *ngTemplateOutlet="longContent" />
     </c-modal-body>
     <c-modal-footer>
       <button [cModalToggle]="scrollableLongContentModal.id" cButton color="secondary">

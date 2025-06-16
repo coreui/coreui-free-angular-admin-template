@@ -49,7 +49,7 @@ export class ColorsComponent implements OnInit, AfterViewInit {
   template: `
     <c-col xl="2" md="4" sm="6" xs="12" class="my-4 ms-4">
       <div [ngClass]="colorClasses()" style="padding-top: 75%;"></div>
-      <ng-content></ng-content>
+      <ng-content />
     </c-col>
   `,
   imports: [ColComponent, NgClass],
