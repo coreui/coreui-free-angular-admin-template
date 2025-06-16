@@ -57,7 +57,7 @@
     "karma-coverage": "^2.2.1",
     "karma-jasmine": "^5.1.0",
     "karma-jasmine-html-reporter": "^2.1.0",
-    "typescript": "~5.7.3"
+    "typescript": "~5.8.3"
   },
   "engines": {
     "node": "^18.19.1 || ^20.11.1 || ^22.0.0",
