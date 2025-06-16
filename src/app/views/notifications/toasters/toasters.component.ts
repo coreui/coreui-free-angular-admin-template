@@ -1,5 +1,5 @@
 import { JsonPipe, NgClass, NgStyle, SlicePipe } from '@angular/common';
-import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Component, OnInit, viewChildren } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ReactiveFormsModule, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -72,7 +72,7 @@ export class ToastersComponent implements OnInit {
     filter(e => e.autohide !== this.autohide)
   );
 
-  @ViewChildren(ToasterComponent) viewChildren!: QueryList<ToasterComponent>;
+  readonly toasterComponents = viewChildren(ToasterComponent);
 
   ngOnInit(): void {
     this.formChanges.subscribe(e => {
@@ -87,7 +87,7 @@ export class ToastersComponent implements OnInit {
 
   addToast() {
     const formValues = this.toasterForm.value;
-    const toasterPosition = this.viewChildren.filter(item => item.placement === this.toasterForm.value.position);
+    const toasterPosition = this.toasterComponents().filter(item => item.placement === this.toasterForm.value.position);
     toasterPosition.forEach((item) => {
       const title = `Toast ${formValues.color} ${formValues.position}`;
       const { position, ...props } = { ...formValues, title, position: formValues.position };
