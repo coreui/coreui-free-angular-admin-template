@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { DefaultLayoutComponent } from './layout';
 
 export const routes: Routes = [
   {
@@ -9,7 +8,7 @@ export const routes: Routes = [
   },
   {
     path: '',
-    component: DefaultLayoutComponent,
+    loadComponent: () => import('./layout').then(m => m.DefaultLayoutComponent),
     data: {
       title: 'Home'
     },

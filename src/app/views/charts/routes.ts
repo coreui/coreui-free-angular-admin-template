@@ -1,13 +1,7 @@
 import { Routes } from '@angular/router';
 
-import { ChartsComponent } from './charts.component';
-
-export const routes: Routes = [
-  {
-    path: '',
-    component: ChartsComponent,
-    data: {
-      title: 'Charts'
-    }
+export const routes: Routes = [{
+  path: '', loadComponent: () => import('./charts.component').then(m => m.ChartsComponent), data: {
+    title: 'Charts'
   }
-];
+}];
