@@ -92,7 +92,7 @@ export class ToastersComponent implements OnInit {
       const title = `Toast ${formValues.color} ${formValues.position}`;
       const { position, ...props } = { ...formValues, title, position: formValues.position };
       const componentRef = item.addToast(AppToastComponent, props, {});
-      componentRef.instance['closeButton'] = props.closeButton;
+      componentRef.setInput('closeButton', props.closeButton)
     });
   }
 }
