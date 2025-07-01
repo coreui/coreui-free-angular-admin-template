@@ -2,6 +2,14 @@
 
 ---
 
+#### `5.5.3`
+
+- chore(dependencies): update
+- chore: add docs-components and docs-icons, minor cleanups
+- refactor(navItems): add pro components docs links
+
+---
+
 #### `5.5.1`
 
 - chore(dependencies): update to `Angular 20`
