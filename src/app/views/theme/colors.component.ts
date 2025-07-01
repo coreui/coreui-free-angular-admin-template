@@ -67,6 +67,6 @@ export class ThemeColorComponent {
       [`bg-${color}`]: !!color
     };
   });
-  
+
 }
 

@@ -1,18 +1,15 @@
 import { Component } from '@angular/core';
-import { DocsExampleComponent } from '@docs-components/public-api';
-import { RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, ButtonDirective, CollapseDirective } from '@coreui/angular';
+import { ButtonDirective, CardBodyComponent, CardComponent, CardHeaderComponent, ColComponent, CollapseDirective, RowComponent } from '@coreui/angular';
+import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/public-api';
 
 @Component({
-    selector: 'app-collapses',
-    templateUrl: './collapses.component.html',
-    styleUrls: ['./collapses.component.scss'],
-    imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, ButtonDirective, CollapseDirective]
+  selector: 'app-collapses',
+  templateUrl: './collapses.component.html',
+  imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, ButtonDirective, CollapseDirective, DocsComponentsComponent]
 })
 export class CollapsesComponent {
 
   collapses = [false, false, false, false];
-
-  constructor() { }
 
   toggleCollapse(id: number): void {
     // @ts-ignore

@@ -1,11 +1,12 @@
-<c-row>
+<c-row ngPreserveWhitespaces>
   <c-col xs="12">
+    <app-docs-components href="components/modal" title="Modal" />
     <c-card class="mb-4">
       <c-card-header>
         <strong>Angular Modal</strong>
       </c-card-header>
       <c-card-body>
-        <p class="text-body-secondary small" ngPreserveWhitespaces>
+        <p class="text-body-secondary small">
           Below is a static modal example (meaning its <code>position</code> and
           <code>display</code> have been overridden). Included are the modal header, modal body
           (required for <code>padding</code>), and modal footer (optional). We ask that you
@@ -36,7 +37,7 @@
   </c-col>
   <c-col xs="12">
     <c-card class="mb-4">
-      <c-card-header ngPreserveWhitespaces>
+      <c-card-header>
         <strong>Angular Modal</strong> <small>Live demo</small>
       </c-card-header>
       <c-card-body>
@@ -52,7 +53,7 @@
   </c-col>
   <c-col xs="12">
     <c-card class="mb-4">
-      <c-card-header ngPreserveWhitespaces>
+      <c-card-header>
         <strong>Angular Modal</strong> <small>Static backdrop</small>
       </c-card-header>
       <c-card-body>
@@ -69,7 +70,7 @@
   </c-col>
   <c-col xs="12">
     <c-card class="mb-4">
-      <c-card-header ngPreserveWhitespaces>
+      <c-card-header>
         <strong>Angular Modal</strong> <small>Scrolling long content</small>
       </c-card-header>
       <c-card-body>
@@ -79,7 +80,7 @@
         <app-docs-example href="components/modal#scrolling-long-content">
           <ng-container *ngTemplateOutlet="scrollingLongContent" />
         </app-docs-example>
-        <p class="text-body-secondary small" ngPreserveWhitespaces>
+        <p class="text-body-secondary small">
           You can also create a scrollable modal that allows scroll the modal body by adding <code>scrollable</code>
           prop.
         </p>
@@ -91,7 +92,7 @@
   </c-col>
   <c-col xs="12">
     <c-card class="mb-4">
-      <c-card-header ngPreserveWhitespaces>
+      <c-card-header>
         <strong>Angular Modal</strong> <small>Vertically centered</small>
       </c-card-header>
       <c-card-body>
@@ -110,7 +111,7 @@
   </c-col>
   <c-col xs="12">
     <c-card class="mb-4">
-      <c-card-header ngPreserveWhitespaces>
+      <c-card-header>
         <strong>Angular Modal</strong> <small>Tooltips and popovers</small>
       </c-card-header>
       <c-card-body>
@@ -127,11 +128,11 @@
   </c-col>
   <c-col xs="12">
     <c-card class="mb-4">
-      <c-card-header ngPreserveWhitespaces>
+      <c-card-header>
         <strong>Angular Modal</strong> <small>Optional sizes</small>
       </c-card-header>
       <c-card-body>
-        <p class="text-body-secondary small" ngPreserveWhitespaces>
+        <p class="text-body-secondary small">
           Modals have three optional sizes, available via modifier classes to be placed on a
           <code>&lt;c-modal&gt;</code>. These sizes kick in at certain breakpoints to avoid
           horizontal scrollbars on narrower viewports.
@@ -189,7 +190,7 @@
   </c-col>
   <c-col xs="12">
     <c-card class="mb-4">
-      <c-card-header ngPreserveWhitespaces>
+      <c-card-header>
         <strong>Angular Modal</strong> <small>Fullscreen Modal</small>
       </c-card-header>
       <c-card-body>

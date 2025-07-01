@@ -1,5 +1,6 @@
 <c-row>
   <c-col xs="12">
+    <app-docs-components href="components/toast" title="Toast" />
     @for (pos of positions | slice : 1; track pos) {
       <c-toaster [ngClass]="'p-3'" position="fixed" placement="{{pos}}" />
     }
@@ -69,12 +70,12 @@
                   <c-toast-header>Toast title</c-toast-header>
                   <c-toast-body>This is a static toast in a static toaster</c-toast-body>
                 </c-toast>
-                <c-toast [fade]="true" [visible]="true" color="dark" >
+                <c-toast [fade]="true" [visible]="true" color="dark" cTextColor="light">
                   <c-toast-header [closeButton]="false">Toast title</c-toast-header>
-                  <c-toast-body cTextColor="secondary">This is a static toast in a static toaster</c-toast-body>
+                  <c-toast-body>This is a static toast in a static toaster</c-toast-body>
                 </c-toast>
                 <app-toast-simple #toast [autohide]="false" [fade]="true" [visible]="true" [title]="'App Toast'"
-                                  color="secondary">
+                                  color="secondary" cTextColor="light">
                   This is a toast in static positioned App toaster! {{ toast.index() }}
                 </app-toast-simple>
               </c-toaster>

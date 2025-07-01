@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { DocsExampleComponent } from '@docs-components/public-api';
 import {
   CardBodyComponent,
   CardComponent,
@@ -10,11 +9,12 @@ import {
   ProgressStackedComponent,
   RowComponent
 } from '@coreui/angular';
+import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/public-api';
 
 @Component({
   selector: 'app-progress',
   templateUrl: './progress.component.html',
-  imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, ProgressStackedComponent, ProgressComponent, ProgressBarComponent]
+  imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, ProgressStackedComponent, ProgressComponent, ProgressBarComponent, DocsComponentsComponent]
 })
 export class AppProgressComponent {
 

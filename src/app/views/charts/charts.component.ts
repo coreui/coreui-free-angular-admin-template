@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
 import { ChartData } from 'chart.js';
 import { ChartjsComponent } from '@coreui/angular-chartjs';
-import { RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent } from '@coreui/angular';
+import { CardBodyComponent, CardComponent, CardHeaderComponent, ColComponent, RowComponent } from '@coreui/angular';
 import { DocsCalloutComponent } from '@docs-components/public-api';
 
 @Component({
-    selector: 'app-charts',
-    templateUrl: './charts.component.html',
-    styleUrls: ['./charts.component.scss'],
-    imports: [RowComponent, ColComponent, DocsCalloutComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, ChartjsComponent]
+  selector: 'app-charts',
+  templateUrl: './charts.component.html',
+  imports: [RowComponent, ColComponent, DocsCalloutComponent, CardComponent, CardHeaderComponent, CardBodyComponent, ChartjsComponent]
 })
 export class ChartsComponent {
 

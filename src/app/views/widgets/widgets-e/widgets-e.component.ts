@@ -1,18 +1,16 @@
 import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
 import { getStyle } from '@coreui/utils';
 import { ChartjsComponent } from '@coreui/angular-chartjs';
-import { RowComponent, ColComponent, WidgetStatEComponent, TextColorDirective } from '@coreui/angular';
+import { ColComponent, RowComponent, WidgetStatEComponent } from '@coreui/angular';
 
 @Component({
-    selector: 'app-widgets-e',
-    templateUrl: './widgets-e.component.html',
-    styleUrls: ['./widgets-e.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Default,
-    imports: [RowComponent, ColComponent, TextColorDirective, WidgetStatEComponent, ChartjsComponent]
+  selector: 'app-widgets-e',
+  templateUrl: './widgets-e.component.html',
+  changeDetection: ChangeDetectionStrategy.Default,
+  imports: [RowComponent, ColComponent, WidgetStatEComponent, ChartjsComponent]
 })
 export class WidgetsEComponent implements AfterContentInit {
   private changeDetectorRef = inject(ChangeDetectorRef);
-
 
   constructor() {
     this.prepareLabels();

@@ -14,15 +14,13 @@ type BrandData = {
 }
 
 @Component({
-    selector: 'app-widgets-brand',
-    templateUrl: './widgets-brand.component.html',
-    styleUrls: ['./widgets-brand.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Default,
-    imports: [RowComponent, ColComponent, WidgetStatDComponent, IconDirective, ChartjsComponent]
+  selector: 'app-widgets-brand',
+  templateUrl: './widgets-brand.component.html',
+  changeDetection: ChangeDetectionStrategy.Default,
+  imports: [RowComponent, ColComponent, WidgetStatDComponent, IconDirective, ChartjsComponent]
 })
 export class WidgetsBrandComponent implements AfterContentInit {
   private changeDetectorRef = inject(ChangeDetectorRef);
-
 
   readonly withCharts = input<boolean>();
   // @ts-ignore

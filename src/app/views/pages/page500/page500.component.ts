@@ -1,15 +1,18 @@
 import { Component } from '@angular/core';
 import { IconDirective } from '@coreui/icons-angular';
-import { ContainerComponent, RowComponent, ColComponent, InputGroupComponent, InputGroupTextDirective, FormControlDirective, ButtonDirective } from '@coreui/angular';
+import {
+  ButtonDirective,
+  ColComponent,
+  ContainerComponent,
+  FormControlDirective,
+  InputGroupComponent,
+  InputGroupTextDirective,
+  RowComponent
+} from '@coreui/angular';
 
 @Component({
-    selector: 'app-page500',
-    templateUrl: './page500.component.html',
-    styleUrls: ['./page500.component.scss'],
-    imports: [ContainerComponent, RowComponent, ColComponent, InputGroupComponent, InputGroupTextDirective, IconDirective, FormControlDirective, ButtonDirective]
+  selector: 'app-page500',
+  templateUrl: './page500.component.html',
+  imports: [ContainerComponent, RowComponent, ColComponent, InputGroupComponent, InputGroupTextDirective, IconDirective, FormControlDirective, ButtonDirective]
 })
-export class Page500Component {
-
-  constructor() { }
-
-}
+export class Page500Component {}

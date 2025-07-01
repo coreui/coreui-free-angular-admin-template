@@ -1,5 +1,6 @@
 <c-row ngPreserveWhitespaces>
   <c-col xs="12">
+    <app-docs-components href="components/button-group" title="Button Group" />
     <c-card class="mb-4">
       <c-card-header>
         <strong>Angular Button Group</strong> <span>Basic example</span>
@@ -87,15 +88,15 @@
         <app-docs-example href="components/button-group#checkbox-and-radio-button-groups">
           <form [formGroup]="formCheck1">
             <c-button-group aria-label="Basic checkbox toggle button group" role="group">
-              <input class="btn-check" formControlName="checkbox1" type="checkbox"/>
+              <input class="btn-check" formControlName="checkbox1" type="checkbox" />
               <label (click)="setCheckBoxValue('checkbox1')" cButton cFormCheckLabel
                      variant="outline">Checkbox 1</label>
 
-              <input class="btn-check" formControlName="checkbox2" type="checkbox"/>
+              <input class="btn-check" formControlName="checkbox2" type="checkbox" />
               <label (click)="setCheckBoxValue('checkbox2')" cButton cFormCheckLabel
                      variant="outline">Checkbox 2</label>
 
-              <input class="btn-check" formControlName="checkbox3" type="checkbox"/>
+              <input class="btn-check" formControlName="checkbox3" type="checkbox" />
               <label (click)="setCheckBoxValue('checkbox3')" cButton cFormCheckLabel variant="outline">Checkbox
                 3</label>
             </c-button-group>
@@ -105,15 +106,15 @@
         <app-docs-example href="components/button-group#checkbox-and-radio-button-groups">
           <form [formGroup]="formRadio1">
             <c-button-group aria-label="Basic radio toggle button group" role="group">
-              <input class="btn-check" formControlName="radio1" type="radio" value="Radio1"/>
+              <input class="btn-check" formControlName="radio1" type="radio" value="Radio1" />
               <label (click)="setRadioValue('Radio1')" cButton cFormCheckLabel
                      variant="outline">Radio 1</label>
 
-              <input class="btn-check" formControlName="radio1" type="radio" value="Radio2"/>
+              <input class="btn-check" formControlName="radio1" type="radio" value="Radio2" />
               <label (click)="setRadioValue('Radio2')" cButton cFormCheckLabel
                      variant="outline">Radio 2</label>
 
-              <input class="btn-check" formControlName="radio1" type="radio" value="Radio3"/>
+              <input class="btn-check" formControlName="radio1" type="radio" value="Radio3" />
               <label (click)="setRadioValue('Radio3')" cButton cFormCheckLabel variant="outline">Radio 3</label>
             </c-button-group>
           </form>
@@ -233,7 +234,7 @@
               Right
             </button>
           </c-button-group>
-          <br/>
+          <br />
           <c-button-group aria-label="Default button group" class="m-1" role="group">
             <button cButton color="dark" variant="outline">
               Left
@@ -245,7 +246,7 @@
               Right
             </button>
           </c-button-group>
-          <br/>
+          <br />
           <c-button-group aria-label="Small button group" class="m-1" role="group" size="sm">
             <button cButton color="dark" variant="outline">
               Left
@@ -374,15 +375,15 @@
         <app-docs-example href="components/button-group/#vertical-variation">
           <form [formGroup]="formRadio1">
             <c-button-group [vertical]="true" aria-label="Vertical button group" role="group">
-              <input class="btn-check" formControlName="radio1" type="radio" value="Radio1"/>
+              <input class="btn-check" formControlName="radio1" type="radio" value="Radio1" />
               <label (click)="setRadioValue('Radio1')" cButton cFormCheckLabel color="danger"
                      variant="outline">Radio 1</label>
 
-              <input class="btn-check" formControlName="radio1" type="radio" value="Radio2"/>
+              <input class="btn-check" formControlName="radio1" type="radio" value="Radio2" />
               <label (click)="setRadioValue('Radio2')" cButton cFormCheckLabel color="danger"
                      variant="outline">Radio 2</label>
 
-              <input class="btn-check" formControlName="radio1" type="radio" value="Radio3"/>
+              <input class="btn-check" formControlName="radio1" type="radio" value="Radio3" />
               <label (click)="setRadioValue('Radio3')" cButton cFormCheckLabel color="danger" variant="outline">Radio
                 3</label>
             </c-button-group>

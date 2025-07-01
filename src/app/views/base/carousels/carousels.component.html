@@ -1,5 +1,6 @@
 <c-row ngPreserveWhitespaces>
   <c-col xs="12">
+    <app-docs-components href="components/carousel" title="Carousel" />
     <c-card class="mb-4">
       <c-card-header>
         <strong>Angular Carousel</strong> <small>Slide only</small>
@@ -101,45 +102,45 @@
           You can attach the indicators to the carousel, lengthwise the controls, too.
         </p>
         <app-docs-example href="components/carousel/#with-indicators">
-<c-carousel (itemChange)="onItemChange($event)" [activeIndex]="1" [dark]="true" [interval]="5000" direction="prev">
-  <c-carousel-indicators />
-<!--  <c-carousel-indicators #indicators="cCarouselIndicators">-->
-<!--    <ng-template cTemplateId="carouselIndicatorsTemplate">-->
-<!--      @for (slide of slides[0]; track slide; let i = $index) {-->
-<!--        <button-->
-<!--          [attr.data-coreui-target]="i"-->
-<!--          type="button"-->
-<!--          (click)="indicators.onClick(i)"-->
-<!--          [class]="{ active: indicators.active === i }"-->
-<!--          [attr.aria-current]="indicators.active === i"-->
-<!--          [cBorder]="true"-->
-<!--          style="height: auto;"-->
-<!--          cRounded="pill"-->
-<!--        >-->
-<!--          <img-->
-<!--            [src]="slide.src"-->
-<!--            alt="{{slide.title}}"-->
-<!--            class="d-flex w-100"-->
-<!--            loading="lazy"-->
-<!--            cRounded="pill"-->
-<!--          />-->
-<!--        </button>-->
-<!--      }-->
-<!--    </ng-template>-->
-<!--  </c-carousel-indicators>-->
-  <c-carousel-inner>
-    @for (slide of slides[0]; track slide.src) {
-      <c-carousel-item>
-        <img
-          [src]="slide.src"
-          alt="{{slide.title}}"
-          class="d-block w-100"
-          loading="lazy"
-        />
-      </c-carousel-item>
-    }
-  </c-carousel-inner>
-</c-carousel>
+          <c-carousel (itemChange)="onItemChange($event)" [activeIndex]="1" [dark]="true" [interval]="5000" direction="prev">
+            <c-carousel-indicators />
+            <!--  <c-carousel-indicators #indicators="cCarouselIndicators">-->
+            <!--    <ng-template cTemplateId="carouselIndicatorsTemplate">-->
+            <!--      @for (slide of slides[0]; track slide; let i = $index) {-->
+            <!--        <button-->
+            <!--          [attr.data-coreui-target]="i"-->
+            <!--          type="button"-->
+            <!--          (click)="indicators.onClick(i)"-->
+            <!--          [class]="{ active: indicators.active === i }"-->
+            <!--          [attr.aria-current]="indicators.active === i"-->
+            <!--          [cBorder]="true"-->
+            <!--          style="height: auto;"-->
+            <!--          cRounded="pill"-->
+            <!--        >-->
+            <!--          <img-->
+            <!--            [src]="slide.src"-->
+            <!--            alt="{{slide.title}}"-->
+            <!--            class="d-flex w-100"-->
+            <!--            loading="lazy"-->
+            <!--            cRounded="pill"-->
+            <!--          />-->
+            <!--        </button>-->
+            <!--      }-->
+            <!--    </ng-template>-->
+            <!--  </c-carousel-indicators>-->
+            <c-carousel-inner>
+              @for (slide of slides[0]; track slide.src) {
+                <c-carousel-item>
+                  <img
+                    [src]="slide.src"
+                    alt="{{slide.title}}"
+                    class="d-block w-100"
+                    loading="lazy"
+                  />
+                </c-carousel-item>
+              }
+            </c-carousel-inner>
+          </c-carousel>
         </app-docs-example>
       </c-card-body>
     </c-card>

@@ -1,21 +1,31 @@
 import { Component, inject } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, AccordionComponent, AccordionItemComponent, TemplateIdDirective, AccordionButtonDirective, BgColorDirective } from '@coreui/angular';
-import { DocsExampleComponent } from '@docs-components/public-api';
+import {
+  AccordionButtonDirective,
+  AccordionComponent,
+  AccordionItemComponent,
+  BgColorDirective,
+  CardBodyComponent,
+  CardComponent,
+  CardHeaderComponent,
+  ColComponent,
+  RowComponent,
+  TemplateIdDirective
+} from '@coreui/angular';
+import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/public-api';
 
 @Component({
-    selector: 'app-accordions',
-    templateUrl: './accordions.component.html',
-    styleUrls: ['./accordions.component.scss'],
-    imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, AccordionComponent, AccordionItemComponent, TemplateIdDirective, AccordionButtonDirective, BgColorDirective]
+  selector: 'app-accordions',
+  templateUrl: './accordions.component.html',
+  styleUrls: ['./accordions.component.scss'],
+  imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, AccordionComponent, AccordionItemComponent, TemplateIdDirective, AccordionButtonDirective, BgColorDirective, DocsComponentsComponent]
 })
 export class AccordionsComponent {
   private sanitizer = inject(DomSanitizer);
 
-
   items = [1, 2, 3, 4];
 
-  getAccordionBodyText(value: string|number) {
+  getAccordionBodyText(value: string | number) {
     const textSample = `
       <strong>This is the <mark>#${value}</mark> item accordion body.</strong> It is hidden by
       default, until the collapse plugin adds the appropriate classes that we use to

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { DocsExampleComponent } from '@docs-components/public-api';
 import {
   BgColorDirective,
   ButtonDirective,
@@ -16,13 +15,11 @@ import {
   PlaceholderDirective,
   RowComponent
 } from '@coreui/angular';
+import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/public-api';
 
 @Component({
-    selector: 'app-placeholders',
-    templateUrl: './placeholders.component.html',
-    styleUrls: ['./placeholders.component.scss'],
-    imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, CardImgDirective, CardTitleDirective, CardTextDirective, ButtonDirective, ColDirective, RouterLink, PlaceholderAnimationDirective, PlaceholderDirective, BgColorDirective]
+  selector: 'app-placeholders',
+  templateUrl: './placeholders.component.html',
+  imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, CardImgDirective, CardTitleDirective, CardTextDirective, ButtonDirective, ColDirective, RouterLink, PlaceholderAnimationDirective, PlaceholderDirective, BgColorDirective, DocsComponentsComponent]
 })
-export class PlaceholdersComponent {
-
-}
+export class PlaceholdersComponent {}

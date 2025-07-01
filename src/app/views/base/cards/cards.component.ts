@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgTemplateOutlet } from '@angular/common';
-import { DocsExampleComponent } from '@docs-components/public-api';
 import {
   BorderDirective,
   ButtonDirective,
@@ -26,6 +25,7 @@ import {
   TabsContentComponent,
   TabsListComponent
 } from '@coreui/angular';
+import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/public-api';
 
 type CardColor = {
   color: string
@@ -33,10 +33,9 @@ type CardColor = {
 }
 
 @Component({
-    selector: 'app-cards',
-    templateUrl: './cards.component.html',
-    styleUrls: ['./cards.component.scss'],
-  imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, NgTemplateOutlet, CardTitleDirective, CardTextDirective, ButtonDirective, CardSubtitleDirective, CardLinkDirective, RouterLink, ListGroupDirective, ListGroupItemDirective, CardFooterComponent, BorderDirective, CardGroupComponent, GutterDirective, CardImgDirective, TabsComponent, TabsListComponent, TabDirective, TabsContentComponent, TabPanelComponent]
+  selector: 'app-cards',
+  templateUrl: './cards.component.html',
+  imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, NgTemplateOutlet, CardTitleDirective, CardTextDirective, ButtonDirective, CardSubtitleDirective, CardLinkDirective, RouterLink, ListGroupDirective, ListGroupItemDirective, CardFooterComponent, BorderDirective, CardGroupComponent, GutterDirective, CardImgDirective, TabsComponent, TabsListComponent, TabDirective, TabsContentComponent, TabPanelComponent, DocsComponentsComponent]
 })
 export class CardsComponent {
 
@@ -53,6 +52,6 @@ export class CardsComponent {
 
   imgContext = { $implicit: 'top', bottom: 'bottom' };
 
-  tabs = ['Active', 'List', 'Disabled']
+  tabs = ['Active', 'List', 'Disabled'];
 
 }

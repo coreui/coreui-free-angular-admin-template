@@ -13,25 +13,26 @@ import {
   TabsListComponent
 } from '@coreui/angular';
 import { IconDirective } from '@coreui/icons-angular';
+import { DocsComponentsComponent } from '@docs-components/docs-components/docs-components.component';
 
 @Component({
-    selector: 'app-tabs',
-    templateUrl: './tabs.component.html',
-    styleUrls: ['./tabs.component.scss'],
-    imports: [
-        CardBodyComponent,
-        CardComponent,
-        CardHeaderComponent,
-        ColComponent,
-        RoundedDirective,
-        RowComponent,
-        TabDirective,
-        TabPanelComponent,
-        TabsComponent,
-        TabsContentComponent,
-        TabsListComponent,
-        IconDirective
-    ]
+  selector: 'app-tabs',
+  templateUrl: './tabs.component.html',
+  imports: [
+    CardBodyComponent,
+    CardComponent,
+    CardHeaderComponent,
+    ColComponent,
+    RoundedDirective,
+    RowComponent,
+    TabDirective,
+    TabPanelComponent,
+    TabsComponent,
+    TabsContentComponent,
+    TabsListComponent,
+    IconDirective,
+    DocsComponentsComponent
+  ]
 })
 export class AppTabsComponent {
 

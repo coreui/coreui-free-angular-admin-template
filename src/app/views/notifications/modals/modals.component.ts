@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
-import { DocsExampleComponent } from '@docs-components/public-api';
 import {
   ButtonCloseDirective,
   ButtonDirective,
@@ -16,16 +15,14 @@ import {
   ModalToggleDirective,
   PopoverDirective,
   RowComponent,
-  TextColorDirective,
-  ThemeDirective,
   TooltipDirective
 } from '@coreui/angular';
+import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/public-api';
 
 @Component({
-    selector: 'app-modals',
-    templateUrl: './modals.component.html',
-    styleUrls: ['./modals.component.scss'],
-    imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, ModalComponent, ModalHeaderComponent, ModalTitleDirective, ThemeDirective, ButtonCloseDirective, ModalBodyComponent, ModalFooterComponent, ButtonDirective, NgTemplateOutlet, ModalToggleDirective, PopoverDirective, TooltipDirective]
+  selector: 'app-modals',
+  templateUrl: './modals.component.html',
+  imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, ModalComponent, ModalHeaderComponent, ModalTitleDirective, ButtonCloseDirective, ModalBodyComponent, ModalFooterComponent, ButtonDirective, NgTemplateOutlet, ModalToggleDirective, PopoverDirective, TooltipDirective, DocsComponentsComponent]
 })
 export class ModalsComponent {
 

@@ -1,16 +1,20 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { DocsExampleComponent } from '@docs-components/public-api';
-import { RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, PaginationComponent, PageItemComponent, PageLinkDirective } from '@coreui/angular';
+import {
+  CardBodyComponent,
+  CardComponent,
+  CardHeaderComponent,
+  ColComponent,
+  PageItemComponent,
+  PageLinkDirective,
+  PaginationComponent,
+  RowComponent
+} from '@coreui/angular';
+import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/public-api';
 
 @Component({
-    selector: 'app-paginations',
-    templateUrl: './paginations.component.html',
-    styleUrls: ['./paginations.component.scss'],
-    imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, PaginationComponent, PageItemComponent, PageLinkDirective, RouterLink]
+  selector: 'app-paginations',
+  templateUrl: './paginations.component.html',
+  imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, PaginationComponent, PageItemComponent, PageLinkDirective, RouterLink, DocsComponentsComponent]
 })
-export class PaginationsComponent {
-
-  constructor() { }
-
-}
+export class PaginationsComponent {}

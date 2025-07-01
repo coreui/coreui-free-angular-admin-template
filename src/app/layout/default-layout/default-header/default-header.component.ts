@@ -25,8 +25,8 @@ import {
 import { IconDirective } from '@coreui/icons-angular';
 
 @Component({
-    selector: 'app-default-header',
-    templateUrl: './default-header.component.html',
+  selector: 'app-default-header',
+  templateUrl: './default-header.component.html',
   imports: [ContainerComponent, HeaderTogglerDirective, SidebarToggleDirective, IconDirective, HeaderNavComponent, NavItemComponent, NavLinkDirective, RouterLink, RouterLinkActive, NgTemplateOutlet, BreadcrumbRouterComponent, DropdownComponent, DropdownToggleDirective, AvatarComponent, DropdownMenuDirective, DropdownHeaderDirective, DropdownItemDirective, BadgeComponent, DropdownDividerDirective]
 })
 export class DefaultHeaderComponent extends HeaderComponent {
@@ -93,9 +93,9 @@ export class DefaultHeaderComponent extends HeaderComponent {
       message: 'Team, it\'s time for our monthly inventory check. Accurate counts ensure smooth operations. Let\'s nail it...'
     },
     {
-      id: 3,
+      id: 4,
       from: 'Ryan Miller',
-      avatar: '4.jpg',
+      avatar: '3.jpg',
       status: 'info',
       title: 'Customer Feedback Results',
       time: '3 days ago',
