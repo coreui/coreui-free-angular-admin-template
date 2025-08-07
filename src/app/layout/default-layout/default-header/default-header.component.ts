@@ -1,6 +1,6 @@
-import { NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet, NgIf, NgFor } from '@angular/common';
 import { Component, computed, inject, input } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink, RouterLinkActive, Router } from '@angular/router';
 
 import {
   AvatarComponent,
@@ -23,16 +23,21 @@ import {
 } from '@coreui/angular';
 
 import { IconDirective } from '@coreui/icons-angular';
+import { AuthService, User } from '../../../services/auth.service';
+import { NavigationService } from '../../../services/navigation.service';
 
 @Component({
   selector: 'app-default-header',
   templateUrl: './default-header.component.html',
-  imports: [ContainerComponent, HeaderTogglerDirective, SidebarToggleDirective, IconDirective, HeaderNavComponent, NavItemComponent, NavLinkDirective, RouterLink, RouterLinkActive, NgTemplateOutlet, BreadcrumbRouterComponent, DropdownComponent, DropdownToggleDirective, AvatarComponent, DropdownMenuDirective, DropdownHeaderDirective, DropdownItemDirective, BadgeComponent, DropdownDividerDirective]
+  imports: [ContainerComponent, HeaderTogglerDirective, SidebarToggleDirective, IconDirective, HeaderNavComponent, NavLinkDirective, RouterLink, NgTemplateOutlet, NgIf, NgFor, BreadcrumbRouterComponent, DropdownComponent, DropdownToggleDirective, AvatarComponent, DropdownMenuDirective, DropdownHeaderDirective, DropdownItemDirective, BadgeComponent, DropdownDividerDirective]
 })
 export class DefaultHeaderComponent extends HeaderComponent {
 
   readonly #colorModeService = inject(ColorModeService);
   readonly colorMode = this.#colorModeService.colorMode;
+
+  currentUser: User | null = null;
+  selectedRole: string = '';
 
   readonly colorModes = [
     { name: 'light', text: 'Light', icon: 'cilSun' },
@@ -45,11 +50,45 @@ export class DefaultHeaderComponent extends HeaderComponent {
     return this.colorModes.find(mode => mode.name === currentMode)?.icon ?? 'cilSun';
   });
 
-  constructor() {
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private navigationService: NavigationService
+  ) {
     super();
+    // Initialize selectedRole from localStorage first
+    const savedRole = localStorage.getItem('selectedRole');
+    if (savedRole) {
+      this.selectedRole = savedRole;
+    }
+    
+    // Subscribe to current user changes
+    this.authService.currentUser$.subscribe(user => {
+      this.currentUser = user;
+      // Initialize selected role with first role if available
+      if (user?.roles && user.roles.length > 0) {
+        // Try to get saved role from localStorage, otherwise use first role
+        const savedRole = localStorage.getItem('selectedRole');
+        this.selectedRole = savedRole && user.roles.includes(savedRole) ? savedRole : user.roles[0];
+        
+        // Update navigation based on selected role
+        this.navigationService.updateNavigation(this.selectedRole);
+      }
+    });
   }
 
   sidebarId = input('sidebar1');
+
+  onRoleChange(role: string): void {
+    this.selectedRole = role;
+    localStorage.setItem('selectedRole', role);
+    
+    // Update navigation based on new role
+    this.navigationService.updateNavigation(role);
+    
+    // Here you can add logic to handle role changes
+    // For example, update permissions, redirect, etc.
+  }
 
   public newMessages = [
     {
@@ -125,5 +164,22 @@ export class DefaultHeaderComponent extends HeaderComponent {
     { id: 3, title: 'Add new layouts', value: 75, color: 'info' },
     { id: 4, title: 'Angular Version', value: 100, color: 'success' }
   ];
+
+  logout(): void {
+    this.authService.logout().subscribe({
+      next: () => {
+        this.router.navigateByUrl('/login', { 
+          replaceUrl: true,
+          state: { message: 'You have been successfully logged out.' }
+        });
+      },
+      error: (error) => {
+        this.router.navigateByUrl('/login', { 
+          replaceUrl: true,
+          state: { message: 'You have been logged out.' }
+        });
+      }
+    });
+  }
 
 }

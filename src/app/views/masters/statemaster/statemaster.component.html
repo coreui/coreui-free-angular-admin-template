@@ -1,0 +1,59 @@
+<c-container [fluid]="true">
+  <c-row>
+    <c-col>
+      <c-card>
+        <c-card-header>
+          <div class="d-flex justify-content-between align-items-center">
+            <h4 class="mb-0">State Master</h4>
+          </div>
+        </c-card-header>
+        <c-card-body>
+          <!-- Loading State -->
+          <div *ngIf="loading" class="text-center py-4">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-2 text-muted">Loading states...</p>
+          </div>
+
+          <!-- Error State -->
+          <div *ngIf="error && !loading" class="alert alert-danger" role="alert">
+            <svg cIcon name="cil-warning" class="me-2"></svg>
+            {{ error }}
+            <button cButton color="link" class="p-0 ms-2" (click)="loadStates()">
+              Try again
+            </button>
+          </div>
+
+          <!-- Syncfusion Grid -->
+          <div *ngIf="!loading && !error" class="syncfusion-grid-container">
+            <ejs-grid 
+              #grid
+              [dataSource]='data' 
+              [allowPaging]='true'
+              [allowSorting]='true'
+              [allowFiltering]='true'
+              [pageSettings]='pageSettings'
+              [toolbar]='toolbar'
+              [editSettings]='editSettings'
+              [filterSettings]='filterSettings'
+              height='500px'
+              cssClass='e-grid-custom'>
+              <e-columns>
+                <e-column field='id' headerText='#' width='80' textAlign='Right' isPrimaryKey='true'></e-column>
+                <e-column field='name' headerText='State Name' width='200'></e-column>
+                <e-column field='isActive' headerText='Status' width='120'>
+                  <ng-template #template let-data>
+                    <span class="badge" [class]="data.isActive ? 'bg-success' : 'bg-danger'">
+                      {{ data.isActive ? 'Active' : 'Inactive' }}
+                    </span>
+                  </ng-template>
+                </e-column>
+              </e-columns>
+            </ejs-grid>
+          </div>
+        </c-card-body>
+      </c-card>
+    </c-col>
+  </c-row>
+</c-container>

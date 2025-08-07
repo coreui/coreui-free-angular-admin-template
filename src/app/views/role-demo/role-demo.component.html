@@ -1,0 +1,117 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="mb-4">Role-Based Navigation Demo</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Current User Info -->
+    <div class="col-md-6 mb-4">
+      <c-card>
+        <c-card-header>
+          <h5>Current User Information</h5>
+        </c-card-header>
+        <c-card-body>
+          <div *ngIf="currentUser">
+            <p><strong>Username:</strong> {{ currentUser.username }}</p>
+            <p><strong>Name:</strong> {{ currentUser.firstname }} {{ currentUser.lastname }}</p>
+            <p><strong>Available Roles:</strong></p>
+            <ul>
+              <li *ngFor="let role of currentUser.roles">{{ role }}</li>
+            </ul>
+            <p><strong>Current Role:</strong> <span class="badge bg-primary">{{ selectedRole }}</span></p>
+            <p><strong>Role Description:</strong></p>
+            <p class="text-muted">{{ getRoleDescription(selectedRole) }}</p>
+          </div>
+          <div *ngIf="!currentUser" class="text-center">
+            <p class="text-muted">No user information available</p>
+          </div>
+        </c-card-body>
+      </c-card>
+    </div>
+
+    <!-- Navigation Comparison -->
+    <div class="col-md-6 mb-4">
+      <c-card>
+        <c-card-header>
+          <h5>Navigation Comparison</h5>
+        </c-card-header>
+        <c-card-body>
+          <div class="row">
+            <!-- Admin Navigation -->
+            <div class="col-6">
+              <h6 class="text-success">Admin Navigation</h6>
+              <ul class="list-unstyled">
+                <li *ngFor="let item of getNavItemsForRole('Admin')" class="mb-1">
+                  <small class="text-muted">{{ item.name }}</small>
+                </li>
+              </ul>
+            </div>
+            <!-- User Navigation -->
+            <div class="col-6">
+              <h6 class="text-warning">User Navigation</h6>
+              <ul class="list-unstyled">
+                <li *ngFor="let item of getNavItemsForRole('User')" class="mb-1">
+                  <small class="text-muted">{{ item.name }}</small>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </c-card-body>
+      </c-card>
+    </div>
+  </div>
+
+  <!-- Current Navigation -->
+  <div class="row">
+    <div class="col-12">
+      <c-card>
+        <c-card-header>
+          <h5>Current Navigation ({{ selectedRole }} Role)</h5>
+        </c-card-header>
+        <c-card-body>
+          <div class="row">
+            <div class="col-md-4" *ngFor="let item of currentNavItems">
+              <div class="border rounded p-3 mb-3">
+                <h6>{{ item.name }}</h6>
+                <p class="text-muted mb-2">{{ item.url }}</p>
+                <div *ngIf="item.children && item.children.length > 0">
+                  <small class="text-muted">Sub-items:</small>
+                  <ul class="list-unstyled mt-1">
+                    <li *ngFor="let child of item.children" class="small text-muted">
+                      • {{ child.name }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </c-card-body>
+      </c-card>
+    </div>
+  </div>
+
+  <!-- Instructions -->
+  <div class="row mt-4">
+    <div class="col-12">
+      <c-card>
+        <c-card-header>
+          <h5>How to Test Role-Based Navigation</h5>
+        </c-card-header>
+        <c-card-body>
+          <ol>
+            <li>Look at the role dropdown in the header (next to the bell icon)</li>
+            <li>Click on the dropdown to see available roles</li>
+            <li>Select a different role to see the navigation change</li>
+            <li>Notice how the sidebar menu updates based on the selected role</li>
+            <li>Try accessing different pages to see role-based access control</li>
+          </ol>
+          <div class="alert alert-info">
+            <strong>Note:</strong> The navigation menu in the sidebar will automatically update when you change roles using the dropdown in the header.
+          </div>
+        </c-card-body>
+      </c-card>
+    </div>
+  </div>
+</div> 

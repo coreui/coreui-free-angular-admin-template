@@ -1,0 +1,256 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <c-card>
+        <c-card-header>
+          <h4>Access Control List (ACL) Demo</h4>
+          <p class="text-muted">This page demonstrates the ACL system functionality</p>
+        </c-card-header>
+        <c-card-body>
+          
+          <!-- Current User and Role Information -->
+          <div class="row mb-4">
+            <div class="col-md-6">
+              <h5>Current User Information</h5>
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <tbody>
+                    <tr>
+                      <td><strong>Username:</strong></td>
+                      <td>{{ currentUser?.username || 'N/A' }}</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Name:</strong></td>
+                      <td>{{ currentUser?.firstname }} {{ currentUser?.lastname }}</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Current Role:</strong></td>
+                      <td>{{ getCurrentRoleDisplayName() }}</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Available Roles:</strong></td>
+                      <td>{{ availableRoles.join(', ') }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <h5>Role Capabilities</h5>
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <tbody>
+                    <tr>
+                      <td><strong>Is Admin:</strong></td>
+                      <td><span class="badge" [class]="isAdmin() ? 'bg-success' : 'bg-secondary'">{{ isAdmin() ? 'Yes' : 'No' }}</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Manager or Higher:</strong></td>
+                      <td><span class="badge" [class]="isManagerOrHigher() ? 'bg-success' : 'bg-secondary'">{{ isManagerOrHigher() ? 'Yes' : 'No' }}</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Can Manage Data:</strong></td>
+                      <td><span class="badge" [class]="canManageData() ? 'bg-success' : 'bg-secondary'">{{ canManageData() ? 'Yes' : 'No' }}</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Can Export Data:</strong></td>
+                      <td><span class="badge" [class]="canExportData() ? 'bg-success' : 'bg-secondary'">{{ canExportData() ? 'Yes' : 'No' }}</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Accessible Routes and Features -->
+          <div class="row mb-4">
+            <div class="col-md-6">
+              <h5>Accessible Routes</h5>
+              <div class="list-group">
+                <div *ngFor="let route of accessibleRoutes" class="list-group-item">
+                  <i class="cil-check text-success me-2"></i>{{ route }}
+                </div>
+                <div *ngIf="accessibleRoutes.length === 0" class="list-group-item text-muted">
+                  No accessible routes
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <h5>Accessible Features</h5>
+              <div class="list-group">
+                <div *ngFor="let feature of accessibleFeatures" class="list-group-item">
+                  <i class="cil-check text-success me-2"></i>{{ feature }}
+                </div>
+                <div *ngIf="accessibleFeatures.length === 0" class="list-group-item text-muted">
+                  No accessible features
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Master Data Permissions -->
+          <div class="row mb-4">
+            <div class="col-12">
+              <h5>Master Data Permissions</h5>
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Resource</th>
+                      <th>Read</th>
+                      <th>Create</th>
+                      <th>Update</th>
+                      <th>Delete</th>
+                      <th>Export</th>
+                      <th>Print</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Country Master</strong></td>
+                      <td><span class="badge" [class]="canReadCountryMaster() ? 'bg-success' : 'bg-secondary'">{{ canReadCountryMaster() ? 'Yes' : 'No' }}</span></td>
+                      <td><span class="badge" [class]="canCreateCountry() ? 'bg-success' : 'bg-secondary'">{{ canCreateCountry() ? 'Yes' : 'No' }}</span></td>
+                      <td><span class="badge" [class]="canUpdateCountry() ? 'bg-success' : 'bg-secondary'">{{ canUpdateCountry() ? 'Yes' : 'No' }}</span></td>
+                      <td><span class="badge" [class]="canDeleteCountry() ? 'bg-success' : 'bg-secondary'">{{ canDeleteCountry() ? 'Yes' : 'No' }}</span></td>
+                      <td><span class="badge" [class]="canExportData() ? 'bg-success' : 'bg-secondary'">{{ canExportData() ? 'Yes' : 'No' }}</span></td>
+                      <td><span class="badge" [class]="canPrintData() ? 'bg-success' : 'bg-secondary'">{{ canPrintData() ? 'Yes' : 'No' }}</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>State Master</strong></td>
+                      <td><span class="badge" [class]="canReadStateMaster() ? 'bg-success' : 'bg-secondary'">{{ canReadStateMaster() ? 'Yes' : 'No' }}</span></td>
+                      <td><span class="badge" [class]="canCreateState() ? 'bg-success' : 'bg-secondary'">{{ canCreateState() ? 'Yes' : 'No' }}</span></td>
+                      <td><span class="badge" [class]="canUpdateState() ? 'bg-success' : 'bg-secondary'">{{ canUpdateState() ? 'Yes' : 'No' }}</span></td>
+                      <td><span class="badge" [class]="canDeleteState() ? 'bg-success' : 'bg-secondary'">{{ canDeleteState() ? 'Yes' : 'No' }}</span></td>
+                      <td><span class="badge" [class]="canExportData() ? 'bg-success' : 'bg-secondary'">{{ canExportData() ? 'Yes' : 'No' }}</span></td>
+                      <td><span class="badge" [class]="canPrintData() ? 'bg-success' : 'bg-secondary'">{{ canPrintData() ? 'Yes' : 'No' }}</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>City Master</strong></td>
+                      <td><span class="badge" [class]="canReadCityMaster() ? 'bg-success' : 'bg-secondary'">{{ canReadCityMaster() ? 'Yes' : 'No' }}</span></td>
+                      <td><span class="badge" [class]="canCreateCity() ? 'bg-success' : 'bg-secondary'">{{ canCreateCity() ? 'Yes' : 'No' }}</span></td>
+                      <td><span class="badge" [class]="canUpdateCity() ? 'bg-success' : 'bg-secondary'">{{ canUpdateCity() ? 'Yes' : 'No' }}</span></td>
+                      <td><span class="badge" [class]="canDeleteCity() ? 'bg-success' : 'bg-secondary'">{{ canDeleteCity() ? 'Yes' : 'No' }}</span></td>
+                      <td><span class="badge" [class]="canExportData() ? 'bg-success' : 'bg-secondary'">{{ canExportData() ? 'Yes' : 'No' }}</span></td>
+                      <td><span class="badge" [class]="canPrintData() ? 'bg-success' : 'bg-secondary'">{{ canPrintData() ? 'Yes' : 'No' }}</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- System Permissions -->
+          <div class="row mb-4">
+            <div class="col-12">
+              <h5>System Permissions</h5>
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-body text-center">
+                      <i class="cil-people text-primary" style="font-size: 2rem;"></i>
+                      <h6 class="mt-2">User Management</h6>
+                      <span class="badge" [class]="canManageUsers() ? 'bg-success' : 'bg-secondary'">{{ canManageUsers() ? 'Access Granted' : 'Access Denied' }}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-body text-center">
+                      <i class="cil-user-follow text-primary" style="font-size: 2rem;"></i>
+                      <h6 class="mt-2">Role Management</h6>
+                      <span class="badge" [class]="canManageRoles() ? 'bg-success' : 'bg-secondary'">{{ canManageRoles() ? 'Access Granted' : 'Access Denied' }}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-body text-center">
+                      <i class="cil-list text-primary" style="font-size: 2rem;"></i>
+                      <h6 class="mt-2">View Logs</h6>
+                      <span class="badge" [class]="canViewLogs() ? 'bg-success' : 'bg-secondary'">{{ canViewLogs() ? 'Access Granted' : 'Access Denied' }}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-body text-center">
+                      <i class="cil-gear text-primary" style="font-size: 2rem;"></i>
+                      <h6 class="mt-2">System Config</h6>
+                      <span class="badge" [class]="canConfigureSystem() ? 'bg-success' : 'bg-secondary'">{{ canConfigureSystem() ? 'Access Granted' : 'Access Denied' }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ACL Directive Demo -->
+          <div class="row mb-4">
+            <div class="col-12">
+              <h5>ACL Directive Demo</h5>
+              <p class="text-muted">These buttons are conditionally shown based on user permissions using the ACL directive.</p>
+              
+              <div class="d-flex gap-2 flex-wrap">
+                <!-- Admin only button -->
+                <button *appAcl="'Admin'" class="btn btn-danger">
+                  <i class="cil-trash me-1"></i>Admin Only Action
+                </button>
+                
+                <!-- Manager or higher button -->
+                <button *appAcl="['Admin', 'Manager']" class="btn btn-warning">
+                  <i class="cil-pencil me-1"></i>Manager+ Action
+                </button>
+                
+                <!-- Feature-based permission -->
+                <button *appAclFeature="'export-data'" class="btn btn-info">
+                  <i class="cil-export me-1"></i>Export Data
+                </button>
+                
+                <!-- Resource-based permission -->
+                <button *appAclResource="'country-master'" class="btn btn-success">
+                  <i class="cil-plus me-1"></i>Create Country
+                </button>
+                
+                <!-- Route-based permission -->
+                <button *appAclRoute="'/system/settings'" class="btn btn-primary">
+                  <i class="cil-gear me-1"></i>System Settings
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Role Permissions Details -->
+          <div class="row">
+            <div class="col-12">
+              <h5>Current Role Permissions Details</h5>
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Resource</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let permission of rolePermissions">
+                      <td><strong>{{ permission.resource }}</strong></td>
+                      <td>
+                        <span *ngFor="let action of permission.actions" class="badge bg-primary me-1">{{ action }}</span>
+                      </td>
+                    </tr>
+                    <tr *ngIf="rolePermissions.length === 0">
+                      <td colspan="2" class="text-center text-muted">No permissions found</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </c-card-body>
+      </c-card>
+    </div>
+  </div>
+</div>

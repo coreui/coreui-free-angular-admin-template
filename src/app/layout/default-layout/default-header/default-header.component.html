@@ -11,19 +11,48 @@
     >
       <svg cIcon name="cilMenu" size="lg"></svg>
     </button>
-    <c-header-nav class="d-none d-md-flex">
-      <c-nav-item>
-        <a cNavLink routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-      </c-nav-item>
-      <c-nav-item>
-        <a cNavLink routerLink="/users" routerLinkActive="active">Users</a>
-      </c-nav-item>
-      <c-nav-item>
-        <a cNavLink routerLink="/settings" routerLinkActive="active">Settings</a>
-      </c-nav-item>
-    </c-header-nav>
 
     <c-header-nav class="d-none d-md-flex ms-auto ">
+      <div class="nav-item d-flex align-items-center me-3" *ngIf="currentUser?.roles && (currentUser?.roles?.length || 0) > 0">
+        <c-dropdown alignment="end" variant="nav-item">
+          <button [caret]="false" cDropdownToggle class="btn btn-link text-decoration-none p-0 d-flex align-items-center role-dropdown-btn" aria-label="Select role">
+            <div class="role-avatar">
+              <svg cIcon name="cilShieldAlt" size="lg" class="role-icon"></svg>
+            </div>
+            <div class="role-info ms-2">
+              <span class="role-label">Role</span>
+              <span class="role-name">{{ selectedRole || currentUser?.roles?.[0] }}</span>
+            </div>
+            <svg cIcon name="cilChevronDown" size="sm" class="dropdown-arrow ms-2"></svg>
+          </button>
+          <div cDropdownMenu class="role-dropdown-menu">
+            <div cDropdownHeader class="role-dropdown-header">
+              <svg cIcon name="cilShieldAlt" size="sm" class="me-2"></svg>
+              <span>Select Role</span>
+            </div>
+            <div class="role-dropdown-divider"></div>
+            <a *ngFor="let role of currentUser?.roles; let i = index" 
+               cDropdownItem 
+               (click)="onRoleChange(role)"
+               [class.active]="selectedRole === role"
+               class="role-dropdown-item"
+               [attr.data-role]="role.toLowerCase()">
+              <div class="role-item-content">
+                <div class="role-item-icon">
+                  <svg cIcon name="cilShieldAlt" size="sm"></svg>
+                </div>
+                <div class="role-item-text">
+                  <span class="role-item-name">{{ role }}</span>
+                  <span class="role-item-desc">{{ role === 'Admin' ? 'Administrator access' : 'Standard user access' }}</span>
+                </div>
+                <div class="role-item-check" *ngIf="selectedRole === role">
+                  <svg cIcon name="cilCheck" size="sm"></svg>
+                </div>
+              </div>
+            </a>
+          </div>
+        </c-dropdown>
+      </div>
       <a cNavLink>
         <svg cIcon class="my-1" name="cilBell" size="lg"></svg>
       </a>
@@ -62,10 +91,10 @@
       <c-avatar
         shape="rounded-1"
         size="md"
-        src="./assets/images/avatars/8.jpg"
+        [src]="currentUser?.profileimage || './assets/images/avatars/8.jpg'"
         status="success"
         textColor="primary"
-        alt="User avatar"
+        [alt]="currentUser?.username || 'User avatar'"
       />
     </button>
     <ul cDropdownMenu class="pt-0 w-auto">
@@ -73,6 +102,18 @@
         <h6 cDropdownHeader class="bg-body-secondary text-body-secondary fw-semibold py-2 rounded-top">
           Account
         </h6>
+      </li>
+      <li *ngIf="currentUser?.firstname && currentUser?.lastname">
+        <a cDropdownItem routerLink="">
+          <svg cIcon class="me-2" name="cilUser"></svg>
+          {{ currentUser?.firstname }} {{ currentUser?.lastname }}
+        </a>
+      </li>
+      <li *ngIf="currentUser?.username && (!currentUser?.firstname || !currentUser?.lastname)">
+        <a cDropdownItem routerLink="">
+          <svg cIcon class="me-2" name="cilUser"></svg>
+          {{ currentUser?.username }}
+        </a>
       </li>
       <li>
         <a cDropdownItem routerLink="">
@@ -150,7 +191,7 @@
         </a>
       </li>
       <li>
-        <a cDropdownItem routerLink="">
+        <a cDropdownItem (click)="logout()" style="cursor: pointer;">
           <svg cIcon class="me-2" name="cilAccountLogout"></svg>
           Logout
         </a>

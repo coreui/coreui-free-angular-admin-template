@@ -12,6 +12,59 @@ export const navItems: INavData[] = [
   },
   {
     title: true,
+    name: 'Extras'
+  },
+  {
+    name: 'Auth',
+    url: '/login',
+    iconComponent: { name: 'cil-star' },
+    children: [
+      {
+        name: 'Login',
+        url: '/login',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Register',
+        url: '/register',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Error 404',
+        url: '/404',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Error 500',
+        url: '/500',
+        icon: 'nav-icon-bullet'
+      }
+    ]
+  },
+  {
+    name: 'Masters',
+    url: '/masters',
+    iconComponent: { name: 'cil-settings' },
+    children: [
+      {
+        name: 'Country Master',
+        url: '/masters/country',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'State Master',
+        url: '/masters/state',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'City Master',
+        url: '/masters/city',
+        icon: 'nav-icon-bullet'
+      }
+    ]
+  },
+  {
+    title: true,
     name: 'Theme'
   },
   {
@@ -366,37 +419,6 @@ export const navItems: INavData[] = [
       color: 'info',
       text: 'NEW'
     }
-  },
-  {
-    title: true,
-    name: 'Extras'
-  },
-  {
-    name: 'Pages',
-    url: '/login',
-    iconComponent: { name: 'cil-star' },
-    children: [
-      {
-        name: 'Login',
-        url: '/login',
-        icon: 'nav-icon-bullet'
-      },
-      {
-        name: 'Register',
-        url: '/register',
-        icon: 'nav-icon-bullet'
-      },
-      {
-        name: 'Error 404',
-        url: '/404',
-        icon: 'nav-icon-bullet'
-      },
-      {
-        name: 'Error 500',
-        url: '/500',
-        icon: 'nav-icon-bullet'
-      }
-    ]
   },
   {
     title: true,

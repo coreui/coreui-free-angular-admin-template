@@ -21,3 +21,474 @@
 // We use those styles to show code examples, you should remove them in your application.
 @use "examples";
 
+// Import AG Grid styles
+@import "ag-grid-community/styles/ag-grid.css";
+@import "ag-grid-community/styles/ag-theme-alpine.css";
+
+// Custom Syncfusion Grid styles
+.syncfusion-grid-container {
+  border: 1px solid #dee2e6;
+  border-radius: 0.375rem;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.e-grid-custom {
+  font-family: inherit;
+  
+  .e-gridheader {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    
+    .e-headercell {
+      padding: 0.75rem;
+      font-weight: 600;
+      color: #495057;
+      border-right: 1px solid #dee2e6;
+    }
+  }
+  
+  .e-gridcontent {
+    .e-rowcell {
+      padding: 0.75rem;
+      border-bottom: 1px solid #f1f3f4;
+      border-right: 1px solid #f1f3f4;
+    }
+    
+    .e-altrow {
+      background-color: #f8f9fa;
+    }
+    
+    .e-row:hover {
+      background-color: #e9ecef;
+    }
+  }
+  
+  .e-toolbar {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    padding: 0.5rem;
+    
+    .e-tbar-btn {
+      margin-right: 0.25rem;
+    }
+  }
+  
+  .e-pager {
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+    padding: 0.5rem;
+  }
+  
+  .e-filterbar {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    padding: 0.5rem;
+  }
+}
+
+.e-grid {
+  font-family: inherit;
+  border: 1px solid #dee2e6;
+  border-radius: 0.375rem;
+  
+  .e-gridheader {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    
+    .e-headercell {
+      padding: 0.75rem;
+      font-weight: 600;
+      color: #495057;
+    }
+  }
+  
+  .e-gridcontent {
+    .e-rowcell {
+      padding: 0.75rem;
+      border-bottom: 1px solid #f1f3f4;
+    }
+    
+    .e-altrow {
+      background-color: #f8f9fa;
+    }
+  }
+  
+  .e-toolbar {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    padding: 0.5rem;
+  }
+  
+  .e-pager {
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+    padding: 0.5rem;
+  }
+}
+
+// Status badge styles
+.badge {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}
+
+// Action button styles
+.btn-group .btn {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+// Syncfusion Grid template styles
+.e-grid .e-rowcell {
+  .badge {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  .btn-group {
+    display: flex;
+    gap: 0.25rem;
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 2rem;
+      height: 2rem;
+      
+      svg {
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+  }
+}
+
+/* Role Dropdown Beautification - Corporate Style */
+.role-dropdown-btn {
+  background: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 8px 12px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  
+  &:hover {
+    border-color: #6c757d;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  &:focus {
+    border-color: #495057;
+    box-shadow: 0 0 0 2px rgba(73, 80, 87, 0.2);
+  }
+}
+
+.role-avatar {
+  width: 28px;
+  height: 28px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e9ecef;
+  
+  .role-icon {
+    color: #495057;
+    font-size: 14px;
+  }
+}
+
+.role-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  
+  .role-label {
+    font-size: 10px;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    line-height: 1;
+  }
+  
+  .role-name {
+    font-size: 13px;
+    color: #212529;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+}
+
+.dropdown-arrow {
+  color: #6c757d;
+  transition: transform 0.2s ease;
+  font-size: 12px;
+  
+  .dropdown.show & {
+    transform: rotate(180deg);
+  }
+}
+
+.role-dropdown-menu {
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  background: #ffffff;
+  padding: 6px;
+  min-width: 240px;
+  margin-top: 4px;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    right: 16px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #ffffff;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: -7px;
+    right: 16px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #e9ecef;
+  }
+}
+
+.role-dropdown-header {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  font-weight: 600;
+  color: #495057;
+  font-size: 13px;
+  border-bottom: 1px solid #e9ecef;
+  background: #f8f9fa;
+  border-radius: 6px 6px 0 0;
+  
+  svg {
+    color: #6c757d;
+    margin-right: 8px;
+  }
+}
+
+.role-dropdown-divider {
+  height: 1px;
+  background: #e9ecef;
+  margin: 6px 0;
+}
+
+.role-dropdown-item {
+  border-radius: 6px;
+  margin: 2px 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background: #f8f9fa;
+  }
+  
+  &.active {
+    background: #e9ecef;
+    
+    .role-item-name {
+      color: #212529;
+      font-weight: 700;
+    }
+    
+    .role-item-desc {
+      color: #495057;
+    }
+    
+    .role-item-icon {
+      background: #495057;
+      
+      svg {
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+.role-item-content {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  width: 100%;
+}
+
+.role-item-icon {
+  width: 32px;
+  height: 32px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  transition: all 0.2s ease;
+  border: 1px solid #e9ecef;
+  
+  svg {
+    color: #6c757d;
+    font-size: 14px;
+  }
+}
+
+.role-item-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.role-item-name {
+  font-weight: 600;
+  font-size: 13px;
+  color: #212529;
+  line-height: 1.2;
+}
+
+.role-item-desc {
+  font-size: 11px;
+  color: #6c757d;
+  margin-top: 1px;
+  line-height: 1.2;
+}
+
+.role-item-check {
+  width: 16px;
+  height: 16px;
+  background: #495057;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+  animation: fadeIn 0.2s ease;
+  
+  svg {
+    color: white;
+    font-size: 10px;
+  }
+}
+
+/* Animation for check icon */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .role-dropdown-menu {
+    min-width: 200px;
+  }
+  
+  .role-info .role-name {
+    font-size: 12px;
+  }
+  
+  .role-item-content {
+    padding: 8px 10px;
+  }
+  
+  .role-item-icon {
+    width: 28px;
+    height: 28px;
+    margin-right: 8px;
+  }
+}
+
+/* Dark mode support */
+[data-coreui-theme="dark"] {
+  .role-dropdown-btn {
+    background: #343a40;
+    border-color: #495057;
+    
+    &:hover {
+      border-color: #6c757d;
+      background: #495057;
+    }
+  }
+  
+  .role-avatar {
+    background: #495057;
+    border-color: #6c757d;
+    
+    .role-icon {
+      color: #e9ecef;
+    }
+  }
+  
+  .role-info .role-name {
+    color: #e9ecef;
+  }
+  
+  .role-dropdown-menu {
+    background: #343a40;
+    border-color: #495057;
+    
+    &::before {
+      border-bottom-color: #343a40;
+    }
+    
+    &::after {
+      border-bottom-color: #495057;
+    }
+  }
+  
+  .role-dropdown-header {
+    background: #495057;
+    color: #e9ecef;
+    border-bottom-color: #6c757d;
+  }
+  
+  .role-dropdown-item:hover {
+    background: #495057;
+  }
+  
+  .role-dropdown-item.active {
+    background: #6c757d;
+  }
+  
+  .role-item-icon {
+    background: #495057;
+    border-color: #6c757d;
+    
+    svg {
+      color: #e9ecef;
+    }
+  }
+  
+  .role-item-name {
+    color: #e9ecef;
+  }
+  
+  .role-item-desc {
+    color: #adb5bd;
+  }
+}
+

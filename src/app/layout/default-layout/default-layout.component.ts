@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { NgScrollbar } from 'ngx-scrollbar';
+import { Subscription } from 'rxjs';
 
 import { IconDirective } from '@coreui/icons-angular';
 import {
@@ -8,15 +9,13 @@ import {
   ShadowOnScrollDirective,
   SidebarBrandComponent,
   SidebarComponent,
-  SidebarFooterComponent,
   SidebarHeaderComponent,
-  SidebarNavComponent,
-  SidebarToggleDirective,
-  SidebarTogglerDirective
+  SidebarNavComponent
 } from '@coreui/angular';
 
 import { DefaultFooterComponent, DefaultHeaderComponent } from './';
-import { navItems } from './_nav';
+import { NavigationService } from '../../services/navigation.service';
+import { AuthService } from '../../services/auth.service';
 
 function isOverflown(element: HTMLElement) {
   return (
@@ -26,7 +25,7 @@ function isOverflown(element: HTMLElement) {
 }
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'app-default-layout',
   templateUrl: './default-layout.component.html',
   styleUrls: ['./default-layout.component.scss'],
   imports: [
@@ -34,9 +33,6 @@ function isOverflown(element: HTMLElement) {
     SidebarHeaderComponent,
     SidebarBrandComponent,
     SidebarNavComponent,
-    SidebarFooterComponent,
-    SidebarToggleDirective,
-    SidebarTogglerDirective,
     ContainerComponent,
     DefaultFooterComponent,
     DefaultHeaderComponent,
@@ -47,6 +43,37 @@ function isOverflown(element: HTMLElement) {
     ShadowOnScrollDirective
   ]
 })
-export class DefaultLayoutComponent {
-  public navItems = [...navItems];
+export class DefaultLayoutComponent implements OnInit, OnDestroy {
+  public navItems: any[] = [];
+  private subscriptions = new Subscription();
+
+  constructor(
+    private navigationService: NavigationService,
+    private authService: AuthService
+  ) {}
+
+  ngOnInit(): void {
+    // Subscribe to navigation changes
+    this.subscriptions.add(
+      this.navigationService.currentNavItems$.subscribe(navItems => {
+        this.navItems = navItems;
+      })
+    );
+
+    // Subscribe to user changes to update navigation based on role
+    this.subscriptions.add(
+      this.authService.currentUser$.subscribe(user => {
+        if (user) {
+          const selectedRole = localStorage.getItem('selectedRole') || user.roles?.[0];
+          if (selectedRole) {
+            this.navigationService.updateNavigation(selectedRole);
+          }
+        }
+      })
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
+  }
 }
