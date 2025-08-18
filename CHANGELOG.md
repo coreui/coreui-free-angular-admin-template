@@ -2,6 +2,33 @@
 
 ---
 
+#### `5.5.8`
+- chore(dependencies): update
+  - @angular/build @ "20.1.6" (was "20.1.0")
+  - @angular/cli @ "20.1.6" (was "20.1.0")
+  - @angular/compiler-cli @ "20.1.7" (was "20.1.0")
+  - @angular/animations @ "20.1.7" (was "20.1.0")
+  - @angular/cdk @ "20.1.6" (was "20.1.0")
+  - @angular/common @ "20.1.7" (was "20.1.0")
+  - @angular/compiler @ "20.1.7" (was "20.1.0")
+  - @angular/core @ "20.1.7" (was "20.1.0")
+  - @angular/forms @ "20.1.7" (was "20.1.0")
+  - @angular/language-service @ "20.1.7" (was "20.1.0")
+  - @angular/localize @ "20.1.7" (was "20.1.0")
+  - @angular/platform-browser @ "20.1.7" (was "20.1.0")
+  - @angular/platform-browser-dynamic @ "20.1.7" (was "20.1.0")
+  - @angular/router @ "20.1.7" (was "20.1.0")
+  - @coreui/angular @ "5.5.8" (was "5.5.5")
+  - @coreui/angular-chartjs @ "5.5.8" (was "5.5.5")
+  - @coreui/coreui @ "5.4.2" (was "5.4.1")
+  - @coreui/icons-angular @ "5.5.8" (was "5.5.5")
+  - @types/jasmine @ "5.1.9" (was "5.1.8")
+  - @types/node @ "22.17.2" (was "22.16.3")
+  - jasmine-core @ "5.9.0" (was "5.8.0")
+- test: drop deprecated BrowserDynamicTestingModule, use BrowserTestingModule and platformBrowserTesting()
+
+---
+
 #### `5.5.5`
 
 - chore(dependencies): update to `Angular 20.1`
