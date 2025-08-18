@@ -9,7 +9,7 @@ on:
       - main
       - v5.*
   schedule:
-    - # build runs every weekday at 4:15AM UTC
+    # build runs every weekday at 4:15AM UTC
     - cron: '15 4 * * *'
 
 env:
