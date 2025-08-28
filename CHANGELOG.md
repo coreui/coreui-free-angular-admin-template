@@ -2,7 +2,33 @@
 
 ---
 
+#### `5.5.11`
+
+- chore(dependencies): update to Angular `20.2.2`
+
+  - @angular/build @ "20.2.1" (was "20.1.6")
+  - @angular/cli @ "20.2.1" (was "20.1.6")
+  - @angular/compiler-cli @ "20.2.2" (was "20.1.7")
+  - @types/node @ "22.18.0" (was "22.17.2")
+  - @angular/animations @ "20.2.2" (was "20.1.7")
+  - @angular/cdk @ "20.2.1" (was "20.1.6")
+  - @angular/common @ "20.2.2" (was "20.1.7")
+  - @angular/compiler @ "20.2.2" (was "20.1.7")
+  - @angular/core @ "20.2.2" (was "20.1.7")
+  - @angular/forms @ "20.2.2" (was "20.1.7")
+  - @angular/language-service @ "20.2.2" (was "20.1.7")
+  - @angular/localize @ "20.2.2" (was "20.1.7")
+  - @angular/platform-browser @ "20.2.2" (was "20.1.7")
+  - @angular/platform-browser-dynamic @ "20.2.2" (was "20.1.7")
+  - @angular/router @ "20.2.2" (was "20.1.7")
+  - @coreui/angular @ "5.5.11" (was "5.5.8")
+  - @coreui/angular-chartjs @ "5.5.11" (was "5.5.8")
+  - @coreui/icons-angular @ "5.5.11" (was "5.5.8")
+
+---
+
 #### `5.5.8`
+
 - chore(dependencies): update
   - @angular/build @ "20.1.6" (was "20.1.0")
   - @angular/cli @ "20.1.6" (was "20.1.0")
