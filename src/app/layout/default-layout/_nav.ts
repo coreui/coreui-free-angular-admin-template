@@ -179,6 +179,16 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-notes' },
     children: [
       {
+        name: 'Autocomplete',
+        url: 'https://coreui.io/angular/docs/forms/autocomplete/',
+        icon: 'nav-icon-bullet',
+        badge: {
+          color: 'danger',
+          text: 'PRO'
+        },
+        attributes: { target: '_blank' }
+      },
+      {
         name: 'Form Control',
         url: '/forms/form-control',
         icon: 'nav-icon-bullet'
