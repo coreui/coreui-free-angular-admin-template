@@ -2,6 +2,34 @@
 
 ---
 
+#### `5.5.15`
+
+- chore(dependencies): update to Angular `20.3.1`
+  - `@angular/build` @ "20.3.2" (was "20.2.1")
+  - `@angular/cli` @ "20.3.2" (was "20.2.1")
+  - `@angular/compiler-cli` @ "20.3.1" (was "20.2.2")
+  - `@angular/animations` @ "20.3.1" (was "20.2.2")
+  - `@angular/cdk` @ "20.2.4" (was "20.2.1")
+  - `@angular/common` @ "20.3.1" (was "20.2.2")
+  - `@angular/compiler` @ "20.3.1" (was "20.2.2")
+  - `@angular/core` @ "20.3.1" (was "20.2.2")
+  - `@angular/forms` @ "20.3.1" (was "20.2.2")
+  - `@angular/language-service` @ "20.3.1" (was "20.2.2")
+  - `@angular/localize` @ "20.3.1" (was "20.2.2")
+  - `@angular/platform-browser` @ "20.3.1" (was "20.2.2")
+  - `@angular/platform-browser-dynamic` @ "20.3.1" (was "20.2.2")
+  - `@angular/router` @ "20.3.1" (was "20.2.2")
+  - `@coreui/angular` @ "5.5.15" (was "5.5.11")
+  - `@coreui/angular-chartjs` @ "5.5.15" (was "5.5.11")
+  - `@coreui/coreui` @ "5.4.3" (was "5.4.2")
+  - `@coreui/icons-angular` @ "5.5.15" (was "5.5.11")
+  - `@types/node` @ "22.18.6" (was "22.18.0")
+  - `jasmine-core` @ "5.10.0" (was "5.9.0")
+  - `typescript` @ "5.9.2" (was "5.8.3")
+- refactor(navItems): add autocomplete pro component docs link
+
+---
+
 #### `5.5.11`
 
 - chore(dependencies): update to Angular `20.2.2`
