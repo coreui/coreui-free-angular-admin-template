@@ -2,6 +2,31 @@
 
 ---
 
+#### `5.5.17`
+- chore(dependencies): update to Angular `20.3.3`
+  - `@angular/build` @ "20.3.4" (was "20.3.2")
+  - `@angular/cli` @ "20.3.4" (was "20.3.2")
+  - `@angular/compiler-cli` @ "20.3.3" (was "20.3.1")
+  - `@angular/animations` @ "20.3.3" (was "20.3.1")
+  - `@angular/cdk` @ "20.2.7" (was "20.2.4")
+  - `@angular/common` @ "20.3.3" (was "20.3.1")
+  - `@angular/compiler` @ "20.3.3" (was "20.3.1")
+  - `@angular/core` @ "20.3.3" (was "20.3.1")
+  - `@angular/forms` @ "20.3.3" (was "20.3.1")
+  - `@angular/language-service` @ "20.3.3" (was "20.3.1")
+  - `@angular/localize` @ "20.3.3" (was "20.3.1")
+  - `@angular/platform-browser` @ "20.3.3" (was "20.3.1")
+  - `@angular/platform-browser-dynamic` @ "20.3.3" (was "20.3.1")
+  - `@angular/router` @ "20.3.3" (was "20.3.1")
+  - `@coreui/angular` @ "5.5.17" (was "5.5.15")
+  - `@coreui/angular-chartjs` @ "5.5.17" (was "5.5.15")
+  - `@coreui/icons-angular` @ "5.5.17" (was "5.5.15")
+  - `@types/node` @ "22.18.8" (was "22.18.6")
+  - `jasmine-core` @ "5.11.0" (was "5.10.0")
+  - `typescript` @ "5.9.3" (was "5.9.2")
+
+---
+
 #### `5.5.15`
 
 - chore(dependencies): update to Angular `20.3.1`
