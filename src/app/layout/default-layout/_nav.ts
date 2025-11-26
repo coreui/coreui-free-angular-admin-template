@@ -239,6 +239,16 @@ export const navItems: INavData[] = [
         attributes: { target: '_blank' }
       },
       {
+        name: 'OTP Input',
+        url: 'https://coreui.io/angular/docs/forms/otp/',
+        icon: 'nav-icon-bullet',
+        badge: {
+          color: 'danger',
+          text: 'PRO'
+        },
+        attributes: { target: '_blank' }
+      },
+      {
         name: 'Password Input',
         url: 'https://coreui.io/angular/docs/forms/password-input/',
         icon: 'nav-icon-bullet',
