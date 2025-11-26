@@ -2,6 +2,34 @@
 
 ---
 
+#### `5.5.24`
+
+- chore(dependencies): update to Angular `20.3.14`
+  - `@angular/animations` @ "20.3.14" (was "20.3.3")
+  - `@angular/cdk` @ "20.2.14" (was "20.2.7")
+  - `@angular/common` @ "20.3.14" (was "20.3.3")
+  - `@angular/compiler` @ "20.3.14" (was "20.3.3")
+  - `@angular/core` @ "20.3.14" (was "20.3.3")
+  - `@angular/forms` @ "20.3.14" (was "20.3.3")
+  - `@angular/language-service` @ "20.3.14" (was "20.3.3")
+  - `@angular/localize` @ "20.3.14" (was "20.3.3")
+  - `@angular/platform-browser` @ "20.3.14" (was "20.3.3")
+  - `@angular/platform-browser-dynamic` @ "20.3.14" (was "20.3.3")
+  - `@angular/router` @ "20.3.14" (was "20.3.3")
+  - `@coreui/angular` @ "5.5.24" (was "5.5.17")
+  - `@coreui/angular-chartjs` @ "5.5.24" (was "5.5.17")
+  - `@coreui/icons-angular` @ "5.5.24" (was "5.5.17")
+  - `chart.js` @ "4.5.1" (was "4.5.0")
+  - `@angular/build` @ "20.3.12" (was "20.3.4")
+  - `@angular/cli` @ "20.3.12" (was "20.3.4")
+  - `@angular/compiler-cli` @ "20.3.14" (was "20.3.3")
+  - `@types/jasmine` @ "5.1.13" (was "5.1.9")
+  - `@types/node` @ "22.19.1" (was "22.18.8")
+  - `jasmine-core` @ "5.12.1" (was "5.11.0")
+- refactor(navItems): add otp input pro component docs link
+
+---
+
 #### `5.5.17`
 - chore(dependencies): update to Angular `20.3.3`
   - `@angular/build` @ "20.3.4" (was "20.3.2")
