@@ -70,7 +70,7 @@
     <c-chart
       [data]="mainChart.data"
       [height]="300"
-      [ngStyle]="{ 'marginTop.px': 40 }"
+      [style.marginTop.px]="40"
       [options]="mainChart.options"
       [type]="mainChart.type"
       (chartRef)="handleChartRef($event)"

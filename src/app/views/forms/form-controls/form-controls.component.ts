@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { NgStyle } from '@angular/common';
+import { Component, signal } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   ButtonDirective,
@@ -21,10 +20,10 @@ import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/
   selector: 'app-form-controls',
   templateUrl: './form-controls.component.html',
   styleUrls: ['./form-controls.component.scss'],
-  imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, ReactiveFormsModule, FormsModule, FormDirective, FormLabelDirective, FormControlDirective, ButtonDirective, NgStyle, RowDirective, GutterDirective, ColDirective, DocsComponentsComponent]
+  imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, ReactiveFormsModule, FormsModule, FormDirective, FormLabelDirective, FormControlDirective, ButtonDirective, RowDirective, GutterDirective, ColDirective, DocsComponentsComponent]
 })
 export class FormControlsComponent {
 
-  public favoriteColor = '#26ab3c';
+  public favoriteColor = signal('#26ab3c');
 
 }

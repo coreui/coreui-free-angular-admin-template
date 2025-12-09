@@ -226,10 +226,10 @@
                      type="color">
             </c-col>
             <c-col xs="auto">
-              <div [ngStyle]="{'backgroundColor': favoriteColor}" class="color-box p-1 m-1"></div>
+              <div [style.backgroundColor]="favoriteColor()" class="color-box p-1 m-1"></div>
             </c-col>
             <c-col xs="auto">
-              <strong>{{ favoriteColor }}</strong>
+              <strong>{{ favoriteColor() }}</strong>
             </c-col>
           </c-row>
         </app-docs-example>

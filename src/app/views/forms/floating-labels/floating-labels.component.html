@@ -50,28 +50,28 @@
       </c-card-header>
       <c-card-body>
         <p class="text-body-secondary small">
-          By default, <code>&lt;CFormTextarea&gt;</code>s will be the same height as
+          By default, <code>&lt;textarea&gt;</code>s will be the same height as
           <code>&lt;input&gt;</code>s.
         </p>
         <app-docs-example href="forms/floating-labels#textareas">
           <div cFormFloating>
-            <input
+            <textarea
               cFormControl
               id="floatingTextarea"
               placeholder="Leave a comment here"
               type="text"
-            >
+            ></textarea>
             <label cLabel for="floatingTextarea">Comments</label>
           </div>
         </app-docs-example>
         <p class="text-body-secondary small">
-          To set a custom height on your <code>&lt;CFormTextarea;&gt;</code>, do not use the
+          To set a custom height on your <code>&lt;textarea&gt;</code>, do not use the
           <code>rows</code> attribute. Instead, set an explicit <code>height</code> (either
           inline or via custom CSS).
         </p>
         <app-docs-example href="forms/floating-labels#textareas">
           <div cFormFloating>
-            <textarea [ngStyle]="{ 'height.px': 100 }"
+            <textarea [style.height.px]="100"
                       cFormControl
                       id="floatingTextarea2"
                       placeholder="Leave a comment here"
