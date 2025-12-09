@@ -20,6 +20,7 @@
           .
         </p>
         <app-docs-example href="components/breadcrumb">
+          @let items = breadcrumbItems();
           <c-breadcrumb class="mb-2">
             @for (item of items; track item; let i = $index, isLast = $last) {
               <c-breadcrumb-item [active]="isLast" [url]="item.url">

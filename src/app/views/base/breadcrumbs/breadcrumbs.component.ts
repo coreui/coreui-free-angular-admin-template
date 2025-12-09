@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { NgClass } from '@angular/common';
 import {
   BreadcrumbComponent,
@@ -17,25 +17,25 @@ import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/
   imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, BreadcrumbComponent, BreadcrumbItemComponent, NgClass, BreadcrumbRouterComponent, DocsComponentsComponent]
 })
 export class BreadcrumbsComponent implements OnInit {
-  public items = <any>[];
+  public breadcrumbItems = signal<any>([]);
 
   constructor() {}
 
   ngOnInit(): void {
-    this.items = [
+    this.breadcrumbItems.set([
       { label: 'Home', url: '/', attributes: { title: 'Home' } },
       { label: 'Library', url: '/' },
       { label: 'Data', url: '/dashboard/' },
       { label: 'CoreUI', url: '/' }
-    ];
+    ]);
 
     setTimeout(() => {
-      this.items = [
+      this.breadcrumbItems.set([
         { label: 'CoreUI', url: '/' },
         { label: 'Data', url: '/dashboard/' },
         { label: 'Library', url: '/' },
         { label: 'Home', url: '/', attributes: { title: 'Home' } }
-      ];
+      ]);
     }, 5000);
   }
 }
