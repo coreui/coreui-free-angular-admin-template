@@ -62,10 +62,12 @@ export class ThemeColorComponent {
   readonly colorClasses = computed(() => {
     const color = this.color();
     return {
-      'theme-color w-75 rounded mb-3': true,
+      'theme-color': true,
+      'w-75': true,
+      'rounded': true,
+      'mb-3': true,
       [`bg-${color}`]: !!color
-    };
+    } as Record<string, boolean>;
   });
-
 }
 
