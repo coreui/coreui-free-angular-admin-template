@@ -2,6 +2,37 @@
 
 ---
 
+#### `5.6.0`
+
+- - chore(dependencies): update to `Angular 21`
+    - `@angular/build` @ "21.0.2" (was "20.3.12")
+    - `@angular/cli` @ "21.0.2" (was "20.3.12")
+    - `@angular/compiler-cli` @ "21.0.3" (was "20.3.14")
+    - `@angular/animations` @ "21.0.3" (was "20.3.14")
+    - `@angular/cdk` @ "21.0.2" (was "20.2.14")
+    - `@angular/common` @ "21.0.3" (was "20.3.14")
+    - `@angular/compiler` @ "21.0.3" (was "20.3.14")
+    - `@angular/core` @ "21.0.3" (was "20.3.14")
+    - `@angular/forms` @ "21.0.3" (was "20.3.14")
+    - `@angular/language-service` @ "21.0.3" (was "20.3.14")
+    - `@angular/localize` @ "21.0.3" (was "20.3.14")
+    - `@angular/platform-browser` @ "21.0.3" (was "20.3.14")
+    - `@angular/platform-browser-dynamic` @ "21.0.3" (was "20.3.14")
+    - `@angular/router` @ "21.0.3" (was "20.3.14")
+    - `@coreui/angular` @ "5.6.0" (was "5.5.24")
+    - `@coreui/angular-chartjs` @ "5.6.0" (was "5.5.24")
+    - `@coreui/icons-angular` @ "5.6.0" (was "5.5.24")
+    - `@types/node` @ "24.10.2" (was "22.19.1")
+    - `jasmine-core` @ "5.13.0" (was "5.12.1")
+    - `zone.js` @ "0.16.0" (was "0.15.1")
+- refactor(breadcrumbs): signal for breadcrumb items
+- refactor: remove to zone.js polyfill from prod build
+- refactor(app.config): remove `importProvidersFrom(SidebarModule, DropdownModule)`
+- refactor: migration from `NgClass` to `class` bindings
+- refactor: migration from `NgStyle` to `style` bindings
+
+---
+
 #### `5.5.24`
 
 - chore(dependencies): update to Angular `20.3.14`
