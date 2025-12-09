@@ -1,5 +1,5 @@
 import { Component, OnInit, signal } from '@angular/core';
-import { NgClass } from '@angular/common';
+
 import {
   BreadcrumbComponent,
   BreadcrumbItemComponent,
@@ -14,7 +14,7 @@ import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/
 
 @Component({
   templateUrl: './breadcrumbs.component.html',
-  imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, BreadcrumbComponent, BreadcrumbItemComponent, NgClass, BreadcrumbRouterComponent, DocsComponentsComponent]
+  imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, BreadcrumbComponent, BreadcrumbItemComponent, BreadcrumbRouterComponent, DocsComponentsComponent]
 })
 export class BreadcrumbsComponent implements OnInit {
   public breadcrumbItems = signal<any>([]);

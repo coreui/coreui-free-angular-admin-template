@@ -1,4 +1,4 @@
-import { JsonPipe, NgClass, NgStyle, SlicePipe } from '@angular/common';
+import { JsonPipe, NgStyle, SlicePipe } from '@angular/common';
 import { Component, OnInit, viewChildren } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -46,7 +46,7 @@ export enum Colors {
 @Component({
   selector: 'app-toasters',
   templateUrl: './toasters.component.html',
-  imports: [RowComponent, ColComponent, ToasterComponent, NgClass, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, ContainerComponent, ReactiveFormsModule, FormDirective, FormCheckComponent, FormCheckInputDirective, FormCheckLabelDirective, InputGroupComponent, InputGroupTextDirective, FormControlDirective, FormSelectDirective, ButtonDirective, NgStyle, ToastComponent, ToastHeaderComponent, ToastBodyComponent, AppToastComponent, JsonPipe, SlicePipe, TextColorDirective, DocsComponentsComponent]
+  imports: [RowComponent, ColComponent, ToasterComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, ContainerComponent, ReactiveFormsModule, FormDirective, FormCheckComponent, FormCheckInputDirective, FormCheckLabelDirective, InputGroupComponent, InputGroupTextDirective, FormControlDirective, FormSelectDirective, ButtonDirective, NgStyle, ToastComponent, ToastHeaderComponent, ToastBodyComponent, AppToastComponent, JsonPipe, SlicePipe, TextColorDirective, DocsComponentsComponent]
 })
 export class ToastersComponent implements OnInit {
 

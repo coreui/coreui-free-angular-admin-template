@@ -53,7 +53,7 @@
           <c-breadcrumb class="mb-2">
             @for (item of items.slice(0, 4); track item; let i = $index, isLast = $last) {
               <c-breadcrumb-item [active]="isLast" [url]="item.url">
-                <span [ngClass]="{'mark': isLast}">{{ item.label }}</span>
+                <span [class.mark]="isLast">{{ item.label }}</span>
               </c-breadcrumb-item>
             }
           </c-breadcrumb>
