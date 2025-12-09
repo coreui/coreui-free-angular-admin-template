@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import {
   CardBodyComponent,
   CardComponent,
@@ -18,14 +18,14 @@ import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/
 })
 export class AppProgressComponent {
 
+  readonly value = signal(10);
+  readonly variant= signal<'striped'|undefined>(undefined);
+
   constructor() {
     setTimeout(() => {
-      this.value = 100;
-      this.variant = 'striped';
+      this.value.set(100);
+      this.variant.set('striped');
     }, 3000);
   }
-
-  value = 10;
-  variant?: 'striped';
 
 }

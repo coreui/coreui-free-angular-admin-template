@@ -19,7 +19,7 @@
           <c-progress [value]="25" class="mb-3" />
           <c-progress [value]="50" class="mb-3" />
           <c-progress [value]="75" class="mb-3" />
-          <c-progress [value]="value" [variant]="variant" animated class="mb-3">{{ value }}%</c-progress>
+          <c-progress [value]="value()" [variant]="variant()" animated class="mb-3">{{ value() }}%</c-progress>
           <hr>
           <c-progress class="mb-3">
             <c-progress-bar [value]="33">33%</c-progress-bar>
