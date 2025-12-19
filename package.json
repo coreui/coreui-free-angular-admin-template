@@ -69,5 +69,8 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/coreui/coreui-free-angular-admin-template.git"
+  },
+  "overrides": {
+    "sass": "^1.97.0"
   }
 }
