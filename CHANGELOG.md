@@ -2,6 +2,33 @@
 
 ---
 
+#### `5.6.4`
+
+- chore(dependencies): update
+  - `@angular/build` @ "21.0.4" (was "21.0.2")
+  - `@angular/cli` @ "21.0.4" (was "21.0.2")
+  - `@angular/compiler-cli` @ "21.0.6" (was "21.0.3")
+  - `@angular/animations` @ "21.0.6" (was "21.0.3")
+  - `@angular/cdk` @ "21.0.5" (was "21.0.2")
+  - `@angular/common` @ "21.0.6" (was "21.0.3")
+  - `@angular/compiler` @ "21.0.6" (was "21.0.3")
+  - `@angular/core` @ "21.0.6" (was "21.0.3")
+  - `@angular/forms` @ "21.0.6" (was "21.0.3")
+  - `@angular/language-service` @ "21.0.6" (was "21.0.3")
+  - `@angular/localize` @ "21.0.6" (was "21.0.3")
+  - `@angular/platform-browser` @ "21.0.6" (was "21.0.3")
+  - `@angular/platform-browser-dynamic` @ "21.0.6" (was "21.0.3")
+  - `@angular/router` @ "21.0.6" (was "21.0.3")
+  - `@coreui/angular` @ "5.6.4" (was "5.6.0")
+  - `@coreui/angular-chartjs` @ "5.6.4" (was "5.6.0")
+  - `@coreui/coreui` @ "5.5.0" (was "5.4.3")
+  - `@coreui/icons-angular` @ "5.6.4" (was "5.6.0")
+  - `lodash-es` @ "4.17.22" (was "4.17.21")
+  - `@types/node` @ "24.10.4" (was "24.10.2")
+- fix(sass): sass compilation fail - override `sass` version to `^1.97.0` **tempfix**
+
+---
+
 #### `5.6.0`
 
 - chore(dependencies): update to `Angular 21`
