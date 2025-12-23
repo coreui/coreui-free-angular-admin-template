@@ -2,6 +2,7 @@ import { AfterViewInit, Component, computed, DOCUMENT, forwardRef, inject, input
 
 import { getStyle, rgbToHex } from '@coreui/utils';
 import { CardBodyComponent, CardComponent, CardHeaderComponent, ColComponent, RowComponent } from '@coreui/angular';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   templateUrl: 'colors.component.html',
@@ -10,7 +11,8 @@ import { CardBodyComponent, CardComponent, CardHeaderComponent, ColComponent, Ro
 export class ColorsComponent implements OnInit, AfterViewInit {
   private document = inject<Document>(DOCUMENT);
   private renderer = inject(Renderer2);
-
+  title:any;description:any;price:any;rating:any;image:any;category:any;
+  constructor(private route: ActivatedRoute) {}
   public themeColors(): void {
     Array.from(this.document.querySelectorAll('.theme-color')).forEach(
       (element: Element) => {
@@ -36,7 +38,17 @@ export class ColorsComponent implements OnInit, AfterViewInit {
     );
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.queryParamMap.subscribe(params => {
+    const id = params.get('id');
+    this.image = params.get('image');
+    this.title = params.get('title');
+    this.description = params.get('description')
+    this.price = params.get('price');
+    this.rating = params.get('rating');
+    this.category = params.get('category');
+    });
+  }
 
   ngAfterViewInit(): void {
     this.themeColors();

@@ -14,11 +14,11 @@ import {
   NavLinkDirective,
   RowComponent
 } from '@coreui/angular';
-import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/public-api';
+import {  DocsExampleComponent } from '@docs-components/public-api';
 
 @Component({
   selector: 'app-navs',
   templateUrl: './navs.component.html',
-  imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, NavComponent, NavItemComponent, NavLinkDirective, RouterLink, DropdownComponent, DropdownToggleDirective, DropdownMenuDirective, DropdownItemDirective, DocsComponentsComponent]
+  imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, NavComponent, NavItemComponent, NavLinkDirective, RouterLink, DropdownComponent, DropdownToggleDirective, DropdownMenuDirective, DropdownItemDirective]
 })
 export class NavsComponent {}

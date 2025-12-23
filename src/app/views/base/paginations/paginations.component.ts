@@ -10,11 +10,11 @@ import {
   PaginationComponent,
   RowComponent
 } from '@coreui/angular';
-import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/public-api';
+import {  DocsExampleComponent } from '@docs-components/public-api';
 
 @Component({
   selector: 'app-paginations',
   templateUrl: './paginations.component.html',
-  imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, PaginationComponent, PageItemComponent, PageLinkDirective, RouterLink, DocsComponentsComponent]
+  imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, PaginationComponent, PageItemComponent, PageLinkDirective, RouterLink]
 })
 export class PaginationsComponent {}

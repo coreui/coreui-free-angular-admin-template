@@ -5,14 +5,17 @@
         <c-card-group>
           <c-card class="p-4">
             <c-card-body>
-              <form cForm>
+              <form cForm [formGroup]="form" (submit)="handleLogin()">
                 <h1>Login</h1>
                 <p class="text-body-secondary">Sign In to your account</p>
                 <c-input-group class="mb-3">
                   <span cInputGroupText>
                     <svg cIcon name="cilUser"></svg>
                   </span>
-                  <input autoComplete="username" cFormControl placeholder="Username" />
+                  <input type="email" autoComplete="email"
+                         cFormControl
+                         placeholder="Email"
+                         formControlName="email"/>
                 </c-input-group>
                 <c-input-group class="mb-4">
                   <span cInputGroupText>
@@ -22,17 +25,18 @@
                     autoComplete="current-password"
                     cFormControl
                     placeholder="Password"
+                    formControlName="password"
                     type="password"
                   />
                 </c-input-group>
                 <c-row>
                   <c-col xs="6">
-                    <button cButton class="px-4" color="primary">
+                    <button type="submit" cButton class="px-4" color="primary">
                       Login
                     </button>
                   </c-col>
                   <c-col class="text-end" xs="6">
-                    <button cButton class="px-0" color="link">
+                    <button  cButton class="px-0" color="link">
                       Forgot password?
                     </button>
                   </c-col>
@@ -48,7 +52,7 @@
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                   tempor incididunt ut labore et dolore magna aliqua.
                 </p>
-                <button [active]="true" cButton class="mt-3" color="primary" routerLink="/register">
+                <button [active]="true" cButton class="mt-3" color="primary" (click)="navigateToRegister()">
                   Register Now!
                 </button>
               </div>

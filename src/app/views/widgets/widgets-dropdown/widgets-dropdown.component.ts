@@ -1,7 +1,7 @@
 import { AfterContentInit, AfterViewInit, ChangeDetectorRef, Component, inject, OnInit, viewChild } from '@angular/core';
 import { getStyle } from '@coreui/utils';
 import { ChartjsComponent } from '@coreui/angular-chartjs';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { IconDirective } from '@coreui/icons-angular';
 import {
   ButtonDirective,
@@ -15,6 +15,7 @@ import {
   TemplateIdDirective,
   WidgetStatAComponent
 } from '@coreui/angular';
+import { ProductService } from '../../../services/product.service';
 
 @Component({
   selector: 'app-widgets-dropdown',
@@ -23,9 +24,10 @@ import {
 })
 export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
   private changeDetectorRef = inject(ChangeDetectorRef);
-
+  resObject:any;
   data: any[] = [];
   options: any[] = [];
+  searchProductTxt = '';
   labels = [
     'January',
     'February',
@@ -120,8 +122,64 @@ export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
     }
   };
 
+  constructor(public productService:ProductService,private router:Router){}
   ngOnInit(): void {
     this.setData();
+    this.getAllProductsData();
+     this.productService.seacrhProduct.subscribe(searchProductTxt => this.searchProductTxt = searchProductTxt)
+  }
+
+  getAllProductsData(){
+    this.productService.getAllProducts().subscribe((products:any)=>{
+       if (products.hasOwnProperty('products')) {
+             this.resObject = products['products'];
+             console.log(this.resObject)
+        }
+    })
+  }
+  //delete product
+  handleDelete(id:any){
+    this.productService.deleteProductById(id)
+    .subscribe(()=>{
+      //alert("Product Deleted Successfully")
+      this.getAllProductsData();
+
+    })
+  }
+
+  handleEdit(id:any){
+      this.productService.getProductById(id)
+     .subscribe((responseData:any)=>{
+       console.log(responseData)
+        this.router.navigate(['/forms/form-control'],{
+            queryParams: { id:responseData._id,
+                           title: responseData.title,
+                           description:responseData.description,
+                           price:responseData.price,
+                           rating:responseData.rating,
+                           image:responseData.image,
+                           category:responseData.category
+                          }
+        })
+      })
+  }
+
+  //getproductbyID
+  handleShow(id:any){
+     this.productService.getProductById(id)
+     .subscribe((responseData:any)=>{
+       console.log(responseData)
+        this.router.navigate(['/theme/colors'],{
+            queryParams: { title: responseData.title,
+                           description:responseData.description,
+                           price:responseData.price,
+                           rating:responseData.rating,
+                           image:responseData.image,
+                           category:responseData.category
+                          }
+        })
+
+     })
   }
 
   ngAfterContentInit(): void {
