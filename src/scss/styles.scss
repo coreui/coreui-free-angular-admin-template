@@ -21,3 +21,33 @@
 // We use those styles to show code examples, you should remove them in your application.
 @use "examples";
 
+/* The overlay container that covers the whole screen */
+.spinner-overlay {
+    position: fixed; /* Positions the overlay relative to the viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Viewport height ensures it covers the entire screen */
+    display: flex; /* Use Flexbox for easy centering */
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    z-index: 9999; /* Ensures it's above all other content */
+}
+
+/* The spinner itself */
+.loader {
+    border: 5px solid transparent; /* Transparent border for most of the circle */
+    border-top: 5px solid #ffffff; /* Colored border for the spinning part */
+    border-radius: 50%; /* Makes it a circle */
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite; /* Animation to make it spin */
+    /* The loader itself has no background by default, so it's transparent */
+}
+
+/* Keyframes for the spin animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

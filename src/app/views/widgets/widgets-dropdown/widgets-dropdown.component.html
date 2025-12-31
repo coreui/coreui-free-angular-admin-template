@@ -1,3 +1,8 @@
+@if(isLoading){
+<div class="spinner-overlay">
+    <div class="loader"></div>
+</div>
+}
 <c-row class="g-4">
   @if(searchProductTxt){
     <p style="color: red;">You want to search : {{searchProductTxt}}</p>
@@ -14,12 +19,15 @@
         <p>Price : {{product.price}}</p>
         <p>Rating: {{product.rating}}</p>
         <!-- <p>Description : {{product.description}}</p> -->
-        <div style="display: flex; justify-content: space-around;">
-
-          <button (click)="handleShow(product._id)">Show</button>
-          <button (click)="handleEdit(product._id)">Edit</button>
-          <button (click)="handleDelete(product._id)">Delete</button>
-        </div>
+       @if(decodedTxt?.isAdmin){
+          <div style="display: flex; justify-content: space-around;">
+                    <button (click)="handleShow(product._id)">Show</button>
+                    <button (click)="handleEdit(product._id)">Edit</button>
+                    <button (click)="handleDelete(product._id)">Delete</button>
+          </div>
+       }@else{
+          <button (click)="handleAddToCart(product)">Buy Now</button>
+       }
       </div>
     }
 

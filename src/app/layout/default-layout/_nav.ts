@@ -1,4 +1,6 @@
 import { INavData } from '@coreui/angular';
+import { CanActivate } from '@angular/router';
+import { AuthGuard } from '../../RouteGuard/AuthGuard';
 
 export const navItems: INavData[] = [
   {
@@ -20,7 +22,7 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-drop' }
   },
   {
-    name: 'Typography',
+    name: 'AddToCart',
     url: '/theme/typography',
     linkProps: { fragment: 'headings' },
     iconComponent: { name: 'cil-pencil' }
@@ -189,9 +191,9 @@ export const navItems: INavData[] = [
         attributes: { target: '_blank' }
       },
       {
-        name: 'Form Control',
+        name: 'Add Product',
         url: '/forms/form-control',
-        icon: 'nav-icon-bullet'
+        icon: 'nav-icon-bullet',
       },
       {
         name: 'Checks & Radios',

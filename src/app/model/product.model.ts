@@ -1,8 +1,8 @@
 export class Product{
   title!:string;
   description!:string;
-  rating!:string;
-  price!:string;
-  image!:string;
+  rating!:number;
+  price!:number;
+  image!:File;
   category!:string;
 }

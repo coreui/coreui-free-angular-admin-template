@@ -78,9 +78,10 @@ export class FormControlsComponent implements OnInit{
 
   handleEditAddProduct(){
      // alert("***********" + this.id)
-    //  if(this.form.invalid){
-    //   return
-    //  }
+     if(this.form.invalid){
+      return
+     }
+    console.log(this.form.value.category);
      if(!this.id){
       this.productService.createProduct(this.form.value.title,
       this.form.value.description,this.form.value.rating,
@@ -89,7 +90,6 @@ export class FormControlsComponent implements OnInit{
        this.productService.updateProductById(this.id,this.form.value.title,
       this.form.value.description,this.form.value.rating,
       this.form.value.price,this.form.value.image,this.form.value.category)
-
      }
     }
 

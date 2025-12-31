@@ -15,6 +15,7 @@ import {
 
 import { DefaultFooterComponent, DefaultHeaderComponent } from './';
 import { navItems } from './_nav';
+import { AuthService } from '../../services/auth.service';
 
 function isOverflown(element: HTMLElement) {
   return (
@@ -44,4 +45,26 @@ function isOverflown(element: HTMLElement) {
 })
 export class DefaultLayoutComponent {
   public navItems = [...navItems];
+  decodeToken:any;decodedTxt:any;
+  isItemFound = true;
+  matchedItem:any;
+  constructor(private authService:AuthService){}
+
+  ngOnInit() {
+     this.navItems.filter(item => {
+        // console.log(item.children)
+
+        this.decodeToken = this.authService.getDecodeToken();
+        this.decodedTxt = JSON.parse(this.decodeToken);
+        if (!this.decodedTxt?.isAdmin) {
+
+          console.log("No Name")
+          this.matchedItem = item.children?.filter(item => item.name === 'Add Product');
+          console.log(this.matchedItem);
+         // this.isItemFound = !!match;
+          //return this.isItemFound;
+        }
+     })
+  }
+
 }

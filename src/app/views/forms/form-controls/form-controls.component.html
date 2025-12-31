@@ -47,7 +47,7 @@
 
             <div class="mb-3">
               <label cLabel for="exampleFormControlInput1">Select Category</label>
-             <select  cFormControl  id="category" formControlName="category">
+             <select  cFormControl  id="category" name="category" formControlName="category">
               <option value="beauty">Beauty</option>
               <option value="fragrances">Fragrances</option>
               <option value="furniture">Furniture</option>
@@ -62,9 +62,9 @@
                       <!-- <button (click)="filepicker.click()">Pick Image</button> -->
                       <input type="file" (change)="onImagePicked($event)">
                     </div>
-                    @if (!imagePreview) {
+                    <!-- @if (!imagePreview) {
                             <img [src]="'../../assets/teacher.png'" alt="">
-                    }
+                    } -->
                     @if (imagePreview !== '' && imagePreview && form.get('image').valid) {
                         <div class="image-preview">
                           <img [src]="imagePreview" [alt]="form.value.title">

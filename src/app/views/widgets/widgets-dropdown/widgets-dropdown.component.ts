@@ -16,6 +16,7 @@ import {
   WidgetStatAComponent
 } from '@coreui/angular';
 import { ProductService } from '../../../services/product.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-widgets-dropdown',
@@ -23,11 +24,15 @@ import { ProductService } from '../../../services/product.service';
   imports: [RowComponent, ColComponent, WidgetStatAComponent, TemplateIdDirective, IconDirective, DropdownComponent, ButtonDirective, DropdownToggleDirective, DropdownMenuDirective, DropdownItemDirective, RouterLink, DropdownDividerDirective, ChartjsComponent]
 })
 export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
+
   private changeDetectorRef = inject(ChangeDetectorRef);
   resObject:any;
   data: any[] = [];
   options: any[] = [];
   searchProductTxt = '';
+  decodeToken:any;
+  decodedTxt:any;
+  isLoading = false;
   labels = [
     'January',
     'February',
@@ -122,35 +127,54 @@ export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
     }
   };
 
-  constructor(public productService:ProductService,private router:Router){}
+  constructor(public authService:AuthService,
+  public productService:ProductService,private router:Router){}
   ngOnInit(): void {
     this.setData();
     this.getAllProductsData();
-     this.productService.seacrhProduct.subscribe(searchProductTxt => this.searchProductTxt = searchProductTxt)
+    this.decodeToken = this.authService.getDecodeToken();
+    this.decodedTxt = JSON.parse(this.decodeToken);
+    //console.log(this.decodedTxt.isAdmin)
+    this.productService.seacrhProduct.subscribe(searchProductTxt => this.searchProductTxt = searchProductTxt)
   }
 
   getAllProductsData(){
-    this.productService.getAllProducts().subscribe((products:any)=>{
+    this.isLoading = true;
+    this.productService.getAllProducts()
+      .subscribe((products:any)=>{
        if (products.hasOwnProperty('products')) {
              this.resObject = products['products'];
              console.log(this.resObject)
+             this.isLoading = false;
         }
+    },error=>{
+       alert(error)
+       this.isLoading = false;
     })
   }
   //delete product
   handleDelete(id:any){
+    this.isLoading = true;
     this.productService.deleteProductById(id)
-    .subscribe(()=>{
-      //alert("Product Deleted Successfully")
-      this.getAllProductsData();
-
+    .subscribe((response:any)=>{
+      try{
+          console.log(response)
+          alert("Product Deleted Successfully");
+          this.getAllProductsData();
+          this.isLoading = false;
+      }catch(error){
+        alert(error)
+        this.isLoading = false
+      }
     })
   }
 
   handleEdit(id:any){
+     this.isLoading = true;
       this.productService.getProductById(id)
      .subscribe((responseData:any)=>{
        console.log(responseData)
+       this.isLoading = false;
         this.router.navigate(['/forms/form-control'],{
             queryParams: { id:responseData._id,
                            title: responseData.title,
@@ -161,14 +185,20 @@ export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
                            category:responseData.category
                           }
         })
+      },error=>{
+         alert(error)
+         this.isLoading = false;
       })
-  }
+      
+    }
 
   //getproductbyID
   handleShow(id:any){
+    this.isLoading = true;
      this.productService.getProductById(id)
      .subscribe((responseData:any)=>{
-       console.log(responseData)
+       console.log(responseData);
+       this.isLoading = false;
         this.router.navigate(['/theme/colors'],{
             queryParams: { title: responseData.title,
                            description:responseData.description,
@@ -179,9 +209,24 @@ export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
                           }
         })
 
+     },error=>{
+        alert(error)
+        this.isLoading = false;
      })
   }
 
+  handleAddToCart(product:any) {
+    this.isLoading = true;
+      this.productService.getAddToCartProduct(product)
+       .subscribe(response=>{
+          alert("Product Added Successfully")
+         this.router.navigateByUrl('/theme/typography');
+         this.isLoading = false;
+       },error=>{
+          alert(error)
+          this.isLoading = false;
+       })
+  }
   ngAfterContentInit(): void {
     this.changeDetectorRef.detectChanges();
 

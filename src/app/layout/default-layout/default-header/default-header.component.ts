@@ -39,6 +39,7 @@ export class DefaultHeaderComponent extends HeaderComponent{
   decodedImage:any;
   decodedEmail:any;
   decodeToken:any;
+  decodedTxt:any;
   searchTxt = '';
   readonly colorModes = [
     { name: 'light', text: 'Light', icon: 'cilSun' },
@@ -59,9 +60,9 @@ export class DefaultHeaderComponent extends HeaderComponent{
   ngOnInit() {
     let email = '';
     this.decodeToken = this.authService.getDecodeToken();
-    let decodedTxt = JSON.parse(this.decodeToken);
-    this.decodedImage = decodedTxt?.image;
-    this.decodedEmail = decodedTxt?.email;
+    this.decodedTxt = JSON.parse(this.decodeToken);
+    this.decodedImage = this.decodedTxt?.image;
+    this.decodedEmail = this.decodedTxt?.email;
   }
 
   handleLogout(){

@@ -13,10 +13,14 @@
       <svg cIcon class="sidebar-brand-narrow" height="32" name="signet" title="CoreUI Logo"></svg>
     </c-sidebar-brand> -->
   </c-sidebar-header>
+    <ng-scrollbar pointerEventsMethod="scrollbar" visibility="hover">
+      <c-sidebar-nav
+              [navItems]="navItems"
+              dropdownMode="close" compact
+              [hidden]="matchedItem"></c-sidebar-nav>
+    </ng-scrollbar>
 
-  <ng-scrollbar pointerEventsMethod="scrollbar" visibility="hover">
-    <c-sidebar-nav [navItems]="navItems" dropdownMode="close" compact />
-  </ng-scrollbar>
+
 
   @if (!sidebar1.narrow) {
     <c-sidebar-footer cSidebarToggle="sidebar1" class="border-top d-none d-lg-flex" toggle="unfoldable" style="cursor: pointer;">

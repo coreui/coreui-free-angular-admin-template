@@ -37,7 +37,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/scss/styles.scss"
+              "src/scss/styles.scss",
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeicons/primeicons.css"
             ],
             "scripts": [],
             "allowedCommonJsDependencies": [],

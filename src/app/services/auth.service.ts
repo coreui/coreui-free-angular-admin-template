@@ -9,6 +9,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn:'root'
 })
 export class AuthService implements OnInit{
+    decodedToken:any;
     private authStatusListener = new Subject<boolean>();
     constructor(public http:HttpClient,private router:Router){}
     token:any;
@@ -51,9 +52,9 @@ export class AuthService implements OnInit{
               this.token = responseData.token;
               localStorage.setItem('token', responseData.token);
               const helper = new JwtHelperService();
-              const decodedToken= helper.decodeToken(this.token);
-              localStorage.setItem('userInfo', JSON.stringify(decodedToken));
-              console.log(decodedToken);
+              this.decodedToken= helper.decodeToken(this.token);
+              localStorage.setItem('userInfo', JSON.stringify(this.decodedToken));
+              console.log(this.decodedToken);
               alert("Login Successfully");
               this.router.navigateByUrl('/');
           },error=>{
@@ -64,6 +65,11 @@ export class AuthService implements OnInit{
               }
           })
       }
+
+     adminAuthentication(){
+        this.http.get(``)
+     }
+
   getAuthenticationToken(){
        return localStorage.getItem('token');
   }
