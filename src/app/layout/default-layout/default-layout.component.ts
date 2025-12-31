@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import {  RouterOutlet } from '@angular/router';
 import { NgScrollbar } from 'ngx-scrollbar';
 
-import { IconDirective } from '@coreui/icons-angular';
 import {
   ContainerComponent,
   ShadowOnScrollDirective,
-  SidebarBrandComponent,
   SidebarComponent,
   SidebarFooterComponent,
   SidebarHeaderComponent,
@@ -17,6 +15,7 @@ import {
 
 import { DefaultFooterComponent, DefaultHeaderComponent } from './';
 import { navItems } from './_nav';
+import { AuthService } from '../../services/auth.service';
 
 function isOverflown(element: HTMLElement) {
   return (
@@ -32,7 +31,6 @@ function isOverflown(element: HTMLElement) {
   imports: [
     SidebarComponent,
     SidebarHeaderComponent,
-    SidebarBrandComponent,
     SidebarNavComponent,
     SidebarFooterComponent,
     SidebarToggleDirective,
@@ -40,13 +38,33 @@ function isOverflown(element: HTMLElement) {
     ContainerComponent,
     DefaultFooterComponent,
     DefaultHeaderComponent,
-    IconDirective,
     NgScrollbar,
     RouterOutlet,
-    RouterLink,
     ShadowOnScrollDirective
   ]
 })
 export class DefaultLayoutComponent {
   public navItems = [...navItems];
+  decodeToken:any;decodedTxt:any;
+  isItemFound = true;
+  matchedItem:any;
+  constructor(private authService:AuthService){}
+
+  ngOnInit() {
+     this.navItems.filter(item => {
+        // console.log(item.children)
+
+        this.decodeToken = this.authService.getDecodeToken();
+        this.decodedTxt = JSON.parse(this.decodeToken);
+        if (!this.decodedTxt?.isAdmin) {
+
+          console.log("No Name")
+          this.matchedItem = item.children?.filter(item => item.name === 'Add Product');
+          console.log(this.matchedItem);
+         // this.isItemFound = !!match;
+          //return this.isItemFound;
+        }
+     })
+  }
+
 }

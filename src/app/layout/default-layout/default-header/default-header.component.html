@@ -16,11 +16,21 @@
         <a cNavLink routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
       </c-nav-item>
       <c-nav-item>
+        <input type="text"
+               style="width: 250px;margin-top: 5px;"
+               placeholder="Enter Product Title/Category"
+               name="searchTxt"
+               [(ngModel)]="searchTxt"
+               (input)="getSearchProduct(searchTxt)">
+        <!-- <button (click)="getSearchProduct(searchTxt)">Search</button> -->
+        <!-- <p>You want to search {searchTxt}</p> -->
+      </c-nav-item>
+      <!-- <c-nav-item>
         <a cNavLink routerLink="/users" routerLinkActive="active">Users</a>
       </c-nav-item>
       <c-nav-item>
         <a cNavLink routerLink="/settings" routerLinkActive="active">Settings</a>
-      </c-nav-item>
+      </c-nav-item> -->
     </c-header-nav>
 
     <c-header-nav class="d-none d-md-flex ms-auto ">
@@ -46,12 +56,15 @@
     </c-header-nav>
 
     <c-header-nav class="mx-0">
+
       <ng-container *ngTemplateOutlet="userDropdown" />
     </c-header-nav>
 
   </c-container>
   <c-container [fluid]="true" class="px-4">
-    <c-breadcrumb-router />
+    <c-breadcrumb-router>
+
+    </c-breadcrumb-router>
   </c-container>
 </ng-container>
 <!--</c-header>-->
@@ -59,15 +72,30 @@
 <ng-template #userDropdown>
   <c-dropdown [popperOptions]="{ placement: 'bottom-start' }" variant="nav-item">
     <button [caret]="false" cDropdownToggle class="py-0 pe-0" aria-label="Open user menu">
-      <c-avatar
+     @if(decodedImage) {
+        <c-avatar
         shape="rounded-1"
         size="md"
-        src="./assets/images/avatars/8.jpg"
+        [src]=`${decodedImage}`
         status="success"
         textColor="primary"
         alt="User avatar"
       />
+     }@else{
+      <c-avatar
+        shape="rounded-1"
+        size="md"
+        src='../../../../assets/images/avatars/teacher.png'
+        status="success"
+        textColor="primary"
+        alt="User avatar"
+      />
+     }
     </button>
+    <div>
+      <p>{{decodedEmail}}</p>
+      <p style="color: red;">{{decodedTxt?.isAdmin ? 'Admin' : 'User'}}</p>
+    </div>
     <ul cDropdownMenu class="pt-0 w-auto">
       <li>
         <h6 cDropdownHeader class="bg-body-secondary text-body-secondary fw-semibold py-2 rounded-top">
@@ -97,7 +125,7 @@
           <c-badge class="ms-2 float-end" color="danger"> 42</c-badge>
         </a>
       </li>
-      <li>
+      <!-- <li>
         <a cDropdownItem routerLink="">
           <svg cIcon class="me-2" name="cilCommentSquare"></svg>
           Comments
@@ -109,7 +137,7 @@
           Settings
         </h6>
       </li>
-      <li></li>
+      <li></li> -->
       <li>
         <a cDropdownItem routerLink="">
           <svg cIcon class="me-2" name="cilUser"></svg>
@@ -150,7 +178,7 @@
         </a>
       </li>
       <li>
-        <a cDropdownItem routerLink="">
+        <a cDropdownItem routerLink="" (click)="handleLogout()">
           <svg cIcon class="me-2" name="cilAccountLogout"></svg>
           Logout
         </a>

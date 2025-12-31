@@ -4,33 +4,78 @@
       <c-col lg="7" md="9" xl="6">
         <c-card class="mx-4">
           <c-card-body class="p-4">
-            <form cForm>
+            <form [formGroup]="form" (submit)="handleRegistration()" cForm>
               <h1>Register</h1>
               <p class="text-body-secondary">Create your account</p>
+
+              <!-- <div>
+                    <c-input-group class="mb-3">
+                <button (click)="filepicker.click()">Pick Image</button>&nbsp;
+                <input style="display: none;" type="file" #filepicker (change)="onImagePicked($event)">
+                @if (!imagePreview) {
+                        <img style="width: 200px; height: 200px;"  [src]="'../../../../assets/images/avatars/teacher.png'" alt="">
+                }
+                @if (imagePreview !== '' && imagePreview && form.get('image').valid) {
+                    <div class="image-preview">
+                      <img [src]="imagePreview" style="max-width: 200px; max-height: 200px;"  [alt]="form.value.title">
+                    </div>
+                }
+              </c-input-group>
+              </div> -->
+                    <div class="mb-3" style="display: flex; flex-direction: column;">
+                      <div>
+                      <button (click)="filepicker.click()">Pick Image</button>
+                      <input style="display: none;" type="file" #filepicker (change)="onImagePicked($event)">
+                    </div>
+                    @if (!imagePreview) {
+                            <img [src]="'../../assets/teacher.png'" alt="">
+                    }
+                    @if (imagePreview !== '' && imagePreview && form.get('image').valid) {
+                        <div class="image-preview">
+                          <img [src]="imagePreview" [alt]="form.value.title">
+                        </div>
+                    }
+
+              </div>
+
+
               <c-input-group class="mb-3">
                 <span cInputGroupText>
                   <svg cIcon name="cilUser"></svg>
                 </span>
-                <input autoComplete="name" cFormControl placeholder="Username" />
+                <input  autoComplete="username"
+                      cFormControl
+                      placeholder="Username"
+                      formControlName="username" />
               </c-input-group>
               <c-input-group class="mb-3">
                 <span cInputGroupText>&#64;</span>
-                <input autoComplete="email" cFormControl placeholder="Email" />
+                <input  autoComplete="email"
+                        cFormControl placeholder="Email"
+                        formControlName="email"/>
               </c-input-group>
+
               <c-input-group class="mb-3">
                 <span cInputGroupText>
                   <svg cIcon name="cilLockLocked"></svg>
                 </span>
-                <input autoComplete="new-password" cFormControl placeholder="Password" type="password" />
+                <input autoComplete="new-password"
+                       cFormControl placeholder="Password"
+                       type="password"
+                       formControlName="password" />
               </c-input-group>
+
               <c-input-group class="mb-4">
                 <span cInputGroupText>
                   <svg cIcon name="cilLockLocked"></svg>
                 </span>
-                <input autoComplete="new-password" cFormControl placeholder="Repeat password" type="password" />
+                <input autoComplete="new-password"
+                       cFormControl placeholder="Repeat password"
+                       type="password"
+                       formControlName="password" />
               </c-input-group>
               <div class="d-grid">
-                <button cButton color="success">Create Account</button>
+                <button cButton color="success" type="submit">Create Your Account</button>
               </div>
             </form>
           </c-card-body>

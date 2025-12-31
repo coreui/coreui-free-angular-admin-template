@@ -1,3 +1,4 @@
+
 import { Component, DestroyRef, DOCUMENT, effect, inject, OnInit, Renderer2, signal, WritableSignal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ChartOptions } from 'chart.js';
@@ -22,6 +23,9 @@ import { IconDirective } from '@coreui/icons-angular';
 import { WidgetsBrandComponent } from '../widgets/widgets-brand/widgets-brand.component';
 import { WidgetsDropdownComponent } from '../widgets/widgets-dropdown/widgets-dropdown.component';
 import { DashboardChartsData, IChartProps } from './dashboard-charts-data';
+import { AuthService } from '../../services/auth.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
+
 
 interface IUser {
   name: string;
@@ -132,6 +136,9 @@ export class DashboardComponent implements OnInit {
 
   public mainChart: IChartProps = { type: 'line' };
   public mainChartRef: WritableSignal<any> = signal(undefined);
+  token:any;
+  constructor(public authService:AuthService){}
+
   #mainChartRefEffect = effect(() => {
     if (this.mainChartRef()) {
       this.setChartStyles();
@@ -145,6 +152,11 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.initCharts();
     this.updateChartOnColorModeChange();
+    // const token = this.authService.getAuthenticationToken();
+    // console.log(token);
+    // const helper = new JwtHelperService();
+    // const decoded= helper.decodeToken(token);
+    // console.log(decoded);
   }
 
   initCharts(): void {

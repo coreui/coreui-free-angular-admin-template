@@ -1,239 +1,91 @@
 <c-row ngPreserveWhitespaces>
   <c-col xs="12">
-    <app-docs-components href="forms/form-control" title="Form Control" />
+    <!-- <app-docs-components href="forms/form-control" title="Form Control" /> -->
     <c-card class="mb-4">
       <c-card-header>
-        <strong>Angular Form Control</strong>
+        <strong><h1>{{id ? "Edit Product" : "Add Product"}}</h1></strong>
       </c-card-header>
       <c-card-body>
-        <app-docs-example href="forms/form-control">
-          <form cForm>
+        <!-- <app-docs-example href="forms/form-control"> -->
+          <form [formGroup]="form" (submit)="handleEditAddProduct()" cForm>
             <div class="mb-3">
-              <label cLabel for="exampleFormControlInput1">Email address</label>
+              <label cLabel for="exampleFormControlInput1">Title</label>
+                <input cFormControl
+                     id="exampleFormControlInput1"
+                     placeholder="Enter Title"
+                     formControlName="title"
+                     type="text"
+                  />
+            </div>
+
+            <div class="mb-3">
+              <label cLabel for="exampleFormControlInput1">Rating</label>
               <input cFormControl
                      id="exampleFormControlInput1"
-                     placeholder="name@example.com"
-                     type="email"
+                     placeholder="Enter Rating"
+                     formControlName="rating"
+                     type="number"
               />
             </div>
+
             <div class="mb-3">
-              <label cLabel for="exampleFormControlTextarea1">Example textarea</label>
-              <textarea cFormControl id="exampleFormControlTextarea1" rows="3"></textarea>
+              <label cLabel for="exampleFormControlInput1">Price</label>
+              <input cFormControl
+                     id="exampleFormControlInput1"
+                     placeholder="Enter Price"
+                     formControlName="price"
+                     type="number"
+              />
             </div>
+
+            <div class="mb-3">
+              <label cLabel for="exampleFormControlTextarea1">Description</label>
+              <textarea cFormControl id="exampleFormControlTextarea1"
+                        rows="3"
+                        formControlName="description"></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label cLabel for="exampleFormControlInput1">Select Category</label>
+             <select  cFormControl  id="category" name="category" formControlName="category">
+              <option value="beauty">Beauty</option>
+              <option value="fragrances">Fragrances</option>
+              <option value="furniture">Furniture</option>
+              <option value="groceries">Groceries</option>
+            </select>
+            </div>
+
+            <div class="mb-3">
+              <label cLabel for="exampleFormControlInput1">Image</label>
+                <div class="mb-3" style="display: flex; flex-direction: column;">
+                      <div>
+                      <!-- <button (click)="filepicker.click()">Pick Image</button> -->
+                      <input type="file" (change)="onImagePicked($event)">
+                    </div>
+                    <!-- @if (!imagePreview) {
+                            <img [src]="'../../assets/teacher.png'" alt="">
+                    } -->
+                    @if (imagePreview !== '' && imagePreview && form.get('image').valid) {
+                        <div class="image-preview">
+                          <img [src]="imagePreview" [alt]="form.value.title">
+                        </div>
+                    }@else if(updatedImagePreview){
+                        <div class="image-preview">
+                          <img [src]="updatedImagePreview" [alt]="form.value.title">
+                        </div>
+                    }
+
+              </div>
+
+            </div>
+
+            <div class="mb-3">
+              <button type="submit" cButton class="mt-3" color="primary" >{{id? "Edit Product" : "Add Product"}}</button>
+             </div>
           </form>
-        </app-docs-example>
+        <!-- </app-docs-example> -->
       </c-card-body>
     </c-card>
   </c-col>
-  <c-col xs="12">
-    <c-card class="mb-4">
-      <c-card-header>
-        <strong>Angular Form Control</strong> <small>Sizing</small>
-      </c-card-header>
-      <c-card-body>
-        <p class="text-body-secondary small">
-          Set heights using <code>sizing</code> property like <code>sizing=&#34;lg&#34;</code> and
-          <code>sizing=&#34;sm&#34;</code>.
-        </p>
-        <app-docs-example href="forms/form-control#sizing">
-          <input aria-label="lg input example"
-                 cFormControl
-                 placeholder="Large input"
-                 sizing="lg"
-                 type="text"
-          />
-          <br />
-          <input aria-label="default input example"
-                 cFormControl
-                 placeholder="Default input"
-                 type="text"
-          />
-          <br />
-          <input aria-label="sm input example"
-                 cFormControl
-                 placeholder="Small input"
-                 sizing="sm"
-                 type="text"
-          />
-        </app-docs-example>
-      </c-card-body>
-    </c-card>
-  </c-col>
-  <c-col xs="12">
-    <c-card class="mb-4">
-      <c-card-header>
-        <strong>Angular Form Control</strong> <small>Disabled</small>
-      </c-card-header>
-      <c-card-body>
-        <p class="text-body-secondary small">
-          Add the <code>disabled</code> boolean attribute on an input to give it a grayed out
-          appearance and remove pointer events.
-        </p>
-        <app-docs-example href="forms/form-control#disabled">
-          <input aria-label="Disabled input example"
-                 cFormControl
-                 disabled
-                 placeholder="Disabled input"
-                 type="text"
-          />
-          <br />
-          <input aria-label="Disabled input example"
-                 cFormControl
-                 disabled
-                 placeholder="Disabled readonly input"
-                 readOnly
-                 type="text"
-          />
-          <br />
-        </app-docs-example>
-      </c-card-body>
-    </c-card>
-  </c-col>
-  <c-col xs="12">
-    <c-card class="mb-4">
-      <c-card-header>
-        <strong>Angular Form Control</strong> <small>Readonly</small>
-      </c-card-header>
-      <c-card-body>
-        <p class="text-body-secondary small">
-          Add the <code>readOnly</code> boolean attribute on an input to prevent modification of
-          the input&#39;s value. Read-only inputs appear lighter (just like disabled inputs),
-          but retain the standard cursor.
-        </p>
-        <app-docs-example href="forms/form-control#readonly">
-          <input aria-label="readonly input example"
-                 cFormControl
-                 placeholder="Readonly input here..."
-                 readOnly
-                 type="text"
-          />
-        </app-docs-example>
-      </c-card-body>
-    </c-card>
-  </c-col>
-  <c-col xs="12">
-    <c-card class="mb-4">
-      <c-card-header>
-        <strong>Angular Form Control</strong> <small>Readonly plain text</small>
-      </c-card-header>
-      <c-card-body>
-        <p class="text-body-secondary small">
-          If you want to have <code>&lt;input readonly&gt;</code> elements in your form styled
-          as plain text, use the <code>plainText</code> boolean property to remove the default
-          form field styling and preserve the correct margin and padding.
-        </p>
-        <app-docs-example href="forms/form-control#readonly">
-          <c-row class="mb-3">
-            <label [sm]="2" cCol cLabel="col" for="staticEmail">
-              Email
-            </label>
-            <c-col sm="10">
-              <input [plaintext]="true"
-                     cFormControl
-                     id="staticEmail"
-                     readonly
-                     type="text"
-                     value="email@example.com"
-              />
-            </c-col>
-          </c-row>
-          <c-row class="mb-3">
-            <label [sm]="2" cCol cLabel="col" for="inputPassword">
-              Password
-            </label>
-            <c-col sm="10">
-              <input cFormControl id="inputPassword" type="password" />
-            </c-col>
-          </c-row>
-        </app-docs-example>
-        <app-docs-example href="forms/form-control#readonly">
-          <form cForm [gutter]="3" cRow>
-            <c-col xs="auto">
-              <label cLabel class="visually-hidden" for="staticEmail2">
-                Email
-              </label>
-              <input [plaintext]="true"
-                     cFormControl
-                     id="staticEmail2"
-                     readonly
-                     type="text"
-                     value="email@example.com"
-              />
-            </c-col>
-            <c-col xs="auto">
-              <label cLabel class="visually-hidden" for="inputPassword2">
-                Password
-              </label>
-              <input cFormControl id="inputPassword2" placeholder="Password" type="password" />
-            </c-col>
-            <c-col xs="auto">
-              <button cButton class="m-0" type="submit">
-                Confirm identity
-              </button>
-            </c-col>
-          </form>
-        </app-docs-example>
-      </c-card-body>
-    </c-card>
-  </c-col>
-  <c-col xs="12">
-    <c-card class="mb-4">
-      <c-card-header>
-        <strong>Angular Form Control</strong> <small>File input</small>
-      </c-card-header>
-      <c-card-body>
-        <app-docs-example href="forms/form-control#file-input">
-          <div class="mb-3">
-            <label cLabel for="formFile">Default file input example</label>
-            <input cFormControl id="formFile" type="file" />
-          </div>
-          <div class="mb-3">
-            <label cLabel for="formFileMultiple">Multiple files input example</label>
-            <input cFormControl id="formFileMultiple" multiple type="file" />
-          </div>
-          <div class="mb-3">
-            <label cLabel for="formFileDisabled">Disabled file input example</label>
-            <input cFormControl disabled id="formFileDisabled" type="file" />
-          </div>
-          <div class="mb-3">
-            <label cLabel for="formFileSm">Small file input example</label>
-            <input cFormControl id="formFileSm" sizing="sm" type="file" />
-          </div>
-          <div>
-            <label cLabel for="formFileLg">Large file input example</label>
-            <input cFormControl id="formFileLg" sizing="lg" type="file" />
-          </div>
-        </app-docs-example>
-      </c-card-body>
-    </c-card>
-  </c-col>
-  <c-col xs="12">
-    <c-card class="mb-4">
-      <c-card-header>
-        <strong>Angular Form Control</strong> <small>Color</small>
-      </c-card-header>
-      <c-card-body>
-        <app-docs-example href="forms/form-control#color">
-          <c-row class="align-items-center g-2">
-            <c-col xs="auto">
-              <label cLabel="col" for="exampleColorInput">Color picker</label>
-            </c-col>
-            <c-col xs="auto">
-              <input [(ngModel)]="favoriteColor"
-                     cFormControl
-                     id="exampleColorInput"
-                     title="Choose your color"
-                     type="color">
-            </c-col>
-            <c-col xs="auto">
-              <div [style.backgroundColor]="favoriteColor()" class="color-box p-1 m-1"></div>
-            </c-col>
-            <c-col xs="auto">
-              <strong>{{ favoriteColor() }}</strong>
-            </c-col>
-          </c-row>
-        </app-docs-example>
-      </c-card-body>
-    </c-card>
-  </c-col>
+
 </c-row>

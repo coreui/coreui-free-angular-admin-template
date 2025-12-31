@@ -1,7 +1,7 @@
 import { AfterContentInit, AfterViewInit, ChangeDetectorRef, Component, inject, OnInit, viewChild } from '@angular/core';
 import { getStyle } from '@coreui/utils';
 import { ChartjsComponent } from '@coreui/angular-chartjs';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { IconDirective } from '@coreui/icons-angular';
 import {
   ButtonDirective,
@@ -15,6 +15,8 @@ import {
   TemplateIdDirective,
   WidgetStatAComponent
 } from '@coreui/angular';
+import { ProductService } from '../../../services/product.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-widgets-dropdown',
@@ -22,10 +24,15 @@ import {
   imports: [RowComponent, ColComponent, WidgetStatAComponent, TemplateIdDirective, IconDirective, DropdownComponent, ButtonDirective, DropdownToggleDirective, DropdownMenuDirective, DropdownItemDirective, RouterLink, DropdownDividerDirective, ChartjsComponent]
 })
 export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
-  private changeDetectorRef = inject(ChangeDetectorRef);
 
+  private changeDetectorRef = inject(ChangeDetectorRef);
+  resObject:any;
   data: any[] = [];
   options: any[] = [];
+  searchProductTxt = '';
+  decodeToken:any;
+  decodedTxt:any;
+  isLoading = false;
   labels = [
     'January',
     'February',
@@ -120,10 +127,106 @@ export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
     }
   };
 
+  constructor(public authService:AuthService,
+  public productService:ProductService,private router:Router){}
   ngOnInit(): void {
     this.setData();
+    this.getAllProductsData();
+    this.decodeToken = this.authService.getDecodeToken();
+    this.decodedTxt = JSON.parse(this.decodeToken);
+    //console.log(this.decodedTxt.isAdmin)
+    this.productService.seacrhProduct.subscribe(searchProductTxt => this.searchProductTxt = searchProductTxt)
   }
 
+  getAllProductsData(){
+    this.isLoading = true;
+    this.productService.getAllProducts()
+      .subscribe((products:any)=>{
+       if (products.hasOwnProperty('products')) {
+             this.resObject = products['products'];
+             console.log(this.resObject)
+             this.isLoading = false;
+        }
+    },error=>{
+       alert(error)
+       this.isLoading = false;
+    })
+  }
+  //delete product
+  handleDelete(id:any){
+    this.isLoading = true;
+    this.productService.deleteProductById(id)
+    .subscribe((response:any)=>{
+      try{
+          console.log(response)
+          alert("Product Deleted Successfully");
+          this.getAllProductsData();
+          this.isLoading = false;
+      }catch(error){
+        alert(error)
+        this.isLoading = false
+      }
+    })
+  }
+
+  handleEdit(id:any){
+     this.isLoading = true;
+      this.productService.getProductById(id)
+     .subscribe((responseData:any)=>{
+       console.log(responseData)
+       this.isLoading = false;
+        this.router.navigate(['/forms/form-control'],{
+            queryParams: { id:responseData._id,
+                           title: responseData.title,
+                           description:responseData.description,
+                           price:responseData.price,
+                           rating:responseData.rating,
+                           image:responseData.image,
+                           category:responseData.category
+                          }
+        })
+      },error=>{
+         alert(error)
+         this.isLoading = false;
+      })
+      
+    }
+
+  //getproductbyID
+  handleShow(id:any){
+    this.isLoading = true;
+     this.productService.getProductById(id)
+     .subscribe((responseData:any)=>{
+       console.log(responseData);
+       this.isLoading = false;
+        this.router.navigate(['/theme/colors'],{
+            queryParams: { title: responseData.title,
+                           description:responseData.description,
+                           price:responseData.price,
+                           rating:responseData.rating,
+                           image:responseData.image,
+                           category:responseData.category
+                          }
+        })
+
+     },error=>{
+        alert(error)
+        this.isLoading = false;
+     })
+  }
+
+  handleAddToCart(product:any) {
+    this.isLoading = true;
+      this.productService.getAddToCartProduct(product)
+       .subscribe(response=>{
+          alert("Product Added Successfully")
+         this.router.navigateByUrl('/theme/typography');
+         this.isLoading = false;
+       },error=>{
+          alert(error)
+          this.isLoading = false;
+       })
+  }
   ngAfterContentInit(): void {
     this.changeDetectorRef.detectChanges();
 

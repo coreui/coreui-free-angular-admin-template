@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { AuthGuard } from '../../RouteGuard/AuthGuard';
 
 export const routes: Routes = [
   {
@@ -6,6 +7,7 @@ export const routes: Routes = [
     data: {
       title: 'Forms'
     },
+
     children: [
       {
         path: '',
@@ -16,7 +18,7 @@ export const routes: Routes = [
         path: 'form-control',
         loadComponent: () => import('./form-controls/form-controls.component').then(m => m.FormControlsComponent),
         data: {
-          title: 'Form Control'
+          title: 'Add Product'
         }
       },
       {

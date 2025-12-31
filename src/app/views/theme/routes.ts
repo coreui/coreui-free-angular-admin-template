@@ -23,7 +23,7 @@ export const routes: Routes = [
         path: 'typography',
         loadComponent: () => import('./typography.component').then(m => m.TypographyComponent),
         data: {
-          title: 'Typography'
+          title: 'AddToCart'
         }
       }
     ]
