@@ -2,6 +2,28 @@
 
 ---
 
+#### `5.6.5`
+
+- chore(dependencies): update
+  - `@angular/build` @ "21.0.5" (was "21.0.4")
+  - `@angular/cli` @ "21.0.5" (was "21.0.4")
+  - `@angular/compiler-cli` @ "21.0.7" (was "21.0.6")
+  - `@angular/animations` @ "21.0.7" (was "21.0.6")
+  - `@angular/common` @ "21.0.7" (was "21.0.6")
+  - `@angular/compiler` @ "21.0.7" (was "21.0.6")
+  - `@angular/core` @ "21.0.7" (was "21.0.6")
+  - `@angular/forms` @ "21.0.7" (was "21.0.6")
+  - `@angular/language-service` @ "21.0.7" (was "21.0.6")
+  - `@angular/localize` @ "21.0.7" (was "21.0.6")
+  - `@angular/platform-browser` @ "21.0.7" (was "21.0.6")
+  - `@angular/platform-browser-dynamic` @ "21.0.7" (was "21.0.6")
+  - `@angular/router` @ "21.0.7" (was "21.0.6")
+  - `@coreui/angular` @ "5.6.5" (was "5.6.4")
+  - `@coreui/angular-chartjs` @ "5.6.5" (was "5.6.4")
+  - `@coreui/icons-angular` @ "5.6.5" (was "5.6.4")
+
+---
+
 #### `5.6.4`
 
 - chore(dependencies): update
