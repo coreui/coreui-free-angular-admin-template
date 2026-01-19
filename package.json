@@ -71,7 +71,6 @@
     "url": "git+https://github.com/coreui/coreui-free-angular-admin-template.git"
   },
   "overrides": {
-    "sass": "^1.97.0"
     "undici": "^7.18.2"
   }
 }
