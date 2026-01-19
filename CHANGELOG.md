@@ -2,6 +2,33 @@
 
 ---
 
+#### `5.6.7`
+
+- chore(dependencies): update to 'Angular 21.1'
+  - `@angular/build` @ "21.1.0" (was "21.0.5")
+  - `@angular/cli` @ "21.1.0" (was "21.0.5")
+  - `@angular/compiler-cli` @ "21.1.0" (was "21.0.7")
+  - `@angular/animations` @ "21.1.0" (was "21.0.7")
+  - `@angular/cdk` @ "21.1.0" (was "21.0.5")
+  - `@angular/common` @ "21.1.0" (was "21.0.7")
+  - `@angular/compiler` @ "21.1.0" (was "21.0.7")
+  - `@angular/core` @ "21.1.0" (was "21.0.7")
+  - `@angular/forms` @ "21.1.0" (was "21.0.7")
+  - `@angular/language-service` @ "21.1.0" (was "21.0.7")
+  - `@angular/localize` @ "21.1.0" (was "21.0.7")
+  - `@angular/platform-browser` @ "21.1.0" (was "21.0.7")
+  - `@angular/platform-browser-dynamic` @ "21.1.0" (was "21.0.7")
+  - `@angular/router` @ "21.1.0" (was "21.0.7")
+  - `@coreui/angular` @ "5.6.7" (was "5.6.5")
+  - `@coreui/angular-chartjs` @ "5.6.7" (was "5.6.5")
+  - `@coreui/icons-angular` @ "5.6.7" (was "5.6.5")
+  - `@types/jasmine` @ "5.1.15" (was "5.1.13")
+  - `@types/node` @ "24.10.9" (was "24.10.4")
+- chore(dependencies): overrides `undici` version to `^7.18.2` to mitigate 2 [low severity vulnerabilities](https://github.com/advisories/GHSA-g9mf-h72j-4rw9)
+- chore(dependencies): remove overrides `sass`
+
+---
+
 #### `5.6.5`
 
 - chore(dependencies): update
