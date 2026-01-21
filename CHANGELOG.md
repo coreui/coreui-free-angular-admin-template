@@ -2,6 +2,15 @@
 
 ---
 
+#### `5.6.8`
+
+- chore(dependencies): update
+  - `@coreui/angular` @ "5.6.8" (was "5.6.7")
+  - `@coreui/angular-chartjs` @ "5.6.8" (was "5.6.7")
+  - `@coreui/icons-angular` @ "5.6.8" (was "5.6.7")
+
+---
+
 #### `5.6.7`
 
 - chore(dependencies): update to 'Angular 21.1'
