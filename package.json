@@ -69,8 +69,5 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/coreui/coreui-free-angular-admin-template.git"
-  },
-  "overrides": {
-    "undici": "^7.18.2"
   }
 }
