@@ -10,7 +10,7 @@ import { ColComponent, RowComponent, WidgetStatEComponent } from '@coreui/angula
   imports: [RowComponent, ColComponent, WidgetStatEComponent, ChartjsComponent]
 })
 export class WidgetsEComponent implements AfterContentInit {
-  private changeDetectorRef = inject(ChangeDetectorRef);
+  private readonly changeDetectorRef = inject(ChangeDetectorRef);
 
   constructor() {
     this.prepareLabels();
@@ -130,8 +130,7 @@ export class WidgetsEComponent implements AfterContentInit {
   }
 
   getDayName(shift = 0) {
-    // @ts-ignore
-    const locale = navigator.language ?? navigator.userLanguage ?? navigator.systemLanguage ?? navigator.browserLanguage ?? 'en-US';
+    const locale = navigator.language ?? 'en-US';
     const baseDate = new Date(Date.UTC(2000, 1, 0)); // Monday
     baseDate.setDate(baseDate.getDate() + shift);
     return baseDate.toLocaleDateString(locale, { weekday: 'short' });
