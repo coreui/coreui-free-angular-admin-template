@@ -6,6 +6,17 @@ import { IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from '../../../icons/icon-subset';
 import { TooltipsComponent } from './tooltips.component';
 
+beforeAll(() => {
+  globalThis.IntersectionObserver = class IntersectionObserver {
+    constructor() {}
+    disconnect() {}
+    observe() {}
+    takeRecords() {
+      return [];
+    }unobserve() {}
+  } as any;
+});
+
 describe('TooltipsComponent', () => {
   let component: TooltipsComponent;
   let fixture: ComponentFixture<TooltipsComponent>;

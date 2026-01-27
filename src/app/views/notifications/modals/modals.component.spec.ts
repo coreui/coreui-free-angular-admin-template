@@ -7,6 +7,18 @@ import { IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from '../../../icons/icon-subset';
 import { ModalsComponent } from './modals.component';
 
+beforeAll(() => {
+  globalThis.IntersectionObserver = class IntersectionObserver {
+    constructor() {}
+    disconnect() {}
+    observe() {}
+    takeRecords() {
+      return [];
+    }unobserve() {}
+  } as any;
+});
+
+
 describe('ModalsComponent', () => {
   let component: ModalsComponent;
   let fixture: ComponentFixture<ModalsComponent>;

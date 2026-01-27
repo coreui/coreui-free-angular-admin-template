@@ -6,6 +6,18 @@ import { IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from '../../../icons/icon-subset';
 import { PopoversComponent } from './popovers.component';
 
+beforeAll(() => {
+  globalThis.IntersectionObserver = class IntersectionObserver {
+    constructor() {}
+    disconnect() {}
+    observe() {}
+    takeRecords() {
+      return [];
+    }unobserve() {}
+  } as any;
+});
+
+
 describe('PopoversComponent', () => {
   let component: PopoversComponent;
   let fixture: ComponentFixture<PopoversComponent>;

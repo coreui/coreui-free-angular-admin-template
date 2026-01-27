@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 
@@ -7,17 +7,29 @@ import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from '../../../icons/icon-subset';
 import { CarouselsComponent } from './carousels.component';
 
+beforeAll(() => {
+  globalThis.IntersectionObserver = class IntersectionObserver {
+    constructor() {}
+    disconnect() {}
+    observe() {}
+    takeRecords() {
+      return [];
+    }
+    unobserve() {}
+  } as any;
+});
+
 describe('CarouselsComponent', () => {
   let component: CarouselsComponent;
   let fixture: ComponentFixture<CarouselsComponent>;
   let iconSetService: IconSetService;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [CarouselModule, NoopAnimationsModule, CardModule, GridModule, IconModule, CarouselsComponent], providers: [IconSetService, provideRouter([])]
-    })
-      .compileComponents();
-  }));
+      imports: [CarouselModule, NoopAnimationsModule, CardModule, GridModule, IconModule, CarouselsComponent],
+      providers: [IconSetService, provideRouter([])]
+    }).compileComponents();
+  });
 
   beforeEach(() => {
     iconSetService = TestBed.inject(IconSetService);

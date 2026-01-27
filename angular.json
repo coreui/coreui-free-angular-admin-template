@@ -27,7 +27,9 @@
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
-              "@angular/localize/init"
+              "@angular/localize/init",
+              "zone.js",
+              "zone.js/testing"
             ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
@@ -90,24 +92,15 @@
           }
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing",
-              "@angular/localize/init"
-            ],
             "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/scss/styles.scss"
-            ],
-            "scripts": []
+            "browsers": ["ChromiumHeadless", "FirefoxHeadless", "WebkitHeadless"]
+          }
+        },
+        "configurations": {
+          "headless": {
+            "browsers": ["ChromiumHeadless", "FirefoxHeadless", "WebkitHeadless"]
           }
         }
       }
