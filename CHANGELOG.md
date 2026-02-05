@@ -2,6 +2,30 @@
 
 ---
 
+#### `5.6.12`
+
+- chore(dependencies): update to `Angular 21.1.3`
+  - `@angular/compiler-cli` @ "21.1.3" (was "21.1.2")
+  - `@angular/animations` @ "21.1.3" (was "21.1.2")
+  - `@angular/cdk` @ "21.1.3" (was "21.1.2")
+  - `@angular/common` @ "21.1.3" (was "21.1.2")
+  - `@angular/compiler` @ "21.1.3" (was "21.1.2")
+  - `@angular/core` @ "21.1.3" (was "21.1.2")
+  - `@angular/forms` @ "21.1.3" (was "21.1.2")
+  - `@angular/language-service` @ "21.1.3" (was "21.1.2")
+  - `@angular/localize` @ "21.1.3" (was "21.1.2")
+  - `@angular/platform-browser` @ "21.1.3" (was "21.1.2")
+  - `@angular/platform-browser-dynamic` @ "21.1.3" (was "21.1.2")
+  - `@angular/router` @ "21.1.3" (was "21.1.2")
+  - `@coreui/angular` @ "5.6.12" (was "5.6.10")
+  - `@coreui/angular-chartjs` @ "5.6.12" (was "5.6.10")
+  - `@coreui/icons-angular` @ "5.6.12" (was "5.6.10")
+  - `@types/node` @ "24.10.10" (was "24.10.9")
+- chore(dependencies): `@isaacs/brace-expansion` vulnerability https://github.com/advisories/GHSA-7h2j-956f-4vf2
+- chore(dependencies): `@modelcontextprotocol/sdk` vulnerability https://github.com/advisories/GHSA-345p-7cg4-v4c7
+
+---
+
 #### `5.6.10`
 
 - chore(dependencies): update to `Angular 21.1.2`
