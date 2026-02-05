@@ -70,5 +70,10 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/coreui/coreui-free-angular-admin-template.git"
+  },
+  "overrides": {
+    "@angular/cli": {
+      "@modelcontextprotocol/sdk": "^1.26.0"
+    }
   }
 }
