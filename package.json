@@ -51,8 +51,8 @@
     "@types/jasmine": "^6.0.0",
     "@types/node": "^24.10.13",
     "@vitest/browser-playwright": "^4.0.18",
-    "jasmine-core": "^5.13.0",
-    "jsdom": "^27.4.0",
+    "jasmine-core": "^6.0.1",
+    "jsdom": "^28.1.0",
     "typescript": "~5.9.3",
     "vitest": "^4.0.18"
   },
