@@ -2,6 +2,91 @@
 
 ---
 
+#### `5.6.12`
+
+- chore(dependencies): update to `Angular 21.1.3`
+  - `@angular/compiler-cli` @ "21.1.3" (was "21.1.2")
+  - `@angular/animations` @ "21.1.3" (was "21.1.2")
+  - `@angular/cdk` @ "21.1.3" (was "21.1.2")
+  - `@angular/common` @ "21.1.3" (was "21.1.2")
+  - `@angular/compiler` @ "21.1.3" (was "21.1.2")
+  - `@angular/core` @ "21.1.3" (was "21.1.2")
+  - `@angular/forms` @ "21.1.3" (was "21.1.2")
+  - `@angular/language-service` @ "21.1.3" (was "21.1.2")
+  - `@angular/localize` @ "21.1.3" (was "21.1.2")
+  - `@angular/platform-browser` @ "21.1.3" (was "21.1.2")
+  - `@angular/platform-browser-dynamic` @ "21.1.3" (was "21.1.2")
+  - `@angular/router` @ "21.1.3" (was "21.1.2")
+  - `@coreui/angular` @ "5.6.12" (was "5.6.10")
+  - `@coreui/angular-chartjs` @ "5.6.12" (was "5.6.10")
+  - `@coreui/icons-angular` @ "5.6.12" (was "5.6.10")
+  - `@types/node` @ "24.10.10" (was "24.10.9")
+- chore(dependencies): `@isaacs/brace-expansion` vulnerability https://github.com/advisories/GHSA-7h2j-956f-4vf2
+- chore(dependencies): `@modelcontextprotocol/sdk` vulnerability https://github.com/advisories/GHSA-345p-7cg4-v4c7
+
+---
+
+#### `5.6.10`
+
+- chore(dependencies): update to `Angular 21.1.2`
+  - `@angular/build` @ "21.1.2" (was "21.1.1")
+  - `@angular/cli` @ "21.1.2" (was "21.1.1")
+  - `@angular/compiler-cli` @ "21.1.2" (was "21.1.1")
+  - `@angular/animations` @ "21.1.2" (was "21.1.1")
+  - `@angular/cdk` @ "21.1.2" (was "21.1.1")
+  - `@angular/common` @ "21.1.2" (was "21.1.1")
+  - `@angular/compiler` @ "21.1.2" (was "21.1.1")
+  - `@angular/core` @ "21.1.2" (was "21.1.1")
+  - `@angular/forms` @ "21.1.2" (was "21.1.1")
+  - `@angular/language-service` @ "21.1.2" (was "21.1.1")
+  - `@angular/localize` @ "21.1.2" (was "21.1.1")
+  - `@angular/platform-browser` @ "21.1.2" (was "21.1.1")
+  - `@angular/platform-browser-dynamic` @ "21.1.2" (was "21.1.1")
+  - `@angular/router` @ "21.1.2" (was "21.1.1")
+  - `@coreui/angular` @ "5.6.10" (was "5.6.9")
+  - `@coreui/angular-chartjs` @ "5.6.10" (was "5.6.9")
+  - `@coreui/icons-angular` @ "5.6.10" (was "5.6.9")
+
+- chore(dependencies): jasmine update to v6
+  - `@types/jasmine` @ "6.0.0" (was "5.1.15")
+  - `jasmine-core` @ "6.0.1" (was "5.13.0")
+  - `karma-jasmine-html-reporter` @ "2.2.0" (was "2.1.0")
+
+- chore(dependencies): tar vulnerability https://github.com/advisories/GHSA-r6q2-hw4h-h46w
+
+- chore(prebuild): `ng test --watch=false --browsers=ChromeHeadless`
+
+---
+
+#### `5.6.9`
+
+- chore(dependencies): update to 'Angular 21.1.1' 
+  - `@angular/build` @ "21.1.1" (was "21.1.0")
+  - `@angular/cli` @ "21.1.1" (was "21.1.0")
+  - `@angular/compiler-cli` @ "21.1.1" (was "21.1.0")
+  - `@angular/animations` @ "21.1.1" (was "21.1.0")
+  - `@angular/cdk` @ "21.1.1" (was "21.1.0")
+  - `@angular/common` @ "21.1.1" (was "21.1.0")
+  - `@angular/compiler` @ "21.1.1" (was "21.1.0")
+  - `@angular/core` @ "21.1.1" (was "21.1.0")
+  - `@angular/forms` @ "21.1.1" (was "21.1.0")
+  - `@angular/language-service` @ "21.1.1" (was "21.1.0")
+  - `@angular/localize` @ "21.1.1" (was "21.1.0")
+  - `@angular/platform-browser` @ "21.1.1" (was "21.1.0")
+  - `@angular/platform-browser-dynamic` @ "21.1.1" (was "21.1.0")
+  - `@angular/router` @ "21.1.1" (was "21.1.0")
+  - `@coreui/angular` @ "5.6.9" (was "5.6.8")
+  - `@coreui/angular-chartjs` @ "5.6.9" (was "5.6.8")
+  - `@coreui/icons-angular` @ "5.6.9" (was "5.6.8")
+  - `lodash-es` @ "4.17.23" (was "4.17.22")
+- chore(dependencies): tar vulnerability https://github.com/advisories/GHSA-r6q2-hw4h-h46w
+- chore(dependencies): lodash vulnerability https://github.com/advisories/GHSA-xxjr-mmjv-4gpg
+- chore(dependencies): remove overrides `undici` version to `^7.18.2`
+- test(widgets): mock `navigator.language` for Firefox headless compatibility
+- fix(widgets): remove non-standard userLanguage and browserLanguage props
+
+---
+
 #### `5.6.8`
 
 - chore(dependencies): update

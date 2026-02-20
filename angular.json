@@ -95,12 +95,10 @@
           "builder": "@angular/build:unit-test",
           "options": {
             "tsConfig": "tsconfig.spec.json",
-            "browsers": ["ChromiumHeadless", "FirefoxHeadless", "WebkitHeadless"]
-          }
-        },
-        "configurations": {
-          "headless": {
-            "browsers": ["ChromiumHeadless", "FirefoxHeadless", "WebkitHeadless"]
+            "browsers": [
+              "Chromium"
+            ],
+            "runnerConfig": true
           }
         }
       }

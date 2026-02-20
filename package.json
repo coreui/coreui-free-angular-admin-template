@@ -1,6 +1,6 @@
 {
   "name": "coreui-free-angular-admin-template",
-  "version": "5.6.8",
+  "version": "5.6.12",
   "copyright": "Copyright 2026 creativeLabs Łukasz Holeczek",
   "license": "MIT",
   "author": "The CoreUI Team (https://github.com/orgs/coreui/people) and contributors",
@@ -15,40 +15,41 @@
     "start": "ng serve -o",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
+    "prebuild": "ng test --watch=false --browsers=ChromiumHeadless",
     "test": "ng test"
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^21.1.1",
-    "@angular/cdk": "^21.1.1",
-    "@angular/common": "^21.1.1",
-    "@angular/compiler": "^21.1.1",
-    "@angular/core": "^21.1.1",
-    "@angular/forms": "^21.1.1",
-    "@angular/language-service": "^21.1.1",
-    "@angular/localize": "^21.1.1",
-    "@angular/platform-browser": "^21.1.1",
-    "@angular/platform-browser-dynamic": "^21.1.1",
-    "@angular/router": "^21.1.1",
-    "@coreui/angular": "~5.6.9",
-    "@coreui/angular-chartjs": "~5.6.9",
+    "@angular/animations": "^21.1.5",
+    "@angular/cdk": "^21.1.5",
+    "@angular/common": "^21.1.5",
+    "@angular/compiler": "^21.1.5",
+    "@angular/core": "^21.1.5",
+    "@angular/forms": "^21.1.5",
+    "@angular/language-service": "^21.1.5",
+    "@angular/localize": "^21.1.5",
+    "@angular/platform-browser": "^21.1.5",
+    "@angular/platform-browser-dynamic": "^21.1.5",
+    "@angular/router": "^21.1.5",
+    "@coreui/angular": "~5.6.13",
+    "@coreui/angular-chartjs": "~5.6.13",
     "@coreui/chartjs": "~4.1.0",
     "@coreui/coreui": "~5.5.0",
     "@coreui/icons": "^3.0.1",
-    "@coreui/icons-angular": "~5.6.9",
+    "@coreui/icons-angular": "~5.6.13",
     "@coreui/utils": "^2.0.2",
     "chart.js": "^4.5.1",
     "ngx-scrollbar": "^13.0.3",
     "rxjs": "~7.8.2",
     "tslib": "^2.8.1",
-    "zone.js": "~0.16.0"
+    "zone.js": "~0.16.1"
   },
   "devDependencies": {
-    "@angular/build": "^21.1.1",
-    "@angular/cli": "^21.1.1",
-    "@angular/compiler-cli": "^21.1.1",
-    "@types/jasmine": "^5.1.15",
-    "@types/node": "^24.10.9",
+    "@angular/build": "^21.1.4",
+    "@angular/cli": "^21.1.4",
+    "@angular/compiler-cli": "^21.1.5",
+    "@types/jasmine": "^6.0.0",
+    "@types/node": "^24.10.13",
     "@vitest/browser-playwright": "^4.0.18",
     "jasmine-core": "^5.13.0",
     "jsdom": "^27.4.0",
@@ -65,5 +66,10 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/coreui/coreui-free-angular-admin-template.git"
+  },
+  "overrides": {
+    "@angular/cli": {
+      "ajv": "^8.18.0"
+    }
   }
 }
