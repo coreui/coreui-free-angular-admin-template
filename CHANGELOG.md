@@ -2,6 +2,38 @@
 
 ---
 
+#### `5.6.13`
+
+- test: migrate from karma to vitest
+- chore(dependencies): update to `Angular 21.1.5`
+  - `@angular/build` @ "21.1.4" (was "21.1.2")
+  - `@angular/cli` @ "21.1.4" (was "21.1.2")
+  - `@angular/compiler-cli` @ "21.1.5" (was "21.1.3")
+  - `@angular/animations` @ "21.1.5" (was "21.1.3")
+  - `@angular/cdk` @ "21.1.5" (was "21.1.3")
+  - `@angular/common` @ "21.1.5" (was "21.1.3")
+  - `@angular/compiler` @ "21.1.5" (was "21.1.3")
+  - `@angular/core` @ "21.1.5" (was "21.1.3")
+  - `@angular/forms` @ "21.1.5" (was "21.1.3")
+  - `@angular/language-service` @ "21.1.5" (was "21.1.3")
+  - `@angular/localize` @ "21.1.5" (was "21.1.3")
+  - `@angular/platform-browser` @ "21.1.5" (was "21.1.3")
+  - `@angular/platform-browser-dynamic` @ "21.1.5" (was "21.1.3")
+  - `@angular/router` @ "21.1.5" (was "21.1.3")
+  - `@coreui/angular` @ "5.6.13" (was "5.6.12")
+  - `@coreui/angular-chartjs` @ "5.6.13" (was "5.6.12")
+  - `@coreui/icons-angular` @ "5.6.13" (was "5.6.12")
+  - `zone.js` @ "0.16.1" (was "0.16.0")
+  - `@types/node` @ "24.10.13" (was "24.10.10")
+- chore(dependencies): `tar` vulnerability https://github.com/advisories/GHSA-83g3-92jg-28cx
+- chore(dependencies): `qs` vulnerability https://github.com/advisories/GHSA-w7fw-mjwx-w883
+- chore(dependencies): `hono` vulnerability https://github.com/advisories/GHSA-gq3j-xvxp-8hrf
+- chore(dependencies): override `ajv` vulnerability https://github.com/advisories/GHSA-2g4f-4pwh-qvx6
+- chore(dependencies): override `@modelcontextprotocol/sdk` removed
+- chore(dependencies): update jasmine-core & jsdom
+
+---
+
 #### `5.6.12`
 
 - chore(dependencies): update to `Angular 21.1.3`
