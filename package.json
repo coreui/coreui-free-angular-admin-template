@@ -73,7 +73,7 @@
   },
   "overrides": {
     "@angular/cli": {
-      "@modelcontextprotocol/sdk": "^1.26.0"
+      "ajv": "^8.18.0"
     }
   }
 }
