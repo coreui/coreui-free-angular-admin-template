@@ -2,6 +2,19 @@
 
 ---
 
+#### `5.6.15`
+
+- chore(dependencies): cli update to `Angular 21.1.5`
+  - `@angular/build` @ "21.1.5" (was "21.1.4")
+  - `@angular/cli` @ "21.1.5" (was "21.1.4")
+  - `@coreui/angular` @ "5.6.15" (was "5.6.13")
+  - `@coreui/angular-chartjs` @ "5.6.15" (was "5.6.13")
+  - `@coreui/icons-angular` @ "5.6.15" (was "5.6.13")
+  - `jasmine-core` @ "6.1.0" (was "6.0.1")
+- chore(dependencies): remove override `ajv` 
+
+---
+
 #### `5.6.13`
 
 - test: migrate from karma to vitest
