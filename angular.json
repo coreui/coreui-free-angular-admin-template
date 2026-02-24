@@ -96,7 +96,7 @@
           "options": {
             "tsConfig": "tsconfig.spec.json",
             "browsers": [
-              "Chromium"
+              "ChromiumHeadless"
             ],
             "runnerConfig": true
           }

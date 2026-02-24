@@ -36,7 +36,7 @@ jobs:
         run: npm ci
 
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+        run: npx playwright install --with-deps --only-shell
 
       - name: Run build
         run: npm run build
