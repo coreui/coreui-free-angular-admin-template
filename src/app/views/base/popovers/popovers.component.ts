@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { ButtonDirective, CardBodyComponent, CardComponent, CardHeaderComponent, ColComponent, PopoverDirective, RowComponent } from '@coreui/angular';
 import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/public-api';
 
@@ -9,11 +9,11 @@ import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/
 })
 export class PopoversComponent implements OnInit {
 
-  visible = true;
+  readonly visible = signal(true);
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.visible = !this.visible;
+      this.visible.update(visible => !visible);
     }, 3000);
   }
 
