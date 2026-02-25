@@ -16,7 +16,7 @@
                 <h5>Add toast with following props:</h5>
 
                 <c-form-check class="my-2 mt-4">
-                  <input cFormCheckInput formControlName="autohide" id="autohide" type="checkbox">
+                  <input cFormCheckInput formControlName="autohide" id="autohide" type="checkbox" [checked]="toasterForm.get('autohide')?.value">
                   <label cFormCheckLabel for="autohide">
                     Toast autohide
                   </label>
@@ -50,12 +50,12 @@
                 </c-input-group>
 
                 <c-form-check class="my-2">
-                  <input cFormCheckInput formControlName="fade" id="fade" type="checkbox">
+                  <input cFormCheckInput formControlName="fade" id="fade" type="checkbox" [checked]="toasterForm.get('fade')?.value">
                   <label cFormCheckLabel for="fade">Fade</label>
                 </c-form-check>
 
                 <c-form-check class="my-2">
-                  <input cFormCheckInput formControlName="closeButton" id="close" type="checkbox">
+                  <input cFormCheckInput formControlName="closeButton" id="close" type="checkbox" [checked]="toasterForm.get('closeButton')?.value">
                   <label cFormCheckLabel for="close">Close Button</label>
                 </c-form-check>
                 <hr />
