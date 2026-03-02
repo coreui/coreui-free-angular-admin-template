@@ -2,6 +2,36 @@
 
 ---
 
+#### `5.6.17`
+
+- chore(dependencies): cli update to `Angular 21.2.0`
+  - `@angular/build` @ "21.2.0" (was "21.1.5")
+  - `@angular/cli` @ "21.2.0" (was "21.1.5")
+  - `@angular/compiler-cli` @ "21.2.0" (was "21.1.5")
+  - `@angular/animations` @ "21.2.0" (was "21.1.5")
+  - `@angular/cdk` @ "21.2.0" (was "21.1.5")
+  - `@angular/common` @ "21.2.0" (was "21.1.5")
+  - `@angular/compiler` @ "21.2.0" (was "21.1.5")
+  - `@angular/core` @ "21.2.0" (was "21.1.5")
+  - `@angular/forms` @ "21.2.0" (was "21.1.5")
+  - `@angular/language-service` @ "21.2.0" (was "21.1.5")
+  - `@angular/localize` @ "21.2.0" (was "21.1.5")
+  - `@angular/platform-browser` @ "21.2.0" (was "21.1.5")
+  - `@angular/platform-browser-dynamic` @ "21.2.0" (was "21.1.5")
+  - `@angular/router` @ "21.2.0" (was "21.1.5")
+  - `@coreui/angular` @ "5.6.17" (was "5.6.15")
+  - `@coreui/angular-chartjs` @ "5.6.17" (was "5.6.16")
+  - `@coreui/icons-angular` @ "5.6.17" (was "5.6.15")
+  - `@types/node` @ "24.11.0" (was "24.10.13")
+- chore(tsconfig.spec): update types for vitest
+- ci(github): update actions/checkout and actions/setup-node to v6
+- minor changes:
+  - refactor(popovers): visible signal
+  - refactor(spinners): use self-closing tags
+  - refactor(toasters): use checked prop
+
+---
+
 #### `5.6.15`
 
 - chore(dependencies): cli update to `Angular 21.1.5`
