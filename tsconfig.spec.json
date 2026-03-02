@@ -5,8 +5,9 @@
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
     "types": [
-      "jasmine",
-      "@angular/localize"
+      "@angular/localize",
+      "vitest/globals",
+      "@vitest/browser-playwright"
     ],
     "paths": {
       "@docs-components/*": ["./src/components/*"]
