@@ -2,6 +2,27 @@
 
 ---
 
+#### `5.6.18`
+
+- chore(dependencies): cli update to `Angular 21.2.1`
+  - `@angular/compiler-cli` @ "21.2.1" (was "21.2.0")
+  - `@angular/animations` @ "21.2.1" (was "21.2.0")
+  - `@angular/cdk` @ "21.2.1" (was "21.2.0")
+  - `@angular/common` @ "21.2.1" (was "21.2.0")
+  - `@angular/compiler` @ "21.2.1" (was "21.2.0")
+  - `@angular/core` @ "21.2.1" (was "21.2.0")
+  - `@angular/forms` @ "21.2.1" (was "21.2.0")
+  - `@angular/language-service` @ "21.2.1" (was "21.2.0")
+  - `@angular/localize` @ "21.2.1" (was "21.2.0")
+  - `@angular/platform-browser` @ "21.2.1" (was "21.2.0")
+  - `@angular/platform-browser-dynamic` @ "21.2.1" (was "21.2.0")
+  - `@angular/router` @ "21.2.1" (was "21.2.0")
+  - `@coreui/angular` @ "5.6.18" (was "5.6.17")
+  - `@coreui/angular-chartjs` @ "5.6.18" (was "5.6.17")
+  - `@coreui/icons-angular` @ "5.6.18" (was "5.6.17")
+
+---
+
 #### `5.6.17`
 
 - chore(dependencies): cli update to `Angular 21.2.0`
