@@ -2,9 +2,40 @@
 
 ---
 
+#### `5.6.20`
+
+- chore(dependencies): update to `Angular 21.2.4`
+  - `@angular/build` @ "21.2.2" (was "21.2.0")
+  - `@angular/cli` @ "21.2.2" (was "21.2.0")
+  - `@angular/compiler-cli` @ "21.2.4" (was "21.2.1")
+  - `@angular/animations` @ "21.2.4" (was "21.2.1")
+  - `@angular/cdk` @ "21.2.2" (was "21.2.1")
+  - `@angular/common` @ "21.2.4" (was "21.2.1")
+  - `@angular/compiler` @ "21.2.4" (was "21.2.1")
+  - `@angular/core` @ "21.2.4" (was "21.2.1")
+  - `@angular/forms` @ "21.2.4" (was "21.2.1")
+  - `@angular/language-service` @ "21.2.4" (was "21.2.1")
+  - `@angular/localize` @ "21.2.4" (was "21.2.1")
+  - `@angular/platform-browser` @ "21.2.4" (was "21.2.1")
+  - `@angular/platform-browser-dynamic` @ "21.2.4" (was "21.2.1")
+  - `@angular/router` @ "21.2.4" (was "21.2.1")
+  - `@coreui/angular` @ "5.6.20" (was "5.6.18")
+  - `@coreui/angular-chartjs` @ "5.6.20" (was "5.6.18")
+  - `@coreui/coreui` @ "5.6.1" (was "5.5.0")
+  - `@coreui/icons-angular` @ "5.6.20" (was "5.6.18")
+  - `@types/node` @ "24.12.0" (was "24.11.0")
+  - `@vitest/browser-playwright` @ "4.1.0" (was "4.0.18")
+  - `vitest` @ "4.1.0" (was "4.0.18")
+- chore(dependencies): `tar` vulnerability https://github.com/advisories/GHSA-9ppj-qmqm-q256
+- chore(dependencies): `hono` vulnerability https://github.com/advisories/GHSA-v8w9-8mx6-g223
+- chore(dependencies): `express-rate-limit` vulnerability https://github.com/advisories/GHSA-46wh-pxpv-q5gq
+- chore(dependencies): remove jasmine-core 
+
+---
+
 #### `5.6.18`
 
-- chore(dependencies): cli update to `Angular 21.2.1`
+- chore(dependencies): update to `Angular 21.2.1`
   - `@angular/compiler-cli` @ "21.2.1" (was "21.2.0")
   - `@angular/animations` @ "21.2.1" (was "21.2.0")
   - `@angular/cdk` @ "21.2.1" (was "21.2.0")
@@ -25,7 +56,7 @@
 
 #### `5.6.17`
 
-- chore(dependencies): cli update to `Angular 21.2.0`
+- chore(dependencies): update to `Angular 21.2.0`
   - `@angular/build` @ "21.2.0" (was "21.1.5")
   - `@angular/cli` @ "21.2.0" (was "21.1.5")
   - `@angular/compiler-cli` @ "21.2.0" (was "21.1.5")
