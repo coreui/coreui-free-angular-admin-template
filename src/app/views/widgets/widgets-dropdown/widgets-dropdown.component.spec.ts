@@ -1,12 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 
 import { ButtonModule, DropdownModule, GridModule, WidgetModule } from '@coreui/angular';
-import { IconModule } from '@coreui/icons-angular';
+import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { ChartjsModule } from '@coreui/angular-chartjs';
-import { IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from '../../../icons/icon-subset';
 import { WidgetsDropdownComponent } from './widgets-dropdown.component';
-import { RouterTestingModule } from '@angular/router/testing';
 
 describe('WidgetsDropdownComponent', () => {
   let component: WidgetsDropdownComponent;
@@ -15,10 +14,10 @@ describe('WidgetsDropdownComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [WidgetModule, DropdownModule, IconModule, ButtonModule, ChartjsModule, GridModule, WidgetsDropdownComponent, RouterTestingModule],
-    providers: [IconSetService]
-})
-    .compileComponents();
+      imports: [WidgetModule, DropdownModule, IconModule, ButtonModule, ChartjsModule, GridModule, WidgetsDropdownComponent],
+      providers: [IconSetService, provideRouter([])]
+    })
+      .compileComponents();
   });
 
   beforeEach(() => {

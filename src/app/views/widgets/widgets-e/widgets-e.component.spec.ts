@@ -13,13 +13,19 @@ describe('WidgetsEComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [WidgetModule, GridModule, ChartjsModule, WidgetsEComponent],
-    providers: [IconSetService]
-})
-    .compileComponents();
+      imports: [WidgetModule, GridModule, ChartjsModule, WidgetsEComponent],
+      providers: [IconSetService]
+    })
+      .compileComponents();
   });
 
   beforeEach(() => {
+    // Mock navigator.language for Firefox compatibility
+    Object.defineProperty(navigator, 'language', {
+      value: 'en-US',
+      configurable: true
+    });
+
     iconSetService = TestBed.inject(IconSetService);
     iconSetService.icons = { ...iconSubset };
 

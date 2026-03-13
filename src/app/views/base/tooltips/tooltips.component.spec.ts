@@ -1,10 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter } from '@angular/router';
 
 import { ButtonModule, CardModule, GridModule, TooltipModule } from '@coreui/angular';
 import { IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from '../../../icons/icon-subset';
 import { TooltipsComponent } from './tooltips.component';
+
+beforeAll(() => {
+  globalThis.IntersectionObserver = class IntersectionObserver {
+    constructor() {}
+    disconnect() {}
+    observe() {}
+    takeRecords() {
+      return [];
+    }unobserve() {}
+  } as any;
+});
 
 describe('TooltipsComponent', () => {
   let component: TooltipsComponent;
@@ -13,10 +24,9 @@ describe('TooltipsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [CardModule, GridModule, TooltipModule, ButtonModule, RouterTestingModule, TooltipsComponent],
-    providers: [IconSetService]
-})
-    .compileComponents();
+      imports: [CardModule, GridModule, TooltipModule, ButtonModule, TooltipsComponent], providers: [IconSetService, provideRouter([])]
+    })
+      .compileComponents();
   });
 
   beforeEach(() => {

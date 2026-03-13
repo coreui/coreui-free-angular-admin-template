@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter } from '@angular/router';
 
 import { ButtonGroupModule, ButtonModule, CardModule, FormModule, GridModule } from '@coreui/angular';
 import { IconSetService } from '@coreui/icons-angular';
@@ -14,9 +14,9 @@ describe('ChecksRadiosComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [CardModule, GridModule, ButtonModule, FormModule, ReactiveFormsModule, RouterTestingModule, ButtonGroupModule, ChecksRadiosComponent],
-    providers: [IconSetService]
-})
+      imports: [CardModule, GridModule, ButtonModule, FormModule, ReactiveFormsModule, ButtonGroupModule, ChecksRadiosComponent],
+      providers: [IconSetService, provideRouter([])]
+    })
       .compileComponents();
   });
 

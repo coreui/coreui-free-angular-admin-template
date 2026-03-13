@@ -1,4 +1,7 @@
-import { Component, DestroyRef, inject, Input } from '@angular/core';
+import { NgTemplateOutlet } from '@angular/common';
+import { Component, computed, inject, input } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+
 import {
   AvatarComponent,
   BadgeComponent,
@@ -16,50 +19,37 @@ import {
   HeaderTogglerDirective,
   NavItemComponent,
   NavLinkDirective,
-  ProgressBarDirective,
-  ProgressComponent,
-  SidebarToggleDirective,
-  TextColorDirective,
-  ThemeDirective
+  SidebarToggleDirective
 } from '@coreui/angular';
-import { NgStyle, NgTemplateOutlet } from '@angular/common';
-import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
+
 import { IconDirective } from '@coreui/icons-angular';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { delay, filter, map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-default-header',
   templateUrl: './default-header.component.html',
-  standalone: true,
-  imports: [ContainerComponent, HeaderTogglerDirective, SidebarToggleDirective, IconDirective, HeaderNavComponent, NavItemComponent, NavLinkDirective, RouterLink, RouterLinkActive, NgTemplateOutlet, BreadcrumbRouterComponent, ThemeDirective, DropdownComponent, DropdownToggleDirective, TextColorDirective, AvatarComponent, DropdownMenuDirective, DropdownHeaderDirective, DropdownItemDirective, BadgeComponent, DropdownDividerDirective, ProgressBarDirective, ProgressComponent, NgStyle]
+  imports: [ContainerComponent, HeaderTogglerDirective, SidebarToggleDirective, IconDirective, HeaderNavComponent, NavItemComponent, NavLinkDirective, RouterLink, RouterLinkActive, NgTemplateOutlet, BreadcrumbRouterComponent, DropdownComponent, DropdownToggleDirective, AvatarComponent, DropdownMenuDirective, DropdownHeaderDirective, DropdownItemDirective, BadgeComponent, DropdownDividerDirective]
 })
 export class DefaultHeaderComponent extends HeaderComponent {
 
-  readonly #activatedRoute: ActivatedRoute = inject(ActivatedRoute);
   readonly #colorModeService = inject(ColorModeService);
   readonly colorMode = this.#colorModeService.colorMode;
-  readonly #destroyRef: DestroyRef = inject(DestroyRef);
+
+  readonly colorModes = [
+    { name: 'light', text: 'Light', icon: 'cilSun' },
+    { name: 'dark', text: 'Dark', icon: 'cilMoon' },
+    { name: 'auto', text: 'Auto', icon: 'cilContrast' }
+  ];
+
+  readonly icons = computed(() => {
+    const currentMode = this.colorMode();
+    return this.colorModes.find(mode => mode.name === currentMode)?.icon ?? 'cilSun';
+  });
 
   constructor() {
     super();
-    this.#colorModeService.localStorageItemName.set('coreui-free-angular-admin-template-theme-default');
-    this.#colorModeService.eventName.set('ColorSchemeChange');
-
-    this.#activatedRoute.queryParams
-      .pipe(
-        delay(1),
-        map(params => <string>params['theme']?.match(/^[A-Za-z0-9\s]+/)?.[0]),
-        filter(theme => ['dark', 'light', 'auto'].includes(theme)),
-        tap(theme => {
-          this.colorMode.set(theme);
-        }),
-        takeUntilDestroyed(this.#destroyRef)
-      )
-      .subscribe();
   }
 
-  @Input() sidebarId: string = 'sidebar1';
+  sidebarId = input('sidebar1');
 
   public newMessages = [
     {
@@ -103,9 +93,9 @@ export class DefaultHeaderComponent extends HeaderComponent {
       message: 'Team, it\'s time for our monthly inventory check. Accurate counts ensure smooth operations. Let\'s nail it...'
     },
     {
-      id: 3,
+      id: 4,
       from: 'Ryan Miller',
-      avatar: '4.jpg',
+      avatar: '3.jpg',
       status: 'info',
       title: 'Customer Feedback Results',
       time: '3 days ago',

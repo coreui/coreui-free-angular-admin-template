@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter } from '@angular/router';
 
 import { CardModule, GridModule, TableModule, UtilitiesModule } from '@coreui/angular';
 import { IconSetService } from '@coreui/icons-angular';
@@ -13,10 +13,9 @@ describe('TablesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [GridModule, CardModule, TableModule, GridModule, UtilitiesModule, RouterTestingModule, TablesComponent],
-    providers: [IconSetService]
-})
-    .compileComponents();
+      imports: [GridModule, CardModule, TableModule, GridModule, UtilitiesModule, TablesComponent], providers: [IconSetService, provideRouter([])]
+    })
+      .compileComponents();
   });
 
   beforeEach(() => {

@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter } from '@angular/router';
 
 import { CardModule, GridModule, PaginationModule } from '@coreui/angular';
 import { IconSetService } from '@coreui/icons-angular';
@@ -13,9 +13,8 @@ describe('PaginationsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [PaginationModule, CardModule, GridModule, RouterTestingModule, PaginationsComponent],
-    providers: [IconSetService]
-})
+      imports: [PaginationModule, CardModule, GridModule, PaginationsComponent], providers: [IconSetService, provideRouter([])]
+    })
       .compileComponents();
   });
 

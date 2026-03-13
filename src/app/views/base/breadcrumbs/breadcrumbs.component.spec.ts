@@ -1,5 +1,5 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 
 import { BreadcrumbModule, CardModule, GridModule } from '@coreui/angular';
 import { IconSetService } from '@coreui/icons-angular';
@@ -11,12 +11,11 @@ describe('BreadcrumbsComponent', () => {
   let fixture: ComponentFixture<BreadcrumbsComponent>;
   let iconSetService: IconSetService;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach( async () => {
     TestBed.configureTestingModule({
-    imports: [CardModule, GridModule, BreadcrumbModule, RouterTestingModule, BreadcrumbsComponent],
-    providers: [IconSetService]
-}).compileComponents();
-  }));
+      imports: [CardModule, GridModule, BreadcrumbModule, BreadcrumbsComponent], providers: [IconSetService, provideRouter([])]
+    }).compileComponents();
+  });
 
   beforeEach(() => {
     iconSetService = TestBed.inject(IconSetService);

@@ -29,31 +29,24 @@ function isOverflown(element: HTMLElement) {
   selector: 'app-dashboard',
   templateUrl: './default-layout.component.html',
   styleUrls: ['./default-layout.component.scss'],
-  standalone: true,
   imports: [
     SidebarComponent,
     SidebarHeaderComponent,
     SidebarBrandComponent,
-    RouterLink,
-    IconDirective,
-    NgScrollbar,
     SidebarNavComponent,
     SidebarFooterComponent,
     SidebarToggleDirective,
     SidebarTogglerDirective,
-    DefaultHeaderComponent,
-    ShadowOnScrollDirective,
     ContainerComponent,
+    DefaultFooterComponent,
+    DefaultHeaderComponent,
+    IconDirective,
+    NgScrollbar,
     RouterOutlet,
-    DefaultFooterComponent
+    RouterLink,
+    ShadowOnScrollDirective
   ]
 })
 export class DefaultLayoutComponent {
-  public navItems = navItems;
-
-  onScrollbarUpdate($event: any) {
-    // if ($event.verticalUsed) {
-    // console.log('verticalUsed', $event.verticalUsed);
-    // }
-  }
+  public navItems = [...navItems];
 }

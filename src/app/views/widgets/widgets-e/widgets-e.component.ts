@@ -1,21 +1,18 @@
-import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
 import { getStyle } from '@coreui/utils';
 import { ChartjsComponent } from '@coreui/angular-chartjs';
-import { RowComponent, ColComponent, WidgetStatEComponent, TextColorDirective } from '@coreui/angular';
+import { ColComponent, RowComponent, WidgetStatEComponent } from '@coreui/angular';
 
 @Component({
-    selector: 'app-widgets-e',
-    templateUrl: './widgets-e.component.html',
-    styleUrls: ['./widgets-e.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Default,
-    standalone: true,
-    imports: [RowComponent, ColComponent, TextColorDirective, WidgetStatEComponent, ChartjsComponent]
+  selector: 'app-widgets-e',
+  templateUrl: './widgets-e.component.html',
+  changeDetection: ChangeDetectionStrategy.Default,
+  imports: [RowComponent, ColComponent, WidgetStatEComponent, ChartjsComponent]
 })
 export class WidgetsEComponent implements AfterContentInit {
+  private readonly changeDetectorRef = inject(ChangeDetectorRef);
 
-  constructor(
-    private changeDetectorRef: ChangeDetectorRef
-  ) {
+  constructor() {
     this.prepareLabels();
     this.prepareDatasets();
     this.prepareData();
@@ -133,8 +130,7 @@ export class WidgetsEComponent implements AfterContentInit {
   }
 
   getDayName(shift = 0) {
-    // @ts-ignore
-    const locale = navigator.language ?? navigator.userLanguage ?? navigator.systemLanguage ?? navigator.browserLanguage ?? 'en-US';
+    const locale = navigator.language ?? 'en-US';
     const baseDate = new Date(Date.UTC(2000, 1, 0)); // Monday
     baseDate.setDate(baseDate.getDate() + shift);
     return baseDate.toLocaleDateString(locale, { weekday: 'short' });

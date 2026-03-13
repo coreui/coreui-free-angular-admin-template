@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { NgClass } from '@angular/common';
-import { DocsExampleComponent } from '@docs-components/public-api';
+import { Component, OnInit, signal } from '@angular/core';
+
 import {
   BreadcrumbComponent,
   BreadcrumbItemComponent,
@@ -9,36 +8,34 @@ import {
   CardComponent,
   CardHeaderComponent,
   ColComponent,
-  RowComponent,
-  TextColorDirective
+  RowComponent
 } from '@coreui/angular';
+import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/public-api';
 
 @Component({
   templateUrl: './breadcrumbs.component.html',
-  styleUrls: ['./breadcrumbs.component.scss'],
-  standalone: true,
-  imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, BreadcrumbComponent, BreadcrumbItemComponent, NgClass, BreadcrumbRouterComponent]
+  imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, BreadcrumbComponent, BreadcrumbItemComponent, BreadcrumbRouterComponent, DocsComponentsComponent]
 })
 export class BreadcrumbsComponent implements OnInit {
-  public items = <any>[];
+  public breadcrumbItems = signal<any>([]);
 
   constructor() {}
 
   ngOnInit(): void {
-    this.items = [
+    this.breadcrumbItems.set([
       { label: 'Home', url: '/', attributes: { title: 'Home' } },
       { label: 'Library', url: '/' },
       { label: 'Data', url: '/dashboard/' },
       { label: 'CoreUI', url: '/' }
-    ];
+    ]);
 
     setTimeout(() => {
-      this.items = [
+      this.breadcrumbItems.set([
         { label: 'CoreUI', url: '/' },
         { label: 'Data', url: '/dashboard/' },
         { label: 'Library', url: '/' },
         { label: 'Home', url: '/', attributes: { title: 'Home' } }
-      ];
+      ]);
     }, 5000);
   }
 }

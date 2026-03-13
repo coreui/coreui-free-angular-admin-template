@@ -1,32 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { IconDirective, IconSetService } from '@coreui/icons-angular';
 import { brandSet, flagSet, freeSet } from '@coreui/icons';
 import { CardBodyComponent, CardComponent, CardHeaderComponent, ColComponent, RowComponent } from '@coreui/angular';
-import { DocsLinkComponent } from '@docs-components/public-api';
+import { DocsIconsComponent, DocsLinkComponent } from '@docs-components/public-api';
 
 @Component({
   templateUrl: 'coreui-icons.component.html',
   providers: [IconSetService],
-  standalone: true,
   imports: [
     CardComponent,
     CardHeaderComponent,
     CardBodyComponent,
     ColComponent,
+    DocsIconsComponent,
     DocsLinkComponent,
     IconDirective,
-    RowComponent
+    RowComponent,
   ]
 })
 export class CoreUIIconsComponent implements OnInit {
+  private route = inject(ActivatedRoute);
+  iconSet = inject(IconSetService);
+
   public title = 'CoreUI Icons';
   public icons!: [string, string[]][];
 
-  constructor(
-    private route: ActivatedRoute, public iconSet: IconSetService
-  ) {
+  constructor() {
+    const iconSet = this.iconSet;
+
     iconSet.icons = { ...freeSet, ...brandSet, ...flagSet };
   }
 

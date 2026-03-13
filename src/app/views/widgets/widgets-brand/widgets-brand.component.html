@@ -7,7 +7,7 @@
         [values]="widget.values"
       >
         <svg [name]="widget.icon" cIcon class="my-4 text-white" height="52"></svg>
-        @if (withCharts) {
+        @if (withCharts()) {
           <c-chart
             #chart="cChart"
             [data]="widget.data"

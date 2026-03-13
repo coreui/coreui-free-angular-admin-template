@@ -1,10 +1,22 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter } from '@angular/router';
 
 import { ButtonModule, CardModule, GridModule, PopoverModule } from '@coreui/angular';
 import { IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from '../../../icons/icon-subset';
 import { PopoversComponent } from './popovers.component';
+
+beforeAll(() => {
+  globalThis.IntersectionObserver = class IntersectionObserver {
+    constructor() {}
+    disconnect() {}
+    observe() {}
+    takeRecords() {
+      return [];
+    }unobserve() {}
+  } as any;
+});
+
 
 describe('PopoversComponent', () => {
   let component: PopoversComponent;
@@ -13,9 +25,8 @@ describe('PopoversComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [CardModule, GridModule, PopoverModule, ButtonModule, RouterTestingModule, PopoversComponent],
-    providers: [IconSetService]
-})
+      imports: [CardModule, GridModule, PopoverModule, ButtonModule, PopoversComponent], providers: [IconSetService, provideRouter([])]
+    })
       .compileComponents();
   });
 

@@ -1,5 +1,6 @@
 <c-row>
   <c-col xs="12">
+    <app-docs-components href="components/placeholder" title="Placeholder" />
     <c-card class="mb-4">
       <c-card-header>
         <strong>Angular Placeholder</strong>
@@ -24,18 +25,21 @@
               </c-card-body>
             </c-card>
             <c-card style="width: 18rem;">
-              <svg aria-label="Placeholder"
-                   cCardImg="top"
-                   focusable="false"
-                   height="162"
-                   preserveAspectRatio="xMidYMid slice"
-                   role="img"
-                   width="100%"
-                   xmlns="http://www.w3.org/2000/svg"
-              >
-                <title>Placeholder</title>
-                <rect fill="#868e96" height="100%" width="100%"></rect>
-              </svg>
+              <div cPlaceholderAnimation="wave">
+                <svg aria-label="Placeholder"
+                     cCardImg="top"
+                     focusable="false"
+                     height="162"
+                     preserveAspectRatio="xMidYMid slice"
+                     role="img"
+                     width="100%"
+                     xmlns="http://www.w3.org/2000/svg"
+                     cPlaceholder
+                >
+                  <title>Placeholder</title>
+                  <rect fill="#868e96" height="100%" width="100%"></rect>
+                </svg>
+              </div>
               <c-card-body>
                 <h5 cCardTitle cPlaceholderAnimation="glow">
                   <span cCol="6" cPlaceholder></span>

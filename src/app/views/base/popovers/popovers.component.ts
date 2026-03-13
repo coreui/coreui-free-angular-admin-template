@@ -1,23 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { DocsExampleComponent } from '@docs-components/public-api';
-import { RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, ButtonDirective, PopoverDirective } from '@coreui/angular';
+import { Component, OnInit, signal } from '@angular/core';
+import { ButtonDirective, CardBodyComponent, CardComponent, CardHeaderComponent, ColComponent, PopoverDirective, RowComponent } from '@coreui/angular';
+import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/public-api';
 
 @Component({
-    selector: 'app-popovers',
-    templateUrl: './popovers.component.html',
-    styleUrls: ['./popovers.component.scss'],
-    standalone: true,
-    imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, ButtonDirective, PopoverDirective]
+  selector: 'app-popovers',
+  templateUrl: './popovers.component.html',
+  imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, ButtonDirective, PopoverDirective, DocsComponentsComponent]
 })
 export class PopoversComponent implements OnInit {
 
-  visible = true;
-
-  constructor() { }
+  readonly visible = signal(true);
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.visible = !this.visible;
+      this.visible.update(visible => !visible);
     }, 3000);
   }
 

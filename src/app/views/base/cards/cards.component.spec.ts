@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideRouter } from '@angular/router';
 
 import { ButtonModule, CardModule, GridModule, ListGroupModule, NavModule, UtilitiesModule } from '@coreui/angular';
 import { IconSetService } from '@coreui/icons-angular';
@@ -13,9 +14,10 @@ describe('CardsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [CardModule, NavModule, GridModule, ListGroupModule, UtilitiesModule, ButtonModule, RouterTestingModule, CardsComponent],
-    providers: [IconSetService]
-})
+      imports: [CardModule, NavModule, GridModule, ListGroupModule, UtilitiesModule, ButtonModule, CardsComponent, NoopAnimationsModule, ],
+      providers: [IconSetService, provideRouter([])],
+      teardown: { destroyAfterEach: false }   // <- add this line for Error: NG0205: Injector has already been destroyed.
+    })
       .compileComponents();
   });
 

@@ -1,5 +1,6 @@
 <c-row ngPreserveWhitespaces>
   <c-col xs="12">
+    <app-docs-components href="components/carousel" title="Carousel" />
     <c-card class="mb-4">
       <c-card-header>
         <strong>Angular Carousel</strong> <small>Slide only</small>
@@ -7,7 +8,7 @@
       <c-card-body>
         <p class="text-body-secondary small">Here’s a carousel with slides</p>
         <app-docs-example href="components/carousel">
-          <c-carousel (itemChange)="onItemChange($event)" [interval]="7000" transition="slide">
+          <c-carousel (itemChange)="onItemChange($event)" [interval]="7000">
             <c-carousel-inner>
               @for (slide of slides[0]; track slide.src) {
                 <c-carousel-item>
@@ -35,10 +36,10 @@
           Adding in the previous and next controls with <code>c-carousel-controls</code> component.
         </p>
         <app-docs-example href="components/carousel/#with-controls">
-          <c-carousel (itemChange)="onItemChange($event)" [interval]="0">
-            <c-carousel-inner>
-              @for (slide of slides[0]; track slide.src) {
-                <c-carousel-item>
+          <c-carousel (itemChange)="onItemChange($event)" [interval]="0" aria-roledescription="carousel" aria-label="CoreUI Angular Carousel Example">
+            <c-carousel-inner id="carousel-items">
+              @for (slide of slides[0]; track slide.src; let i = $index) {
+                <c-carousel-item aria-roledescription="slide" [attr.aria-label]="(i + 1).toString() + ' of '+ slides[0].length">
                   <img
                     [src]="slide.src"
                     alt="{{slide.title}}"
@@ -48,8 +49,8 @@
                 </c-carousel-item>
               }
             </c-carousel-inner>
-            <c-carousel-control caption="Previous" direction="prev" i18n-caption></c-carousel-control>
-            <c-carousel-control caption="Next" direction="next" i18n-caption></c-carousel-control>
+            <c-carousel-control caption="Previous" direction="prev" i18n-caption aria-controls="carousel-items" aria-label="Previous Slide" />
+            <c-carousel-control caption="Next" direction="next" i18n-caption aria-controls="carousel-items" aria-label="Next Slide" />
           </c-carousel>
         </app-docs-example>
       </c-card-body>
@@ -101,9 +102,32 @@
           You can attach the indicators to the carousel, lengthwise the controls, too.
         </p>
         <app-docs-example href="components/carousel/#with-indicators">
-          <c-carousel (itemChange)="onItemChange($event)" [activeIndex]="1" [dark]="true" [interval]="5000"
-                      direction="prev">
-            <c-carousel-indicators></c-carousel-indicators>
+          <c-carousel (itemChange)="onItemChange($event)" [activeIndex]="1" [dark]="true" [interval]="5000" direction="prev">
+            <c-carousel-indicators />
+            <!--  <c-carousel-indicators #indicators="cCarouselIndicators">-->
+            <!--    <ng-template cTemplateId="carouselIndicatorsTemplate">-->
+            <!--      @for (slide of slides[0]; track slide; let i = $index) {-->
+            <!--        <button-->
+            <!--          [attr.data-coreui-target]="i"-->
+            <!--          type="button"-->
+            <!--          (click)="indicators.onClick(i)"-->
+            <!--          [class]="{ active: indicators.active === i }"-->
+            <!--          [attr.aria-current]="indicators.active === i"-->
+            <!--          [cBorder]="true"-->
+            <!--          style="height: auto;"-->
+            <!--          cRounded="pill"-->
+            <!--        >-->
+            <!--          <img-->
+            <!--            [src]="slide.src"-->
+            <!--            alt="{{slide.title}}"-->
+            <!--            class="d-flex w-100"-->
+            <!--            loading="lazy"-->
+            <!--            cRounded="pill"-->
+            <!--          />-->
+            <!--        </button>-->
+            <!--      }-->
+            <!--    </ng-template>-->
+            <!--  </c-carousel-indicators>-->
             <c-carousel-inner>
               @for (slide of slides[0]; track slide.src) {
                 <c-carousel-item>
@@ -137,7 +161,7 @@
         </p>
         <app-docs-example href="components/carousel/#with-captions">
           <c-carousel (itemChange)="onItemChange($event)" [interval]="3000" transition="slide" [wrap]="false">
-            <c-carousel-indicators></c-carousel-indicators>
+            <c-carousel-indicators />
             <c-carousel-inner>
               @for (slide of slides[1]; track slide.src) {
                 <c-carousel-item>
@@ -154,8 +178,8 @@
                 </c-carousel-item>
               }
             </c-carousel-inner>
-            <c-carousel-control caption="Previous" direction="prev" i18n-caption></c-carousel-control>
-            <c-carousel-control caption="Next" direction="next" i18n-caption></c-carousel-control>
+            <c-carousel-control caption="Previous" direction="prev" i18n-caption />
+            <c-carousel-control caption="Next" direction="next" i18n-caption />
           </c-carousel>
         </app-docs-example>
       </c-card-body>
@@ -172,7 +196,7 @@
           with a fade transition instead of a slide.
         </p>
         <app-docs-example href="components/carousel/#crossfade">
-          <c-carousel (itemChange)="onItemChange($event)" [animate]="false" [interval]="5000" transition="crossfade">
+          <c-carousel (itemChange)="onItemChange($event)" [interval]="interval()" transition="crossfade">
             <c-carousel-inner>
               @for (slide of slides[0]; track slide.src) {
                 <c-carousel-item>
@@ -180,7 +204,6 @@
                     [src]="slide.src"
                     alt="{{slide.title}}"
                     class="d-block w-100"
-                    loading="lazy"
                   />
                   <c-carousel-caption class="d-none d-md-block">
                     <h3>{{ slide.title }}</h3>
@@ -189,9 +212,12 @@
                 </c-carousel-item>
               }
             </c-carousel-inner>
-            <c-carousel-control caption="Previous" direction="prev" i18n-caption></c-carousel-control>
-            <c-carousel-control caption="Next" direction="next" i18n-caption></c-carousel-control>
+            <c-carousel-control caption="Previous" direction="prev" i18n-caption />
+            <c-carousel-control caption="Next" direction="next" i18n-caption />
           </c-carousel>
+          <hr>
+          <button cButton (click)="toggleInterval()">Toggle interval</button>
+          {{ interval() }}
         </app-docs-example>
       </c-card-body>
     </c-card>
@@ -210,7 +236,7 @@
         </p>
         <app-docs-example href="components/carousel/#dark-variant">
           <c-carousel (itemChange)="onItemChange($event)" [dark]="true" [interval]="3000" transition="slide">
-            <c-carousel-indicators></c-carousel-indicators>
+            <c-carousel-indicators />
             <c-carousel-inner>
               @for (slide of slides[2]; track slide.src) {
                 <c-carousel-item>
@@ -227,8 +253,8 @@
                 </c-carousel-item>
               }
             </c-carousel-inner>
-            <c-carousel-control caption="Previous" direction="prev" i18n-caption></c-carousel-control>
-            <c-carousel-control caption="Next" direction="next" i18n-caption></c-carousel-control>
+            <c-carousel-control caption="Previous" direction="prev" i18n-caption />
+            <c-carousel-control caption="Next" direction="next" i18n-caption />
           </c-carousel>
         </app-docs-example>
       </c-card-body>

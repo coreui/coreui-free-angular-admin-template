@@ -1,5 +1,6 @@
 <c-row ngPreserveWhitespaces>
   <c-col xs="12">
+    <app-docs-components href="components/accordion" title="Accordion" />
     <c-card class="mb-4">
       <c-card-header>
         <strong>Angular Accordion</strong>
@@ -76,7 +77,7 @@
                 <span [innerHTML]="getAccordionBodyText('first')"></span>
               </ng-template>
             </c-accordion-item>
-            <c-accordion-item [visible]="false">
+            <c-accordion-item>
               <ng-template cTemplateId="accordionHeader">
                 Accordion item #1
               </ng-template>
@@ -84,7 +85,7 @@
                 <span [innerHTML]="getAccordionBodyText('second')"></span>
               </ng-template>
             </c-accordion-item>
-            <c-accordion-item [visible]="false">
+            <c-accordion-item>
               <ng-template cTemplateId="accordionHeader">
                 Accordion item #2
               </ng-template>
@@ -118,7 +119,6 @@
                 </ng-template>
               </c-accordion-item>
             }
-
           </c-accordion>
         </app-docs-example>
       </c-card-body>

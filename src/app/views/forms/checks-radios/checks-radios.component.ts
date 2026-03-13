@@ -1,18 +1,29 @@
-import { Component } from '@angular/core';
-import { FormControl, UntypedFormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { DocsExampleComponent } from '@docs-components/public-api';
-import { RowComponent, FormDirective, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, FormCheckComponent, FormCheckInputDirective, FormCheckLabelDirective, ButtonGroupComponent, ButtonDirective } from '@coreui/angular';
+import { Component, inject } from '@angular/core';
+import { ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
+import {
+  ButtonDirective,
+  ButtonGroupComponent,
+  CardBodyComponent,
+  CardComponent,
+  CardHeaderComponent,
+  ColComponent,
+  FormCheckComponent,
+  FormCheckInputDirective,
+  FormCheckLabelDirective,
+  FormDirective,
+  RowComponent
+} from '@coreui/angular';
+import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/public-api';
 
 @Component({
-    selector: 'app-checks-radios',
-    templateUrl: './checks-radios.component.html',
-    styleUrls: ['./checks-radios.component.scss'],
-    standalone: true,
-    imports: [RowComponent, ReactiveFormsModule, FormDirective, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, FormCheckComponent, FormCheckInputDirective, FormCheckLabelDirective, ButtonGroupComponent, ButtonDirective]
+  selector: 'app-checks-radios',
+  templateUrl: './checks-radios.component.html',
+  imports: [RowComponent, ReactiveFormsModule, FormDirective, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, FormCheckComponent, FormCheckInputDirective, FormCheckLabelDirective, ButtonGroupComponent, ButtonDirective, DocsComponentsComponent]
 })
 export class ChecksRadiosComponent {
+  private formBuilder = inject(UntypedFormBuilder);
 
-inputDisabled: null = null;
+  inputDisabled: null = null;
 
   formGroup = this.formBuilder.group({
     flexRadioGroup: this.formBuilder.group({
@@ -32,22 +43,17 @@ inputDisabled: null = null;
     btnCheckGroup: this.formBuilder.group({
       checkbox1: [true],
       checkbox2: [false],
-      checkbox3: [{value: false, disabled: true}]
+      checkbox3: [{ value: false, disabled: true }]
     }),
     btnRadioGroup: this.formBuilder.group({
       radio1: this.formBuilder.control({ value: 'Radio2' })
     })
   });
 
-
-  constructor(
-    private formBuilder: UntypedFormBuilder
-  ) { }
-
   setCheckBoxValue(controlName: string) {
     const btnCheckGroup = this.formGroup.controls['btnCheckGroup'];
     const prevValue = btnCheckGroup.get(controlName)?.value;
-    const groupValue = {...btnCheckGroup.value};
+    const groupValue = { ...btnCheckGroup.value };
     groupValue[controlName] = !prevValue;
     btnCheckGroup.patchValue(groupValue);
   }

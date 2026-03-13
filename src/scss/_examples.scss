@@ -1,5 +1,6 @@
-/* stylelint-disable declaration-no-important, scss/selector-no-redundant-nesting-selector */
-$enable-deprecation-messages: false; /* stylelint-disable-line scss/dollar-variable-default */
+@use "@coreui/coreui/scss/variables" as *;
+@use "@coreui/coreui/scss/mixins/breakpoints" as *;
+@use "@coreui/coreui/scss/mixins/color-mode" as *;
 
 .example {
   &:not(:first-child) {
@@ -8,7 +9,6 @@ $enable-deprecation-messages: false; /* stylelint-disable-line scss/dollar-varia
 
   .tab-content {
     background-color: var(--#{$prefix}tertiary-bg);
-    //background-color: rgba(var(--#{$prefix}tertiary-bg-rgb), var(--#{$prefix}bg-opacity, 1)) !important;
   }
 
   & + p {
@@ -57,7 +57,6 @@ $enable-deprecation-messages: false; /* stylelint-disable-line scss/dollar-varia
     > .btn-group {
       margin: .25rem .125rem;
     }
-
     > .btn-toolbar + .btn-toolbar {
       margin-top: .5rem;
     }
@@ -105,5 +104,11 @@ $enable-deprecation-messages: false; /* stylelint-disable-line scss/dollar-varia
         display: block;
       }
     }
+  }
+}
+
+@include color-mode(dark) {
+  .example .tab-content {
+    background-color: var(--#{$prefix}secondary-bg);
   }
 }

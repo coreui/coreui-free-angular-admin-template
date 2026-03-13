@@ -45,6 +45,16 @@ export const navItems: INavData[] = [
         icon: 'nav-icon-bullet'
       },
       {
+        name: 'Calendar',
+        url: 'https://coreui.io/angular/docs/components/calendar/',
+        icon: 'nav-icon-bullet',
+        badge: {
+          color: 'danger',
+          text: 'PRO'
+        },
+        attributes: { target: '_blank' }
+      },
+      {
         name: 'Cards',
         url: '/base/cards',
         icon: 'nav-icon-bullet'
@@ -78,6 +88,26 @@ export const navItems: INavData[] = [
         name: 'Placeholder',
         url: '/base/placeholder',
         icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Smart Table',
+        url: 'https://coreui.io/angular/docs/components/smart-table/',
+        icon: 'nav-icon-bullet',
+        badge: {
+          color: 'danger',
+          text: 'PRO'
+        },
+        attributes: { target: '_blank' }
+      },
+      {
+        name: 'Smart Pagination',
+        url: 'https://coreui.io/angular/docs/components/smart-pagination/',
+        icon: 'nav-icon-bullet',
+        badge: {
+          color: 'danger',
+          text: 'PRO'
+        },
+        attributes: { target: '_blank' }
       },
       {
         name: 'Popovers',
@@ -130,6 +160,16 @@ export const navItems: INavData[] = [
         name: 'Dropdowns',
         url: '/buttons/dropdowns',
         icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Loading Button',
+        url: 'https://coreui.io/angular/docs/components/loading-button/',
+        icon: 'nav-icon-bullet',
+        badge: {
+          color: 'danger',
+          text: 'PRO'
+        },
+        attributes: { target: '_blank' }
       }
     ]
   },
@@ -139,13 +179,18 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-notes' },
     children: [
       {
-        name: 'Form Control',
-        url: '/forms/form-control',
-        icon: 'nav-icon-bullet'
+        name: 'Autocomplete',
+        url: 'https://coreui.io/angular/docs/forms/autocomplete/',
+        icon: 'nav-icon-bullet',
+        badge: {
+          color: 'danger',
+          text: 'PRO'
+        },
+        attributes: { target: '_blank' }
       },
       {
-        name: 'Select',
-        url: '/forms/select',
+        name: 'Form Control',
+        url: '/forms/form-control',
         icon: 'nav-icon-bullet'
       },
       {
@@ -154,8 +199,28 @@ export const navItems: INavData[] = [
         icon: 'nav-icon-bullet'
       },
       {
-        name: 'Range',
-        url: '/forms/range',
+        name: 'Date Picker',
+        url: 'https://coreui.io/angular/docs/forms/date-picker/',
+        icon: 'nav-icon-bullet',
+        badge: {
+          color: 'danger',
+          text: 'PRO'
+        },
+        attributes: { target: '_blank' }
+      },
+      {
+        name: 'Date Range Picker',
+        url: 'https://coreui.io/angular/docs/forms/date-range-picker/',
+        icon: 'nav-icon-bullet',
+        badge: {
+          color: 'danger',
+          text: 'PRO'
+        },
+        attributes: { target: '_blank' }
+      },
+      {
+        name: 'Floating Labels',
+        url: '/forms/floating-labels',
         icon: 'nav-icon-bullet'
       },
       {
@@ -164,9 +229,84 @@ export const navItems: INavData[] = [
         icon: 'nav-icon-bullet'
       },
       {
-        name: 'Floating Labels',
-        url: '/forms/floating-labels',
+        name: 'Multi Select',
+        url: 'https://coreui.io/angular/docs/forms/multi-select/',
+        icon: 'nav-icon-bullet',
+        badge: {
+          color: 'danger',
+          text: 'PRO'
+        },
+        attributes: { target: '_blank' }
+      },
+      {
+        name: 'OTP Input',
+        url: 'https://coreui.io/angular/docs/forms/otp/',
+        icon: 'nav-icon-bullet',
+        badge: {
+          color: 'danger',
+          text: 'PRO'
+        },
+        attributes: { target: '_blank' }
+      },
+      {
+        name: 'Password Input',
+        url: 'https://coreui.io/angular/docs/forms/password-input/',
+        icon: 'nav-icon-bullet',
+        badge: {
+          color: 'danger',
+          text: 'PRO'
+        },
+        attributes: { target: '_blank' }
+      },
+      {
+        name: 'Range',
+        url: '/forms/range',
         icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Range Slider',
+        url: 'https://coreui.io/angular/docs/forms/range-slider/',
+        icon: 'nav-icon-bullet',
+        badge: {
+          color: 'danger',
+          text: 'PRO'
+        },
+        attributes: { target: '_blank' }
+      },
+      {
+        name: 'Rating',
+        url: 'https://coreui.io/angular/docs/forms/rating/',
+        icon: 'nav-icon-bullet',
+        badge: {
+          color: 'danger',
+          text: 'PRO'
+        },
+        attributes: { target: '_blank' }
+      },
+      {
+        name: 'Select',
+        url: '/forms/select',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Stepper',
+        url: 'https://coreui.io/angular/docs/forms/stepper/',
+        icon: 'nav-icon-bullet',
+        badge: {
+          color: 'danger',
+          text: 'PRO'
+        },
+        attributes: { target: '_blank' }
+      },
+      {
+        name: 'Time Picker',
+        url: 'https://coreui.io/angular/docs/forms/time-picker/',
+        icon: 'nav-icon-bullet',
+        badge: {
+          color: 'danger',
+          text: 'PRO'
+        },
+        attributes: { target: '_blank' }
       },
       {
         name: 'Layout',
@@ -285,7 +425,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Docs',
-    url: 'https://coreui.io/angular/docs/5.x/',
+    url: 'https://coreui.io/angular/docs/',
     iconComponent: { name: 'cil-description' },
     attributes: { target: '_blank' }
   }

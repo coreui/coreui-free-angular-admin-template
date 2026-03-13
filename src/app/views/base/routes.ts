@@ -84,7 +84,7 @@ export const routes: Routes = [
       },
       {
         path: 'progress',
-        loadComponent: () => import('./progress/progress.component').then(m => m.ProgressComponent),
+        loadComponent: () => import('./progress/progress.component').then(m => m.AppProgressComponent),
         data: {
           title: 'Progress'
         }
@@ -105,7 +105,7 @@ export const routes: Routes = [
       },
       {
         path: 'tabs',
-        loadComponent: () => import('./tabs/tabs.component').then(m => m.TabsComponent),
+        loadComponent: () => import('./tabs/tabs.component').then(m => m.AppTabsComponent),
         data: {
           title: 'Tabs'
         }

@@ -1,31 +1,28 @@
-import {
-  AfterContentInit,
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  OnInit,
-  ViewChild
-} from '@angular/core';
+import { AfterContentInit, AfterViewInit, ChangeDetectorRef, Component, inject, OnInit, viewChild } from '@angular/core';
 import { getStyle } from '@coreui/utils';
 import { ChartjsComponent } from '@coreui/angular-chartjs';
 import { RouterLink } from '@angular/router';
 import { IconDirective } from '@coreui/icons-angular';
-import { RowComponent, ColComponent, WidgetStatAComponent, TemplateIdDirective, ThemeDirective, DropdownComponent, ButtonDirective, DropdownToggleDirective, DropdownMenuDirective, DropdownItemDirective, DropdownDividerDirective } from '@coreui/angular';
+import {
+  ButtonDirective,
+  ColComponent,
+  DropdownComponent,
+  DropdownDividerDirective,
+  DropdownItemDirective,
+  DropdownMenuDirective,
+  DropdownToggleDirective,
+  RowComponent,
+  TemplateIdDirective,
+  WidgetStatAComponent
+} from '@coreui/angular';
 
 @Component({
-    selector: 'app-widgets-dropdown',
-    templateUrl: './widgets-dropdown.component.html',
-    styleUrls: ['./widgets-dropdown.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Default,
-    standalone: true,
-    imports: [RowComponent, ColComponent, WidgetStatAComponent, TemplateIdDirective, IconDirective, ThemeDirective, DropdownComponent, ButtonDirective, DropdownToggleDirective, DropdownMenuDirective, DropdownItemDirective, RouterLink, DropdownDividerDirective, ChartjsComponent]
+  selector: 'app-widgets-dropdown',
+  templateUrl: './widgets-dropdown.component.html',
+  imports: [RowComponent, ColComponent, WidgetStatAComponent, TemplateIdDirective, IconDirective, DropdownComponent, ButtonDirective, DropdownToggleDirective, DropdownMenuDirective, DropdownItemDirective, RouterLink, DropdownDividerDirective, ChartjsComponent]
 })
 export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
-
-  constructor(
-    private changeDetectorRef: ChangeDetectorRef
-  ) {}
+  private changeDetectorRef = inject(ChangeDetectorRef);
 
   data: any[] = [];
   options: any[] = [];
@@ -88,7 +85,7 @@ export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
     scales: {
       x: {
         border: {
-          display: false,
+          display: false
         },
         grid: {
           display: false,
@@ -180,16 +177,15 @@ export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
 }
 
 @Component({
-    selector: 'app-chart-sample',
-    template: '<c-chart type="line" [data]="data" [options]="options" width="300" #chart></c-chart>',
-    standalone: true,
-    imports: [ChartjsComponent]
+  selector: 'app-chart-sample',
+  template: '<c-chart type="line" [data]="data" [options]="options" width="300" #chart />',
+  imports: [ChartjsComponent]
 })
 export class ChartSample implements AfterViewInit {
 
   constructor() {}
 
-  @ViewChild('chart') chartComponent!: ChartjsComponent;
+  readonly chartComponent = viewChild.required<ChartjsComponent>('chart');
 
   colors = {
     label: 'My dataset',
@@ -240,7 +236,7 @@ export class ChartSample implements AfterViewInit {
       const newData = [42, 88, 42, 66, 77];
       let { datasets, labels } = { ...this.data };
       // @ts-ignore
-      const before = this.chartComponent?.chart?.data.datasets.length;
+      const before = this.chartComponent()?.chart?.data.datasets.length;
       console.log('before', before);
       // console.log('datasets, labels', datasets, labels)
       // @ts-ignore
@@ -257,7 +253,7 @@ export class ChartSample implements AfterViewInit {
       // console.log('datasets, labels', { datasets, labels } = {...this.data})
       // @ts-ignore
       setTimeout(() => {
-        const after = this.chartComponent?.chart?.data.datasets.length;
+        const after = this.chartComponent()?.chart?.data.datasets.length;
         console.log('after', after);
       });
     }, 5000);
