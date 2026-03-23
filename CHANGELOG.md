@@ -2,6 +2,36 @@
 
 ---
 
+#### `5.6.21`
+
+- chore(dependencies): update to `Angular 21.2.5`
+  - `@angular/build` @ "21.2.3" (was "21.2.2")
+  - `@angular/cli` @ "21.2.3" (was "21.2.2")
+  - `@angular/compiler-cli` @ "21.2.5" (was "21.2.4")
+  - `@angular/animations` @ "21.2.5" (was "21.2.4")
+  - `@angular/cdk` @ "21.2.3" (was "21.2.2")
+  - `@angular/common` @ "21.2.5" (was "21.2.4")
+  - `@angular/compiler` @ "21.2.5" (was "21.2.4")
+  - `@angular/core` @ "21.2.5" (was "21.2.4")
+  - `@angular/forms` @ "21.2.5" (was "21.2.4")
+  - `@angular/language-service` @ "21.2.5" (was "21.2.4")
+  - `@angular/localize` @ "21.2.5" (was "21.2.4")
+  - `@angular/platform-browser` @ "21.2.5" (was "21.2.4")
+  - `@angular/platform-browser-dynamic` @ "21.2.5" (was "21.2.4")
+  - `@angular/router` @ "21.2.5" (was "21.2.4")
+  - `@coreui/angular` @ "5.6.21" (was "5.6.20")
+  - `@coreui/angular-chartjs` @ "5.6.21" (was "5.6.20")
+  - `@coreui/icons-angular` @ "5.6.21" (was "5.6.20")
+- chore(dependencies): overrides `undici` version to `^7.24.0` to mitigate vulnerabilities
+  - Undici Malicious WebSocket 64-bit length overflows parser and crashes the client - https://github.com/advisories/GHSA-f269-vfmq-vjvj
+  - Undici has an HTTP Request/Response Smuggling issue - https://github.com/advisories/GHSA-2mjp-6q6p-2qxm
+  - Undici has Unbounded Memory Consumption in WebSocket permessage-deflate Decompression - https://github.com/advisories/GHSA-vrm6-8vpv-qv8q
+  - Undici has Unhandled Exception in WebSocket Client Due to Invalid server_max_window_bits Validation - https://github.com/advisories/GHSA-v9p9-hfj2-hcw8
+  - Undici has CRLF Injection in undici via `upgrade` option - https://github.com/advisories/GHSA-4992-7rv2-5pvq
+  - Undici has Unbounded Memory Consumption in its DeduplicationHandler via Response Buffering that leads to DoS - https://github.com/advisories/GHSA-phc3-fgpg-7m6h
+
+---
+
 #### `5.6.20`
 
 - chore(dependencies): update to `Angular 21.2.4`
