@@ -451,15 +451,18 @@ export class DatabaseService {
       
       if (gpRes.rowCount === 0) throw new Error('Gran Prix not found');
       const gp = gpRes.rows[0];
+      const hasX2Enabled = Number(gp.has_x2) === 1;
+      const raceFastLapPilotId = raceResult[8];
+      const sprintFastLapPilotId = sprintResult[8];
 
       // Handle Race or Full Race Results
-      if (gp.has_x2 === 1 && gp.full_race_results_id) {
+      if (hasX2Enabled && gp.full_race_results_id) {
         await client.query('DELETE FROM full_race_result_entries WHERE race_results_id = $1', [gp.full_race_results_id]);
         for (let i = 0; i < 8; i++) {
           if (raceResult[i] && raceResult[i] !== 0) {
             await client.query(
               'INSERT INTO full_race_result_entries (race_results_id, pilot_id, position, fast_lap) VALUES ($1, $2, $3, $4)',
-              [gp.full_race_results_id, raceResult[i], i+1, raceResult[8] === raceResult[i]]
+              [gp.full_race_results_id, raceResult[i], i+1, raceFastLapPilotId === raceResult[i]]
             );
           }
         }
@@ -477,7 +480,7 @@ export class DatabaseService {
           if (raceResult[i] && raceResult[i] !== 0) {
             await client.query(
               'INSERT INTO race_result_entries (race_results_id, pilot_id, position, fast_lap) VALUES ($1, $2, $3, $4)',
-              [gp.race_results_id, raceResult[i], i+1, raceResult[8] === raceResult[i]]
+              [gp.race_results_id, raceResult[i], i+1, raceFastLapPilotId === raceResult[i]]
             );
           }
         }
@@ -498,7 +501,7 @@ export class DatabaseService {
           if (sprintResult[i] && sprintResult[i] !== 0) {
             await client.query(
               'INSERT INTO sprint_result_entries (sprint_results_id, pilot_id, position, fast_lap) VALUES ($1, $2, $3, $4)',
-              [gp.sprint_results_id, sprintResult[i], i+1, sprintResult[8] === sprintResult[i]]
+              [gp.sprint_results_id, sprintResult[i], i+1, sprintFastLapPilotId === sprintResult[i]]
             );
           }
         }
