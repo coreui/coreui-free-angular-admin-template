@@ -220,8 +220,8 @@ export class DatabaseService {
           gran_prix_id: gpId,
           track_name: row.track_name,
           gran_prix_date: row.gran_prix_date,
-          gran_prix_has_sprint: row.gran_prix_has_sprint?.toString() || '0',
-          gran_prix_has_x2: row.gran_prix_has_x2?.toString() || '0',
+          gran_prix_has_sprint: Number(row.gran_prix_has_sprint) || 0,
+          gran_prix_has_x2: Number(row.gran_prix_has_x2) || 0,
           track_country: row.track_country,
           sessions: {},
           fastLapDrivers: {}
