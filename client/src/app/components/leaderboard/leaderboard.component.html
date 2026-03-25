@@ -71,9 +71,7 @@
       <svg cIcon name="cilList" class="me-2" width="24" height="24"></svg>
       Storico Votazioni di <strong>{{ selectedUser()?.username }}</strong>
     </h5>
-    <button (click)="closeModal()" cButtonClose aria-label="Chiudi modale">
-      <span aria-hidden="true">&times;</span>
-    </button>
+    <button (click)="closeModal()" cButtonClose aria-label="Chiudi modale"></button>
   </c-modal-header>
   <c-modal-body>
     @if (userVotes().length === 0) {
