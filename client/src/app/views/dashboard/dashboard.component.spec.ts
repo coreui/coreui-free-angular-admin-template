@@ -506,6 +506,25 @@ describe('DashboardComponent', () => {
       expect(component.showGainedPointsColumn()).toBe(false);
     });
 
+    it('should calculate constructor of the week when driver IDs come as strings from PostgreSQL (int8)', () => {
+      // PostgreSQL int8 columns are returned as strings by the pg driver at runtime
+      // despite TypeScript typing them as number — this tests the real-world scenario
+      const constructorWithStringIds = [{
+        ...mockConstructorData[0],
+        driver_1_id: '1' as unknown as number,
+        driver_2_id: '2' as unknown as number,
+      }];
+      mockConstructorService.calculateConstructorPoints.and.returnValue(constructorWithStringIds);
+      mockConstructorService.calculateConstructorGainedPoints.and.returnValue(constructorWithStringIds);
+
+      component.ngOnInit();
+
+      const constructorOfWeek = component.constructorOfWeek();
+      // driver1 gained 30pts (75-45) + driver2 gained 25pts (60-35) = 55 total
+      expect(constructorOfWeek.constructor_name).toBe('Team Red');
+      expect(constructorOfWeek.points).toBe(55);
+    });
+
     it('should handle constructor with no drivers', () => {
       const emptyConstructor: Constructor[] = [
         {
