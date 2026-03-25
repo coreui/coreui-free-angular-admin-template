@@ -114,9 +114,6 @@ describe('VoteHistoryTableComponent', () => {
     mockFantaService = jasmine.createSpyObj('FantaService', [
       'getRaceResult',
       'pointsWithAbsoluteDifference',
-      'getCorrectResponsePointFastLap',
-      'getCorrectResponsePointDnf',
-      'getCorrectResponsePointTeam',
       'getFantaRacePoints',
       'isDnfCorrect',
       'getWinningConstructorsForTrack'
@@ -138,9 +135,6 @@ describe('VoteHistoryTableComponent', () => {
     });
     
     mockFantaService.pointsWithAbsoluteDifference.and.returnValue(10);
-    mockFantaService.getCorrectResponsePointFastLap.and.returnValue(5);
-    mockFantaService.getCorrectResponsePointDnf.and.returnValue(5);
-    mockFantaService.getCorrectResponsePointTeam.and.returnValue(5);
     mockFantaService.getFantaRacePoints.and.returnValue(100);
     mockFantaService.isDnfCorrect.and.returnValue(true);
 
@@ -271,7 +265,6 @@ describe('VoteHistoryTableComponent', () => {
 
   describe('getPuntiFastLap', () => {
     it('should return points for correct fast lap prediction', () => {
-      mockFantaService.getCorrectResponsePointFastLap.and.returnValue(5);
       const result = component.getPuntiFastLap();
       expect(result).toBe(5);
     });
@@ -307,7 +300,6 @@ describe('VoteHistoryTableComponent', () => {
   describe('getPuntiDnf', () => {
     it('should return points for correct DNF prediction', () => {
       mockFantaService.isDnfCorrect.and.returnValue(true);
-      mockFantaService.getCorrectResponsePointDnf.and.returnValue(5);
       const result = component.getPuntiDnf();
       expect(result).toBe(5);
     });
@@ -341,7 +333,6 @@ describe('VoteHistoryTableComponent', () => {
   describe('getPuntiConstructor', () => {
     it('should return points for correct constructor prediction', () => {
       mockFantaService.getWinningConstructorsForTrack.and.returnValue([1]);
-      mockFantaService.getCorrectResponsePointTeam.and.returnValue(5);
       const result = component.getPuntiConstructor();
       expect(result).toBe(5);
     });

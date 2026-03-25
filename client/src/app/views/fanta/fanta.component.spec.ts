@@ -171,15 +171,11 @@ describe('FantaComponent', () => {
       'getFantaVote',
       'setFantaVote',
       'getFantaPoints',
-      'getTotNumberVotes', // For LeaderboardComponent
       'getFantaNumberVotes', // For LeaderboardComponent (per user)
       'getRaceResult', // For VoteHistoryTableComponent
       'isDnfCorrect', // For VoteHistoryTableComponent
       'pointsWithAbsoluteDifference', // For VoteHistoryTableComponent
-      'getCorrectResponsePointFastLap', // For VoteHistoryTableComponent
-      'getCorrectResponsePointDnf', // For VoteHistoryTableComponent
       'getWinningConstructorsForTrack', // For VoteHistoryTableComponent
-      'getCorrectResponsePointTeam', // For VoteHistoryTableComponent
       'getFantaRacePoints' // For VoteHistoryTableComponent
     ]);
 
@@ -188,15 +184,12 @@ describe('FantaComponent', () => {
     mockFantaService.getFantaVote.and.returnValue(undefined);
     mockFantaService.setFantaVote.and.returnValue(Promise.resolve());
     mockFantaService.getFantaPoints.and.returnValue(100);
-    mockFantaService.getTotNumberVotes.and.returnValue(10); // For LeaderboardComponent
+    (mockFantaService as any).totNumberVotes = signal(10); // For LeaderboardComponent
     mockFantaService.getFantaNumberVotes.and.returnValue(5); // For LeaderboardComponent (per user)
     mockFantaService.getRaceResult.and.returnValue(undefined); // For VoteHistoryTableComponent
     mockFantaService.isDnfCorrect.and.returnValue(false); // For VoteHistoryTableComponent
     mockFantaService.pointsWithAbsoluteDifference.and.returnValue(0); // For VoteHistoryTableComponent
-    mockFantaService.getCorrectResponsePointFastLap.and.returnValue(5); // For VoteHistoryTableComponent
-    mockFantaService.getCorrectResponsePointDnf.and.returnValue(5); // For VoteHistoryTableComponent
     mockFantaService.getWinningConstructorsForTrack.and.returnValue([]); // For VoteHistoryTableComponent
-    mockFantaService.getCorrectResponsePointTeam.and.returnValue(10); // For VoteHistoryTableComponent
     mockFantaService.getFantaRacePoints.and.returnValue(0); // For VoteHistoryTableComponent
 
     // Setup sessionStorage

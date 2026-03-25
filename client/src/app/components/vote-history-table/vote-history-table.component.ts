@@ -138,7 +138,7 @@ export class VoteHistoryTableComponent {
     
     const vote = this.fantaVote();
     return +result.id_fast_lap === +vote.id_fast_lap && vote.id_fast_lap !== 0
-      ? this.fantaService.getCorrectResponsePointFastLap()
+      ? FantaService.CORRECT_RESPONSE_FAST_LAP_POINTS
       : 0;
   }
 
@@ -150,7 +150,7 @@ export class VoteHistoryTableComponent {
     
     const vote = this.fantaVote();
     return this.fantaService.isDnfCorrect(result.list_dnf, +vote.id_dnf) && +vote.id_dnf !== 0
-      ? this.fantaService.getCorrectResponsePointDnf()
+      ? FantaService.CORRECT_RESPONSE_DNF_POINTS
       : 0;
   }
 
@@ -162,7 +162,7 @@ export class VoteHistoryTableComponent {
     
     const vote = this.fantaVote();
     return winningConstructorIds.includes(+vote.constructor_id) && +vote.constructor_id !== 0
-      ? this.fantaService.getCorrectResponsePointTeam()
+      ? FantaService.CORRECT_RESPONSE_TEAM
       : 0;
   }
 

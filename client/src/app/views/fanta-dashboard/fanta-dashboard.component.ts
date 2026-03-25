@@ -7,8 +7,7 @@ import { GridModule } from '@coreui/angular';
   selector: 'app-fanta-dashboard',
   imports: [
     GridModule,
-    LeaderboardComponent,
-    FantaRulesComponent
+    LeaderboardComponent
   ],
   templateUrl: './fanta-dashboard.component.html'
 })

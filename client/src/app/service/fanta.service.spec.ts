@@ -274,9 +274,9 @@ describe('FantaService', () => {
     });
   });
 
-  describe('getTotNumberVotes', () => {
+  describe('totNumberVotes', () => {
     it('should return total number of races', () => {
-      expect(service.getTotNumberVotes()).toBe(mockRaceResults.length);
+      expect(service.totNumberVotes()).toBe(mockRaceResults.length);
     });
   });
 
@@ -630,21 +630,6 @@ describe('FantaService', () => {
     });
   });
 
-  describe('constants getters', () => {
-    it('should return correct fast lap points', () => {
-      expect(service.getCorrectResponsePointFastLap()).toBe(5);
-    });
-
-    it('should return correct DNF points', () => {
-      expect(service.getCorrectResponsePointDnf()).toBe(5);
-    });
-
-    it('should return correct team points', () => {
-      expect(service.getCorrectResponsePointTeam()).toBe(5);
-    });
-  });
-
-
   describe('edge cases', () => {
     it('should handle race results with invalid positions', () => {
       const incompleteRaceResult: RaceResult = {
@@ -665,7 +650,7 @@ describe('FantaService', () => {
       const extendedResults = [...mockRaceResults, incompleteRaceResult];
       raceResultSignal.set(extendedResults);
       
-      expect(service.getTotNumberVotes()).toBe(mockRaceResults.length + 1);
+      expect(service.totNumberVotes()).toBe(mockRaceResults.length + 1);
     });
 
     it('should handle empty fanta votes', async () => {
@@ -690,7 +675,7 @@ describe('FantaService', () => {
       });
       
       const newService = TestBed.inject(FantaService);
-      expect(newService.getTotNumberVotes()).toBe(0);
+      expect(newService.totNumberVotes()).toBe(0);
     });
   });
 });
