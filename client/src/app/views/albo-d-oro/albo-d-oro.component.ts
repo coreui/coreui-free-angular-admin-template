@@ -1,8 +1,7 @@
 import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CardModule, TableModule } from '@coreui/angular';
+import { CardModule } from '@coreui/angular';
 import { PodiumCardComponent } from '../../components/podium-card/podium-card.component';
-import { GridModule } from '@coreui/angular';
 import { DbDataService } from '../../service/db-data.service';
 import type { DriverData } from '@f123dashboard/shared';
 
@@ -44,7 +43,7 @@ const FANTA_CLASSIFICA_DATA: ClassificaEntry[] = [
 @Component({
   selector: 'app-albo-d-oro',
   standalone: true,
-  imports: [CommonModule, PodiumCardComponent, GridModule, CardModule, TableModule],
+  imports: [CommonModule, PodiumCardComponent, CardModule],
   templateUrl: './albo-d-oro.component.html',
   styleUrls: ['./albo-d-oro.component.scss']
 })
@@ -66,7 +65,7 @@ export class AlboDOroComponent implements OnInit {
     try {
       const drivers = await this.dbDataService.getDriversBySeason(CURRENT_SEASON_ID);
       const sortedDrivers = this.sortDriversByPoints(drivers);
-      
+
       this.podio = this.buildPodium(sortedDrivers);
       this.classifica = this.buildClassifica(sortedDrivers);
       this.isLoadingDrivers = false;
@@ -84,7 +83,7 @@ export class AlboDOroComponent implements OnInit {
 
   private buildPodium(drivers: DriverData[]): PodiumEntry[] {
     const topDrivers = drivers.slice(0, PODIUM_SIZE);
-    
+
     if (topDrivers.length < PODIUM_SIZE) {
       return topDrivers.map((driver, index) => this.createPodiumEntry(driver, index + 1));
     }

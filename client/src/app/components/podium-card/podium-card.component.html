@@ -1,56 +1,58 @@
 <c-card class="albo-container">
-  <!-- Header -->
   <header class="albo-header">
     <h1>{{ championshipTitle }}</h1>
   </header>
 
-  <!-- Podio -->
   <section class="podio">
     @for (pilota of podio; track pilota.posizione) {
-      <div
+      <article
         class="podio-card"
-      [class.first]="pilota.posizione === 1"
-      [class.second]="pilota.posizione === 2"
-      [class.third]="pilota.posizione === 3"
-      [style.--podio-card-bg]="'linear-gradient(to bottom,' + pilota.colore + ', #111)'" 
-    >
-      <div class="numero">{{ pilota.posizione }}</div>
-      <img
-        [src]="pilota.img"
-        [alt]="pilota.nome"
-        class="pilota-img"
-        [ngClass]="{
-          'img-first': pilota.posizione === 1,
-          'img-small': pilota.posizione !== 1
-        }"
-      />
-      <div class="info">
-        <span class="nome">{{ pilota.nome }}</span>
-        <span class="nome">{{ pilota.punti }} Pt</span>
-      </div>
-      </div>
+        [class.first]="pilota.posizione === 1"
+        [class.second]="pilota.posizione === 2"
+        [class.third]="pilota.posizione === 3"
+        [style.--driver-accent]="pilota.colore"
+      >
+        <span class="numero">{{ pilota.posizione }}</span>
+
+        <div class="podio-portrait">
+          <img
+            [src]="pilota.img"
+            [alt]="pilota.nome"
+            class="pilota-img"
+          />
+        </div>
+
+        <span class="punti">
+          <span>{{ pilota.punti }} pt</span>
+        </span>
+
+        <div class="info">
+          <div class="nameplate">
+            <span class="nome">{{ pilota.nome }}</span>
+          </div>
+        </div>
+      </article>
     }
   </section>
 
-  <!-- Classifica 4–6 -->
   <section class="classifica">
-        <table
-          [hover]="true"
-          [responsive]="true"
-          [striped]="true"
-          align="middle"
-          cTable
-          class="mb-0 border"
-        >
-        <tbody>
-          @for (p of classifica; track p.posizione) {
-            <tr>
-              <td class="pos">{{ p.posizione }}</td>
-              <td class="nome-table">{{ p.nome }}</td>
-              <td class="punti-table">{{ p.punti }} Pt</td>
-            </tr>
-          }
-        </tbody>
+    <table
+      [hover]="false"
+      [responsive]="true"
+      [striped]="false"
+      align="middle"
+      cTable
+      class="mb-0"
+    >
+      <tbody>
+        @for (p of classifica; track p.posizione) {
+          <tr>
+            <td class="pos">{{ p.posizione }}</td>
+            <td class="nome-table">{{ p.nome }}</td>
+            <td class="punti-table">{{ p.punti }} pt</td>
+          </tr>
+        }
+      </tbody>
     </table>
   </section>
 </c-card>

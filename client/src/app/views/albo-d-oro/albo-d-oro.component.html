@@ -1,26 +1,31 @@
-<c-row>
-  <c-col>
-    @if (isLoadingDrivers) {
-      <c-card>
-        <c-card-body class="text-center">
-          <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Loading...</span>
-          </div>
-        </c-card-body>
-      </c-card>
-    } @else {
-      <app-podium-card
+<div class="albo-page">
+  <div class="albo-grid">
+    <div class="albo-slot">
+      @if (isLoadingDrivers) {
+        <c-card class="loading-card">
+          <c-card-body class="text-center">
+            <div class="spinner-border text-light" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </c-card-body>
+        </c-card>
+      } @else {
+        <app-podium-card
           [podio]="podio"
           [classifica]="classifica"
-          [championshipTitle]="'Campionato piloti 2024-25'">
-      </app-podium-card>
-    }
-  </c-col>
-  <c-col>
-    <app-podium-card
+          [championshipTitle]="'Campionato piloti 2024-25'"
+        >
+        </app-podium-card>
+      }
+    </div>
+
+    <div class="albo-slot">
+      <app-podium-card
         [podio]="podioFanta"
         [classifica]="classificaFanta"
-        [championshipTitle]="'Fanta 2024-25'">
-    </app-podium-card>
-  </c-col>
-</c-row>
+        [championshipTitle]="'Fanta 2024-25'"
+      >
+      </app-podium-card>
+    </div>
+  </div>
+</div>
