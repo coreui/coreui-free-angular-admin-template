@@ -5,12 +5,15 @@ import { FantaService } from '../../service/fanta.service';
 import { DbDataService } from '../../service/db-data.service';
 import type { FantaVote, DriverData, Constructor, RaceResult } from '@f123dashboard/shared';
 import { cilPeople, cilCheckAlt, cilX, cilSwapVertical } from '@coreui/icons';
+import { signal, WritableSignal, computed } from '@angular/core';
 
 describe('VoteHistoryTableComponent', () => {
   let component: VoteHistoryTableComponent;
   let fixture: ComponentFixture<VoteHistoryTableComponent>;
   let mockFantaService: jasmine.SpyObj<FantaService>;
-  let mockDbDataService: jasmine.SpyObj<DbDataService>;
+  let mockDbDataService: Partial<DbDataService>;
+  let allDriversSignal: WritableSignal<DriverData[]>;
+  let constructorsSignal: WritableSignal<Constructor[]>;
 
   const mockDrivers: DriverData[] = [
     {
@@ -111,22 +114,17 @@ describe('VoteHistoryTableComponent', () => {
     mockFantaService = jasmine.createSpyObj('FantaService', [
       'getRaceResult',
       'pointsWithAbsoluteDifference',
-      'getCorrectResponsePointFastLap',
-      'getCorrectResponsePointDnf',
-      'getCorrectResponsePointTeam',
       'getFantaRacePoints',
       'isDnfCorrect',
       'getWinningConstructorsForTrack'
     ]);
 
-    mockDbDataService = jasmine.createSpyObj('DbDataService', [
-      'getAllDrivers',
-      'getConstructors'
-    ]);
-
-    // Setup default mock returns
-    mockDbDataService.getAllDrivers.and.returnValue(mockDrivers);
-    mockDbDataService.getConstructors.and.returnValue(mockConstructors);
+    allDriversSignal = signal(mockDrivers);
+    constructorsSignal = signal(mockConstructors);
+    mockDbDataService = {
+      allDrivers: allDriversSignal.asReadonly(),
+      constructors: computed(() => constructorsSignal())
+    };
     
     // Setup mocks that return different values based on trackId
     mockFantaService.getRaceResult.and.callFake((trackId: number) => {
@@ -137,9 +135,6 @@ describe('VoteHistoryTableComponent', () => {
     });
     
     mockFantaService.pointsWithAbsoluteDifference.and.returnValue(10);
-    mockFantaService.getCorrectResponsePointFastLap.and.returnValue(5);
-    mockFantaService.getCorrectResponsePointDnf.and.returnValue(5);
-    mockFantaService.getCorrectResponsePointTeam.and.returnValue(5);
     mockFantaService.getFantaRacePoints.and.returnValue(100);
     mockFantaService.isDnfCorrect.and.returnValue(true);
 
@@ -147,7 +142,7 @@ describe('VoteHistoryTableComponent', () => {
       providers: [
         provideNoopAnimations(),
         { provide: FantaService, useValue: mockFantaService },
-        { provide: DbDataService, useValue: mockDbDataService }
+        { provide: DbDataService, useValue: mockDbDataService as DbDataService }
       ],
       imports: [VoteHistoryTableComponent]
     })
@@ -270,7 +265,6 @@ describe('VoteHistoryTableComponent', () => {
 
   describe('getPuntiFastLap', () => {
     it('should return points for correct fast lap prediction', () => {
-      mockFantaService.getCorrectResponsePointFastLap.and.returnValue(5);
       const result = component.getPuntiFastLap();
       expect(result).toBe(5);
     });
@@ -306,7 +300,6 @@ describe('VoteHistoryTableComponent', () => {
   describe('getPuntiDnf', () => {
     it('should return points for correct DNF prediction', () => {
       mockFantaService.isDnfCorrect.and.returnValue(true);
-      mockFantaService.getCorrectResponsePointDnf.and.returnValue(5);
       const result = component.getPuntiDnf();
       expect(result).toBe(5);
     });
@@ -340,7 +333,6 @@ describe('VoteHistoryTableComponent', () => {
   describe('getPuntiConstructor', () => {
     it('should return points for correct constructor prediction', () => {
       mockFantaService.getWinningConstructorsForTrack.and.returnValue([1]);
-      mockFantaService.getCorrectResponsePointTeam.and.returnValue(5);
       const result = component.getPuntiConstructor();
       expect(result).toBe(5);
     });

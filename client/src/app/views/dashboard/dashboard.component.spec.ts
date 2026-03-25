@@ -7,13 +7,17 @@ import { TwitchApiService } from '../../service/twitch-api.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ConstructorService } from '../../service/constructor.service';
 import { LoadingService } from '../../service/loading.service';
-import { signal } from '@angular/core';
+import { signal, WritableSignal, computed } from '@angular/core';
 import type { Constructor, CumulativePointsData, DriverData, TrackData } from '@f123dashboard/shared';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
   let fixture: ComponentFixture<DashboardComponent>;
-  let mockDbDataService: jasmine.SpyObj<DbDataService>;
+  let mockDbDataService: Partial<DbDataService>;
+  let allDriversSignal: WritableSignal<DriverData[]>;
+  let tracksSignal: WritableSignal<TrackData[]>;
+  let constructorsSignal: WritableSignal<Constructor[]>;
+  let cumulativePointsSignal: WritableSignal<CumulativePointsData[]>;
   let mockTwitchApiService: jasmine.SpyObj<TwitchApiService>;
   let mockDomSanitizer: jasmine.SpyObj<DomSanitizer>;
   let mockConstructorService: jasmine.SpyObj<ConstructorService>;
@@ -69,7 +73,7 @@ describe('DashboardComponent', () => {
   const mockTrackData: TrackData[] = [
     {
       track_id: 1,
-      date: new Date('2026-03-15').toISOString(),
+      date: new Date('2026-04-10').toISOString(),
       name: 'Monaco GP',
       country: 'Monaco',
       besttime_driver_time: '1:12.909',
@@ -185,13 +189,18 @@ describe('DashboardComponent', () => {
   beforeEach(async () => {
     // Create a writable signal for testing that can be updated
     const mockIsLiveSignal = signal(false);
-    
-    mockDbDataService = jasmine.createSpyObj('DbDataService', [
-      'getAllDrivers',
-      'getAllTracks',
-      'getConstructors',
-      'getCumulativePoints'
-    ]);
+
+    allDriversSignal = signal(mockDriverData);
+    tracksSignal = signal(mockTrackData);
+    constructorsSignal = signal(mockConstructorData);
+    cumulativePointsSignal = signal(mockCumulativePointsData);
+    mockDbDataService = {
+      allDrivers: allDriversSignal.asReadonly(),
+      tracks: tracksSignal.asReadonly(),
+      constructors: computed(() => constructorsSignal()),
+      cumulativePoints: cumulativePointsSignal.asReadonly()
+    };
+
     mockTwitchApiService = jasmine.createSpyObj('TwitchApiService', [
       'getChannel',
       'checkStreamStatus'
@@ -213,10 +222,6 @@ describe('DashboardComponent', () => {
       hide: jasmine.createSpy('hide')
     } as any;
 
-    mockDbDataService.getAllDrivers.and.returnValue(mockDriverData);
-    mockDbDataService.getAllTracks.and.returnValue(mockTrackData);
-    mockDbDataService.getConstructors.and.returnValue(mockConstructorData);
-    mockDbDataService.getCumulativePoints.and.returnValue(mockCumulativePointsData);
     mockTwitchApiService.getChannel.and.returnValue('testchannel');
     mockDomSanitizer.bypassSecurityTrustResourceUrl.and.returnValue('safe-url' as any);
     mockConstructorService.calculateConstructorPoints.and.returnValue(mockConstructorData);
@@ -224,7 +229,7 @@ describe('DashboardComponent', () => {
 
     await TestBed.configureTestingModule({
       imports: [DashboardComponent],
-      providers: [provideNoopAnimations(), { provide: DbDataService, useValue: mockDbDataService },
+      providers: [provideNoopAnimations(), { provide: DbDataService, useValue: mockDbDataService as DbDataService },
         { provide: TwitchApiService, useValue: mockTwitchApiService },
         { provide: DomSanitizer, useValue: mockDomSanitizer },
         { provide: ConstructorService, useValue: mockConstructorService },
@@ -244,10 +249,6 @@ describe('DashboardComponent', () => {
     it('should initialize all data on component initialization', () => {
       component.ngOnInit();
 
-      expect(mockDbDataService.getAllDrivers).toHaveBeenCalled();
-      expect(mockDbDataService.getAllTracks).toHaveBeenCalled();
-      expect(mockDbDataService.getConstructors).toHaveBeenCalled();
-      expect(mockDbDataService.getCumulativePoints).toHaveBeenCalled();
       expect(component.championship_standings_users().length).toBe(2);
       expect(component.championshipTracks().length).toBe(3);
     });
@@ -464,8 +465,8 @@ describe('DashboardComponent', () => {
 
   describe('Edge cases', () => {
     it('should handle empty driver data', () => {
-      mockDbDataService.getAllDrivers.and.returnValue([]);
-      mockDbDataService.getCumulativePoints.and.returnValue([]);
+      allDriversSignal.set([]);
+      cumulativePointsSignal.set([]);
 
       component.ngOnInit();
 
@@ -474,7 +475,7 @@ describe('DashboardComponent', () => {
     });
 
     it('should handle empty track data', () => {
-      mockDbDataService.getAllTracks.and.returnValue([]);
+      tracksSignal.set([]);
 
       component.ngOnInit();
 
@@ -494,7 +495,7 @@ describe('DashboardComponent', () => {
           cumulative_points: 30
         }
       ];
-      mockDbDataService.getCumulativePoints.and.returnValue(limitedCumulativeData);
+      cumulativePointsSignal.set(limitedCumulativeData);
 
       component.ngOnInit();
 
@@ -503,6 +504,24 @@ describe('DashboardComponent', () => {
         expect(driver.gainedPoints).toBe(0);
       });
       expect(component.showGainedPointsColumn()).toBe(false);
+    });
+
+    it('should calculate constructor of the week when driver IDs come as strings from PostgreSQL (int8)', () => {
+      // PostgreSQL int8 columns are returned as strings by the pg driver at runtime
+      const constructorWithStringIds = [{
+        ...mockConstructorData[0],
+        driver_1_id: '1' as unknown as number,
+        driver_2_id: '2' as unknown as number,
+      }];
+      mockConstructorService.calculateConstructorPoints.and.returnValue(constructorWithStringIds);
+      mockConstructorService.calculateConstructorGainedPoints.and.returnValue(constructorWithStringIds);
+
+      component.ngOnInit();
+
+      const constructorOfWeek = component.constructorOfWeek();
+      // driver1 gained 30pts (75-45) + driver2 gained 25pts (60-35) = 55 total
+      expect(constructorOfWeek.constructor_name).toBe('Team Red');
+      expect(constructorOfWeek.points).toBe(55);
     });
 
     it('should handle constructor with no drivers', () => {
@@ -521,7 +540,7 @@ describe('DashboardComponent', () => {
           constructor_gained_points: 0
         }
       ];
-      mockDbDataService.getConstructors.and.returnValue(emptyConstructor);
+      constructorsSignal.set(emptyConstructor);
       mockConstructorService.calculateConstructorPoints.and.returnValue(emptyConstructor);
       mockConstructorService.calculateConstructorGainedPoints.and.returnValue(emptyConstructor);
 

@@ -9,25 +9,6 @@ import type { FantaVote, RaceResult } from '@f123dashboard/shared';
   providedIn: 'root'
 })
 export class FantaService {
-  private dbData = inject(DbDataService);
-  private apiService = inject(ApiService);
-
-  private fantaVotesSignal = signal<FantaVote[]>([]);
-  readonly fantaVotes = this.fantaVotesSignal.asReadonly();
-
-  private fantaPointsSignal = signal<Map<number, number>>(new Map());
-  readonly fantaPoints = this.fantaPointsSignal.asReadonly();
-
-  private fantaNumberVotesSignal = signal<Map<number, number>>(new Map());
-  readonly fantaNumberVotes = this.fantaNumberVotesSignal.asReadonly();
-
-  private fantaRacePointsSignal = signal<Map<string, number>>(new Map());
-  readonly fantaRacePoints = this.fantaRacePointsSignal.asReadonly();
-
-  readonly raceResults = computed(() => 
-    this.dbData.raceResult().filter(result => result.id_1_place !== null)
-  );
-
   public static readonly CORRECT_RESPONSE_FAST_LAP_POINTS: number = 5;
   public static readonly CORRECT_RESPONSE_DNF_POINTS: number = 5;
   public static readonly CORRECT_RESPONSE_TEAM: number = 5;
@@ -36,29 +17,17 @@ export class FantaService {
     1: 4,
     2: 2
   };
+  private dbData = inject(DbDataService);
+  private apiService = inject(ApiService);
 
+  private fantaVotesSignal = signal<FantaVote[]>([]);
+  readonly fantaVotes = this.fantaVotesSignal.asReadonly();
 
-  constructor() {
-    // Calculate points will be called explicitly after data loads
-  }
+  readonly raceResults = computed(() => 
+    this.dbData.raceResult().filter(result => result.id_1_place !== null)
+  );
 
-  async loadFantaVotes(): Promise<void> {
-    const fantaVotes = await firstValueFrom(
-      this.apiService.post<FantaVote[]>('/fanta/votes', {})
-    );
-    this.fantaVotesSignal.set(fantaVotes);
-    this.calculatePoints();
-  }
-
-  async setFantaVote(voto: FantaVote): Promise<void> {
-    await firstValueFrom(
-      this.apiService.post('/fanta/set-vote', voto)
-    );
-  
-    await this.loadFantaVotes();
-  }
-
-  private calculatePoints(): void {
+  private readonly _pointsCache = computed(() => {
     const fantaPoints = new Map<number, number>();
     const fantaNumberVotes = new Map<number, number>();
     const fantaRacePoints = new Map<string, number>();
@@ -68,30 +37,47 @@ export class FantaService {
 
     results.forEach(raceResult => {
       const raceVotes = votes.filter(item => item.track_id === raceResult.track_id && item.id_1_place !== null);
-      if (raceVotes.length === 0) {return;}
+      if (raceVotes.length === 0) { return; }
 
       raceVotes.forEach(raceVote => {
-        const racePoints =  this.calculateFantaPoints(raceResult, raceVote);
+        const racePoints = this.calculateFantaPoints(raceResult, raceVote);
         const playerId = Number(raceVote.fanta_player_id);
         const raceId = Number(raceResult.track_id);
-        
-        // Store points for this specific race and player
+
         const raceKey = `${playerId}_${raceId}`;
         fantaRacePoints.set(raceKey, racePoints);
-        
-        // Update total points and vote count per player
+
         fantaNumberVotes.set(playerId, (fantaNumberVotes.get(playerId) ?? 0) + 1);
         fantaPoints.set(playerId, (fantaPoints.get(playerId) ?? 0) + racePoints);
       });
     });
 
-    // Order by points
-    const sortedFantaPoints = new Map(Array.from(fantaPoints.entries()).sort(([, valueA], [, valueB]) => valueA - valueB));
-    
-    // Update signals
-    this.fantaPointsSignal.set(sortedFantaPoints);
-    this.fantaNumberVotesSignal.set(fantaNumberVotes);
-    this.fantaRacePointsSignal.set(fantaRacePoints);
+    return {
+      fantaPoints: new Map(Array.from(fantaPoints.entries()).sort(([, a], [, b]) => a - b)),
+      fantaNumberVotes,
+      fantaRacePoints
+    };
+  });
+
+  readonly fantaPoints = computed(() => this._pointsCache().fantaPoints);
+  readonly fantaNumberVotes = computed(() => this._pointsCache().fantaNumberVotes);
+  readonly fantaRacePoints = computed(() => this._pointsCache().fantaRacePoints);
+
+
+  async  loadFantaVotes(): Promise<void> {
+    const fantaVotes = await firstValueFrom(
+      this.apiService.post<FantaVote[]>('/fanta/votes', {})
+    );
+    this.fantaVotesSignal.set(fantaVotes);
+
+  }
+
+  async setFantaVote(voto: FantaVote): Promise<void> {
+    await firstValueFrom(
+      this.apiService.post('/fanta/set-vote', voto)
+    );
+  
+    await this.loadFantaVotes();
   }
 
   getFantaPoints(userId: number): number {
@@ -120,9 +106,7 @@ export class FantaService {
     return breakdown.sort((a, b) => a.raceId - b.raceId);
   }
 
-  getTotNumberVotes(): number {
-    return size(this.raceResults());
-  }
+  readonly totNumberVotes = computed(() => size(this.raceResults()));
 
   getFantaVote(userId: number, raceId: number): FantaVote | undefined {
     return this.fantaVotes()
@@ -187,18 +171,6 @@ export class FantaService {
     points = isConstructorWinner ? points + FantaService.CORRECT_RESPONSE_TEAM : points;
 
     return points;
-  }
-
-  getCorrectResponsePointFastLap(): number {
-    return FantaService.CORRECT_RESPONSE_FAST_LAP_POINTS;
-  }
-
-  getCorrectResponsePointDnf(): number {
-    return FantaService.CORRECT_RESPONSE_DNF_POINTS;
-  }
-
-  getCorrectResponsePointTeam(): number {
-    return FantaService.CORRECT_RESPONSE_TEAM;
   }
 
   isDnfCorrect(raceResultDnf: string, fantaVoteDnfId: number) {

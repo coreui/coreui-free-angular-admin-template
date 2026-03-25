@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, input, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, input, inject, signal, computed, ChangeDetectionStrategy } from '@angular/core';
 import { GridModule, TableDirective, ModalComponent, ModalHeaderComponent, ModalTitleDirective, ModalBodyComponent, ButtonCloseDirective, ThemeDirective, AlertModule } from '@coreui/angular';
 import { LeaderBoard } from '../../../app/model/leaderboard'
 import { FantaService } from '../../../app/service/fanta.service';
@@ -35,7 +35,7 @@ import { allFlags } from '../../model/constants';
     styleUrl: './leaderboard.component.scss'
 })
 
-export class LeaderboardComponent implements OnInit {
+export class LeaderboardComponent {
   private fantaService = inject(FantaService);
   private dbData = inject(DbDataService);
 
@@ -47,15 +47,20 @@ export class LeaderboardComponent implements OnInit {
   public cilBell: string[] = cilBell;
   public allFlags = allFlags;
 
-  // Signals for reactive state
-  private usersSignal = signal<User[]>([]);
-  readonly users = this.usersSignal.asReadonly();
+  readonly leaderBoards = computed(() => {
+    return this.dbData.users()
+      .map(user => ({
+        id: user.id,
+        username: user.username,
+        points: this.fantaService.getFantaPoints(user.id),
+        numberVotes: this.fantaService.getFantaNumberVotes(user.id),
+        avatarImage: user.image
+      } satisfies LeaderBoard))
+      .filter(lb => lb.numberVotes > 0)
+      .sort((a, b) => b.points - a.points);
+  });
 
-  private leaderBoardsSignal = signal<LeaderBoard[]>([]);
-  readonly leaderBoards = this.leaderBoardsSignal.asReadonly();
-
-  private totNumberVotesSignal = signal<number>(0);
-  readonly totNumberVotes = this.totNumberVotesSignal.asReadonly();
+  readonly totNumberVotes = this.fantaService.totNumberVotes;
 
   private modalVisibleSignal = signal<boolean>(false);
   readonly modalVisible = this.modalVisibleSignal.asReadonly();
@@ -66,71 +71,15 @@ export class LeaderboardComponent implements OnInit {
   private userVotesSignal = signal<{ vote: FantaVote, trackId: number, trackName: string, trackCountry: string }[]>([]);
   readonly userVotes = this.userVotesSignal.asReadonly();
   
-  ngOnInit(): void {
-    this.loadUsers();
-    this.loadTotalVotes();
-    this.buildLeaderboard();
-    this.filterAndSortLeaderboard();
-  }
-
-  /**
-   * Loads users from database service.
-   */
-  private loadUsers(): void {
-    const allUsers = this.dbData.users();
-    this.usersSignal.set(allUsers);
-  }
-
-  /**
-   * Loads total number of votes from fanta service.
-   */
-  private loadTotalVotes(): void {
-    const total = this.fantaService.getTotNumberVotes();
-    this.totNumberVotesSignal.set(total);
-  }
-
-  /**
-   * Builds leaderboard data from users.
-   */
-  private buildLeaderboard(): void {
-    const leaderboards: LeaderBoard[] = [];
-    
-    this.users().forEach(user => {
-      const newUser: LeaderBoard = {
-        id: user.id,
-        username: user.username,
-        points: this.fantaService.getFantaPoints(user.id),
-        numberVotes: this.fantaService.getFantaNumberVotes(user.id),
-        avatarImage: user.image
-      };
-      leaderboards.push(newUser);
-    });
-    
-    this.leaderBoardsSignal.set(leaderboards);
-  }
-
-  /**
-   * Filters out users with no votes and sorts by points.
-   */
-  private filterAndSortLeaderboard(): void {
-    const filtered = this.leaderBoards()
-      .filter(lb => lb.numberVotes > 0)
-      .sort((a, b) => b.points - a.points);
-    
-    this.leaderBoardsSignal.set(filtered);
-  }
-
   getAvatar(userId: number, image?: string): string {
-    if (image) 
-      {return `data:image/jpeg;base64,${image}`;}
+    if (image){
+        return `data:image/jpeg;base64,${image}`;
+      }
     
     // Fallback to file path
     return `./assets/images/avatars_fanta/${userId}.png`;
   }
 
-  /**
-   * Open modal with last 2 votes for the selected user
-   */
   openVoteHistoryModal(userId: number): void {
     const users = this.dbData.users();
     const user = users.find(u => u.id === userId);
@@ -141,9 +90,6 @@ export class LeaderboardComponent implements OnInit {
     this.modalVisibleSignal.set(true);
   }
 
-  /**
-   * Loads vote history for a specific user.
-   */
   private loadUserVotes(userId: number): void {
     const tracksWithResults = this.getTracksWithResults();
     const lastTwoTracks = this.getLastTwoTracks(tracksWithResults);
@@ -152,9 +98,6 @@ export class LeaderboardComponent implements OnInit {
     this.userVotesSignal.set(votes);
   }
 
-  /**
-   * Gets all tracks that have race results.
-   */
   private getTracksWithResults() {
     const allTracks = this.dbData.tracks();
     return allTracks.filter(track => {
@@ -163,9 +106,7 @@ export class LeaderboardComponent implements OnInit {
     });
   }
 
-  /**
-   * Gets the last 2 tracks sorted by date descending.
-   */
+
   private getLastTwoTracks(tracks: TrackData[]): TrackData[] {
     const sorted = [...tracks].sort((a, b) => 
       new Date(b.date).getTime() - new Date(a.date).getTime()
@@ -173,9 +114,6 @@ export class LeaderboardComponent implements OnInit {
     return sorted.slice(0, 2);
   }
 
-  /**
-   * Gets user votes for specific tracks.
-   */
   private getUserVotesForTracks(userId: number, tracks: TrackData[]): { vote: FantaVote, trackId: number, trackName: string, trackCountry: string }[] {
     return tracks
       .map(track => {
@@ -190,9 +128,12 @@ export class LeaderboardComponent implements OnInit {
       .filter(v => v !== null) as { vote: FantaVote, trackId: number, trackName: string, trackCountry: string }[];
   }
 
-  /**
-   * Close the modal
-   */
+  handleModalVisibilityChange(visible: boolean): void {
+    if (!visible) {
+      this.closeModal();
+    }
+  }
+
   closeModal(): void {
     this.modalVisibleSignal.set(false);
     this.selectedUserSignal.set(null);

@@ -350,8 +350,8 @@ export class DashboardComponent implements OnInit {
     const constructorsOfWeek: ConstructorOfWeek[] = this.constructors().map(constructor => ({
       constructor_name: constructor.constructor_name,
       constructor_id: constructor.constructor_id,
-      constructor_driver_1_id: constructor.driver_1_id,
-      constructor_driver_2_id: constructor.driver_2_id,
+      constructor_driver_1_id: Number(constructor.driver_1_id),
+      constructor_driver_2_id: Number(constructor.driver_2_id),
       points: 0
     }));
 

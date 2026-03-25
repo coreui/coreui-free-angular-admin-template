@@ -65,7 +65,7 @@
 </c-row>
 
 <!-- Vote History Modal -->
-<c-modal [visible]="modalVisible()" (visibleChange)="closeModal()" size="lg">
+<c-modal [visible]="modalVisible()" (visibleChange)="handleModalVisibilityChange($event)" size="lg">
   <c-modal-header>
     <h5 cModalTitle class="w-100 text-center">
       <svg cIcon name="cilList" class="me-2" width="24" height="24"></svg>
