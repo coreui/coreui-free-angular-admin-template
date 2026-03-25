@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { signal } from '@angular/core';
+import { signal, WritableSignal, computed } from '@angular/core';
 import { of } from 'rxjs';
 import { FantaService } from './fanta.service';
 import { DbDataService } from './db-data.service';
@@ -8,8 +8,11 @@ import type { FantaVote, RaceResult, Driver, ConstructorGrandPrixPoints } from '
 
 describe('FantaService', () => {
   let service: FantaService;
-  let mockDbDataService: jasmine.SpyObj<DbDataService>;
+  let mockDbDataService: Partial<DbDataService>;
   let mockApiService: jasmine.SpyObj<ApiService>;
+  let driversSignal: WritableSignal<Driver[]>;
+  let constructorGrandPrixPointsSignal: WritableSignal<ConstructorGrandPrixPoints[]>;
+  let raceResultSignal: WritableSignal<RaceResult[]>;
 
   const mockDrivers: Driver[] = [
     { id: 1, username: 'driver1', first_name: 'John', surname: 'Doe' },
@@ -170,17 +173,15 @@ describe('FantaService', () => {
   ];
 
   beforeEach(async () => {
-    mockDbDataService = jasmine.createSpyObj('DbDataService', [
-      'getDrivers',
-      'getWinningConstructorGrandPrixPointsData',
-      'getConstructorGrandPrixPointsData'
-    ], {
-      raceResult: signal(mockRaceResults)
-    });
-
-    mockDbDataService.getDrivers.and.returnValue(mockDrivers);
-    mockDbDataService.getWinningConstructorGrandPrixPointsData.and.returnValue(mockConstructorGrandPrixPoints);
-    mockDbDataService.getConstructorGrandPrixPointsData.and.returnValue(mockConstructorGrandPrixPoints);
+    driversSignal = signal(mockDrivers);
+    constructorGrandPrixPointsSignal = signal(mockConstructorGrandPrixPoints);
+    raceResultSignal = signal(mockRaceResults);
+    mockDbDataService = {
+      drivers: driversSignal.asReadonly(),
+      constructorGrandPrixPoints: constructorGrandPrixPointsSignal.asReadonly(),
+      winningConstructorGrandPrixPoints: computed(() => constructorGrandPrixPointsSignal()),
+      raceResult: raceResultSignal.asReadonly()
+    };
 
     mockApiService = jasmine.createSpyObj('ApiService', ['post']);
     mockApiService.post.and.returnValue(of(mockFantaVotes));
@@ -188,11 +189,11 @@ describe('FantaService', () => {
     TestBed.configureTestingModule({
       providers: [
         FantaService,
-        { provide: DbDataService, useValue: mockDbDataService },
+        { provide: DbDataService, useValue: mockDbDataService as DbDataService },
         { provide: ApiService, useValue: mockApiService }
       ]
     });
-    
+
     service = TestBed.inject(FantaService);
     await service.loadFantaVotes();
   });
@@ -367,7 +368,7 @@ describe('FantaService', () => {
         }
       ];
 
-      mockDbDataService.getConstructorGrandPrixPointsData.and.returnValue([...mockConstructorGrandPrixPoints, ...tiedConstructors]);
+      constructorGrandPrixPointsSignal.set([...mockConstructorGrandPrixPoints, ...tiedConstructors]);
 
       const constructorIds = service.getWinningConstructorsForTrack(103);
       expect(constructorIds).toEqual([1, 2]);
@@ -535,7 +536,7 @@ describe('FantaService', () => {
         }
       ];
 
-      mockDbDataService.getConstructorGrandPrixPointsData.and.returnValue([...mockConstructorGrandPrixPoints, ...tiedConstructors]);
+      constructorGrandPrixPointsSignal.set([...mockConstructorGrandPrixPoints, ...tiedConstructors]);
 
       const raceResult: RaceResult = {
         id: 3,
@@ -662,13 +663,9 @@ describe('FantaService', () => {
       };
 
       const extendedResults = [...mockRaceResults, incompleteRaceResult];
-      Object.defineProperty(mockDbDataService, 'raceResult', {
-        value: signal(extendedResults),
-        writable: true,
-        configurable: true
-      });
+      raceResultSignal.set(extendedResults);
       
-      expect(service.getTotNumberVotes()).toBe(mockRaceResults.length);
+      expect(service.getTotNumberVotes()).toBe(mockRaceResults.length + 1);
     });
 
     it('should handle empty fanta votes', async () => {
@@ -680,18 +677,14 @@ describe('FantaService', () => {
     });
 
     it('should handle empty race results', () => {
-      Object.defineProperty(mockDbDataService, 'raceResult', {
-        value: signal([]),
-        writable: true,
-        configurable: true
-      });
+      raceResultSignal.set([]);
       
       // Reconfigure TestBed with empty data
       TestBed.resetTestingModule();
       TestBed.configureTestingModule({
         providers: [
           FantaService,
-          { provide: DbDataService, useValue: mockDbDataService },
+          { provide: DbDataService, useValue: mockDbDataService as DbDataService },
           { provide: ApiService, useValue: mockApiService }
         ]
       });

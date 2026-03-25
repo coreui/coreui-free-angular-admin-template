@@ -5,12 +5,15 @@ import { FantaService } from '../../service/fanta.service';
 import { DbDataService } from '../../service/db-data.service';
 import type { FantaVote, DriverData, Constructor, RaceResult } from '@f123dashboard/shared';
 import { cilPeople, cilCheckAlt, cilX, cilSwapVertical } from '@coreui/icons';
+import { signal, WritableSignal, computed } from '@angular/core';
 
 describe('VoteHistoryTableComponent', () => {
   let component: VoteHistoryTableComponent;
   let fixture: ComponentFixture<VoteHistoryTableComponent>;
   let mockFantaService: jasmine.SpyObj<FantaService>;
-  let mockDbDataService: jasmine.SpyObj<DbDataService>;
+  let mockDbDataService: Partial<DbDataService>;
+  let allDriversSignal: WritableSignal<DriverData[]>;
+  let constructorsSignal: WritableSignal<Constructor[]>;
 
   const mockDrivers: DriverData[] = [
     {
@@ -119,14 +122,12 @@ describe('VoteHistoryTableComponent', () => {
       'getWinningConstructorsForTrack'
     ]);
 
-    mockDbDataService = jasmine.createSpyObj('DbDataService', [
-      'getAllDrivers',
-      'getConstructors'
-    ]);
-
-    // Setup default mock returns
-    mockDbDataService.getAllDrivers.and.returnValue(mockDrivers);
-    mockDbDataService.getConstructors.and.returnValue(mockConstructors);
+    allDriversSignal = signal(mockDrivers);
+    constructorsSignal = signal(mockConstructors);
+    mockDbDataService = {
+      allDrivers: allDriversSignal.asReadonly(),
+      constructors: computed(() => constructorsSignal())
+    };
     
     // Setup mocks that return different values based on trackId
     mockFantaService.getRaceResult.and.callFake((trackId: number) => {
@@ -147,7 +148,7 @@ describe('VoteHistoryTableComponent', () => {
       providers: [
         provideNoopAnimations(),
         { provide: FantaService, useValue: mockFantaService },
-        { provide: DbDataService, useValue: mockDbDataService }
+        { provide: DbDataService, useValue: mockDbDataService as DbDataService }
       ],
       imports: [VoteHistoryTableComponent]
     })

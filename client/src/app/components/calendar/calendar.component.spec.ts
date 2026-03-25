@@ -45,14 +45,16 @@ describe('CalendarComponent', () => {
     // Next Week
     component.next();
     let current = component.currentDate();
-    let diffDays = (current.getTime() - initial.getTime()) / (1000 * 3600 * 24);
-    expect(diffDays).toBeCloseTo(7);
+    // Use toBeCloseTo with precision 0 to tolerate a DST-related 1-hour offset
+    const diffDays = (current.getTime() - initial.getTime()) / (1000 * 3600 * 24);
+    expect(diffDays).toBeCloseTo(7, 0);
 
     // Prev Week (back to start)
     component.prev();
     current = component.currentDate();
-    diffDays = (current.getTime() - initial.getTime()) / (1000 * 3600 * 24);
-    expect(diffDays).toBeCloseTo(0);
+    expect(current.getFullYear()).toBe(initial.getFullYear());
+    expect(current.getMonth()).toBe(initial.getMonth());
+    expect(current.getDate()).toBe(initial.getDate());
   });
 
   it('should navigate dates correctly in month view', () => {

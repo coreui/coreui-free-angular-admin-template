@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideNoopAnimations } from '@angular/platform-browser/animations';
-import { signal } from '@angular/core';
+import { signal, WritableSignal, computed } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { FantaComponent } from './fanta.component';
 import { AuthService } from './../../service/auth.service';
@@ -13,8 +13,12 @@ describe('FantaComponent', () => {
   let component: FantaComponent;
   let fixture: ComponentFixture<FantaComponent>;
   let mockAuthService: jasmine.SpyObj<AuthService>;
-  let mockDbDataService: jasmine.SpyObj<DbDataService>;
+  let mockDbDataService: Partial<DbDataService>;
   let mockFantaService: jasmine.SpyObj<FantaService>;
+  let allDriversSignal: WritableSignal<DriverData[]>;
+  let tracksSignal: WritableSignal<TrackData[]>;
+  let constructorsSignal: WritableSignal<Constructor[]>;
+  let usersSignal: WritableSignal<User[]>;
 
   const mockUser: User = {
     id: 1,
@@ -151,14 +155,18 @@ describe('FantaComponent', () => {
   beforeEach(async () => {
     // Mock services
     mockAuthService = jasmine.createSpyObj('AuthService', [], { currentUser: signal(mockUser) });
-    mockDbDataService = jasmine.createSpyObj('DbDataService', [
-      'getAllDrivers',
-      'getAllTracks',
-      'getConstructors',
-      'getAvatarSrc',
-      'getUsers', // For backwards compatibility
-      'users' // Signal method used by LeaderboardComponent
-    ]);
+
+    allDriversSignal = signal(mockDrivers);
+    tracksSignal = signal(mockTracks);
+    constructorsSignal = signal(mockConstructors);
+    usersSignal = signal([mockUser]);
+    mockDbDataService = {
+      allDrivers: allDriversSignal.asReadonly(),
+      tracks: tracksSignal.asReadonly(),
+      constructors: computed(() => constructorsSignal()),
+      users: usersSignal.asReadonly(),
+      getAvatarSrc: jasmine.createSpy('getAvatarSrc').and.returnValue('assets/images/default-avatar.png')
+    };
     mockFantaService = jasmine.createSpyObj('FantaService', [
       'getFantaVote',
       'setFantaVote',
@@ -176,12 +184,7 @@ describe('FantaComponent', () => {
     ]);
 
     // Setup default spy returns
-    mockDbDataService.getAllDrivers.and.returnValue(mockDrivers);
-    mockDbDataService.getAllTracks.and.returnValue(mockTracks);
-    mockDbDataService.getConstructors.and.returnValue(mockConstructors);
-    mockDbDataService.getAvatarSrc.and.returnValue('assets/images/default-avatar.png');
-    mockDbDataService.getUsers.and.returnValue([mockUser]); // For backwards compatibility
-    mockDbDataService.users.and.returnValue([mockUser]); // Signal method used by LeaderboardComponent
+    (mockDbDataService.getAvatarSrc as jasmine.Spy).and.returnValue('assets/images/default-avatar.png');
     mockFantaService.getFantaVote.and.returnValue(undefined);
     mockFantaService.setFantaVote.and.returnValue(Promise.resolve());
     mockFantaService.getFantaPoints.and.returnValue(100);
@@ -203,7 +206,7 @@ describe('FantaComponent', () => {
       providers: [
         provideNoopAnimations(),
         { provide: AuthService, useValue: mockAuthService },
-        { provide: DbDataService, useValue: mockDbDataService },
+        { provide: DbDataService, useValue: mockDbDataService as DbDataService },
         { provide: FantaService, useValue: mockFantaService }
       ],
       imports: [FantaComponent]
@@ -236,9 +239,6 @@ describe('FantaComponent', () => {
 
     it('should load drivers, tracks, and constructors', () => {
       fixture.detectChanges();
-      expect(mockDbDataService.getAllDrivers).toHaveBeenCalled();
-      expect(mockDbDataService.getAllTracks).toHaveBeenCalled();
-      expect(mockDbDataService.getConstructors).toHaveBeenCalled();
       expect(component.piloti()).toEqual(mockDrivers);
       expect(component.tracks()).toEqual(mockTracks);
     });
