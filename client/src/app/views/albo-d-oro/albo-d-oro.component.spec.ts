@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideNoopAnimations } from '@angular/platform-browser/animations';
 
 import { AlboDOroComponent } from './albo-d-oro.component';
 
@@ -8,6 +9,7 @@ describe('AlboDOroComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      providers: [provideNoopAnimations(), ],
       imports: [AlboDOroComponent]
     })
     .compileComponents();

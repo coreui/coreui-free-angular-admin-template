@@ -21,7 +21,6 @@ import { DashboardChartsData, IChartProps } from '../../views/dashboard/dashboar
   selector: 'app-championship-trend',
   templateUrl: './championship-trend.component.html',
   styleUrls: ['./championship-trend.component.scss'],
-  standalone: true,
   imports: [
     CommonModule,
     NgStyle,

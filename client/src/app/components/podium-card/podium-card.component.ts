@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardModule, TableModule } from '@coreui/angular';
 import { TableDirective } from '@coreui/angular';
@@ -19,13 +19,13 @@ interface ClassificaEntry {
 
 @Component({
   selector: 'app-podium-card',
-  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, CardModule, TableModule, TableDirective],
   templateUrl: './podium-card.component.html',
   styleUrls: ['./podium-card.component.scss']
 })
 export class PodiumCardComponent {
-  @Input() podio: PodiumEntry[] = [];
-  @Input() classifica: ClassificaEntry[] = [];
-  @Input() championshipTitle = '';
+  podio = input<PodiumEntry[]>([]);
+  classifica = input<ClassificaEntry[]>([]);
+  championshipTitle = input<string>('');
 }

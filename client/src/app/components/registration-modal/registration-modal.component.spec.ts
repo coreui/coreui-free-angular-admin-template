@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideNoopAnimations } from '@angular/platform-browser/animations';
 
 import { RegistrationModalComponent } from './registration-modal.component';
 
@@ -8,6 +9,7 @@ describe('RegistrationModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      providers: [provideNoopAnimations(), ],
       imports: [RegistrationModalComponent]
     })
     .compileComponents();

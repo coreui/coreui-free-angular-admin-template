@@ -1,5 +1,5 @@
 ---
-applyTo: '**'
+applyTo: '/server/**'
 ---
 
 # Backend Development Instructions

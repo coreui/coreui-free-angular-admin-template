@@ -14,7 +14,7 @@
             </td>
             <th>
               <div>
-                <h3>{{ user.username }}</h3>
+                <h3>{{ user().username }}</h3>
               </div>
             </th>
           </tr>
@@ -22,7 +22,7 @@
             <th>
               <div>
                 <h5 [ngStyle]="{ color: 'green' }">
-                  Punteggio: {{ this.userFantaPoints }}
+                  Punteggio: {{ userFantaPoints() }}
                 </h5>
               </div>
             </th>
@@ -46,7 +46,7 @@
     </c-row>
     <c-row>
       <c-accordion>
-        @for (track of nextTracks; track track.track_id) {
+        @for (track of nextTracks(); track track.track_id) {
           <c-accordion-item
             #item0="cAccordionItem"
             [visible]="false"
@@ -83,7 +83,7 @@
                           @if (hasUnsavedData(track.track_id)) {
                               <c-badge color="danger">NON<br>Salvato</c-badge>
                           }
-                          @if (formStatus[track.track_id] == 1) {
+                          @if (formStatus()[track.track_id] == 1) {
                               <c-badge color="success">Salvato</c-badge>
                           }
                       </div>
@@ -143,7 +143,7 @@
                               required="true"
                             >
                               <option value="0">-- Seleziona un pilota --</option>
-                              @for (pilota of piloti; track pilota.driver_id) {
+                              @for (pilota of piloti(); track pilota.driver_id) {
                                 <option attr.value="{{ pilota.driver_id }}">
                                   {{ pilota.driver_username }}
                                 </option>
@@ -161,7 +161,7 @@
                               required="true"
                             >
                               <option value="0">-- Seleziona un team --</option>
-                              @for (constructor of constructors | keyvalue; track constructor.key) {
+                              @for (constructor of constructors() | keyvalue; track constructor.key) {
                                 <option attr.value="{{ constructor.key }}">
                                   {{ constructor.value }}
                                 </option>
@@ -173,22 +173,42 @@
                     }
                     <c-row class="submit-row">
                       <c-col class="text-center">
-                        <button cButton type="submit" class="confirm-button">Conferma</button>
+                        <button 
+                          cButton 
+                          type="submit" 
+                          class="confirm-button"
+                          [disabled]="isLoading(track.track_id)">
+                          @if (isLoading(track.track_id)) {
+                            <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                            Salvataggio...
+                          } @else {
+                            Conferma
+                          }
+                        </button>
       	              </c-col>
                     </c-row>
                     <c-row class="status-row">
                       <c-col class="text-center">
-                          @if (formStatus[track.track_id] == 2) {
-                            <p class="error">
-                              <c-badge color="danger">Errore: piloti assenti, invalidi, o inseriti più volte :(</c-badge>
-                            </p>
+                          @if (formStatus()[track.track_id] == 2) {
+                            <div class="error">
+                              @if (validationDetails()[track.track_id]?.hasEmptyVotes) {
+                                <p class="mb-1">
+                                  <c-badge color="danger">Errore: alcuni campi sono vuoti o non sono stati selezionati</c-badge>
+                                </p>
+                              }
+                              @if (validationDetails()[track.track_id]?.hasDuplicates) {
+                                <p class="mb-1">
+                                  <c-badge color="danger">Errore: hai selezionato lo stesso pilota più volte</c-badge>
+                                </p>
+                              }
+                            </div>
                           }
-                          @if (formStatus[track.track_id] == 3) {
+                          @if (formStatus()[track.track_id] == 3) {
                             <p class="error">
                               <c-badge color="danger">Errore nel salvataggio: contattare l'assistenza :(</c-badge>
                             </p>
                           }
-                          @if (formStatus[track.track_id] == 1) {
+                          @if (formStatus()[track.track_id] == 1) {
                             <p class="success">
                               <c-badge color="success">Preferenze salvate correttamente :)</c-badge>
                             </p>
@@ -205,7 +225,7 @@
       </c-accordion>
     </c-row>
   </c-container>
-  @if (previusTracks.length > 0) {
+  @if (previusTracks().length > 0) {
     <c-container>
       <c-row>
         <div class="titolo">
@@ -218,7 +238,7 @@
 
       <c-row class="storico">
         <c-accordion>
-          @for (track of previusTracks; track track.track_id) {
+          @for (track of previusTracks(); track track.track_id) {
             <c-accordion-item
               #item0="cAccordionItem"
               [visible]="false"
@@ -226,7 +246,7 @@
               <strong>{{ track.name }}</strong>
               <ng-template cTemplateId="accordionHeaderTemplate">
                 <button
-                  (click)="votazioni.has(track.track_id) ? item0.toggleItem() : null"
+                  (click)="votazioni().has(track.track_id) ? item0.toggleItem() : null"
                   [collapsed]="!item0.visible"
                   cAccordionButton
                 >
@@ -247,7 +267,7 @@
                           ></svg>
                         </h5>
                       </c-col>
-                      @if(!votazioni.has(track.track_id)){
+                      @if(!votazioni().has(track.track_id)){
                         <c-col xs="auto">
                           <div class="small">
                             <c-badge color="danger">Votazione<br>non effettuata</c-badge>
@@ -263,7 +283,7 @@
                   </c-container>
                 </button>
               </ng-template>
-              @if (votazioni.has(track.track_id)) {
+              @if (votazioni().has(track.track_id)) {
                 <ng-template cTemplateId="accordionBodyTemplate">
                   <div class="accordion-body">
                     <c-container>
@@ -285,7 +305,7 @@
     </c-container>
   }
 </div>
-<c-modal id="liveDemoModal" [visible]="modalRankingVisible">
+<c-modal id="liveDemoModal" [visible]="modalRankingVisible()">
   <c-modal-header>
     <h5 cModalTitle>Classifica Fanta</h5>
     <button (click)="toggleModalRanking()" cButtonClose></button>
@@ -294,7 +314,7 @@
     <app-leaderboard></app-leaderboard>
   </c-modal-body>
 </c-modal>
-<c-modal id="rulesModal" [visible]="modalRulesVisible" size="lg">
+<c-modal id="rulesModal" [visible]="modalRulesVisible()" size="lg">
   <c-modal-header>
     <h5 cModalTitle>Regolamento Punteggi Fanta</h5>
     <button (click)="toggleModalRules()" cButtonClose></button>

@@ -9,27 +9,27 @@
       </c-alert>
     </div>
 
-    <table
-        [hover]="true"
-        [responsive]="true"
-        [striped]="true"
-        align="middle"
-        cTable
-        class="mb-0 border rounded custom-table"
-    >
+      <table
+          [hover]="true"
+          [responsive]="true"
+          [striped]="true"
+          align="middle"
+          cTable
+          class="mb-0 border rounded custom-table"
+      >
         <thead class="text-nowrap text-truncate">
             <tr>
                 <th class="bg-body-tertiary text-center">Pos.</th>
                 <th class="bg-body-tertiary text-center"><svg cIcon name="cilPeople"></svg></th>
                 <th class="bg-body-tertiary">Username</th>
-                @if (showVotes) {
+                @if (showVotes()) {
                   <th class="bg-body-tertiary text-center">Voti</th>
                 }
                 <th class="bg-body-tertiary text-center">Punti</th>
             </tr>
         </thead>
         <tbody>
-            @for (leaderBoard of leaderBoards.slice(0, maxDisplayable); track leaderBoard.id; let i = $index) {
+            @for (leaderBoard of leaderBoards().slice(0, maxDisplayable()); track leaderBoard.id; let i = $index) {
                 <tr (click)="openVoteHistoryModal(leaderBoard.id)" style="cursor: pointer;">
                     <td>
                         <div class="text-center fw-semibold">
@@ -46,10 +46,10 @@
                         <div>{{ leaderBoard.username }}</div>
                         <div class="small text-body-secondary text-nowrap"></div>
                     </td>
-                    @if (showVotes) {
+                    @if (showVotes()) {
                       <td>
                         <div class="text-center">
-                          {{ leaderBoard.numberVotes }} / {{totNumberVotes}}
+                          {{ leaderBoard.numberVotes }} / {{totNumberVotes()}}
                         </div>
                       </td>
                     }
@@ -61,23 +61,25 @@
                 </tr>
             }
         </tbody>
-    </table>
+      </table>
 </c-row>
 
 <!-- Vote History Modal -->
-<c-modal [visible]="modalVisible" (visibleChange)="modalVisible = $event" size="lg">
+<c-modal [visible]="modalVisible()" (visibleChange)="handleModalVisibilityChange($event)" size="lg">
   <c-modal-header>
     <h5 cModalTitle class="w-100 text-center">
       <svg cIcon name="cilList" class="me-2" width="24" height="24"></svg>
-      Storico Votazioni di <strong>{{ selectedUser?.username }}</strong>
+      Storico Votazioni di <strong>{{ selectedUser()?.username }}</strong>
     </h5>
-    <button (click)="closeModal()" cButtonClose></button>
+    <button (click)="closeModal()" cButtonClose aria-label="Chiudi modale">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </c-modal-header>
   <c-modal-body>
-    @if (userVotes.length === 0) {
+    @if (userVotes().length === 0) {
       <p class="text-center text-muted">Nessuna votazione disponibile</p>
     } @else {
-      @for (voteData of userVotes; track voteData.trackId) {
+      @for (voteData of userVotes(); track voteData.trackId) {
         <div class="mb-4">
           <h6 class="text-center mb-3">
             <svg

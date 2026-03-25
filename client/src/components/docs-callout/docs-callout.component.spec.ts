@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideNoopAnimations } from '@angular/platform-browser/animations';
 
 import { DocsCalloutComponent } from './docs-callout.component';
 import { CalloutModule } from '@coreui/angular';
@@ -9,6 +10,7 @@ describe('DocsCalloutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      providers: [provideNoopAnimations(), ],
     imports: [CalloutModule, DocsCalloutComponent]
 })
     .compileComponents();

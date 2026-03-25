@@ -251,15 +251,6 @@ Become a power user! 🚀
 - **Authentication Flow:** `../docs/authentication-flow.md`
 - **Database Schema:** `../../.github/instructions/db.instructions.md`
 
-## 🚦 Quick Status Check
-
-### ✅ Ready to Use When:
-- [x] All JSON files imported
-- [x] Environment selected
-- [x] Auto-login credentials set
-- [x] Server running
-- [x] Health check passes
-
 ### 🎯 Success Indicators:
 - Console shows "✅ Token is valid"
 - Requests succeed without manual token entry

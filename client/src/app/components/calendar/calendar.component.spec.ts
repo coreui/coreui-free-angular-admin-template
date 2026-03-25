@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideNoopAnimations } from '@angular/platform-browser/animations';
 import { CalendarComponent } from './calendar.component';
 import { DatePipe } from '@angular/common';
 
@@ -9,7 +10,7 @@ describe('CalendarComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [CalendarComponent],
-      providers: [DatePipe]
+      providers: [provideNoopAnimations(), DatePipe]
     }).compileComponents();
 
     fixture = TestBed.createComponent(CalendarComponent);
@@ -33,8 +34,8 @@ describe('CalendarComponent', () => {
   });
 
   it('should take input for default view', () => {
-    component.defaultView = 'month';
-    component.ngOnInit();
+    fixture.componentRef.setInput('defaultView', 'month');
+    fixture.detectChanges();
     expect(component.view()).toBe('month');
   });
 
@@ -44,14 +45,16 @@ describe('CalendarComponent', () => {
     // Next Week
     component.next();
     let current = component.currentDate();
-    let diffDays = (current.getTime() - initial.getTime()) / (1000 * 3600 * 24);
-    expect(diffDays).toBeCloseTo(7);
+    // Use toBeCloseTo with precision 0 to tolerate a DST-related 1-hour offset
+    const diffDays = (current.getTime() - initial.getTime()) / (1000 * 3600 * 24);
+    expect(diffDays).toBeCloseTo(7, 0);
 
     // Prev Week (back to start)
     component.prev();
     current = component.currentDate();
-    diffDays = (current.getTime() - initial.getTime()) / (1000 * 3600 * 24);
-    expect(diffDays).toBeCloseTo(0);
+    expect(current.getFullYear()).toBe(initial.getFullYear());
+    expect(current.getMonth()).toBe(initial.getMonth());
+    expect(current.getDate()).toBe(initial.getDate());
   });
 
   it('should navigate dates correctly in month view', () => {
@@ -71,24 +74,30 @@ describe('CalendarComponent', () => {
   });
 
   it('should process events correctly', () => {
+    // Recreate the component with events already set before initialization
     const testDate = new Date();
     testDate.setHours(10, 0, 0, 0);
     
-    component.events = [
-      { name: 'Test Event', date: testDate, description: 'Desc' }
-    ];
-    // Trigger change detection or re-computation if needed?
-    // Signals are computed lazily, so accessing processedEvents should work.
+    const newFixture = TestBed.createComponent(CalendarComponent);
+    const newComponent = newFixture.componentInstance;
     
-    const events = component.processedEvents();
+    // Set events before change detection runs
+    newFixture.componentRef.setInput('events', [
+      { name: 'Test Event', date: testDate, description: 'Desc' }
+    ]);
+    
+    // Now run change detection
+    newFixture.detectChanges();
+    
+    const events = newComponent.processedEvents();
     expect(events.length).toBe(1);
     expect(events[0].name).toBe('Test Event');
     
     // Check slot mapping
-    const slotEvents = component.getEventsForSlot(testDate, 10);
+    const slotEvents = newComponent.getEventsForSlot(testDate, 10);
     expect(slotEvents.length).toBe(1);
     
-    const wrongSlotEvents = component.getEventsForSlot(testDate, 11);
+    const wrongSlotEvents = newComponent.getEventsForSlot(testDate, 11);
     expect(wrongSlotEvents.length).toBe(0);
   });
 });

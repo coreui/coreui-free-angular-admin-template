@@ -1,11 +1,13 @@
 <c-card class="albo-container">
   <header class="albo-header">
-    <h1>{{ championshipTitle }}</h1>
+    <h1>{{ championshipTitle() }}</h1>
   </header>
 
   <section class="podio">
     @for (pilota of podio; track pilota.posizione) {
       <article
+    @for (pilota of podio(); track pilota.posizione) {
+      <div
         class="podio-card"
         [class.first]="pilota.posizione === 1"
         [class.second]="pilota.posizione === 2"
@@ -36,23 +38,23 @@
   </section>
 
   <section class="classifica">
-    <table
-      [hover]="false"
-      [responsive]="true"
-      [striped]="false"
-      align="middle"
-      cTable
-      class="mb-0"
-    >
-      <tbody>
-        @for (p of classifica; track p.posizione) {
-          <tr>
-            <td class="pos">{{ p.posizione }}</td>
-            <td class="nome-table">{{ p.nome }}</td>
-            <td class="punti-table">{{ p.punti }} pt</td>
-          </tr>
-        }
-      </tbody>
+        <table
+          [hover]="true"
+          [responsive]="true"
+          [striped]="true"
+          align="middle"
+          cTable
+          class="mb-0 border"
+        >
+        <tbody>
+          @for (p of classifica(); track p.posizione) {
+            <tr>
+              <td class="pos">{{ p.posizione }}</td>
+              <td class="nome-table">{{ p.nome }}</td>
+              <td class="punti-table">{{ p.punti }} Pt</td>
+            </tr>
+          }
+        </tbody>
     </table>
   </section>
 </c-card>

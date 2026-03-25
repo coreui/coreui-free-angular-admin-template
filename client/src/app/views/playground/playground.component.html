@@ -2,11 +2,11 @@
     <c-col xs="12" md="6" lg="6" class="lights-wrapper">
         <!-- lights column -->
         <c-row class=" justify-content-center align-items-center">
-            @if (!isLoggedIn) {
+            @if (!isLoggedIn()) {
                 <div class="text-center">
                     <c-alert color="warning" class="d-inline-flex align-items-center shadow-sm rounded-3 px-4 py-2 gap-2">
                     <svg cIcon name="cilWarning" size="xl" class="me-2 text-warning"></svg>
-                    <div class="fs-5">You are not logged in</div>
+                    <div class="fs-5">Effettua il login per salvare il tuo punteggio</div>
                     </c-alert>
                 </div>
             }
@@ -47,14 +47,16 @@
         </c-row>
         <c-row>
             <c-col xs="12" class="text-center">
-                <h2 class="lights-score" [style.color]="playerStatusColor">{{ playerStatus }}</h2>
+                <h2 class="lights-score" [style.color]="playerStatusColor()">{{ playerStatus() }}</h2>
             </c-col>
         </c-row>
-        <c-row>
-            <c-col xs="12" class="text-center">
-                <h2 class="lights-best-score">Il tuo miglior punteggio è: {{ playerBestScore }} ms</h2>
-            </c-col>
-        </c-row>
+        @if (playerScore()) {
+            <c-row>
+                <c-col xs="12" class="text-center">
+                    <h2 class="lights-best-score">Il tuo miglior punteggio è: {{ playerBestScore() }} ms</h2>
+                </c-col>
+            </c-row>
+        }
     </c-col>
     <c-col xs="12" md="6" lg="6" class="table-wrapper">
     <!-- dashboard column -->
@@ -78,7 +80,7 @@
                 </tr>
             </thead>
             <tbody>
-                @for (leaderboardBestScore of playgroundLeaederboard.slice(0, 13); 
+                @for (leaderboardBestScore of playgroundLeaderboard().slice(0, 13); 
                         track leaderboardBestScore.user_id;
                         let i = $index) {
                     <tr>

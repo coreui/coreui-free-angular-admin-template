@@ -5,7 +5,6 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class ConfigService {
-  constructor() {}
 
   get apiBaseUrl(): string {
     return environment.apiBaseUrl;

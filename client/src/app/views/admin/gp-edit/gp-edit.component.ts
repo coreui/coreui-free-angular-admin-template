@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {
@@ -37,7 +37,6 @@ type GPEditViewModel = Omit<GPEditItem, 'date'> & { date: string };
 
 @Component({
   selector: 'app-gp-edit',
-  standalone: true,
   imports: [
     CommonModule,
     FormsModule,
@@ -70,21 +69,20 @@ type GPEditViewModel = Omit<GPEditItem, 'date'> & { date: string };
 })
 export class GpEditComponent implements OnInit {
   private gpEditService = inject(GpEditService);
-  private cdr = inject(ChangeDetectorRef);
   private fb = inject(FormBuilder);
 
-  gps: GPEditViewModel[] = [];
-  tracks: { id: number; name: string }[] = [];
-  loading = false;
+  gps = signal<GPEditViewModel[]>([]);
+  tracks = signal<{ id: number; name: string }[]>([]);
+  loading = signal(false);
   
   // Toaster state
-  toasts: Toast[] = [];
+  toasts = signal<Toast[]>([]);
 
   // Modal state
-  modalVisible = false;
-  modalTitle = '';
-  modalMessage = '';
-  private pendingAction: (() => void) | null = null;
+  modalVisible = signal(false);
+  modalTitle = signal('');
+  modalMessage = signal('');
+  private pendingAction = signal<(() => void) | null>(null);
 
   // Bulk Update Form
   bulkForm = this.fb.group({
@@ -105,22 +103,20 @@ export class GpEditComponent implements OnInit {
   }
 
   loadData(): void {
-    this.loading = true;
+    this.loading.set(true);
     this.gpEditService.getUpcomingGps().subscribe({
       next: (res) => {
-        this.gps = res.data.map((gp: GPEditItem) => ({
+        this.gps.set(res.data.map((gp: GPEditItem) => ({
             ...gp,
             // Format for datetime-local input: "YYYY-MM-DDTHH:mm"
             // Using toISOString() and slicing to get the correct format
             date: new Date(gp.date).toISOString().slice(0, 16)
-        }));
-        this.loading = false;
-        this.cdr.markForCheck();
+        })));
+        this.loading.set(false);
       },
       error: (err) => {
         console.error('Error loading GPs', err);
-        this.loading = false;
-        this.cdr.markForCheck();
+        this.loading.set(false);
       }
     });
   }
@@ -128,54 +124,48 @@ export class GpEditComponent implements OnInit {
   loadTracks(): void {
     this.gpEditService.getAllTracks().subscribe({
       next: (res) => {
-        this.tracks = res.data;
-        this.cdr.markForCheck();
+        this.tracks.set(res.data);
       },
       error: (err) => console.error('Error loading tracks', err)
     });
   }
 
   addToast(title: string, message: string, color = 'success') {
-    this.toasts.push({ title, message, color });
-    this.cdr.markForCheck();
+    this.toasts.update(toasts => [...toasts, { title, message, color }]);
   }
 
   onToastVisibleChange(visible: boolean, toast: Toast) {
     if (!visible) {
-      this.toasts = this.toasts.filter(t => t !== toast);
-      this.cdr.markForCheck();
+      this.toasts.update(toasts => toasts.filter(t => t !== toast));
     }
   }
 
   showConfirmation(title: string, message: string, action: () => void) {
-    this.modalTitle = title;
-    this.modalMessage = message;
-    this.pendingAction = action;
-    this.modalVisible = true;
-    this.cdr.markForCheck();
+    this.modalTitle.set(title);
+    this.modalMessage.set(message);
+    this.pendingAction.set(action);
+    this.modalVisible.set(true);
   }
 
   onConfirmAction() {
-    if (this.pendingAction) {
-      this.pendingAction();
+    const action = this.pendingAction();
+    if (action) {
+      action();
     }
-    this.modalVisible = false;
-    this.pendingAction = null;
-    this.cdr.markForCheck();
+    this.modalVisible.set(false);
+    this.pendingAction.set(null);
   }
 
   onCancelAction() {
-    this.modalVisible = false;
-    this.pendingAction = null;
-    this.cdr.markForCheck();
+    this.modalVisible.set(false);
+    this.pendingAction.set(null);
   }
 
   onModalVisibleChange(event: boolean) {
-    this.modalVisible = event;
+    this.modalVisible.set(event);
     if (!event) {
-      this.pendingAction = null;
+      this.pendingAction.set(null);
     }
-    this.cdr.markForCheck();
   }
 
   onBulkUpdate(): void {
@@ -191,7 +181,7 @@ export class GpEditComponent implements OnInit {
   }
 
   private executeBulkUpdate(daysOffset: number): void {
-    this.loading = true;
+    this.loading.set(true);
     this.gpEditService.bulkUpdateGpDate(daysOffset).subscribe({
       next: (res) => {
         if (res.success) {
@@ -201,9 +191,8 @@ export class GpEditComponent implements OnInit {
       },
       error: (err) => {
         console.error('Error in bulk update', err);
-        this.loading = false;
+        this.loading.set(false);
         this.addToast('Errore', 'Errore durante l\'aggiornamento di massa.', 'danger');
-        this.cdr.markForCheck();
       }
     });
   }
@@ -212,7 +201,7 @@ export class GpEditComponent implements OnInit {
     if (this.createForm.invalid) { return; }
     const val = this.createForm.value;
     
-    this.loading = true;
+    this.loading.set(true);
     this.gpEditService.createGp({
       track_id: val.track_id!,
       date: new Date(val.date!).toISOString(), // Ensure ISO string
@@ -228,9 +217,8 @@ export class GpEditComponent implements OnInit {
       },
       error: (err) => {
         console.error('Error creating GP', err);
-        this.loading = false;
+        this.loading.set(false);
         this.addToast('Errore', 'Errore durante la creazione del GP.', 'danger');
-        this.cdr.markForCheck();
       }
     });
   }

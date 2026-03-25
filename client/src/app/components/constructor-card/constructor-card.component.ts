@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, input, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   CardBodyComponent,
@@ -11,7 +11,6 @@ import type { Constructor } from '@f123dashboard/shared';
 
 @Component({
   selector: 'app-constructor-card',
-  standalone: true,
   imports: [
     CommonModule,
     CardComponent,
@@ -25,6 +24,6 @@ import type { Constructor } from '@f123dashboard/shared';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ConstructorCardComponent {
-  @Input() constructorData!: Constructor;
-  @Input() position!: number;
+  constructorData = input.required<Constructor>();
+  position = input.required<number>();
 }

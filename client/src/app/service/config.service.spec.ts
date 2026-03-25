@@ -1,11 +1,14 @@
 import { TestBed } from '@angular/core/testing';
+import { provideNoopAnimations } from '@angular/platform-browser/animations';
 import { ConfigService } from './config.service';
 
 describe('ConfigService', () => {
   let service: ConfigService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [],
+      providers: [provideNoopAnimations(), ],});
     service = TestBed.inject(ConfigService);
   });
 

@@ -36,126 +36,129 @@
 
     <tbody>
       @for (voto of getVoteArray(); track i; let i = $index) {
-        <tr>
-          <td class="col-voto">
-            <div class="text-center fw-semibold voto-label">
-              @if (i + 1 <= 8) {
-                <div>{{ i + 1 }}</div>
-              } @else if (i + 1 == 9) {
-                <div>GV</div>
-              } @else if (i + 1 == 10) {
-                <div>DNF</div>
-              } @else {
-                <div>TEAM</div>
-              }
-            </div>
-          </td>
-          <td class="text-center col-avatar">
-            @if (i + 1 <= 10) {
-              <c-avatar
-                class="storico-avatar"
-                [size]="'md'"
-                src="./assets/images/avatars/{{
-                  getPilota(voto) ? getPilota(voto).driver_username : 'invalid'
-                }}.png"
-              />
-            } @else {
-              <c-avatar
-                class="storico-avatar"
-                [size]="'md'"
-                src="./assets/images/constructors/{{
-                  getConstructor(voto)
-                }}.png"
-              />
-            }
-          </td>
-          <td class="col-username">
-            @if (i + 1 <= 10) {
-              <div class="username-text">{{ getPilota(voto) ? getPilota(voto).driver_username : '-' }}</div>
-            } @else {
-              <div class="username-text">{{ getConstructor(voto) || '-' }}</div>
-            }
-          </td>
-          <td class="col-posizione">
-            @if (i + 1 <= 8) {
-              <div class="fw-semibold text-center posizione-value">
-                {{ getPosizioneArrivo(voto) }}
-              </div>
-            } @else if (i + 1 == 9) {
-              <div class="fw-semibold text-center posizione-value">
-                @if (+getFastLap() === +voto) {
-                  SI
+        @let pilota = getPilota(voto);
+          @if (pilota !== null || i + 1 > 10) {
+            <tr>
+              <td class="col-voto">
+                <div class="text-center fw-semibold voto-label">
+                  @if (i + 1 <= 8) {
+                    <div>{{ i + 1 }}</div>
+                  } @else if (i + 1 == 9) {
+                    <div>GV</div>
+                  } @else if (i + 1 == 10) {
+                    <div>DNF</div>
+                  } @else {
+                    <div>TEAM</div>
+                  }
+                </div>
+              </td>
+              <td class="text-center col-avatar">
+                @if (i + 1 <= 10) {
+                  <c-avatar
+                    class="storico-avatar"
+                    [size]="'md'"
+                    src="./assets/images/avatars/{{
+                      pilota?.driver_username
+                    }}.png"
+                  />
                 } @else {
-                  NO
+                  <c-avatar
+                    class="storico-avatar"
+                    [size]="'md'"
+                    src="./assets/images/constructors/{{
+                      getConstructor(voto)
+                    }}.png"
+                  />
+                }
+              </td>
+              <td class="col-username">
+                @if (i + 1 <= 10) {
+                  <div class="username-text">{{ pilota?.driver_username }}</div>
+                } @else {
+                  <div class="username-text">{{ getConstructor(voto) || '-' }}</div>
+                }
+              </td>
+              <td class="col-posizione">
+                @if (i + 1 <= 8) {
+                <div class="fw-semibold text-center posizione-value">
+                  {{ getPosizioneArrivo(voto) }}
+                </div>
+              } @else if (i + 1 == 9) {
+                <div class="fw-semibold text-center posizione-value">
+                  @if (+getFastLap() === +voto) {
+                    SI
+                  } @else {
+                    NO
+                  }
+                </div>
+              } @else if (i + 1 == 10) {
+                <div class="fw-semibold text-center posizione-value">
+                  @if (fantaService.isDnfCorrect(getDnf(), voto)) {
+                    SI
+                  } @else {
+                    NO
+                  }
+                </div>
+              } @else {
+                <div class="fw-semibold text-center posizione-value">
+                  @if (fantaService.getWinningConstructorsForTrack(trackId()).includes(+voto)) {
+                    SI
+                  } @else {
+                    NO
+                  }
+                </div>
+              }
+            </td>
+            <td class="col-punti">
+              <div class="fw-semibold text-center punti-value">
+                @if (i + 1 <= 8) {
+                  {{ getPunti(voto) }}
+                } @else if (i + 1 == 9) {
+                  {{ getPuntiFastLap() }}
+                } @else if (i + 1 == 10) {
+                  {{ getPuntiDnf() }}
+                } @else {
+                  {{ getPuntiConstructor() }}
                 }
               </div>
-            } @else if (i + 1 == 10) {
-              <div class="fw-semibold text-center posizione-value">
-                @if (fantaService.isDnfCorrect(getDnf(), voto)) {
-                  SI
+            </td>
+            <td class="col-risultato">
+              <div class="text-center risultato-icon">
+                @if (i + 1 <= 8) {
+                  <svg
+                    [cIcon]="isCorrect(voto).icon"
+                    size="lg"
+                    [ngStyle]="{ color: isCorrect(voto).color }"
+                  ></svg>
+                } @else if (i + 1 == 9) {
+                  <svg
+                    [cIcon]="isCorrectFastLap().icon"
+                    size="lg"
+                    [ngStyle]="{ color: isCorrectFastLap().color }"
+                  ></svg>
+                } @else if (i + 1 == 10) {
+                  <svg
+                    [cIcon]="isCorrectDnf().icon"
+                    size="lg"
+                    [ngStyle]="{ color: isCorrectDnf().color }"
+                  ></svg>
                 } @else {
-                  NO
+                  <svg
+                    [cIcon]="isCorrectConstructor().icon"
+                    size="lg"
+                    [ngStyle]="{ color: isCorrectConstructor().color }"
+                  ></svg>
                 }
               </div>
-            } @else {
-              <div class="fw-semibold text-center posizione-value">
-                @if (fantaService.getWinningConstructorForTrack(trackId) && +fantaService.getWinningConstructorForTrack(trackId)! === +voto) {
-                  SI
-                } @else {
-                  NO
-                }
-              </div>
-            }
-          </td>
-          <td class="col-punti">
-            <div class="fw-semibold text-center punti-value">
-              @if (i + 1 <= 8) {
-                {{ getPunti(voto) }}
-              } @else if (i + 1 == 9) {
-                {{ getPuntiFastLap() }}
-              } @else if (i + 1 == 10) {
-                {{ getPuntiDnf() }}
-              } @else {
-                {{ getPuntiConstructor() }}
-              }
-            </div>
-          </td>
-          <td class="col-risultato">
-            <div class="text-center risultato-icon">
-              @if (i + 1 <= 8) {
-                <svg
-                  [cIcon]="isCorrect(voto).icon"
-                  size="lg"
-                  [ngStyle]="{ color: isCorrect(voto).color }"
-                ></svg>
-              } @else if (i + 1 == 9) {
-                <svg
-                  [cIcon]="isCorrectFastLap().icon"
-                  size="lg"
-                  [ngStyle]="{ color: isCorrectFastLap().color }"
-                ></svg>
-              } @else if (i + 1 == 10) {
-                <svg
-                  [cIcon]="isCorrectDnf().icon"
-                  size="lg"
-                  [ngStyle]="{ color: isCorrectDnf().color }"
-                ></svg>
-              } @else {
-                <svg
-                  [cIcon]="isCorrectConstructor().icon"
-                  size="lg"
-                  [ngStyle]="{ color: isCorrectConstructor().color }"
-                ></svg>
-              }
-            </div>
-          </td>
-        </tr>
+            </td>
+          </tr>
+        }
       }
     </tbody>
   </table>
 </div>
 
-@if (showTotalPoints) {
+@if (showTotalPoints()) {
   <div class="m-3">
     <h4 class="text-center text-success">
       Totale Punti: {{ getTotalPoints() }}

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges, computed, signal, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, input, computed, signal, ChangeDetectionStrategy, effect } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { ButtonModule, ButtonGroupModule, ModalModule } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
@@ -16,7 +16,6 @@ export interface ProcessedCalendarEvent extends CalendarEvent {
 
 @Component({
   selector: 'app-calendar',
-  standalone: true,
   imports: [CommonModule, ButtonModule, ButtonGroupModule, IconModule, ModalModule],
   providers: [DatePipe],
   templateUrl: './calendar.component.html',
@@ -27,32 +26,32 @@ export interface ProcessedCalendarEvent extends CalendarEvent {
  * A calendar component that displays events in week or month view.
  * Supports navigation, event selection, and modal display.
  */
-export class CalendarComponent implements OnInit, OnChanges {
+export class CalendarComponent {
   /**
    * The title displayed at the top of the calendar.
    * @default 'Calendar'
    */
-  @Input() title = 'Calendar'; 
+  title = input<string>('Calendar'); 
  
   /**
    * The default view mode for the calendar.
    * Can be either 'week', 'month', or 'list'.
    * @default 'week'
    */
-  @Input() defaultView: 'week' | 'month' | 'list' = 'week'; 
+  defaultView = input<'week' | 'month' | 'list'>('week'); 
  
   /**
    * An array of calendar events to be displayed.
    * Each event should conform to the CalendarEvent interface.
    * @default []
    */
-  @Input() events: CalendarEvent[] = [];
+  events = input<CalendarEvent[]>([]);
 
   /**
    * If true, forces the mobile list view on all screen sizes for the week view.
    * @default false
    */
-  @Input() compactView = false;
+  compactView = input<boolean>(false);
 
 
 
@@ -67,35 +66,25 @@ export class CalendarComponent implements OnInit, OnChanges {
   // Locale for formatting (Italian as requested in examples)
   private readonly locale = 'it-IT';
 
-  private readonly datePipe = inject(DatePipe);
-
-  ngOnInit(): void {
-    if (this.defaultView) {
-      this.view.set(this.defaultView);
-      if (this.defaultView === 'list') {
-        // Defer to allow computed signals to stabilize if needed, 
-        // essentially ensuring we calculate based on initial events
+  constructor() {
+    // Sync view with defaultView input using effect
+    effect(() => {
+      const newDefaultView = this.defaultView();
+      this.view.set(newDefaultView);
+      
+      // If switching to list view, calculate the appropriate page
+      if (newDefaultView === 'list') {
         this.calculateListPageForDate(this.currentDate());
       }
-    }
-  }
+    });
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['defaultView'] && !changes['defaultView'].firstChange) {
-      this.view.set(this.defaultView);
-      if (this.defaultView === 'list') {
+    // Watch events changes - if events are loaded and in list view, sync to today
+    effect(() => {
+      const currentEvents = this.events();
+      if (this.view() === 'list' && currentEvents.length > 0) {
         this.calculateListPageForDate(this.currentDate());
       }
-    }
-
-    if (changes['events'] && this.view() === 'list') {
-       // If we loaded events for the first time or from empty, try to sync to today
-       const prev = changes['events'].previousValue;
-       const curr = changes['events'].currentValue;
-       if ((!prev || prev.length === 0) && curr && curr.length > 0) {
-          this.calculateListPageForDate(this.currentDate());
-       }
-    }
+    });
   }
 
 
@@ -119,7 +108,9 @@ export class CalendarComponent implements OnInit, OnChanges {
     } else {
       // List View: Show range of events on current page
       const visibleDays = this.visibleListDays();
-      if (visibleDays.length === 0) return 'Nessun Evento';
+      if (visibleDays.length === 0) {
+        return 'Nessun Evento';
+      }
       
       const start = visibleDays[0].date;
       const end = visibleDays[visibleDays.length - 1].date;
@@ -215,9 +206,9 @@ export class CalendarComponent implements OnInit, OnChanges {
 
   readonly processedEvents = computed(() => {
     // Map events to easy lookup structure
-    return this.events.map(e => ({
+    return this.events().map(e => ({
       ...e,
-      parsedDate: new Date(e.date)
+      parsedDate: this.parseAsLocalTime(e.date)
     }));
   });
 
@@ -313,6 +304,33 @@ export class CalendarComponent implements OnInit, OnChanges {
   }
 
   // --- Helper Methods ---
+
+  /**
+   * Parse a date/string as local time, ignoring timezone indicators.
+   * This prevents ISO strings with 'Z' from being converted to local timezone.
+   */
+  private parseAsLocalTime(date: Date | string): Date {
+    if (date instanceof Date) {
+      return date;
+    }
+    
+    // Parse ISO string components and create local date
+    const match = date.match(/^(\d{4})-(\d{2})-(\d{2})(?:T(\d{2}):(\d{2}):(\d{2})(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})?)?$/);
+    if (match) {
+      const [, year, month, day, hour = '0', minute = '0', second = '0'] = match;
+      return new Date(
+        parseInt(year),
+        parseInt(month) - 1,
+        parseInt(day),
+        parseInt(hour),
+        parseInt(minute),
+        parseInt(second)
+      );
+    }
+    
+    // Fallback to standard parsing
+    return new Date(date);
+  }
 
   private getStartOfWeek(date: Date): Date {
     const d = new Date(date);

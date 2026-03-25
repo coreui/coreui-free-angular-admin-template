@@ -309,20 +309,26 @@ export class AuthService {
     }
   }
 
-  async adminChangePassword(changeData: AdminChangePasswordRequest): Promise<boolean> {
+  async adminChangePassword(changeData: AdminChangePasswordRequest): Promise<ChangePasswordResponse> {
     try {
       // Validate JWT token and check if user is admin
       const sessionData = await this.validateSession(changeData.jwtToken);
       
       if (!sessionData.valid) {
         console.error('Admin change password: Invalid session');
-        return false;
+        return {
+          success: false,
+          message: 'Sessione non valida'
+        };
       }
 
       // Check if user is admin
       if (!sessionData.isAdmin) {
         console.error('Admin change password: User is not admin');
-        return false;
+        return {
+          success: false,
+          message: 'Accesso non autorizzato. Solo gli amministratori possono modificare le password.'
+        };
       }
 
       // Validate new password
@@ -336,7 +342,10 @@ export class AuthService {
 
       if (userResult.rows.length === 0) {
         console.error('Admin change password: Target user not found');
-        return false;
+        return {
+          success: false,
+          message: 'Utente non trovato'
+        };
       }
 
       const targetUser = userResult.rows[0];
@@ -351,11 +360,13 @@ export class AuthService {
         [hashedNewPassword, targetUserId]
       );
 
-      // Invalidate all sessions for the target user (force re-login)
-      await this.pool.query(
-        'UPDATE user_sessions SET is_active = FALSE WHERE user_id = $1',
+      // Invalidate ALL sessions for the target user (force re-login)
+      const invalidateResult = await this.pool.query(
+        'UPDATE user_sessions SET is_active = FALSE WHERE user_id = $1 AND is_active = TRUE',
         [targetUserId]
       );
+
+      console.log(`Invalidated ${invalidateResult.rowCount} sessions for user ${targetUser.username}`);
 
       // Send email notification if user has email
       if (targetUser.mail && targetUser.mail.trim() !== '') {
@@ -386,11 +397,17 @@ export class AuthService {
         }
       }
 
-      return true;
+      return {
+        success: true,
+        message: `Password modificata con successo per l'utente ${targetUser.username}. Sessioni invalidate: ${invalidateResult.rowCount}.`
+      };
 
     } catch (error) {
       console.error('Admin change password error:', error);
-      return false;
+      return {
+        success: false,
+        message: 'Si è verificato un errore durante la modifica della password'
+      };
     }
   }
 
@@ -518,9 +535,9 @@ export class AuthService {
     }
   }
 
-  async updateUserInfo(request: UpdateUserInfoRequest): Promise<AuthResponse> {
+  async updateUserInfo(request: UpdateUserInfoRequest, jwt: string): Promise<AuthResponse> {
     try {
-      const { jwt, name, surname, mail, image } = request;
+      const { name, surname, mail, image } = request;
 
       if (!jwt) {
         return {

@@ -13,33 +13,25 @@ describe('LoadingService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should show loading on first show() call', (done) => {
-    service.loading$.subscribe(loading => {
-      expect(loading).toBeTrue();
-      done();
-    });
+  it('should show loading on first show() call', () => {
+    expect(service.loading()).toBeFalse();
     service.show();
+    expect(service.loading()).toBeTrue();
   });
 
-  it('should hide loading after matching hide() calls', (done) => {
+  it('should hide loading after matching hide() calls', () => {
     service.show();
     service.show();
+    expect(service.loading()).toBeTrue();
     service.hide();
-    service.loading$.subscribe(loading => {
-      expect(loading).toBeTrue();
-    });
+    expect(service.loading()).toBeTrue();
     service.hide();
-    service.loading$.subscribe(loading => {
-      expect(loading).toBeFalse();
-      done();
-    });
+    expect(service.loading()).toBeFalse();
   });
 
-  it('should not affect loading state when hide() is called without show()', (done) => {
+  it('should not affect loading state when hide() is called without show()', () => {
+    expect(service.loading()).toBeFalse();
     service.hide();
-    service.loading$.subscribe(loading => {
-      expect(loading).toBeFalse();
-      done();
-    });
+    expect(service.loading()).toBeFalse();
   });
 });

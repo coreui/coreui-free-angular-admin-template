@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import type { PlaygroundBestScore } from '@f123dashboard/shared';
 import { ApiService } from './api.service';
@@ -12,29 +12,28 @@ export class PlaygroundService {
 /****************************************************************/
 //variabili locali
 /****************************************************************/
-  private playgroundLeaderboard: PlaygroundBestScore[] = [];
+  private playgroundLeaderboardSignal = signal<PlaygroundBestScore[]>([]);
+  
+  // Readonly signal for external access
+  public playgroundLeaderboard = this.playgroundLeaderboardSignal.asReadonly();
 
 
 /****************************************************************/
 //compilazione delle variabili pre caricamento del interfaccia web 
 /****************************************************************/
 
-  async AllData() {
+  async allData() {
     const [
       playgroundLeaderboard
     ] = await Promise.all([
       firstValueFrom(this.apiService.post<PlaygroundBestScore[]>('/playground/leaderboard', {}))
     ]);
 
-    this.playgroundLeaderboard = playgroundLeaderboard;
-  }
-
-  getPlaygroundLeaderboard(): PlaygroundBestScore[] {
-    return this.playgroundLeaderboard;
+    this.playgroundLeaderboardSignal.set(playgroundLeaderboard);
   }
 
   getUserBestScore(userId: number): number {
-    const userScore = this.playgroundLeaderboard.find(score => score.user_id === userId);
+    const userScore = this.playgroundLeaderboardSignal().find(score => score.user_id === userId);
     return userScore ? userScore.best_score : 9999; // return 9999 if no score found
   }
 
@@ -42,6 +41,21 @@ export class PlaygroundService {
     await firstValueFrom(
       this.apiService.post('/playground/score', voto)
     );
+    
+    // Update the signal with the new score
+    this.playgroundLeaderboardSignal.update(leaderboard => {
+      const tmp = [...leaderboard];
+      const foundIndex = tmp.findIndex(score => score.user_id === voto.user_id);
+      if (foundIndex === -1) {
+        // New entry
+        tmp.push(voto);
+      } else {
+        // Update existing entry
+        tmp[foundIndex] = voto;
+      }
+      // Sort by best score
+      return tmp.sort((a, b) => a.best_score - b.best_score);
+    });
   }
 }
 

@@ -1,5 +1,5 @@
-import { Injectable, inject } from '@angular/core';
-import { BehaviorSubject, firstValueFrom } from 'rxjs';
+import { Injectable, inject, signal } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
 import type { Season } from '@f123dashboard/shared';
 import { ApiService } from './api.service';
 
@@ -7,15 +7,15 @@ import { ApiService } from './api.service';
 export class SeasonService {
   private apiService = inject(ApiService);
   private allSesons: Season[] = [];
-  private _currentSeason = new BehaviorSubject<Season>(null!);
-  public readonly season$ = this._currentSeason.asObservable();
+  private currentSeasonSignal = signal<Season>(null!);
+  public readonly season = this.currentSeasonSignal.asReadonly();
   
 
   setCurreentSeason(season: Season) {
-    this._currentSeason.next(season);
+    this.currentSeasonSignal.set(season);
   }
   getCurrentSeason(): Season {
-    return this._currentSeason.getValue();
+    return this.currentSeasonSignal();
   }
 
   public getAllSeasons(): Season[] {

@@ -1,16 +1,14 @@
-import { Component, AfterViewInit, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, AfterViewInit, OnInit, ChangeDetectionStrategy, inject, signal, computed } from '@angular/core';
 import { DatePipe, CommonModule } from '@angular/common';
 import { GridModule, TableDirective, AvatarComponent, AlertComponent, ColorModeService } from '@coreui/angular';
 import { cilPeople, cilWarning } from '@coreui/icons';
 import { IconDirective } from '@coreui/icons-angular';
 import { PlaygroundService, PlaygroundBestScore } from '../../service/playground.service';
-import type { User } from '@f123dashboard/shared';
 import { AuthService } from 'src/app/service/auth.service';
 
 
 @Component({
   selector: 'app-playground',
-  standalone: true,
   imports: [
     GridModule,
     TableDirective,
@@ -24,64 +22,45 @@ import { AuthService } from 'src/app/service/auth.service';
   styleUrls: ['./playground.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PlaygroundComponent implements AfterViewInit {
+export class PlaygroundComponent implements OnInit, AfterViewInit {
 
   playgroundService = inject(PlaygroundService);
   private authService = inject(AuthService);
   readonly #colorModeService = inject(ColorModeService);
 
-
   public screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
-  playgroundLeaederboard: PlaygroundBestScore[] = [];
-
-  currentUser: User | null = null;
-  isLoggedIn = false;
+  // Use the service's signal directly
+  playgroundLeaderboard = this.playgroundService.playgroundLeaderboard;
+  currentUser = this.authService.currentUser;
+  isLoggedIn = computed(() => this.authService.isAuthenticated());
 
   public cilPeople: string[] = cilPeople;
   public cilWarning: string[] = cilWarning;
 
-  bulbs_up: NodeListOf<HTMLElement> | null = null;
+  bulbsUp: NodeListOf<HTMLElement> | null = null;
   bulbs: NodeListOf<HTMLElement> | null = null;
-  timerStarted: boolean = false;
-  lightsTriggeredFlag: boolean = false;
-  lightsErrorFlag: boolean = false;
+  isTimerStarted = signal(false);
+  isLightsTriggered = signal(false);
+  hasLightsError = signal(false);
   timerStartTime: number | null = null;
-  playerStatus: string = "";
-  playerStatusColor: string = "";  
-  playerScore: number | null = null;
-  playerBestScore: number = 9999;
-  jumpStartFlag: boolean = false;
+  playerStatus = signal("");
+  playerStatusColor = signal("");  
+  playerScore = signal<number | null>(null);
+  playerBestScore = signal<number>(9999);
+  hasJumpStart = signal(false);
 
   ngOnInit(): void {
-    this.playgroundLeaederboard = this.playgroundService.getPlaygroundLeaderboard();
-
-    // Check if user is already logged in
-    this.authService.isAuthenticated$.subscribe(isAuth => {
-      if (isAuth) {
-        const user = this.authService.getCurrentUser();
-        this.currentUser = user;
-        this.isLoggedIn = true;
-      }
-    });
-
-    // Subscribe to current user changes
-    this.authService.currentUser$.subscribe(user => {
-      this.currentUser = user;
-      this.isLoggedIn = !!user;
-    });
-
-    // set best score for current user
-    if ( this.isLoggedIn ) {
-      this.playerBestScore = this.playgroundService.getUserBestScore(this.currentUser?.id ?? 0);
+    // Initialize best score for logged-in users
+    if (this.isLoggedIn() && this.currentUser()?.id) {
+      this.playerBestScore.set(this.playgroundService.getUserBestScore(this.currentUser()!.id));
     }
-
     this.resetGameText();
   }
 
 
   ngAfterViewInit(): void {
-    this.bulbs_up = document.querySelectorAll<HTMLElement>('.bulb_up');
+    this.bulbsUp = document.querySelectorAll<HTMLElement>('.bulb_up');
     this.bulbs = document.querySelectorAll<HTMLElement>('.bulb');
   }
 
@@ -90,61 +69,58 @@ export class PlaygroundComponent implements AfterViewInit {
   }
 
   gameTrigger(): void {
-    const bulbs = this.bulbs ?? document.querySelectorAll<HTMLElement>('.bulb');
-    
-    if ( this.timerStarted ) {
-      // Record reaction time and game over
-      const elapsedTime = Date.now() - (this.timerStartTime ?? 0);
-      this.playerScore = elapsedTime;
-      this.playerStatus = `Tempo di reazione: ${this.playerScore} ms`;
-      this.playerStatusColor = "#0E8F5F"
-
-      this.timerStarted = false;
-      this.timerStartTime = null;
-      this.lightsTriggeredFlag = false;
-      
-      if ( this.playerScore < this.playerBestScore ) {
-        this.playerBestScore = this.playerScore;
-        if ( this.isLoggedIn && this.currentUser?.id ) {
-          // update DB with new best score
-          const newBestScore: PlaygroundBestScore = {
-            user_id: this.currentUser?.id ?? 0,
-            username: this.currentUser?.username ?? "",
-            image: this.currentUser?.image ?? "",
-            best_score: this.playerBestScore,
-            best_date: new Date(),
-          };
-          this.playgroundService.setUserBestScore(newBestScore);
-
-          // update local leaderboard
-          let tmp: PlaygroundBestScore[] = this.playgroundLeaederboard;
-          let found = tmp.find(best_score => best_score.user_id === this.currentUser?.id);
-          if ( !found ) {
-            // New entry
-            tmp.push(newBestScore);
-          } else {
-            tmp.find(best_score => best_score.user_id === this.currentUser?.id)!.best_score = this.playerBestScore;
-          }
-          this.playgroundLeaederboard = [];
-          this.playgroundLeaederboard = tmp;
-        }
+    if (!this.isTimerStarted()) {
+      if (this.hasLightsError()) {
+        return;
       }
-    } else {
-      if ( !this.lightsErrorFlag ) {
-        if ( this.lightsTriggeredFlag ) {
-          // Jump start condition
-          this.playerStatus = `FALSA PARTENZA`;
-          this.playerStatusColor = "#FF0000";
-          this.lightsTriggeredFlag = false; 
-          this.jumpStartFlag = true;
-          this.lightsError();
-        } else {
-          // Start light up sequence
-          this.resetGameText();
 
-          this.lightsTriggeredFlag = true;
-          this.lightsUp();
-        }
+      if (this.isLightsTriggered()) {
+        // Jump start condition
+        this.playerStatus.set(`FALSA PARTENZA`);
+        this.playerStatusColor.set("#FF0000");
+        this.isLightsTriggered.set(false);
+        this.hasJumpStart.set(true);
+        this.lightsError();
+        return;
+      }
+
+      // Start light up sequence
+      this.resetGameText();
+      this.isLightsTriggered.set(true);
+      this.lightsUp();
+      return;
+    }
+
+    // Record reaction time and game over
+    const elapsedTime = Date.now() - (this.timerStartTime ?? 0);
+    this.playerScore.set(elapsedTime);
+    this.playerStatus.set(`Tempo di reazione: ${this.playerScore()} ms`);
+    this.playerStatusColor.set("#0E8F5F");
+
+    this.isTimerStarted.set(false);
+    this.timerStartTime = null;
+    this.isLightsTriggered.set(false);
+
+    const playerScoreValue = this.playerScore();
+    if (playerScoreValue === null) {
+      return;
+    }
+
+    // Update best score if current score is better
+    if (playerScoreValue < this.playerBestScore()) {
+      this.playerBestScore.set(playerScoreValue);
+
+      // Save to backend if user is logged in
+      const currentUserValue = this.currentUser();
+      if (this.isLoggedIn() && currentUserValue?.id) {
+        const newBestScore: PlaygroundBestScore = {
+          user_id: currentUserValue.id,
+          username: currentUserValue.username,
+          image: currentUserValue.image ?? "",
+          best_score: playerScoreValue,
+          best_date: new Date(),
+        };
+        this.playgroundService.setUserBestScore(newBestScore);
       }
     }
   }
@@ -152,50 +128,53 @@ export class PlaygroundComponent implements AfterViewInit {
   async lightsUp(): Promise<void> {
     const bulbs = this.bulbs ?? document.querySelectorAll<HTMLElement>('.bulb');
 
-    for (let idx = 0; idx < bulbs.length && !this.jumpStartFlag; idx++) {
-      bulbs[idx].classList.add('red_light');
+    for (const bulb of Array.from(bulbs)) {
+      if (this.hasJumpStart()) {
+        break;
+      }
+      bulb.classList.add('red_light');
       await sleep(1000);
     }
 
-    if ( !this.jumpStartFlag ) {
+    if ( !this.hasJumpStart() ) {
       const maxRandomDelay = 4000; 
       const minRandomDelay = 500;
       const randomDelay = Math.floor(Math.random() * (maxRandomDelay - minRandomDelay + 1)) + minRandomDelay;
       await sleep(randomDelay);
     }
 
-    if ( !this.jumpStartFlag ) {
-      this.lightsOut()
+    if ( !this.hasJumpStart() ) {
+      this.lightsOut();
     }
 
-    this.jumpStartFlag = false; 
+    this.hasJumpStart.set(false); 
   }
 
   lightsOut(): void {
     const bulbs = this.bulbs ?? document.querySelectorAll<HTMLElement>('.bulb');
 
-    for (let idx = 0; idx < bulbs.length; idx++) {
-      bulbs[idx].classList.remove('red_light');
+    for (const bulb of Array.from(bulbs)) {
+      bulb.classList.remove('red_light');
     }
 
-    this.timerStarted = true;
+    this.isTimerStarted.set(true);
     this.timerStartTime = Date.now();
   }
 
   async lightsError(): Promise<void> {
     const bulbs = this.bulbs ?? document.querySelectorAll<HTMLElement>('.bulb');
 
-    this.lightsErrorFlag = true;
+    this.hasLightsError.set(true);
 
     for (let i = 0; i < 3; i++) {
-      for (let idx = 0; idx < bulbs.length; idx++) {
-        bulbs[idx].classList.add('red_light');
+      for (const bulb of Array.from(bulbs)) {
+        bulb.classList.add('red_light');
       }
 
       await sleep(500);
 
-      for (let idx = 0; idx < bulbs.length; idx++) {
-        bulbs[idx].classList.remove('red_light');
+      for (const bulb of Array.from(bulbs)) {
+        bulb.classList.remove('red_light');
       }
 
       await sleep(500);
@@ -203,7 +182,7 @@ export class PlaygroundComponent implements AfterViewInit {
 
     this.resetGameText();
 
-    this.lightsErrorFlag = false;
+    this.hasLightsError.set(false);
   }
 
   getAvatar(userId: number, image?: string): string {
@@ -215,11 +194,11 @@ export class PlaygroundComponent implements AfterViewInit {
   }
 
   resetGameText(): void {
-    this.playerStatus = `SEI PRONTO?`;
-    if ( this.#colorModeService.colorMode.name == 'dark' ) {
-      this.playerStatusColor = "#FFFFFF";
+    this.playerStatus.set(`SEI PRONTO?`);
+    if ( this.#colorModeService.colorMode.name === 'dark' ) {
+      this.playerStatusColor.set("#FFFFFF");
     } else {
-      this.playerStatusColor = "#000000"; 
+      this.playerStatusColor.set("#000000"); 
     }
   }
 

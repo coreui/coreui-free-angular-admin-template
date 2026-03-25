@@ -1,18 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideNoopAnimations } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AlboDOroCardComponent } from './albo-d-oro-card.component';
+import { PodiumCardComponent } from './podium-card.component';
 
-describe('AlboDOroCardComponent', () => {
-  let component: AlboDOroCardComponent;
-  let fixture: ComponentFixture<AlboDOroCardComponent>;
+describe('PodiumCardComponent', () => {
+  let component: PodiumCardComponent;
+  let fixture: ComponentFixture<PodiumCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AlboDOroCardComponent]
+      providers: [provideNoopAnimations(), ],
+      imports: [PodiumCardComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AlboDOroCardComponent);
+    fixture = TestBed.createComponent(PodiumCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

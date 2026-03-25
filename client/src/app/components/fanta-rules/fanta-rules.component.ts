@@ -5,7 +5,6 @@ import { FantaService } from '../../service/fanta.service';
 
 @Component({
   selector: 'app-fanta-rules',
-  standalone: true,
   imports: [CommonModule, CardModule, ListGroupModule],
   templateUrl: './fanta-rules.component.html',
   styleUrls: ['./fanta-rules.component.scss']

@@ -1,42 +1,42 @@
-<div *ngIf="!isLoading; else goto_loading">
-
-    <c-tabs [activeItemKey]="0" >
-      <c-tabs-list layout="justified" variant="tabs">
-        <button cTab [itemKey]="0">Piloti</button>
-        <button cTab [itemKey]="1">Costruttori</button>
-      </c-tabs-list>
-      <c-tabs-content>
-        <!-- TAB PILOTI -->
-        <c-tab-panel class="p-3" [itemKey]="0" >
-          <c-row ngPreserveWhitespaces class="g-0">
-            <c-col *ngFor="let pilota of piloti; index as i" xs="6" md="4" lg="2">
+@if (!isLoading()) {
+  <c-tabs [activeItemKey]="0" >
+    <c-tabs-list layout="justified" variant="tabs">
+      <button cTab [itemKey]="0">Piloti</button>
+      <button cTab [itemKey]="1">Costruttori</button>
+    </c-tabs-list>
+    <c-tabs-content>
+      <!-- TAB PILOTI -->
+      <c-tab-panel class="p-3" [itemKey]="0" >
+        <c-row ngPreserveWhitespaces class="g-0">
+          @for (pilota of piloti(); track pilota.driver_id; let i = $index) {
+            <c-col xs="6" md="4" lg="2">
               <app-pilot-card 
                 [pilota]="pilota" 
                 [position]="i + 1">
               </app-pilot-card>
             </c-col>
-          </c-row>
-        </c-tab-panel>
-        <!-- TAB COSTRUTTORI -->
-        <c-tab-panel class="p-3" [itemKey]="1">
-          <c-row ngPreserveWhitespaces class="g-0">
-            <c-col *ngFor="let constructor of constructors; index as i" xs="12" md="6" lg="3">
+          }
+        </c-row>
+      </c-tab-panel>
+      <!-- TAB COSTRUTTORI -->
+      <c-tab-panel class="p-3" [itemKey]="1">
+        <c-row ngPreserveWhitespaces class="g-0">
+          @for (constructor of constructors(); track constructor.constructor_id; let i = $index) {
+            <c-col xs="12" md="6" lg="3">
               <app-constructor-card 
                 [constructorData]="constructor" 
                 [position]="i + 1">
               </app-constructor-card>
             </c-col>
-          </c-row>
-        </c-tab-panel>
-      </c-tabs-content>
-    </c-tabs>
-</div>
-
-
-<ng-template #goto_loading>
+          }
+        </c-row>
+      </c-tab-panel>
+    </c-tabs-content>
+  </c-tabs>
+} @else {
   <div class="loading-container fade show">
     <i class="spinner-border text-danger"></i>
     <span class="m-1"><strong>ASPETTA STRONZO</strong></span>
     <i class="spinner-border text-danger"></i>
   </div>
-</ng-template>
+}
