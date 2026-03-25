@@ -4,7 +4,6 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "-": "^0.0.1",
     "@coreui/coreui": "~5.5.0",
     "g": "^2.0.1",
     "nodemailer": "^8.0.0"
