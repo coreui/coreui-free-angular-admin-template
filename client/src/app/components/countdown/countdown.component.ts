@@ -1,10 +1,10 @@
-import { Component, OnInit, OnDestroy, inject, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, DestroyRef, inject, signal, effect, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common'; // Import CommonModule
 import {
   CardBodyComponent,
   CardComponent} from '@coreui/angular';
 import {DbDataService} from '../../service/db-data.service';
-import { TrackData } from '@f123dashboard/shared';
+import type { TrackData } from '@f123dashboard/shared';
 
 interface TimeInterface {
   days: number;
@@ -21,50 +21,49 @@ interface TimeInterface {
     ],
     templateUrl: './countdown.component.html',
     styleUrl: './countdown.component.scss',
-    standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CountdownComponent implements OnInit, OnDestroy {
+export class CountdownComponent implements OnInit {
   private dbData = inject(DbDataService);
-  private cdr = inject(ChangeDetectorRef);
-
+  private destroyRef = inject(DestroyRef);
 
   public championshipNextTracks: TrackData[] = [];
 
   // countdown variables
-  targetDate?: Date;
-  timeRemaining: TimeInterface = {
+  targetDate = signal<Date | undefined>(undefined);
+  timeRemaining = signal<TimeInterface>({
     days: 0,
     hours: 0,
     minutes: 0,
     seconds: 0
-  };
-  timer?: ReturnType<typeof setInterval>;
+  });
 
   ngOnInit(): void {
     // countdown to next gp
-    this.championshipNextTracks = this.dbData.getAllTracks();
+    this.championshipNextTracks = this.dbData.tracks();
     
     // filter next championship track
     const currentDate = new Date();
-    this.targetDate = this.championshipNextTracks
+    const nextDate = this.championshipNextTracks
       .map(track => new Date(track.date))
       .sort((a, b) => a.getTime() - b.getTime())
       .find(dbDate => dbDate >= currentDate);
 
-    if (this.targetDate) {this.startCountdown();}
-   
+    if (nextDate) {
+      this.targetDate.set(nextDate);
+      this.startCountdown();
+    }
   }
 
   startCountdown(): void {
-    this.timer = setInterval(() => {
-
-      if (!this.targetDate) {
+    const timer = setInterval(() => {
+      const target = this.targetDate();
+      if (!target) {
         return;
       }
 
       const now = new Date().getTime();
-      const distance = this.targetDate.getTime() - now;
+      const distance = target.getTime() - now;
 
       // Calculate time remaining in days, hours, minutes, seconds
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -72,34 +71,28 @@ export class CountdownComponent implements OnInit, OnDestroy {
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      this.timeRemaining = {
+      this.timeRemaining.set({
         days,
         hours,
         minutes,
         seconds
-      };
-
-      this.cdr.markForCheck();
+      });
 
       // If the countdown is over, clear the interval
       if (distance < 0) {
-        clearInterval(this.timer);
-        this.timeRemaining = {
+        clearInterval(timer);
+        this.timeRemaining.set({
           days: 0,
           hours: 0,
           minutes: 0,
           seconds: 0
-        };
-        this.cdr.markForCheck();
+        });
       }
     }, 1000); // Update every second for more accurate countdown
-  }
 
-
-  ngOnDestroy(): void {
-    if (this.timer) 
-      {
-        clearInterval(this.timer);
-      }
+    // Register cleanup
+    this.destroyRef.onDestroy(() => {
+      clearInterval(timer);
+    });
   }
 }

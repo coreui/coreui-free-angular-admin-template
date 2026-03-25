@@ -1,14 +1,14 @@
-<c-card [ngStyle]="{'border': '1px solid ' + constructorData.constructor_color}" class="constructor-card text-center mb-4">
+<c-card [ngStyle]="{'border': '1px solid ' + constructorData().constructor_color}" class="constructor-card text-center mb-4">
   <!-- Header con logo e nome -->
   <c-card-header>
     <div class="constructor-header">
       <img 
         class="constructor-logo" 
-        src='./assets/images/constructors/{{constructorData.constructor_name}}.png' 
-        alt="{{ constructorData.constructor_name }}'s logo" 
+        src='./assets/images/constructors/{{constructorData().constructor_name}}.png' 
+        alt="{{ constructorData().constructor_name }}'s logo" 
       />
-      <h5 class="mt-2" [ngStyle]="{'color': constructorData.constructor_color}">
-        {{ constructorData.constructor_name }}
+      <h5 class="mt-2" [ngStyle]="{'color': constructorData().constructor_color}">
+        {{ constructorData().constructor_name }}
       </h5>
     </div>
   </c-card-header>
@@ -20,23 +20,23 @@
         <div class="col-6">
           <img 
             class="driver-avatar" 
-            src='./assets/images/avatars/{{constructorData.driver_1_username}}.png' 
-            alt="{{ constructorData.driver_1_username }}'s avatar" 
+            src='./assets/images/avatars/{{constructorData().driver_1_username}}.png' 
+            alt="{{ constructorData().driver_1_username }}'s avatar" 
           />
           <div class="driver-info">
-            <h6>{{ constructorData.driver_1_username }}</h6>
-            <small><strong>{{ constructorData.driver_1_tot_points }}</strong> Pt.</small>
+            <h6>{{ constructorData().driver_1_username }}</h6>
+            <small><strong>{{ constructorData().driver_1_tot_points }}</strong> Pt.</small>
           </div>
         </div>
         <div class="col-6">
           <img 
             class="driver-avatar" 
-            src='./assets/images/avatars/{{constructorData.driver_2_username}}.png' 
-            alt="{{ constructorData.driver_2_username }}'s avatar" 
+            src='./assets/images/avatars/{{constructorData().driver_2_username}}.png' 
+            alt="{{ constructorData().driver_2_username }}'s avatar" 
           />
           <div class="driver-info">
-            <h6>{{ constructorData.driver_2_username }}</h6>
-            <small><strong>{{ constructorData.driver_2_tot_points }}</strong> Pt.</small>
+            <h6>{{ constructorData().driver_2_username }}</h6>
+            <small><strong>{{ constructorData().driver_2_tot_points }}</strong> Pt.</small>
           </div>
         </div>
       </div>
@@ -47,43 +47,43 @@
       <li cListGroupItem>
         <div class="row g-0">
           <div class="col-8 border-end"><strong>Posizione:</strong></div>
-          <div class="col-4">{{ position }}°</div>
+          <div class="col-4">{{ position() }}°</div>
         </div>
       </li>
       <li cListGroupItem>
         <div class="row g-0">
           <div class="col-8 border-end"><strong>Tot.:</strong></div>
-          <div class="col-4">{{ constructorData.constructor_tot_points }}</div>
+          <div class="col-4">{{ constructorData().constructor_tot_points }}</div>
         </div>
       </li>
       <li cListGroupItem>
         <div class="row g-0">
           <div class="col-8 border-end"><strong>Race:</strong></div>
-          <div class="col-4">{{ constructorData.constructor_race_points }}</div>
+          <div class="col-4">{{ constructorData().constructor_race_points }}</div>
         </div>
       </li>
       <li cListGroupItem>
         <div class="row g-0">
           <div class="col-8 border-end"><strong>Full:</strong></div>
-          <div class="col-4">{{ constructorData.constructor_full_race_points }}</div>
+          <div class="col-4">{{ constructorData().constructor_full_race_points }}</div>
         </div>
       </li>
       <li cListGroupItem>
         <div class="row g-0">
           <div class="col-8 border-end"><strong>Sprint:</strong></div>
-          <div class="col-4">{{ constructorData.constructor_sprint_points }}</div>
+          <div class="col-4">{{ constructorData().constructor_sprint_points }}</div>
         </div>
       </li>
       <li cListGroupItem>
         <div class="row g-0">
           <div class="col-8 border-end"><strong>Qualify:</strong></div>
-          <div class="col-4">{{ constructorData.constructor_qualifying_points }}</div>
+          <div class="col-4">{{ constructorData().constructor_qualifying_points }}</div>
         </div>
       </li>
       <li cListGroupItem>
         <div class="row g-0">
           <div class="col-8 border-end"><strong>Practice:</strong></div>
-          <div class="col-4">{{ constructorData.constructor_free_practice_points }}</div>
+          <div class="col-4">{{ constructorData().constructor_free_practice_points }}</div>
         </div>
       </li>
     </ul>

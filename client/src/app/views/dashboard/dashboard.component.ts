@@ -1,9 +1,10 @@
-import { CommonModule } from '@angular/common'; // Importa CommonModule
-import { Component, OnInit, ViewChild, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, OnInit, inject, signal, computed, ChangeDetectionStrategy } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import {DbDataService} from '../../service/db-data.service';  //aggiunto il servizio per dati db
-import { ModalModule, ModalComponent } from '@coreui/angular';
+import {DbDataService} from '../../service/db-data.service';
+import { ConstructorService } from '../../service/constructor.service';
+import { ModalModule } from '@coreui/angular';
 import {
   AvatarComponent,
   CardBodyComponent,
@@ -26,31 +27,16 @@ import {
 import { RouterLink } from '@angular/router';
 import { IconDirective } from '@coreui/icons-angular';
 import { cilCalendar, cilMap, cilFire } from '@coreui/icons';
-import { cifBh, cifAt, cifMc, cifJp, cifHu, cifCn, cifCa, cifEs, cifGb, cifBe, cifNl, cifAz, cifSg, cifIt, cifUs, cifAu, cifMx, cifBr, cifQa, cifAe, cifSa } from '@coreui/icons';
 import { LeaderboardComponent } from "../../components/leaderboard/leaderboard.component";
 import { TwitchApiService } from '../../service/twitch-api.service';
-import { BehaviorSubject } from 'rxjs';
 import { LoadingService } from '../../service/loading.service';
 import { ChampionshipTrendComponent } from '../../components/championship-trend/championship-trend.component';
 import type { Constructor, CumulativePointsData, DriverData, TrackData } from '@f123dashboard/shared';
 import { PilotCardComponent } from '../../components/pilot-card/pilot-card.component';
 import { ConstructorCardComponent } from '../../components/constructor-card/constructor-card.component';
 import { CalendarComponent, CalendarEvent } from '../../components/calendar/calendar.component';
-
-export interface DriverOfWeek {
-  driver_username: string;
-  driver_id: number;
-  points: number;
-}
-
-export interface ConstructorOfWeek {
-  constructor_name: string;
-  constructor_id: number;
-  constructor_driver_1_id: number;
-  constructor_driver_2_id: number;
-  points: number;
-}
-
+import type { DriverOfWeek, ConstructorOfWeek } from '../../model/dashboard.model';
+import { allFlags } from '../../model/constants';
 
 export interface DriverDataWithGainedPoints extends DriverData {
   gainedPoints: number;
@@ -61,6 +47,7 @@ export interface DriverDataWithGainedPoints extends DriverData {
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
     LeaderboardComponent,
     ModalModule,
@@ -95,113 +82,155 @@ export class DashboardComponent implements OnInit {
   private dbData = inject(DbDataService);
   private twitchApiService = inject(TwitchApiService);
   private sanitizer = inject(DomSanitizer);
+  private constructorService = inject(ConstructorService);
   loadingService = inject(LoadingService);
 
-  @ViewChild('championshipResoult', { static: true }) championshipResoult!: ModalComponent; 
+  private screenWidth = signal<number>(0);
+  showColumn = computed(() => this.screenWidth() > 1600);
 
-  public screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-  public twitchEmbedUrl: SafeResourceUrl = '' as SafeResourceUrl;
-  calendarEvents: CalendarEvent[] = [];
+  twitchEmbedUrl = signal<SafeResourceUrl>('' as SafeResourceUrl);
+  calendarEvents = signal<CalendarEvent[]>([]);
 
-  public showColumn(): boolean {
-    return this.screenWidth > 1600;
-  }
+  championship_standings_users = signal<DriverDataWithGainedPoints[]>([]);
+  championshipTracks = signal<TrackData[]>([]);
+  championshipNextTracks = signal<TrackData[]>([]);
+  isLive = signal<boolean>(true);
+  constructors = signal<Constructor[]>([]);
+  showGainedPointsColumn = signal<boolean>(false);
+  driverOfWeek = signal<DriverOfWeek>({ driver_username: '', driver_id: 0, points: 0 });
+  constructorOfWeek = signal<ConstructorOfWeek>({ 
+    constructor_name: '', 
+    constructor_id: 0,
+    constructor_driver_1_id: 0, 
+    constructor_driver_2_id: 0, 
+    points: 0 
+  });
 
-  public championship_standings_users: DriverDataWithGainedPoints[] = [];
-  public championshipTracks: TrackData[] = [];
-  public championshipNextTracks: TrackData[] = [];
-  public isLive = true;
-  public constructors: Constructor[] = [];
-  public showGainedPointsColumn = false;
-  public driverOfWeek: DriverOfWeek = { driver_username: '', driver_id: 0, points: 0 };
-  public constructorOfWeek: ConstructorOfWeek = { constructor_name: '', 
-                                                  constructor_id: 0,
-                                                  constructor_driver_1_id: 0, 
-                                                  constructor_driver_2_id: 0, 
-                                                  points: 0 };
+  pilotModalVisible = signal<boolean>(false);
+  selectedPilot = signal<DriverData | null>(null);
+  selectedPilotPosition = signal<number>(0);
 
-  // Pilot modal
-  public pilotModalVisible = false;
-  public selectedPilot: DriverData | null = null;
-  public selectedPilotPosition = 0;
+  constructorModalVisible = signal<boolean>(false);
+  selectedConstructor = signal<Constructor | null>(null);
+  selectedConstructorPosition = signal<number>(0);
 
-  // Constructor modal
-  public constructorModalVisible = false;
-  public selectedConstructor: Constructor | null = null;
-  public selectedConstructorPosition = 0;
+  resoultModalVisible = signal<number>(0);
 
-  public allFlags: Record<string, string[]> = {
-    "Bahrain": cifBh,
-    "Arabia Saudita": cifSa,
-    "Australia": cifAu,
-    "Giappone": cifJp,
-    "Cina": cifCn,
-    "USA": cifUs,
-    "Monaco": cifMc,
-    "Canada": cifCa,
-    "Spagna": cifEs,
-    "Austria": cifAt,
-    "UK": cifGb,
-    "Ungheria": cifHu,
-    "Belgio": cifBe,
-    "Olanda": cifNl,
-    "Italia": cifIt,
-    "Azerbaijan": cifAz,
-    "Singapore": cifSg,
-    "Messico": cifMx,
-    "Brasile": cifBr,
-    "Qatar": cifQa,
-    "Emirati Arabi Uniti": cifAe,
-  };
+  private constructorMap = computed(() => {
+    const map = new Map<string, string>();
+    this.constructors().forEach(c => {
+      if (c.driver_1_username) map.set(c.driver_1_username, c.constructor_name);
+      if (c.driver_2_username) map.set(c.driver_2_username, c.constructor_name);
+    });
+    return map;
+  });
 
+  readonly allFlags = allFlags;
   public calendarIcon: string[] = cilCalendar;
   public mapIcon: string[] = cilMap;
   public fireIcon: string[] = cilFire;
 
-  // 0 = hidden, 1 = modal piloti, 2 = modal fanta
-  public resoultModalVisible = 0;
-  toggleResoultModalvisible(modal: number) {
-    this.resoultModalVisible = modal;
+  constructor() { 
+      this.screenWidth.set(window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth);
   }
 
-  public isLive$ = new BehaviorSubject<boolean>(false);
-  public streamTitle$ = new BehaviorSubject<string>('');
+  toggleResoultModalvisible(modal: number): void {
+    this.resoultModalVisible.set(modal);
+  }
 
-  ngOnInit(){
+  ngOnInit(): void {
+    this.initializeTwitchEmbed();
+    this.initializeDriversData();
+    this.initializeTracksAndCalendar();
+    this.initializeConstructorsData();
+    this.calculateNextTracks();
+    
+    const championshipTrend = this.getChampionshipTrend();
+    this.calculateDriverGainedPoints(championshipTrend);
+    this.calculateConstructorGainedPoints();
+    this.calculateDriverDeltaPoints();
+    this.calculateWeeklyBestPerformers(championshipTrend);
+  }
 
-    //richiesta dati al db
-    this.isLive = this.twitchApiService.isLive();
-    if (this.isLive) {
-          const currentHostname = window.location.hostname;
-          const twitchUrl = `https://player.twitch.tv/?channel=${this.twitchApiService.getChannel()}&parent=${currentHostname}&autoplay=false&muted=false&time=0s`;
-          this.twitchEmbedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(twitchUrl);
+  /**
+   * Initializes Twitch embed URL if stream is live
+   */
+  private initializeTwitchEmbed(): void {
+    this.isLive.set(this.twitchApiService.isLive());
+    if (this.isLive()) {
+      const currentHostname = window.location.hostname;
+      const twitchUrl = `https://player.twitch.tv/?channel=${this.twitchApiService.getChannel()}&parent=${currentHostname}&autoplay=false&muted=false&time=0s`;
+      this.twitchEmbedUrl.set(this.sanitizer.bypassSecurityTrustResourceUrl(twitchUrl));
     }
-    this.championship_standings_users = this.dbData.getAllDrivers().map(driver => ({
+  }
+
+  /**
+   * Initializes drivers data with gained points initialized to 0
+   */
+  private initializeDriversData(): void {
+    this.championship_standings_users.set(this.dbData.allDrivers().map(driver => ({
       ...driver,
       gainedPoints: 0
-    }));
-    const championshipTrend: CumulativePointsData[] = this.dbData.getCumulativePoints().sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-    this.championshipTracks = this.dbData.getAllTracks();
-    
-    // Map tracks to calendar events
-    this.calendarEvents = this.championshipTracks.map(track => {
+    })));
+  }
+
+  /**
+   * Gets championship trend data sorted by date
+   */
+  private getChampionshipTrend(): CumulativePointsData[] {
+    return this.dbData.cumulativePoints()
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  }
+
+  /**
+   * Initializes tracks data and maps them to calendar events
+   */
+  private initializeTracksAndCalendar(): void {
+    this.championshipTracks.set(this.dbData.tracks());
+    this.calendarEvents.set(this.mapTracksToCalendarEvents(this.championshipTracks()));
+  }
+
+  /**
+   * Maps track data to calendar event format
+   */
+  private mapTracksToCalendarEvents(tracks: TrackData[]): CalendarEvent[] {
+    return tracks.map(track => {
       let desc = `Paese: ${track.country}`;
-      if (track.has_sprint == 1) {desc += '\n• Sprint Race';}
-      if (track.has_x2 == 1) {desc += '\n• Punti Doppi (x2)';}
+      if (track.has_sprint === 1) {
+        desc += '\n• Sprint Race';
+      }
+      if (track.has_x2 === 1) {
+        desc += '\n• Punti Doppi (x2)';
+      }
       
       return {
         name: track.name,
-        date: track.date, // Assuming track.date is a string ISO or Date object
+        date: track.date,
         description: desc
       };
     });
+  }
 
-    this.constructors =  this.dbData.getConstructors();
-    // filter next championship track
-    let i = 0;
-    const currentDate: Date = new Date();
+  /**
+   * Initializes constructors data and calculates their points
+   */
+  private initializeConstructorsData(): void {
+    const allConstructors = this.dbData.constructors();
+    const updatedConstructors = this.constructorService.calculateConstructorPoints(
+      allConstructors, 
+      this.championship_standings_users()
+    );
+    this.constructors.set(updatedConstructors);
+  }
+
+  /**
+   * Filters and formats the next 2 upcoming championship tracks
+   */
+  private calculateNextTracks(): void {
+    const currentDate = new Date();
     currentDate.setHours(0, 0, 0, 0);
-    this.championshipNextTracks = this.championshipTracks 
+    
+    const nextTracks = this.championshipTracks()
       .map(track => {
         const dbDate = new Date(track.date);
         dbDate.setHours(0, 0, 0, 0);
@@ -213,114 +242,178 @@ export class DashboardComponent implements OnInit {
         ...track,
         date: track.dbDate.toLocaleDateString("it-CH")
       }));
+    
+    this.championshipNextTracks.set(nextTracks);
+  }
 
-    // Calculate delta points for the last 2 tracks
-    for (const user of this.championship_standings_users) {
-      const userTracks = championshipTrend.filter((track: CumulativePointsData) => track.driver_username === user.driver_username);
+  /**
+   * Calculates gained points for drivers over the last 2 tracks
+   */
+  private calculateDriverGainedPoints(championshipTrend: CumulativePointsData[]): void {
+    const users = this.championship_standings_users();
+    let hasGainedPoints = false;
+    
+    for (const user of users) {
+      const userTracks = championshipTrend.filter(
+        (track: CumulativePointsData) => track.driver_username === user.driver_username
+      );
+      
       if (userTracks.length > 2) {
         const lastPoints = userTracks[0].cumulative_points;
         const thirdToLastPoints = userTracks[2].cumulative_points;
         user.gainedPoints = lastPoints - thirdToLastPoints;
-        this.showGainedPointsColumn = true;
-      } else 
-        {user.gainedPoints = 0;}
-    }
-    
-    for (const constructor of this.constructors) {
-      constructor.constructor_race_points = 0;
-      for (const user of this.championship_standings_users) {
-        if ( user.driver_username == constructor.driver_1_username || user.driver_username == constructor.driver_2_username ) {
-          constructor.constructor_race_points += user.gainedPoints;
-        }
+        hasGainedPoints = true;
+      } else {
+        user.gainedPoints = 0;
       }
     }
-
-    //  delta points from the pilot above
-    for (let i = 1; i < this.championship_standings_users.length; i++) 
-      {this.championship_standings_users[i].deltaPoints = this.championship_standings_users[i - 1].total_points - this.championship_standings_users[i].total_points;}
     
-    if ( championshipTrend.length > 3 * this.championship_standings_users.length) {
-      // Get best driver and constructor of the week
-      const lastRacePoints = championshipTrend.slice(0,this.championship_standings_users.length);
-      const thirdLastRacePoints = championshipTrend.slice(2 * this.championship_standings_users.length,3 * this.championship_standings_users.length);
+    this.championship_standings_users.set([...users]);
+    this.showGainedPointsColumn.set(hasGainedPoints);
+  }
 
-      const constructorsOfWeekTmp: ConstructorOfWeek[] = [];
-      for (const constructor of this.constructors) {
-        constructorsOfWeekTmp.push({ constructor_name: constructor.constructor_name,
-                                      constructor_id: constructor.constructor_id,
-                                      constructor_driver_1_id: constructor.driver_1_id,
-                                      constructor_driver_2_id: constructor.driver_2_id,
-                                      points: 0 });
-      }
+  /**
+   * Calculates gained points for constructors
+   */
+  private calculateConstructorGainedPoints(): void {
+    const updatedConstructors = this.constructorService.calculateConstructorGainedPoints(
+      this.constructors(), 
+      this.championship_standings_users()
+    );
+    this.constructors.set(updatedConstructors);
+  }
+
+  /**
+   * Calculates delta points between consecutive drivers in standings
+   */
+  private calculateDriverDeltaPoints(): void {
+    const users = this.championship_standings_users();
+    
+    for (let i = 1; i < users.length; i++) {
+      users[i].deltaPoints = users[i - 1].total_points - users[i].total_points;
+    }
+    
+    this.championship_standings_users.set([...users]);
+  }
+
+  /**
+   * Calculates the best performing driver and constructor of the week
+   */
+  private calculateWeeklyBestPerformers(championshipTrend: CumulativePointsData[]): void {
+    const driversCount = this.championship_standings_users().length;
+    
+    if (championshipTrend.length <= 3 * driversCount) {
+      return;
+    }
+
+    const lastRacePoints = championshipTrend.slice(0, driversCount);
+    const thirdLastRacePoints = championshipTrend.slice(2 * driversCount, 3 * driversCount);
+
+    this.calculateDriverOfWeek(lastRacePoints, thirdLastRacePoints);
+    this.calculateConstructorOfWeek(lastRacePoints, thirdLastRacePoints);
+  }
+
+  /**
+   * Finds the driver with the most points gained in the last 2 races
+   */
+  private calculateDriverOfWeek(
+    lastRacePoints: CumulativePointsData[],
+    thirdLastRacePoints: CumulativePointsData[]
+  ): void {
+    let bestPoints = 0;
+    let bestDriver: DriverOfWeek = { driver_username: '', driver_id: 0, points: 0 };
+
+    for (let i = 0; i < lastRacePoints.length; i++) {
+      const currentPoints = Number(lastRacePoints[i].cumulative_points) - 
+                           Number(thirdLastRacePoints[i].cumulative_points);
       
-
-      let bestPoints = 0;
-      let currentPoints = 0;
-
-      for (i = 0; i < lastRacePoints.length; i++) {
-        currentPoints = Number(lastRacePoints[i].cumulative_points) - Number(thirdLastRacePoints[i].cumulative_points);
-        if ( currentPoints > bestPoints ) {
-          bestPoints = currentPoints;
-          this.driverOfWeek.driver_username = lastRacePoints[i].driver_username;
-          this.driverOfWeek.driver_id = lastRacePoints[i].driver_id;
-          this.driverOfWeek.points = currentPoints;
-        } 
-
-        constructorsOfWeekTmp.forEach(constructor => {
-          if (constructor.constructor_driver_1_id == lastRacePoints[i].driver_id || constructor.constructor_driver_2_id == lastRacePoints[i].driver_id)  {
-            constructor.points += currentPoints;
-          }
-          
-        });
+      if (currentPoints > bestPoints) {
+        bestPoints = currentPoints;
+        bestDriver = {
+          driver_username: lastRacePoints[i].driver_username,
+          driver_id: Number(lastRacePoints[i].driver_id),
+          points: currentPoints
+        };
       }
-      this.constructorOfWeek = constructorsOfWeekTmp.sort((a, b) => b.points - a.points)[0];
+    }
+    
+    this.driverOfWeek.set(bestDriver);
+  }
+
+  /**
+   * Finds the constructor with the most combined driver points in the last 2 races
+   */
+  private calculateConstructorOfWeek(
+    lastRacePoints: CumulativePointsData[],
+    thirdLastRacePoints: CumulativePointsData[]
+  ): void {
+    const constructorsOfWeek: ConstructorOfWeek[] = this.constructors().map(constructor => ({
+      constructor_name: constructor.constructor_name,
+      constructor_id: constructor.constructor_id,
+      constructor_driver_1_id: constructor.driver_1_id,
+      constructor_driver_2_id: constructor.driver_2_id,
+      points: 0
+    }));
+
+    for (let i = 0; i < lastRacePoints.length; i++) {
+      const currentPoints = Number(lastRacePoints[i].cumulative_points) - 
+                           Number(thirdLastRacePoints[i].cumulative_points);
+      
+      constructorsOfWeek.forEach(constructor => {
+        const driverId = Number(lastRacePoints[i].driver_id);
+        if (constructor.constructor_driver_1_id === driverId || 
+            constructor.constructor_driver_2_id === driverId) {
+          constructor.points += currentPoints;
+        }
+      });
     }
 
+    const sortedConstructors = constructorsOfWeek.sort((a, b) => b.points - a.points);
+    if (sortedConstructors.length > 0) {
+      this.constructorOfWeek.set(sortedConstructors[0]);
+    }
   }
 
   /**
    * Opens the pilot modal with the selected pilot data
    */
   openPilotModal(pilot: DriverData, position: number): void {
-    this.selectedPilot = pilot;
-    this.selectedPilotPosition = position;
-    this.pilotModalVisible = true;
+    this.selectedPilot.set(pilot);
+    this.selectedPilotPosition.set(position);
+    this.pilotModalVisible.set(true);
   }
 
   /**
    * Closes the pilot modal
    */
   closePilotModal(): void {
-    this.pilotModalVisible = false;
-    this.selectedPilot = null;
-    this.selectedPilotPosition = 0;
+    this.pilotModalVisible.set(false);
+    this.selectedPilot.set(null);
+    this.selectedPilotPosition.set(0);
   }
 
   /**
    * Opens the constructor modal with the selected constructor data
    */
   openConstructorModal(constructor: Constructor, position: number): void {
-    this.selectedConstructor = constructor;
-    this.selectedConstructorPosition = position;
-    this.constructorModalVisible = true;
+    this.selectedConstructor.set(constructor);
+    this.selectedConstructorPosition.set(position);
+    this.constructorModalVisible.set(true);
   }
 
   /**
    * Closes the constructor modal
    */
   closeConstructorModal(): void {
-    this.constructorModalVisible = false;
-    this.selectedConstructor = null;
-    this.selectedConstructorPosition = 0;
+    this.constructorModalVisible.set(false);
+    this.selectedConstructor.set(null);
+    this.selectedConstructorPosition.set(0);
   }
 
   /**
    * Get constructor name for a driver by matching username
    */
   getConstructorForDriver(driverUsername: string): string {
-    const constructor = this.constructors.find(
-      c => c.driver_1_username === driverUsername || c.driver_2_username === driverUsername
-    );
-    return constructor?.constructor_name || '';
+    return this.constructorMap().get(driverUsername) || '';
   }
 }

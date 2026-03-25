@@ -84,8 +84,8 @@ export class DashboardChartsData {
    * Load championship trend and track data from the database service.
    */
   private loadChartData(): void {
-    this.championshipTrend = this.dbData.getCumulativePoints();
-    this.championshipTracks = this.dbData.getAllTracks();
+    this.championshipTrend = this.dbData.cumulativePoints();
+    this.championshipTracks = this.dbData.tracks();
   }
 
   /**

@@ -8,6 +8,7 @@
 //
 //   beforeEach(async () => {
 //     await TestBed.configureTestingModule({
+//       providers: [provideNoopAnimations()],
 //       declarations: [ DocsExampleComponent ]
 //     })
 //     .compileComponents();

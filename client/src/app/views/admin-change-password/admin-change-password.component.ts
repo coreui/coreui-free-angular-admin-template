@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -10,7 +10,6 @@ import {
   CardBodyComponent,
   CardHeaderComponent,
   FormDirective,
-  FormLabelDirective,
   FormControlDirective,
   ButtonDirective,
   SpinnerComponent,
@@ -18,6 +17,7 @@ import {
 } from '@coreui/angular';
 import { IconDirective } from '@coreui/icons-angular';
 import { cilLockLocked, cilUser, cilCheckCircle, cilXCircle } from '@coreui/icons';
+import type { ChangePasswordResponse } from '@f123dashboard/shared';
 
 import { AuthService } from 'src/app/service/auth.service';
 import { ApiService } from 'src/app/service/api.service';
@@ -25,7 +25,6 @@ import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-admin-change-password',
-  standalone: true,
   imports: [
     CommonModule,
     FormsModule,
@@ -44,20 +43,22 @@ import { firstValueFrom } from 'rxjs';
     IconDirective
   ],
   templateUrl: './admin-change-password.component.html',
-  styleUrl: './admin-change-password.component.scss'
+  styleUrl: './admin-change-password.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminChangePasswordComponent implements OnInit {
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
   private router = inject(Router);
+  private apiService = inject(ApiService);
 
   changePasswordForm: FormGroup;
-  isLoading = false;
-  showSuccess = false;
-  showError = false;
-  errorMessage = '';
-  successMessage = '';
-  generatedPassword = '';
+  isLoading = signal(false);
+  showSuccess = signal(false);
+  showError = signal(false);
+  errorMessage = signal('');
+  successMessage = signal('');
+  generatedPassword = signal('');
 
   // No need for icons object, icons are available directly
   cilLockLocked = cilLockLocked;
@@ -73,7 +74,7 @@ export class AdminChangePasswordComponent implements OnInit {
 
   ngOnInit(): void {
     // Check if user is admin
-    const currentUser = this.authService.getCurrentUser();
+    const currentUser = this.authService.currentUser();
     if (!currentUser?.isAdmin) 
       {this.router.navigate(['/dashboard']);}
     
@@ -98,52 +99,51 @@ export class AdminChangePasswordComponent implements OnInit {
       return;
     }
 
-    this.isLoading = true;
-    this.showSuccess = false;
-    this.showError = false;
-    this.errorMessage = '';
-    this.successMessage = '';
-    this.generatedPassword = '';
+    this.isLoading.set(true);
+    this.showSuccess.set(false);
+    this.showError.set(false);
+    this.errorMessage.set('');
+    this.successMessage.set('');
+    this.generatedPassword.set('');
 
     try {
-      const token = this.authService.getAuthToken();
+      const token = this.authService.getToken();
       if (!token) {
-        this.showError = true;
-        this.errorMessage = 'Sessione scaduta. Effettua nuovamente il login.';
-        this.isLoading = false;
+        this.showError.set(true);
+        this.errorMessage.set('Sessione scaduta. Effettua nuovamente il login.');
+        this.isLoading.set(false);
         return;
       }
 
       const { username } = this.changePasswordForm.value;
       const newPassword = this.generateRandomPassword();
-      this.generatedPassword = newPassword;
+      this.generatedPassword.set(newPassword);
 
-      const apiService = inject(ApiService);
       const result = await firstValueFrom(
-        apiService.post<{ success: boolean; message: string }>('/auth/admin-change-password', {
+        this.apiService.post<ChangePasswordResponse>('/auth/admin-change-password', {
           userName: username,
           newPassword: newPassword,
           jwtToken: token
         })
       );
 
-      this.isLoading = false;
+      this.isLoading.set(false);
 
-      if (result) {
-        this.showSuccess = true;
-        this.successMessage = `Password modificata con successo per l'utente ${username}. L'utente dovrà effettuare nuovamente il login.`;
+      if (result.success) {
+        this.showSuccess.set(true);
+        this.successMessage.set(`Password modificata con successo per l'utente ${username}. L'utente dovrà effettuare nuovamente il login.`);
         this.changePasswordForm.reset();
       } else {
-        this.showError = true;
-        this.errorMessage = 'Impossibile modificare la password. Verifica che l\'utente esista e riprova.';
-        this.generatedPassword = '';
+        this.showError.set(true);
+        this.errorMessage.set('Impossibile modificare la password. Verifica che l\'utente esista e riprova.');
+        this.generatedPassword.set('');
       }
     } catch (error) {
       console.error('Error changing password:', error);
-      this.isLoading = false;
-      this.showError = true;
-      this.errorMessage = 'Si è verificato un errore durante la modifica della password. Riprova.';
-      this.generatedPassword = '';
+      this.isLoading.set(false);
+      this.showError.set(true);
+      this.errorMessage.set('Si è verificato un errore durante la modifica della password. Riprova.');
+      this.generatedPassword.set('');
     }
   }
 
@@ -173,10 +173,7 @@ export class AdminChangePasswordComponent implements OnInit {
   }
 
   copyToClipboard(text: string): void {
-    navigator.clipboard.writeText(text).then(() => {
-      // Could show a toast notification here if desired
-      console.log('Password copiata negli appunti');
-    }).catch(err => {
+    navigator.clipboard.writeText(text).catch(err => {
       console.error('Errore durante la copia:', err);
     });
   }

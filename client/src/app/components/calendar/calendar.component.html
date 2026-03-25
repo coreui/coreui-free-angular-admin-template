@@ -2,7 +2,7 @@
   <div class="card-header p-3">
     <div class="row align-items-center g-3">
       <div class="col-md-4">
-        <h5 class="mb-0 fw-bold">{{ title }}</h5>
+        <h5 class="mb-0 fw-bold">{{ title() }}</h5>
         <div class="text-muted small text-uppercase fw-bold">{{ currentLabel() }}</div>
       </div>
       
@@ -38,7 +38,7 @@
     <!-- Week View -->
     @if (view() === 'week') {
     <!-- Desktop Table View -->
-    @if (!compactView) {
+    @if (!compactView()) {
     <div class="table-responsive d-none d-md-block">
       <table class="table table-bordered mb-0 calendar-table week-view-table">
         <thead class="sticky-top text-center sticky-header">
@@ -90,7 +90,7 @@
     }
 
     <!-- Mobile List View -->
-    <div [class.d-md-none]="!compactView">
+    <div [class.d-md-none]="!compactView()">
       <div class="list-group list-group-flush">
         @for (day of weekDays(); track day.date) {
         <div class="list-group-item" [class.today-highlight]="day.isToday">
@@ -230,7 +230,7 @@
 <c-modal [visible]="eventModalVisible()" (visibleChange)="handleModalChange($event)" alignment="center">
   <c-modal-header>
     <h5 cModalTitle>{{ selectedEvent()?.name }}</h5>
-    <button (click)="handleModalChange(false)" cButtonClose></button>
+    <button (click)="handleModalChange(false)" cButtonClose aria-label="Close modal"></button>
   </c-modal-header>
   <c-modal-body>
     @if (selectedEvent()) {

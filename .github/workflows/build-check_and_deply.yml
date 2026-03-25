@@ -35,8 +35,14 @@ jobs:
       - name: Install npm dependencies
         run: npm install
 
+      - name: Build Shared Package
+        run: npm run build --prefix shared
+
       - name: Run Backend Tests
         run: npm run test --prefix server
+
+      - name: Run Angular Tests
+        run: npm run test --prefix client -- --watch=false --browsers=ChromeHeadless
 
       - name: Run build
         run: npm run build

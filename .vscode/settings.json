@@ -1,3 +1,6 @@
 {
-    "todo-tree.tree.showBadges": false
+    "todo-tree.tree.showBadges": false,
+    "chat.tools.terminal.autoApprove": {
+        "npm outdated": true
+    }
 }

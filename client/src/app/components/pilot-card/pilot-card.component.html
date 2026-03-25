@@ -1,63 +1,63 @@
-<c-card class="pilot-card text-center" [ngStyle]="{'border': '1px solid ' + pilota.driver_color}">
+<c-card class="pilot-card text-center" [ngStyle]="{'border': '1px solid ' + pilota().driver_color}">
   <c-card-body class="card-header">
     <c-card style="width: 100%;">
       <img 
         class="card-avatar" 
         [cCardImg]="'top'" 
-        src='./assets/images/avatars/{{pilota.driver_username}}.png' 
-        alt="{{ pilota.driver_username }}'s avatar" 
+        src='./assets/images/avatars/{{pilota().driver_username}}.png' 
+        alt="{{ pilota().driver_username }}'s avatar" 
       />
       <c-card-body>
-        <h5 cCardTitle [ngStyle]="{'color': pilota.driver_color}">{{ pilota.driver_username }}</h5>
-        <p cCardText>{{ pilota.driver_description }}</p>
+        <h5 cCardTitle [ngStyle]="{'color': pilota().driver_color}">{{ pilota().driver_username }}</h5>
+        <p cCardText>{{ pilota().driver_description }}</p>
       </c-card-body>
       <ul [flush]="true" cListGroup class="stats-list">
         <li cListGroupItem>
           <div class="row">
             <div class="col-7 border-end"><strong>Posizione:</strong></div>
-            <div class="col-5">{{ position }}°</div>
+            <div class="col-5">{{ position() }}°</div>
           </div>
         </li>
         <li cListGroupItem>
           <div class="row">
             <div class="col-7 border-end"><strong>Tot. points:</strong></div>
-            <div class="col-5">{{ pilota.total_points }} Pt.</div>
+            <div class="col-5">{{ pilota().total_points }} Pt.</div>
           </div>
         </li>
         <li cListGroupItem>
           <div class="row">
             <div class="col-7 border-end"><strong>Race:</strong></div>
-            <div class="col-5">{{ pilota.total_race_points }} Pt.</div>
+            <div class="col-5">{{ pilota().total_race_points }} Pt.</div>
           </div>
         </li>
         <li cListGroupItem>
           <div class="row">
             <div class="col-7 border-end"><strong>Full Race:</strong></div>
-            <div class="col-5">{{ pilota.total_full_race_points }} Pt.</div>
+            <div class="col-5">{{ pilota().total_full_race_points }} Pt.</div>
           </div>
         </li>
         <li cListGroupItem>
           <div class="row">
             <div class="col-7 border-end"><strong>Sprint:</strong></div>
-            <div class="col-5">{{ pilota.total_sprint_points }} Pt.</div>
+            <div class="col-5">{{ pilota().total_sprint_points }} Pt.</div>
           </div>
         </li>
         <li cListGroupItem>
           <div class="row">
             <div class="col-7 border-end"><strong>Qualify:</strong></div>
-            <div class="col-5">{{ pilota.total_qualifying_points }} Pt.</div>
+            <div class="col-5">{{ pilota().total_qualifying_points }} Pt.</div>
           </div>
         </li>
         <li cListGroupItem>
           <div class="row">
             <div class="col-7 border-end"><strong>Practice:</strong></div>
-            <div class="col-5">{{ pilota.total_free_practice_points }} Pt.</div>
+            <div class="col-5">{{ pilota().total_free_practice_points }} Pt.</div>
           </div>
         </li>
         <li cListGroupItem>
           <div class="row">
             <div class="col-7 border-end"><strong>License:</strong></div>
-            <div class="col-5">{{ pilota.driver_license_pt }} Pt.</div>
+            <div class="col-5">{{ pilota().driver_license_pt }} Pt.</div>
           </div>
         </li>
       </ul>
@@ -66,7 +66,7 @@
       <div class="radar-chart-container">
         <c-chart 
           type="radar" 
-          [data]="radarChartData" 
+          [data]="radarChartData()" 
           [options]="radarChartOptions">
         </c-chart>
       </div>

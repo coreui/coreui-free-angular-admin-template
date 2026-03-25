@@ -1,23 +1,23 @@
-@if (visible) {
+@if (visible()) {
   <div class="custom-backdrop"></div>
 }
 <c-modal
   #verticallyCenteredModal
   alignment="center"
   id="verticallyCenteredModal"
-  [backdrop]="isEmailCompletion ? 'static' : false"
+  [backdrop]="isEmailCompletion() ? 'static' : false"
   class="registration-modal"
-  [visible]="visible"
+  [visible]="visible()"
   (visibleChange)="handleVisibilityChange($event)"
 >
   <c-modal-header class="modal-header-custom">
     <h5 cModalTitle class="modal-title-custom">
-      {{ getModalTitle() }}
+      {{ modalTitle() }}
     </h5>
   </c-modal-header>
   <c-modal-body class="modal-body-custom">
     <!-- Email completion message -->
-    @if (isEmailCompletion) {
+    @if (isEmailCompletion()) {
       <c-alert color="info" class="mb-3">
         <strong>Profilo incompleto!</strong> Per accedere alle funzionalità complete dell'applicazione, è necessario fornire un indirizzo email valido.
       </c-alert>
@@ -25,10 +25,10 @@
     
     <form cForm (ngSubmit)="onRegistration()" class="registration-form">
       <!-- Hidden username field for accessibility -->
-      <input type="text" name="username" autocomplete="username" style="display: none;" [value]="regUsername" readonly>
+      <input type="text" name="username" autocomplete="username" style="display: none;" [value]="regUsername()" readonly>
       
       <c-container breakpoint="md" class="registration-container">
-        <c-row [gutter]="{ gy: 3 }">
+        <c-row [gutter]="gutterConfig">
           <c-col xs="12" md="6">
             <div cFormFloating class="input-floating">
               <input
@@ -36,7 +36,8 @@
                 class="registration-input"
                 type="text"
                 id="name"
-                [(ngModel)]="name"
+                [ngModel]="name()"
+                (ngModelChange)="name.set($event)"
                 name="name"
                 placeholder="Nome"
                 required
@@ -51,7 +52,8 @@
                 class="registration-input"
                 type="text"
                 id="surname"
-                [(ngModel)]="surname"
+                [ngModel]="surname()"
+                (ngModelChange)="surname.set($event)"
                 name="surname"
                 placeholder="Cognome"
                 required
@@ -61,7 +63,7 @@
           </c-col>
         </c-row>
         
-        <c-row [gutter]="{ gy: 3 }">
+        <c-row [gutter]="gutterConfig">
           <c-col xs="12">
             <div cFormFloating class="input-floating">
               <input
@@ -69,11 +71,13 @@
                 class="registration-input"
                 type="text"
                 id="regUsername"
-                [(ngModel)]="regUsername"
+                [ngModel]="regUsername()"
+                (ngModelChange)="regUsername.set($event)"
                 name="regUsername"
                 placeholder="Username"
-                [readonly]="mode === 'update'"
-                [class.readonly-input]="mode === 'update'"
+                autocomplete="username"
+                [readonly]="mode() === 'update'"
+                [class.readonly-input]="mode() === 'update'"
                 required
               />
               <label cLabel for="regUsername" class="input-label">Username</label>
@@ -81,7 +85,7 @@
           </c-col>
         </c-row>
         
-        <c-row [gutter]="{ gy: 3 }">
+        <c-row [gutter]="gutterConfig">
           <c-col xs="12">
             <div cFormFloating class="input-floating">
               <input
@@ -89,7 +93,8 @@
                 class="registration-input"
                 type="email"
                 id="email"
-                [(ngModel)]="email"
+                [ngModel]="email()"
+                (ngModelChange)="email.set($event)"
                 name="email"
                 placeholder="Email"
                 required
@@ -100,8 +105,8 @@
         </c-row>
         
         <!-- Password fields only shown in register mode -->
-        @if (mode === 'register') {
-          <c-row [gutter]="{ gy: 3 }">
+        @if (mode() === 'register') {
+          <c-row [gutter]="gutterConfig">
             <c-col xs="12" md="6">
               <div cFormFloating class="input-floating">
                 <input
@@ -111,7 +116,8 @@
                   type="password"
                   class="registration-input"
                   autocomplete="new-password"
-                  [(ngModel)]="regPassword"
+                  [ngModel]="regPassword()"
+                  (ngModelChange)="regPassword.set($event)"
                   name="regPassword"
                   required
                 />
@@ -127,7 +133,8 @@
                   type="password"
                   class="registration-input"
                   autocomplete="new-password"
-                  [(ngModel)]="confirmPassword"
+                  [ngModel]="confirmPassword()"
+                  (ngModelChange)="confirmPassword.set($event)"
                   name="confirmPassword"
                   required
                 />
@@ -137,7 +144,7 @@
           </c-row>
         }
         
-        <c-row [gutter]="{ gy: 3 }">
+        <c-row [gutter]="gutterConfig">
           <c-col xs="12">
             <div class="file-input-group">
               <label cLabel for="profileImage" class="file-label">
@@ -156,13 +163,13 @@
                 (change)="onFileSelected($event)"
                 name="profileImage"
               />
-              @if (selectedFile) {
+              @if (selectedFile()) {
                 <div class="file-selected">
                   <div class="image-preview-container">
-                    <img [src]="imagePreviewUrl" alt="Profile preview" class="image-preview" />
+                    <img [src]="imagePreviewUrl()" alt="Profile preview" class="image-preview" />
                   </div>
                   <div class="file-info">
-                    <span class="file-name">{{ selectedFile.name }}</span>
+                    <span class="file-name">{{ selectedFile()!.name }}</span>
                     <button type="button" class="remove-file" (click)="removeSelectedFile()">×</button>
                   </div>
                 </div>
@@ -171,21 +178,21 @@
           </c-col>
         </c-row>
 
-        @if (singInErrorMessage) {
+        @if (singInErrorMessage()) {
           <div class="error-message">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" class="error-icon">
               <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
             </svg>
-            {{ singInErrorMessage }}
+            {{ singInErrorMessage() }}
           </div>
         }
         
-        @if (successMessage) {
+        @if (successMessage()) {
           <div class="success-message">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" class="success-icon">
               <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.061L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
             </svg>
-            {{ successMessage }}
+            {{ successMessage() }}
           </div>
         }
         
@@ -197,7 +204,7 @@
             variant="outline"
             type="button"
             (click)="close()"
-            [disabled]="isLoading"
+            [disabled]="isLoading()"
           >
             Chiudi
           </button>
@@ -206,12 +213,12 @@
             class="registration-button"
             color="primary"
             type="submit"
-            [disabled]="isLoading"
+            [disabled]="isLoading()"
           >
-            @if (isLoading) {
+            @if (isLoading()) {
               <c-spinner aria-hidden="true" size="sm" class="me-2"></c-spinner>
             }
-            {{ mode === 'register' ? 'Registrati' : 'Aggiorna Profilo' }}
+            {{ mode() === 'register' ? 'Registrati' : 'Aggiorna Profilo' }}
           </button>
         </div>
       </c-container>

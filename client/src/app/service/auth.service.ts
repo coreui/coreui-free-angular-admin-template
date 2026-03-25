@@ -1,11 +1,12 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, firstValueFrom } from 'rxjs';
+import { firstValueFrom } from 'rxjs';
 import type { 
   AuthResponse,
   ChangePasswordRequest,
   ChangePasswordResponse,
   LoginRequest,
+  LogoutResponse,
   RefreshTokenResponse,
   RegisterRequest,
   SessionsResponse,
@@ -15,6 +16,8 @@ import type {
 } from '@f123dashboard/shared';
 import { ApiService } from './api.service';
 import { ConfigService } from './config.service';
+import { CookieService } from './cookie.service';
+import { AUTH_CONSTANTS } from './auth.constants';
 @Injectable({
   providedIn: 'root'
 })
@@ -22,13 +25,14 @@ export class AuthService {
   private router = inject(Router);
   private apiService = inject(ApiService);
   private configService = inject(ConfigService);
+  private cookieService = inject(CookieService);
 
-  private currentUserSubject = new BehaviorSubject<User | null>(null);
-  private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
-  private tokenRefreshTimer: any;
+  private currentUserSignal = signal<User | null>(null);
+  private isAuthenticatedSignal = signal<boolean>(false);
+  private tokenRefreshTimer: ReturnType<typeof setTimeout> | undefined;
 
-  public currentUser$ = this.currentUserSubject.asObservable();
-  public isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
+  public currentUser = this.currentUserSignal.asReadonly();
+  public isAuthenticated = this.isAuthenticatedSignal.asReadonly();
 
   constructor() {
     this.initializeAuth();
@@ -42,29 +46,32 @@ export class AuthService {
 
   private initializeAuth(): void {
     const token = this.getToken();
-    const storedUser = sessionStorage.getItem('user');
+    const storedUser = sessionStorage.getItem(AUTH_CONSTANTS.STORAGE_KEYS.USER);
     
-    if (storedUser) 
-      {try {
-        const user = JSON.parse(storedUser);
-        this.setAuthenticatedUser(user);
-      } catch (error) {
-        console.error('Error parsing stored user data:', error);
-      }}
+    if (storedUser === null) {
+      return;
+    }
+    try {
+      const user = JSON.parse(storedUser) as User;
+      this.currentUserSignal.set(user);
+      const hasEmail = !!(user.mail && user.mail.trim() !== '');
+      this.isAuthenticatedSignal.set(hasEmail);
+    } catch (error) {
+      console.error('Error parsing stored user data:', error);
+    }
     
     
-    if (token) 
-      {this.validateTokenAndSetUser(token);}
-    
+    if (token) {
+      this.validateTokenAndSetUser();
+    }
   }
 
-  private async validateTokenAndSetUser(token: string): Promise<void> {
+  private async validateTokenAndSetUser(): Promise<void> {
     try {
       const validation = await firstValueFrom(
         this.apiService.post<TokenValidationResponse>('/auth/validate', {})
       );
       if (validation.valid && validation.userId && validation.username && validation.name && validation.surname) {
-        // Get full user data (you might want to create a separate method for this)
         const userData: User = {
           id: validation.userId,
           username: validation.username,
@@ -77,9 +84,9 @@ export class AuthService {
         
         this.setAuthenticatedUser(userData);
         this.scheduleTokenRefresh();
-      } else 
-        {this.clearAuth();}
-      
+      } else {
+        this.clearAuth();
+      }
     } catch (error) {
       console.error('Token validation error:', error);
       this.clearAuth();
@@ -97,18 +104,15 @@ export class AuthService {
       if (response.success && response.user && response.token) {
         this.setToken(response.token);
         this.scheduleTokenRefresh();
-        if (response.user.mail && response.user.mail.trim() !== '') 
-          {this.setAuthenticatedUser(response.user);}
+        if (response.user.mail && response.user.mail.trim() !== '') {
+          this.setAuthenticatedUser(response.user);
+        }
         
-
-        
-        // Navigate to fanta or admin page only if navigation is not skipped
         if (!skipNavigation) {
           const returnUrl = response.user.isAdmin ? '/admin' : '/fanta';
           this.router.navigate([returnUrl]);
         }
       }
-      
       return response;
     } catch (error) {
       console.error('Login error:', error);
@@ -121,8 +125,6 @@ export class AuthService {
 
   async register(registerData: RegisterRequest): Promise<AuthResponse> {
     try {
-      // Prepare the request body for the HTTP endpoint
-
       const response = await firstValueFrom(
         this.apiService.post<AuthResponse>('/auth/register', registerData)
       );
@@ -137,16 +139,19 @@ export class AuthService {
       }
       
       return response;
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Registration error:', error);
       
       // Handle HTTP error responses
-      if (error.error && error.error.message) 
-        {return {
-          success: false,
-          message: error.error.message
-        };}
-      
+      if (error && typeof error === 'object' && 'error' in error) {
+        const httpError = error as { error?: { message?: string } };
+        if (httpError.error?.message) {
+          return {
+            success: false,
+            message: httpError.error.message
+          };
+        }
+      }
       
       return {
         success: false,
@@ -155,14 +160,15 @@ export class AuthService {
     }
   }
 
-  async changePassword(currentPassword: string, newPassword: string): Promise<{ success: boolean; message: string }> {
+  async changePassword(currentPassword: string, newPassword: string): Promise<ChangePasswordResponse> {
     try {
       const token = this.getToken();
-      if (!token) 
-        {return {
+      if (!token) {
+        return {
           success: false,
           message: 'Token di autenticazione non trovato'
-        };}
+        };
+      }
       
       const changeData: ChangePasswordRequest = {
         currentPassword,
@@ -185,34 +191,30 @@ export class AuthService {
 
   async updateUserInfo(updateData: UpdateUserInfoRequest): Promise<AuthResponse> {
     try {
-      const token = this.getToken();
-      if (!token) 
-        {return {
-          success: false,
-          message: 'Token di autenticazione non trovato'
-        };}
-      
-      updateData.jwt = token;
-    
+
       const response = await firstValueFrom(
         this.apiService.post<AuthResponse>('/auth/update-user-info', updateData)
       );
 
-      if (response.success && response.user) 
-        // Update the current user data in the service
-        {this.setAuthenticatedUser(response.user);}
-      
+      // Update the current user data in the service
+      if (response.success && response.user) {
+        this.setAuthenticatedUser(response.user);
+      }
       
       return response;
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Update user info error:', error);
       
       // Handle HTTP error responses
-      if (error.error && error.error.message) 
-        {return {
-          success: false,
-          message: error.error.message
-        };}
+      if (error && typeof error === 'object' && 'error' in error) {
+        const httpError = error as { error?: { message?: string } };
+        if (httpError.error?.message) {
+          return {
+            success: false,
+            message: httpError.error.message
+          };
+        }
+      }
       
       return {
         success: false,
@@ -224,9 +226,9 @@ export class AuthService {
   async refreshToken(): Promise<boolean> {
     try {
       const currentToken = this.getToken();
-      if (!currentToken) 
-        {return false;}
-      
+      if (!currentToken) {
+        return false;
+      }
 
       const clientInfo = this.getClientInfo();
       const response = await firstValueFrom(
@@ -252,118 +254,96 @@ export class AuthService {
   async logout(): Promise<void> {
     try {
       const token = this.getToken();
-      if (token) 
-        // Call backend to invalidate session
-        {try {
-          await firstValueFrom(
-            this.apiService.post('/auth/logout', {})
-          );
-        } catch (methodError) {
-          console.warn('Backend logout error:', methodError);
-        }}
-      
+      // Call backend to invalidate session
+      if (token) {
+        await firstValueFrom(
+          this.apiService.post('/auth/logout', {})
+        );
+      }
     } catch (error) {
-      console.error('Logout error:', error);
+      console.warn('Backend logout error:', error);
     } finally {
       // Always clear local auth state
       this.clearAuth();
-      this.router.navigate(['/login']);
+      // Use setTimeout to avoid ExpressionChangedAfterItHasBeenCheckedError
+      setTimeout(() => {
+        this.router.navigate(['/login']);
+      }, 0);
     }
   }
 
   private setAuthenticatedUser(user: User): void {
-    this.currentUserSubject.next(user);
+    this.currentUserSignal.set(user);
     
     // Only set as authenticated if user has email
     const hasEmail = !!(user.mail && user.mail.trim() !== '');
-    this.isAuthenticatedSubject.next(hasEmail);
+    this.isAuthenticatedSignal.set(hasEmail);
     
     // Store user data in session storage for persistence
-    sessionStorage.setItem('user', JSON.stringify(user));
-    sessionStorage.setItem('isLoggedIn', hasEmail ? 'true' : 'false');
+    sessionStorage.setItem(AUTH_CONSTANTS.STORAGE_KEYS.USER, JSON.stringify(user));
+    sessionStorage.setItem(AUTH_CONSTANTS.STORAGE_KEYS.IS_LOGGED_IN, hasEmail ? 'true' : 'false');
   }
 
   // Method to mark user as fully authenticated after email completion
   public markUserAsAuthenticated(): void {
-    const currentUser = this.currentUserSubject.value;
+    const currentUser = this.currentUserSignal();
     if (currentUser && currentUser.mail && currentUser.mail.trim() !== '') {
-      this.isAuthenticatedSubject.next(true);
-      sessionStorage.setItem('isLoggedIn', 'true');
+      this.isAuthenticatedSignal.set(true);
+      sessionStorage.setItem(AUTH_CONSTANTS.STORAGE_KEYS.IS_LOGGED_IN, 'true');
     }
   }
 
   private clearAuth(): void {
-    this.currentUserSubject.next(null);
-    this.isAuthenticatedSubject.next(false);
+    this.currentUserSignal.set(null);
+    this.isAuthenticatedSignal.set(false);
     
     // Clear stored data
-    sessionStorage.removeItem('authToken');
-    sessionStorage.removeItem('user');
-    sessionStorage.removeItem('isLoggedIn');
+    this.cookieService.deleteCookie(AUTH_CONSTANTS.COOKIE_NAME, AUTH_CONSTANTS.COOKIE_PATH);
+    sessionStorage.removeItem(AUTH_CONSTANTS.STORAGE_KEYS.USER);
+    sessionStorage.removeItem(AUTH_CONSTANTS.STORAGE_KEYS.IS_LOGGED_IN);
     
     // Clear token refresh timer
-    if (this.tokenRefreshTimer) 
-      {clearTimeout(this.tokenRefreshTimer);}
-    
+    if (this.tokenRefreshTimer) {
+      clearTimeout(this.tokenRefreshTimer);
+    }
   }
 
   private setToken(token: string): void {
-    // Set JWT in cookie (expires in 7 days, Secure, SameSite=Strict)
-    document.cookie = `authToken=${token}; path=/; max-age=${7 * 24 * 60 * 60}; Secure; SameSite=Strict`;
+    this.cookieService.setCookie(AUTH_CONSTANTS.COOKIE_NAME, token, {
+      maxAge: AUTH_CONSTANTS.COOKIE_MAX_AGE,
+      path: AUTH_CONSTANTS.COOKIE_PATH,
+      secure: true,
+      sameSite: 'Strict'
+    });
   }
 
   public getToken(): string | null {
-    // Read JWT from cookie
-    const match = document.cookie.match(/(^|;) ?authToken=([^;]*)(;|$)/);
-    return match ? match[2] : null;
+    return this.cookieService.getCookie(AUTH_CONSTANTS.COOKIE_NAME);
   }
 
   private scheduleTokenRefresh(): void {
     // Clear existing timer
-    if (this.tokenRefreshTimer) 
-      {clearTimeout(this.tokenRefreshTimer);}
-    
+    if (this.tokenRefreshTimer) {
+      clearTimeout(this.tokenRefreshTimer);
+    }
 
     // Schedule refresh using configured time before expiry
     this.tokenRefreshTimer = setTimeout(() => {
       this.refreshToken().then(success => {
-        if (!success) 
-          {this.logout();}
-        
+        if (!success) {
+          this.logout();
+        }
       });
     }, this.configService.tokenRefreshTimeBeforeExpiry);
-  }
-
-  // Getters for backwards compatibility
-  getLoggedUser(): string | null {
-    const user = this.currentUserSubject.value;
-    return user ? user.username : null;
-  }
-
-  getCurrentUser(): User | null {
-    return this.currentUserSubject.value;
-  }
-
-  getCurrentUserId(): number | null {
-    const user = this.currentUserSubject.value;
-    return user ? user.id : null;
-  }
-
-  isLoggedIn(): boolean {
-    return this.isAuthenticatedSubject.value;
-  }
-
-  getAuthToken(): string | null {
-    return this.getToken();
   }
 
   // Session management methods
   async getUserSessions(): Promise<SessionsResponse> {
     try {
       const token = this.getToken();
-      if (!token) 
-        {return { success: false, message: 'Token di autenticazione non trovato' };}
-      
+      if (!token) {
+        return { success: false, message: 'Token di autenticazione non trovato' };
+      }
 
       const response = await firstValueFrom(
         this.apiService.get<SessionsResponse>('/auth/sessions')
@@ -375,21 +355,24 @@ export class AuthService {
     }
   }
 
-  async logoutAllSessions(): Promise<{ success: boolean; message: string }> {
+  async logoutAllSessions(): Promise<LogoutResponse> {
     try {
       const token = this.getToken();
-      if (!token) 
-        {return { success: false, message: 'Token di autenticazione non trovato' };}
-      
+      if (!token) {
+        return { success: false, message: 'Token di autenticazione non trovato' };
+      }
 
       const response = await firstValueFrom(
-        this.apiService.post<{ success: boolean; message: string }>('/auth/logout-all-sessions', {})
+        this.apiService.post<LogoutResponse>('/auth/logout-all-sessions', {})
       );
       
       if (response.success) {
         // Clear local auth state since all sessions are logged out
         this.clearAuth();
-        this.router.navigate(['/login']);
+        // Use setTimeout to avoid ExpressionChangedAfterItHasBeenCheckedError
+        setTimeout(() => {
+          this.router.navigate(['/login']);
+        }, 0);
       }
       
       return response;
@@ -399,43 +382,14 @@ export class AuthService {
     }
   }
 
-  // Helper method to get device/session info for display
-  getDeviceInfo(): string {
-    const userAgent = navigator.userAgent;
-    let deviceInfo = 'Unknown Device';
-
-    if (userAgent.includes('Windows')) 
-      {deviceInfo = 'Windows Device';}
-     else if (userAgent.includes('Mac')) 
-      {deviceInfo = 'Mac Device';}
-     else if (userAgent.includes('Linux')) 
-      {deviceInfo = 'Linux Device';}
-     else if (userAgent.includes('Android')) 
-      {deviceInfo = 'Android Device';}
-     else if (userAgent.includes('iPhone') || userAgent.includes('iPad')) 
-      {deviceInfo = 'iOS Device';}
-    
-
-    // Add browser info
-    if (userAgent.includes('Chrome')) 
-      {deviceInfo += ' (Chrome)';}
-     else if (userAgent.includes('Firefox')) 
-      {deviceInfo += ' (Firefox)';}
-     else if (userAgent.includes('Safari')) 
-      {deviceInfo += ' (Safari)';}
-     else if (userAgent.includes('Edge')) 
-      {deviceInfo += ' (Edge)';}
-    
-
-    return deviceInfo;
-  }
 
   // Helper method to validate password strength
   isPasswordStrong(password: string): boolean {
     const hasUpperCase = /[A-Z]/.test(password);
     const hasLowerCase = /[a-z]/.test(password);
+    const hasMinLength = password.length >= 8;
     const hasNumbers = /\d/.test(password);
 
-    return hasUpperCase && hasLowerCase && hasNumbers;
+    return hasUpperCase && hasLowerCase && hasNumbers && hasMinLength;
   }
 }

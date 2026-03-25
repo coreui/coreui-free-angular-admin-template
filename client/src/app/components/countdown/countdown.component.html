@@ -1,5 +1,5 @@
 
-@if (targetDate) {
+@if (targetDate()) {
   <c-card class="my-3 mx-sm-2 mx-1" [ngStyle]="{'max-width.px': 540, 'background-color': '#0E8F5F', 'color': 'white'}">
         <c-card-body style="margin: -15px;" >
               <div class="d-flex text-center">
@@ -10,22 +10,22 @@
                   </div>
                   <!-- DAYS -->
                   <div class="mx-sm-2 mx-1 mt-1">
-                      <div class="display-4 font-weight-bold">{{ timeRemaining.days | number: '2.0' }}</div>
+                      <div class="display-4 font-weight-bold">{{ timeRemaining().days | number: '2.0' }}</div>
                       <small>GG</small>
                   </div>
                   <!-- HRS -->
                   <div class="mx-sm-2 mx-1 mt-1">
-                      <div class="display-4 font-weight-bold">{{ timeRemaining.hours | number: '2.0' }}</div>
+                      <div class="display-4 font-weight-bold">{{ timeRemaining().hours | number: '2.0' }}</div>
                       <small>ORE</small>
                   </div>
                   <!-- MINS -->
                   <div class="mx-sm-2 mx-1 mt-1">
-                      <div class="display-4 font-weight-bold">{{ timeRemaining.minutes | number: '2.0' }}</div>
+                      <div class="display-4 font-weight-bold">{{ timeRemaining().minutes | number: '2.0' }}</div>
                       <small>MIN</small>
                   </div>
                   <!-- SECS -->
                   <div class="mx-sm-2 mx-1 mt-1">
-                      <div class="display-4 font-weight-bold">{{ timeRemaining.seconds | number: '2.0' }}</div>
+                      <div class="display-4 font-weight-bold">{{ timeRemaining().seconds | number: '2.0' }}</div>
                       <small>SEC</small>
                   </div>
               </div>

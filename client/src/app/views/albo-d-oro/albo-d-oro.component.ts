@@ -43,7 +43,6 @@ const FANTA_CLASSIFICA_DATA: ClassificaEntry[] = [
 
 @Component({
   selector: 'app-albo-d-oro',
-  standalone: true,
   imports: [CommonModule, PodiumCardComponent, GridModule, CardModule, TableModule],
   templateUrl: './albo-d-oro.component.html',
   styleUrls: ['./albo-d-oro.component.scss']

@@ -116,7 +116,7 @@ export class AuthController {
   async adminChangePassword(req: Request, res: Response): Promise<void> {
     try {
       const result = await authService.adminChangePassword(req.body);
-      res.json({ success: result });
+      res.json(result);
     } catch (error) {
       logger.error('Error in admin change password:', error);
       res.status(500).json({
@@ -128,9 +128,8 @@ export class AuthController {
 
   async refreshToken(req: Request, res: Response): Promise<void> {
     try {
-      const { oldJwtToken } = req.body;
       const userAgent = req.headers['user-agent'];
-      const result = await authService.refreshToken(oldJwtToken, userAgent);
+      const result = await authService.refreshToken(req.user!.jwtToken, userAgent);
       
       if (result.success) {
         res.json(result);
@@ -148,8 +147,7 @@ export class AuthController {
 
   async logout(req: Request, res: Response): Promise<void> {
     try {
-      const { jwtToken } = req.body;
-      const result = await authService.logout(jwtToken);
+      const result = await authService.logout(req.user!.jwtToken);
       res.json(result);
     } catch (error) {
       logger.error('Error during logout:', error);
@@ -162,8 +160,7 @@ export class AuthController {
 
   async logoutAllSessions(req: Request, res: Response): Promise<void> {
     try {
-      const { jwtToken } = req.body;
-      const result = await authService.logoutAllSessions(jwtToken);
+      const result = await authService.logoutAllSessions(req.user!.jwtToken);
       res.json(result);
     } catch (error) {
       logger.error('Error logging out all sessions:', error);
@@ -176,8 +173,7 @@ export class AuthController {
 
   async getUserSessions(req: Request, res: Response): Promise<void> {
     try {
-      const { jwtToken } = req.body;
-      const result = await authService.getUserSessions(jwtToken);
+      const result = await authService.getUserSessions(req.user!.jwtToken);
       
       if (result.success) {
         res.json(result);
@@ -195,7 +191,7 @@ export class AuthController {
 
   async updateUserInfo(req: Request, res: Response): Promise<void> {
     try {
-      const result = await authService.updateUserInfo(req.body);
+      const result = await authService.updateUserInfo(req.body, req.user!.jwtToken);
       
       if (result.success) {
         res.json(result);

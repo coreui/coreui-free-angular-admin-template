@@ -9,6 +9,7 @@ declare global {
         userId: number;
         username: string;
         isAdmin?: boolean;
+        jwtToken: string;
       };
     }
   }
@@ -56,7 +57,8 @@ try {
         req.user = {
             userId: decoded.userId,
             username: decoded.username,
-            isAdmin: decoded.isAdmin
+            isAdmin: decoded.isAdmin,
+            jwtToken: token
         };
         next();
     } catch (error) {

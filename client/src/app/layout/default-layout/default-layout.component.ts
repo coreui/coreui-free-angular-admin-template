@@ -1,8 +1,7 @@
-import { Component, OnInit, OnDestroy, inject } from '@angular/core';
+import { Component, inject, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { NgScrollbar } from 'ngx-scrollbar';
-import { Subscription } from 'rxjs';
 
 import {
   ContainerComponent,
@@ -20,13 +19,6 @@ import { DefaultFooterComponent, DefaultHeaderComponent } from './';
 import { getNavItems } from './_nav';
 import { LoadingSpinnerComponent } from '../../../components/loading-spinner/loading-spinner.component';
 import { AuthService } from './../../service/auth.service';
-
-function isOverflown(element: HTMLElement) {
-  return (
-    element.scrollHeight > element.clientHeight ||
-    element.scrollWidth > element.clientWidth
-  );
-}
 
 @Component({
     selector: 'app-dashboard',
@@ -51,32 +43,11 @@ function isOverflown(element: HTMLElement) {
         LoadingSpinnerComponent
     ]
 })
-export class DefaultLayoutComponent implements OnInit, OnDestroy {
+export class DefaultLayoutComponent {
   private authService = inject(AuthService);
 
-  private userSubscription?: Subscription;
-
-  public navItems = getNavItems(false);
-
-  ngOnInit(): void {
-    // Subscribe to user changes to update navigation
-    this.userSubscription = this.authService.currentUser$.subscribe(user => {
-      this.navItems = getNavItems(user?.isAdmin ?? false);
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.userSubscription?.unsubscribe();
-  }
-  
-  onScrollbarUpdate($event: any) {
-    // if ($event.verticalUsed) {
-    // console.log('verticalUsed', $event.verticalUsed);
-    // }
-  }
-
-  updateNavItems()
-  {
-    this.navItems = getNavItems(this.authService.getCurrentUser()?.isAdmin ?? false);
-  }
+  // Use computed to reactively update navigation based on user
+  public navItems = computed(() => 
+    getNavItems(this.authService.currentUser()?.isAdmin ?? false)
+  );
 }

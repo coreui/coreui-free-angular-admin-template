@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideNoopAnimations } from '@angular/platform-browser/animations';
+import { signal } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AdminChangePasswordComponent } from './admin-change-password.component';
@@ -11,13 +13,12 @@ describe('AdminChangePasswordComponent', () => {
   let mockRouter: jasmine.SpyObj<Router>;
 
   beforeEach(async () => {
-    mockAuthService = jasmine.createSpyObj('AuthService', ['getCurrentUser', 'getAuthToken']);
+    mockAuthService = jasmine.createSpyObj('AuthService', ['getToken'], { currentUser: signal({ id: 1, username: 'test', name: 'Test', surname: 'User', isAdmin: false }) });
     mockRouter = jasmine.createSpyObj('Router', ['navigate']);
 
     await TestBed.configureTestingModule({
       imports: [AdminChangePasswordComponent, ReactiveFormsModule],
-      providers: [
-        { provide: AuthService, useValue: mockAuthService },
+      providers: [provideNoopAnimations(), { provide: AuthService, useValue: mockAuthService },
         { provide: Router, useValue: mockRouter }
       ]
     })
@@ -31,26 +32,39 @@ describe('AdminChangePasswordComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should redirect non-admin users', () => {
-    mockAuthService.getCurrentUser.and.returnValue({ id: 1, username: 'test', name: 'Test', surname: 'User', isAdmin: false });
-    fixture.detectChanges();
-    expect(mockRouter.navigate).toHaveBeenCalledWith(['/dashboard']);
+  it('should redirect non-admin users', async () => {
+    TestBed.resetTestingModule();
+    const nonAdminAuthService = jasmine.createSpyObj('AuthService', ['getToken'], { currentUser: signal({ id: 1, username: 'test', name: 'Test', surname: 'User', isAdmin: false }) });
+    const testRouter = jasmine.createSpyObj('Router', ['navigate']);
+    
+    await TestBed.configureTestingModule({
+      imports: [AdminChangePasswordComponent, ReactiveFormsModule],
+      providers: [
+        provideNoopAnimations(),
+        { provide: AuthService, useValue: nonAdminAuthService },
+        { provide: Router, useValue: testRouter }
+      ]
+    }).compileComponents();
+    
+    const testFixture = TestBed.createComponent(AdminChangePasswordComponent);
+    testFixture.detectChanges();
+    await testFixture.whenStable();
+    expect(testRouter.navigate).toHaveBeenCalledWith(['/dashboard']);
   });
 
   it('should initialize form with empty values', () => {
+    fixture.detectChanges();
     expect(component.changePasswordForm.get('username')?.value).toBe('');
-    expect(component.changePasswordForm.get('newPassword')?.value).toBe('');
-    expect(component.changePasswordForm.get('confirmPassword')?.value).toBe('');
   });
 
-  it('should validate password match', () => {
+  it('should validate username is required', () => {
+    fixture.detectChanges();
     const form = component.changePasswordForm;
-    form.patchValue({
-      username: 'testuser',
-      newPassword: 'Password123',
-      confirmPassword: 'Password456'
-    });
+    const usernameControl = form.get('username');
     
-    expect(form.get('confirmPassword')?.hasError('passwordMismatch')).toBeTruthy();
+    expect(usernameControl?.hasError('required')).toBeTruthy();
+    
+    usernameControl?.setValue('user');
+    expect(usernameControl?.hasError('required')).toBeFalsy();
   });
 });

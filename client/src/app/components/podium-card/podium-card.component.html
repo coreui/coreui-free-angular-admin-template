@@ -1,12 +1,12 @@
 <c-card class="albo-container">
   <!-- Header -->
   <header class="albo-header">
-    <h1>{{ championshipTitle }}</h1>
+    <h1>{{ championshipTitle() }}</h1>
   </header>
 
   <!-- Podio -->
   <section class="podio">
-    @for (pilota of podio; track pilota.posizione) {
+    @for (pilota of podio(); track pilota.posizione) {
       <div
         class="podio-card"
       [class.first]="pilota.posizione === 1"
@@ -43,7 +43,7 @@
           class="mb-0 border"
         >
         <tbody>
-          @for (p of classifica; track p.posizione) {
+          @for (p of classifica(); track p.posizione) {
             <tr>
               <td class="pos">{{ p.posizione }}</td>
               <td class="nome-table">{{ p.nome }}</td>

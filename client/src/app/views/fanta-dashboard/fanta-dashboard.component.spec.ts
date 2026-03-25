@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideNoopAnimations } from '@angular/platform-browser/animations';
 
 import { FantaDashboardComponent } from './fanta-dashboard.component';
 
@@ -8,6 +9,7 @@ describe('FantaDashboardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      providers: [provideNoopAnimations(), ],
       imports: [FantaDashboardComponent]
     })
     .compileComponents();

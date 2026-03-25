@@ -1,4 +1,11 @@
 // Auth types
+
+// Base response type for all API responses
+export type BaseResponse = {
+  success: boolean;
+  message?: string;
+}
+
 export type User = {
   id: number;
   username: string;
@@ -15,9 +22,7 @@ export type LoginRequest = {
   userAgent?: string;
 }
 
-export type AuthResponse = {
-  success: boolean;
-  message: string;
+export type AuthResponse = BaseResponse & {
   user?: User;
   token?: string;
 }
@@ -34,10 +39,7 @@ export type AdminChangePasswordRequest = {
   jwtToken: string;
 }
 
-export type ChangePasswordResponse = {
-  success: boolean;
-  message: string;
-}
+export type ChangePasswordResponse = BaseResponse;
 
 export type UserSession = {
   sessionToken: string;
@@ -48,9 +50,7 @@ export type UserSession = {
   isCurrent: boolean;
 }
 
-export type SessionsResponse = {
-  success: boolean;
-  message?: string;
+export type SessionsResponse = BaseResponse & {
   sessions?: UserSession[];
 }
 
@@ -65,16 +65,11 @@ export type TokenValidationResponse = {
   isAdmin?: boolean;
 }
 
-export type RefreshTokenResponse = {
-  success: boolean;
+export type RefreshTokenResponse = BaseResponse & {
   token?: string;
-  message: string;
 }
 
-export type LogoutResponse = {
-  success: boolean;
-  message: string;
-}
+export type LogoutResponse = BaseResponse;
 
 export type RegisterRequest = {
   username: string;
@@ -90,5 +85,4 @@ export type UpdateUserInfoRequest = {
   surname?: string;
   mail?: string;
   image?: string;
-  jwt: string;
 }

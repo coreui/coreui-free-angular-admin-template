@@ -4,8 +4,8 @@
     cDropdownToggle
     class="login-toggle-button" 
 >
- @if (isLoggedIn && currentUser){
-      <c-avatar size="sm" [src]="avatarSrc" class="user-avatar"/>
+ @if (isLoggedIn() && currentUser()){
+      <c-avatar size="sm" [src]="avatarSrc()" class="user-avatar"/>
     }@else {
       <svg [cIcon]="icons.cilUser" size="sm" class="login-icon"></svg>
     }
@@ -15,7 +15,7 @@
 
 
 
-  @if (!isLoggedIn) {
+  @if (!isLoggedIn()) {
     <ul cDropdownMenu class="login-dropdown-menu" [ngStyle]="{'min-width.px': 320}">
       <li class="dropdown-header">
         <h6 class="login-title">Accedi al tuo account</h6>
@@ -23,14 +23,15 @@
       <li><hr cDropdownDivider></li>
       <form cForm (ngSubmit)="onLogin()" class="login-form">
         <c-container breakpoint="md" class="login-container">
-          <c-row [gutter]="{gy: 3}">
+          <c-row [gutter]="gutterConfig">
             <c-col>
               <div cFormFloating class="input-floating">
                 <input cFormControl  
                   class="login-input" 
                   type="text" 
                   id="username" 
-                  [(ngModel)]="username" 
+                  [ngModel]="username()" 
+                  (ngModelChange)="username.set($event)"
                   name="username" 
                   placeholder="Username"
                   autocomplete="username"
@@ -40,7 +41,7 @@
               </div>
             </c-col>
           </c-row>
-          <c-row [gutter]="{gy: 3}">
+          <c-row [gutter]="gutterConfig">
             <c-col>
               <div cFormFloating class="input-floating">
                 <input cFormControl 
@@ -49,23 +50,24 @@
                 type="password" 
                 class="login-input" 
                 autocomplete="current-password"
-                [(ngModel)]="password" 
+                [ngModel]="password()" 
+                (ngModelChange)="password.set($event)"
                 name="password" 
                 required
                 >
                 <label cLabel for="password" class="input-label">Password</label>
               </div>
-              @if (errorMessage) { 
+              @if (errorMessage()) { 
                 <div class="error-message">
                   <svg [cIcon]="warningIcon" class="error-icon"></svg>
-                  {{ errorMessage }}
+                  {{ errorMessage() }}
                 </div> 
               }
             </c-col>
           </c-row>
           <div class="login-actions">
-            <button cButton class="login-button" color="primary" type="submit" [disabled]="isLoading">
-              @if (isLoading) {
+            <button cButton class="login-button" color="primary" type="submit" [disabled]="isLoading()">
+              @if (isLoading()) {
                 <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
               }
               Accedi
@@ -87,20 +89,26 @@
     </ul>
   } @else {
     <ul cDropdownMenu class="user-dropdown-menu">
-      @if (currentUser) {
+      @if (currentUser()) {
         <li class="user-info-header">
           <div class="user-info">
-            <c-avatar size="md" [src]="avatarSrc" class="user-avatar-large"/>
+            <c-avatar size="md" [src]="avatarSrc()" class="user-avatar-large"/>
             <div class="user-details">
-              <h6 class="user-name">{{ userDisplayName }}</h6>
-              <span class="username">@{{ currentUser.username }}</span>
+              <h6 class="user-name">{{ userDisplayName() }}</h6>
+              <span class="username">@{{ currentUser()!.username }}</span>
             </div>
           </div>
         </li>
         <li><hr cDropdownDivider></li>
       }
       <li>
-        <a cDropdownItem class="profile-item" (click)="openUserProfileModal()">
+        <a cDropdownItem 
+          class="profile-item" 
+          role="button" 
+          tabindex="0"
+          (click)="openUserProfileModal()"
+          (keyup.enter)="openUserProfileModal()"
+          (keyup.space)="openUserProfileModal()">
           <div class="profile-content">
             <span class="profile-text">Modifica profilo</span>
             <svg [cIcon]="icons.cilUser" class="profile-icon"></svg>
@@ -108,7 +116,13 @@
         </a>
       </li>
       <li>
-        <a cDropdownItem class="password-item" (click)="openPasswordChangeModal()">
+        <a cDropdownItem 
+          class="password-item" 
+          role="button" 
+          tabindex="0"
+          (click)="openPasswordChangeModal()"
+          (keyup.enter)="openPasswordChangeModal()"
+          (keyup.space)="openPasswordChangeModal()">
           <div class="password-content">
             <span class="password-text">Cambia password</span>
             <svg [cIcon]="icons.cilLockLocked" class="password-icon"></svg>
@@ -116,7 +130,13 @@
         </a>
       </li>
       <li>
-        <a cDropdownItem class="logout-item" (click)="onLogout()">
+        <a cDropdownItem 
+          class="logout-item" 
+          role="button" 
+          tabindex="0"
+          (click)="onLogout()"
+          (keyup.enter)="onLogout()"
+          (keyup.space)="onLogout()">
           <div class="logout-content">
             <span class="logout-text">Logout</span>
             <svg [cIcon]="logoutIcon" class="logout-icon"></svg>

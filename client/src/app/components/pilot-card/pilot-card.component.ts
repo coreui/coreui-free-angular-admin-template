@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { Component, input, computed, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   CardBodyComponent,
@@ -14,7 +14,6 @@ import type { DriverData } from '@f123dashboard/shared';
 
 @Component({
   selector: 'app-pilot-card',
-  standalone: true,
   imports: [
     CommonModule,
     CardComponent,
@@ -30,9 +29,9 @@ import type { DriverData } from '@f123dashboard/shared';
   styleUrl: './pilot-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PilotCardComponent implements OnInit {
-  @Input() pilota!: DriverData;
-  @Input() position!: number;
+export class PilotCardComponent {
+  pilota = input.required<DriverData>();
+  position = input.required<number>();
 
   // Variabili per la personalizzazione del radar chart
   private readonly CHART_TEXT_COLOR = 'rgba(130, 130, 130, 1)';
@@ -83,34 +82,23 @@ export class PilotCardComponent implements OnInit {
     }
   };
 
-  radarChartData: any;
-
-  ngOnInit(): void {
-    this.initializeRadarChartData();
-  }
-
-  /**
-   * Initializes radar chart data for the pilot
-   */
-  private initializeRadarChartData(): void {
-    this.radarChartData = {
-      labels: ['Costanza', 'Veloce', 'Rischio', 'Errori', 'Tattica'],
-      datasets: [
-        {
-          label: this.pilota.driver_name,
-          backgroundColor: 'rgba(255,181,198,0.3)',
-          borderColor: 'rgba(255,180,180,0.8)',
-          pointBackgroundColor: 'rgba(255,180,180,0.8)',
-          pointBorderColor: 'rgba(255,180,180,0.8)',
-          data: [
-            this.pilota.driver_consistency_pt, 
-            this.pilota.driver_fast_lap_pt, 
-            this.pilota.drivers_dangerous_pt, 
-            this.pilota.driver_ingenuity_pt, 
-            this.pilota.driver_strategy_pt
-          ]
-        }
-      ]
-    };
-  }
+  radarChartData = computed(() => ({
+    labels: ['Costanza', 'Veloce', 'Rischio', 'Errori', 'Tattica'],
+    datasets: [
+      {
+        label: this.pilota().driver_name,
+        backgroundColor: 'rgba(255,181,198,0.3)',
+        borderColor: 'rgba(255,180,180,0.8)',
+        pointBackgroundColor: 'rgba(255,180,180,0.8)',
+        pointBorderColor: 'rgba(255,180,180,0.8)',
+        data: [
+          this.pilota().driver_consistency_pt, 
+          this.pilota().driver_fast_lap_pt, 
+          this.pilota().drivers_dangerous_pt, 
+          this.pilota().driver_ingenuity_pt, 
+          this.pilota().driver_strategy_pt
+        ]
+      }
+    ]
+  }));
 }

@@ -1,9 +1,9 @@
-@if (isLive) {
+@if (isLive()) {
   <c-row>
     <c-card class="mb-4">
       <c-card-header>
         <h4 class="card-title mb-0">
-          {{ streamTitle$ | async }}
+          Live Stream
         </h4>
       </c-card-header>
       <c-card-body>
@@ -12,7 +12,7 @@
           style="aspect-ratio: 16/9; max-width: none; min-width: 100% !important"
         >
           <iframe
-            [src]="twitchEmbedUrl"
+            [src]="twitchEmbedUrl()"
             width="100%"
             height="100%"
             frameborder="0"
@@ -55,20 +55,26 @@
                       <svg cIcon name="cilPeople"></svg>
                     </th>
                     <th class="bg-body-tertiary">Username</th>
-                    <th class="bg-body-tertiary text-center" *ngIf="showColumn()">
+                    @if (showColumn()) {
+                    <th class="bg-body-tertiary text-center">
                       Scuderia
                     </th>
-                    <th class="bg-body-tertiary pilot" *ngIf="showColumn()">
+                    }
+                    @if (showColumn()) {
+                    <th class="bg-body-tertiary pilot">
                       Pilota
                     </th>
+                    }
                     <th class="bg-body-tertiary text-center">Punti</th>
-                    <th class="bg-body-tertiary text-center" *ngIf="showGainedPointsColumn">
+                    @if (showGainedPointsColumn()) {
+                    <th class="bg-body-tertiary text-center">
                       <svg cIcon name="cilChevronDoubleUp" alt="Punti guadagnati" ></svg>
                     </th>
+                    }
                   </tr>
                 </thead>
                 <tbody>
-                  @for (user of championship_standings_users; track
+                  @for (user of championship_standings_users(); track
                   user.driver_username; let i = $index) {
                   <tr (click)="openPilotModal(user, i + 1)" style="cursor: pointer;">
                     <td>
@@ -83,7 +89,8 @@
                     <td>
                       <div>{{ user.driver_username }}</div>
                     </td>
-                    <td class="text-center p-0" *ngIf="showColumn()">
+                    @if (showColumn()) {
+                    <td class="text-center p-0">
                       <img
                         width="auto"
                         height="50px"
@@ -91,23 +98,28 @@
                         alt="{{ getConstructorForDriver(user.driver_username) }} logo"
                       />
                     </td>
-                    <td class="pilot" *ngIf="showColumn()">
+                    }
+                    @if (showColumn()) {
+                    <td class="pilot">
                       <div class="text-nowrap">
                         {{ user.driver_name }} {{ user.driver_surname }}
                       </div>
                     </td>
+                    }
                     <td>
                       <div class="fw-semibold text-center">
                         {{ user.total_points }}
                       </div>
                     </td>
-                    <td *ngIf="showGainedPointsColumn">
+                    @if (showGainedPointsColumn()) {
+                    <td>
                       <div
                         class="fw-semibold text-center"
                       >
                       {{ user.gainedPoints }}
                       </div>
                     </td>
+                    }
                   </tr>
                   }
                 </tbody>
@@ -136,13 +148,15 @@
                         Piloti
                       </th>
                       <th class="bg-body-tertiary text-center">Punti</th>
-                      <th class="bg-body-tertiary text-center" *ngIf="showGainedPointsColumn">
+                      @if (showGainedPointsColumn()) {
+                      <th class="bg-body-tertiary text-center">
                         <svg cIcon name="cilChevronDoubleUp"></svg>
                       </th>
+                      }
                     </tr>
                   </thead>
                   <tbody>
-                    @for (constructor of constructors; track
+                    @for (constructor of constructors(); track
                       constructor.constructor_name; let i = $index) {
                     <tr (click)="openConstructorModal(constructor, i + 1)" style="cursor: pointer;">
                       <td>
@@ -176,13 +190,15 @@
                           {{ constructor.constructor_tot_points }}
                         </div>
                       </td>
-                      <td *ngIf="showGainedPointsColumn">
+                      @if (showGainedPointsColumn()) {
+                      <td>
                         <div
                           class="fw-semibold text-center"
                         >
                           {{constructor.constructor_gained_points}}
                         </div>
                       </td>
+                      }
                     </tr>
                     }
                   </tbody>
@@ -195,14 +211,15 @@
   </c-col>
   <c-col xs="12" md="6">
     <c-row class="carousle-height">
-       @if (championshipNextTracks.length > 0) {
+       @if (championshipNextTracks().length > 0) {
     <c-carousel
       [dark]="false"
       [touch]="true"
     >
       <c-carousel-indicators></c-carousel-indicators>
       <c-carousel-inner>
-        <c-carousel-item *ngFor="let next_track of championshipNextTracks">
+        @for (next_track of championshipNextTracks(); track next_track.track_id) {
+        <c-carousel-item>
           <c-card class="mb-4">
             <c-card-header>
               <c-row>
@@ -251,6 +268,7 @@
             </c-card-body>
           </c-card>
         </c-carousel-item>
+        }
       </c-carousel-inner>
       <c-carousel-control
         [routerLink]
@@ -264,7 +282,7 @@
       ></c-carousel-control>
     </c-carousel>
     }
-    @else if (championshipNextTracks.length === 0) {
+    @else if (championshipNextTracks().length === 0) {
     <c-card>
       <c-card-header>
         <h4 class="card-title mb-0" id="traffic">Classifica Fanta</h4>
@@ -290,13 +308,13 @@
           <c-card-body class="d-flex flex-column flex-md-row align-items-center justify-content-center text-center text-md-start">
             <img
               class="card-avatar driver-avatar mb-2 mb-md-0 me-md-3"
-              src="./assets/images/avatars/{{ driverOfWeek.driver_username }}.png"
-              alt="{{ driverOfWeek.driver_username }}'s avatar"
+              src="./assets/images/avatars/{{ driverOfWeek().driver_username }}.png"
+              alt="{{ driverOfWeek().driver_username }}'s avatar"
             />
             <div class="separator my-2 my-md-0 mx-md-3"></div>    
             <div class="info-box p-2 rounded">
-              <strong>{{ driverOfWeek.driver_username }}</strong><br>
-              {{ driverOfWeek.points }} Pt.
+              <strong>{{ driverOfWeek().driver_username }}</strong><br>
+              {{ driverOfWeek().points }} Pt.
             </div>
           </c-card-body>
         </c-card>
@@ -314,13 +332,13 @@
             >
               <img
                 class="card-avatar constructor-avatar mb-2 mb-md-0 me-md-3"
-                src="./assets/images/constructors/{{ constructorOfWeek.constructor_name }}.png"
-                alt="{{ constructorOfWeek.constructor_name }}'s logo"
+                src="./assets/images/constructors/{{ constructorOfWeek().constructor_name }}.png"
+                alt="{{ constructorOfWeek().constructor_name }}'s logo"
               />
               <div class="separator my-2 my-md-0 mx-md-3"></div>
               <div class="info-box p-2 rounded">
-                <strong>{{ constructorOfWeek.constructor_name }}</strong><br />
-                {{ constructorOfWeek.points }} Pt.
+                <strong>{{ constructorOfWeek().constructor_name }}</strong><br />
+                {{ constructorOfWeek().points }} Pt.
               </div>
             </c-card-body>
         </c-card>
@@ -341,7 +359,7 @@
       title="Prossimi Eventi 📅" 
       defaultView="month" 
       [compactView]="true"
-      [events]="calendarEvents">
+      [events]="calendarEvents()">
     </app-calendar>
   </c-col>
 </c-row>
@@ -405,8 +423,8 @@
   alignment="center"
   size="lg"
   class="modalAnimation"
-  [visible]="pilotModalVisible"
-  (visibleChange)="pilotModalVisible = $event"
+  [visible]="pilotModalVisible()"
+  (visibleChange)="pilotModalVisible.set($event)"
 >
   <c-modal-header>
     <h5 cModalTitle class="w-100 text-center">
@@ -416,11 +434,11 @@
     <button (click)="closePilotModal()" cButtonClose></button>
   </c-modal-header>
   <c-modal-body>
-    @if (selectedPilot) {
+    @if (selectedPilot()) {
       <div class="d-flex justify-content-center">
         <app-pilot-card 
-          [pilota]="selectedPilot" 
-          [position]="selectedPilotPosition"
+          [pilota]="selectedPilot()!" 
+          [position]="selectedPilotPosition()"
           style="max-width: 400px; width: 100%;">
         </app-pilot-card>
       </div>
@@ -434,8 +452,8 @@
   alignment="center"
   size="lg"
   class="modalAnimation"
-  [visible]="constructorModalVisible"
-  (visibleChange)="constructorModalVisible = $event"
+  [visible]="constructorModalVisible()"
+  (visibleChange)="constructorModalVisible.set($event)"
 >
   <c-modal-header>
     <h5 cModalTitle class="w-100 text-center">
@@ -445,11 +463,11 @@
     <button (click)="closeConstructorModal()" cButtonClose></button>
   </c-modal-header>
   <c-modal-body>
-    @if (selectedConstructor) {
+    @if (selectedConstructor()) {
       <div class="d-flex justify-content-center">
         <app-constructor-card 
-          [constructorData]="selectedConstructor" 
-          [position]="selectedConstructorPosition"
+          [constructorData]="selectedConstructor()!" 
+          [position]="selectedConstructorPosition()"
           style="max-width: 500px; width: 100%;">
         </app-constructor-card>
       </div>

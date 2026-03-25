@@ -25,7 +25,7 @@ export class ChampionshipComponent implements OnInit{
   public fireIcon: string[] = cilFire;
 
   ngOnInit(): void {
-    this.championship_data = this.dbData.getChampionship();
+    this.championship_data = this.dbData.championship();
   }
 
   // Helper method to get driver by position in a session

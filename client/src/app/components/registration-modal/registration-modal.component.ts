@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, ViewChild, OnDestroy, Input, inject } from '@angular/core';
+import { Component, OnDestroy, inject, signal, computed, input, output, viewChild, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -12,12 +12,13 @@ import {
   AlertComponent
 } from '@coreui/angular';
 import { AuthService } from '../../service/auth.service';
-import type { User } from '@f123dashboard/shared';
+import type { User, UpdateUserInfoRequest } from '@f123dashboard/shared';
 
 @Component({
   selector: 'app-registration-modal',
   templateUrl: './registration-modal.component.html',
   styleUrls: ['./registration-modal.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CommonModule,
     FormsModule,
@@ -29,148 +30,162 @@ import type { User } from '@f123dashboard/shared';
     ModalBodyComponent,
     SpinnerComponent,
     AlertComponent
-  ],
-  standalone: true
+  ]
 })
 export class RegistrationModalComponent implements OnDestroy {
   private authService = inject(AuthService);
 
   // Modal mode - 'register' for new users, 'update' for editing profile
-  @Input() mode: 'register' | 'update' = 'register';
-  @Input() userData: User | null = null;
+  mode = signal<'register' | 'update'>('register');
+  userData = signal<User | null>(null);
   
   // Flag to track if we're completing email for existing user
-  public isEmailCompletion = false;
+  isEmailCompletion = signal(false);
 
   // Registration form fields
-  name = '';
-  surname = '';
-  regUsername = '';
-  regPassword = '';
-  confirmPassword = '';
-  email = '';
-  selectedFile: File | null = null;
-  imagePreviewUrl = '';
+  name = signal('');
+  surname = signal('');
+  regUsername = signal('');
+  regPassword = signal('');
+  confirmPassword = signal('');
+  email = signal('');
+  selectedFile = signal<File | null>(null);
+  imagePreviewUrl = signal('');
   // Store the processed base64 data
-  processedImageBase64 = '';
+  processedImageBase64 = signal('');
 
   // State management
-  isLoading = false;
-  singInErrorMessage = '';
-  successMessage = '';
+  isLoading = signal(false);
+  singInErrorMessage = signal('');
+  successMessage = signal('');
 
-  @ViewChild('verticallyCenteredModal') public modal!: ModalComponent;
+  modal = viewChild.required<ModalComponent>('verticallyCenteredModal');
 
   //property to control visibility
-  visible = false;
+  visible = signal(false);
 
-  @Output() registrationSuccess = new EventEmitter<void>();
-  @Output() updateSuccess = new EventEmitter<void>();
+  registrationSuccess = output<void>();
+  updateSuccess = output<void>();
+
+  // Grid gutter configuration (readonly to prevent recreation on change detection)
+  readonly gutterConfig = { gy: 3 };
+
+  // Computed property for modal title
+  modalTitle = computed(() => {
+    if (this.mode() === 'register') {
+      return 'Crea il tuo account';
+    } else if (this.isEmailCompletion()) {
+      return 'Completa il tuo profilo';
+    } else {
+      return 'Modifica il tuo profilo';
+    }
+  });
 
   ngOnDestroy() {
     // Clean up any preview URL and processed data
-    this.imagePreviewUrl = '';
-    this.processedImageBase64 = '';
+    this.imagePreviewUrl.set('');
+    this.processedImageBase64.set('');
   }
 
   // New method to open modal in update mode
   openForUpdate(user: User) {
-    this.mode = 'update';
-    this.userData = user;
-    this.isEmailCompletion = false;
-    this.singInErrorMessage = '';
-    this.successMessage = '';
+    this.mode.set('update');
+    this.userData.set(user);
+    this.isEmailCompletion.set(false);
+    this.singInErrorMessage.set('');
+    this.successMessage.set('');
     this.populateUserData(user);
-    this.visible = true;
+    this.visible.set(true);
   }
 
   // New method to open modal in register mode
   openForRegistration() {
-    this.mode = 'register';
-    this.userData = null;
-    this.isEmailCompletion = false;
+    this.mode.set('register');
+    this.userData.set(null);
+    this.isEmailCompletion.set(false);
     this.clearForm();
-    this.singInErrorMessage = '';
-    this.successMessage = '';
-    this.visible = true;
+    this.singInErrorMessage.set('');
+    this.successMessage.set('');
+    this.visible.set(true);
   }
 
   // New method to open modal for email completion
   openForEmailCompletion(user: User) {
-    this.mode = 'update';
-    this.userData = user;
-    this.isEmailCompletion = true;
-    this.singInErrorMessage = '';
-    this.successMessage = '';
+    this.mode.set('update');
+    this.userData.set(user);
+    this.isEmailCompletion.set(true);
+    this.singInErrorMessage.set('');
+    this.successMessage.set('');
     this.populateUserDataForEmailCompletion(user);
-    this.visible = true;
+    this.visible.set(true);
   }
 
   private populateUserData(user: User) {
-    this.name = user.name || '';
-    this.surname = user.surname || '';
-    this.regUsername = user.username || '';
-    this.email = user.mail || '';
+    this.name.set(user.name || '');
+    this.surname.set(user.surname || '');
+    this.regUsername.set(user.username || '');
+    this.email.set(user.mail || '');
     
     // Set current user image if available
     if (user.image) {
-      this.imagePreviewUrl = `data:image/jpeg;base64,${user.image}`;
-      this.processedImageBase64 = user.image;
+      this.imagePreviewUrl.set(`data:image/jpeg;base64,${user.image}`);
+      this.processedImageBase64.set(user.image);
     } else {
-      this.imagePreviewUrl = '';
-      this.processedImageBase64 = '';
+      this.imagePreviewUrl.set('');
+      this.processedImageBase64.set('');
     }
     
     // Clear password fields for update mode
-    this.regPassword = '';
-    this.confirmPassword = '';
-    this.selectedFile = null;
+    this.regPassword.set('');
+    this.confirmPassword.set('');
+    this.selectedFile.set(null);
   }
 
   private populateUserDataForEmailCompletion(user: User) {
-    this.name = user.name || '';
-    this.surname = user.surname || '';
-    this.regUsername = user.username || '';
-    this.email = ''; // Force email to be empty so user must fill it
+    this.name.set(user.name || '');
+    this.surname.set(user.surname || '');
+    this.regUsername.set(user.username || '');
+    this.email.set(''); // Force email to be empty so user must fill it
     
     // Set current user image if available
     if (user.image) {
-      this.imagePreviewUrl = `data:image/jpeg;base64,${user.image}`;
-      this.processedImageBase64 = user.image;
+      this.imagePreviewUrl.set(`data:image/jpeg;base64,${user.image}`);
+      this.processedImageBase64.set(user.image);
     } else {
-      this.imagePreviewUrl = '';
-      this.processedImageBase64 = '';
+      this.imagePreviewUrl.set('');
+      this.processedImageBase64.set('');
     }
     
     // Clear password fields for update mode
-    this.regPassword = '';
-    this.confirmPassword = '';
-    this.selectedFile = null;
+    this.regPassword.set('');
+    this.confirmPassword.set('');
+    this.selectedFile.set(null);
   }
 
   private clearForm() {
-    this.name = '';
-    this.surname = '';
-    this.regUsername = '';
-    this.regPassword = '';
-    this.confirmPassword = '';
-    this.email = '';
-    this.selectedFile = null;
-    this.imagePreviewUrl = '';
-    this.processedImageBase64 = '';
-    this.singInErrorMessage = '';
-    this.successMessage = '';
-    this.isEmailCompletion = false;
+    this.name.set('');
+    this.surname.set('');
+    this.regUsername.set('');
+    this.regPassword.set('');
+    this.confirmPassword.set('');
+    this.email.set('');
+    this.selectedFile.set(null);
+    this.imagePreviewUrl.set('');
+    this.processedImageBase64.set('');
+    this.singInErrorMessage.set('');
+    this.successMessage.set('');
+    this.isEmailCompletion.set(false);
+    this.userData.set(null);
   }
 
   public close(): void {
-    this.visible = false;
+    this.visible.set(false);
     this.clearForm();
   }
 
   // Add this method to handle two-way binding
   handleVisibilityChange(event: boolean) {
-    this.visible = event;
+    this.visible.set(event);
   }
 
 
@@ -182,8 +197,8 @@ export class RegistrationModalComponent implements OnDestroy {
       // Validate file type - only JPEG allowed
       const allowedTypes = ['image/jpeg', 'image/jpg'];
       if (!allowedTypes.includes(file.type)) {
-        this.singInErrorMessage = 'Selezionare solo file immagine JPEG';
-        this.selectedFile = null;
+        this.singInErrorMessage.set('Selezionare solo file immagine JPEG');
+        this.selectedFile.set(null);
         // Reset the input
         input.value = '';
         return;
@@ -192,31 +207,29 @@ export class RegistrationModalComponent implements OnDestroy {
       // Validate file size (max 5MB)
       const maxSize = 5 * 1024 * 1024; // 5MB in bytes
       if (file.size > maxSize) {
-        this.singInErrorMessage = 'L\'immagine deve essere inferiore a 5MB';
-        this.selectedFile = null;
+        this.singInErrorMessage.set('L\'immagine deve essere inferiore a 5MB');
+        this.selectedFile.set(null);
         // Reset the input
         input.value = '';
         return;
       }
 
-      this.selectedFile = file;
-      this.singInErrorMessage = ''; // Clear any previous error
+      this.selectedFile.set(file);
+      this.singInErrorMessage.set(''); // Clear any previous error
       
       try {
         // Convert and resize the image, then create preview from the processed result
         const processedImageBase64 = await this.convertFileToBase64(file);
         
         // Store the processed base64 data for later use
-        this.processedImageBase64 = processedImageBase64;
+        this.processedImageBase64.set(processedImageBase64);
         
         // Create preview URL from the processed base64 data
-        this.imagePreviewUrl = `data:image/jpeg;base64,${processedImageBase64}`;
-        
-        console.log("File selezionato e processato:", this.selectedFile);
+        this.imagePreviewUrl.set(`data:image/jpeg;base64,${processedImageBase64}`);
       } catch (error) {
         console.error('Error processing image:', error);
-        this.singInErrorMessage = 'Errore durante l\'elaborazione dell\'immagine';
-        this.selectedFile = null;
+        this.singInErrorMessage.set('Errore durante l\'elaborazione dell\'immagine');
+        this.selectedFile.set(null);
         // Reset the input
         input.value = '';
       }
@@ -225,111 +238,112 @@ export class RegistrationModalComponent implements OnDestroy {
 
   removeSelectedFile() {
     // Clean up the previous preview URL - no need to revoke since it's now a data URL
-    this.imagePreviewUrl = '';
-    this.processedImageBase64 = '';
+    this.imagePreviewUrl.set('');
+    this.processedImageBase64.set('');
     
-    this.selectedFile = null;
+    this.selectedFile.set(null);
     // Reset the file input
     const fileInput = document.getElementById('profileImage') as HTMLInputElement;
-    if (fileInput) 
-      {fileInput.value = '';}
-    
+    if (fileInput) {
+      fileInput.value = '';
+    }
   }
   
   async onRegistration() {
-    if (this.mode === 'register') 
-      {await this.handleRegistration();}
-     else 
-      {await this.handleUpdate();}
-    
+    if (this.mode() === 'register') {
+      await this.handleRegistration();
+    } else {
+      await this.handleUpdate();
+    }
   }
 
   private async handleRegistration() {
-    if (!this.validateRegistrationForm()) 
-      {return;}
-    
+    if (!this.validateRegistrationForm()) {
+      return;
+    }
 
-    this.isLoading = true;
-    this.singInErrorMessage = '';
+    this.isLoading.set(true);
+    this.singInErrorMessage.set('');
 
     try {
       // Use the already processed base64 data if available
-      const imageData: string = this.processedImageBase64;
+      const imageData: string = this.processedImageBase64();
 
       const response = await this.authService.register({
-        username: this.regUsername,
-        name: this.name,
-        surname: this.surname,
-        password: this.regPassword,
-        mail: this.email,
+        username: this.regUsername(),
+        name: this.name(),
+        surname: this.surname(),
+        password: this.regPassword(),
+        mail: this.email(),
         image: imageData
       });
 
       if (response.success) {
-        this.successMessage = 'Registrazione completata con successo!';
+        this.successMessage.set('Registrazione completata con successo!');
         this.registrationSuccess.emit();
-        setTimeout(() => this.visible = false, 2000);
-      } else 
-        {this.singInErrorMessage = response.message || 'Registrazione fallita. Riprova.';}
-      
+        setTimeout(() => this.visible.set(false), 2000);
+      } else {
+        this.singInErrorMessage.set(response.message || 'Registrazione fallita. Riprova.');
+      }
     } catch (error) {
-      this.singInErrorMessage = 'Si è verificato un errore durante la registrazione. Riprova.';
+      this.singInErrorMessage.set('Si è verificato un errore durante la registrazione. Riprova.');
       console.error('Registration error:', error);
     } finally {
-      this.isLoading = false;
+      this.isLoading.set(false);
     }
   }
 
   private async handleUpdate() {
-    if (!this.validateUpdateForm()) 
-      {return;}
-    
+    if (!this.validateUpdateForm()) {
+      return;
+    }
 
-    this.isLoading = true;
-    this.singInErrorMessage = '';
+    this.isLoading.set(true);
+    this.singInErrorMessage.set('');
 
     try {
       // Prepare update data - only include changed fields
-      const updateData: any = {};
+      const updateData: UpdateUserInfoRequest = {};
+      const currentUserData = this.userData();
       
-      if (this.userData) {
+      if (currentUserData) {
         // Only include fields that have changed
-        if (this.name !== this.userData.name) 
-          {updateData.name = this.name;}
-        
-        if (this.surname !== this.userData.surname) 
-          {updateData.surname = this.surname;}
-        
-        if (this.email !== this.userData.mail) 
-          {updateData.mail = this.email;}
-        
+        if (this.name() !== currentUserData.name) {
+          updateData.name = this.name();
+        }
+        if (this.surname() !== currentUserData.surname) {
+          updateData.surname = this.surname();
+        }
+        if (this.email() !== currentUserData.mail) {
+          updateData.mail = this.email();
+        }
         // Include image if a new one was selected or if existing image was removed
-        if (this.selectedFile || (this.processedImageBase64 !== this.userData.image)) 
-          {updateData.image = this.processedImageBase64;}
-        
+        if (this.selectedFile() || (this.processedImageBase64() !== currentUserData.image)) {
+          updateData.image = this.processedImageBase64();
+        }
       }
 
       // Check if there are any changes
       if (Object.keys(updateData).length === 0) {
-        this.singInErrorMessage = 'Nessuna modifica da salvare';
-        this.isLoading = false;
+        this.singInErrorMessage.set('Nessuna modifica da salvare');
+        this.isLoading.set(false);
         return;
       }
 
-      const response = await this.authService.updateUserInfo(updateData);
+      const response = await this.authService.updateUserInfo(updateData as UpdateUserInfoRequest);
 
       if (response.success) {
-        this.successMessage = 'Profilo aggiornato con successo!';
+        this.successMessage.set('Profilo aggiornato con successo!');
         this.updateSuccess.emit();
-        setTimeout(() => this.visible = false, 2000);
-      } else 
-        {this.singInErrorMessage = response.message || 'Aggiornamento fallito. Riprova.';}
-      
+        setTimeout(() => this.visible.set(false), 2000);
+      } else {
+        this.singInErrorMessage.set(response.message || 'Aggiornamento fallito. Riprova.');
+      }
     } catch (error) {
-      this.singInErrorMessage = 'Si è verificato un errore durante l\'aggiornamento. Riprova.';
+      this.singInErrorMessage.set('Si è verificato un errore durante l\'aggiornamento. Riprova.');
       console.error('Update error:', error);
     } finally {
-      this.isLoading = false;
+      this.isLoading.set(false);
     }
   }
 
@@ -361,20 +375,19 @@ export class RegistrationModalComponent implements OnDestroy {
         );
 
         // Converti il canvas in base64
-        try {
-          const base64String = canvas.toDataURL('image/jpeg', 0.8); // Qualità 0.8 per la compressione JPEG
-          // Rimuovi il prefisso dell'URL dei dati (es. "data:image/jpeg;base64,")
-          const base64Data = base64String.split(',')[1];
-          resolve(base64Data);
-        } catch (error) {
-          reject(new Error('Impossibile convertire l\'immagine ridimensionata in base64'));
-        } finally {
-          // Pulisci l'URL dell'oggetto
-          URL.revokeObjectURL(objectUrl);
-        }
+        const base64String = canvas.toDataURL('image/jpeg', 0.8); // Qualità 0.8 per la compressione JPEG
+        // Rimuovi il prefisso dell'URL dei dati (es. "data:image/jpeg;base64,")
+        const base64Data = base64String.split(',')[1];
+        resolve(base64Data);
+        
+        // Pulisci l'URL dell'oggetto
+        URL.revokeObjectURL(objectUrl);
       };
 
-      img.onerror = () => reject(new Error('Errore durante il caricamento dell\'immagine per il ridimensionamento'));
+      img.onerror = () => {
+        URL.revokeObjectURL(objectUrl);
+        reject(new Error('Errore durante il caricamento dell\'immagine per il ridimensionamento'));
+      };
 
       // Crea l'URL dell'oggetto per il file e impostalo come sorgente dell'immagine
       const objectUrl = URL.createObjectURL(file);
@@ -399,38 +412,38 @@ export class RegistrationModalComponent implements OnDestroy {
   }
 
   private validateRegistrationForm(): boolean {
-    this.singInErrorMessage = '';
+    this.singInErrorMessage.set('');
 
-    if (!this.name || !this.surname || !this.regUsername || !this.regPassword || !this.email) {
-      this.singInErrorMessage = 'Tutti i campi sono obbligatori';
+    if (!this.name() || !this.surname() || !this.regUsername() || !this.regPassword() || !this.email()) {
+      this.singInErrorMessage.set('Tutti i campi sono obbligatori');
       return false;
     }
 
-    if (this.regUsername.length < 3) {
-      this.singInErrorMessage = 'L\'username deve contenere almeno 3 caratteri';
+    if (this.regUsername().length < 3) {
+      this.singInErrorMessage.set('L\'username deve contenere almeno 3 caratteri');
       return false;
     }
 
-    if (this.regPassword.length < 8) {
-      this.singInErrorMessage = 'La password deve contenere almeno 8 caratteri';
+    if (this.regPassword().length < 8) {
+      this.singInErrorMessage.set('La password deve contenere almeno 8 caratteri');
       return false;
     }
 
-    if (this.regPassword !== this.confirmPassword) {
-      this.singInErrorMessage = 'Le password non corrispondono';
+    if (this.regPassword() !== this.confirmPassword()) {
+      this.singInErrorMessage.set('Le password non corrispondono');
       return false;
     }
 
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(this.email)) {
-      this.singInErrorMessage = 'Inserire un indirizzo email valido';
+    if (!emailRegex.test(this.email())) {
+      this.singInErrorMessage.set('Inserire un indirizzo email valido');
       return false;
     }
 
     // Password strength validation
-    if (!this.authService.isPasswordStrong(this.regPassword)) {
-      this.singInErrorMessage = 'La password deve contenere almeno una lettera maiuscola, una lettera minuscola e un numero';
+    if (!this.authService.isPasswordStrong(this.regPassword())) {
+      this.singInErrorMessage.set('La password deve contenere almeno una lettera maiuscola, una lettera minuscola e un numero');
       return false;
     }
 
@@ -438,25 +451,25 @@ export class RegistrationModalComponent implements OnDestroy {
   }
 
   private validateUpdateForm(): boolean {
-    this.singInErrorMessage = '';
+    this.singInErrorMessage.set('');
 
     // In email completion mode, email and image are required
-    if (this.isEmailCompletion) {
-      if (!this.email || this.email.trim() === '') {
-        this.singInErrorMessage = 'Email è obbligatoria per completare il profilo';
+    if (this.isEmailCompletion()) {
+      if (!this.email() || this.email().trim() === '') {
+        this.singInErrorMessage.set('Email è obbligatoria per completare il profilo');
         return false;
       }
 
       // Email validation
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(this.email)) {
-        this.singInErrorMessage = 'Inserire un indirizzo email valido';
+      if (!emailRegex.test(this.email())) {
+        this.singInErrorMessage.set('Inserire un indirizzo email valido');
         return false;
       }
 
       // Image validation
-      if (!this.processedImageBase64 || this.processedImageBase64.trim() === '') {
-        this.singInErrorMessage = 'L\'immagine del profilo è obbligatoria';
+      if (!this.processedImageBase64() || this.processedImageBase64().trim() === '') {
+        this.singInErrorMessage.set('L\'immagine del profilo è obbligatoria');
         return false;
       }
 
@@ -464,34 +477,24 @@ export class RegistrationModalComponent implements OnDestroy {
     }
 
     // In normal update mode, all fields including image are required
-    if (!this.name || !this.surname || !this.email) {
-      this.singInErrorMessage = 'Nome, cognome ed email sono obbligatori';
+    if (!this.name() || !this.surname() || !this.email()) {
+      this.singInErrorMessage.set('Nome, cognome ed email sono obbligatori');
       return false;
     }
 
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(this.email)) {
-      this.singInErrorMessage = 'Inserire un indirizzo email valido';
+    if (!emailRegex.test(this.email())) {
+      this.singInErrorMessage.set('Inserire un indirizzo email valido');
       return false;
     }
 
     // Image validation
-    if (!this.processedImageBase64 || this.processedImageBase64.trim() === '') {
-      this.singInErrorMessage = 'L\'immagine del profilo è obbligatoria';
+    if (!this.processedImageBase64() || this.processedImageBase64().trim() === '') {
+      this.singInErrorMessage.set('L\'immagine del profilo è obbligatoria');
       return false;
     }
 
     return true;
-  }
-
-  getModalTitle(): string {
-    if (this.mode === 'register') 
-      {return 'Crea il tuo account';}
-     else if (this.isEmailCompletion) 
-      {return 'Completa il tuo profilo';}
-     else 
-      {return 'Modifica il tuo profilo';}
-    
   }
 }

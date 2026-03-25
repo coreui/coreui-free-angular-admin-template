@@ -12,21 +12,21 @@
                     <label for="seasonSelect" class="global-select-label">Seleziona Stagione</label>
                     <select 
                         id="seasonSelect"
-                        [(ngModel)]="selectedSeason" 
-                        (ngModelChange)="onSeasonChange()"
+                        [ngModel]="selectedSeason()" 
+                        (ngModelChange)="selectedSeason.set($event); onSeasonChange()"
                         cSelect
                         cFormControl
                         class="global-select"
-                        [disabled]="isInitialLoading || isSeasonLoading">
-                        @for (season of seasons; track season.id) {
+                        [disabled]="isInitialLoading() || isSeasonLoading()">
+                        @for (season of seasons(); track season.id) {
                             <option [value]="season.id">
                                 {{ season.description }}
                             </option>
                         }
                     </select>
-                    @if (isSeasonLoading) {
+                    @if (isSeasonLoading()) {
                         <div class="loading-overlay">
-                            <c-spinner color="primary" size="sm"></c-spinner>
+                            <span class="spinner-border spinner-border-sm text-primary" role="status" aria-hidden="true"></span>
                             <span class="loading-text">Caricamento stagione...</span>
                         </div>
                     }
@@ -35,11 +35,11 @@
         </c-row>
         
         <!-- Initial Loading Spinner -->
-        @if (isInitialLoading) {
+        @if (isInitialLoading()) {
             <c-row class="justify-content-center">
                 <c-col xs="auto" class="text-center">
                     <div class="initial-loading">
-                        <c-spinner color="primary"></c-spinner>
+                        <span class="spinner-border text-primary" role="status" aria-hidden="true"></span>
                         <h4 class="mt-3">Caricamento dati amministrazione...</h4>
                         <p class="text-muted">Attendere il caricamento dei dati</p>
                     </div>
@@ -49,7 +49,7 @@
         <c-row>
             <c-accordion>
               <!-- FOR EACH TRACK -->
-                @for (track of tracks; track track.track_id) {
+                @for (track of tracks(); track track.track_id) {
                     <c-accordion-item
                         #item0="cAccordionItem"
                         [visible]="false"
@@ -107,13 +107,15 @@
                                                 <tr>
                                                     <th class="bg-body-tertiary text-left">#</th>
                                                     <th class="bg-body-tertiary text-center">Gara</th>
-                                                    <th *ngIf="track.has_sprint == 1" class="bg-body-tertiary text-center">Sprint</th>
+                                                    @if (track.has_sprint == 1) {
+                                                      <th class="bg-body-tertiary text-center">Sprint</th>
+                                                    }
                                                     <th class="bg-body-tertiary text-center">Qualifica</th>
                                                     <th class="bg-body-tertiary text-center">Prove Libere</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @for (posizione of posizioni | keyvalue; track posizione.key + '_' + $index) {
+                                                @for (posizione of posizioni() | keyvalue; track posizione.key + '_' + $index) {
                                                     <tr>
                                                   <!-- INDEX -->
                                                   <td class="text-center">
@@ -124,133 +126,152 @@
                                                         {{posizione?.value}}
                                                       }
                                                     </strong>
-                                                    <img
-                                                      *ngIf="posizione.key <= 3"
-                                                      class="cIcon"
-                                                      style="width: 25px"
-                                                      attr.src="assets/medals/{{ medals.get(posizione.key) }}"
-                                                      [attr.alt]="'Medaglia per la posizione ' + posizione?.value"
-                                                    />
-                                                    <svg *ngIf="posizione.key == 9" [cIcon]="fireIcon" style="color: purple"></svg>
-                                                    <svg *ngIf="posizione.key == 10" [cIcon]="powerIcon" style="color: red"></svg>
+                                                    @if (posizione.key <= 3) {
+                                                      <img
+                                                        class="cIcon"
+                                                        style="width: 25px"
+                                                        attr.src="assets/medals/{{ medals.get(posizione.key) }}"
+                                                        [attr.alt]="'Medaglia per la posizione ' + posizione?.value"
+                                                      />
+                                                    }
+                                                    @if (posizione.key == 9) {
+                                                      <svg [cIcon]="fireIcon" style="color: purple"></svg>
+                                                    }
+                                                    @if (posizione.key == 10) {
+                                                      <svg [cIcon]="powerIcon" style="color: red"></svg>
+                                                    }
                                                   </td>
 
                                                   <!-- RACE RESULTS -->
                                                   <td class="text-center">
-                                                    <select *ngIf="posizione.key < 10"
-                                                      [attr.aria-label]="'seleziona il pilota che arrivera ' + posizione?.value"
-                                                      [id]="track.track_id + posizione.key"
-                                                      [name]="'posizione_' + posizione.key"
-                                                      [ngModel]="getRaceResult(track.track_id, posizione.key)"
-                                                      (ngModelChange)="setRaceResult(track.track_id, posizione.key, $event)"
-                                                      cSelect
-                                                      cFormControl
-                                                      class="admin-select"
-                                                      required>
-                                                      <option value="0">-- Seleziona un pilota --</option>
-                                                      @for (pilota of piloti; track pilota.id + '_race_' + $index) {
-                                                        <option attr.value="{{ pilota.id }}">
-                                                          {{ pilota.username }}
-                                                        </option>
-                                                      }
-                                                    </select>
-                                                    <div *ngIf="posizione.key == 10" class="multi-select-container">
-                                                      <label class="multi-select-label" [attr.for]="'race-multi-select-' + track.track_id + '-' + posizione.key">-- Seleziona piloti --</label>
-                                                      <select [id]="'race-multi-select-' + track.track_id + '-' + posizione.key"
-                                                              [name]="'posizione_' + posizione.key"
-                                                              [ngModel]="getRaceResult(track.track_id, posizione.key)"
-                                                              (ngModelChange)="setRaceResult(track.track_id, posizione.key, $event)"
-                                                              cSelect
-                                                              cFormControl
-                                                              class="admin-select multi-select"
-                                                              multiple>
-                                                        @for (pilota of piloti; track pilota.id + '_race_multi_' + $index) {
-                                                          <option [value]="pilota.id">
+                                                    @if (posizione.key < 10) {
+                                                      <select
+                                                        [attr.aria-label]="'seleziona il pilota che arrivera ' + posizione?.value"
+                                                        [id]="track.track_id + posizione.key"
+                                                        [name]="'posizione_' + posizione.key"
+                                                        [ngModel]="getRaceResult(track.track_id, posizione.key)"
+                                                        (ngModelChange)="setRaceResult(track.track_id, posizione.key, $event)"
+                                                        cSelect
+                                                        cFormControl
+                                                        class="admin-select"
+                                                        required>
+                                                        <option value="0">-- Seleziona un pilota --</option>
+                                                        @for (pilota of piloti(); track pilota.id + '_race_' + $index) {
+                                                          <option attr.value="{{ pilota.id }}">
                                                             {{ pilota.username }}
                                                           </option>
                                                         }
                                                       </select>
-                                                    </div>
+                                                    }
+                                                    @if (posizione.key == 10) {
+                                                      <div class="multi-select-container">
+                                                        <label class="multi-select-label" [attr.for]="'race-multi-select-' + track.track_id + '-' + posizione.key">-- Seleziona piloti --</label>
+                                                        <select [id]="'race-multi-select-' + track.track_id + '-' + posizione.key"
+                                                                [name]="'posizione_' + posizione.key"
+                                                                [ngModel]="getRaceResult(track.track_id, posizione.key)"
+                                                                (ngModelChange)="setRaceResult(track.track_id, posizione.key, $event)"
+                                                                cSelect
+                                                                cFormControl
+                                                                class="admin-select multi-select"
+                                                                multiple>
+                                                          @for (pilota of piloti(); track pilota.id + '_race_multi_' + $index) {
+                                                            <option [value]="pilota.id">
+                                                              {{ pilota.username }}
+                                                            </option>
+                                                          }
+                                                        </select>
+                                                      </div>
+                                                    }
                                                   </td>
 
                                                   <!-- SPRINT RESULTS -->
-                                                  <td class="text-center" *ngIf="track.has_sprint == 1">
-                                                    <select *ngIf="posizione.key < 10"
-                                                            [attr.aria-label]="'seleziona il pilota che arrivera ' + posizione?.value"
-                                                            [id]="track.track_id + '_race_' + posizione.key"
-                                                            [name]="'race_posizione_' + posizione.key"
-                                                            [ngModel]="getSprintResult(track.track_id, posizione.key)"
-                                                            (ngModelChange)="setSprintResult(track.track_id, posizione.key, $event)"
-                                                            cSelect
-                                                            cFormControl
-                                                            class="admin-select"
-                                                            required>
-                                                      <option value="0">-- Seleziona un pilota --</option>
-                                                      @for (pilota of piloti; track pilota.id + '_sprint_' + $index) {
-                                                        <option [value]="pilota.id">
-                                                          {{ pilota.username }}
-                                                        </option>
+                                                  @if (track.has_sprint == 1) {
+                                                    <td class="text-center">
+                                                      @if (posizione.key < 10) {
+                                                        <select
+                                                                [attr.aria-label]="'seleziona il pilota che arrivera ' + posizione?.value"
+                                                                [id]="track.track_id + '_race_' + posizione.key"
+                                                                [name]="'race_posizione_' + posizione.key"
+                                                                [ngModel]="getSprintResult(track.track_id, posizione.key)"
+                                                                (ngModelChange)="setSprintResult(track.track_id, posizione.key, $event)"
+                                                                cSelect
+                                                                cFormControl
+                                                                class="admin-select"
+                                                                required>
+                                                          <option value="0">-- Seleziona un pilota --</option>
+                                                          @for (pilota of piloti(); track pilota.id + '_sprint_' + $index) {
+                                                            <option [value]="pilota.id">
+                                                              {{ pilota.username }}
+                                                            </option>
+                                                          }
+                                                        </select>
                                                       }
-                                                    </select>
-                                                    <div *ngIf="posizione.key == 10" class="multi-select-container">
-                                                      <label class="multi-select-label" [attr.for]="'sprint-multi-select-' + track.track_id + '-' + posizione.key">-- Seleziona piloti --</label>
-                                                      <select [id]="'sprint-multi-select-' + track.track_id + '-' + posizione.key"
-                                                              [name]="'race_posizione_' + posizione.key"
-                                                              [ngModel]="getSprintResult(track.track_id, posizione.key)"
-                                                              (ngModelChange)="setSprintResult(track.track_id, posizione.key, $event)"
+                                                      @if (posizione.key == 10) {
+                                                        <div class="multi-select-container">
+                                                          <label class="multi-select-label" [attr.for]="'sprint-multi-select-' + track.track_id + '-' + posizione.key">-- Seleziona piloti --</label>
+                                                          <select [id]="'sprint-multi-select-' + track.track_id + '-' + posizione.key"
+                                                                  [name]="'race_posizione_' + posizione.key"
+                                                                  [ngModel]="getSprintResult(track.track_id, posizione.key)"
+                                                                  (ngModelChange)="setSprintResult(track.track_id, posizione.key, $event)"
+                                                                  cSelect
+                                                                  cFormControl
+                                                                  class="admin-select multi-select"
+                                                                  multiple>
+                                                            @for (pilota of piloti(); track pilota.id + '_sprint_multi_' + $index) {
+                                                              <option [value]="pilota.id">
+                                                                {{ pilota.username }}
+                                                              </option>
+                                                            }
+                                                          </select>
+                                                        </div>
+                                                      }
+                                                    </td>
+                                                  }
+
+                                                  <!-- QUALI RESULTS -->
+                                                  <td class="text-center">
+                                                    @if (posizione.key < 9) {
+                                                      <select
+                                                              [attr.aria-label]="'seleziona il pilota che arrivera ' + posizione?.value"
+                                                              [id]="track.track_id + '_quali_' + posizione.key"
+                                                              [name]="'quali_posizione_' + posizione.key"
+                                                              [ngModel]="getQualiResult(track.track_id, posizione.key)"
+                                                              (ngModelChange)="setQualiResult(track.track_id, posizione.key, $event)"
                                                               cSelect
                                                               cFormControl
-                                                              class="admin-select multi-select"
-                                                              multiple>
-                                                        @for (pilota of piloti; track pilota.id + '_sprint_multi_' + $index) {
+                                                              class="admin-select"
+                                                              required>
+                                                        <option value="0">-- Seleziona un pilota --</option>
+                                                        @for (pilota of piloti(); track pilota.id + '_quali_' + $index) {
                                                           <option [value]="pilota.id">
                                                             {{ pilota.username }}
                                                           </option>
                                                         }
                                                       </select>
-                                                    </div>
-                                                  </td>
-
-                                                  <!-- QUALI RESULTS -->
-                                                  <td class="text-center">
-                                                    <select *ngIf="posizione.key < 9"
-                                                            [attr.aria-label]="'seleziona il pilota che arrivera ' + posizione?.value"
-                                                            [id]="track.track_id + '_quali_' + posizione.key"
-                                                            [name]="'quali_posizione_' + posizione.key"
-                                                            [ngModel]="getQualiResult(track.track_id, posizione.key)"
-                                                            (ngModelChange)="setQualiResult(track.track_id, posizione.key, $event)"
-                                                            cSelect
-                                                            cFormControl
-                                                            class="admin-select"
-                                                            required>
-                                                      <option value="0">-- Seleziona un pilota --</option>
-                                                      @for (pilota of piloti; track pilota.id + '_quali_' + $index) {
-                                                        <option [value]="pilota.id">
-                                                          {{ pilota.username }}
-                                                        </option>
-                                                      }
-                                                    </select>
+                                                    }
                                                   </td>
 
                                                   <!-- FREE PRACTICE RESULTS -->
                                                   <td class="text-center">
-                                                    <select *ngIf="posizione.key < 9"
-                                                            [attr.aria-label]="'seleziona il pilota che arrivera ' + posizione?.value"
-                                                            [id]="track.track_id + '_fp_' + posizione.key"
-                                                            [name]="'fp_posizione_' + posizione.key"
-                                                            [ngModel]="getFpResult(track.track_id, posizione.key)"
-                                                            (ngModelChange)="setFpResult(track.track_id, posizione.key, $event)"
-                                                            cSelect
-                                                            cFormControl
-                                                            class="admin-select"
-                                                            required>
-                                                      <option value="0">-- Seleziona un pilota --</option>
-                                                      @for (pilota of piloti; track pilota.id + '_fp_' + $index) {
-                                                        <option [value]="pilota.id">
-                                                          {{ pilota.username }}
-                                                        </option>
-                                                      }
-                                                    </select>
+                                                    @if (posizione.key < 9) {
+                                                      <select
+                                                              [attr.aria-label]="'seleziona il pilota che arrivera ' + posizione?.value"
+                                                              [id]="track.track_id + '_fp_' + posizione.key"
+                                                              [name]="'fp_posizione_' + posizione.key"
+                                                              [ngModel]="getFpResult(track.track_id, posizione.key)"
+                                                              (ngModelChange)="setFpResult(track.track_id, posizione.key, $event)"
+                                                              cSelect
+                                                              cFormControl
+                                                              class="admin-select"
+                                                              required>
+                                                        <option value="0">-- Seleziona un pilota --</option>
+                                                        @for (pilota of piloti(); track pilota.id + '_fp_' + $index) {
+                                                          <option [value]="pilota.id">
+                                                            {{ pilota.username }}
+                                                          </option>
+                                                        }
+                                                      </select>
+                                                    }
                                                   </td>
                                                 </tr>
                                                 }
@@ -264,10 +285,10 @@
                                   <c-col class="text-center">
                                     <button cButton 
                                             type="submit" 
-                                            [disabled]="isSubmitting[track.track_id] || isSeasonLoading"
+                                            [disabled]="isSubmitting()[track.track_id] || isSeasonLoading()"
                                             class="submit-button">
-                                      @if (isSubmitting[track.track_id]) {
-                                        <c-spinner size="sm" class="me-2"></c-spinner>
+                                      @if (isSubmitting()[track.track_id]) {
+                                        <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
                                         Invio...
                                       } @else {
                                         Conferma
@@ -275,31 +296,31 @@
                                     </button>
                                     </c-col>
                                   <c-col class="text-center">
-                                      @if (formStatus[track.track_id] == 2) {
+                                      @if (formStatus()[track.track_id] == 2) {
                                         <div class="error mb-2">
                                           <c-badge color="danger" class="d-block mb-2">Errore nella validazione dei risultati</c-badge>
-                                          @if (formErrors[track.track_id] && formErrors[track.track_id].length > 0) {
+                                          @if (formErrors()[track.track_id] && formErrors()[track.track_id].length > 0) {
                                             <div class="error-details">
-                                              @for (error of formErrors[track.track_id]; track $index) {
+                                              @for (error of formErrors()[track.track_id]; track $index) {
                                                 <small class="text-danger d-block">{{ error }}</small>
                                               }
                                             </div>
                                           }
                                         </div>
                                       }
-                                      @if (formStatus[track.track_id] == 3) {
+                                      @if (formStatus()[track.track_id] == 3) {
                                         <div class="error mb-2">
                                           <c-badge color="danger" class="d-block mb-2">Errore nel salvataggio</c-badge>
-                                          @if (formErrors[track.track_id] && formErrors[track.track_id].length > 0) {
+                                          @if (formErrors()[track.track_id] && formErrors()[track.track_id].length > 0) {
                                             <div class="error-details">
-                                              @for (error of formErrors[track.track_id]; track $index) {
+                                              @for (error of formErrors()[track.track_id]; track $index) {
                                                 <small class="text-danger d-block">{{ error }}</small>
                                               }
                                             </div>
                                           }
                                         </div>
                                       }
-                                      @if (formStatus[track.track_id] == 1) {
+                                      @if (formStatus()[track.track_id] == 1) {
                                         <p class="success">
                                           <c-badge color="success">Risultati salvati correttamente :)</c-badge>
                                         </p>

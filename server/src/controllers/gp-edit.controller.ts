@@ -47,7 +47,7 @@ export class GpEditController {
 
   async updateGp(req: Request, res: Response): Promise<void> {
     try {
-      const id = parseInt(req.params.id);
+      const id = parseInt(req.params.id as string);
       if (isNaN(id)) {
         res.status(400).json({ success: false, message: 'Invalid ID' });
         return;
@@ -66,7 +66,7 @@ export class GpEditController {
 
   async deleteGp(req: Request, res: Response): Promise<void> {
     try {
-      const id = parseInt(req.params.id);
+      const id = parseInt(req.params.id as string);
       if (isNaN(id)) {
         res.status(400).json({ success: false, message: 'Invalid ID' });
         return;

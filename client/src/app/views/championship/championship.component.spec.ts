@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideNoopAnimations } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CardModule, GridModule, TableModule, UtilitiesModule } from '@coreui/angular';
 import { IconSetService } from '@coreui/icons-angular';
@@ -14,7 +15,7 @@ describe('ChampionshipComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [GridModule, CardModule, TableModule, GridModule, UtilitiesModule, RouterTestingModule, ChampionshipComponent],
-      providers: [IconSetService]
+      providers: [provideNoopAnimations(), IconSetService]
     })
     .compileComponents();
 
