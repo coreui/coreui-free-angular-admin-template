@@ -508,7 +508,6 @@ describe('DashboardComponent', () => {
 
     it('should calculate constructor of the week when driver IDs come as strings from PostgreSQL (int8)', () => {
       // PostgreSQL int8 columns are returned as strings by the pg driver at runtime
-      // despite TypeScript typing them as number — this tests the real-world scenario
       const constructorWithStringIds = [{
         ...mockConstructorData[0],
         driver_1_id: '1' as unknown as number,
