@@ -72,16 +72,14 @@ export class LeaderboardComponent {
   readonly userVotes = this.userVotesSignal.asReadonly();
   
   getAvatar(userId: number, image?: string): string {
-    if (image) 
-      {return `data:image/jpeg;base64,${image}`;}
+    if (image){
+        return `data:image/jpeg;base64,${image}`;
+      }
     
     // Fallback to file path
     return `./assets/images/avatars_fanta/${userId}.png`;
   }
 
-  /**
-   * Open modal with last 2 votes for the selected user
-   */
   openVoteHistoryModal(userId: number): void {
     const users = this.dbData.users();
     const user = users.find(u => u.id === userId);
@@ -92,9 +90,6 @@ export class LeaderboardComponent {
     this.modalVisibleSignal.set(true);
   }
 
-  /**
-   * Loads vote history for a specific user.
-   */
   private loadUserVotes(userId: number): void {
     const tracksWithResults = this.getTracksWithResults();
     const lastTwoTracks = this.getLastTwoTracks(tracksWithResults);
@@ -103,9 +98,6 @@ export class LeaderboardComponent {
     this.userVotesSignal.set(votes);
   }
 
-  /**
-   * Gets all tracks that have race results.
-   */
   private getTracksWithResults() {
     const allTracks = this.dbData.tracks();
     return allTracks.filter(track => {
@@ -114,9 +106,7 @@ export class LeaderboardComponent {
     });
   }
 
-  /**
-   * Gets the last 2 tracks sorted by date descending.
-   */
+
   private getLastTwoTracks(tracks: TrackData[]): TrackData[] {
     const sorted = [...tracks].sort((a, b) => 
       new Date(b.date).getTime() - new Date(a.date).getTime()
@@ -124,9 +114,6 @@ export class LeaderboardComponent {
     return sorted.slice(0, 2);
   }
 
-  /**
-   * Gets user votes for specific tracks.
-   */
   private getUserVotesForTracks(userId: number, tracks: TrackData[]): { vote: FantaVote, trackId: number, trackName: string, trackCountry: string }[] {
     return tracks
       .map(track => {
@@ -141,9 +128,12 @@ export class LeaderboardComponent {
       .filter(v => v !== null) as { vote: FantaVote, trackId: number, trackName: string, trackCountry: string }[];
   }
 
-  /**
-   * Close the modal
-   */
+  handleModalVisibilityChange(visible: boolean): void {
+    if (!visible) {
+      this.closeModal();
+    }
+  }
+
   closeModal(): void {
     this.modalVisibleSignal.set(false);
     this.selectedUserSignal.set(null);
