@@ -1,8 +1,7 @@
 import { Component, OnInit, inject, signal, computed, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CardModule, TableModule } from '@coreui/angular';
+import { CardModule } from '@coreui/angular';
 import { PodiumCardComponent } from '../../components/podium-card/podium-card.component';
-import { GridModule } from '@coreui/angular';
 import { DbDataService } from '../../service/db-data.service';
 import type { DriverData } from '@f123dashboard/shared';
 
@@ -16,6 +15,26 @@ interface PodiumEntry {
 interface ClassificaEntry {
   nome: string;
   punti: string;
+}
+
+interface SeasonDriverState {
+  isLoading: boolean;
+  podio: PodiumEntry[];
+  classifica: ClassificaEntry[];
+}
+
+interface SeasonConfig {
+  id: number;
+  driverTitle: string;
+  fantaTitle: string;
+  fantaPodio: PodiumEntry[];
+  fantaClassifica: ClassificaEntry[];
+}
+
+interface SeasonDisplay extends SeasonConfig {
+  isLoading: boolean;
+  driverPodio: PodiumEntry[];
+  driverClassifica: ClassificaEntry[];
 }
 
 interface SeasonDriverState {
@@ -87,7 +106,7 @@ const SEASONS: SeasonConfig[] = [
 @Component({
   selector: 'app-albo-d-oro',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, PodiumCardComponent, GridModule, CardModule, TableModule],
+  imports: [CommonModule, PodiumCardComponent, CardModule],
   templateUrl: './albo-d-oro.component.html',
   styleUrls: ['./albo-d-oro.component.scss']
 })
@@ -137,14 +156,14 @@ export class AlboDOroComponent implements OnInit {
       nome: driver.driver_username,
       img: `${DRIVER_AVATAR_PATH}/${driver.driver_username}.png`,
       colore: driver.driver_color,
-      punti: driver.total_points.toString(),
+      punti: driver.total_points.toString()
     };
   }
 
   private buildClassifica(drivers: DriverData[]): ClassificaEntry[] {
     return drivers.slice(PODIUM_SIZE).map(driver => ({
       nome: driver.driver_username,
-      punti: driver.total_points.toString(),
+      punti: driver.total_points.toString()
     }));
   }
 }
