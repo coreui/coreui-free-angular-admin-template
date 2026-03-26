@@ -4,7 +4,6 @@ import { CardModule, TableModule } from '@coreui/angular';
 import { TableDirective } from '@coreui/angular';
 
 interface PodiumEntry {
-  posizione: number;
   nome: string;
   img: string;
   colore: string;
@@ -12,7 +11,6 @@ interface PodiumEntry {
 }
 
 interface ClassificaEntry {
-  posizione: string;
   nome: string;
   punti: string;
 }
