@@ -7,7 +7,7 @@
   display: grid;
   grid-template-rows: auto auto minmax(0, 1fr);
   gap: clamp(0.9rem, 1.75cqi, 1.35rem);
-  aspect-ratio: 1500 / 1861;
+  aspect-ratio: 0.83 / 1;
   container-type: inline-size;
   overflow: hidden;
   min-width: 0;
@@ -72,6 +72,7 @@
   --image-shift: 0%;
   position: relative;
   isolation: isolate;
+  align-self: end;
   height: clamp(16.5rem, 49cqi, 31rem);
   min-width: 0;
   overflow: hidden;
@@ -101,22 +102,21 @@
   }
 
   &.first {
-    --image-scale: 0.96;
+    --image-scale: 1;
     height: clamp(19.5rem, 58cqi, 35rem);
     z-index: 2;
   }
 
   &.second {
-    --image-scale: 0.88;
-    --image-shift: -1%;
-    margin-bottom: clamp(1.35rem, 4.6cqi, 2.6rem);
+    --image-scale: 1;
+    height: clamp(16.5rem, 50cqi, 30rem);
+    z-index: 2;
   }
 
   &.third {
-    --image-scale: 0.84;
-    --image-shift: 1%;
-    height: clamp(15.4rem, 45cqi, 28.5rem);
-    margin-bottom: clamp(1rem, 3.4cqi, 1.9rem);
+    --image-scale: 1;
+    height: clamp(13.5rem, 42cqi, 25rem);
+    z-index: 2;
   }
 }
 
@@ -135,7 +135,7 @@
 
 .podio-portrait {
   position: absolute;
-  inset: clamp(1rem, 3.2cqi, 1.8rem) -1% calc(var(--footer-height) + clamp(0.6rem, 1.8cqi, 1.05rem)) 0;
+  inset: clamp(1rem, 3.2cqi, 1.8rem) -1% calc(var(--footer-height) ) 0;
   z-index: 0;
   display: flex;
   align-items: flex-end;
@@ -197,8 +197,8 @@
 
 .punti {
   position: absolute;
-  right: clamp(0.28rem, 0.85cqi, 0.7rem);
-  bottom: calc(var(--footer-height) + clamp(0.18rem, 0.6cqi, 0.45rem));
+  right: clamp(0rem, 0cqi, 0rem);
+  bottom: calc(var(--footer-height));
   z-index: 2;
   display: inline-flex;
   align-items: center;
@@ -213,7 +213,7 @@
   line-height: 1;
   white-space: nowrap;
   border: 1px solid rgba(0, 0, 0, 0.16);
-  border-radius: 0.4rem;
+  border-radius: 0rem;
   box-shadow: 0 0.3cqi 0.8cqi rgba(0, 0, 0, 0.18);
 
   span {
@@ -326,18 +326,24 @@
     gap: 0.45rem;
   }
 
-  .podio-card,
-  .podio-card.first,
-  .podio-card.third {
-    height: clamp(12.3rem, 46cqi, 16.2rem);
+  .podio-card {
+    --footer-height: clamp(2.15rem, 7.2cqi, 2.85rem);
+    --score-size: clamp(1.55rem, 5.4cqi, 2.05rem);
+  }
+
+  .podio-card.first {
+    --image-scale: 0.96;
+    height: clamp(12.8rem, 49cqi, 17.4rem);
   }
 
   .podio-card.second {
-    margin-bottom: clamp(0.65rem, 2.8cqi, 1.15rem);
+    --image-scale: 0.9;
+    height: clamp(10.9rem, 42cqi, 14.8rem);
   }
 
   .podio-card.third {
-    margin-bottom: clamp(0.35rem, 1.7cqi, 0.75rem);
+    --image-scale: 0.86;
+    height: clamp(9.5rem, 36cqi, 12.9rem);
   }
 
   .numero {
@@ -345,7 +351,7 @@
   }
 
   .podio-portrait {
-    inset: clamp(0.55rem, 2.2cqi, 0.95rem) -2% calc(var(--footer-height) + clamp(0.35rem, 1.2cqi, 0.7rem)) 0;
+    inset: clamp(0.55rem, 2.2cqi, 0.95rem) -2% calc(var(--footer-height) + clamp(0.2rem, 0.85cqi, 0.45rem)) 0;
   }
 
   .pilota-img {
