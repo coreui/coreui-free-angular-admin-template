@@ -37,26 +37,6 @@ interface SeasonDisplay extends SeasonConfig {
   driverClassifica: ClassificaEntry[];
 }
 
-interface SeasonDriverState {
-  isLoading: boolean;
-  podio: PodiumEntry[];
-  classifica: ClassificaEntry[];
-}
-
-interface SeasonConfig {
-  id: number;
-  driverTitle: string;
-  fantaTitle: string;
-  fantaPodio: PodiumEntry[];
-  fantaClassifica: ClassificaEntry[];
-}
-
-interface SeasonDisplay extends SeasonConfig {
-  isLoading: boolean;
-  driverPodio: PodiumEntry[];
-  driverClassifica: ClassificaEntry[];
-}
-
 const PODIUM_SIZE = 3;
 const DRIVER_AVATAR_PATH = '/assets/images/avatars';
 const FANTA_AVATAR_PATH = '/assets/images/avatars_fanta';
@@ -142,7 +122,7 @@ export class AlboDOroComponent implements OnInit {
       console.error(`Error loading season ${seasonId} drivers:`, error);
       this.driverStates.update(states => ({
         ...states,
-        [seasonId]: { ...states[seasonId], isLoading: false },
+        [seasonId]: { ...states[seasonId], isLoading: false }
       }));
     }
   }
