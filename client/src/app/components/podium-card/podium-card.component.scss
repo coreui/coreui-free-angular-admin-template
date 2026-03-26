@@ -16,7 +16,7 @@
   border-radius: 24px;
   color: #fff;
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.06) 0%, rgba(0, 0, 0, 0.28) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.06) 0%, rgba(0, 0, 0, 0.24) 100%),
     url("/assets/images/albo d'oro/sfondo.png") center/100% 100% no-repeat;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.08),
@@ -26,8 +26,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0.12) 62%, rgba(0, 0, 0, 0.2) 100%);
-    opacity: 1;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0.1) 62%, rgba(0, 0, 0, 0.18) 100%);
     pointer-events: none;
   }
 }
@@ -63,27 +62,27 @@
 
 .podio-card {
   --accent: var(--driver-accent, #8f8f8f);
-  --base-top: #8c8c8c;
-  --base-mid: #4d4d4d;
-  --base-bottom: #181818;
-  --base-line: #6aa8ff;
-  --footer-height: clamp(2.7rem, 5.5cqi, 3.9rem);
+  --accent-top: color-mix(in srgb, var(--accent) 78%, white 22%);
+  --accent-mid: color-mix(in srgb, var(--accent) 92%, black 8%);
+  --accent-bottom: color-mix(in srgb, var(--accent) 56%, black 44%);
+  --accent-line: color-mix(in srgb, var(--accent) 56%, white 44%);
+  --footer-height: clamp(2.9rem, 5.8cqi, 4.15rem);
   --score-size: clamp(2rem, 4.1cqi, 2.95rem);
-  --image-scale: 0.98;
+  --image-scale: 0.92;
   --image-shift: 0%;
   position: relative;
   isolation: isolate;
   height: clamp(16.5rem, 49cqi, 31rem);
   min-width: 0;
   overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--accent) 28%, white 72%);
+  border: 1px solid color-mix(in srgb, var(--accent) 38%, white 62%);
   border-radius: 0;
   clip-path: polygon(14% 0, 100% 0, 100% 100%, 0 100%, 0 12%);
   background: linear-gradient(
     180deg,
-    color-mix(in srgb, var(--accent) 26%, var(--base-top) 74%) 0%,
-    color-mix(in srgb, var(--accent) 46%, var(--base-mid) 54%) 42%,
-    color-mix(in srgb, var(--accent) 20%, var(--base-bottom) 80%) 100%
+    var(--accent-top) 0%,
+    var(--accent-mid) 42%,
+    var(--accent-bottom) 100%
   );
   box-shadow:
     0 1.6cqi 3.2cqi rgba(0, 0, 0, 0.32),
@@ -101,40 +100,20 @@
     pointer-events: none;
   }
 
-  &::after {
-    content: '';
-    position: absolute;
-    inset: auto 0 0;
-    height: 0;
-    z-index: 1;
-  }
-
   &.first {
-    --base-top: #a2a2a2;
-    --base-mid: #5d5d5d;
-    --base-bottom: #1a1a1a;
-    --base-line: #5a90c6;
-    --image-scale: 1.02;
+    --image-scale: 0.96;
     height: clamp(19.5rem, 58cqi, 35rem);
     z-index: 2;
   }
 
   &.second {
-    --base-top: #ff0864;
-    --base-mid: #b3004c;
-    --base-bottom: #2f0013;
-    --base-line: #ff4b99;
-    --image-scale: 0.94;
+    --image-scale: 0.88;
     --image-shift: -1%;
     margin-bottom: clamp(1.35rem, 4.6cqi, 2.6rem);
   }
 
   &.third {
-    --base-top: #ffda11;
-    --base-mid: #b78600;
-    --base-bottom: #352200;
-    --base-line: #ffe569;
-    --image-scale: 0.9;
+    --image-scale: 0.84;
     --image-shift: 1%;
     height: clamp(15.4rem, 45cqi, 28.5rem);
     margin-bottom: clamp(1rem, 3.4cqi, 1.9rem);
@@ -156,16 +135,15 @@
 
 .podio-portrait {
   position: absolute;
-  inset: clamp(1rem, 3.2cqi, 1.8rem) -3% calc(var(--footer-height) + clamp(0.55rem, 1.7cqi, 1rem)) 0;
+  inset: clamp(1rem, 3.2cqi, 1.8rem) -1% calc(var(--footer-height) + clamp(0.6rem, 1.8cqi, 1.05rem)) 0;
   z-index: 0;
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  padding: 0;
 }
 
 .pilota-img {
-  width: 88%;
+  width: 82%;
   height: 100%;
   object-fit: contain;
   object-position: bottom center;
@@ -181,12 +159,12 @@
   height: var(--footer-height);
   background: linear-gradient(
     180deg,
-    color-mix(in srgb, var(--accent) 30%, var(--base-top) 70%) 0%,
-    color-mix(in srgb, var(--accent) 55%, var(--base-mid) 45%) 100%
+    color-mix(in srgb, var(--accent) 80%, black 20%) 0%,
+    color-mix(in srgb, var(--accent) 64%, black 36%) 100%
   );
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.18),
-    inset 0 -0.35rem 0 color-mix(in srgb, var(--accent) 28%, var(--base-line) 72%);
+    inset 0 -0.35rem 0 var(--accent-line);
   pointer-events: none;
 }
 
@@ -202,7 +180,7 @@
 }
 
 .nome {
-  display: block;
+  display: -webkit-box;
   width: 100%;
   overflow: hidden;
   font-size: clamp(0.95rem, 2.15cqi, 1.45rem);
@@ -211,7 +189,7 @@
   letter-spacing: -0.04em;
   white-space: normal;
   overflow-wrap: anywhere;
-  display: -webkit-box;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
@@ -221,6 +199,7 @@
   position: absolute;
   right: clamp(0.28rem, 0.85cqi, 0.7rem);
   bottom: calc(var(--footer-height) + clamp(0.18rem, 0.6cqi, 0.45rem));
+  z-index: 2;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -275,15 +254,13 @@
 
 .classifica tr {
   background:
-    linear-gradient(180deg, #dad9d3 0%, #dad9d3 100%);
- 
+    linear-gradient(180deg, #ddddce 0%, #ddddce 100%);
   background-blend-mode: multiply;
   color: #111111 !important;
 
   &:nth-child(even) {
     background:
-      linear-gradient(180deg, #767676 0%, #767676 100%);
-
+      linear-gradient(180deg, #b8b8b8 0%, #b8b8b8 100%);
   }
 }
 
@@ -368,7 +345,11 @@
   }
 
   .podio-portrait {
-    inset: clamp(0.55rem, 2.2cqi, 0.95rem) -4% calc(var(--footer-height) + clamp(0.35rem, 1.2cqi, 0.7rem)) 0;
+    inset: clamp(0.55rem, 2.2cqi, 0.95rem) -2% calc(var(--footer-height) + clamp(0.35rem, 1.2cqi, 0.7rem)) 0;
+  }
+
+  .pilota-img {
+    width: 80%;
   }
 
   .nameplate {

@@ -1,28 +1,33 @@
-@for (season of seasons(); track season.driverTitle) {
-  <c-row class="mb-4">
-    <c-col>
-      @if (season.isLoading) {
-        <c-card>
-          <c-card-body class="text-center">
-            <div class="spinner-border text-primary" role="status">
-              <span class="visually-hidden" i18n>Loading...</span>
-            </div>
-          </c-card-body>
-        </c-card>
-      } @else {
-        <app-podium-card
+<div class="albo-page">
+  <div class="albo-grid">
+    @for (season of seasons(); track season.id) {
+      <div class="albo-slot">
+        @if (season.isLoading) {
+          <c-card class="loading-card">
+            <c-card-body class="text-center">
+              <div class="spinner-border text-light" role="status">
+                <span class="visually-hidden" i18n>Loading...</span>
+              </div>
+            </c-card-body>
+          </c-card>
+        } @else {
+          <app-podium-card
             [podio]="season.driverPodio"
             [classifica]="season.driverClassifica"
-            [championshipTitle]="season.driverTitle">
-        </app-podium-card>
-      }
-    </c-col>
-    <c-col>
-      <app-podium-card
+            [championshipTitle]="season.driverTitle"
+          >
+          </app-podium-card>
+        }
+      </div>
+
+      <div class="albo-slot">
+        <app-podium-card
           [podio]="season.fantaPodio"
           [classifica]="season.fantaClassifica"
-          [championshipTitle]="season.fantaTitle">
-      </app-podium-card>
-    </c-col>
-  </c-row>
-}
+          [championshipTitle]="season.fantaTitle"
+        >
+        </app-podium-card>
+      </div>
+    }
+  </div>
+</div>
