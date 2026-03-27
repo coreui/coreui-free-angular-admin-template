@@ -1,214 +1,50 @@
-// Variables
-$font-family: 'Roboto', sans-serif;
-
-.albo-container {
-  background: var(--cui-body-bg);
-  color: var(--cui-body-color);
-  font-family: $font-family;
-  padding: 2rem;
-  border-radius: 16px;
-  border: 1px solid var(--cui-border-color);
+:host {
+  display: block;
 }
 
-.albo-header {
-  text-align: center;
-  margin-bottom: 2rem;
-
-  h1 {
-    font-size: 2rem;
-    font-weight: bold;
-  }
+.albo-page {
+  padding: 1.5rem 0;
 }
 
-.podio {
+.albo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.albo-slot {
+  min-width: 0;
+}
+
+.loading-card {
   display: flex;
+  aspect-ratio: 1500 / 1861;
+  align-items: center;
   justify-content: center;
-  align-items: flex-end;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.3) 100%),
+    url("/assets/images/albo d'oro/sfondo.png") center/100% 100% no-repeat;
 }
 
-.podio-card {
-  position: relative;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  text-align: center;
-  padding: 1rem;
-  flex: 1;
-  max-width: 200px;
-  border: 1px solid var(--cui-border-color);
-  background-image: url('/assets/images/texture/texture.png');
-
-
-  &.first {
-    height: 310px;
-  }
-
-  &.second {
-    height: 270px;
-  }
-
-  &.third {
-    height: 240px;
+@media (max-width: 1199px) {
+  .albo-grid {
+    grid-template-columns: 1fr;
   }
 }
 
-.numero {
-  font-size: 4rem;
-  font-weight: bold;
-  opacity: 0.3;
-  position: absolute;
-  top: 10px;
-  left: 10px;
-}
-
-.pilota-img {
-  border-radius: 8px;
-  margin-top: 2rem;
-}
-
-.img-first {
-  width: 100%;
-}
-
-.img-small {
-  width: 80%;
-}
-
-.info {
-  margin-top: auto;
-  padding-top: 0.5rem;
-}
-
-.nome {
-  display: block;
-  font-weight: bold;
-  font-size: 1.2rem;
-  color: aliceblue;
-}
-
-.nome-table {
-  display: block;
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-.classifica {
-  margin-top: 2rem;
-
-  h2 {
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
-    border-bottom: 1px solid var(--cui-border-color);
-    padding-bottom: 0.5rem;
+@media (max-width: 767px) {
+  .albo-page {
+    padding: 1rem 0;
   }
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    border: 1px solid var(--cui-border-color);
+  .albo-grid {
+    gap: 1rem;
   }
 
-  tr:nth-child(even) {
-    background: var(--cui-tertiary-bg);
-  }
-
-  td {
-    padding: 0.5rem 1rem;
-    border-top: 1px solid var(--cui-border-color);
-  }
-
-  .pos {
-    font-weight: bold;
-    width: 50px;
-  }
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .albo-container {
-    padding: 1rem;
-  }
-
-  .albo-header h1 {
-    font-size: 1.8rem;
-  }
-
-  .podio {
-    gap: 0.5rem;
-  }
-
-  .podio-card {
-    padding: 0.5rem;
-
-    &.first {
-      height: 220px;
-    }
-
-    &.second {
-      height: 180px;
-    }
-
-    &.third {
-      height: 160px;
-    }
-  }
-
-  .numero {
-    font-size: 2.5rem;
-  }
-
-  .pilota-img {
-    margin-top: 1.5rem;
-  }
-
-  .img-first {
-    width: 80%;
-  }
-
-  .img-small {
-    width: 70%;
-  }
-
-  .nome {
-    font-size: 1rem;
-  }
-
-  .classifica {
-    h2 {
-      font-size: 1.3rem;
-    }
-
-    td {
-      padding: 0.5rem;
-    }
-  }
-}
-
-@media (max-width: 480px) {
-  .albo-header h1 {
-    font-size: 1.5rem;
-  }
-
-  .podio-card {
-    &.first {
-      height: 180px;
-    }
-
-    &.second {
-      height: 150px;
-    }
-
-    &.third {
-      height: 130px;
-    }
-  }
-
-  .numero {
-    font-size: 2rem;
-  }
-
-  .nome {
-    font-size: 0.9rem;
+  .loading-card {
+    border-radius: 0;
   }
 }
