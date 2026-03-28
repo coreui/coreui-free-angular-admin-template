@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CardModule } from '@coreui/angular';
 import { PodiumCardComponent } from '../../components/podium-card/podium-card.component';
 import { DbDataService } from '../../service/db-data.service';
-import type { DriverData } from '@f123dashboard/shared';
+import type { DriverData, User } from '@f123dashboard/shared';
 
 interface PodiumEntry {
   nome: string;
@@ -44,8 +44,8 @@ const FANTA_AVATAR_PATH = '/assets/images/avatars_fanta';
 const SEASONS: SeasonConfig[] = [
   {
     id: 2,
-    driverTitle: 'Campionato piloti 2025-26',
-    fantaTitle: 'Fanta 2025-26',
+    driverTitle: 'Campionato Piloti 2025-26',
+    fantaTitle: 'Classifica Fanta 2025-26',
     fantaPodio: [
       { nome: 'chichi', punti: '816', img: `${FANTA_AVATAR_PATH}/chichi.jpg`, colore: '#008080' },
       { nome: 'BoxBoxBuddy', punti: '798', img: `${FANTA_AVATAR_PATH}/BoxBoxBuddy.png`, colore: '#ff0000ff' },
@@ -92,6 +92,7 @@ const SEASONS: SeasonConfig[] = [
 })
 export class AlboDOroComponent implements OnInit {
   private dbDataService = inject(DbDataService);
+  private fantaUsers = signal<User[]>([]);
 
   private driverStates = signal<Record<number, SeasonDriverState>>(
     Object.fromEntries(
@@ -109,7 +110,7 @@ export class AlboDOroComponent implements OnInit {
   );
 
   async ngOnInit(): Promise<void> {
-    await Promise.all(SEASONS.map((season) => this.loadChampionship(season.id)));
+    await Promise.all([this.loadFantaUsers(), ...SEASONS.map((season) => this.loadChampionship(season.id))]);
   }
 
   private async loadChampionship(seasonId: number): Promise<void> {
@@ -135,15 +136,34 @@ export class AlboDOroComponent implements OnInit {
         }
       }));
     } finally {
-      this.seasons.set(
-        SEASONS.map((season) => ({
-          ...season,
-          isLoading: this.driverStates()[season.id].isLoading,
-          driverPodio: this.driverStates()[season.id].podio,
-          driverClassifica: this.driverStates()[season.id].classifica
-        }))
-      );
+      this.syncSeasons();
     }
+  }
+
+  private async loadFantaUsers(): Promise<void> {
+    try {
+      this.fantaUsers.set(await this.dbDataService.getUsers());
+    } catch (error) {
+      console.error('Error loading fanta users:', error);
+    } finally {
+      this.syncSeasons();
+    }
+  }
+
+  private syncSeasons(): void {
+    const fantaUsersByUsername = new Map(
+      this.fantaUsers().map((user) => [user.username.toLowerCase(), user])
+    );
+
+    this.seasons.set(
+      SEASONS.map((season) => ({
+        ...season,
+        fantaPodio: this.buildFantaPodium(season.fantaPodio, fantaUsersByUsername),
+        isLoading: this.driverStates()[season.id].isLoading,
+        driverPodio: this.driverStates()[season.id].podio,
+        driverClassifica: this.driverStates()[season.id].classifica
+      }))
+    );
   }
 
   private buildPodium(drivers: DriverData[]): PodiumEntry[] {
@@ -160,5 +180,16 @@ export class AlboDOroComponent implements OnInit {
       nome: driver.driver_username,
       punti: driver.total_points.toString()
     }));
+  }
+
+  private buildFantaPodium(entries: PodiumEntry[], usersByUsername: Map<string, User>): PodiumEntry[] {
+    return entries.map((entry) => {
+      const matchingUser = usersByUsername.get(entry.nome.toLowerCase());
+
+      return {
+        ...entry,
+        img: matchingUser ? this.dbDataService.getAvatarSrc(matchingUser) : entry.img
+      };
+    });
   }
 }

@@ -11,7 +11,7 @@
   container-type: inline-size;
   overflow: hidden;
   min-width: 0;
-  padding: clamp(5.25rem, 18.2cqi, 8.5rem) clamp(0.95rem, 4.1cqi, 2rem) clamp(0.95rem, 4.1cqi, 2rem);
+  padding: clamp(4.25rem, 18.2cqi, 6.5rem) clamp(0.95rem, 4.1cqi, 2rem) clamp(0.95rem, 4.1cqi, 2rem);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 24px;
   color: #fff;
@@ -123,8 +123,8 @@
 .numero {
   position: absolute;
   top: clamp(-0.85rem, -1cqi, -0.2rem);
-  left: clamp(0.35rem, 0.8cqi, 0.65rem);
-  z-index: 1;
+  left: clamp(1rem, 1cqi, 0.5rem);
+  z-index: -1;
   font-size: clamp(4.9rem, 16.8cqi, 9.25rem);
   font-weight: 900;
   line-height: 0.9;
@@ -183,8 +183,8 @@
   display: -webkit-box;
   width: 100%;
   overflow: hidden;
-  font-size: clamp(0.95rem, 2.15cqi, 1.45rem);
-  font-weight: 900;
+  font-size: clamp(1rem, 2.15cqi, 1.45rem);
+  font-weight: 800;
   line-height: 0.94;
   letter-spacing: -0.04em;
   white-space: normal;
@@ -208,8 +208,8 @@
   padding: 0 clamp(0.3rem, 0.6cqi, 0.45rem);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(228, 228, 228, 0.98) 100%);
   color: #111;
-  font-size: clamp(0.68rem, 1.45cqi, 0.98rem);
-  font-weight: 900;
+  font-size: clamp(1rem, 1.45cqi, 0.98rem);
+  font-weight: 800;
   line-height: 1;
   white-space: nowrap;
   border: 1px solid rgba(0, 0, 0, 0.16);
@@ -306,6 +306,82 @@
 .classifica tbody tr:hover,
 .classifica tbody tr:hover td {
   color: #111111 !important;
+}
+
+@media (max-width: 1405px) and (min-width: 768px) {
+  .albo-container {
+    gap: 0.8rem;
+    padding-top: clamp(4.15rem, 13.2cqi, 5.3rem);
+    padding-right: clamp(0.85rem, 3.1cqi, 1.45rem);
+    padding-bottom: clamp(0.8rem, 2.6cqi, 1.1rem);
+    padding-left: clamp(0.85rem, 3.1cqi, 1.45rem);
+  }
+
+  .albo-header h1 {
+    max-width: 90%;
+    font-size: clamp(1.38rem, 3.25cqi, 2.2rem);
+  }
+
+  .podio {
+    gap: clamp(0.4rem, 1.2cqi, 0.75rem);
+  }
+
+  .podio-card {
+    --footer-height: clamp(2.45rem, 4.8cqi, 3.2rem);
+    --score-size: clamp(1.7rem, 3.15cqi, 2.2rem);
+  }
+
+  .podio-card.first {
+    --image-scale: 0.98;
+    height: clamp(15rem, 45cqi, 22.5rem);
+  }
+
+  .podio-card.second {
+    --image-scale: 0.92;
+    height: clamp(12.7rem, 38cqi, 18.8rem);
+  }
+
+  .podio-card.third {
+    --image-scale: 0.88;
+    height: clamp(10.8rem, 32cqi, 15.9rem);
+  }
+
+  .numero {
+    top: clamp(-0.55rem, -0.65cqi, -0.1rem);
+    font-size: clamp(4.1rem, 13.5cqi, 7.1rem);
+  }
+
+  .podio-portrait {
+    inset: clamp(0.8rem, 2.4cqi, 1.25rem) -1% calc(var(--footer-height) + clamp(0.15rem, 0.45cqi, 0.3rem)) 0;
+  }
+
+  .pilota-img {
+    width: 80%;
+  }
+
+  .nome {
+    font-size: clamp(0.88rem, 1.75cqi, 1.15rem);
+  }
+
+  .punti {
+    font-size: clamp(0.7rem, 1.3cqi, 0.9rem);
+  }
+
+  .classifica td {
+    padding: clamp(0.35rem, 0.95cqi, 0.65rem) clamp(0.35rem, 0.9cqi, 0.65rem);
+  }
+
+  .pos {
+    font-size: clamp(0.95rem, 2.1cqi, 1.45rem);
+  }
+
+  .nome-table {
+    font-size: clamp(0.8rem, 1.7cqi, 1.08rem);
+  }
+
+  .punti-table {
+    font-size: clamp(0.74rem, 1.45cqi, 0.96rem);
+  }
 }
 
 @media (max-width: 767px) {

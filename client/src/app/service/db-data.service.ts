@@ -190,6 +190,13 @@ export class DbDataService {
     return constructorGpPoints;
   }
 
+  async getUsers(): Promise<User[]> {
+    const users = await firstValueFrom(
+      this.apiService.post<User[]>('/auth/users', {})
+    );
+    return users;
+  }
+
   async setGpResult(trackId: number, gpResult: GpResult): Promise<string> {
     try {
       const result = await firstValueFrom(
