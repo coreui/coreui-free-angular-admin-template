@@ -128,7 +128,7 @@
   position: absolute;
   top: clamp(-0.85rem, -1cqi, -0.2rem);
   left: clamp(1rem, 1cqi, 0.5rem);
-  z-index: -1;
+  z-index: 3;
   font-size: clamp(4.9rem, 16.8cqi, 9.25rem);
   font-weight: 900;
   line-height: 0.9;

@@ -97,6 +97,7 @@ export class AlboDOroComponent implements OnInit {
   private driverStates = signal<Record<number, SeasonDriverState>>(
     Object.fromEntries(SEASONS.map(s => [s.id, { isLoading: true, podio: [], classifica: [] }]))
   );
+  private fantaUsersByUsername = signal<Map<string, User>>(new Map());
 
   seasons = computed<SeasonDisplay[]>(() =>
     SEASONS.map(config => ({
@@ -104,6 +105,10 @@ export class AlboDOroComponent implements OnInit {
       isLoading: this.driverStates()[config.id].isLoading,
       driverPodio: this.driverStates()[config.id].podio,
       driverClassifica: this.driverStates()[config.id].classifica,
+      fantaPodio: this.buildFantaPodium(
+        SEASONS.find(s => s.id === config.id)?.fantaPodio ?? [],
+        this.fantaUsersByUsername()
+      ),
     }))
   );
 
@@ -125,35 +130,20 @@ export class AlboDOroComponent implements OnInit {
         ...states,
         [seasonId]: { ...states[seasonId], isLoading: false }
       }));
-    } finally {
-      this.syncSeasons();
     }
   }
 
   private async loadFantaUsers(): Promise<void> {
     try {
-      this.fantaUsers.set(await this.dbDataService.getUsers());
+      const users = await this.dbDataService.getUsers();
+      this.fantaUsers.set(users);
+      const fantaUsersByUsername = new Map(
+        users.map((user) => [user.username.toLowerCase(), user])
+      );
+      this.fantaUsersByUsername.set(fantaUsersByUsername);
     } catch (error) {
       console.error('Error loading fanta users:', error);
-    } finally {
-      this.syncSeasons();
     }
-  }
-
-  private syncSeasons(): void {
-    const fantaUsersByUsername = new Map(
-      this.fantaUsers().map((user) => [user.username.toLowerCase(), user])
-    );
-
-    this.seasons.set(
-      SEASONS.map((season) => ({
-        ...season,
-        fantaPodio: this.buildFantaPodium(season.fantaPodio, fantaUsersByUsername),
-        isLoading: this.driverStates()[season.id].isLoading,
-        driverPodio: this.driverStates()[season.id].podio,
-        driverClassifica: this.driverStates()[season.id].classifica
-      }))
-    );
   }
 
   private buildPodium(drivers: DriverData[]): PodiumEntry[] {
