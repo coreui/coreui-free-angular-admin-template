@@ -42,10 +42,9 @@
 .albo-header h1 {
   margin: 0;
   max-width: 88%;
-  font-size: clamp(1.55rem, 3.95cqi, 3rem);
+  font-size: clamp(1.55rem, 5cqi, 3rem);
   font-weight: 900;
   line-height: 0.96;
-  letter-spacing: -0.045em;
   text-wrap: balance;
   text-shadow: 0 3px 18px rgba(0, 0, 0, 0.42);
 }
@@ -58,6 +57,11 @@
   align-items: end;
   gap: clamp(0.45rem, 1.6cqi, 1rem);
   min-height: 0;
+}
+
+.podio-slot {
+  position: relative;
+  min-width: 0;
 }
 
 .podio-card {
@@ -130,7 +134,7 @@
   line-height: 0.9;
   letter-spacing: -0.08em;
   color: rgba(255, 255, 255, 0.96);
-  text-shadow: 0 0.15em 0 rgba(0, 0, 0, 0.08);
+  text-shadow: 0.05em 0.1em 0.1em rgba(0, 0, 0, 0.438);
 }
 
 .podio-portrait {
@@ -189,9 +193,9 @@
   letter-spacing: -0.04em;
   white-space: normal;
   overflow-wrap: anywhere;
-  line-clamp: 2;
+  line-clamp: 1;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
 }
 
@@ -205,7 +209,7 @@
   justify-content: center;
   min-width: var(--score-size);
   height: var(--score-size);
-  padding: 0 clamp(0.3rem, 0.6cqi, 0.45rem);
+  padding: 0 clamp(0.6rem, 0.6cqi, 0.45rem);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(228, 228, 228, 0.98) 100%);
   color: #111;
   font-size: clamp(1rem, 1.45cqi, 0.98rem);
@@ -440,11 +444,14 @@
   }
 
   .nome {
-    font-size: clamp(0.72rem, 2.35cqi, 0.98rem);
+    font-size: clamp(0.60rem, 3vw, 0.98rem);
+    line-clamp: 1;
+    -webkit-line-clamp: 1;
+    text-overflow: ellipsis;
   }
 
   .punti {
-    font-size: clamp(0.54rem, 1.82cqi, 0.8rem);
+    font-size: clamp(0.75rem, 2.3cqi, 0.9rem);
   }
 
   .classifica td {

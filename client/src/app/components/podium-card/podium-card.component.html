@@ -5,8 +5,8 @@
 
   <section class="podio">
     @for (pilota of podio(); track pilota.nome; let i = $index) {
-      <article
-        class="podio-card"
+      <div
+        class="podio-slot"
         [class.first]="i === 0"
         [class.second]="i === 1"
         [class.third]="i === 2"
@@ -15,24 +15,31 @@
       >
         <span class="numero">{{ i + 1 }}</span>
 
-        <div class="podio-portrait">
-          <img
-            [src]="pilota.img"
-            [alt]="pilota.nome"
-            class="pilota-img"
-          />
-        </div>
-
-        <span class="punti">
-          <span>{{ pilota.punti }} pt</span>
-        </span>
-
-        <div class="info">
-          <div class="nameplate">
-            <span class="nome">{{ pilota.nome }}</span>
+        <article
+          class="podio-card"
+          [class.first]="i === 0"
+          [class.second]="i === 1"
+          [class.third]="i === 2"
+        >
+          <div class="podio-portrait">
+            <img
+              [src]="pilota.img"
+              [alt]="pilota.nome"
+              class="pilota-img"
+            />
           </div>
-        </div>
-      </article>
+
+          <span class="punti">
+            <span>{{ pilota.punti }} pt</span>
+          </span>
+
+          <div class="info">
+            <div class="nameplate">
+              <span class="nome">{{ pilota.nome }}</span>
+            </div>
+          </div>
+        </article>
+      </div>
     }
   </section>
 
