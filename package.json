@@ -20,23 +20,23 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^21.2.5",
-    "@angular/cdk": "^21.2.3",
-    "@angular/common": "^21.2.5",
-    "@angular/compiler": "^21.2.5",
-    "@angular/core": "^21.2.5",
-    "@angular/forms": "^21.2.5",
-    "@angular/language-service": "^21.2.5",
-    "@angular/localize": "^21.2.5",
-    "@angular/platform-browser": "^21.2.5",
-    "@angular/platform-browser-dynamic": "^21.2.5",
-    "@angular/router": "^21.2.5",
-    "@coreui/angular": "~5.6.21",
-    "@coreui/angular-chartjs": "~5.6.21",
+    "@angular/animations": "^21.2.10",
+    "@angular/cdk": "^21.2.8",
+    "@angular/common": "^21.2.10",
+    "@angular/compiler": "^21.2.10",
+    "@angular/core": "^21.2.10",
+    "@angular/forms": "^21.2.10",
+    "@angular/language-service": "^21.2.10",
+    "@angular/localize": "^21.2.10",
+    "@angular/platform-browser": "^21.2.10",
+    "@angular/platform-browser-dynamic": "^21.2.10",
+    "@angular/router": "^21.2.10",
+    "@coreui/angular": "~5.6.22",
+    "@coreui/angular-chartjs": "~5.6.22",
     "@coreui/chartjs": "~4.1.0",
     "@coreui/coreui": "~5.6.1",
     "@coreui/icons": "^3.0.1",
-    "@coreui/icons-angular": "~5.6.21",
+    "@coreui/icons-angular": "~5.6.22",
     "@coreui/utils": "^2.0.2",
     "chart.js": "^4.5.1",
     "ngx-scrollbar": "^13.0.3",
@@ -45,15 +45,15 @@
     "zone.js": "~0.16.1"
   },
   "devDependencies": {
-    "@angular/build": "^21.2.3",
-    "@angular/cli": "^21.2.3",
-    "@angular/compiler-cli": "^21.2.5",
-    "@types/node": "^24.12.0",
-    "@vitest/browser-playwright": "^4.1.0",
+    "@angular/build": "^21.2.8",
+    "@angular/cli": "^21.2.8",
+    "@angular/compiler-cli": "^21.2.10",
+    "@types/node": "^24.12.2",
+    "@vitest/browser-playwright": "^4.1.5",
     "jsdom": "^28.1.0",
-    "playwright": "^1.58.2",
+    "playwright": "^1.59.1",
     "typescript": "~5.9.3",
-    "vitest": "^4.1.0"
+    "vitest": "^4.1.5"
   },
   "engines": {
     "node": "^20.19.0 || ^22.12.0 || ^24.0.0",
@@ -65,8 +65,5 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/coreui/coreui-free-angular-admin-template.git"
-  },
-  "overrides": {
-    "undici": "^7.24.0"
   }
 }
