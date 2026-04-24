@@ -2,6 +2,46 @@
 
 ---
 
+#### `5.6.22`
+
+- chore(dependencies): update to `Angular 21.2.5`
+  - `@angular/animations` @ "21.2.10" (was "21.2.5")
+  - `@angular/cdk` @ "21.2.8" (was "21.2.3")
+  - `@angular/common` @ "21.2.10" (was "21.2.5")
+  - `@angular/compiler` @ "21.2.10" (was "21.2.5")
+  - `@angular/core` @ "21.2.10" (was "21.2.5")
+  - `@angular/forms` @ "21.2.10" (was "21.2.5")
+  - `@angular/language-service` @ "21.2.10" (was "21.2.5")
+  - `@angular/localize` @ "21.2.10" (was "21.2.5")
+  - `@angular/platform-browser` @ "21.2.10" (was "21.2.5")
+  - `@angular/platform-browser-dynamic` @ "21.2.10" (was "21.2.5")
+  - `@angular/router` @ "21.2.10" (was "21.2.5")
+  - `@coreui/angular` @ "5.6.22" (was "5.6.21")
+  - `@coreui/angular-chartjs` @ "5.6.22" (was "5.6.21")
+  - `@coreui/icons-angular` @ "5.6.22" (was "5.6.21")
+  - `@angular/build` @ "21.2.8" (was "21.2.3")
+  - `@angular/cli` @ "21.2.8" (was "21.2.3")
+  - `@angular/compiler-cli` @ "21.2.10" (was "21.2.5")
+  - `@types/node` @ "24.12.2" (was "24.12.0")
+  - `@vitest/browser-playwright` @ "4.1.5" (was "4.1.0")
+  - `playwright` @ "1.59.1" (was "1.58.2")
+  - `vitest` @ "4.1.5" (was "4.1.0")
+- chore(dependencies): patch vulnerabilities
+  - `@hono/node-server`: https://github.com/advisories/GHSA-92pp-h63x-v22m
+  - `brace-expansion`: https://github.com/advisories/GHSA-f886-m6hf-6m8v
+  - `hono`:
+    - https://github.com/advisories/GHSA-26pp-8wgv-hjvm
+    - https://github.com/advisories/GHSA-r5rp-j6wh-rvv4
+    - https://github.com/advisories/GHSA-xpcf-pg52-r92g
+    - https://github.com/advisories/GHSA-xf4j-xp2r-rqqx
+    - https://github.com/advisories/GHSA-wmmm-f939-6g9c
+    - https://github.com/advisories/GHSA-458j-xx4x-4375
+  - `path-to-regexp`:
+    - https://github.com/advisories/GHSA-j3q9-mxjg-w52f
+    - https://github.com/advisories/GHSA-27v5-c462-wpq7
+
+---
+
 #### `5.6.21`
 
 - chore(dependencies): update to `Angular 21.2.5`
