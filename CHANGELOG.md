@@ -2,6 +2,35 @@
 
 ---
 
+#### `5.6.23`
+
+- chore(dependencies): update to `Angular 21.2.12`
+  - `@angular/build` @ "21.2.10" (was "21.2.8")
+  - `@angular/cli` @ "21.2.10" (was "21.2.8")
+  - `@angular/compiler-cli` @ "21.2.12" (was "21.2.10")
+  - `@angular/animations` @ "21.2.12" (was "21.2.10")
+  - `@angular/cdk` @ "21.2.10" (was "21.2.8")
+  - `@angular/common` @ "21.2.12" (was "21.2.10")
+  - `@angular/compiler` @ "21.2.12" (was "21.2.10")
+  - `@angular/core` @ "21.2.12" (was "21.2.10")
+  - `@angular/forms` @ "21.2.12" (was "21.2.10")
+  - `@angular/language-service` @ "21.2.12" (was "21.2.10")
+  - `@angular/localize` @ "21.2.12" (was "21.2.10")
+  - `@angular/platform-browser` @ "21.2.12" (was "21.2.10")
+  - `@angular/platform-browser-dynamic` @ "21.2.12" (was "21.2.10")
+  - `@angular/router` @ "21.2.12" (was "21.2.10")
+  - `@coreui/angular` @ "5.6.23" (was "5.6.22")
+  - `@coreui/angular-chartjs` @ "5.6.23" (was "5.6.22")
+  - `@coreui/chartjs` @ "4.2.0" (was "4.1.0")
+  - `@coreui/icons-angular` @ "5.6.23" (was "5.6.22")
+  - `zone.js` @ "0.16.2" (was "0.16.1")
+  - `@types/node` @ "24.12.3" (was "24.12.2")
+  - `@vitest/browser-playwright` @ "4.1.6" (was "4.1.5")
+  - `jsdom` @ "29.1.1" (was "28.1.0")
+  - `vitest` @ "4.1.6" (was "4.1.5")
+
+---
+
 #### `5.6.22`
 
 - chore(dependencies): update to `Angular 21.2.5`
