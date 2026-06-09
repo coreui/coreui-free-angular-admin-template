@@ -2,6 +2,36 @@
 
 ---
 
+#### `5.7.1` for Angular 22
+
+- chore(dependencies): update to `Angular 22.0.0`
+  - `@angular/build` @ "22.0.0" (was "21.2.12")
+  - `@angular/cli` @ "22.0.0" (was "21.2.12")
+  - `@angular/compiler-cli` @ "22.0.0" (was "21.2.14")
+  - `@angular/animations` @ "22.0.0" (was "21.2.14")
+  - `@angular/cdk` @ "22.0.0" (was "21.2.12")
+  - `@angular/common` @ "22.0.0" (was "21.2.14")
+  - `@angular/compiler` @ "22.0.0" (was "21.2.14")
+  - `@angular/core` @ "22.0.0" (was "21.2.14")
+  - `@angular/forms` @ "22.0.0" (was "21.2.14")
+  - `@angular/language-service` @ "22.0.0" (was "21.2.14")
+  - `@angular/localize` @ "22.0.0" (was "21.2.14")
+  - `@angular/platform-browser` @ "22.0.0" (was "21.2.14")
+  - `@angular/platform-browser-dynamic` @ "22.0.0" (was "21.2.14")
+  - `@angular/router` @ "22.0.0" (was "21.2.14")
+  - `@coreui/angular` @ "5.7.1" (was "5.6.24")
+  - `@coreui/angular-chartjs` @ "5.7.1" (was "5.6.24")
+  - `@coreui/icons-angular` @ "5.7.1" (was "5.6.24")
+  - `@types/node` @ "24.13.1" (was "24.12.4")
+  - `@vitest/browser-playwright` @ "4.1.8" (was "4.1.7")
+  - `typescript` @ "6.0.3" (was "5.9.3")
+  - `vitest` @ "4.1.8" (was "4.1.7")
+- chore(tsconfig): disable the `nullishCoalescingNotNullable` & `optionalChainNotNullable` extended diagnostics
+- chore(tsconfig): migrate baseUrl to TS6
+- chore: add `ChangeDetectionStrategy.Eager` to applicable components
+
+---
+
 #### `5.6.24`
 
 - chore(dependencies): update to `Angular 21.2.14`
