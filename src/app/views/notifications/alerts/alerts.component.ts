@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {
   AlertComponent,
@@ -20,6 +20,7 @@ import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/
   selector: 'app-alerts',
   templateUrl: './alerts.component.html',
   styleUrls: ['./alerts.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, AlertComponent, AlertLinkDirective, RouterLink, AlertHeadingDirective, IconDirective, TemplateIdDirective, ButtonCloseDirective, ButtonDirective, DocsComponentsComponent]
 })
 export class AlertsComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import {
@@ -25,6 +25,7 @@ import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/
 @Component({
   selector: 'app-input-groups',
   templateUrl: './input-groups.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, InputGroupComponent, InputGroupTextDirective, FormControlDirective, FormLabelDirective, FormCheckInputDirective, ButtonDirective, DropdownComponent, DropdownToggleDirective, DropdownMenuDirective, DropdownItemDirective, RouterLink, DropdownDividerDirective, FormSelectDirective, ReactiveFormsModule, DocsComponentsComponent]
 })
 export class InputGroupsComponent {}

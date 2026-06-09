@@ -1,5 +1,5 @@
 import { JsonPipe, SlicePipe } from '@angular/common';
-import { Component, OnInit, viewChildren } from '@angular/core';
+import { Component, OnInit, viewChildren, ChangeDetectionStrategy } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -46,6 +46,7 @@ export enum Colors {
 @Component({
   selector: 'app-toasters',
   templateUrl: './toasters.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [RowComponent, ColComponent, ToasterComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, ContainerComponent, ReactiveFormsModule, FormDirective, FormCheckComponent, FormCheckInputDirective, FormCheckLabelDirective, InputGroupComponent, InputGroupTextDirective, FormControlDirective, FormSelectDirective, ButtonDirective, ToastComponent, ToastHeaderComponent, ToastBodyComponent, AppToastComponent, JsonPipe, SlicePipe, TextColorDirective, DocsComponentsComponent]
 })
 export class ToastersComponent implements OnInit {

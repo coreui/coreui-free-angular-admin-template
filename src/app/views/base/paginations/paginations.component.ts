@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {
   CardBodyComponent,
@@ -15,6 +15,7 @@ import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/
 @Component({
   selector: 'app-paginations',
   templateUrl: './paginations.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, PaginationComponent, PageItemComponent, PageLinkDirective, RouterLink, DocsComponentsComponent]
 })
 export class PaginationsComponent {}

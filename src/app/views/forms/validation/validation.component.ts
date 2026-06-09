@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   ButtonDirective,
@@ -25,6 +25,7 @@ import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/
 @Component({
   selector: 'app-validation',
   templateUrl: './validation.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, ReactiveFormsModule, FormsModule, FormDirective, FormLabelDirective, FormControlDirective, FormFeedbackComponent, InputGroupComponent, InputGroupTextDirective, FormSelectDirective, FormCheckComponent, FormCheckInputDirective, FormCheckLabelDirective, ButtonDirective, ListGroupDirective, ListGroupItemDirective, DocsComponentsComponent]
 })
 export class ValidationComponent implements OnInit {

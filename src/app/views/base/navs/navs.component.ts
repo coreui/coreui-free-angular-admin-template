@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {
   CardBodyComponent,
@@ -19,6 +19,7 @@ import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/
 @Component({
   selector: 'app-navs',
   templateUrl: './navs.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, NavComponent, NavItemComponent, NavLinkDirective, RouterLink, DropdownComponent, DropdownToggleDirective, DropdownMenuDirective, DropdownItemDirective, DocsComponentsComponent]
 })
 export class NavsComponent {}

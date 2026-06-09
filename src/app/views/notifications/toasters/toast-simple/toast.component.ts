@@ -1,4 +1,4 @@
-import { Component, forwardRef, input } from '@angular/core';
+import { Component, forwardRef, input, ChangeDetectionStrategy } from '@angular/core';
 
 import { ProgressComponent, ToastBodyComponent, ToastCloseDirective, ToastComponent, ToastHeaderComponent } from '@coreui/angular';
 
@@ -7,6 +7,7 @@ import { ProgressComponent, ToastBodyComponent, ToastCloseDirective, ToastCompon
   templateUrl: './toast.component.html',
   styleUrls: ['./toast.component.scss'],
   providers: [{ provide: ToastComponent, useExisting: forwardRef(() => AppToastComponent) }],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [ToastHeaderComponent, ToastBodyComponent, ToastCloseDirective, ProgressComponent]
 })
 export class AppToastComponent extends ToastComponent {

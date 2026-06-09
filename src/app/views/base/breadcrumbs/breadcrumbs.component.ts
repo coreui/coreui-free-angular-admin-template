@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import {
   BreadcrumbComponent,
@@ -14,6 +14,7 @@ import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/
 
 @Component({
   templateUrl: './breadcrumbs.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, BreadcrumbComponent, BreadcrumbItemComponent, BreadcrumbRouterComponent, DocsComponentsComponent]
 })
 export class BreadcrumbsComponent implements OnInit {

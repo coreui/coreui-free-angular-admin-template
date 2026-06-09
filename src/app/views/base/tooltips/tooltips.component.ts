@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {
   ButtonDirective,
@@ -15,6 +15,7 @@ import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/
 @Component({
   selector: 'app-tooltips',
   templateUrl: './tooltips.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, TooltipDirective, RouterLink, ButtonDirective, DocsComponentsComponent]
 })
 export class TooltipsComponent {}

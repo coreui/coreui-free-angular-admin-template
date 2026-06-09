@@ -16,7 +16,7 @@ type BrandData = {
 @Component({
   selector: 'app-widgets-brand',
   templateUrl: './widgets-brand.component.html',
-  changeDetection: ChangeDetectionStrategy.Default,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [RowComponent, ColComponent, WidgetStatDComponent, IconDirective, ChartjsComponent]
 })
 export class WidgetsBrandComponent implements AfterContentInit {

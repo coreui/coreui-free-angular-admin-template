@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import {
   CardBodyComponent,
   CardComponent,
@@ -18,6 +18,7 @@ import { DocsComponentsComponent } from '@docs-components/docs-components/docs-c
 @Component({
   selector: 'app-tabs',
   templateUrl: './tabs.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     CardBodyComponent,
     CardComponent,

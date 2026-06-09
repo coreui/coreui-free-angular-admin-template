@@ -6,7 +6,7 @@ import { ColComponent, RowComponent, WidgetStatEComponent } from '@coreui/angula
 @Component({
   selector: 'app-widgets-e',
   templateUrl: './widgets-e.component.html',
-  changeDetection: ChangeDetectionStrategy.Default,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [RowComponent, ColComponent, WidgetStatEComponent, ChartjsComponent]
 })
 export class WidgetsEComponent implements AfterContentInit {

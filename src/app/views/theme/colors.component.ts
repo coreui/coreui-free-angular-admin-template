@@ -1,10 +1,11 @@
-import { AfterViewInit, Component, computed, DOCUMENT, forwardRef, inject, input, OnInit, Renderer2 } from '@angular/core';
+import { AfterViewInit, Component, computed, DOCUMENT, forwardRef, inject, input, OnInit, Renderer2, ChangeDetectionStrategy } from '@angular/core';
 
 import { getStyle, rgbToHex } from '@coreui/utils';
 import { CardBodyComponent, CardComponent, CardHeaderComponent, ColComponent, RowComponent } from '@coreui/angular';
 
 @Component({
   templateUrl: 'colors.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [CardComponent, CardHeaderComponent, CardBodyComponent, RowComponent, forwardRef(() => ThemeColorComponent)]
 })
 export class ColorsComponent implements OnInit, AfterViewInit {
@@ -52,6 +53,7 @@ export class ColorsComponent implements OnInit, AfterViewInit {
     </c-col>
   `,
   imports: [ColComponent],
+  changeDetection: ChangeDetectionStrategy.Eager,
   host: {
     style: 'display: contents;'
   }

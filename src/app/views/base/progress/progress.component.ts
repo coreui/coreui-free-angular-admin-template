@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import {
   CardBodyComponent,
   CardComponent,
@@ -14,6 +14,7 @@ import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/
 @Component({
   selector: 'app-progress',
   templateUrl: './progress.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, ProgressStackedComponent, ProgressComponent, ProgressBarComponent, DocsComponentsComponent]
 })
 export class AppProgressComponent {

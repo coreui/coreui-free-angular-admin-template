@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IconDirective } from '@coreui/icons-angular';
 import {
   ButtonDirective,
@@ -13,6 +13,7 @@ import {
 @Component({
   selector: 'app-page404',
   templateUrl: './page404.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [ContainerComponent, RowComponent, ColComponent, InputGroupComponent, InputGroupTextDirective, IconDirective, FormControlDirective, ButtonDirective]
 })
 export class Page404Component {}
