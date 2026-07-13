@@ -10,7 +10,8 @@
       "@vitest/browser-playwright"
     ],
     "paths": {
-      "@docs-components/*": ["./src/components/*"]
+      "@docs-components/*": ["./src/components/*"],
+      "*": ["./*"]
     }
   },
   "files": [
@@ -19,5 +20,13 @@
   "include": [
     "src/**/*.spec.ts",
     "src/**/*.d.ts"
-  ]
+  ],
+  "angularCompilerOptions": {
+    "extendedDiagnostics": {
+      "checks": {
+        "nullishCoalescingNotNullable": "suppress",
+        "optionalChainNotNullable": "suppress"
+      }
+    }
+  }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ButtonDirective, CardBodyComponent, CardComponent, CardHeaderComponent, ColComponent, CollapseDirective, RowComponent } from '@coreui/angular';
 import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/public-api';
 
@@ -9,11 +9,10 @@ import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/
 })
 export class CollapsesComponent {
 
-  collapses = [false, false, false, false];
+  readonly collapses = signal([false, false, false, false]);
 
   toggleCollapse(id: number): void {
-    // @ts-ignore
-    this.collapses[id] = !this.collapses[id];
+    this.collapses.update(visible => visible.map((v, i) => i === id ? !v : v));
   }
 
 }

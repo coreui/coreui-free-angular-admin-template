@@ -22,7 +22,7 @@ import {
   imports: [RowComponent, ColComponent, WidgetStatAComponent, TemplateIdDirective, IconDirective, DropdownComponent, ButtonDirective, DropdownToggleDirective, DropdownMenuDirective, DropdownItemDirective, RouterLink, DropdownDividerDirective, ChartjsComponent]
 })
 export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
-  private changeDetectorRef = inject(ChangeDetectorRef);
+  private readonly changeDetectorRef = inject(ChangeDetectorRef);
 
   data: any[] = [];
   options: any[] = [];
@@ -182,8 +182,6 @@ export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
   imports: [ChartjsComponent]
 })
 export class ChartSample implements AfterViewInit {
-
-  constructor() {}
 
   readonly chartComponent = viewChild.required<ChartjsComponent>('chart');
 

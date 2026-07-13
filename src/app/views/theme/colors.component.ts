@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, computed, DOCUMENT, forwardRef, inject, input, OnInit, Renderer2 } from '@angular/core';
+import { AfterViewInit, Component, computed, DOCUMENT, forwardRef, inject, input, Renderer2 } from '@angular/core';
 
 import { getStyle, rgbToHex } from '@coreui/utils';
 import { CardBodyComponent, CardComponent, CardHeaderComponent, ColComponent, RowComponent } from '@coreui/angular';
@@ -7,17 +7,16 @@ import { CardBodyComponent, CardComponent, CardHeaderComponent, ColComponent, Ro
   templateUrl: 'colors.component.html',
   imports: [CardComponent, CardHeaderComponent, CardBodyComponent, RowComponent, forwardRef(() => ThemeColorComponent)]
 })
-export class ColorsComponent implements OnInit, AfterViewInit {
-  private document = inject<Document>(DOCUMENT);
-  private renderer = inject(Renderer2);
+export class ColorsComponent implements AfterViewInit {
+  private readonly document = inject<Document>(DOCUMENT);
+  private readonly renderer = inject(Renderer2);
 
   public themeColors(): void {
-    Array.from(this.document.querySelectorAll('.theme-color')).forEach(
-      (element: Element) => {
-        const htmlElement = element as HTMLElement;
-        const background = getStyle('background-color', htmlElement) ?? '#fff';
-        const table = this.renderer.createElement('table');
-        table.innerHTML = `
+    Array.from(this.document.querySelectorAll('.theme-color')).forEach((element: Element) => {
+      const htmlElement = element as HTMLElement;
+      const background = getStyle('background-color', htmlElement) ?? '#fff';
+      const table = this.renderer.createElement('table');
+      table.innerHTML = `
           <table class="table w-100">
             <tr>
               <td class="text-muted">HEX:</td>
@@ -29,14 +28,11 @@ export class ColorsComponent implements OnInit, AfterViewInit {
             </tr>
           </table>
         `;
-        this.renderer.appendChild(htmlElement.parentNode, table);
-        // @ts-ignore
-        // el.parentNode.appendChild(table);
-      }
-    );
+      this.renderer.appendChild(htmlElement.parentNode, table);
+      // @ts-ignore
+      // el.parentNode.appendChild(table);
+    });
   }
-
-  ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     this.themeColors();
@@ -62,11 +58,7 @@ export class ThemeColorComponent {
   readonly colorClasses = computed(() => {
     const color = this.color();
     return {
-      'theme-color': true,
-      'w-75': true,
-      'rounded': true,
-      'mb-3': true,
-      [`bg-${color}`]: !!color
+      'theme-color': true, 'w-75': true, 'rounded': true, 'mb-3': true, [`bg-${color}`]: !!color
     } as Record<string, boolean>;
   });
 }

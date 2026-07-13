@@ -21,8 +21,8 @@ import { DocsIconsComponent, DocsLinkComponent } from '@docs-components/public-a
   ]
 })
 export class CoreUIIconsComponent implements OnInit {
-  private route = inject(ActivatedRoute);
-  iconSet = inject(IconSetService);
+  private readonly route = inject(ActivatedRoute);
+  readonly iconSet = inject(IconSetService);
 
   public title = 'CoreUI Icons';
   public icons!: [string, string[]][];

@@ -10,7 +10,8 @@
     "paths": {
       "@docs-components/*": [
         "./src/components/*"
-      ]
+      ],
+      "*": ["./*"]
     }
   },
   "files": [
@@ -18,5 +19,13 @@
   ],
   "include": [
     "src/**/*.d.ts"
-  ]
+  ],
+  "angularCompilerOptions": {
+    "extendedDiagnostics": {
+      "checks": {
+        "nullishCoalescingNotNullable": "suppress",
+        "optionalChainNotNullable": "suppress"
+      }
+    }
+  }
 }

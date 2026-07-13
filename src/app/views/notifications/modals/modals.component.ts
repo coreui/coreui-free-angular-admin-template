@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
 import {
   ButtonCloseDirective,
@@ -26,13 +26,10 @@ import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/
 })
 export class ModalsComponent {
 
-  public liveDemoVisible = false;
+  readonly liveDemoVisible = signal(false);
 
   toggleLiveDemo() {
-    this.liveDemoVisible = !this.liveDemoVisible;
+    this.liveDemoVisible.update(visible => !visible);
   }
-
-  handleLiveDemoChange(event: boolean) {
-    this.liveDemoVisible = event;
-  }
+  
 }

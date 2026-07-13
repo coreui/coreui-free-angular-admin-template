@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {
   AlertComponent,
@@ -22,26 +22,23 @@ import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/
   styleUrls: ['./alerts.component.scss'],
   imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, AlertComponent, AlertLinkDirective, RouterLink, AlertHeadingDirective, IconDirective, TemplateIdDirective, ButtonCloseDirective, ButtonDirective, DocsComponentsComponent]
 })
-export class AlertsComponent implements OnInit {
+export class AlertsComponent {
 
-  visible = [true, true];
-  dismissible = true;
+  readonly visible1 = signal(true);
+  readonly visible2 = signal(true);
+  readonly dismissible = signal(true);
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-  onAlertVisibleChange(eventValue: any = this.visible) {
-    this.visible[1] = eventValue;
+  onAlertVisibleChange(visible: boolean = this.visible2()) {
+    this.visible2.set(visible);
   }
 
   onResetDismiss() {
-    this.visible = [true, true];
+    this.visible1.set(true);
+    this.visible2.set(true);
   }
 
   onToggleDismiss() {
-    this.dismissible = !this.dismissible;
+    this.dismissible.update(dismissible => !dismissible);
   }
 
 }

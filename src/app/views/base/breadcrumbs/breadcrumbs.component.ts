@@ -17,10 +17,8 @@ import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/
   imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, BreadcrumbComponent, BreadcrumbItemComponent, BreadcrumbRouterComponent, DocsComponentsComponent]
 })
 export class BreadcrumbsComponent implements OnInit {
-  public breadcrumbItems = signal<any>([]);
-
-  constructor() {}
-
+  public readonly breadcrumbItems = signal<any>([]);
+  
   ngOnInit(): void {
     this.breadcrumbItems.set([
       { label: 'Home', url: '/', attributes: { title: 'Home' } },

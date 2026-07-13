@@ -8,6 +8,4 @@ import { NgOptimizedImage } from '@angular/common';
   ],
   templateUrl: './docs-icons.component.html'
 })
-export class DocsIconsComponent {
-
-}
+export class DocsIconsComponent {}

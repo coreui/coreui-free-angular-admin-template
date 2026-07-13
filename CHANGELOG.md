@@ -2,6 +2,194 @@
 
 ---
 
+#### `5.7.4` for Angular 22
+
+- fix(toast-simple): add c-toast-content component for css animation compatibility
+- chore: remove `ChangeDetectionStrategy.Eager` from applicable components
+- chore(workflows): update actions/checkout to v7
+- chore(angular): remove zone.js from testing polyfills
+- chore(dependencies): update to `Angular 22.0.6`
+  - `@angular/build` @ "22.0.6" (was 22.0.0)
+  - `@angular/cli` @ "22.0.6" (was 22.0.0)
+  - `@angular/compiler-cli` @ "22.0.6" (was 22.0.0)
+  - `@angular/animations` @ "22.0.6" (was 22.0.0)
+  - `@angular/aria` @ "22.0.4" (was 22.0.0)
+  - `@angular/cdk` @ "22.0.4" (was 22.0.0)
+  - `@angular/common` @ "22.0.6" (was 22.0.0)
+  - `@angular/compiler` @ "22.0.6" (was 22.0.0)
+  - `@angular/core` @ "22.0.6" (was 22.0.0)
+  - `@angular/forms` @ "22.0.6" (was 22.0.0)
+  - `@angular/language-service` @ "22.0.6" (was 22.0.0)
+  - `@angular/localize` @ "22.0.6" (was 22.0.0)
+  - `@angular/platform-browser` @ "22.0.6" (was 22.0.0)
+  - `@angular/router` @ "22.0.6" (was 22.0.0)
+  - `@coreui/angular` @ "5.7.4" (was 5.7.1)
+  - `@coreui/angular-chartjs` @ "5.7.4" (was 5.7.1)
+  - `@coreui/coreui` @ "5.8.0" (was 5.7.1)
+  - `@coreui/icons-angular` @ "5.7.4" (was 5.7.1)
+  - `@types/node` @ "24.13.1" (was 22.0.0)
+  - `@vitest/browser-playwright` @ "4.1.10" (was 4.1.8)
+  - `playwright` @ "1.61.1" (was 1.60.0)
+  - `vitest` @ "4.1.10" (was 4.1.8)
+
+---
+
+#### `5.7.1` for Angular 22
+
+- chore(dependencies): update to `Angular 22.0.0`
+  - `@angular/build` @ "22.0.0" (was "21.2.12")
+  - `@angular/cli` @ "22.0.0" (was "21.2.12")
+  - `@angular/compiler-cli` @ "22.0.0" (was "21.2.14")
+  - `@angular/animations` @ "22.0.0" (was "21.2.14")
+  - `@angular/cdk` @ "22.0.0" (was "21.2.12")
+  - `@angular/common` @ "22.0.0" (was "21.2.14")
+  - `@angular/compiler` @ "22.0.0" (was "21.2.14")
+  - `@angular/core` @ "22.0.0" (was "21.2.14")
+  - `@angular/forms` @ "22.0.0" (was "21.2.14")
+  - `@angular/language-service` @ "22.0.0" (was "21.2.14")
+  - `@angular/localize` @ "22.0.0" (was "21.2.14")
+  - `@angular/platform-browser` @ "22.0.0" (was "21.2.14")
+  - `@angular/platform-browser-dynamic` @ "22.0.0" (was "21.2.14")
+  - `@angular/router` @ "22.0.0" (was "21.2.14")
+  - `@coreui/angular` @ "5.7.1" (was "5.6.24")
+  - `@coreui/angular-chartjs` @ "5.7.1" (was "5.6.24")
+  - `@coreui/icons-angular` @ "5.7.1" (was "5.6.24")
+  - `@types/node` @ "24.13.1" (was "24.12.4")
+  - `@vitest/browser-playwright` @ "4.1.8" (was "4.1.7")
+  - `typescript` @ "6.0.3" (was "5.9.3")
+  - `vitest` @ "4.1.8" (was "4.1.7")
+- chore(tsconfig): disable the `nullishCoalescingNotNullable` & `optionalChainNotNullable` extended diagnostics
+- chore(tsconfig): migrate baseUrl to TS6
+- chore: add `ChangeDetectionStrategy.Eager` to applicable components
+
+---
+
+#### `5.6.24`
+
+- chore(dependencies): update to `Angular 21.2.14`
+  - `@angular/build` @ "21.2.12" (was "21.2.10")
+  - `@angular/cli` @ "21.2.12" (was "21.2.10")
+  - `@angular/compiler-cli` @ "21.2.14" (was "21.2.12")
+  - `@angular/animations` @ "21.2.14" (was "21.2.12")
+  - `@angular/cdk` @ "21.2.12" (was "21.2.10")
+  - `@angular/common` @ "21.2.14" (was "21.2.12")
+  - `@angular/compiler` @ "21.2.14" (was "21.2.12")
+  - `@angular/core` @ "21.2.14" (was "21.2.12")
+  - `@angular/forms` @ "21.2.14" (was "21.2.12")
+  - `@angular/language-service` @ "21.2.14" (was "21.2.12")
+  - `@angular/localize` @ "21.2.14" (was "21.2.12")
+  - `@angular/platform-browser` @ "21.2.14" (was "21.2.12")
+  - `@angular/platform-browser-dynamic` @ "21.2.14" (was "21.2.12")
+  - `@angular/router` @ "21.2.14" (was "21.2.12")
+  - `@coreui/angular` @ "5.6.24" (was "5.6.23")
+  - `@coreui/angular-chartjs` @ "5.6.24" (was "5.6.23")
+  - `@coreui/icons-angular` @ "5.6.24" (was "5.6.23")
+  - `@types/node` @ "24.12.4" (was "24.12.3")
+  - `@vitest/browser-playwright` @ "4.1.7" (was "4.1.6")
+  - `playwright` @ "1.60.0" (was "1.59.1")
+  - `vitest` @ "4.1.7" (was "4.1.6")
+
+---
+
+#### `5.6.23`
+
+- chore(dependencies): update to `Angular 21.2.12`
+  - `@angular/build` @ "21.2.10" (was "21.2.8")
+  - `@angular/cli` @ "21.2.10" (was "21.2.8")
+  - `@angular/compiler-cli` @ "21.2.12" (was "21.2.10")
+  - `@angular/animations` @ "21.2.12" (was "21.2.10")
+  - `@angular/cdk` @ "21.2.10" (was "21.2.8")
+  - `@angular/common` @ "21.2.12" (was "21.2.10")
+  - `@angular/compiler` @ "21.2.12" (was "21.2.10")
+  - `@angular/core` @ "21.2.12" (was "21.2.10")
+  - `@angular/forms` @ "21.2.12" (was "21.2.10")
+  - `@angular/language-service` @ "21.2.12" (was "21.2.10")
+  - `@angular/localize` @ "21.2.12" (was "21.2.10")
+  - `@angular/platform-browser` @ "21.2.12" (was "21.2.10")
+  - `@angular/platform-browser-dynamic` @ "21.2.12" (was "21.2.10")
+  - `@angular/router` @ "21.2.12" (was "21.2.10")
+  - `@coreui/angular` @ "5.6.23" (was "5.6.22")
+  - `@coreui/angular-chartjs` @ "5.6.23" (was "5.6.22")
+  - `@coreui/chartjs` @ "4.2.0" (was "4.1.0")
+  - `@coreui/icons-angular` @ "5.6.23" (was "5.6.22")
+  - `zone.js` @ "0.16.2" (was "0.16.1")
+  - `@types/node` @ "24.12.3" (was "24.12.2")
+  - `@vitest/browser-playwright` @ "4.1.6" (was "4.1.5")
+  - `jsdom` @ "29.1.1" (was "28.1.0")
+  - `vitest` @ "4.1.6" (was "4.1.5")
+
+---
+
+#### `5.6.22`
+
+- chore(dependencies): update to `Angular 21.2.5`
+  - `@angular/animations` @ "21.2.10" (was "21.2.5")
+  - `@angular/cdk` @ "21.2.8" (was "21.2.3")
+  - `@angular/common` @ "21.2.10" (was "21.2.5")
+  - `@angular/compiler` @ "21.2.10" (was "21.2.5")
+  - `@angular/core` @ "21.2.10" (was "21.2.5")
+  - `@angular/forms` @ "21.2.10" (was "21.2.5")
+  - `@angular/language-service` @ "21.2.10" (was "21.2.5")
+  - `@angular/localize` @ "21.2.10" (was "21.2.5")
+  - `@angular/platform-browser` @ "21.2.10" (was "21.2.5")
+  - `@angular/platform-browser-dynamic` @ "21.2.10" (was "21.2.5")
+  - `@angular/router` @ "21.2.10" (was "21.2.5")
+  - `@coreui/angular` @ "5.6.22" (was "5.6.21")
+  - `@coreui/angular-chartjs` @ "5.6.22" (was "5.6.21")
+  - `@coreui/icons-angular` @ "5.6.22" (was "5.6.21")
+  - `@angular/build` @ "21.2.8" (was "21.2.3")
+  - `@angular/cli` @ "21.2.8" (was "21.2.3")
+  - `@angular/compiler-cli` @ "21.2.10" (was "21.2.5")
+  - `@types/node` @ "24.12.2" (was "24.12.0")
+  - `@vitest/browser-playwright` @ "4.1.5" (was "4.1.0")
+  - `playwright` @ "1.59.1" (was "1.58.2")
+  - `vitest` @ "4.1.5" (was "4.1.0")
+- chore(dependencies): patch vulnerabilities
+  - `@hono/node-server`: https://github.com/advisories/GHSA-92pp-h63x-v22m
+  - `brace-expansion`: https://github.com/advisories/GHSA-f886-m6hf-6m8v
+  - `hono`:
+    - https://github.com/advisories/GHSA-26pp-8wgv-hjvm
+    - https://github.com/advisories/GHSA-r5rp-j6wh-rvv4
+    - https://github.com/advisories/GHSA-xpcf-pg52-r92g
+    - https://github.com/advisories/GHSA-xf4j-xp2r-rqqx
+    - https://github.com/advisories/GHSA-wmmm-f939-6g9c
+    - https://github.com/advisories/GHSA-458j-xx4x-4375
+  - `path-to-regexp`:
+    - https://github.com/advisories/GHSA-j3q9-mxjg-w52f
+    - https://github.com/advisories/GHSA-27v5-c462-wpq7
+
+---
+
+#### `5.6.21`
+
+- chore(dependencies): update to `Angular 21.2.5`
+  - `@angular/build` @ "21.2.3" (was "21.2.2")
+  - `@angular/cli` @ "21.2.3" (was "21.2.2")
+  - `@angular/compiler-cli` @ "21.2.5" (was "21.2.4")
+  - `@angular/animations` @ "21.2.5" (was "21.2.4")
+  - `@angular/cdk` @ "21.2.3" (was "21.2.2")
+  - `@angular/common` @ "21.2.5" (was "21.2.4")
+  - `@angular/compiler` @ "21.2.5" (was "21.2.4")
+  - `@angular/core` @ "21.2.5" (was "21.2.4")
+  - `@angular/forms` @ "21.2.5" (was "21.2.4")
+  - `@angular/language-service` @ "21.2.5" (was "21.2.4")
+  - `@angular/localize` @ "21.2.5" (was "21.2.4")
+  - `@angular/platform-browser` @ "21.2.5" (was "21.2.4")
+  - `@angular/platform-browser-dynamic` @ "21.2.5" (was "21.2.4")
+  - `@angular/router` @ "21.2.5" (was "21.2.4")
+  - `@coreui/angular` @ "5.6.21" (was "5.6.20")
+  - `@coreui/angular-chartjs` @ "5.6.21" (was "5.6.20")
+  - `@coreui/icons-angular` @ "5.6.21" (was "5.6.20")
+- chore(dependencies): overrides `undici` version to `^7.24.0` to mitigate vulnerabilities
+  - Undici Malicious WebSocket 64-bit length overflows parser and crashes the client - https://github.com/advisories/GHSA-f269-vfmq-vjvj
+  - Undici has an HTTP Request/Response Smuggling issue - https://github.com/advisories/GHSA-2mjp-6q6p-2qxm
+  - Undici has Unbounded Memory Consumption in WebSocket permessage-deflate Decompression - https://github.com/advisories/GHSA-vrm6-8vpv-qv8q
+  - Undici has Unhandled Exception in WebSocket Client Due to Invalid server_max_window_bits Validation - https://github.com/advisories/GHSA-v9p9-hfj2-hcw8
+  - Undici has CRLF Injection in undici via `upgrade` option - https://github.com/advisories/GHSA-4992-7rv2-5pvq
+  - Undici has Unbounded Memory Consumption in its DeduplicationHandler via Response Buffering that leads to DoS - https://github.com/advisories/GHSA-phc3-fgpg-7m6h
+
+---
+
 #### `5.6.20`
 
 - chore(dependencies): update to `Angular 21.2.4`

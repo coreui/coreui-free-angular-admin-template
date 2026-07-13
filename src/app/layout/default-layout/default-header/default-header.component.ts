@@ -49,7 +49,7 @@ export class DefaultHeaderComponent extends HeaderComponent {
     super();
   }
 
-  sidebarId = input('sidebar1');
+  readonly sidebarId = input('sidebar1');
 
   public newMessages = [
     {
