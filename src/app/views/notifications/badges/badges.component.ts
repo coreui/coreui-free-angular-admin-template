@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   BadgeComponent,
   BorderDirective,
@@ -15,7 +15,6 @@ import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/
   selector: 'app-badges',
   templateUrl: './badges.component.html',
   styleUrls: ['./badges.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, BadgeComponent, ButtonDirective, BorderDirective, DocsComponentsComponent]
 })
 export class BadgesComponent {}

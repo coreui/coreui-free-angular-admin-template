@@ -1,4 +1,4 @@
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
 import {
   ButtonDirective,
@@ -18,7 +18,6 @@ import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/
 @Component({
   selector: 'app-checks-radios',
   templateUrl: './checks-radios.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [RowComponent, ReactiveFormsModule, FormDirective, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, FormCheckComponent, FormCheckInputDirective, FormCheckLabelDirective, ButtonGroupComponent, ButtonDirective, DocsComponentsComponent]
 })
 export class ChecksRadiosComponent {

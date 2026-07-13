@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
 import {
   ButtonCloseDirective,
@@ -22,18 +22,14 @@ import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/
 @Component({
   selector: 'app-modals',
   templateUrl: './modals.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, ModalComponent, ModalHeaderComponent, ModalTitleDirective, ButtonCloseDirective, ModalBodyComponent, ModalFooterComponent, ButtonDirective, NgTemplateOutlet, ModalToggleDirective, PopoverDirective, TooltipDirective, DocsComponentsComponent]
 })
 export class ModalsComponent {
 
-  public liveDemoVisible = false;
+  readonly liveDemoVisible = signal(false);
 
   toggleLiveDemo() {
-    this.liveDemoVisible = !this.liveDemoVisible;
+    this.liveDemoVisible.update(visible => !visible);
   }
-
-  handleLiveDemoChange(event: boolean) {
-    this.liveDemoVisible = event;
-  }
+  
 }

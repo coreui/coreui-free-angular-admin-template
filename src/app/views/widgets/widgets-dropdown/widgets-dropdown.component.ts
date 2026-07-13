@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit, ChangeDetectorRef, Component, inject, OnInit, viewChild, ChangeDetectionStrategy } from '@angular/core';
+import { AfterContentInit, AfterViewInit, ChangeDetectorRef, Component, inject, OnInit, viewChild } from '@angular/core';
 import { getStyle } from '@coreui/utils';
 import { ChartjsComponent } from '@coreui/angular-chartjs';
 import { RouterLink } from '@angular/router';
@@ -19,11 +19,10 @@ import {
 @Component({
   selector: 'app-widgets-dropdown',
   templateUrl: './widgets-dropdown.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [RowComponent, ColComponent, WidgetStatAComponent, TemplateIdDirective, IconDirective, DropdownComponent, ButtonDirective, DropdownToggleDirective, DropdownMenuDirective, DropdownItemDirective, RouterLink, DropdownDividerDirective, ChartjsComponent]
 })
 export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
-  private changeDetectorRef = inject(ChangeDetectorRef);
+  private readonly changeDetectorRef = inject(ChangeDetectorRef);
 
   data: any[] = [];
   options: any[] = [];
@@ -180,12 +179,9 @@ export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
 @Component({
   selector: 'app-chart-sample',
   template: '<c-chart type="line" [data]="data" [options]="options" width="300" #chart />',
-  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [ChartjsComponent]
 })
 export class ChartSample implements AfterViewInit {
-
-  constructor() {}
 
   readonly chartComponent = viewChild.required<ChartjsComponent>('chart');
 

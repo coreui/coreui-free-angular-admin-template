@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CardBodyComponent, CardComponent, CardHeaderComponent, ColComponent, FormSelectDirective, RowComponent } from '@coreui/angular';
 import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/public-api';
@@ -6,7 +6,6 @@ import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/
 @Component({
   selector: 'app-select',
   templateUrl: './select.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, FormSelectDirective, ReactiveFormsModule, DocsComponentsComponent]
 })
 export class SelectComponent {}

@@ -1,4 +1,4 @@
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import {
   AccordionButtonDirective,
@@ -18,7 +18,6 @@ import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/
   selector: 'app-accordions',
   templateUrl: './accordions.component.html',
   styleUrls: ['./accordions.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, AccordionComponent, AccordionItemComponent, TemplateIdDirective, AccordionButtonDirective, BgColorDirective, DocsComponentsComponent]
 })
 export class AccordionsComponent {

@@ -1,4 +1,4 @@
-import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   ButtonDirective,
@@ -20,7 +20,6 @@ import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/
   selector: 'app-form-controls',
   templateUrl: './form-controls.component.html',
   styleUrls: ['./form-controls.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, ReactiveFormsModule, FormsModule, FormDirective, FormLabelDirective, FormControlDirective, ButtonDirective, RowDirective, GutterDirective, ColDirective, DocsComponentsComponent]
 })
 export class FormControlsComponent {

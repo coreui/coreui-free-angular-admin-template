@@ -1,9 +1,8 @@
-import { Component, effect, input, linkedSignal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, effect, input, linkedSignal } from '@angular/core';
 
 @Component({
   selector: 'app-docs-link',
   templateUrl: './docs-link.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   host: {
     class: 'float-end'
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   ButtonDirective,
@@ -25,44 +25,43 @@ import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/
 @Component({
   selector: 'app-validation',
   templateUrl: './validation.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, ReactiveFormsModule, FormsModule, FormDirective, FormLabelDirective, FormControlDirective, FormFeedbackComponent, InputGroupComponent, InputGroupTextDirective, FormSelectDirective, FormCheckComponent, FormCheckInputDirective, FormCheckLabelDirective, ButtonDirective, ListGroupDirective, ListGroupItemDirective, DocsComponentsComponent]
 })
 export class ValidationComponent implements OnInit {
 
-  customStylesValidated = false;
-  browserDefaultsValidated = false;
-  tooltipValidated = false;
+  readonly customStylesValidated = signal(false);
+  readonly browserDefaultsValidated = signal(false);
+  readonly tooltipValidated = signal(false);
 
   ngOnInit(): void { }
 
   onSubmit1() {
-    this.customStylesValidated = true;
+    this.customStylesValidated.set(true);
     console.log('Submit... 1');
   }
 
   onReset1() {
-    this.customStylesValidated = false;
+    this.customStylesValidated.set(false);
     console.log('Reset... 1');
   }
 
   onSubmit2() {
-    this.browserDefaultsValidated = true;
+    this.browserDefaultsValidated.set(true);
     console.log('Submit... 2');
   }
 
   onReset2() {
-    this.browserDefaultsValidated = false;
+    this.browserDefaultsValidated.set(false);
     console.log('Reset... 3');
   }
 
   onSubmit3() {
-    this.tooltipValidated = true;
+    this.tooltipValidated.set(true);
     console.log('Submit... 3');
   }
 
   onReset3() {
-    this.tooltipValidated = false;
+    this.tooltipValidated.set(false);
     console.log('Reset... 3');
   }
 

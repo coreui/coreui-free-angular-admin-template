@@ -23,7 +23,7 @@
 
           <form #customStylesForm="ngForm"
                 (ngSubmit)="onSubmit1()"
-                [validated]="customStylesValidated"
+                [validated]="customStylesValidated()"
                 cForm
                 class="row g-3 needs-validation"
           >
@@ -108,7 +108,7 @@
 
           <form #browserDefaultsForm="ngForm"
                 (ngSubmit)="onSubmit2()"
-                [validated]="browserDefaultsValidated"
+                [validated]="browserDefaultsValidated()"
                 cForm
                 class="row g-3"
                 ngNativeValidate
@@ -363,7 +363,7 @@
 
           <form #tooltipForm="ngForm"
                 (ngSubmit)="onSubmit3()"
-                [validated]="tooltipValidated"
+                [validated]="tooltipValidated()"
                 cForm
                 class="row g-3 needs-validation"
           >

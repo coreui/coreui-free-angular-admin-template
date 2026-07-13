@@ -1,4 +1,4 @@
-import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import {
   ButtonDirective,
@@ -22,7 +22,6 @@ export type Slide = { id: number, src: SafeUrl | string, title: string, subtitle
 @Component({
   selector: 'app-carousels',
   templateUrl: './carousels.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, CarouselComponent, CarouselInnerComponent, CarouselItemComponent, CarouselControlComponent, CarouselIndicatorsComponent, CarouselCaptionComponent, ButtonDirective, IconDirective, DocsComponentsComponent]
   // providers: [{ provide: CarouselConfig, useClass: CarouselCustomConfig  }]
 })

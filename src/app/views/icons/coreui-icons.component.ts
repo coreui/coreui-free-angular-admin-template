@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { IconDirective, IconSetService } from '@coreui/icons-angular';
@@ -9,7 +9,6 @@ import { DocsIconsComponent, DocsLinkComponent } from '@docs-components/public-a
 @Component({
   templateUrl: 'coreui-icons.component.html',
   providers: [IconSetService],
-  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     CardComponent,
     CardHeaderComponent,
@@ -22,8 +21,8 @@ import { DocsIconsComponent, DocsLinkComponent } from '@docs-components/public-a
   ]
 })
 export class CoreUIIconsComponent implements OnInit {
-  private route = inject(ActivatedRoute);
-  iconSet = inject(IconSetService);
+  private readonly route = inject(ActivatedRoute);
+  readonly iconSet = inject(IconSetService);
 
   public title = 'CoreUI Icons';
   public icons!: [string, string[]][];

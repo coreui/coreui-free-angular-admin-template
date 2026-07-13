@@ -1,4 +1,4 @@
-import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
+import { AfterContentInit, ChangeDetectorRef, Component, inject } from '@angular/core';
 import { getStyle } from '@coreui/utils';
 import { ChartjsComponent } from '@coreui/angular-chartjs';
 import { ColComponent, RowComponent, WidgetStatEComponent } from '@coreui/angular';
@@ -6,7 +6,6 @@ import { ColComponent, RowComponent, WidgetStatEComponent } from '@coreui/angula
 @Component({
   selector: 'app-widgets-e',
   templateUrl: './widgets-e.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [RowComponent, ColComponent, WidgetStatEComponent, ChartjsComponent]
 })
 export class WidgetsEComponent implements AfterContentInit {

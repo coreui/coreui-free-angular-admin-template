@@ -1,4 +1,4 @@
-import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
+import { AfterContentInit, ChangeDetectorRef, Component, inject } from '@angular/core';
 import { WidgetsBrandComponent } from '../widgets-brand/widgets-brand.component';
 import { IconDirective } from '@coreui/icons-angular';
 import { WidgetsEComponent } from '../widgets-e/widgets-e.component';
@@ -21,11 +21,10 @@ import {
 @Component({
   selector: 'app-widgets',
   templateUrl: './widgets.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, WidgetsDropdownComponent, RowComponent, ColComponent, WidgetStatBComponent, ProgressComponent, WidgetsEComponent, WidgetStatFComponent, TemplateIdDirective, IconDirective, WidgetsBrandComponent, CardGroupComponent, WidgetStatCComponent, DocsComponentsComponent]
 })
 export class WidgetsComponent implements AfterContentInit {
-  private changeDetectorRef = inject(ChangeDetectorRef);
+  private readonly changeDetectorRef = inject(ChangeDetectorRef);
 
   ngAfterContentInit(): void {
     this.changeDetectorRef.detectChanges();
