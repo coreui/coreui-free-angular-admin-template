@@ -1,4 +1,4 @@
-<ng-container>
+<c-toast-content>
   <c-toast-header [closeButton]="closeButton()">
     <svg class="rounded me-2" focusable="false" height="20" preserveAspectRatio="xMidYMid slice"
          role="img" width="20" xmlns="http://www.w3.org/2000/svg">
@@ -11,4 +11,4 @@
     <ng-content />
     <c-progress thin [value]="25*(toastBody.toast?.clock ?? 1)" />
   </c-toast-body>
-</ng-container>
+</c-toast-content>
