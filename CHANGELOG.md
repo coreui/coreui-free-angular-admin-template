@@ -2,6 +2,38 @@
 
 ---
 
+#### `5.7.4` for Angular 22
+
+- fix(toast-simple): add c-toast-content component for css animation compatibility
+- chore: remove `ChangeDetectionStrategy.Eager` from applicable components
+- chore(workflows): update actions/checkout to v7
+- chore(angular): remove zone.js from testing polyfills
+- chore(dependencies): update to `Angular 22.0.6`
+  - `@angular/build` @ "22.0.6" (was 22.0.0)
+  - `@angular/cli` @ "22.0.6" (was 22.0.0)
+  - `@angular/compiler-cli` @ "22.0.6" (was 22.0.0)
+  - `@angular/animations` @ "22.0.6" (was 22.0.0)
+  - `@angular/aria` @ "22.0.4" (was 22.0.0)
+  - `@angular/cdk` @ "22.0.4" (was 22.0.0)
+  - `@angular/common` @ "22.0.6" (was 22.0.0)
+  - `@angular/compiler` @ "22.0.6" (was 22.0.0)
+  - `@angular/core` @ "22.0.6" (was 22.0.0)
+  - `@angular/forms` @ "22.0.6" (was 22.0.0)
+  - `@angular/language-service` @ "22.0.6" (was 22.0.0)
+  - `@angular/localize` @ "22.0.6" (was 22.0.0)
+  - `@angular/platform-browser` @ "22.0.6" (was 22.0.0)
+  - `@angular/router` @ "22.0.6" (was 22.0.0)
+  - `@coreui/angular` @ "5.7.4" (was 5.7.1)
+  - `@coreui/angular-chartjs` @ "5.7.4" (was 5.7.1)
+  - `@coreui/coreui` @ "5.8.0" (was 5.7.1)
+  - `@coreui/icons-angular` @ "5.7.4" (was 5.7.1)
+  - `@types/node` @ "24.13.1" (was 22.0.0)
+  - `@vitest/browser-playwright` @ "4.1.10" (was 4.1.8)
+  - `playwright` @ "1.61.1" (was 1.60.0)
+  - `vitest` @ "4.1.10" (was 4.1.8)
+
+---
+
 #### `5.7.1` for Angular 22
 
 - chore(dependencies): update to `Angular 22.0.0`
