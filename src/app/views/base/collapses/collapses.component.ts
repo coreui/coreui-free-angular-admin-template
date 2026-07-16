@@ -14,5 +14,4 @@ export class CollapsesComponent {
   toggleCollapse(id: number): void {
     this.collapses.update(visible => visible.map((v, i) => i === id ? !v : v));
   }
-
 }

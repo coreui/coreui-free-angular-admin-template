@@ -38,7 +38,7 @@ export class AlertsComponent {
   }
 
   onToggleDismiss() {
-    this.dismissible.update(dismissible => !dismissible);
+    this.dismissible.update(value => !value);
   }
 
 }

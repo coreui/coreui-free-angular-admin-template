@@ -18,7 +18,7 @@ import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/
 })
 export class BreadcrumbsComponent implements OnInit {
   public readonly breadcrumbItems = signal<any>([]);
-  
+
   ngOnInit(): void {
     this.breadcrumbItems.set([
       { label: 'Home', url: '/', attributes: { title: 'Home' } },

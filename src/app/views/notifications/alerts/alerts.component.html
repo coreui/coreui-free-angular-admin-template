@@ -1,5 +1,5 @@
 <c-row>
-  <c-col xs="12">
+  <c-col [xs]="12">
     <app-docs-components href="components/alert" title="Alert" />
     <c-card class="mb-4">
       <c-card-header>
@@ -28,7 +28,7 @@
       </c-card-body>
     </c-card>
   </c-col>
-  <c-col xs="12">
+  <c-col [xs]="12">
     <c-card class="mb-4">
       <c-card-header ngPreserveWhitespaces>
         <strong>Angular Alert</strong> <small>solid variant</small>
@@ -47,7 +47,7 @@
       </c-card-body>
     </c-card>
   </c-col>
-  <c-col xs="12">
+  <c-col [xs]="12">
     <c-card class="mb-4">
       <c-card-header ngPreserveWhitespaces>
         <strong>Angular Alert</strong> <small>Link color</small>
@@ -94,7 +94,7 @@
       </c-card-body>
     </c-card>
   </c-col>
-  <c-col xs="12">
+  <c-col [xs]="12">
     <c-card class="mb-4">
       <c-card-header ngPreserveWhitespaces>
         <strong>Angular Alert</strong> <small>Additional content</small>
@@ -122,7 +122,7 @@
       </c-card-body>
     </c-card>
   </c-col>
-  <c-col xs="12">
+  <c-col [xs]="12">
     <c-card class="mb-4">
       <c-card-header ngPreserveWhitespaces>
         <strong>Angular Alert</strong> <small>Icons</small>
@@ -162,25 +162,25 @@
 
           <c-alert color="primary" class="d-flex align-items-center">
             <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:">
-              <use xlink:href="#info-fill" />
+              <use href="#info-fill" />
             </svg>
             <div>An example primary alert with an icon</div>
           </c-alert>
           <c-alert color="success" class="d-flex align-items-center">
             <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:">
-              <use xlink:href="#check-circle-fill" />
+              <use href="#check-circle-fill" />
             </svg>
             <div>An example success alert with an icon</div>
           </c-alert>
           <c-alert color="warning" class="d-flex align-items-center">
             <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:">
-              <use xlink:href="#exclamation-triangle-fill" />
+              <use href="#exclamation-triangle-fill" />
             </svg>
             <div>An example warning alert with an icon</div>
           </c-alert>
           <c-alert color="danger" class="d-flex align-items-center">
             <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:">
-              <use xlink:href="#exclamation-triangle-fill" />
+              <use href="#exclamation-triangle-fill" />
             </svg>
             <div>An example danger alert with an icon</div>
           </c-alert>
@@ -188,7 +188,7 @@
       </c-card-body>
     </c-card>
   </c-col>
-  <c-col xs="12">
+  <c-col [xs]="12">
     <c-card class="mb-4">
       <c-card-header ngPreserveWhitespaces>
         <strong>Angular Alert</strong> <small>Dismissing</small>
@@ -212,7 +212,7 @@
                    variant="solid">
             @if (alertWithButtonCloseTemplate.dismissible) {
               <ng-template cTemplateId="alertButtonCloseTemplate">
-                <button (click)="visible2.set(false)" cButtonClose white></button>
+                <button (click)="visible2.set(false)" cButtonClose dark></button>
               </ng-template>
             }
             <strong>Go right ahead</strong> and click that dismiss over there on the right.

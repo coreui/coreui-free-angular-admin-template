@@ -1,5 +1,5 @@
 import { JsonPipe, SlicePipe } from '@angular/common';
-import { Component, OnInit, viewChildren, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, signal, viewChildren } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -46,43 +46,42 @@ export enum Colors {
 @Component({
   selector: 'app-toasters',
   templateUrl: './toasters.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [RowComponent, ColComponent, ToasterComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, ContainerComponent, ReactiveFormsModule, FormDirective, FormCheckComponent, FormCheckInputDirective, FormCheckLabelDirective, InputGroupComponent, InputGroupTextDirective, FormControlDirective, FormSelectDirective, ButtonDirective, ToastComponent, ToastHeaderComponent, ToastBodyComponent, AppToastComponent, JsonPipe, SlicePipe, TextColorDirective, DocsComponentsComponent]
 })
 export class ToastersComponent implements OnInit {
 
-  positions = Object.values(ToasterPlacement);
-  position = ToasterPlacement.TopEnd;
-  positionStatic = ToasterPlacement.Static;
   colors = Object.keys(Colors);
-  autohide = true;
-  delay = 5000;
-  fade = true;
+  positions = Object.values(ToasterPlacement);
+  positionStatic = ToasterPlacement.Static;
+  readonly position = signal(ToasterPlacement.TopEnd);
+  readonly autohide = signal(true);
+  readonly delay = signal(5000);
+  readonly fade = signal(true);
 
   toasterForm = new FormGroup({
-    autohide: new FormControl(this.autohide),
-    delay: new FormControl({ value: this.delay, disabled: !this.autohide }),
-    position: new FormControl(this.position),
-    fade: new FormControl({ value: true, disabled: false }),
+    autohide: new FormControl(this.autohide()),
+    delay: new FormControl({ value: this.delay(), disabled: !this.autohide() }),
+    position: new FormControl(this.position()),
+    fade: new FormControl({ value: this.fade(), disabled: false }),
     closeButton: new FormControl(true),
     color: new FormControl('')
   });
 
   formChanges: Observable<any> = this.toasterForm.valueChanges.pipe(
     takeUntilDestroyed(),
-    filter(e => e.autohide !== this.autohide)
+    filter(e => e.autohide !== this.autohide())
   );
 
   readonly viewToasters = viewChildren(ToasterComponent);
 
   ngOnInit(): void {
     this.formChanges.subscribe(e => {
-      this.autohide = e.autohide;
-      this.position = e.position;
-      this.fade = e.fade;
+      this.autohide.set(e.autohide);
+      this.position.set(e.position);
+      this.fade.set(e.fade);
       const control = this.toasterForm?.get('delay');
-      this.autohide ? control?.enable() : control?.disable();
-      this.delay = control?.enabled ? e.timeout : this.delay;
+      this.autohide() ? control?.enable() : control?.disable();
+      this.delay.set(control?.enabled ? e.timeout : this.delay());
     });
   }
 
@@ -103,6 +102,5 @@ export class ToastersComponent implements OnInit {
 
   onVisibleChange($event: any) {
     console.log('onVisibleChange', $event);
-
   }
 }

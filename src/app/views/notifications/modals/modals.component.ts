@@ -29,7 +29,6 @@ export class ModalsComponent {
   readonly liveDemoVisible = signal(false);
 
   toggleLiveDemo() {
-    this.liveDemoVisible.update(visible => !visible);
+    this.liveDemoVisible.update(value => !value);
   }
-  
 }

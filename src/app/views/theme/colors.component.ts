@@ -8,8 +8,8 @@ import { CardBodyComponent, CardComponent, CardHeaderComponent, ColComponent, Ro
   imports: [CardComponent, CardHeaderComponent, CardBodyComponent, RowComponent, forwardRef(() => ThemeColorComponent)]
 })
 export class ColorsComponent implements AfterViewInit {
-  private readonly document = inject<Document>(DOCUMENT);
-  private readonly renderer = inject(Renderer2);
+  readonly document = inject<Document>(DOCUMENT);
+  readonly renderer = inject(Renderer2);
 
   public themeColors(): void {
     Array.from(this.document.querySelectorAll('.theme-color')).forEach((element: Element) => {
@@ -42,7 +42,7 @@ export class ColorsComponent implements AfterViewInit {
 @Component({
   selector: 'app-theme-color',
   template: `
-    <c-col xl="2" md="4" sm="6" xs="12" class="my-4 ms-4">
+    <c-col [xl]="2" [md]="4" [sm]="6" [xs]="12" class="my-4 ms-4">
       <div [class]="colorClasses()" style="padding-top: 75%;"></div>
       <ng-content />
     </c-col>
@@ -58,7 +58,11 @@ export class ThemeColorComponent {
   readonly colorClasses = computed(() => {
     const color = this.color();
     return {
-      'theme-color': true, 'w-75': true, 'rounded': true, 'mb-3': true, [`bg-${color}`]: !!color
+      'theme-color': true,
+      'w-75': true,
+      'rounded': true,
+      'mb-3': true,
+      [`bg-${color}`]: !!color
     } as Record<string, boolean>;
   });
 }
