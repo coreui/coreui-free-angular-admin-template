@@ -2,6 +2,29 @@
 
 ---
 
+#### `5.7.6` for Angular 22
+
+- chore(dependencies): update to `Angular 22.0.7`
+  - `@angular/build` @ "22.0.7" (was "22.0.6")
+  - `@angular/cli` @ "22.0.7" (was "22.0.6")
+  - `@angular/compiler-cli` @ "22.0.7" (was "22.0.6")
+  - `@angular/animations` @ "22.0.7" (was "22.0.6")
+  - `@angular/aria` @ "22.0.5" (was "22.0.4")
+  - `@angular/cdk` @ "22.0.5" (was "22.0.4")
+  - `@angular/common` @ "22.0.7" (was "22.0.6")
+  - `@angular/compiler` @ "22.0.7" (was "22.0.6")
+  - `@angular/core` @ "22.0.7" (was "22.0.6")
+  - `@angular/forms` @ "22.0.7" (was "22.0.6")
+  - `@angular/language-service` @ "22.0.7" (was "22.0.6")
+  - `@angular/localize` @ "22.0.7" (was "22.0.6")
+  - `@angular/platform-browser` @ "22.0.7" (was "22.0.6")
+  - `@angular/router` @ "22.0.7" (was "22.0.6")
+  - `@coreui/angular` @ "5.7.6" (was "5.7.4")
+  - `@coreui/angular-chartjs` @ "5.7.6" (was "5.7.4")
+  - `@coreui/icons-angular` @ "5.7.6" (was "5.7.4")
+
+---
+
 #### `5.7.4` for Angular 22
 
 - fix(toast-simple): add c-toast-content component for css animation compatibility
