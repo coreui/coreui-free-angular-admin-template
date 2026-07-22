@@ -2,6 +2,17 @@
 
 ---
 
+#### `5.7.9` for Angular 22
+
+- chore(dependencies): update
+  - `@coreui/angular` @ "5.7.9" (was "5.7.6")
+  - `@coreui/angular-chartjs` @ "5.7.9" (was "5.7.6")
+  - `@coreui/coreui` @ "5.9.0" (was "5.8.0")
+  - `@coreui/icons-angular` @ "5.7.9" (was "5.7.6")
+- chore(dependencies): patch vulnerabilities
+  - `fast-uri`: https://github.com/advisories/GHSA-v2hh-gcrm-f6hx
+---
+
 #### `5.7.6` for Angular 22
 
 - chore(dependencies): update to `Angular 22.0.7`
