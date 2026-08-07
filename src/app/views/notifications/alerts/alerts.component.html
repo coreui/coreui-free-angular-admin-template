@@ -210,7 +210,7 @@
                    color="dark"
                    fade
                    variant="solid">
-            @if (alertWithButtonCloseTemplate.dismissible) {
+            @if (dismissible()) {
               <ng-template cTemplateId="alertButtonCloseTemplate">
                 <button (click)="visible2.set(false)" cButtonClose dark></button>
               </ng-template>
