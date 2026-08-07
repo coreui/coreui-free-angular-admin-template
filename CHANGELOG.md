@@ -2,6 +2,21 @@
 
 ---
 
+#### `5.7.15` for Angular 22.1
+
+- fix(alerts): correct dismissible condition
+- chore(dependencies): update 
+  - `@angular/build` to version 22.1.3
+  - `@angular/cli` to version 22.1.3
+  - `@angular/aria` to version 22.1.1
+  - `@angular/cdk` to version 22.1.1
+  - `@coreui/angular` to version 5.7.15
+  - `@coreui/angular-chartjs` to version 5.7.15
+  - `@coreui/icons-angular` to version 5.7.15
+  - `playwright` to version 1.62.1
+
+---
+
 #### `5.7.11` for Angular 22.1
 
 - chore(dependencies): update to `Angular 22.1.0`
