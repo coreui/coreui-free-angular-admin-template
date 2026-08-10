@@ -29,6 +29,7 @@ customize your project for almost any device – be it Mobile, Web or WebApp –
 
 * [Versions](#versions)
 * [CoreUI Pro](#coreui-pro)
+* [Data Grid](#data-grid)
 * [Quick Start](#quick-start)
 * [Installation](#installation)
 * [Basic usage](#basic-usage)
@@ -63,6 +64,19 @@ customize your project for almost any device – be it Mobile, Web or WebApp –
 | Modern Theme                                                                                                                                                                             | Bright Theme                                                                                                                                                                    |
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [![CoreUI PRO Angular Admin Template](https://coreui.io/images/templates/coreui_pro_default_v3_light_dark.webp)](https://coreui.io/product/angular-dashboard-template/?theme=default-v3) | [![CoreUI PRO React Admin Template](https://coreui.io/images/templates/coreui_pro_light_v3_light_dark.webp)](https://coreui.io/product/angular-dashboard-template/?theme=light) |
+
+## Data Grid
+
+CoreUI Angular Data Grid handles 100,000+ rows with sorting, filtering, virtualization, column pinning, inline editing and CSV export — using the same markup and stylesheet this template already uses.
+
+```bash
+npm install @coreui/angular-data-grid
+```
+
+One license also covers JavaScript, React and Vue. It's a separate add-on, not part of CoreUI PRO.
+
+- [Angular Data Grid](https://coreui.io/data-grid/angular/?src=readme-free-angular)
+- [Documentation](https://coreui.io/data-grid/angular/docs/getting-started/introduction/?src=readme-free-angular)
 
 ## Quick Start
 
