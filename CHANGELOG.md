@@ -2,6 +2,26 @@
 
 ---
 
+#### `5.7.16` for Angular 22.1
+
+- chore(dependencies): update to `Angular 22.1.1`
+  - `@angular/animations` to version 22.1.1
+  - `@angular/common` to version 22.1.1
+  - `@angular/compiler` to version 22.1.1
+  - `@angular/core` to version 22.1.1
+  - `@angular/forms` to version 22.1.1
+  - `@angular/language-service` to version 22.1.1
+  - `@angular/localize` to version 22.1.1
+  - `@angular/platform-browser` to version 22.1.1
+  - `@angular/router` to version 22.1.1
+  - `@coreui/angular` to version 5.7.16
+  - `@coreui/angular-chartjs` to version 5.7.16
+  - `@coreui/icons-angular` to version 5.7.16
+  - `@angular/compiler-cli` to version 22.1.1
+  - `@types/node` to version 26.2.0
+
+---
+
 #### `5.7.15` for Angular 22.1
 
 - fix(alerts): correct dismissible condition
