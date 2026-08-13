@@ -30,6 +30,7 @@ customize your project for almost any device – be it Mobile, Web or WebApp –
 * [Versions](#versions)
 * [CoreUI Pro](#coreui-pro)
 * [Data Grid](#data-grid)
+* [Scheduler](#scheduler)
 * [Quick Start](#quick-start)
 * [Installation](#installation)
 * [Basic usage](#basic-usage)
@@ -77,6 +78,19 @@ One license also covers JavaScript, React and Vue. It's a separate add-on, not p
 
 - [Angular Data Grid](https://coreui.io/data-grid/angular/?src=readme-free-angular)
 - [Documentation](https://coreui.io/data-grid/angular/docs/getting-started/introduction/?src=readme-free-angular)
+
+## Scheduler
+
+CoreUI Angular Scheduler ships six views — day, week, month, agenda, resources, and timeline — with drag & drop, RFC 5545 recurrence, and DST-safe time handling, using the same markup and stylesheet this template already uses.
+
+```bash
+npm install @coreui/angular-scheduler
+```
+
+One license also covers JavaScript, React and Vue. It's a separate add-on, not part of CoreUI PRO.
+
+- [Angular Scheduler](https://coreui.io/scheduler/angular/?src=readme-free-angular)
+- [Documentation](https://coreui.io/scheduler/angular/docs/getting-started/introduction/?src=readme-free-angular)
 
 ## Quick Start
 
