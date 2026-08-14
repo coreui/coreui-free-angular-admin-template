@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 
 import { ButtonModule, CardModule, FormModule, GridModule } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
@@ -14,7 +15,7 @@ describe('RegisterComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
     imports: [CardModule, FormModule, GridModule, ButtonModule, IconModule, RegisterComponent],
-    providers: [IconSetService]
+    providers: [IconSetService, provideRouter([])]
 })
     .compileComponents();
   });

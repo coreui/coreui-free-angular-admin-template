@@ -98,8 +98,11 @@ import {
   cilUserUnfollow
 } from '@coreui/icons';
 
-import { signet } from './signet';
+import { apple } from './apple';
+import { eye } from './eye';
+import { google } from './google';
 import { logo } from './logo';
+import { signet } from './signet';
 
 export const iconSubset = {
   cibCcAmex,
@@ -199,6 +202,9 @@ export const iconSubset = {
   cilUserFemale,
   cilUserFollow,
   cilUserUnfollow,
+  apple,
+  eye,
+  google,
   logo,
   signet
 };
@@ -301,6 +307,9 @@ export enum IconSubset {
   cilUserFemale = 'cilUserFemale',
   cilUserFollow = 'cilUserFollow',
   cilUserUnfollow = 'cilUserUnfollow',
+  apple = 'apple',
+  eye = 'eye',
+  google = 'google',
   logo = 'logo',
   signet = 'signet'
 }

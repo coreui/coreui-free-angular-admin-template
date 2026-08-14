@@ -1,40 +1,95 @@
-<div class="bg-light dark:bg-transparent min-vh-100 d-flex flex-row align-items-center">
+<div class="bg-body-tertiary min-vh-100 d-flex flex-row align-items-center">
   <c-container>
     <c-row class="justify-content-center">
-      <c-col lg="7" md="9" xl="6">
-        <c-card class="mx-4">
-          <c-card-body class="p-4">
-            <form cForm>
-              <h1>Register</h1>
-              <p class="text-body-secondary">Create your account</p>
-              <c-input-group class="mb-3">
-                <span cInputGroupText>
-                  <svg cIcon name="cilUser"></svg>
-                </span>
-                <input autoComplete="name" cFormControl placeholder="Username" />
-              </c-input-group>
-              <c-input-group class="mb-3">
-                <span cInputGroupText>&#64;</span>
-                <input autoComplete="email" cFormControl placeholder="Email" />
-              </c-input-group>
-              <c-input-group class="mb-3">
-                <span cInputGroupText>
-                  <svg cIcon name="cilLockLocked"></svg>
-                </span>
-                <input autoComplete="new-password" cFormControl placeholder="Password" type="password" />
-              </c-input-group>
-              <c-input-group class="mb-4">
-                <span cInputGroupText>
-                  <svg cIcon name="cilLockLocked"></svg>
-                </span>
-                <input autoComplete="new-password" cFormControl placeholder="Repeat password" type="password" />
-              </c-input-group>
-              <div class="d-grid">
-                <button cButton color="success">Create Account</button>
+      <c-col lg="6" md="8" xl="5">
+        <div class="d-flex flex-column gap-4 text-center">
+          <div>
+            <svg [class]="{ icon: false }" cIcon height="48" name="logo" title="CoreUI Logo"></svg>
+          </div>
+          <c-card class="p-4">
+            <c-card-body class="d-flex flex-column gap-4">
+              <h2 class="h5 text-center mb-0">Create new account</h2>
+              <form (submit)="onSubmit($event)" cForm class="row gy-3 text-start">
+                <c-col xs="12">
+                  <label cLabel for="name">Name</label>
+                  <input autocomplete="name" cFormControl id="name" placeholder="Your name" />
+                </c-col>
+                <c-col xs="12">
+                  <label cLabel for="email">Email address</label>
+                  <input
+                    autocomplete="email"
+                    cFormControl
+                    id="email"
+                    placeholder="your@email.com"
+                    type="email"
+                  />
+                </c-col>
+                <c-col xs="12">
+                  <label cLabel for="password">Password</label>
+                  <c-input-group>
+                    <input
+                      autocomplete="new-password"
+                      cFormControl
+                      id="password"
+                      placeholder="Your password"
+                      type="password"
+                    />
+                    <span cInputGroupText>
+                      <button
+                        aria-label="Show password"
+                        cButton
+                        cTooltip="Show password"
+                        class="p-0 link-secondary"
+                        color="link"
+                        type="button"
+                      >
+                        <svg cIcon name="eye" size="sm"></svg>
+                      </button>
+                    </span>
+                  </c-input-group>
+                </c-col>
+                <c-col xs="12">
+                  <c-form-check>
+                    <input cFormCheckInput id="acceptTerms" type="checkbox" />
+                    <label cFormCheckLabel for="acceptTerms">
+                      I accept the <a href="#">terms and conditions</a>
+                    </label>
+                  </c-form-check>
+                </c-col>
+                <c-col xs="12">
+                  <button cButton class="w-100" color="primary" type="submit">
+                    Create new account
+                  </button>
+                </c-col>
+              </form>
+              <div class="position-relative">
+                <hr />
+                <div
+                  class="position-absolute top-50 start-50 translate-middle bg-body px-2 text-body-tertiary text-uppercase small"
+                >
+                  or
+                </div>
               </div>
-            </form>
-          </c-card-body>
-        </c-card>
+              <c-row>
+                <c-col>
+                  <button cButton class="w-100" type="button" variant="outline">
+                    <svg cIcon class="me-1" name="google"></svg>
+                    Login with Google
+                  </button>
+                </c-col>
+                <c-col>
+                  <button cButton class="w-100" type="button" variant="outline">
+                    <svg cIcon class="me-1" name="apple"></svg>
+                    Login with Apple
+                  </button>
+                </c-col>
+              </c-row>
+            </c-card-body>
+          </c-card>
+          <div class="text-body-secondary">
+            Already have an account? <a routerLink="/authentication/login">Sign in</a>
+          </div>
+        </div>
       </c-col>
     </c-row>
   </c-container>

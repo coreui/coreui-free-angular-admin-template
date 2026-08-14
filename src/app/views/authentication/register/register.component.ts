@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { IconDirective } from '@coreui/icons-angular';
 import {
   ButtonDirective,
@@ -6,16 +7,28 @@ import {
   CardComponent,
   ColComponent,
   ContainerComponent,
+  FormCheckComponent,
+  FormCheckInputDirective,
+  FormCheckLabelDirective,
   FormControlDirective,
   FormDirective,
+  FormLabelDirective,
   InputGroupComponent,
   InputGroupTextDirective,
-  RowComponent
+  RowComponent,
+  TooltipDirective
 } from '@coreui/angular';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  imports: [ContainerComponent, RowComponent, ColComponent, CardComponent, CardBodyComponent, FormDirective, InputGroupComponent, InputGroupTextDirective, IconDirective, FormControlDirective, ButtonDirective]
+  imports: [ContainerComponent, RowComponent, ColComponent, CardComponent, CardBodyComponent, FormDirective, FormLabelDirective, FormControlDirective, InputGroupComponent, InputGroupTextDirective, FormCheckComponent, FormCheckInputDirective, FormCheckLabelDirective, IconDirective, ButtonDirective, TooltipDirective, RouterLink]
 })
-export class RegisterComponent {}
+export class RegisterComponent {
+  readonly #router = inject(Router);
+
+  onSubmit(event: Event) {
+    event.preventDefault();
+    this.#router.navigate(['/authentication/check-email']);
+  }
+}
