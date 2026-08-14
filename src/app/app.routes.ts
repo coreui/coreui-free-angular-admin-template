@@ -18,16 +18,8 @@ export const routes: Routes = [
         loadChildren: () => import('./views/dashboard/routes').then((m) => m.routes)
       },
       {
-        path: 'theme',
-        loadChildren: () => import('./views/theme/routes').then((m) => m.routes)
-      },
-      {
-        path: 'base',
-        loadChildren: () => import('./views/base/routes').then((m) => m.routes)
-      },
-      {
-        path: 'buttons',
-        loadChildren: () => import('./views/buttons/routes').then((m) => m.routes)
+        path: 'components',
+        loadChildren: () => import('./views/components/routes').then((m) => m.routes)
       },
       {
         path: 'forms',
@@ -36,10 +28,6 @@ export const routes: Routes = [
       {
         path: 'icons',
         loadChildren: () => import('./views/icons/routes').then((m) => m.routes)
-      },
-      {
-        path: 'notifications',
-        loadChildren: () => import('./views/notifications/routes').then((m) => m.routes)
       },
       {
         path: 'widgets',
@@ -53,17 +41,7 @@ export const routes: Routes = [
   },
   {
     path: 'authentication',
-    redirectTo: 'authentication/login',
-    pathMatch: 'full'
-  },
-  {
-    path: 'authentication',
     loadChildren: () => import('./views/authentication/routes').then((m) => m.routes)
-  },
-  {
-    path: 'error-pages',
-    redirectTo: 'error-pages/404',
-    pathMatch: 'full'
   },
   {
     path: 'error-pages',

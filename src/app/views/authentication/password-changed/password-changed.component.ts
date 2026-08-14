@@ -5,13 +5,13 @@ import { ButtonDirective, CardBodyComponent, CardComponent, ColComponent, Contai
 @Component({
   selector: 'app-password-changed',
   imports: [
-    ButtonDirective,
-    CardBodyComponent,
-    CardComponent,
-    ColComponent,
-    ContainerComponent,
+  ButtonDirective,
+  CardBodyComponent,
+  CardComponent,
+  ColComponent,
+  ContainerComponent,
     RouterLink,
-    RowComponent
+  RowComponent
   ],
   templateUrl: './password-changed.component.html',
   host: {

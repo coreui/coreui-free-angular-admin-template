@@ -1,0 +1,9 @@
+<c-row class="g-4">
+  @for (widget of brandData; track widget.icon) {
+    <c-col lg="4" sm="6">
+      <c-widget-stat-d [style]="widget.capBg" [values]="widget.values">
+        <svg [name]="widget.icon" cIcon class="my-4 text-white" height="52"></svg>
+      </c-widget-stat-d>
+    </c-col>
+  }
+</c-row>

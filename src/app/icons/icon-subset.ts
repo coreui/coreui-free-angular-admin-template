@@ -10,6 +10,7 @@ import {
   cibLinkedin,
   cibSkype,
   cibTwitter,
+  cibYoutube,
   cifBr,
   cifEs,
   cifFr,
@@ -28,7 +29,6 @@ import {
   cilBell,
   cilBold,
   cilBookmark,
-  cilBrush,
   cilBug,
   cilCalculator,
   cilCalendar,
@@ -99,11 +99,14 @@ import {
   cilUserUnfollow
 } from '@coreui/icons';
 
-import { signet } from './signet';
-import { logo } from './logo';
-import { eye } from './eye';
 import { apple } from './apple';
+import { chatgpt } from './chatgpt';
+import { eye } from './eye';
 import { google } from './google';
+import { linkedinBadge } from './linkedin-badge';
+import { twitterX } from './twitter-x';
+import { logo } from './logo';
+import { signet } from './signet';
 
 export const iconSubset = {
   cibCcAmex,
@@ -117,6 +120,7 @@ export const iconSubset = {
   cibLinkedin,
   cibSkype,
   cibTwitter,
+  cibYoutube,
   cifBr,
   cifEs,
   cifFr,
@@ -135,7 +139,6 @@ export const iconSubset = {
   cilBell,
   cilBold,
   cilBookmark,
-  cilBrush,
   cilBug,
   cilCalculator,
   cilCalendar,
@@ -204,11 +207,14 @@ export const iconSubset = {
   cilUserFemale,
   cilUserFollow,
   cilUserUnfollow,
+  apple,
+  chatgpt,
+  eye,
+  google,
+  linkedinBadge,
   logo,
   signet,
-  eye,
-  apple,
-  google
+  twitterX
 };
 
 export enum IconSubset {
@@ -223,6 +229,7 @@ export enum IconSubset {
   cibLinkedin = 'cibLinkedin',
   cibSkype = 'cibSkype',
   cibTwitter = 'cibTwitter',
+  cibYoutube = 'cibYoutube',
   cifBr = 'cifBr',
   cifEs = 'cifEs',
   cifFr = 'cifFr',
@@ -242,7 +249,6 @@ export enum IconSubset {
   cilBold = 'cilBold',
   cilBookmark = 'cilBookmark',
   cilBug = 'cilBug',
-  cilBrush = 'cilBrush',
   cilCalculator = 'cilCalculator',
   cilCalendar = 'cilCalendar',
   cilChart = 'cilChart',
@@ -310,10 +316,13 @@ export enum IconSubset {
   cilUserFemale = 'cilUserFemale',
   cilUserFollow = 'cilUserFollow',
   cilUserUnfollow = 'cilUserUnfollow',
+  apple = 'apple',
+  chatgpt = 'chatgpt',
+  eye = 'eye',
+  google = 'google',
+  linkedinBadge = 'linkedinBadge',
   logo = 'logo',
   signet = 'signet',
-  eye = 'eye',
-  apple = 'apple',
-  google = 'google'
+  twitterX = 'twitterX'
 }
 

@@ -1,28 +1,28 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideRouter } from '@angular/router';
 
-import { ButtonModule, CardModule, FormModule, GridModule } from '@coreui/angular';
-import { LoginComponent } from './login.component';
+import { GridModule, WidgetModule } from '@coreui/angular';
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from '../../../icons/icon-subset';
+import { DashboardBrandComponent } from './dashboard-brand.component';
 
-describe('LoginComponent', () => {
-  let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
+describe('DashboardBrandComponent', () => {
+  let component: DashboardBrandComponent;
+  let fixture: ComponentFixture<DashboardBrandComponent>;
   let iconSetService: IconSetService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FormModule, CardModule, GridModule, ButtonModule, IconModule, LoginComponent],
-      providers: [IconSetService, provideRouter([])]
-    }).compileComponents();
+      imports: [GridModule, WidgetModule, IconModule, DashboardBrandComponent],
+      providers: [IconSetService]
+    })
+      .compileComponents();
   });
 
   beforeEach(() => {
     iconSetService = TestBed.inject(IconSetService);
     iconSetService.icons = { ...iconSubset };
 
-    fixture = TestBed.createComponent(LoginComponent);
+    fixture = TestBed.createComponent(DashboardBrandComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

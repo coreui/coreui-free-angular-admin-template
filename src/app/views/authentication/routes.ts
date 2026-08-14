@@ -2,51 +2,63 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
-    path: 'login',
-    loadComponent: () => import('./login/login.component').then(m => m.LoginComponent),
+    path: '',
     data: {
-      title: 'Login Page'
-    }
-  },
-  {
-    path: 'register',
-    loadComponent: () => import('./register/register.component').then(m => m.RegisterComponent),
-    data: {
-      title: 'Register Page'
-    }
-  },
-  {
-    path: 'check-email',
-    loadComponent: () => import('./check-email/check-email.component').then(m => m.CheckEmailComponent),
-    data: {
-      title: 'Check Email Page'
-    }
-  },
-  {
-    path: 'password',
+      title: 'Authentication'
+    },
     children: [
       {
-        path: 'reset',
-        loadComponent: () => import('./reset-password/reset-password.component').then(m => m.ResetPasswordComponent),
+        path: '',
+        redirectTo: 'login',
+        pathMatch: 'full'
+      },
+      {
+        path: 'login',
+        loadComponent: () => import('./login/login.component').then(m => m.LoginComponent),
         data: {
-          title: 'Reset Password Page'
+          title: 'Login'
         }
       },
       {
-        path: 'change',
-        loadComponent: () => import('./change-password/change-password.component').then(m => m.ChangePasswordComponent),
+        path: 'register',
+        loadComponent: () => import('./register/register.component').then(m => m.RegisterComponent),
         data: {
-          title: 'Change Password Page'
+          title: 'Register'
         }
       },
       {
-        path: 'changed',
-        loadComponent: () => import('./password-changed/password-changed.component').then(m => m.PasswordChangedComponent), 
+        path: 'check-email',
+        loadComponent: () => import('./check-email/check-email.component').then(m => m.CheckEmailComponent),
         data: {
-          title: 'Changed Password Page'
+          title: 'Check Email'
         }
+      },
+      {
+        path: 'password',
+        children: [
+          {
+            path: 'reset',
+            loadComponent: () => import('./reset-password/reset-password.component').then(m => m.ResetPasswordComponent),
+            data: {
+              title: 'Reset Password'
+            }
+          },
+          {
+            path: 'change',
+            loadComponent: () => import('./change-password/change-password.component').then(m => m.ChangePasswordComponent),
+            data: {
+              title: 'Change Password'
+            }
+          },
+          {
+            path: 'changed',
+            loadComponent: () => import('./password-changed/password-changed.component').then(m => m.PasswordChangedComponent),
+            data: {
+              title: 'Password Changed'
+            }
+          }
+        ]
       }
     ]
-
   }
 ];

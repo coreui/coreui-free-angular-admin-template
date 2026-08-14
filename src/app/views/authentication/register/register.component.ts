@@ -19,7 +19,7 @@ import {
   RowDirective,
   TooltipDirective
 } from '@coreui/angular';
-import { IconComponent } from '@coreui/icons-angular';
+import { IconDirective } from '@coreui/icons-angular';
 
 @Component({
   selector: 'app-register',
@@ -40,7 +40,7 @@ import { IconComponent } from '@coreui/icons-angular';
     FormDirective,
     FormLabelDirective,
     FormsModule,
-    IconComponent,
+    IconDirective,
     InputGroupComponent,
     InputGroupTextDirective,
     RouterLink,

@@ -3,7 +3,7 @@
     <c-col lg="6" md="8" xl="5">
       <div class="d-flex flex-column gap-4">
         <div class="text-center">
-          <c-icon [use]="'./assets/brand/coreui-angular.svg'" alt="Logo" height="48" />
+          <svg [class]="{ icon: false }" cIcon height="48" name="logo" title="CoreUI Logo"></svg>
         </div>
         <c-card class="p-4">
           <c-card-body class="d-flex flex-column gap-4">
@@ -22,7 +22,7 @@
                   <input autocomplete="current-password" cFormControl id="password" placeholder="Your password" type="password" />
                   <span cInputGroupText>
                     <button cButton cTooltip="Show password" class="p-0 link-secondary" color="link" type="button">
-                      <c-icon name="eye" />
+                      <svg cIcon name="eye" size="sm"></svg>
                     </button>
                   </span>
                 </c-input-group>
@@ -45,14 +45,14 @@
             </div>
             <c-row>
               <c-col>
-                <button cButton class="w-100" color="secondary" variant="outline" color="">
-                  <c-icon name="google" />
+                <button cButton class="w-100" color="" variant="outline">
+                  <svg cIcon class="me-1" name="google"></svg>
                   Login with Google
                 </button>
               </c-col>
               <c-col>
-                <button cButton class="w-100" variant="outline" color="">
-                  <c-icon name="apple" />
+                <button cButton class="w-100" color="" variant="outline">
+                  <svg cIcon class="me-1" name="apple"></svg>
                   Login with Apple
                 </button>
               </c-col>

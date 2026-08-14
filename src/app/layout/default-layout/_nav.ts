@@ -11,22 +11,47 @@ export const navItems: INavData[] = [
     }
   },
   {
-    name: 'UI Elements',
-    title: true
+    title: true,
+    name: 'UI Elements'
   },
   {
-    name: 'Base',
-    url: '/base',
+    name: 'Charts',
+    iconComponent: { name: 'cil-chart-pie' },
+    url: '/charts'
+  },
+  {
+    name: 'Components',
+    url: '/components',
     iconComponent: { name: 'cil-puzzle' },
     children: [
       {
         name: 'Accordion',
-        url: '/base/accordion',
+        url: '/components/accordion',
         icon: 'nav-icon-bullet'
       },
       {
-        name: 'Breadcrumbs',
-        url: '/base/breadcrumbs',
+        name: 'Alerts',
+        url: '/components/alerts',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Badge',
+        url: '/components/badge',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Breadcrumb',
+        url: '/components/breadcrumb',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Buttons',
+        url: '/components/buttons',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Buttons Group',
+        url: '/components/button-group',
         icon: 'nav-icon-bullet'
       },
       {
@@ -41,48 +66,68 @@ export const navItems: INavData[] = [
       },
       {
         name: 'Cards',
-        url: '/base/cards',
+        url: '/components/cards',
         icon: 'nav-icon-bullet'
       },
       {
         name: 'Carousel',
-        url: '/base/carousel',
+        url: '/components/carousel',
         icon: 'nav-icon-bullet'
       },
       {
         name: 'Collapse',
-        url: '/base/collapse',
+        url: '/components/collapse',
         icon: 'nav-icon-bullet'
       },
       {
-        name: 'List Group',
-        url: '/base/list-group',
+        name: 'Dropdowns',
+        url: '/components/dropdowns',
         icon: 'nav-icon-bullet'
       },
       {
-        name: 'Navs & Tabs',
-        url: '/base/navs',
+        name: 'List group',
+        url: '/components/list-group',
         icon: 'nav-icon-bullet'
       },
       {
-        name: 'Pagination',
-        url: '/base/pagination',
-        icon: 'nav-icon-bullet'
-      },
-      {
-        name: 'Placeholder',
-        url: '/base/placeholder',
-        icon: 'nav-icon-bullet'
-      },
-      {
-        name: 'Smart Table',
-        url: 'https://coreui.io/angular/docs/components/smart-table/',
+        name: 'Loading Button',
+        url: 'https://coreui.io/angular/docs/components/loading-button/',
         icon: 'nav-icon-bullet',
         badge: {
           color: 'danger',
           text: 'PRO'
         },
         attributes: { target: '_blank' }
+      },
+      {
+        name: 'Modals',
+        url: '/components/modals',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Navs & Tabs',
+        url: '/components/navs-tabs',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Pagination',
+        url: '/components/pagination',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Placeholders',
+        url: '/components/placeholders',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Popovers',
+        url: '/components/popovers',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Progress',
+        url: '/components/progress',
+        icon: 'nav-icon-bullet'
       },
       {
         name: 'Smart Pagination',
@@ -95,66 +140,39 @@ export const navItems: INavData[] = [
         attributes: { target: '_blank' }
       },
       {
-        name: 'Popovers',
-        url: '/base/popovers',
-        icon: 'nav-icon-bullet'
-      },
-      {
-        name: 'Progress',
-        url: '/base/progress',
-        icon: 'nav-icon-bullet'
-      },
-      {
-        name: 'Spinners',
-        url: '/base/spinners',
-        icon: 'nav-icon-bullet'
-      },
-      {
-        name: 'Tables',
-        url: '/base/tables',
-        icon: 'nav-icon-bullet'
-      },
-      {
-        name: 'Tabs',
-        url: '/base/tabs',
-        icon: 'nav-icon-bullet'
-      },
-      {
-        name: 'Tooltips',
-        url: '/base/tooltips',
-        icon: 'nav-icon-bullet'
-      }
-    ]
-  },
-  {
-    name: 'Buttons',
-    url: '/buttons',
-    iconComponent: { name: 'cil-cursor' },
-    children: [
-      {
-        name: 'Buttons',
-        url: '/buttons/buttons',
-        icon: 'nav-icon-bullet'
-      },
-      {
-        name: 'Button groups',
-        url: '/buttons/button-groups',
-        icon: 'nav-icon-bullet'
-      },
-      {
-        name: 'Dropdowns',
-        url: '/buttons/dropdowns',
-        icon: 'nav-icon-bullet'
-      },
-      {
-        name: 'Loading Button',
-        url: 'https://coreui.io/angular/docs/components/loading-button/',
+        name: 'Smart Table',
+        url: 'https://coreui.io/angular/docs/components/smart-table/',
         icon: 'nav-icon-bullet',
         badge: {
           color: 'danger',
           text: 'PRO'
         },
         attributes: { target: '_blank' }
+      },
+      {
+        name: 'Spinners',
+        url: '/components/spinners',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Tables',
+        url: '/components/tables',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Tabs',
+        url: '/components/tabs',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Toasts',
+        url: '/components/toasts',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Tooltips',
+        url: '/components/tooltips',
+        icon: 'nav-icon-bullet'
       }
     ]
   },
@@ -306,11 +324,6 @@ export const navItems: INavData[] = [
     ]
   },
   {
-    name: 'Charts',
-    iconComponent: { name: 'cil-chart-pie' },
-    url: '/charts'
-  },
-  {
     name: 'Icons',
     iconComponent: { name: 'cil-star' },
     url: '/icons',
@@ -332,33 +345,6 @@ export const navItems: INavData[] = [
       {
         name: 'CoreUI Brands',
         url: '/icons/brands',
-        icon: 'nav-icon-bullet'
-      }
-    ]
-  },
-  {
-    name: 'Notifications',
-    url: '/notifications',
-    iconComponent: { name: 'cil-bell' },
-    children: [
-      {
-        name: 'Alerts',
-        url: '/notifications/alerts',
-        icon: 'nav-icon-bullet'
-      },
-      {
-        name: 'Badges',
-        url: '/notifications/badges',
-        icon: 'nav-icon-bullet'
-      },
-      {
-        name: 'Modal',
-        url: '/notifications/modal',
-        icon: 'nav-icon-bullet'
-      },
-      {
-        name: 'Toast',
-        url: '/notifications/toasts',
         icon: 'nav-icon-bullet'
       }
     ]
@@ -408,7 +394,6 @@ export const navItems: INavData[] = [
           {
             name: 'Change Password',
             url: '/authentication/password/change',
-
             icon: 'nav-icon-bullet'
           },
           {
@@ -421,7 +406,7 @@ export const navItems: INavData[] = [
     ]
   },
   {
-    name: 'Error Pages',
+    name: 'Error pages',
     url: '/error-pages',
     iconComponent: { name: 'cil-bug' },
     children: [
@@ -433,24 +418,6 @@ export const navItems: INavData[] = [
       {
         name: 'Error 500',
         url: '/error-pages/500',
-        icon: 'nav-icon-bullet'
-      }
-    ]
-  },
-  {
-    name: 'Theme',
-    url: '/theme',
-    iconComponent: { name: 'cil-pencil' },
-    children: [
-      {
-        name: 'Colors',
-        url: '/theme/colors',
-        icon: 'nav-icon-bullet'
-      },
-      {
-        name: 'Typography',
-        url: '/theme/typography',
-        linkProps: { fragment: 'headings' },
         icon: 'nav-icon-bullet'
       }
     ]

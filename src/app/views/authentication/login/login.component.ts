@@ -18,7 +18,7 @@ import {
   RowDirective,
   TooltipDirective
 } from '@coreui/angular';
-import { IconComponent } from '@coreui/icons-angular';
+import { IconDirective } from '@coreui/icons-angular';
 
 @Component({
   selector: 'app-login',
@@ -38,7 +38,7 @@ import { IconComponent } from '@coreui/icons-angular';
     FormControlDirective,
     FormDirective,
     FormLabelDirective,
-    IconComponent,
+    IconDirective,
     InputGroupComponent,
     InputGroupTextDirective,
     RouterLink,
