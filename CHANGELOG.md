@@ -2,6 +2,36 @@
 
 ---
 
+#### `5.7.18` for Angular 22.1.2
+
+- feat(views): redesign authentication views to match the new CoreUI layout
+- feat(dashboard): sync dashboard with CoreUI refreshed content
+- feat(navigation): reorganize navigation and views to match CoreUI
+- refactor(routing): update routing to match CoreUI refreshed content
+- chore(dependencies): update to `Angular 22.1.2`
+  - `@angular/animations` to version 22.1.2
+  - `@angular/aria` to version 22.1.2
+  - `@angular/cdk` to version 22.1.2
+  - `@angular/common` to version 22.1.2
+  - `@angular/compiler` to version 22.1.2
+  - `@angular/core` to version 22.1.2
+  - `@angular/forms` to version 22.1.2
+  - `@angular/language-service` to version 22.1.2
+  - `@angular/localize` to version 22.1.2
+  - `@angular/platform-browser` to version 22.1.2
+  - `@angular/router` to version 22.1.2
+  - `@coreui/angular` to version 5.7.18
+  - `@coreui/angular-chartjs` to version 5.7.18
+  - `@coreui/icons-angular` to version 5.7.18
+  - `@angular/build` to version 22.1.4
+  - `@angular/cli` to version 22.1.4
+  - `@angular/compiler-cli` to version 22.1.2
+- docs(readme): add a Data Grid section (#286)
+- docs(readme): add a Scheduler section (#287)
+
+
+---
+
 #### `5.7.16` for Angular 22.1
 
 - chore(dependencies): update to `Angular 22.1.1`
