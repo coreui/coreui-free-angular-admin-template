@@ -4,12 +4,12 @@ export const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'Base'
+      title: 'Components'
     },
     children: [
       {
         path: '',
-        redirectTo: 'cards',
+        redirectTo: 'accordion',
         pathMatch: 'full'
       },
       {
@@ -20,10 +20,38 @@ export const routes: Routes = [
         }
       },
       {
-        path: 'breadcrumbs',
+        path: 'alerts',
+        loadComponent: () => import('./alerts/alerts.component').then(m => m.AlertsComponent),
+        data: {
+          title: 'Alerts'
+        }
+      },
+      {
+        path: 'badge',
+        loadComponent: () => import('./badges/badges.component').then(m => m.BadgesComponent),
+        data: {
+          title: 'Badge'
+        }
+      },
+      {
+        path: 'breadcrumb',
         loadComponent: () => import('./breadcrumbs/breadcrumbs.component').then(m => m.BreadcrumbsComponent),
         data: {
-          title: 'Breadcrumbs'
+          title: 'Breadcrumb'
+        }
+      },
+      {
+        path: 'buttons',
+        loadComponent: () => import('./buttons/buttons.component').then(m => m.ButtonsComponent),
+        data: {
+          title: 'Buttons'
+        }
+      },
+      {
+        path: 'button-group',
+        loadComponent: () => import('./button-groups/button-groups.component').then(m => m.ButtonGroupsComponent),
+        data: {
+          title: 'Buttons Group'
         }
       },
       {
@@ -48,14 +76,28 @@ export const routes: Routes = [
         }
       },
       {
-        path: 'list-group',
-        loadComponent: () => import('./list-groups/list-groups.component').then(m => m.ListGroupsComponent),
+        path: 'dropdowns',
+        loadComponent: () => import('./dropdowns/dropdowns.component').then(m => m.DropdownsComponent),
         data: {
-          title: 'List Group'
+          title: 'Dropdowns'
         }
       },
       {
-        path: 'navs',
+        path: 'list-group',
+        loadComponent: () => import('./list-groups/list-groups.component').then(m => m.ListGroupsComponent),
+        data: {
+          title: 'List group'
+        }
+      },
+      {
+        path: 'modals',
+        loadComponent: () => import('./modals/modals.component').then(m => m.ModalsComponent),
+        data: {
+          title: 'Modals'
+        }
+      },
+      {
+        path: 'navs-tabs',
         loadComponent: () => import('./navs/navs.component').then(m => m.NavsComponent),
         data: {
           title: 'Navs & Tabs'
@@ -69,10 +111,10 @@ export const routes: Routes = [
         }
       },
       {
-        path: 'placeholder',
+        path: 'placeholders',
         loadComponent: () => import('./placeholders/placeholders.component').then(m => m.PlaceholdersComponent),
         data: {
-          title: 'Placeholder'
+          title: 'Placeholders'
         }
       },
       {
@@ -111,6 +153,13 @@ export const routes: Routes = [
         }
       },
       {
+        path: 'toasts',
+        loadComponent: () => import('./toasters/toasters.component').then(m => m.ToastersComponent),
+        data: {
+          title: 'Toasts'
+        }
+      },
+      {
         path: 'tooltips',
         loadComponent: () => import('./tooltips/tooltips.component').then(m => m.TooltipsComponent),
         data: {
@@ -120,5 +169,3 @@ export const routes: Routes = [
     ]
   }
 ];
-
-
