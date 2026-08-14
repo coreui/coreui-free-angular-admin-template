@@ -4,7 +4,7 @@
     <c-row>
       <c-col sm="5">
         <h4 class="card-title mb-0" id="traffic">Traffic</h4>
-        <div class="small text-body-secondary">January - December 2023</div>
+        <div class="small text-body-secondary">October 2025 - April 2026</div>
       </c-col>
       <c-col class="d-none d-md-block" sm="7">
         <button cButton class="float-end" color="primary" aria-label="Download">
@@ -109,7 +109,7 @@
   </c-card-footer>
 </c-card>
 
-<app-widgets-brand [withCharts]="true" />
+<app-dashboard-brand />
 
 <c-row class="mt-4">
   <c-col xs>
@@ -254,7 +254,7 @@
 
             <div class="progress-group">
               <div class="progress-group-header">
-                <svg cIcon class="icon icon-lg me-2" name="cibGoogle"></svg>
+                <svg cIcon class="icon icon-lg me-2" name="google"></svg>
                 <span>Organic Search</span>
                 <span class="ms-auto font-semibold">
                   191,235 <span class="text-body-secondary small">(56%)</span>
@@ -266,19 +266,19 @@
             </div>
             <div class="progress-group">
               <div class="progress-group-header">
-                <svg cIcon class="icon icon-lg me-2" name="cibFacebook"></svg>
-                <span>Facebook</span>
+                <svg cIcon class="icon icon-lg me-2" name="chatgpt"></svg>
+                <span>ChatGPT</span>
                 <span class="ms-auto font-semibold">
                   51,223 <span class="text-body-secondary small">(15%)</span>
                 </span>
               </div>
               <div class="progress-group-bars">
-                <c-progress thin color="success" value="15" aria-label="Facebook" />
+                <c-progress thin color="success" value="15" aria-label="ChatGPT" />
               </div>
             </div>
             <div class="progress-group">
               <div class="progress-group-header">
-                <svg cIcon class="icon icon-lg me-2" name="cibTwitter"></svg>
+                <svg cIcon class="icon icon-lg me-2" name="twitterX"></svg>
                 <span>Twitter</span>
                 <span class="ms-auto font-semibold">
                   37,564 <span class="text-body-secondary small">(11%)</span>
@@ -290,7 +290,7 @@
             </div>
             <div class="progress-group">
               <div class="progress-group-header">
-                <svg cIcon class="icon icon-lg me-2" name="cibLinkedin"></svg>
+                <svg cIcon class="icon icon-lg me-2" name="linkedinBadge"></svg>
                 <span>LinkedIn</span>
                 <span class="ms-auto font-semibold">
                   27,319 <span class="text-body-secondary small">(8%)</span>

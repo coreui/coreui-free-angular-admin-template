@@ -23,8 +23,6 @@ import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/
 export class ChecksRadiosComponent {
   private formBuilder = inject(UntypedFormBuilder);
 
-  inputDisabled: null = null;
-
   formGroup = this.formBuilder.group({
     flexRadioGroup: this.formBuilder.group({
       flexRadioDefault: this.formBuilder.control('two')

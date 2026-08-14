@@ -10,6 +10,7 @@ import {
   cibLinkedin,
   cibSkype,
   cibTwitter,
+  cibYoutube,
   cifBr,
   cifEs,
   cifFr,
@@ -28,6 +29,7 @@ import {
   cilBell,
   cilBold,
   cilBookmark,
+  cilBug,
   cilCalculator,
   cilCalendar,
   cilChart,
@@ -97,8 +99,14 @@ import {
   cilUserUnfollow
 } from '@coreui/icons';
 
-import { signet } from './signet';
+import { apple } from './apple';
+import { chatgpt } from './chatgpt';
+import { eye } from './eye';
+import { google } from './google';
+import { linkedinBadge } from './linkedin-badge';
+import { twitterX } from './twitter-x';
 import { logo } from './logo';
+import { signet } from './signet';
 
 export const iconSubset = {
   cibCcAmex,
@@ -112,6 +120,7 @@ export const iconSubset = {
   cibLinkedin,
   cibSkype,
   cibTwitter,
+  cibYoutube,
   cifBr,
   cifEs,
   cifFr,
@@ -130,6 +139,7 @@ export const iconSubset = {
   cilBell,
   cilBold,
   cilBookmark,
+  cilBug,
   cilCalculator,
   cilCalendar,
   cilChart,
@@ -197,8 +207,14 @@ export const iconSubset = {
   cilUserFemale,
   cilUserFollow,
   cilUserUnfollow,
+  apple,
+  chatgpt,
+  eye,
+  google,
+  linkedinBadge,
   logo,
-  signet
+  signet,
+  twitterX
 };
 
 export enum IconSubset {
@@ -213,6 +229,7 @@ export enum IconSubset {
   cibLinkedin = 'cibLinkedin',
   cibSkype = 'cibSkype',
   cibTwitter = 'cibTwitter',
+  cibYoutube = 'cibYoutube',
   cifBr = 'cifBr',
   cifEs = 'cifEs',
   cifFr = 'cifFr',
@@ -231,6 +248,7 @@ export enum IconSubset {
   cilBell = 'cilBell',
   cilBold = 'cilBold',
   cilBookmark = 'cilBookmark',
+  cilBug = 'cilBug',
   cilCalculator = 'cilCalculator',
   cilCalendar = 'cilCalendar',
   cilChart = 'cilChart',
@@ -298,7 +316,13 @@ export enum IconSubset {
   cilUserFemale = 'cilUserFemale',
   cilUserFollow = 'cilUserFollow',
   cilUserUnfollow = 'cilUserUnfollow',
+  apple = 'apple',
+  chatgpt = 'chatgpt',
+  eye = 'eye',
+  google = 'google',
+  linkedinBadge = 'linkedinBadge',
   logo = 'logo',
-  signet = 'signet'
+  signet = 'signet',
+  twitterX = 'twitterX'
 }
 

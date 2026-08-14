@@ -1,5 +1,5 @@
 <c-row ngPreserveWhitespaces>
-  <c-col xs="12">
+  <c-col [xs]="12">
     <app-docs-components href="forms/validation" title="Form Validation" />
     <c-card class="mb-4">
       <c-card-header>
@@ -27,17 +27,17 @@
                 cForm
                 class="row g-3 needs-validation"
           >
-            <c-col md="4">
+            <c-col [md]="4">
               <label cLabel for="validationCustom01">First name</label>
               <input cFormControl id="validationCustom01" required type="text" value="Mark" />
               <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
             </c-col>
-            <c-col md="4">
+            <c-col [md]="4">
               <label cLabel for="validationCustom02">Last name</label>
               <input cFormControl id="validationCustom02" required type="text" value="Otto" />
               <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
             </c-col>
-            <c-col md="4">
+            <c-col [md]="4">
               <label cLabel for="validationCustomUsername">Username</label>
               <c-input-group class="has-validation">
                 <span cInputGroupText id="inputGroupPrepend">&#64;</span>
@@ -50,12 +50,12 @@
                 <c-form-feedback [valid]="false">Please choose a username.</c-form-feedback>
               </c-input-group>
             </c-col>
-            <c-col md="6">
+            <c-col [md]="6">
               <label cLabel for="validationCustom03">City</label>
               <input cFormControl id="validationCustom03" required type="text" />
               <c-form-feedback [valid]="false">Please provide a valid city.</c-form-feedback>
             </c-col>
-            <c-col md="3">
+            <c-col [md]="3">
               <label cLabel for="validationCustom04">State</label>
               <select cSelect id="validationCustom04" required>
                 <option value="">Choose...</option>
@@ -63,19 +63,19 @@
               </select>
               <c-form-feedback [valid]="false">Please provide a valid State.</c-form-feedback>
             </c-col>
-            <c-col md="3">
+            <c-col [md]="3">
               <label cLabel for="validationCustom05">Zip code</label>
               <input cFormControl id="validationCustom05" required type="text" />
               <c-form-feedback [valid]="false">Please provide a valid zip.</c-form-feedback>
             </c-col>
-            <c-col xs="12">
+            <c-col [xs]="12">
               <c-form-check>
                 <input cFormCheckInput id="invalidCheck" name="invalidCheck" required type="checkbox" />
                 <label cFormCheckLabel for="invalidCheck">Agree to terms and conditions</label>
               </c-form-check>
               <c-form-feedback [valid]="false">You must agree before submitting.</c-form-feedback>
             </c-col>
-            <c-col xs="12">
+            <c-col [xs]="12">
               <button cButton class="me-1" color="primary" type="submit">
                 Submit form
               </button>
@@ -88,7 +88,7 @@
       </c-card-body>
     </c-card>
   </c-col>
-  <c-col xs="12">
+  <c-col [xs]="12">
     <c-card class="mb-4">
       <c-card-header>
         <strong>Validation</strong> <small>Browser defaults</small>
@@ -113,17 +113,17 @@
                 class="row g-3"
                 ngNativeValidate
           >
-            <c-col md="4">
+            <c-col [md]="4">
               <label cLabel for="validationDefault01">Email</label>
               <input cFormControl id="validationDefault01" required type="text" value="Mark" />
               <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
             </c-col>
-            <c-col md="4">
+            <c-col [md]="4">
               <label cLabel for="validationDefault02">Email</label>
               <input cFormControl id="validationDefault02" required type="text" value="Otto" />
               <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
             </c-col>
-            <c-col md="4">
+            <c-col [md]="4">
               <label cLabel for="validationDefaultUsername">Username</label>
               <c-input-group class="has-validation">
                 <span cInputGroupText id="inputGroupPrepend1">&#64;</span>
@@ -136,12 +136,12 @@
                 <c-form-feedback [valid]="false">Please choose a username.</c-form-feedback>
               </c-input-group>
             </c-col>
-            <c-col md="6">
+            <c-col [md]="6">
               <label cLabel for="validationDefault03">City</label>
               <input cFormControl id="validationDefault03" required type="text" />
               <c-form-feedback [valid]="false">Please provide a valid city.</c-form-feedback>
             </c-col>
-            <c-col md="3">
+            <c-col [md]="3">
               <label cLabel for="validationDefault04">State</label>
               <select cSelect id="validationDefault04" required>
                 <option value="">Choose...</option>
@@ -149,19 +149,19 @@
               </select>
               <c-form-feedback [valid]="false">Please provide a valid State.</c-form-feedback>
             </c-col>
-            <c-col md="3">
+            <c-col [md]="3">
               <label cLabel for="validationDefault05">Zip code</label>
               <input cFormControl id="validationDefault05" required type="text" />
               <c-form-feedback [valid]="false">Please provide a valid zip.</c-form-feedback>
             </c-col>
-            <c-col xs="12">
+            <c-col [xs]="12">
               <c-form-check>
                 <input cFormCheckInput id="invalidCheck1" name="invalidCheck" required type="checkbox" />
                 <label cFormCheckLabel for="invalidCheck1">Agree to terms and conditions</label>
               </c-form-check>
               <c-form-feedback [valid]="false">You must agree before submitting.</c-form-feedback>
             </c-col>
-            <c-col xs="12">
+            <c-col [xs]="12">
               <button cButton class="me-1" color="primary" type="submit">
                 Submit form
               </button>
@@ -174,7 +174,7 @@
       </c-card-body>
     </c-card>
   </c-col>
-  <c-col xs="12">
+    <c-col [xs]="12">
     <c-card class="mb-4">
       <c-card-header>
         <strong>Validation</strong> <small>Server side</small>
@@ -193,7 +193,7 @@
         </p>
         <app-docs-example href="forms/validation#server-side">
           <form cForm class="row g-3 needs-validation" ngNativeValidate>
-            <c-col md="4">
+            <c-col [md]="4">
               <label cLabel for="validationServer01">First name</label>
               <input [valid]="true"
                      cFormControl
@@ -204,7 +204,7 @@
               />
               <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
             </c-col>
-            <c-col md="4">
+            <c-col [md]="4">
               <label cLabel for="validationServer02">Last name</label>
               <input [valid]="true"
                      cFormControl
@@ -215,7 +215,7 @@
               />
               <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
             </c-col>
-            <c-col md="4">
+            <c-col [md]="4">
               <label cLabel for="validationServerUsername">Username</label>
               <c-input-group class="has-validation">
                 <span cInputGroupText id="inputGroupPrepend03">&#64;</span>
@@ -229,12 +229,12 @@
                 <c-form-feedback [valid]="false">Please choose a username.</c-form-feedback>
               </c-input-group>
             </c-col>
-            <c-col md="6">
+            <c-col [md]="6">
               <label cLabel for="validationServer03">City</label>
               <input [valid]="false" cFormControl id="validationServer03" required type="text" />
               <c-form-feedback [valid]="false">Please provide a valid city.</c-form-feedback>
             </c-col>
-            <c-col md="3">
+            <c-col [md]="3">
               <label cLabel for="validationServer04">State</label>
               <select [valid]="false" cSelect id="validationServer04">
                 <option disabled>Choose...</option>
@@ -242,19 +242,19 @@
               </select>
               <c-form-feedback [valid]="false">Please provide a valid state.</c-form-feedback>
             </c-col>
-            <c-col md="3">
+            <c-col [md]="3">
               <label cLabel for="validationServer05">Zip code</label>
               <input [valid]="false" cFormControl id="validationServer05" required type="text" />
               <c-form-feedback [valid]="false">Please provide a valid zip.</c-form-feedback>
             </c-col>
-            <c-col xs="12">
+            <c-col [xs]="12">
               <c-form-check class="mb-3">
                 <input [valid]="false" cFormCheckInput id="invalidCheckServer" required type="checkbox">
                 <label cFormCheckLabel for="invalidCheckServer">Agree to terms and conditions</label>
               </c-form-check>
               <c-form-feedback [valid]="false">You must agree before submitting.</c-form-feedback>
             </c-col>
-            <c-col xs="12">
+            <c-col [xs]="12">
               <button cButton color="primary" type="submit">
                 Submit form
               </button>
@@ -264,7 +264,7 @@
       </c-card-body>
     </c-card>
   </c-col>
-  <c-col xs="12">
+  <c-col [xs]="12">
     <c-card class="mb-4">
       <c-card-header>
         <strong>Validation</strong> <small>Supported elements</small>
@@ -346,7 +346,7 @@
       </c-card-body>
     </c-card>
   </c-col>
-  <c-col xs="12">
+  <c-col [xs]="12">
     <c-card class="mb-4">
       <c-card-header>
         <strong>Validation</strong> <small>Tooltips</small>
@@ -390,12 +390,12 @@
                 <c-form-feedback [valid]="false" tooltip>Please choose a username.</c-form-feedback>
               </c-input-group>
             </c-col>
-            <c-col class="position-relative" md="6">
+            <c-col class="position-relative" [md]="6">
               <label cLabel for="validationTooltip03">City</label>
               <input cFormControl id="validationTooltip03" required type="text" />
               <c-form-feedback [valid]="false" tooltip>Please provide a valid city.</c-form-feedback>
             </c-col>
-            <c-col class="position-relative" md="3">
+            <c-col class="position-relative" [md]="3">
               <label cLabel for="validationTooltip04">State</label>
               <select cSelect id="validationTooltip04" required>
                 <option value="">Choose...</option>
@@ -403,7 +403,7 @@
               </select>
               <c-form-feedback [valid]="false" tooltip>Please provide a valid State.</c-form-feedback>
             </c-col>
-            <c-col class="position-relative" md="3">
+            <c-col class="position-relative" [md]="3">
               <label cLabel for="validationTooltip05">Zip code</label>
               <input cFormControl id="validationTooltip05" required type="text" />
               <c-form-feedback [valid]="false" tooltip>Please provide a valid zip.</c-form-feedback>

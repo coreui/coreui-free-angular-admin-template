@@ -1,0 +1,69 @@
+<c-container>
+  <c-row class="justify-content-center">
+    <c-col lg="6" md="8" xl="5">
+      <div class="d-flex flex-column gap-4">
+        <div class="text-center">
+          <svg [class]="{ icon: false }" cIcon height="48" name="logo" title="CoreUI Logo"></svg>
+        </div>
+        <c-card class="p-4">
+          <c-card-body class="d-flex flex-column gap-4">
+            <h2 class="h5 text-center mb-0">Login to your account</h2>
+            <form cForm cRow class="gy-3">
+              <c-col xs="12">
+                <label cLabel for="email">Email address</label>
+                <input autocomplete="email" cFormControl id="email" placeholder="your@email.com" type="email" />
+              </c-col>
+              <c-col xs="12">
+                <div class="d-flex justify-content-between">
+                  <label cLabel for="password">Password</label>
+                  <a routerLink="/authentication/reset-password">I forgot password</a>
+                </div>
+                <c-input-group>
+                  <input autocomplete="current-password" cFormControl id="password" placeholder="Your password" type="password" />
+                  <span cInputGroupText>
+                    <button cButton cTooltip="Show password" class="p-0 link-secondary" color="link" type="button">
+                      <svg cIcon name="eye" size="sm"></svg>
+                    </button>
+                  </span>
+                </c-input-group>
+              </c-col>
+              <c-col xs="12">
+                <c-form-check>
+                  <input cFormCheckInput id="rememberMe" type="checkbox" />
+                  <label cFormCheckLabel for="rememberMe">Remember me on this device</label>
+                </c-form-check>
+              </c-col>
+              <c-col xs="12">
+                <button cButton class="w-100" color="primary" type="submit">Sign in</button>
+              </c-col>
+            </form>
+            <div class="position-relative">
+              <hr />
+              <div class="position-absolute top-50 start-50 translate-middle bg-body px-2 text-body-tertiary text-uppercase small">
+                or
+              </div>
+            </div>
+            <c-row>
+              <c-col>
+                <button cButton class="w-100" color="" variant="outline">
+                  <svg cIcon class="me-1" name="google"></svg>
+                  Login with Google
+                </button>
+              </c-col>
+              <c-col>
+                <button cButton class="w-100" color="" variant="outline">
+                  <svg cIcon class="me-1" name="apple"></svg>
+                  Login with Apple
+                </button>
+              </c-col>
+            </c-row>
+          </c-card-body>
+        </c-card>
+        <div class="text-center text-body-secondary">
+          Need an account? <a routerLink="/authentication/register">Sign up</a>
+        </div>
+      </div>
+    </c-col>
+  </c-row>
+</c-container>
+

@@ -2,6 +2,131 @@
 
 ---
 
+#### `5.7.18` for Angular 22.1.2
+
+- feat(views): redesign authentication views to match the new CoreUI layout
+- feat(dashboard): sync dashboard with CoreUI refreshed content
+- feat(navigation): reorganize navigation and views to match CoreUI
+- refactor(routing): update routing to match CoreUI refreshed content
+- chore(dependencies): update to `Angular 22.1.2`
+  - `@angular/animations` to version 22.1.2
+  - `@angular/aria` to version 22.1.2
+  - `@angular/cdk` to version 22.1.2
+  - `@angular/common` to version 22.1.2
+  - `@angular/compiler` to version 22.1.2
+  - `@angular/core` to version 22.1.2
+  - `@angular/forms` to version 22.1.2
+  - `@angular/language-service` to version 22.1.2
+  - `@angular/localize` to version 22.1.2
+  - `@angular/platform-browser` to version 22.1.2
+  - `@angular/router` to version 22.1.2
+  - `@coreui/angular` to version 5.7.18
+  - `@coreui/angular-chartjs` to version 5.7.18
+  - `@coreui/icons-angular` to version 5.7.18
+  - `@angular/build` to version 22.1.4
+  - `@angular/cli` to version 22.1.4
+  - `@angular/compiler-cli` to version 22.1.2
+- docs(readme): add a Data Grid section (#286)
+- docs(readme): add a Scheduler section (#287)
+
+
+---
+
+#### `5.7.16` for Angular 22.1
+
+- chore(dependencies): update to `Angular 22.1.1`
+  - `@angular/animations` to version 22.1.1
+  - `@angular/common` to version 22.1.1
+  - `@angular/compiler` to version 22.1.1
+  - `@angular/core` to version 22.1.1
+  - `@angular/forms` to version 22.1.1
+  - `@angular/language-service` to version 22.1.1
+  - `@angular/localize` to version 22.1.1
+  - `@angular/platform-browser` to version 22.1.1
+  - `@angular/router` to version 22.1.1
+  - `@coreui/angular` to version 5.7.16
+  - `@coreui/angular-chartjs` to version 5.7.16
+  - `@coreui/icons-angular` to version 5.7.16
+  - `@angular/compiler-cli` to version 22.1.1
+  - `@types/node` to version 26.2.0
+
+---
+
+#### `5.7.15` for Angular 22.1
+
+- fix(alerts): correct dismissible condition
+- chore(dependencies): update 
+  - `@angular/build` to version 22.1.3
+  - `@angular/cli` to version 22.1.3
+  - `@angular/aria` to version 22.1.1
+  - `@angular/cdk` to version 22.1.1
+  - `@coreui/angular` to version 5.7.15
+  - `@coreui/angular-chartjs` to version 5.7.15
+  - `@coreui/icons-angular` to version 5.7.15
+  - `playwright` to version 1.62.1
+
+---
+
+#### `5.7.11` for Angular 22.1
+
+- chore(dependencies): update to `Angular 22.1.0`
+  - `@angular/animations` to version 22.1.0
+  - `@angular/aria` to version 22.1.0
+  - `@angular/cdk` to version 22.1.0
+  - `@angular/common` to version 22.1.0
+  - `@angular/compiler` to version 22.1.0
+  - `@angular/core` to version 22.1.0
+  - `@angular/forms` to version 22.1.0
+  - `@angular/language-service` to version 22.1.0
+  - `@angular/localize` to version 22.1.0
+  - `@angular/platform-browser` to version 22.1.0
+  - `@angular/router` to version 22.1.0
+  - `@coreui/angular` to version 5.7.11
+  - `@coreui/angular-chartjs` to version 5.7.11
+  - `@coreui/icons-angular` to version 5.7.11
+  - `@angular/build` to version 22.1.2
+  - `@angular/cli` to version 22.1.2
+  - `@angular/compiler-cli` to version 22.1.0
+  - `@types/node` to version 26.1.2
+  - `jsdom` to version 30.0.1
+  - `playwright` to version 1.62.0
+
+---
+
+#### `5.7.9` for Angular 22
+
+- chore(dependencies): update
+  - `@coreui/angular` @ "5.7.9" (was "5.7.6")
+  - `@coreui/angular-chartjs` @ "5.7.9" (was "5.7.6")
+  - `@coreui/coreui` @ "5.9.0" (was "5.8.0")
+  - `@coreui/icons-angular` @ "5.7.9" (was "5.7.6")
+- chore(dependencies): patch vulnerabilities
+  - `fast-uri`: https://github.com/advisories/GHSA-v2hh-gcrm-f6hx
+---
+
+#### `5.7.6` for Angular 22
+
+- chore(dependencies): update to `Angular 22.0.7`
+  - `@angular/build` @ "22.0.7" (was "22.0.6")
+  - `@angular/cli` @ "22.0.7" (was "22.0.6")
+  - `@angular/compiler-cli` @ "22.0.7" (was "22.0.6")
+  - `@angular/animations` @ "22.0.7" (was "22.0.6")
+  - `@angular/aria` @ "22.0.5" (was "22.0.4")
+  - `@angular/cdk` @ "22.0.5" (was "22.0.4")
+  - `@angular/common` @ "22.0.7" (was "22.0.6")
+  - `@angular/compiler` @ "22.0.7" (was "22.0.6")
+  - `@angular/core` @ "22.0.7" (was "22.0.6")
+  - `@angular/forms` @ "22.0.7" (was "22.0.6")
+  - `@angular/language-service` @ "22.0.7" (was "22.0.6")
+  - `@angular/localize` @ "22.0.7" (was "22.0.6")
+  - `@angular/platform-browser` @ "22.0.7" (was "22.0.6")
+  - `@angular/router` @ "22.0.7" (was "22.0.6")
+  - `@coreui/angular` @ "5.7.6" (was "5.7.4")
+  - `@coreui/angular-chartjs` @ "5.7.6" (was "5.7.4")
+  - `@coreui/icons-angular` @ "5.7.6" (was "5.7.4")
+
+---
+
 #### `5.7.4` for Angular 22
 
 - fix(toast-simple): add c-toast-content component for css animation compatibility

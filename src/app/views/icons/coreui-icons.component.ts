@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { IconDirective, IconSetService } from '@coreui/icons-angular';
@@ -21,32 +21,30 @@ import { DocsIconsComponent, DocsLinkComponent } from '@docs-components/public-a
   ]
 })
 export class CoreUIIconsComponent implements OnInit {
-  private readonly route = inject(ActivatedRoute);
+  readonly route = inject(ActivatedRoute);
   readonly iconSet = inject(IconSetService);
 
-  public title = 'CoreUI Icons';
-  public icons!: [string, string[]][];
+  readonly title = signal('CoreUI Icons');
+  readonly icons = signal<[string, string[]][]>([]);
 
   constructor() {
-    const iconSet = this.iconSet;
-
-    iconSet.icons = { ...freeSet, ...brandSet, ...flagSet };
+    this.iconSet.icons = { ...freeSet, ...brandSet, ...flagSet };
   }
 
   ngOnInit() {
     const path = this.route?.routeConfig?.path;
     let prefix = 'cil';
     if (path === 'coreui-icons') {
-      this.title = `${this.title} - Free`;
+      this.title.update(title => `${title} - Free`);
       prefix = 'cil';
     } else if (path === 'brands') {
-      this.title = `${this.title} - Brands`;
+      this.title.update(title => `${title} - Brands`);
       prefix = 'cib';
     } else if (path === 'flags') {
-      this.title = `${this.title} - Flags`;
+      this.title.update(title => `${title} - Flags`);
       prefix = 'cif';
     }
-    this.icons = this.getIconsView(prefix);
+    this.icons.set(this.getIconsView(prefix));
   }
 
   toKebabCase(str: string) {

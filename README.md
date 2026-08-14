@@ -5,7 +5,7 @@
 [![@coreui coreui](https://img.shields.io/badge/@coreui%20-coreui-lightgrey.svg?style=flat-square)](https://github.com/coreui/coreui)
 [![npm package][npm-coreui-badge]][npm-coreui]
 [![NPM downloads][npm-coreui-download]][npm-coreui]  
-![angular](https://img.shields.io/badge/angular-^22.0.0-lightgrey.svg?style=flat-square&logo=angular)
+![angular](https://img.shields.io/badge/angular-^22.1.0-lightgrey.svg?style=flat-square&logo=angular)
 
 [npm-coreui-angular]: https://www.npmjs.com/package/@coreui/angular
 [npm-coreui-angular-badge]: https://img.shields.io/npm/v/@coreui/angular.png?style=flat-square
@@ -22,13 +22,15 @@ experience. This means mobile devices also, where the navigation is just as easy
 customize your project for almost any device – be it Mobile, Web or WebApp – CoreUI covers them all!
 
 - [CoreUI Angular Admin Dashboard Template & UI Components Library](https://coreui.io/angular)
-- [CoreUI Angular Demo](https://coreui.io/angular/demo/5.0/free/)
+- [CoreUI Angular Demo](https://coreui.io/demos/angular/latest/free/)
 - [CoreUI Angular Docs](https://coreui.io/angular/docs/)
 
 ## Table of Contents
 
 * [Versions](#versions)
 * [CoreUI Pro](#coreui-pro)
+* [Data Grid](#data-grid)
+* [Scheduler](#scheduler)
 * [Quick Start](#quick-start)
 * [Installation](#installation)
 * [Basic usage](#basic-usage)
@@ -64,6 +66,32 @@ customize your project for almost any device – be it Mobile, Web or WebApp –
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [![CoreUI PRO Angular Admin Template](https://coreui.io/images/templates/coreui_pro_default_v3_light_dark.webp)](https://coreui.io/product/angular-dashboard-template/?theme=default-v3) | [![CoreUI PRO React Admin Template](https://coreui.io/images/templates/coreui_pro_light_v3_light_dark.webp)](https://coreui.io/product/angular-dashboard-template/?theme=light) |
 
+## Data Grid
+
+CoreUI Angular Data Grid handles 100,000+ rows with sorting, filtering, virtualization, column pinning, inline editing and CSV export — using the same markup and stylesheet this template already uses.
+
+```bash
+npm install @coreui/angular-data-grid
+```
+
+One license also covers JavaScript, React and Vue. It's a separate add-on, not part of CoreUI PRO.
+
+- [Angular Data Grid](https://coreui.io/data-grid/angular/?src=readme-free-angular)
+- [Documentation](https://coreui.io/data-grid/angular/docs/getting-started/introduction/?src=readme-free-angular)
+
+## Scheduler
+
+CoreUI Angular Scheduler ships six views — day, week, month, agenda, resources, and timeline — with drag & drop, RFC 5545 recurrence, and DST-safe time handling, using the same markup and stylesheet this template already uses.
+
+```bash
+npm install @coreui/angular-scheduler
+```
+
+One license also covers JavaScript, React and Vue. It's a separate add-on, not part of CoreUI PRO.
+
+- [Angular Scheduler](https://coreui.io/scheduler/angular/?src=readme-free-angular)
+- [Documentation](https://coreui.io/scheduler/angular/docs/getting-started/introduction/?src=readme-free-angular)
+
 ## Quick Start
 
 - [Download the latest release](https://github.com/coreui/coreui-free-angular-admin-template/)
@@ -74,8 +102,7 @@ customize your project for almost any device – be it Mobile, Web or WebApp –
 Before you begin, make sure your development environment includes `Node.js®` and an `npm` package manager.
 
 ###### Node.js
-
-[**Angular 22**](https://angular.io/guide/what-is-angular) requires `Node.js` LTS version `v22.22.3 || v24.15.0`.
+[**Angular 22**](https://angular.dev/overview) requires `Node.js` LTS version `^22.22.3 || ^24.15.0 || ^26.0.0`.
 
 - To check your version, run `node -v` in a terminal/console window.
 - To get `Node.js`, go to [nodejs.org](https://nodejs.org/).
@@ -217,12 +244,11 @@ For more information on using the Angular CLI, including detailed command refere
 * <https://github.com/coreui>
 
 **CoreUI team**
-
-* https://github.com/orgs/coreui/people
+* [https://github.com/orgs/coreui/people](https://github.com/orgs/coreui/people)
 
 ## Community
 
-Get updates on CoreUI's development and chat with the project maintainers and community members.
+Get updates on CoreUI development and chat with the project maintainers and community members.
 
 - Follow [@core_ui on Twitter](https://twitter.com/core_ui).
 - Read and subscribe to [CoreUI Blog](https://coreui.io/blog/).

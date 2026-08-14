@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   ButtonDirective,
@@ -27,13 +27,11 @@ import { DocsComponentsComponent, DocsExampleComponent } from '@docs-components/
   templateUrl: './validation.component.html',
   imports: [RowComponent, ColComponent, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, ReactiveFormsModule, FormsModule, FormDirective, FormLabelDirective, FormControlDirective, FormFeedbackComponent, InputGroupComponent, InputGroupTextDirective, FormSelectDirective, FormCheckComponent, FormCheckInputDirective, FormCheckLabelDirective, ButtonDirective, ListGroupDirective, ListGroupItemDirective, DocsComponentsComponent]
 })
-export class ValidationComponent implements OnInit {
+export class ValidationComponent {
 
   readonly customStylesValidated = signal(false);
   readonly browserDefaultsValidated = signal(false);
   readonly tooltipValidated = signal(false);
-
-  ngOnInit(): void { }
 
   onSubmit1() {
     this.customStylesValidated.set(true);
@@ -52,7 +50,7 @@ export class ValidationComponent implements OnInit {
 
   onReset2() {
     this.browserDefaultsValidated.set(false);
-    console.log('Reset... 3');
+    console.log('Reset... 2');
   }
 
   onSubmit3() {

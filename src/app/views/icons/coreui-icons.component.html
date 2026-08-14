@@ -1,12 +1,12 @@
 <app-docs-icons />
 <c-card>
   <c-card-header>
-    {{ title }}
+    {{ title() }}
     <app-docs-link href="https://github.com/coreui/coreui-icons" text="GitHub" />
   </c-card-header>
   <c-card-body>
     <c-row class="text-center">
-      @for (icon of icons; track icon[0]) {
+      @for (icon of icons(); track icon[0]) {
         <c-col class="mb-5" [md]="3" [sm]="4" [xl]="2" [xs]="6">
           <svg cIcon [name]="icon[0]" [title]="icon[0]" size="3xl"></svg>
           <div>{{ toKebabCase(icon[0]) }}</div>

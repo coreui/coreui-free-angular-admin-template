@@ -19,7 +19,7 @@ import {
 import { ChartjsComponent } from '@coreui/angular-chartjs';
 import { IconDirective } from '@coreui/icons-angular';
 
-import { WidgetsBrandComponent } from '../widgets/widgets-brand/widgets-brand.component';
+import { DashboardBrandComponent } from './dashboard-brand/dashboard-brand.component';
 import { WidgetsDropdownComponent } from '../widgets/widgets-dropdown/widgets-dropdown.component';
 import { DashboardChartsData, IChartProps } from './dashboard-charts-data';
 
@@ -40,7 +40,7 @@ interface IUser {
 @Component({
   templateUrl: 'dashboard.component.html',
   styleUrls: ['dashboard.component.scss'],
-  imports: [WidgetsDropdownComponent, CardComponent, CardBodyComponent, RowComponent, ColComponent, ButtonDirective, IconDirective, ReactiveFormsModule, ButtonGroupComponent, FormCheckLabelDirective, ChartjsComponent, CardFooterComponent, GutterDirective, ProgressComponent, WidgetsBrandComponent, CardHeaderComponent, TableDirective, AvatarComponent]
+  imports: [WidgetsDropdownComponent, CardComponent, CardBodyComponent, RowComponent, ColComponent, ButtonDirective, IconDirective, ReactiveFormsModule, ButtonGroupComponent, FormCheckLabelDirective, ChartjsComponent, CardFooterComponent, GutterDirective, ProgressComponent, DashboardBrandComponent, CardHeaderComponent, TableDirective, AvatarComponent]
 })
 export class DashboardComponent implements OnInit {
 
@@ -53,10 +53,10 @@ export class DashboardComponent implements OnInit {
     {
       name: 'Yiorgos Avraamu',
       state: 'New',
-      registered: 'Jan 1, 2021',
+      registered: 'Mar 15, 2025',
       country: 'Us',
       usage: 50,
-      period: 'Jun 11, 2021 - Jul 10, 2021',
+      period: 'Mar 1, 2026 - Apr 30, 2026',
       payment: 'Mastercard',
       activity: '10 sec ago',
       avatar: './assets/images/avatars/1.jpg',
@@ -66,10 +66,10 @@ export class DashboardComponent implements OnInit {
     {
       name: 'Avram Tarasios',
       state: 'Recurring ',
-      registered: 'Jan 1, 2021',
+      registered: 'Aug 22, 2024',
       country: 'Br',
       usage: 10,
-      period: 'Jun 11, 2021 - Jul 10, 2021',
+      period: 'Jan 15, 2026 - Feb 14, 2026',
       payment: 'Visa',
       activity: '5 minutes ago',
       avatar: './assets/images/avatars/2.jpg',
@@ -79,10 +79,10 @@ export class DashboardComponent implements OnInit {
     {
       name: 'Quintin Ed',
       state: 'New',
-      registered: 'Jan 1, 2021',
+      registered: 'Nov 7, 2024',
       country: 'In',
       usage: 74,
-      period: 'Jun 11, 2021 - Jul 10, 2021',
+      period: 'Feb 10, 2026 - Mar 11, 2026',
       payment: 'Stripe',
       activity: '1 hour ago',
       avatar: './assets/images/avatars/3.jpg',
@@ -92,10 +92,10 @@ export class DashboardComponent implements OnInit {
     {
       name: 'Enéas Kwadwo',
       state: 'Sleep',
-      registered: 'Jan 1, 2021',
+      registered: 'Jan 30, 2025',
       country: 'Fr',
       usage: 98,
-      period: 'Jun 11, 2021 - Jul 10, 2021',
+      period: 'Apr 1, 2026 - Apr 30, 2026',
       payment: 'Paypal',
       activity: 'Last month',
       avatar: './assets/images/avatars/4.jpg',
@@ -105,10 +105,10 @@ export class DashboardComponent implements OnInit {
     {
       name: 'Agapetus Tadeáš',
       state: 'New',
-      registered: 'Jan 1, 2021',
+      registered: 'Jun 12, 2024',
       country: 'Es',
       usage: 22,
-      period: 'Jun 11, 2021 - Jul 10, 2021',
+      period: 'Mar 20, 2026 - Apr 19, 2026',
       payment: 'ApplePay',
       activity: 'Last week',
       avatar: './assets/images/avatars/5.jpg',
@@ -118,10 +118,10 @@ export class DashboardComponent implements OnInit {
     {
       name: 'Friderik Dávid',
       state: 'New',
-      registered: 'Jan 1, 2021',
+      registered: 'Dec 3, 2025',
       country: 'Pl',
       usage: 43,
-      period: 'Jun 11, 2021 - Jul 10, 2021',
+      period: 'Apr 5, 2026 - May 4, 2026',
       payment: 'Amex',
       activity: 'Yesterday',
       avatar: './assets/images/avatars/6.jpg',

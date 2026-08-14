@@ -1,0 +1,96 @@
+<c-container>
+  <c-row class="justify-content-center">
+    <c-col lg="6" md="8" xl="5">
+      <div class="d-flex flex-column gap-4">
+        <div class="text-center">
+          <svg [class]="{ icon: false }" cIcon height="48" name="logo" title="CoreUI Logo"></svg>
+        </div>
+        <c-card class="p-4">
+          <c-card-body class="d-flex flex-column gap-4">
+            <h2 class="h5 text-center mb-0">Create new account</h2>
+            <form #f="ngForm" (ngSubmit)="handleSubmit(f)" cForm cRow class="gy-3">
+              <c-col xs="12">
+                <label cLabel for="name">Name</label>
+                <input
+                  autocomplete="name"
+                  cFormControl
+                  id="name"
+                  name="name"
+                  ngModel
+                  placeholder="Your name"
+                  type="username"
+                />
+              </c-col>
+              <c-col xs="12">
+                <label cLabel for="email">Email address</label>
+                <input
+                  autocomplete="email"
+                  cFormControl
+                  id="email"
+                  name="email"
+                  ngModel
+                  placeholder="your@email.com"
+                  type="email"
+                />
+              </c-col>
+              <c-col xs="12">
+                <label cLabel for="password">Password</label>
+                <c-input-group>
+                  <input autocomplete="new-password" cFormControl id="password" name="password" ngModel placeholder="Your password" type="password" />
+                  <span cInputGroupText>
+                    <button
+                      aria-label="Show password"
+                      cButton
+                      cTooltip="Show password"
+                      class="p-0 link-secondary"
+                      color="link"
+                      type="button"
+                    >
+                      <svg cIcon name="eye" size="sm"></svg>
+                     </button>
+                    </span>
+                </c-input-group>
+              </c-col>
+              <c-col xs="12">
+                <c-form-check>
+                  <input cFormCheckInput id="acceptTerms" type="checkbox" />
+                  <label cFormCheckLabel for="acceptTerms">I accept the <a routerLink="./">terms and conditions</a>
+                  </label>
+                </c-form-check>
+              </c-col>
+              <c-col xs="12">
+                <button cButton class="w-100" color="primary" type="submit">
+                  Create new account
+                </button>
+              </c-col>
+            </form>
+            <div class="position-relative">
+              <hr />
+              <div class="position-absolute top-50 start-50 translate-middle bg-body px-2 text-body-tertiary text-uppercase small">
+                or
+              </div>
+            </div>
+            <c-row>
+              <c-col>
+                <button cButton class="w-100" color="" variant="outline">
+                  <svg cIcon class="me-1" name="google"></svg>
+                  Login with Google
+                </button>
+              </c-col>
+              <c-col>
+                <button cButton class="w-100" color="" variant="outline">
+                  <svg cIcon class="me-1" name="apple"></svg>
+                  Login with Apple
+                </button>
+              </c-col>
+            </c-row>
+          </c-card-body>
+        </c-card>
+        <div class="text-center text-body-secondary">
+          Already have an account? <a routerLink="/authentication/login">Sign in</a>
+        </div>
+      </div>
+    </c-col>
+  </c-row>
+</c-container>
+
