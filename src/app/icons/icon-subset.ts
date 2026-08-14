@@ -10,6 +10,7 @@ import {
   cibLinkedin,
   cibSkype,
   cibTwitter,
+  cibYoutube,
   cifBr,
   cifEs,
   cifFr,
@@ -99,8 +100,11 @@ import {
 } from '@coreui/icons';
 
 import { apple } from './apple';
+import { chatgpt } from './chatgpt';
 import { eye } from './eye';
 import { google } from './google';
+import { linkedinBadge } from './linkedin-badge';
+import { twitterX } from './twitter-x';
 import { logo } from './logo';
 import { signet } from './signet';
 
@@ -116,6 +120,7 @@ export const iconSubset = {
   cibLinkedin,
   cibSkype,
   cibTwitter,
+  cibYoutube,
   cifBr,
   cifEs,
   cifFr,
@@ -203,10 +208,13 @@ export const iconSubset = {
   cilUserFollow,
   cilUserUnfollow,
   apple,
+  chatgpt,
   eye,
   google,
+  linkedinBadge,
   logo,
-  signet
+  signet,
+  twitterX
 };
 
 export enum IconSubset {
@@ -221,6 +229,7 @@ export enum IconSubset {
   cibLinkedin = 'cibLinkedin',
   cibSkype = 'cibSkype',
   cibTwitter = 'cibTwitter',
+  cibYoutube = 'cibYoutube',
   cifBr = 'cifBr',
   cifEs = 'cifEs',
   cifFr = 'cifFr',
@@ -308,9 +317,12 @@ export enum IconSubset {
   cilUserFollow = 'cilUserFollow',
   cilUserUnfollow = 'cilUserUnfollow',
   apple = 'apple',
+  chatgpt = 'chatgpt',
   eye = 'eye',
   google = 'google',
+  linkedinBadge = 'linkedinBadge',
   logo = 'logo',
-  signet = 'signet'
+  signet = 'signet',
+  twitterX = 'twitterX'
 }
 
