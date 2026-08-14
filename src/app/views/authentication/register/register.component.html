@@ -1,0 +1,71 @@
+<c-container>
+  <c-row class="justify-content-center">
+    <c-col lg="6" md="8" xl="5">
+      <div class="d-flex flex-column gap-4">
+        <div class="text-center">
+          <c-icon [use]="'./assets/brand/coreui-angular.svg'" alt="Logo" height="48" />
+        </div>
+        <c-card class="p-4">
+          <c-card-body class="d-flex flex-column gap-4">
+            <h2 class="h5 text-center mb-0">Create new account</h2>
+            <form #f="ngForm" (ngSubmit)="handleSubmit(f)" cForm cRow class="gy-3">
+              <c-col xs="12">
+                <label cLabel for="name">Name</label>
+                <input autocomplete="name" cFormControl id="name" name="name" ngModel placeholder="Your name" type="text" />
+              </c-col>
+              <c-col xs="12">
+                <label cLabel for="email">Email address</label>
+                <input autocomplete="email" cFormControl id="email" name="email" ngModel placeholder="your@email.com" type="email" />
+              </c-col>
+              <c-col xs="12">
+                <label cLabel for="password">Password</label>
+                <c-input-group>
+                  <input autocomplete="new-password" cFormControl id="password" name="password" ngModel placeholder="Your password" type="password" />
+                  <span cInputGroupText>
+                    <button cButton cTooltip="Show password" class="p-0 link-secondary" color="link" type="button">
+                      <c-icon name="eye" />
+                    </button>
+                  </span>
+                </c-input-group>
+              </c-col>
+              <c-col xs="12">
+                <c-form-check>
+                  <input cFormCheckInput id="rememberMe" type="checkbox" />
+                  <label cFormCheckLabel for="rememberMe">I accept the <a routerLink="./">terms and conditions</a>
+                  </label>
+                </c-form-check>
+              </c-col>
+              <c-col xs="12">
+                <button cButton class="w-100" color="primary" type="submit">Create new account</button>
+              </c-col>
+            </form>
+            <div class="position-relative">
+              <hr />
+              <div class="position-absolute top-50 start-50 translate-middle bg-body px-2 text-body-tertiary text-uppercase small">
+                or
+              </div>
+            </div>
+            <c-row>
+              <c-col>
+                <button cButton class="w-100" color="secondary" color="" variant="outline">
+                  <c-icon name="google" />
+                  Login with Google
+                </button>
+              </c-col>
+              <c-col>
+                <button cButton class="w-100" color="" variant="outline">
+                  <c-icon name="apple" />
+                  Login with Apple
+                </button>
+              </c-col>
+            </c-row>
+          </c-card-body>
+        </c-card>
+        <div class="text-center text-body-secondary">
+          Already have an account? <a routerLink="/authentication/login">Sign in</a>
+        </div>
+      </div>
+    </c-col>
+  </c-row>
+</c-container>
+

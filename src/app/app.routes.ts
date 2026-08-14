@@ -48,40 +48,26 @@ export const routes: Routes = [
       {
         path: 'charts',
         loadChildren: () => import('./views/charts/routes').then((m) => m.routes)
-      },
-      {
-        path: 'pages',
-        loadChildren: () => import('./views/pages/routes').then((m) => m.routes)
       }
     ]
   },
   {
-    path: '404',
-    loadComponent: () => import('./views/pages/page404/page404.component').then(m => m.Page404Component),
-    data: {
-      title: 'Page 404'
-    }
+    path: 'authentication',
+    redirectTo: 'authentication/login',
+    pathMatch: 'full'
   },
   {
-    path: '500',
-    loadComponent: () => import('./views/pages/page500/page500.component').then(m => m.Page500Component),
-    data: {
-      title: 'Page 500'
-    }
+    path: 'authentication',
+    loadChildren: () => import('./views/authentication/routes').then((m) => m.routes)
   },
   {
-    path: 'login',
-    loadComponent: () => import('./views/pages/login/login.component').then(m => m.LoginComponent),
-    data: {
-      title: 'Login Page'
-    }
+    path: 'error-pages',
+    redirectTo: 'error-pages/404',
+    pathMatch: 'full'
   },
   {
-    path: 'register',
-    loadComponent: () => import('./views/pages/register/register.component').then(m => m.RegisterComponent),
-    data: {
-      title: 'Register Page'
-    }
+    path: 'error-pages',
+    loadChildren: () => import('./views/error-pages/routes').then((m) => m.routes)
   },
   { path: '**', redirectTo: 'dashboard' }
 ];

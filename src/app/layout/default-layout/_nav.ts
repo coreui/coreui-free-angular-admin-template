@@ -11,22 +11,7 @@ export const navItems: INavData[] = [
     }
   },
   {
-    title: true,
-    name: 'Theme'
-  },
-  {
-    name: 'Colors',
-    url: '/theme/colors',
-    iconComponent: { name: 'cil-drop' }
-  },
-  {
-    name: 'Typography',
-    url: '/theme/typography',
-    linkProps: { fragment: 'headings' },
-    iconComponent: { name: 'cil-pencil' }
-  },
-  {
-    name: 'Components',
+    name: 'UI Elements',
     title: true
   },
   {
@@ -392,41 +377,98 @@ export const navItems: INavData[] = [
     name: 'Extras'
   },
   {
-    name: 'Pages',
-    url: '/login',
-    iconComponent: { name: 'cil-star' },
+    name: 'Authentication',
+    url: '/authentication',
+    iconComponent: { name: 'cil-lock-locked' },
     children: [
       {
         name: 'Login',
-        url: '/login',
+        url: '/authentication/login',
         icon: 'nav-icon-bullet'
       },
       {
         name: 'Register',
-        url: '/register',
+        url: '/authentication/register',
         icon: 'nav-icon-bullet'
       },
       {
+        name: 'Check Email',
+        url: '/authentication/check-email',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Forgot password',
+        url: '/authentication/password',
+        children: [
+          {
+            name: 'Reset Password',
+            url: '/authentication/password/reset',
+            icon: 'nav-icon-bullet'
+          },
+          {
+            name: 'Change Password',
+            url: '/authentication/password/change',
+
+            icon: 'nav-icon-bullet'
+          },
+          {
+            name: 'Password Changed',
+            url: '/authentication/password/changed',
+            icon: 'nav-icon-bullet'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name: 'Error Pages',
+    url: '/error-pages',
+    iconComponent: { name: 'cil-bug' },
+    children: [
+      {
         name: 'Error 404',
-        url: '/404',
+        url: '/error-pages/404',
         icon: 'nav-icon-bullet'
       },
       {
         name: 'Error 500',
-        url: '/500',
+        url: '/error-pages/500',
         icon: 'nav-icon-bullet'
       }
     ]
   },
   {
-    title: true,
-    name: 'Links',
-    class: 'mt-auto'
+    name: 'Theme',
+    url: '/theme',
+    iconComponent: { name: 'cil-pencil' },
+    children: [
+      {
+        name: 'Colors',
+        url: '/theme/colors',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Typography',
+        url: '/theme/typography',
+        linkProps: { fragment: 'headings' },
+        icon: 'nav-icon-bullet'
+      }
+    ]
   },
   {
     name: 'Docs',
+    class: 'mt-auto',
     url: 'https://coreui.io/angular/docs/',
     iconComponent: { name: 'cil-description' },
     attributes: { target: '_blank' }
+  },
+  {
+    name: 'Try CoreUI PRO',
+    url: 'https://coreui.io/product/angular-dashboard-template/',
+    iconComponent: { name: 'cil-layers' },
+    attributes: {
+      target: '_blank',
+      class: 'text-danger'
+    }
   }
 ];

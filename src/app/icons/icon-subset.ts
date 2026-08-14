@@ -28,6 +28,8 @@ import {
   cilBell,
   cilBold,
   cilBookmark,
+  cilBrush,
+  cilBug,
   cilCalculator,
   cilCalendar,
   cilChart,
@@ -99,6 +101,9 @@ import {
 
 import { signet } from './signet';
 import { logo } from './logo';
+import { eye } from './eye';
+import { apple } from './apple';
+import { google } from './google';
 
 export const iconSubset = {
   cibCcAmex,
@@ -130,6 +135,8 @@ export const iconSubset = {
   cilBell,
   cilBold,
   cilBookmark,
+  cilBrush,
+  cilBug,
   cilCalculator,
   cilCalendar,
   cilChart,
@@ -198,7 +205,10 @@ export const iconSubset = {
   cilUserFollow,
   cilUserUnfollow,
   logo,
-  signet
+  signet,
+  eye,
+  apple,
+  google
 };
 
 export enum IconSubset {
@@ -231,6 +241,8 @@ export enum IconSubset {
   cilBell = 'cilBell',
   cilBold = 'cilBold',
   cilBookmark = 'cilBookmark',
+  cilBug = 'cilBug',
+  cilBrush = 'cilBrush',
   cilCalculator = 'cilCalculator',
   cilCalendar = 'cilCalendar',
   cilChart = 'cilChart',
@@ -299,6 +311,9 @@ export enum IconSubset {
   cilUserFollow = 'cilUserFollow',
   cilUserUnfollow = 'cilUserUnfollow',
   logo = 'logo',
-  signet = 'signet'
+  signet = 'signet',
+  eye = 'eye',
+  apple = 'apple',
+  google = 'google'
 }
 
