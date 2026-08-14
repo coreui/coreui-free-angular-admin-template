@@ -22,7 +22,7 @@ experience. This means mobile devices also, where the navigation is just as easy
 customize your project for almost any device – be it Mobile, Web or WebApp – CoreUI covers them all!
 
 - [CoreUI Angular Admin Dashboard Template & UI Components Library](https://coreui.io/angular)
-- [CoreUI Angular Demo](https://coreui.io/angular/demo/5.0/free/)
+- [CoreUI Angular Demo](https://coreui.io/demos/angular/latest/free/)
 - [CoreUI Angular Docs](https://coreui.io/angular/docs/)
 
 ## Table of Contents
@@ -102,8 +102,7 @@ One license also covers JavaScript, React and Vue. It's a separate add-on, not p
 Before you begin, make sure your development environment includes `Node.js®` and an `npm` package manager.
 
 ###### Node.js
-
-[**Angular 22**](https://angular.io/guide/what-is-angular) requires `Node.js` LTS version `v22.22.3 || v24.15.0`.
+[**Angular 22**](https://angular.dev/overview) requires `Node.js` LTS version `^22.22.3 || ^24.15.0 || ^26.0.0`.
 
 - To check your version, run `node -v` in a terminal/console window.
 - To get `Node.js`, go to [nodejs.org](https://nodejs.org/).
@@ -245,12 +244,11 @@ For more information on using the Angular CLI, including detailed command refere
 * <https://github.com/coreui>
 
 **CoreUI team**
-
-* https://github.com/orgs/coreui/people
+* [https://github.com/orgs/coreui/people](https://github.com/orgs/coreui/people)
 
 ## Community
 
-Get updates on CoreUI's development and chat with the project maintainers and community members.
+Get updates on CoreUI development and chat with the project maintainers and community members.
 
 - Follow [@core_ui on Twitter](https://twitter.com/core_ui).
 - Read and subscribe to [CoreUI Blog](https://coreui.io/blog/).
