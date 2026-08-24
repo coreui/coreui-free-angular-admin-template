@@ -3,14 +3,20 @@
   <c-container [fluid]="true" class="border-bottom px-4">
     <button
       [cSidebarToggle]="sidebarId()"
+      aria-label="Toggle sidebar navigation"
       cHeaderToggler
       class="btn"
-      toggle="visible"
       style="margin-inline-start: -14px;"
-      aria-label="Toggle sidebar navigation"
+      toggle="visible"
     >
       <svg cIcon name="cilMenu" size="lg"></svg>
     </button>
+    <c-search-button
+      (trigger)="searchVisible.set(true)"
+      aria-controls="app-header-search-modal"
+      aria-label="Open search dialog"
+      shortcut="meta+k,ctrl+k"
+    />
     <c-header-nav class="d-none d-md-flex ms-auto ">
       <a cNavLink>
         <svg cIcon class="my-1" name="cilBell" size="lg"></svg>
@@ -44,16 +50,46 @@
 </ng-container>
 <!--</c-header>-->
 
+<c-modal
+  [(visible)]="searchVisible"
+  aria-labelledby="app-header-search-modal-title"
+  id="app-header-search-modal"
+  portal
+>
+  <c-modal-header>
+    <h5 cModalTitle class="w-100" id="app-header-search-modal-title">
+      <input aria-label="Search" cFormControl placeholder="Search" type="search">
+    </h5>
+  </c-modal-header>
+  <c-modal-body>
+    <p class="text-body-secondary small mb-2">Recent searches</p>
+    <div cListGroup flush>
+      <button cListGroupItem class="d-flex justify-content-between align-items-center">
+        CoreUI components overview
+        <c-badge color="secondary" shape="rounded-pill">Open</c-badge>
+      </button>
+      <button cListGroupItem class="d-flex justify-content-between align-items-center">
+        Modal dialog examples
+        <c-badge color="secondary" shape="rounded-pill">Open</c-badge>
+      </button>
+      <button cListGroupItem class="d-flex justify-content-between align-items-center">
+        Sidebar navigation customization
+        <c-badge color="secondary" shape="rounded-pill">Open</c-badge>
+      </button>
+    </div>
+  </c-modal-body>
+</c-modal>
+
 <ng-template #userDropdown>
   <c-dropdown [popperOptions]="{ placement: 'bottom-start' }" variant="nav-item">
-    <button [caret]="false" cDropdownToggle class="py-0 pe-0" aria-label="Open user menu">
+    <button [caret]="false" aria-label="Open user menu" cDropdownToggle class="py-0 pe-0">
       <c-avatar
+        alt="User avatar"
         shape="rounded-1"
         size="md"
         src="./assets/images/avatars/8.jpg"
         status="success"
         textColor="primary"
-        alt="User avatar"
       />
     </button>
     <ul cDropdownMenu class="pt-0 w-auto">
@@ -149,8 +185,8 @@
 
 <ng-template #themeDropdown>
   <c-dropdown alignment="end" variant="nav-item">
-    <button [caret]="false" cDropdownToggle aria-label="Open theme picker">
-      <svg cIcon [name]="icons()" size="lg"></svg>
+    <button [caret]="false" aria-label="Open theme picker" cDropdownToggle>
+      <svg [name]="icons()" cIcon size="lg"></svg>
     </button>
     <div cDropdownMenu>
       @for (mode of colorModes; track mode.name) {
@@ -160,7 +196,7 @@
           cDropdownItem
           class="d-flex align-items-center"
         >
-          <svg cIcon class="me-2" [name]="mode.icon" size="lg"></svg>
+          <svg [name]="mode.icon" cIcon class="me-2" size="lg"></svg>
           {{ mode.text }}
         </button>
       }
