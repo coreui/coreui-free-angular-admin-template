@@ -130,6 +130,15 @@ export const navItems: INavData[] = [
         icon: 'nav-icon-bullet'
       },
       {
+        name: 'Search Button',
+        url: '/components/search-button',
+        icon: 'nav-icon-bullet',
+        badge: {
+          color: 'info',
+          text: 'NEW'
+        },
+      },
+      {
         name: 'Smart Pagination',
         url: 'https://coreui.io/angular/docs/components/smart-pagination/',
         icon: 'nav-icon-bullet',

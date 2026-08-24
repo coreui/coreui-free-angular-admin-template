@@ -1,0 +1,112 @@
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <app-docs-components href="components/search-button" title="Search Button" />
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Angular Search Button</strong> <small>Basic example</small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-body-secondary small">
+          Use <code>c-search-button</code> as the entry point for a controlled search dialog. Listen
+          for <code>(trigger)</code> — emitted on click or on the keyboard shortcut — to open a
+          <code>c-modal</code> you own.
+        </p>
+        <app-docs-example href="components/search-button#basic-example">
+          <c-search-button
+            (trigger)="basicVisible.set(true)"
+            aria-label="Open search dialog"
+            aria-controls="search-button-basic-example"
+          />
+          <c-modal
+            id="search-button-basic-example"
+            [(visible)]="basicVisible"
+            aria-labelledby="search-button-basic-example-title"
+          >
+            <c-modal-header>
+              <h5 cModalTitle id="search-button-basic-example-title" class="w-100">
+                <input cFormControl type="search" placeholder="Search" aria-label="Search">
+              </h5>
+            </c-modal-header>
+            <c-modal-body>
+              <p class="text-body-secondary small mb-2">Recent searches</p>
+              <div cListGroup flush>
+                <button cListGroupItem class="d-flex justify-content-between align-items-center">
+                  CoreUI components overview
+                  <c-badge color="secondary" shape="rounded-pill">Open</c-badge>
+                </button>
+                <button cListGroupItem class="d-flex justify-content-between align-items-center">
+                  Modal dialog examples
+                  <c-badge color="secondary" shape="rounded-pill">Open</c-badge>
+                </button>
+                <button cListGroupItem class="d-flex justify-content-between align-items-center">
+                  Sidebar navigation customization
+                  <c-badge color="secondary" shape="rounded-pill">Open</c-badge>
+                </button>
+              </div>
+            </c-modal-body>
+          </c-modal>
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Angular Search Button</strong> <small>Custom shortcut</small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-body-secondary small">
+          Configure <code>shortcut</code> to match your command palette or product conventions, and
+          customize the <code>placeholder</code> text.
+        </p>
+        <app-docs-example href="components/search-button#custom-shortcut">
+          <div>
+            <c-search-button
+              placeholder="Command palette"
+              shortcut="meta+i,ctrl+i"
+              (trigger)="triggerCount.update(value => value + 1)"
+              aria-label="Open command palette"
+            />
+            <c-alert color="info" class="mt-3 mb-0">
+              Triggered {{ triggerCount() }} {{ triggerCount() === 1 ? 'time' : 'times' }} with click
+              or shortcut.
+            </c-alert>
+          </div>
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Angular Search Button</strong> <small>Launch an offcanvas</small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-body-secondary small">
+          <code>c-search-button</code> is a trigger only — pair it with a <code>c-offcanvas</code>
+          instead of a modal when you want a docked panel for quick navigation or command results.
+        </p>
+        <app-docs-example href="components/search-button#launch-an-offcanvas">
+          <c-search-button
+            (trigger)="offcanvasVisible.set(true)"
+            shortcut="meta+shift+o,ctrl+shift+o"
+            aria-label="Open search panel"
+            aria-controls="search-button-offcanvas-example"
+          />
+          <c-offcanvas
+            id="search-button-offcanvas-example"
+            placement="end"
+            [(visible)]="offcanvasVisible"
+          >
+            <c-offcanvas-header>
+              <h5 cOffcanvasTitle>Search panel</h5>
+              <button cButtonClose class="text-reset" (click)="offcanvasVisible.set(false)"></button>
+            </c-offcanvas-header>
+            <c-offcanvas-body>
+              <input cFormControl class="mb-3" type="search" placeholder="Search..." aria-label="Search in panel">
+              <p class="mb-0">Use this space for filters, recent searches, or command shortcuts.</p>
+            </c-offcanvas-body>
+          </c-offcanvas>
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
