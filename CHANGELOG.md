@@ -2,6 +2,33 @@
 
 ---
 
+#### `5.7.20` for Angular 22.1.3
+
+- feat(search-button): add search button view
+- feat(default-header): add search button trigger
+- chore(dependencies): update to `Angular 22.1.3`
+  - `@angular/animations` to version 22.1.3
+  - `@angular/aria` to version 22.1.3
+  - `@angular/cdk` to version 22.1.3
+  - `@angular/common` to version 22.1.3
+  - `@angular/compiler` to version 22.1.3
+  - `@angular/core` to version 22.1.3
+  - `@angular/forms` to version 22.1.3
+  - `@angular/language-service` to version 22.1.3
+  - `@angular/localize` to version 22.1.3
+  - `@angular/platform-browser` to version 22.1.3
+  - `@angular/router` to version 22.1.3
+  - `@angular/build` to version 22.1.5
+  - `@angular/cli` to version 22.1.5
+  - `@angular/compiler-cli` to version 22.1.3
+  - `@coreui/angular` to version 5.7.20
+  - `@coreui/angular-chartjs` to version 5.7.20
+  - `@coreui/icons-angular` to version 5.7.20
+  - `@vitest/browser-playwright` to version 4.1.11
+  - `vitest` to version 4.1.11
+
+---
+
 #### `5.7.18` for Angular 22.1.2
 
 - feat(views): redesign authentication views to match the new CoreUI layout
