@@ -2,6 +2,30 @@
 
 ---
 
+#### `5.7.24` for Angular 22.1.4
+
+- chore(dependencies): update to `Angular 22.1.4`
+  - `@angular/animations` to version 22.1.4
+  - `@angular/aria` to version 22.1.4
+  - `@angular/cdk` to version 22.1.4
+  - `@angular/common` to version 22.1.4
+  - `@angular/compiler` to version 22.1.4
+  - `@angular/core` to version 22.1.4
+  - `@angular/forms` to version 22.1.4
+  - `@angular/language-service` to version 22.1.4
+  - `@angular/localize` to version 22.1.4
+  - `@angular/platform-browser` to version 22.1.4
+  - `@angular/router` to version 22.1.4
+  - `@angular/build` to version 22.1.6
+  - `@angular/cli` to version 22.1.6
+  - `@angular/compiler-cli` to version 22.1.4
+  - `@coreui/angular` to version 5.7.24
+  - `@coreui/angular-chartjs` to version 5.7.24
+  - `@coreui/icons-angular` to version 5.7.24
+  - `@types/node` to version 26.4.0
+
+---
+
 #### `5.7.20` for Angular 22.1.3
 
 - feat(search-button): add search button view
