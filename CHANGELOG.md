@@ -2,6 +2,17 @@
 
 ---
 
+#### `5.7.25` for Angular 22.1.4
+
+- refactor(animations): drop `@angular/animations`
+- fix(default-header): hide search trigger on xs screens
+- chore(dependencies): update
+  - `@coreui/angular` to version 5.7.25
+  - `@coreui/angular-chartjs` to version 5.7.25
+  - `@coreui/icons-angular` to version 5.7.25
+
+---
+
 #### `5.7.24` for Angular 22.1.4
 
 - chore(dependencies): update to `Angular 22.1.4`
