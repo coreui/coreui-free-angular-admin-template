@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 
 import { CardModule, CarouselModule, GridModule } from '@coreui/angular';
@@ -26,8 +25,14 @@ describe('CarouselsComponent', () => {
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [CarouselModule, NoopAnimationsModule, CardModule, GridModule, IconModule, CarouselsComponent],
-      providers: [IconSetService, provideRouter([])]
+      imports: [
+        CarouselModule,
+        CardModule,
+        GridModule,
+        IconModule,
+        CarouselsComponent,
+      ],
+      providers: [IconSetService, provideRouter([])],
     }).compileComponents();
   });
 

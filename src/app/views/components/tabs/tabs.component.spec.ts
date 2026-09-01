@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from '../../../icons/icon-subset';
@@ -12,9 +11,9 @@ describe('TabsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppTabsComponent, NoopAnimationsModule],
+      imports: [AppTabsComponent],
       providers: [IconSetService],
-      teardown: { destroyAfterEach: false }   // <- add this line for Error: NG0205: Injector has already been destroyed.
+      teardown: { destroyAfterEach: false }, // <- add this line for Error: NG0205: Injector has already been destroyed.
     }).compileComponents();
   });
 

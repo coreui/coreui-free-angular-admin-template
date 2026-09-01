@@ -1,8 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 
-import { ButtonModule, CardModule, GridModule, ModalModule, PopoverModule, TooltipModule } from '@coreui/angular';
+import {
+  ButtonModule,
+  CardModule,
+  GridModule,
+  ModalModule,
+  PopoverModule,
+  TooltipModule,
+} from '@coreui/angular';
 import { IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from '../../../icons/icon-subset';
 import { ModalsComponent } from './modals.component';
@@ -14,10 +20,10 @@ beforeAll(() => {
     observe() {}
     takeRecords() {
       return [];
-    }unobserve() {}
+    }
+    unobserve() {}
   } as any;
 });
-
 
 describe('ModalsComponent', () => {
   let component: ModalsComponent;
@@ -26,10 +32,17 @@ describe('ModalsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ModalModule, NoopAnimationsModule, GridModule, CardModule, PopoverModule, ButtonModule, TooltipModule, ModalsComponent],
-      providers: [IconSetService, provideRouter([])]
-    })
-      .compileComponents();
+      imports: [
+        ModalModule,
+        GridModule,
+        CardModule,
+        PopoverModule,
+        ButtonModule,
+        TooltipModule,
+        ModalsComponent,
+      ],
+      providers: [IconSetService, provideRouter([])],
+    }).compileComponents();
   });
 
   beforeEach(() => {

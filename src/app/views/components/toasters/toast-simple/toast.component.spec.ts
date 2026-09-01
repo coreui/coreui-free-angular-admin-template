@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ButtonModule, ProgressModule, ToastModule } from '@coreui/angular';
 import { IconSetService } from '@coreui/icons-angular';
@@ -11,12 +10,11 @@ describe('ToastComponent', () => {
   let fixture: ComponentFixture<AppToastComponent>;
   let iconSetService: IconSetService;
 
-  beforeEach( async () => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
-    imports: [NoopAnimationsModule, ToastModule, ProgressModule, ButtonModule, AppToastComponent],
-    providers: [IconSetService]
-})
-      .compileComponents();
+      imports: [ToastModule, ProgressModule, ButtonModule, AppToastComponent],
+      providers: [IconSetService],
+    }).compileComponents();
   });
 
   beforeEach(() => {

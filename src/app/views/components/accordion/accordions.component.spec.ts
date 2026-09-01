@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 
 import { AccordionModule, CardModule, GridModule } from '@coreui/angular';
@@ -14,7 +13,7 @@ describe('AccordionsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AccordionModule, NoopAnimationsModule, CardModule, GridModule, AccordionsComponent], providers: [IconSetService, provideRouter([])]
+      imports: [AccordionModule, CardModule, GridModule, AccordionsComponent], providers: [IconSetService, provideRouter([])]
     })
       .compileComponents();
   });
