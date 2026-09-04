@@ -2,6 +2,29 @@
 
 ---
 
+#### `5.7.28` for Angular 22.1.5
+
+- chore(dependencies): update to `Angular 22.1.5`
+  - `@angular/aria` to version 22.1.5
+  - `@angular/cdk` to version 22.1.5
+  - `@angular/common` to version 22.1.5
+  - `@angular/compiler` to version 22.1.5
+  - `@angular/core` to version 22.1.5
+  - `@angular/forms` to version 22.1.5
+  - `@angular/language-service` to version 22.1.5
+  - `@angular/localize` to version 22.1.5
+  - `@angular/platform-browser` to version 22.1.5
+  - `@angular/router` to version 22.1.5
+  - `@coreui/angular` to version 5.7.28
+  - `@coreui/angular-chartjs` to version 5.7.28
+  - `@coreui/icons-angular` to version 5.7.28
+  - `@angular/build` to version 22.1.7
+  - `@angular/cli` to version 22.1.7
+  - `@angular/compiler-cli` to version 22.1.5
+  - `@types/node` to version 26.4.1
+
+---
+
 #### `5.7.25` for Angular 22.1.4
 
 - refactor(animations): drop `@angular/animations`
