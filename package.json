@@ -15,7 +15,7 @@
     "start": "ng serve -o",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "prebuild": "ng test --watch=false",
+    "prebuild": "ng test --watch=false", 
     "test": "ng test"
   },
   "private": true,
@@ -46,12 +46,12 @@
     "@angular/build": "^22.2.0",
     "@angular/cli": "^22.2.0",
     "@angular/compiler-cli": "^22.2.0",
-    "@types/node": "^26.6.2",
-    "@vitest/browser-playwright": "^5.0.1",
+    "@types/node": "^26.6.3",
+    "@vitest/browser-playwright": "^5.0.2",
     "jsdom": "^30.1.1",
     "playwright": "^1.63.0",
     "typescript": "~6.0.3",
-    "vitest": "^5.0.1"
+    "vitest": "^5.0.2"
   },
   "engines": {
     "node": "^22.22.3 || ^24.15.0 || ^26.0.0",
