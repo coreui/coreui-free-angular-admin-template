@@ -2,6 +2,16 @@
 
 ---
 
+#### `5.7.32` for Angular 22.2.0
+
+- fix(build): drop `preserveSymlinks`, watch mode `spawn EBADF` (`ng serve -o`, `ng test`)
+- chore(dependencies): update
+  - `@types/node` to version 26.6.3
+  - `@vitest/browser-playwright` to version 5.0.2
+  - `vitest` to version 5.0.2
+
+---
+
 #### `5.7.31` for Angular 22.2.0
 
 - chore(dependencies): update to `Angular 22.2.0`
