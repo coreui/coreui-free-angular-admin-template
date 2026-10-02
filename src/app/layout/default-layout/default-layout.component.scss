@@ -1,34 +1,39 @@
 :host::ng-deep {
   .ng-scrollbar {
-    --scrollbar-padding: 1px;
-    --scrollbar-size: 5px;
+    // v13 host default; flex-shrink squeezes sidebar-header to its min-height
+    height: 100%;
+    --scrollbar-track-offset: 1px;
+    // thickness includes the offset on both sides: 5px thumb, 7.5px on hover
+    --scrollbar-track-thickness: calc(5px + 2 * var(--scrollbar-track-offset));
+    --scrollbar-track-hover-thickness: calc(7.5px + 2 * var(--scrollbar-track-offset));
+    --scrollbar-track-shape: 5px;
+    --scrollbar-thumb-shape: 5px;
     --scrollbar-thumb-color: var(--cui-gray-500, #aab3c5);
     --scrollbar-thumb-hover-color: var(--cui-gray-400, #cfd4de);
-    --scrollbar-hover-size: calc(var(--scrollbar-size) * 1.5);
-    --scrollbar-border-radius: 5px;
   }
 
   .ng-scroll-content {
     display: flex;
     min-height: 100%;
   }
-
-  //.sidebar-nav {
-  //  scrollbar-color: var(--cui-gray-500, #444) transparent;
-  //}
 }
 
-// ng-scrollbar css variables
-//.cui-scrollbar {
-//  --scrollbar-border-radius: 7px;
-//  --scrollbar-padding: 1px;
-//  --scrollbar-viewport-margin: 0;
+// ng-scrollbar css variables (v19), see node_modules/ngx-scrollbar/docs/Styling.md
+//  --scrollbar-container-color: transparent;
+//  --scrollbar-container-offset: 0px;
+//  --scrollbar-container-shape: 0px;
+//  --scrollbar-track-shape: 10px;
+//  --scrollbar-track-thickness: 7px;
+//  --scrollbar-track-hover-thickness: var(--scrollbar-track-thickness);
+//  --scrollbar-track-active-thickness: var(--scrollbar-track-hover-thickness);
+//  --scrollbar-track-offset: 4px;
 //  --scrollbar-track-color: transparent;
-//  --scrollbar-wrapper-color: transparent;
-//  --scrollbar-thumb-color: rgba(0, 0, 0, 0.2);
+//  --scrollbar-thumb-shape: var(--scrollbar-track-shape);
+//  --scrollbar-thumb-min-size: 20px;
+//  --scrollbar-thumb-color: rgb(0 0 0 / 40%);
 //  --scrollbar-thumb-hover-color: var(--scrollbar-thumb-color);
-//  --scrollbar-size: 5px;
-//  --scrollbar-hover-size: var(--scrollbar-size);
-//  --scrollbar-thumb-transition: height ease-out 150ms, width ease-out 150ms;
-//  --scrollbar-track-transition: height ease-out 150ms, width ease-out 150ms;
-//}
+//  --scrollbar-thumb-active-color: var(--scrollbar-thumb-hover-color);
+//  --scrollbar-thumb-transition: none;
+//  --scrollbar-hover-opacity-transition-enter-duration: 0s;
+//  --scrollbar-hover-opacity-transition-leave-duration: 0.4s;
+//  --scrollbar-hover-opacity-transition-leave-delay: 1s;
