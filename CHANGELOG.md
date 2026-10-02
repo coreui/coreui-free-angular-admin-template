@@ -2,6 +2,31 @@
 
 ---
 
+#### `5.7.33` for Angular 22.2.1
+- chore(dependencies): update `ngx-scrollbar` to 19.1.5
+- chore(dependencies): update to `Angular 22.2.1`
+  - `@angular/aria` to version 22.2.1
+  - `@angular/cdk` to version 22.2.1
+  - `@angular/common` to version 22.2.1
+  - `@angular/compiler` to version 22.2.1
+  - `@angular/core` to version 22.2.1
+  - `@angular/forms` to version 22.2.1
+  - `@angular/language-service` to version 22.2.1
+  - `@angular/localize` to version 22.2.1
+  - `@angular/platform-browser` to version 22.2.1
+  - `@angular/router` to version 22.2.1
+  - `@coreui/angular` to version 5.7.32
+  - `@coreui/angular-chartjs` to version 5.7.32
+  - `@coreui/icons-angular` to version 5.7.32
+  - `@angular/build` to version 22.2.1
+  - `@angular/cli` to version 22.2.1
+  - `@angular/compiler-cli` to version 22.2.1
+  - `@types/node` to version 26.6.4
+  - `@vitest/browser-playwright` to version 5.0.3
+  - `vitest` to version 5.0.3
+
+---
+
 #### `5.7.32` for Angular 22.2.0
 
 - fix(build): drop `preserveSymlinks`, watch mode `spawn EBADF` (`ng serve -o`, `ng test`)
