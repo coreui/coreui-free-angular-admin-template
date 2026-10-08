@@ -2,6 +2,31 @@
 
 ---
 
+#### `5.7.35` for Angular 22.2.2
+
+- chore(dependencies): update to `Angular 22.2.2`
+  - `@angular/aria` to version 22.2.2
+  - `@angular/cdk` to version 22.2.2
+  - `@angular/common` to version 22.2.2
+  - `@angular/compiler` to version 22.2.2
+  - `@angular/core` to version 22.2.2
+  - `@angular/forms` to version 22.2.2
+  - `@angular/language-service` to version 22.2.2
+  - `@angular/localize` to version 22.2.2
+  - `@angular/platform-browser` to version 22.2.2
+  - `@angular/router` to version 22.2.2
+  - `@coreui/angular` to version 5.7.35
+  - `@coreui/angular-chartjs` to version 5.7.35
+  - `@coreui/coreui` to version 5.9.1
+  - `@coreui/icons-angular` to version 5.7.35
+  - `@angular/build` to version 22.2.2
+  - `@angular/cli` to version 22.2.2
+  - `@angular/compiler-cli` to version 22.2.2
+  - `jsdom` to version 30.1.2
+  - `playwright` to version 1.64.0
+
+---
+
 #### `5.7.33` for Angular 22.2.1
 - chore(dependencies): update `ngx-scrollbar` to 19.1.5
 - chore(dependencies): update to `Angular 22.2.1`
