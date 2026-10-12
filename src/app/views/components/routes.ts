@@ -69,6 +69,20 @@ export const routes: Routes = [
         }
       },
       {
+        path: 'chip',
+        loadComponent: () => import('./chip/chip.component').then(m => m.AppChipComponent),
+        data: {
+          title: 'Chip'
+        }
+      },
+      {
+        path: 'chip-set',
+        loadComponent: () => import('./chip-set/chip-set.component').then(m => m.AppChipSetComponent),
+        data: {
+          title: 'Chip Set'
+        }
+      },
+      {
         path: 'collapse',
         loadComponent: () => import('./collapses/collapses.component').then(m => m.CollapsesComponent),
         data: {

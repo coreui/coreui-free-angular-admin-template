@@ -1,0 +1,137 @@
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <app-docs-components href="components/chip" title="Chip" />
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Angular Chip</strong> <small>Basic and outline</small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-body-secondary small">
+          Chips are compact UI elements for labels, filters, and quick selections. Use the
+          <code>c-chip</code> component with optional <code>variant</code> input.
+        </p>
+        <app-docs-example href="components/chip#basic-chips">
+          <div class="d-flex flex-wrap gap-2">
+            <c-chip>Basic chip</c-chip>
+            <c-chip>Frontend</c-chip>
+            <c-chip>Design system</c-chip>
+            <c-chip>Documentation</c-chip>
+          </div>
+        </app-docs-example>
+        <p class="text-body-secondary small">
+          Add <code>variant="outline"</code> to create a lighter, bordered appearance.
+        </p>
+        <app-docs-example href="components/chip#outline-chips">
+          <div class="d-flex flex-wrap gap-2">
+            <c-chip variant="outline">Outline chip</c-chip>
+            <c-chip variant="outline">Product</c-chip>
+            <c-chip variant="outline">Marketing</c-chip>
+            <c-chip variant="outline">Analytics</c-chip>
+          </div>
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Angular Chip</strong> <small>With icons and avatars</small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-body-secondary small">
+          Chips can include icons, user avatars, or avatar components to make tags easier to scan.
+        </p>
+        <app-docs-example href="components/chip#chips-with-icons">
+          <div class="d-flex flex-wrap gap-2">
+            <c-chip>
+              <span class="chip-icon"><svg cIcon name="cilUser"></svg></span>
+              Team member
+            </c-chip>
+            <c-chip>
+              <span class="chip-icon"><svg cIcon name="cilList"></svg></span>
+              Backlog item
+            </c-chip>
+          </div>
+        </app-docs-example>
+        <app-docs-example href="components/chip#chips-with-avatars">
+          <div class="d-flex flex-wrap gap-2">
+            <c-chip>
+              <img class="chip-img" src="./assets/images/avatars/1.jpg" width="16" height="16" alt="" />
+              Olivia Martin
+            </c-chip>
+            <c-chip>
+              <img class="chip-img" src="./assets/images/avatars/4.jpg" width="16" height="16" alt="" />
+              Ethan Carter
+            </c-chip>
+            <c-chip>
+              <c-avatar color="primary" textColor="white" aria-hidden="true">A</c-avatar>
+              Account manager
+            </c-chip>
+            <c-chip>
+              <c-avatar color="success" textColor="white" aria-hidden="true">Q</c-avatar>
+              QA owner
+            </c-chip>
+          </div>
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+  </c-col>
+
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Angular Chip</strong> <small>Variants and sizes</small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-body-secondary small">
+          Use the <code>color</code> input for contextual variants and the <code>size</code> input
+          for different sizes.
+        </p>
+        <app-docs-example href="components/chip#variants">
+          <div class="d-flex flex-wrap gap-2 mb-3">
+            <c-chip color="primary" clickable>Product</c-chip>
+            <c-chip color="primary" active>Active product</c-chip>
+            <c-chip color="success" clickable>Published</c-chip>
+            <c-chip color="success" active>Live</c-chip>
+            <c-chip color="warning" clickable>Review</c-chip>
+            <c-chip color="danger" active>Blocked</c-chip>
+          </div>
+          <div class="d-flex flex-wrap gap-2">
+            <c-chip size="sm">Small chip</c-chip>
+            <c-chip>Default chip</c-chip>
+            <c-chip size="lg">Large chip</c-chip>
+            <c-chip variant="outline" color="primary" clickable>Outline primary</c-chip>
+          </div>
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Angular Chip</strong> <small>Interactive examples</small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-body-secondary small">
+          Chips support selection, removal, and disabled states using inputs like
+          <code>selectable</code>, <code>removable</code>, and <code>disabled</code>.
+        </p>
+        <app-docs-example href="components/chip#interactive-chips">
+          <div class="d-flex flex-wrap gap-2 mb-3">
+            <c-chip selectable>Selectable</c-chip>
+            <c-chip #selectedChip selectable selected>Selected</c-chip>
+            @if (!removed().includes('removable')) {
+              <c-chip removable (remove)="remove('removable', selectedChip)">Removable</c-chip>
+            }
+            <c-chip disabled>Disabled</c-chip>
+          </div>
+          <div class="d-flex flex-wrap gap-2">
+            @if (!removed().includes('team-alpha')) {
+              <c-chip size="lg" removable (remove)="remove('team-alpha', priorityChip)">Team Alpha</c-chip>
+            }
+            <c-chip #priorityChip variant="outline" color="info" selectable>Filter: Priority</c-chip>
+            <c-chip variant="outline" color="success" selectable selected>Filter: Ready</c-chip>
+          </div>
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>

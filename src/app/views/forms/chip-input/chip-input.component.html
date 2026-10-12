@@ -1,0 +1,156 @@
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <app-docs-components href="forms/chip-input" title="Chip Input" />
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Angular Chip Input</strong> <small>Basic example</small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-body-secondary small">
+          Chip input lets users enter multiple values in one field. Use the
+          <code>c-chip-input</code> component with inputs like <code>placeholder</code> and
+          <code>value</code>.
+        </p>
+        <app-docs-example href="forms/chip-input#basic-example">
+          <c-chip-input
+            label="Skills:"
+            placeholder="Add a skill..."
+            [value]="['JavaScript', 'TypeScript', 'Accessibility']"
+          />
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Angular Chip Input</strong> <small>Variants</small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-body-secondary small">
+          Use the <code>chipClassName</code> input to apply contextual chip styles, which is handy
+          for labels, issue types, or priorities.
+        </p>
+        <app-docs-example href="forms/chip-input#variants">
+          <c-chip-input
+            aria-label="Issue labels"
+            placeholder="Add label..."
+            [chipClassName]="issueClassName"
+            [value]="['Feature', 'Approved', 'Needs review', 'Blocking']"
+          />
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Angular Chip Input</strong> <small>Sizes</small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-body-secondary small">
+          Use the <code>size</code> input with <code>"sm"</code> or <code>"lg"</code> to align the
+          field with surrounding form controls.
+        </p>
+        <app-docs-example href="forms/chip-input#sizes">
+          <div class="mb-3">
+            <c-chip-input label="Small" size="sm" placeholder="Add small tag..." [value]="['HTML']" />
+          </div>
+          <div class="mb-3">
+            <c-chip-input label="Default" placeholder="Add default tag..." [value]="['JavaScript']" />
+          </div>
+          <c-chip-input label="Large" size="lg" placeholder="Add large tag..." [value]="['TypeScript']" />
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+  </c-col>
+
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Angular Chip Input</strong> <small>Empty state and label</small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-body-secondary small">
+          You can start with an empty field or use a separate <code>cLabel</code> for clearer form
+          structure and accessibility.
+        </p>
+        <app-docs-example href="forms/chip-input#empty-state">
+          <div class="mb-3">
+            <c-chip-input aria-label="Tags" placeholder="Start typing tags..." />
+          </div>
+          <label cLabel for="techStackInput">Tech stack</label>
+          <c-chip-input
+            id="techStackInput"
+            aria-describedby="techStackHint"
+            placeholder="Add package..."
+            [value]="['Angular', 'Vite']"
+          />
+          <div id="techStackHint" cFormText>Press Enter or comma to add a value.</div>
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Angular Chip Input</strong> <small>Disabled and readonly</small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-body-secondary small">
+          Use the <code>disabled</code> input to block interaction entirely, or
+          <code>readonly</code> to keep values visible while preventing changes.
+        </p>
+        <app-docs-example href="forms/chip-input#disabled">
+          <div class="mb-3">
+            <c-chip-input
+              aria-label="Locked tags"
+              disabled
+              [removable]="false"
+              placeholder="Input disabled"
+              [value]="['Read only', 'Locked']"
+            />
+          </div>
+          <c-chip-input
+            aria-label="Languages"
+            readonly
+            placeholder="Read-only values"
+            [value]="['JavaScript', 'TypeScript']"
+          />
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Angular Chip Input</strong> <small>Form-friendly examples</small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-body-secondary small">
+          The component integrates well with ordinary forms, including helper text and predefined
+          values.
+        </p>
+        <app-docs-example href="forms/chip-input#with-label">
+          <form class="row g-3">
+            <div class="col-12">
+              <label cLabel for="recipientsInput">Recipients</label>
+              <c-chip-input
+                id="recipientsInput"
+                aria-describedby="recipientsHint"
+                placeholder="Add email..."
+                [value]="['olivia@coreui.io', 'ethan@coreui.io']"
+              />
+              <div id="recipientsHint" cFormText>Add one address at a time and press Enter.</div>
+            </div>
+            <div class="col-12">
+              <label cLabel for="categoriesInput">Categories</label>
+              <c-chip-input
+                id="categoriesInput"
+                chipClassName="chip-outline"
+                placeholder="Add category..."
+                [value]="['Product', 'Design', 'Docs']"
+              />
+            </div>
+          </form>
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>

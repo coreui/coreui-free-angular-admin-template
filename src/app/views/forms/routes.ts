@@ -34,6 +34,13 @@ export const routes: Routes = [
         }
       },
       {
+        path: 'chip-input',
+        loadComponent: () => import('./chip-input/chip-input.component').then(m => m.AppChipInputComponent),
+        data: {
+          title: 'Chip Input'
+        }
+      },
+      {
         path: 'range',
         loadComponent: () => import('./ranges/ranges.component').then(m => m.RangesComponent),
         data: {
