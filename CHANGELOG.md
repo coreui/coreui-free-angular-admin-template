@@ -2,6 +2,19 @@
 
 ---
 
+#### `5.7.36` for Angular 22.2.2
+
+- feat(views): add Chip, Chip Set and Chip Input views
+- chore(dependencies): update
+  - `@coreui/angular` to version 5.7.36
+  - `@coreui/angular-chartjs` to version 5.7.36
+  - `@coreui/icons-angular` to version 5.7.36
+  - `@types/node` to version 26.6.5
+  - `@vitest/browser-playwright` to version 5.0.4
+  - `vitest` to version 5.0.4
+
+---
+
 #### `5.7.35` for Angular 22.2.2
 
 - chore(dependencies): update to `Angular 22.2.2`
