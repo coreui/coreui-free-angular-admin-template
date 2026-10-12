@@ -75,6 +75,24 @@ export const navItems: INavData[] = [
         icon: 'nav-icon-bullet'
       },
       {
+        name: 'Chip',
+        url: '/components/chip',
+        icon: 'nav-icon-bullet',
+        badge: {
+          color: 'info',
+          text: 'NEW'
+        }
+      },
+      {
+        name: 'Chip Set',
+        url: '/components/chip-set',
+        icon: 'nav-icon-bullet',
+        badge: {
+          color: 'info',
+          text: 'NEW'
+        }
+      },
+      {
         name: 'Collapse',
         url: '/components/collapse',
         icon: 'nav-icon-bullet'
@@ -209,6 +227,15 @@ export const navItems: INavData[] = [
         name: 'Checks & Radios',
         url: '/forms/checks-radios',
         icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Chip Input',
+        url: '/forms/chip-input',
+        icon: 'nav-icon-bullet',
+        badge: {
+          color: 'info',
+          text: 'NEW'
+        }
       },
       {
         name: 'Date Picker',
