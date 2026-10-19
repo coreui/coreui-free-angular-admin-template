@@ -2,6 +2,32 @@
 
 ---
 
+#### `5.7.37` for Angular 22.2.3
+
+- chore(dependencies): update to `Angular 22.2.3`
+  - `@angular/aria` to version 22.2.3
+  - `@angular/cdk` to version 22.2.3
+  - `@angular/common` to version 22.2.3
+  - `@angular/compiler` to version 22.2.3
+  - `@angular/core` to version 22.2.3
+  - `@angular/forms` to version 22.2.3
+  - `@angular/language-service` to version 22.2.3
+  - `@angular/localize` to version 22.2.3
+  - `@angular/platform-browser` to version 22.2.3
+  - `@angular/router` to version 22.2.3
+  - `@coreui/angular` to version 5.7.37
+  - `@coreui/angular-chartjs` to version 5.7.37
+  - `@coreui/icons-angular` to version 5.7.37
+  - `@angular/build` to version 22.2.3
+  - `@angular/cli` to version 22.2.3
+  - `@angular/compiler-cli` to version 22.2.3
+  - `@vitest/browser-playwright` to version 5.0.5
+  - `jsdom` to version 30.1.3
+  - `playwright` to version 1.64.1
+  - `vitest` to version 5.0.5
+
+---
+
 #### `5.7.36` for Angular 22.2.2
 
 - feat(views): add Chip, Chip Set and Chip Input views
