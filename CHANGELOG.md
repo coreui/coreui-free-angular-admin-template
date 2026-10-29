@@ -2,6 +2,22 @@
 
 ---
 
+#### `5.7.40` for Angular 22.2.3
+
+- chore(dependencies): update to `@angular/cli 22.2.5`
+  - `@angular/aria` to version 22.2.5
+  - `@angular/build` to version 22.2.5
+  - `@angular/cdk` to version 22.2.5
+  - `@angular/cli` to version 22.2.5
+  - `@coreui/angular` to version ~5.7.40
+  - `@coreui/angular-chartjs` to version → ~5.7.40
+  - `@coreui/icons-angular` to version ~5.7.40
+  - `@types/node` to version 26.6.6
+  - `chart.js` to version 4.6.1
+  - `node` ^22.23.4 || ^24.22.1 || ^26.12.1
+
+---
+
 #### `5.7.37` for Angular 22.2.3
 
 - chore(dependencies): update to `Angular 22.2.3`
