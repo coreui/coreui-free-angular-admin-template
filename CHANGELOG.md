@@ -2,6 +2,29 @@
 
 ---
 
+#### `5.7.41` for Angular 22.2.4
+
+- chore(dependencies): update to `@angular/core 22.2.4`
+  - `@angular/aria` to version 22.2.6
+  - `@angular/cdk` to version 22.2.6
+  - `@angular/common` to version 22.2.4
+  - `@angular/compiler` to version 22.2.4
+  - `@angular/core` to version 22.2.4
+  - `@angular/forms` to version 22.2.4
+  - `@angular/language-service` to version 22.2.4
+  - `@angular/localize` to version 22.2.4
+  - `@angular/platform-browser` to version 22.2.4
+  - `@angular/router` to version 22.2.4
+  - `@coreui/angular` to version 5.7.41
+  - `@coreui/angular-chartjs` to version 5.7.41
+  - `@coreui/icons-angular` to version 5.7.41
+  - `tslib` to version 2.9.1
+  - `@angular/compiler-cli` to version 22.2.4
+  - `@vitest/browser-playwright` to version 5.1.0
+  - `vitest` to version 5.1.0
+  
+---
+
 #### `5.7.40` for Angular 22.2.3
 
 - chore(dependencies): update to `@angular/cli 22.2.5`
