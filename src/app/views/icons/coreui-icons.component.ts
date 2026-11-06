@@ -1,14 +1,19 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
+import { httpResource } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 
-import { IconDirective, IconSetService } from '@coreui/icons-angular';
-import { brandSet, flagSet, freeSet } from '@coreui/icons';
 import { CardBodyComponent, CardComponent, CardHeaderComponent, ColComponent, RowComponent } from '@coreui/angular';
+import { IconComponent } from '@coreui/icons-angular';
 import { DocsIconsComponent, DocsLinkComponent } from '@docs-components/public-api';
+
+const sets: Record<string, { title: string; sprite: string }> = {
+  'coreui-icons': { title: 'Free', sprite: 'free' },
+  brands: { title: 'Brands', sprite: 'brand' },
+  flags: { title: 'Flags', sprite: 'flag' }
+};
 
 @Component({
   templateUrl: 'coreui-icons.component.html',
-  providers: [IconSetService],
   imports: [
     CardComponent,
     CardHeaderComponent,
@@ -16,44 +21,19 @@ import { DocsIconsComponent, DocsLinkComponent } from '@docs-components/public-a
     ColComponent,
     DocsIconsComponent,
     DocsLinkComponent,
-    IconDirective,
-    RowComponent,
+    IconComponent,
+    RowComponent
   ]
 })
-export class CoreUIIconsComponent implements OnInit {
-  readonly route = inject(ActivatedRoute);
-  readonly iconSet = inject(IconSetService);
+export class CoreUIIconsComponent {
+  readonly #path = inject(ActivatedRoute).routeConfig?.path ?? 'coreui-icons';
+  readonly #set = sets[this.#path] ?? sets['coreui-icons'];
 
-  readonly title = signal('CoreUI Icons');
-  readonly icons = signal<[string, string[]][]>([]);
+  readonly title = `CoreUI Icons - ${this.#set.title}`;
+  readonly spriteUrl = `assets/icons/${this.#set.sprite}.svg`;
 
-  constructor() {
-    this.iconSet.icons = { ...freeSet, ...brandSet, ...flagSet };
-  }
-
-  ngOnInit() {
-    const path = this.route?.routeConfig?.path;
-    let prefix = 'cil';
-    if (path === 'coreui-icons') {
-      this.title.update(title => `${title} - Free`);
-      prefix = 'cil';
-    } else if (path === 'brands') {
-      this.title.update(title => `${title} - Brands`);
-      prefix = 'cib';
-    } else if (path === 'flags') {
-      this.title.update(title => `${title} - Flags`);
-      prefix = 'cif';
-    }
-    this.icons.set(this.getIconsView(prefix));
-  }
-
-  toKebabCase(str: string) {
-    return str.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2').toLowerCase();
-  }
-
-  getIconsView(prefix: string) {
-    return Object.entries(this.iconSet.icons).filter((icon) => {
-      return icon[0].startsWith(prefix);
-    });
-  }
+  readonly #sprite = httpResource.text(() => this.spriteUrl);
+  readonly icons = computed(() =>
+    Array.from(this.#sprite.value()?.matchAll(/<symbol id="([^"]+)"/g) ?? [], (match) => match[1])
+  );
 }

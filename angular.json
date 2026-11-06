@@ -41,6 +41,11 @@
                 "glob": "favicon.ico",
                 "input": "src/assets/",
                 "output": "/"
+              },
+              {
+                "glob": "*.svg",
+                "input": "node_modules/@coreui/icons/sprites/",
+                "output": "/assets/icons/"
               }
             ],
             "styles": [
@@ -59,8 +64,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "7mb",
-                  "maximumError": "8mb"
+                  "maximumWarning": "1.5mb",
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
