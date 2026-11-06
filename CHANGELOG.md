@@ -2,6 +2,31 @@
 
 ---
 
+#### `5.7.42` for Angular 22.2.5
+
+- refactor: icons view loads the right sprite with httpResource.text, and drops the use of IconSetService
+- test: add some missing specs
+- chore(deps): update `@angular/core` to  22.2.5
+  - `@angular/common` to version 22.2.5
+  - `@angular/compiler` to version 22.2.5
+  - `@angular/core` to version 22.2.5
+  - `@angular/forms` to version 22.2.5
+  - `@angular/language-service` to version 22.2.5
+  - `@angular/localize` to version 22.2.5
+  - `@angular/platform-browser` to version 22.2.5
+  - `@angular/router` to version 22.2.5
+  - `@coreui/angular` to version 5.7.42
+  - `@coreui/angular-chartjs` to version 5.7.42
+  - `@coreui/icons-angular` to version 5.7.42
+  - `@angular/build` to version 22.2.6
+  - `@angular/cli` to version 22.2.6
+  - `@angular/compiler-cli` to version 22.2.5
+  - `jsdom` to version 31.0.0
+  - `playwright` to version 1.65.0
+
+
+---
+
 #### `5.7.41` for Angular 22.2.4
 
 - chore(dependencies): update to `@angular/core 22.2.4`
