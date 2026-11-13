@@ -2,6 +2,29 @@
 
 ---
 
+#### `5.7.43` for Angular 22.2.6
+
+- chore(deps): update `@angular/core` to 22.2.6
+  - `@angular/aria` to version 22.2.7
+  - `@angular/cdk` to version 22.2.7
+  - `@angular/common` to version 22.2.6
+  - `@angular/compiler` to version 22.2.6
+  - `@angular/core` to version 22.2.6
+  - `@angular/forms` to version 22.2.6
+  - `@angular/language-service` to version 22.2.6
+  - `@angular/localize` to version 22.2.6
+  - `@angular/platform-browser` to version 22.2.6
+  - `@angular/router` to version 22.2.6
+  - `@coreui/angular` to version 5.7.43
+  - `@coreui/angular-chartjs` to version 5.7.43
+  - `@coreui/icons-angular` to version 5.7.43
+  - `@angular/build` to version 22.2.7
+  - `@angular/cli` to version 22.2.7
+  - `@angular/compiler-cli` to version 22.2.6
+  - `jsdom` to version 31.0.1
+
+---
+
 #### `5.7.42` for Angular 22.2.5
 
 - refactor: icons view loads the right sprite with httpResource.text, and drops the use of IconSetService
