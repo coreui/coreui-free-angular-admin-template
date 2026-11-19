@@ -2,6 +2,31 @@
 
 ---
 
+#### `5.7.44` for Angular 22.3.0
+
+- chore(deps): update `@angular/core` to 22.3.0
+  - `@angular/aria` to version 22.3.0
+  - `@angular/cdk` to version 22.3.0
+  - `@angular/common` to version 22.3.0
+  - `@angular/compiler` to version 22.3.0
+  - `@angular/core` to version 22.3.0
+  - `@angular/forms` to version 22.3.0
+  - `@angular/language-service` to version 22.3.0
+  - `@angular/localize` to version 22.3.0
+  - `@angular/platform-browser` to version 22.3.0
+  - `@angular/router` to version 22.3.0
+  - `@coreui/angular` to version 5.7.44
+  - `@coreui/angular-chartjs` to version 5.7.44
+  - `@coreui/icons-angular` to version 5.7.44
+  - `@angular/build` to version 22.3.0
+  - `@angular/cli` to version 22.3.0
+  - `@angular/compiler-cli` to version 22.3.0
+  - `@vitest/browser-playwright` to version 5.1.1
+  - `playwright` to version 1.65.1
+  - `vitest` to version 5.1.1
+
+---
+
 #### `5.7.43` for Angular 22.2.6
 
 - chore(deps): update `@angular/core` to 22.2.6
